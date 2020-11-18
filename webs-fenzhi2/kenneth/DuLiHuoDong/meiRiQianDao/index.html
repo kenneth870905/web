@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui,viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>每日签到</title>
+</head>
+<body>
+    <div id="vue" v-cloak >
+        <div class="back" @click="back()">返回</div>
+        <div class="bg">
+            <img src="image/bg11.jpg" alt="" srcset="">
+        </div>
+        <div class="box_1">
+            <div class="title_1">
+                <div v-if="7-info.Progress==0 && info.IsSiginIn">
+                    已领取彩金<span class="font_red">{{info.Monery}}</span>元
+                </div>
+                <div v-else>
+                    距离领取<span class="font_red">{{info.Monery}}</span>彩金剩余<span class="font_red">{{7-info.Progress}}</span>天
+                </div>
+            </div>
+            <ul class="list1">
+                <li v-for="(item, index) in 7" :key="index" :class="{active:init && index<info.Progress-1,jinri:(init && week*7+item==jinri && !info.IsSiginIn)}">
+                    <img v-show="init && (index<info.Progress || week*7+item==jinri)" src="image/gou.png" alt="" srcset="">
+                </li>
+            </ul>
+            <ul class="list2">
+                <li v-for="(item, index) in 7" :key="index">
+                    <!-- 第 -->
+                    {{week*7 + item < 10 ? '第':""}}{{week*7 + item}}天
+                    <!-- {{week * 7 < 10 ? '第' : ""}}{{day+index}}天 -->
+                </li>
+            </ul>
+            <div class="btn_1">
+                <img @click='lingqu()' v-show="!info.IsSiginIn" src="image/btn.png" alt="" srcset="">
+                <div v-show="info.IsSiginIn">
+                    <span>已签到</span>
+                </div>
+            </div>
+            <div class="title_2">
+                已连续起到<span class="font_red">{{info.Days}}</span>天，累计获得彩金<span class="font_red">{{info.SiginInTotal}}</span>元
+            </div>
+        </div>
+        <ul class="box_2">
+            <li>
+            1.首次签到需充值<span class="font_red">100</span>元以上，每天00:00重置签到状态，若中途中断，则签到天数归零中断后需再次充值100元以上方可继续签到。
+            </li>
+            <li>
+            2.连续签到<span class="font_red">7</span>天、<span class="font_red">14</span>天、<span class="font_red">21</span>天、
+                <span class="font_red">28</span>天分获赠彩金<span class="font_red">18</span>元、<span class="font_red">28</span>元、
+                <span class="font_red">38</span>元、<span class="font_red">58</span>元！
+            </li>
+            <li>
+                <div>3.连续签到每7天需满足存款条件方可签到</div>                   
+                <div>第<span class="font_red">7</span>天存<span class="font_red">100</span>元</div>
+                <div>第<span class="font_red">14</span>天存<span class="font_red">200</span>元</div>
+                <div>第<span class="font_red">21</span>天存<span class="font_red">300</span>元</div>
+                <div>第<span class="font_red">28</span>天存<span class="font_red">500</span>元</div>
+            </li>
+            <li>
+                4.连续签到28天后重新计算签到天数！
+            </li>
+            <li>
+                5.每位会员只可拥有一个账号申请该优惠，同网络环境、同银行卡视为同一客户，恶意注册多账号，外挂批量签到等行为需扣除相关盈利，情节严重者将冻结账号。
+            </li>
+            <li>
+                6.威尼斯人彩票保留活动的最终解释权。以及在无通知情况下修改、终止活动的权利！
+            </li>
+        </ul>
+        
+        <div class="loading" v-show="loading">
+            <div>
+                <img src="image/加载中.png" alt="" srcset="">
+            </div>
+        </div>
+    </div>
+    <script src="jquery-3.4.1.min.js"></script>
+    <!-- 时间格式化 -->
+    <script src="js/moment.js"></script>
+    <script src="sweetalert2/sweetalert2.js"></script>    
+    <script src="js/vue.js"></script>
+    <script src="js/rem.js"></script>
+    <script>
+        var url = ""
+        // var url = 'http://10.10.27.150:3001/api'
+        $.ajaxSetup({
+            crossDomain: true,
+            xhrFields: {
+                withCredentials: true
+            }
+        });
+        new Vue({
+            el:"#vue",
+            data:{
+                loading:false,
+                info:{
+                    SiginInTotal:0,     //签到总金额
+                    Monery:0,          //前台彩金
+                    Progress:0,         //进度
+                    IsSiginIn:false,    //今天是否已签到
+                    Days:0             //签到多少天
+                },
+                init:false
+            },
+            computed: {
+                week:function(){
+                    var days =  this.info.IsSiginIn ?  this.info.Days :  this.info.Days+1 
+                    var n =Math.ceil(days/7)
+                        n = n-1
+                        // n为 1-4
+                        n = n < 4 ? n : 0
+                    return n
+                },
+                jinri:function(){
+                    var d = this.info.IsSiginIn ?  this.info.Days :  this.info.Days+1 
+                    return d>28 ? 1 : d
+                }
+            },
+            methods: {
+                back:function(){
+                    history.back()
+                },
+                chaxun:function(){
+                    var this_1 = this
+                    $.ajax({
+                        type: "post",
+                        url: url+"/MApi/Activity/Post?id="+new Date().getTime(),
+                        data: {url:"/Activities/SignIn/GetInfo"},
+                        success: function (x) {
+                            this_1.init = true
+                            // console.log(x)
+                            if(!x.code){
+                                this_1.info = x
+                                if(this_1.info.Progress==7 && !this_1.info.IsSiginIn){
+                                    this_1.info.Progress = 0
+                                }
+                            }else if(x.msg=='提交请求过快'){
+                                setTimeout(function(){
+                                    this_1.chaxun()
+                                }, 1000);
+                            }else{
+                                Swal.fire({icon: 'error',width:"300px",text: x.msg})
+                            }
+                        },
+                        error:function(err){
+                            console.log(err)
+                            this_1.init = true
+                        }
+                    });
+                },
+                lingqu:function(){
+                    var this2 = this
+                    this.loading = true
+                    $.ajax({
+                        type: "POST",
+                        url: url+"/MApi/Activity/Post?id="+new Date().getTime(),
+                        data: {url:"/Activities/SignIn/SignInDay"},
+                        success: function (x) {
+                            if(x.code==0){
+                                Swal.fire({
+                                    icon: 'success',
+                                    width:"300px",
+                                    text: '恭喜您，签到成功！',
+                                })
+                                setTimeout(function(){
+                                    this2.chaxun()
+                                }, 1000);
+                            }else{
+                                Swal.fire({icon: 'error',width:"300px",text: x.msg})
+                            }
+                            this2.loading=false
+                        },
+                        error:function(err){
+                            Swal.fire({icon: 'error',width:"300px",text: '网络繁忙，请稍后再试'})
+                            this2.loading=false
+                        }
+                    });
+                }
+            },
+            mounted:function() {
+                this.chaxun()
+                
+            },
+        })
+    </script>
+</body>
+</html>

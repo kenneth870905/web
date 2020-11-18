@@ -1,0 +1,2665 @@
+#Note{
+	width	: 90%;
+	margin	: 0 auto;
+	margin-top:20px;
+	position:relative;
+}
+#script_content{
+	height	: 100px;
+}
+#RaceVenues{
+	border	: 1px #CCC solid;
+	width	: 1024px;
+	height	: 250px;
+	margin	: 0 auto;
+	margin-top:160px;
+	position:relative;
+	overflow: hidden;
+}
+#RaceVenues .Venues{
+	position: relative;
+	margin-left:70px;
+	/*border	: 1px #000 solid;*/
+	height	: 100%;
+}
+#RaceVenues .Venues:before{
+	content : '';
+	position:absolute;
+	border-left:1px #F00 solid;
+	height	: 100%;
+	z-index : -1;
+}
+#RaceVenues .Venues:after{
+	content : '';
+	position	: absolute;
+	border-left	: 1px #F00 solid;
+	height		: 100%;
+	right		: 0;
+	margin-right: 70px;
+	z-index 	: -1;
+}
+
+#Track_one{
+	
+}
+#number_one,
+#number_two,
+#number_three{
+	position:absolute;
+	width:70px;
+	height:70px;
+	left:-70px;
+	text-align:center;
+	margin-left:-70px;
+	background-repeat: no-repeat;
+}
+
+#number_one:after,
+#number_two:after,
+#number_three:after{
+	position:absolute;
+	content	: '';
+    top: 1px;
+	right:0;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+	font-size:20px;
+}
+#number_one.ls1:after,
+#number_two.ls1:after,
+#number_three.ls1:after{
+	content: "\e184";
+	color:#F5A623;
+}
+#number_one.ls2:after,
+#number_two.ls2:after,
+#number_three.ls2:after{
+	content: "\e184";
+	color:#B9B9B9;
+}
+#number_one.ls3:after,
+#number_two.ls3:after,
+#number_three.ls3:after{
+	content: "\e184";
+	color:#D06A3D;
+}
+
+#number_one{
+	top:10px;
+}
+#number_one.wait{
+	background-image:url('../images/snailA.png');
+	/*background-size:70px 58px;*/
+}
+#number_one.moving{
+	/*
+	background-image:url('../images/test.gif');
+	background-size:70px 58px;
+	*/
+	width: 70px;
+    height: 70px;
+    background-image: url("../images/snailA.png");
+	-webkit-animation: play2 0.6s steps(15) infinite;
+	-moz-animation: play2 0.6s steps(15) infinite;
+	-ms-animation: play2 0.6s steps(15) infinite;
+	-o-animation: play2 0.6s steps(15) infinite;
+	animation: play2 0.6s steps(15) infinite ;
+}
+#number_one.win{
+	background-image:url('../images/win.gif');
+	background-size:58px 58px;
+}
+#number_one.lose{
+	background-image:url('../images/lose.gif');
+	background-size:58px 58px;
+}
+#number_two{
+	top:80px;
+}
+#number_two.wait{
+	/*background-image:url('../images/snail_wait.png');
+	background-size:70px 58px;
+	*/
+	background-image:url('../images/snailA.png');
+}
+#number_two.moving{
+	/*
+	background-image:url('../images/snail.gif');
+	background-size:70px 58px;
+	*/
+	width: 70px;
+    height: 70px;
+    background-image: url("../images/snailA.png");
+	-webkit-animation: play2 0.6s steps(15) infinite;
+	-moz-animation: play2 0.6s steps(15) infinite;
+	-ms-animation: play2 0.6s steps(15) infinite;
+	-o-animation: play2 0.6s steps(15) infinite;
+	animation: play2 0.6s steps(15) infinite ;
+}
+#number_two.win{
+	background-image:url('../images/win.gif');
+	background-size:58px 58px;
+}
+#number_two.lose{
+	background-image:url('../images/lose.gif');
+	background-size:58px 58px;
+}
+#number_three{
+	top:150px;
+}
+#number_three.wait{
+	/*
+	background-image:url('../images/snail_wait.png');
+	background-size:70px 58px;
+	*/
+	background-image:url('../images/snailA.png');
+}
+#number_three.moving{
+	/*
+	background-image:url('../images/snail.gif');
+	background-size:70px 58px;
+	*/
+	width: 70px;
+    height: 70px;
+    background-image: url("../images/snailA.png");
+	-webkit-animation: play2 0.6s steps(15) infinite;
+	-moz-animation: play2 0.6s steps(15) infinite;
+	-ms-animation: play2 0.6s steps(15) infinite;
+	-o-animation: play2 0.6s steps(15) infinite;
+	animation: play2 0.6s steps(15) infinite ;
+}
+
+#number_three.win{
+	background-image:url('../images/win.gif');
+	background-size:58px 58px;
+}
+#number_three.lose{
+	background-image:url('../images/lose.gif');
+	background-size:58px 58px;
+}
+#prame > div {
+	margin:3px 0;
+}
+#prame > div input {
+	padding-left:5px;
+	width:100px;
+}
+
+.test_snail{
+	width:70px;
+	height:70px;
+	background-image:url('../images/snailA.png');
+}
+.fast{
+	-webkit-animation: play2 0.3s steps(15) infinite;
+	-moz-animation: play2 0.3s steps(15) infinite;
+	-ms-animation: play2 0.3s steps(15) infinite;
+	-o-animation: play2 0.3s steps(15) infinite;
+	animation: play2 0.3s steps(15) infinite ;
+}
+
+@-webkit-keyframes play2 {
+	from { background-position: 0px; }
+	to { background-position: -1050px; }
+}
+@-moz-keyframes play2 {
+	from { background-position:    0px }
+	to { background-position: -1050px; }
+}
+@-ms-keyframes play2 {
+	from { background-position:    0px; }
+	to { background-position: -1050px; }
+}
+@-o-keyframes play2 {
+	from { background-position:    0px; }
+	to { background-position: -1050px; }
+}
+@keyframes play2 {
+	from { background-position:    0px; }
+	to { background-position: -1050px; }
+}
+
+
+
+@-webkit-keyframes play {
+	from { background-position: -27px; }
+	to { background-position: -2000px; }
+}
+@-moz-keyframes play {
+	from { background-position:    -27px; }
+	to { background-position: -2000px; }
+}
+@-ms-keyframes play {
+	from { background-position:    -27px; }
+	to { background-position: -2000px; }
+}
+@-o-keyframes play {
+	from { background-position:    -27px; }
+	to { background-position: -2000px; }
+}
+@keyframes play {
+	from { background-position:    0px; }
+	to { background-position: -630px; }
+}
+
+
+
+
+/*-------- reset --------*/
+
+img {
+    max-width: 100%;
+}
+
+a:focus,
+input:focus,
+button:focus {
+    outline: 0;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+*:focus{
+	outline: 0;
+}
+
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+input,
+select {
+    border-radius: 3px;
+    border: 1px solid #999999;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+/*-------- CSS --------*/
+
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    /*position: relative;*/
+    font-family: arial, 'Microsoft JhengHei', 'Microsoft YaHei', 'SimHei';
+    background: #8ab53f;
+    font-size: 16px;
+}
+
+.snail-content {
+    width: 1024px;
+    height: 768px;
+    padding: 0;
+    margin: 0 auto;
+    position: absolute;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    margin-top: -384px;
+    margin-left: -512px;
+}
+
+header#game-head {
+    width: 100%;
+    height: 80px;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    top: 0;
+    position: absolute;
+    background: url(../images/topnav_bg.png) no-repeat;
+	z-index: 1;
+}
+
+header#game-head .logo {
+    display: inline-block;
+    width: 250px;
+    vertical-align: top;
+    text-align: center;
+}
+
+header#game-head .logo img{
+	max-width: 100%;
+    width: initial;
+}
+
+header#game-head .game-head-main {
+    display: inline-block;
+    width: 524px;
+    vertical-align: top;
+}
+
+header#game-head .game-head-main .game-head-info {
+    width: 428px;
+    height: 30px;
+    background: #734417;
+    border: 2px solid #430707;
+    border-radius: 10px;
+    padding: 3px 0;
+    margin: 6px auto 2px;
+    box-shadow: -1px 1px 2px #c58556;
+    box-sizing: border-box;
+}
+
+header#game-head .game-head-main .game-head-info > span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+header#game-head .game-head-main .game-head-info > span.head-info-ico {
+    width: 16px;
+    height: 18px;
+    background: url(../images/ladder_piece_03.png) no-repeat;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+header#game-head .game-head-main .game-head-info > span#MemberAct {
+    width: 160px;
+    height: 22px;
+    background: url(../images/ladder_piece_07-16.png) no-repeat;
+    text-align: left;
+    color: #fff;
+    padding: 0 7px;
+    line-height: 22px;
+}
+
+header#game-head .game-head-main .game-head-info > span.head-info-Money {
+    color: #fff;
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
+header#game-head .game-head-main .game-head-info > span#MemberMoney {
+    width: 160px;
+    height: 22px;
+    background: url(../images/ladder_piece_07-16.png) no-repeat;
+    text-align: right;
+    color: #fff;
+    padding: 0 7px;
+    line-height: 22px;
+}
+
+header#game-head .game-head-main .game-head-operat {
+    text-align: left;
+    margin-left: 42px;
+}
+
+header#game-head .game-head-main .game-head-operat > span {
+    display: inline-block;
+    width: 102px;
+    height: 28px;
+    vertical-align: middle;
+    margin: 0 5px;
+    cursor: pointer;
+    -webkit-transition: .1s;
+    -o-transition: .1s;
+    transition: .1s;
+}
+
+header#game-head .game-head-main .game-head-operat > span#GoWayvalue {
+    background: url(../images/ladder_piece_08.png) no-repeat;
+}
+
+header#game-head .game-head-main .game-head-operat > span#GoWayvalue:hover {
+    background: url(../images/ladder_piece_10.png) no-repeat;
+}
+
+header#game-head .game-head-main .game-head-operat > span#GoWayvalue:active {
+    background: url(../images/ladder_piece_12.png) no-repeat;
+}
+
+header#game-head .game-head-main .game-head-operat > span#GoStatistics {
+    background: url(../images/ladder_piece_05.png) no-repeat;
+}
+
+header#game-head .game-head-main .game-head-operat > span#GoStatistics:hover {
+    background: url(../images/ladder_piece_13.png) no-repeat;
+}
+
+header#game-head .game-head-main .game-head-operat > span#GoStatistics:active {
+    background: url(../images/ladder_piece_17.png) no-repeat;
+}
+
+header#game-head .game-head-main .game-head-operat > span#GoExplanation {
+    background: url(../images/ladder_piece_14.png) no-repeat;
+}
+
+header#game-head .game-head-main .game-head-operat > span#GoExplanation:hover {
+    background: url(../images/ladder_piece_16.png) no-repeat;
+}
+
+header#game-head .game-head-main .game-head-operat > span#GoExplanation:active {
+    background: url(../images/ladder_piece_18.png) no-repeat;
+}
+
+header#game-head .game-head-main .game-head-operat > span.sound-switch {
+    width: 27px;
+    height: 28px;
+    background: url(../images/ladder_piece_28.png) no-repeat;
+    margin-left: 8px;
+}
+
+header#game-head .game-head-main .game-head-operat > span.sound-switch.active {
+    background: url(../images/ladder_piece_39.png) no-repeat;
+}
+
+header#game-head .game-head-main .game-head-operat > span.sound-effects {
+    width: 27px;
+    height: 28px;
+    background: url(../images/ladder_piece_41.png) no-repeat;
+    margin-left: 8px;
+}
+
+header#game-head .game-head-main .game-head-operat > span.sound-effects.active {
+    background: url(../images/ladder_piece_40.png) no-repeat;
+}
+
+header#game-head ul.game-head-inquire {
+    display: inline-block;
+    width: 250px;
+    padding: 6px 0 0 24px;
+    margin: 0;
+    vertical-align: top;
+}
+
+header#game-head ul.game-head-inquire li {
+    display: inline-block;
+    width: 47px;
+    height: 47px;
+    padding: 0;
+    margin: 0;
+    margin-left: 5px;
+    cursor: pointer;
+    -webkit-transition: .1s;
+    -o-transition: .1s;
+    transition: .1s;
+}
+
+header#game-head ul.game-head-inquire li:first-child {
+    margin-left: 0px;
+}
+
+header#game-head ul.game-head-inquire li#GoOrder {
+    background: url(../images/ladder_piece_20.png) no-repeat;
+}
+
+header#game-head ul.game-head-inquire li#GoOrder:hover {
+    background: url(../images/ladder_piece_26-11.png) no-repeat;
+}
+
+header#game-head ul.game-head-inquire li#GoOrder:active {
+    background: url(../images/ladder_piece_32.png) no-repeat;
+}
+
+header#game-head ul.game-head-inquire li#GoOrder.prohibit {
+    background: url(../images/ladder_piece_07.png) no-repeat;
+    cursor: default;
+}
+
+header#game-head ul.game-head-inquire li#GoReport {
+    background: url(../images/ladder_piece_21.png) no-repeat;
+}
+
+header#game-head ul.game-head-inquire li#GoReport:hover {
+    background: url(../images/ladder_piece_27.png) no-repeat;
+}
+
+header#game-head ul.game-head-inquire li#GoReport:active {
+    background: url(../images/ladder_piece_33.png) no-repeat;
+}
+
+header#game-head ul.game-head-inquire li#GoReport.prohibit {
+    background: url(../images/ladder_piece_09.png) no-repeat;
+}
+
+header#game-head ul.game-head-inquire li#GoLottery {
+    background: url(../images/ladder_piece_19.png) no-repeat;
+}
+
+header#game-head ul.game-head-inquire li#GoLottery:hover {
+    background: url(../images/ladder_piece_22.png) no-repeat;
+}
+
+header#game-head ul.game-head-inquire li#GoLottery:active {
+    background: url(../images/ladder_piece_26.png) no-repeat;
+}
+
+header#game-head ul.game-head-inquire li#GoLottery.prohibit {
+    background: url(../images/ladder_piece_10-1.png) no-repeat;
+}
+
+header#game-head ul.game-head-inquire li#GoTrend {
+    background: url(../images/ladder_piece_22-10.png) no-repeat;
+}
+
+header#game-head ul.game-head-inquire li#GoTrend:hover {
+    background: url(../images/ladder_piece_29.png) no-repeat;
+}
+
+header#game-head ul.game-head-inquire li#GoTrend:active {
+    background: url(../images/ladder_piece_34.png) no-repeat;
+}
+
+header#game-head ul.game-head-inquire li#GoTrend.prohibit {
+    background: url(../images/ladder_piece_11.png) no-repeat;
+}
+
+header#game-head .tooltip-inner{
+	width: inherit;
+}
+
+#game-basic,
+#game-advance {
+    width: 1024px;
+    height: 307px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-bottom: -307px;
+}
+
+#game-advance {
+    height: 680px;
+    margin-bottom: -680px;
+}
+
+#game-basic .title-wrap {
+	height: 50px;
+}
+
+/**----- 左邊 -----**/
+#game-basic .left-outer {
+	float: left;
+	width: 332px;
+	height: 307px;
+	background: url(../images/basicL_bg.png) no-repeat;
+	padding: 0 19px 0 23px;
+}
+
+/* 期數 */
+#game-basic .periods {
+	width: 195px;
+	height: 29px;
+	margin: 9px 49px 10px;
+}
+
+/* 購買紀錄 */
+#game-basic .history-buy {
+	width: 259px;
+	height: 181px;
+	margin: 47px auto 0;
+}
+#game-basic .history-buy ul {
+	padding: 5px 10px 8px;
+}
+#game-basic .history-buy ul li {
+	color: #ffffd3;
+	font-size: 16px;
+	width: 100%;
+	padding: 0 13px;
+	height: 38px;
+	line-height: 38px;
+	border-bottom: 1px dashed #ffffd3;
+}
+#game-basic .history-buy .total {
+	margin-top: 8px;
+}
+#game-basic .history-buy .last {
+	height: 24px;
+	line-height: 24px;
+	border-bottom: none;
+	font-weight: bold;
+	color: #ffff19;
+
+}
+#game-basic .history-buy .name, #game-basic .history-buy .bet-money {
+	float: left;
+}
+#game-basic .history-buy .name {
+	width: 40%;
+	letter-spacing: 2px;
+}
+#game-basic .history-buy .bet-money {
+	width: 55%;
+	margin-left: 5%;
+	text-align: right;
+}
+/* 購買紀錄 End */
+/**----- 左邊 End -----**/
+
+/**----- 右邊 -----**/
+#game-basic .right-outer {
+	float: right;
+	width: 684px;
+	height: 307px;
+	background: url(../images/basicR_bg.png) no-repeat;
+}
+#game-basic .right-outer .title-wrap {
+	padding: 0 50px; 
+}
+#game-basic .official-data-inner {
+	float: left;
+	width: 290px;
+	height: inherit; 
+}
+#game-basic .official-data-inner .count-time, #game-basic .official-data-inner .current-period {
+	line-height: 32px;
+	text-align: center;
+	font-weight: 700;
+	color: #9f2422;
+	font-size: 20px;
+}
+#game-basic .official-data-inner .count-time {
+	padding: 0 60px;	
+	margin: 10px 25px 10px 38px;
+}
+#game-basic .official-data-inner .current-period {
+	padding: 0 40px;	
+	margin: 10px 31px 10px 27px;
+}
+
+/* 選擇區 */
+#game-basic .racer-wrap {
+	float: left;
+	margin: -10px 0 0 43px;
+}
+#game-basic .racer-wrap li {
+	float: left;
+	width: 128px;
+	text-align: center;
+}
+#game-basic .snails {
+	display: inline-block;
+}
+#game-basic .racer-wrap .bet-chart-inner {
+	margin-top: -5px;
+}
+#game-basic .racer-wrap .bet-chart-inner li {
+	font-weight: 700;
+	font-size: 18px;
+	height: 26px;
+	line-height: 26px;
+	text-align: right;
+	margin-bottom: 3px;
+	padding-right: 15px;
+	float: none;
+}
+#game-basic .racer-wrap .bet-chart-inner li:first-child{
+	color: #b11e1e;
+}
+#game-basic .racer-wrap .money-enter input {
+	color: #f3de94;
+    background: #361908;
+    font-size: 16px;
+    display: inline-block;
+    border: 1px solid #612a15;
+    box-shadow: -1px 0px 5px 4px #b36a3b;
+    width: 75%;
+    text-align: center;
+    height: 20px;
+    line-height: normal;
+    border-radius: 6px;
+	margin: 14px 0 0 13px;
+	padding: 0 5px;
+}
+/* 選擇區 End */
+
+/* 押注區 */
+#game-basic .final-wrap {
+	float: left;
+	width: 210px;
+	margin-left: 23px;
+	margin-top: 11px;
+	text-align: center;
+}
+#game-basic .final-wrap .change-level-btn {     /* 切換扭 */
+	display: inline-block;
+	width: 206px;
+	height: 58px;
+	background: url(../images/button.png) no-repeat -250px -210px;
+	cursor: pointer;
+	margin-top: 2px;
+}
+#game-basic .final-wrap .change-level-btn:hover {
+	background: url(../images/button.png) no-repeat -10px -288px;
+}
+#game-basic .final-wrap .change-level-btn:active {
+	background: url(../images/button.png) no-repeat -236px -288px;
+}
+#game-basic .final-wrap .sum-money-inner {
+	height: 115px;
+	padding: 54px 0 0 48px;
+}
+#game-basic .final-wrap .sum-money-inner .sum-money {
+	width: 130px;
+	line-height: 34px;
+	height: 34px;
+	text-align: center;
+	color: #ffffd7;
+	font-weight: 700;
+	font-size: 22px;
+	text-shadow: 1px 1px 0 #320015, -1px -1px 0 #320015;
+}
+#game-basic .final-wrap .final-btn .sure-btn, #game-basic .final-wrap .final-btn .cancel-btn{
+	width: 100px;
+	height: 55px;
+	cursor: pointer;
+}
+#game-basic .final-wrap .sum-money-inner .sum-money input{
+	background: none;
+    height: 34px;
+    width: 130px;
+    text-align: center;
+    border: none;
+}
+#game-basic .final-wrap .final-btn .sure-btn {     /* 確定扭 */
+	float: left;
+	background: url(../images/button.png) no-repeat -212px -60px;
+}
+#game-basic .final-wrap .final-btn .sure-btn:hover {
+	background: url(../images/button.png) no-repeat -332px -60px;
+}
+#game-basic .final-wrap .final-btn .sure-btn:active {
+	background: url(../images/button.png) no-repeat -10px -135px;
+}
+#game-basic .final-wrap .final-btn .cancel-btn {     /* 取消扭 */
+	float: right;
+	background: url(../images/button.png) no-repeat -250px -135px;
+}
+#game-basic .final-wrap .final-btn .cancel-btn:hover {
+	background: url(../images/button.png) no-repeat -370px -135px;
+}
+#game-basic .final-wrap .final-btn .cancel-btn:active {
+	background: url(../images/button.png) no-repeat -10px -210px;
+}
+
+/* 不能玩按鈕 */
+#game-basic .final-wrap .change-level-btn.unable {
+	background: url(../images/button.png) no-repeat -10px -366px;
+}
+#game-basic .final-wrap .final-btn .sure-btn.unable {
+	background: url(../images/button.png) no-repeat -130px -135px;
+}
+#game-basic .final-wrap .final-btn .cancel-btn.unable{
+	background: url(../images/button.png) no-repeat -130px -210px;
+}
+
+
+#game-advance input,#game-advance input:focus,#game-advance button,#game-advance button:focus,#game-advance select,#game-advance select:focus,#game-advance textarea,#game-advance textarea:focus{
+	outline:none
+}
+
+#game-advance .ui-widget,
+#game-basic .ui-widget{ font-family: 'Microsoft JhengHei', 'Microsoft YaHei', Arial,sans-serif; }
+
+#game-advance .scroll-y,{
+	overflow-y: auto;
+}
+
+
+#game-advance img{
+	max-width: 100%; 
+	height: auto;
+}
+#game-advance .txt-bg{
+	position: relative;
+	line-height: 32px;
+	margin: 0 5px;
+	padding: 0 10px;
+	background: url(../images/txt-bg-center.jpg) repeat-x center top;
+}
+#game-advance .txt-bg:before{
+	position: absolute;
+	top: 0;
+	left: -5px;
+	content: url(../images/txt-bg-left.png);
+}
+#game-advance .txt-bg:after{
+	position: absolute;
+	top: 0;
+	right: -5px;
+	content: url(../images/txt-bg-right.png);
+}
+
+
+/*main*/
+#game-advance{
+	position: absolute;
+	letter-spacing: 1px;
+	width: 1024px;
+	left: 50%;
+	margin-left: -512px;
+}
+
+#game-advance > *{
+	position: relative;
+	height: 680px;
+	width: 685px;
+	background: url(../images/advance-right-board.png) no-repeat center top;
+}
+#game-advance > *:first-child{
+	background: url(../images/advance-left-board.png) no-repeat center top;
+	width: 333px;
+}
+
+/*perod*/
+#game-advance .period,
+#game-basic .periods{
+	position: absolute;
+	left: 70px;
+	top: 65px;
+	height: 30px;
+	font-size: 15px;
+}
+
+#game-basic .periods{
+	top: 49px;
+	left: 20px;
+}
+
+#game-advance .period span,
+#game-basic .periods span{
+	height: 30px;
+	line-height: 30px;
+	padding: 2px 0;
+	color:#ffffd7;
+	font-size: 16px;
+}
+
+#game-advance .period .ui-state-default,
+#game-basic .periods .ui-state-default{
+	background: transparent;
+	width: 195px;
+	padding: 0 10px;
+}
+
+#game-advance .period select,
+#game-basic .periods select{
+	width: 195px;
+	outline:none;
+}
+
+#basic-number-menu,#advance-number-menu{
+	background: #5f3415;
+	border: none;
+	padding: 10px 0;
+	max-height: 520px;
+	overflow-y: auto;
+	box-shadow: 0 5px 5px rgba(0,0,0,0.5);
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+	border: 2px solid #452610;
+	border-top: none;
+}
+
+#basic-number-menu{
+	max-height: 193px;
+}
+
+#basic-number-menu li,#advance-number-menu li{
+	color:#ffffd7;
+	padding: 0px 10px;
+	font-weight: normal;
+	border: none;
+}
+
+#basic-number-menu li:hover,#advance-number-menu li:hover{
+	background: #2d1e19;
+}
+
+#basic-number-menu .mCSB_dragger_bar,#advance-number-menu .mCSB_dragger_bar{
+	background: #ffff19;
+	width: 4px;
+}
+
+#basic-number-menu .mCSB_inside>.mCSB_container,#advance-number-menu .mCSB_inside>.mCSB_container{
+	margin-right: 10px;
+}
+#basic-number-menu .mCSB_scrollTools,
+#advance-number-menu .mCSB_scrollTools{
+	width: 4px;
+	right: 4px;
+}
+
+#game-advance .period .ui-state-hover, #game-advance .period .ui-state-default,
+#game-basic .periods .ui-state-hover, #game-advance .period .ui-state-default{
+	border: none;
+}
+
+#game-advance .period .ui-state-default .ui-icon,
+#game-basic .periods .ui-state-default .ui-icon{
+	background-image: url(../images/button.png);
+	background-repeat: no-repeat;
+	background-position: -642px -10px;
+	width: 20px;
+	height: 18px;
+	margin-top: -7px;
+}
+
+
+/*betSlip*/
+#game-advance .betSlip{
+	margin: 105px 45px 0;
+	height: 550px;
+}
+
+#game-advance .betSlip ul li{
+	margin-bottom: 15px;
+}
+
+#game-advance .betSlip ul h6{
+	padding: 6px 0.5em;
+	font-weight: bold;
+	color:#ffff19;
+	font-size: 18px;
+	border-bottom: 1px solid #ffff19;
+}
+
+#game-advance .betSlip ul p{
+	position: relative;
+	padding: 6px 1em;
+	color:#ffffd7;
+	font-size: 16px;
+	border-bottom: 1px dashed #ffffd3;
+}
+
+#game-advance .betSlip ul li:last-child{
+	margin-top: 15px;
+	margin-bottom: 0;
+}
+
+#game-advance .betSlip ul li:last-child p{
+	border: none;
+	font-size: 16px;
+	font-weight: bold;
+	color: #ffff19;
+}
+
+#game-advance .betSlip ul p span{
+	display: inline-block;
+	float: right;
+	text-align: right;
+}
+
+#game-advance .betSlip h5{
+	font-size: 20px;
+	color: #ffff19;
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+#game-advance .betSlip h5 span{
+	float: right;
+}
+
+#game-advance .info{
+	margin: 10px auto 0;
+	text-align: center;
+}
+
+#game-advance .info span{
+	display: inline-block;
+	line-height: 30px;
+	width: 230px;
+	margin: 0 25px;
+	color: #9f2422;
+	font-weight: bold;
+	font-size: 20px;
+	font-family: Arial;
+	letter-spacing: 0;
+}
+
+#game-advance .info span:first-child{
+	margin-left: 30px;
+	margin-right: 20px;
+}
+
+/*bet*/
+#game-advance .bet{
+	width: 620px;
+	margin: 0 auto 0;
+}
+
+#game-advance .bet > div{
+	position: relative;
+	margin-top: 50px;
+	padding: 10px 0;
+}
+
+#game-advance .bet > div .txt-bg{
+	position: absolute;
+	left: 0;
+	top: -32px;
+	height: 32px;
+}
+
+#game-advance .bet h6 *{
+	display: inline-block;
+	height: 32px;
+	line-height: 32px;
+	vertical-align: top;
+	font-weight: bold;
+}
+
+
+
+#game-advance .bet > div.col-xs-6{
+	height: 95px;
+	width: 49%;
+}
+
+#game-advance .bet > div.col-xs-6:nth-child(odd){
+	margin-right: 2%;
+}
+
+#game-advance .bet > div.col-xs-12{
+	height: 175px;
+}
+
+#game-advance .bet > div:last-child{
+	clear: both;
+	height: 50px;
+}
+
+
+#game-advance .bet .txt-bet{
+	background: url(../images/advance-txt-bet.png);
+	width: 88px;
+}
+
+#game-advance .bet .txt-first{
+	background: url(../images/advance-txt-first.png);
+	width: 48px;
+}
+
+#game-advance .bet .txt-second{
+	background: url(../images/advance-txt-second.png);
+	width: 73px;
+}
+
+#game-advance .bet .txt-ranking{
+	background: url(../images/advance-txt-ranking.png);
+	width: 89px;
+}
+
+#game-advance .bet .txt-money{
+	background: url(../images/advance-txt-money.png);
+	width: 110px;
+}
+
+#game-advance .bet [class^="list-"]{
+	position: relative;
+	width: 100%;
+	margin: -25px auto 0;
+	z-index: 1;
+	text-align: center;
+}
+#game-advance .bet .list-frist,#game-advance .bet .list-second{
+	margin-top: -16px;
+}
+#game-advance .bet [class^="list-"] li{
+	display: inline-block;
+	width: 32%;
+	vertical-align: top;
+	margin-bottom: 5px;
+}
+
+#game-advance .bet [class^="list-"] div{
+	margin: 0 auto;
+}
+
+#game-advance .bet [class^="list-"] input{
+	color: #f3de94;
+    background: #361908;
+    font-size: 16px;
+    display: inline-block;
+    border: 1px solid #612a15;
+    box-shadow: -1px 0px 5px 4px #b36a3b;
+    width: 75%;
+    text-align: center;
+    height: 20px;
+    line-height: normal;
+    border-radius: 6px;
+}
+
+#game-advance .bet .list-ranking{
+	margin: 0 auto;
+}
+
+#game-advance .bet .list-ranking div{
+	position: relative;
+	display: inline-block;
+	width: 31%;
+	max-width: 52px;
+}
+
+#game-advance .bet .list-ranking div:first-child:before{
+	position: absolute;
+	left: 0px;
+	top: 5px;
+	content: url(../images/crown.png);
+}
+
+#game-advance .bet .list-ranking span{
+	width: 60%;
+}
+
+#game-advance .bet .list-win span,#game-advance .bet .list-bet span{
+	color: #f3de94;
+	font-size: 20px;
+	display: inline-block;
+	padding: 2px 15px;
+	width: 75%;
+	background: #5f3415;
+}
+
+#game-advance .bet .money-input{
+	margin-top: 15px;
+	margin-right: 40px;
+	display: inline-block;
+}
+
+#game-advance .bet .money-input input{
+	background-color: transparent;
+	height: 20px;
+	line-height: 20px;
+	margin-left: 50px;
+	width: 100px;
+	border: none;
+	color:#ffffd7;
+	text-align: center;
+}
+
+#game-advance .bet .btns{
+	margin-top: -10px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#game-advance .bet .btns .button{
+	display: inline-block;
+}
+
+#game-advance .bet .button-buD_01{
+	margin-left: 40px;
+}
+
+#game-advance .bet .button-buA_01:hover{
+	background-position: -332px -60px;
+}
+
+#game-advance .bet .button-buA_01:active{
+	background-position: -10px -135px;
+}
+
+#game-advance .bet .button-buB_01:hover{
+	background-position: -370px -135px;
+}
+
+#game-advance .bet .button-buB_01:active{
+	background-position: -10px -210px;
+}
+
+#game-advance .bet .button-buD_01:hover{
+	background-position: -452px -10px;
+}
+
+#game-advance .bet .button-buD_01:active{
+	background-position: -490px -88px;
+}
+
+
+#game-betinfo{
+	position: absolute;
+	width: 1024px;
+	height: 307px;
+	left: 0;
+	bottom: 0;
+	margin-bottom: -307px;
+	text-align: center;
+	background: url(../images/game-betinfo.png) no-repeat center top;
+}
+
+#game-betinfo .now-period{
+	font-size: 18px;
+	color:#ffffd7;
+	margin: 42.5px 55px 30px;
+	display: block;
+	width: 200px;
+	line-height: 30px;
+	text-align: left;
+	padding: 0 1em;
+}
+
+#game-betinfo .list{
+	display: inline-block;
+	text-align: left;
+}
+
+#game-betinfo .list > li{
+	float: left;
+	width: 160px;
+	margin-top: 10px;
+	margin-right: 15px;
+	font-size: 15px;
+}
+
+#game-betinfo .list > li:first-child{
+	margin-left: 15px;
+}
+
+#game-betinfo h6{
+	font-size: 20px;
+	color: #ffff19;
+	font-weight: bold;
+	padding: 0 10px 5px;
+	letter-spacing: 0.5em;
+	border-bottom: 1px solid #ffff19;
+}
+
+#game-betinfo .list p{
+	color:#ffffd7;
+	padding: 10px;
+	border-bottom: 1px dashed #ffffd7;
+}
+
+#game-betinfo .list p span{
+	display: inline-block;
+	float: right;
+}
+
+#game-betinfo .list .plural{
+	width: 320px;
+}
+
+#game-betinfo .list .plural div{
+	display: inline-block;
+	width: 48%;
+}
+
+#game-betinfo .list .plural h6+div{
+	margin-right: 2.5%;
+}
+
+#game-betinfo .list .total{
+	width: 200px;
+}
+
+#game-betinfo .list .total p{
+	border-color: transparent;
+	color: #ffff19;
+	font-weight: bold;
+}
+
+#game-betinfo .list .total b{
+	letter-spacing: 0.5em;
+}
+
+
+@-webkit-keyframes gbounce {
+    0%,
+    25%,
+    75%,
+    100% {
+        transform: translateY(0)
+    }
+    0% {
+        transform: translateY(-20px)
+    }
+    50% {
+        transform: translateY(-10px)
+    }
+}
+
+@-moz-keyframes gbounce {
+    0%,
+    25%,
+    75%,
+    100% {
+        transform: translateY(0)
+    }
+    0% {
+        transform: translateY(-20px)
+    }
+    50% {
+        transform: translateY(-10px)
+    }
+}
+
+@-o-keyframes gbounce {
+    0%,
+    25%,
+    75%,
+    100% {
+        transform: translateY(0)
+    }
+    0% {
+        transform: translateY(-20px)
+    }
+    50% {
+        transform: translateY(-10px)
+    }
+}
+
+@keyframes gbounce {
+    0%,
+    25%,
+    75%,
+    100% {
+        transform: translateY(0)
+    }
+    0% {
+        transform: translateY(-20px)
+    }
+    50% {
+        transform: translateY(-10px)
+    }
+}
+
+.game-bounce {
+    -webkit-animation-name: gbounce;
+    -moz-animation-name: gbounce;
+    -o-animation-name: gbounce;
+    animation-name: gbounce
+}
+
+.game-animated {
+    -webkit-animation-duration: .5s;
+    -moz-animation-duration: .5s;
+    -o-animation-duration: .5s;
+    animation-duration: .5s;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    -o-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+#game-wating {
+	position: absolute;
+	width: 685px;
+	height: 303px;
+	background: url(../images/popup_bg.png) no-repeat;
+	top: 110px;
+	left: 50%;
+	margin-left: -342px;
+	padding: 45px 44px;
+	display: none;
+}
+
+#game-wating .current-period {
+	line-height: 26px;
+    text-align: center;
+    font-weight: 700;
+    color: #9f2422;
+    font-size: 20px;
+    position: absolute;
+    top: 9px;
+    right: 110px;
+    width: 204px;
+}
+
+#game-wating .game-wating-group{
+	margin: 4px 0;
+	display: flex;
+	align-items: center;
+}
+
+#game-wating .game-wating-group .snails-icon{
+	width: 82px;
+	height: 76px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#game-wating .game-wating-group .snails-icon i.snails-icon-1{
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+	background: url(../images/snails.png) no-repeat;
+    background-position: -192px -5px;
+}
+
+#game-wating .game-wating-group .snails-icon i.snails-icon-2{
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+	background: url(../images/snails.png) no-repeat;
+    background-position: -282px -5px;
+}
+
+#game-wating .game-wating-group .snails-icon i.snails-icon-3{
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+	background: url(../images/snails.png) no-repeat;
+	background-position: -129px -220px;
+}
+
+#game-wating .game-wating-group .snails-percentage{
+	width: 189px;
+	height: 54px;
+	background: url(../images/UI_03_09.png) no-repeat;
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+}
+
+#game-wating .game-wating-group .snails-percentage > span{
+	color :#ffffd7;
+	font-size: 14px;
+	position: absolute;
+	top: 16px;
+	right: 25px;
+    text-align: center;
+    width: 35px;
+}
+
+#game-wating .game-wating-group .snails-bet{
+	width: 326px;
+	height: 61px;
+	background: url(../images/UI_03_06.png) no-repeat;
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+}
+
+#game-wating .game-wating-group .snails-bet .snails-bet-percentage{
+	color :#ffffd7;
+	font-size: 14px;
+	position: absolute;
+	top: 20px;
+	right: 181px;
+	text-align: center;
+    width: 35px;
+}
+
+#game-wating .game-wating-group .snails-bet-bar{
+	position: absolute;
+	width: 156px;
+	height: 19px;
+	top: 18px;
+	right: 15px;
+}
+#game-wating .game-wating-group .snails-bet-bar .bar-inner{
+	display: inline-block;
+	height: 19px;
+	overflow: hidden;
+	background: url(../images/UI_03_03s.png) no-repeat left;
+}
+
+#game-podium{
+	position: absolute;
+	width: 297px;
+	height: 185px;
+	background: url(../images/podium.png) no-repeat;
+	top: 0;
+	left: 50%;
+	margin-left: -148px;
+	margin-top: 220px;
+	display: none;
+}
+#game-podium .game-podium-first,#game-podium .game-podium-second,#game-podium .game-podium-third{
+	position: absolute;
+    top: 0;
+    left: 0;
+}
+#game-podium .game-podium-first{
+    margin: -70px 0 0 95px;
+}
+#game-podium .game-podium-second{
+    margin: -26px 0 0 -7px;
+}
+#game-podium .game-podium-third{
+    margin: 20px 0 0 190px;
+}
+
+#game-podium .snails-snailA {
+    width: 115px;
+    height: 115px;
+    background-position: -5px -5px;
+}
+#game-podium .snails-snailB {
+    width: 115px;
+    height: 115px;
+    background-position: -130px -95px;
+}
+#game-podium .snails-snailC {
+    width: 115px;
+    height: 115px;
+    background-position: -255px -95px;
+}
+
+/*-------- Custom --------*/
+
+.txt-center {
+    text-align: center;
+}
+
+.txt-left {
+    text-align: left;
+}
+
+.txt-right {
+    text-align: right;
+}
+
+.leftfix {
+    float: left;
+}
+
+.rightfix {
+    float: right;
+}
+
+.relative {
+    position: relative;
+}
+
+.border_none {
+    border: none;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+
+/* start commented backslash hack \*/
+
+* html .clearfix {
+    height: 1%;
+}
+
+.clearfix {
+    display: block;
+}
+
+
+/* close commented backslash hack */
+
+#ZgWindow .Windows.big .Cn {
+    top: 26px;
+}
+
+#ZgWindow .Windows.big,#ZgWindow .Windows .Cnn{
+	background: url(../images/road_bg.jpg);
+	border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+#ZgWindow .Windows.GoLottery .WinTitle, #ZgWindow .Windows.GoOrder .WinTitle, #ZgWindow .Windows.GoReport .WinTitle, #ZgWindow .Windows.Details_Content .WinTitle, #ZgWindow .Windows.ChaseDetails_Content .WinTitle,#ZgWindow .Windows .WinTitle{
+	background: url(../images/road_bg.jpg);
+}
+#ZgWindow .Windows.GoLottery .Cnn, #ZgWindow .Windows.GoOrder .Cnn, #ZgWindow .Windows.GoReport .Cnn, #ZgWindow .Windows.Details_Content .Cnn, #ZgWindow .Windows.ChaseDetails_Content .Cnn{/*,#ZgWindow .Windows.big .WinContent*/
+	background: url(../images/road_bg.jpg);
+	border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+#ZgWindow .Windows .WinContent{
+	border: none;
+	background: none;
+}
+.common_form{
+	background: none;
+	height: inherit;
+}
+.order_top,.report_top,.lottery_top{
+	background: rgba(255,255,255,1);
+}
+.record_dep_closet{
+	background: #fff;
+	padding: 13px 0;
+}
+.record_dep{
+	margin:0;
+	padding: 0 15px;
+}
+.record_dep_closet .order_select_all{
+	margin-top: 13px;
+}
+#Not_order_list,#OrderReportDiv{
+	background: #fff;
+}
+.report_footer{
+	margin-top: 0;
+	background: #edecec;
+	border-top: 1px solid #cfbeac;
+}
+.order_chi ul {
+    border-top: 1px solid #56382a;
+    border-left: 1px solid #56382a;
+    border-bottom: 1px solid #a88777;
+    border-right: 1px solid #a88777;
+}
+.order_chi ul li {
+    border-left: 1px solid #56382a;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9b654b+0,60360d+100 */
+	background: rgb(155,101,75); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(155,101,75,1) 0%, rgba(96,54,13,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(155,101,75,1) 0%,rgba(96,54,13,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(155,101,75,1) 0%,rgba(96,54,13,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9b654b', endColorstr='#60360d',GradientType=0 ); /* IE6-9 */
+	line-height: 24px;
+}
+.order_chi ul li:hover{
+	background: rgb(155,101,75); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(155,101,75,1) 0%, rgba(96,54,13,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(155,101,75,1) 0%,rgba(96,54,13,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(155,101,75,1) 0%,rgba(96,54,13,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9b654b', endColorstr='#60360d',GradientType=0 ); /* IE6-9 */
+	opacity: .9
+}
+.order_chi ul li.active{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#57320f+0,8a5941+100 */
+	background: rgb(87,50,15); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(87,50,15,1) 0%, rgba(138,89,65,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(87,50,15,1) 0%,rgba(138,89,65,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(87,50,15,1) 0%,rgba(138,89,65,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57320f', endColorstr='#8a5941',GradientType=0 ); /* IE6-9 */
+}
+.report_left select, .order_left select,.report_date_choice input[type='text']{
+	border: 1px solid #cbb88e;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fefefe+0,f6f3ed+36,ede8dc+50,f6f3ed+64,fefefe+100 */
+	background: rgb(254,254,254); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(254,254,254,1) 0%, rgba(246,243,237,1) 36%, rgba(237,232,220,1) 50%, rgba(246,243,237,1) 64%, rgba(254,254,254,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(254,254,254,1) 0%,rgba(246,243,237,1) 36%,rgba(237,232,220,1) 50%,rgba(246,243,237,1) 64%,rgba(254,254,254,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(254,254,254,1) 0%,rgba(246,243,237,1) 36%,rgba(237,232,220,1) 50%,rgba(246,243,237,1) 64%,rgba(254,254,254,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#fefefe',GradientType=0 ); /* IE6-9 */
+
+}
+.order_search,.order_search:hover,.record_search,.record_search:hover, .order_search,.order_search:hover, .order_select_all,.order_select_all:hover{
+	box-shadow: 0 2px 0 #d19401;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#facc60+0,fbc950+4,fac444+23,f4af09+88,f3ad05+96,efa903+100 */
+	background: rgb(250,204,96); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(250,204,96,1) 0%, rgba(251,201,80,1) 4%, rgba(250,196,68,1) 23%, rgba(244,175,9,1) 88%, rgba(243,173,5,1) 96%, rgba(239,169,3,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(250,204,96,1) 0%,rgba(251,201,80,1) 4%,rgba(250,196,68,1) 23%,rgba(244,175,9,1) 88%,rgba(243,173,5,1) 96%,rgba(239,169,3,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(250,204,96,1) 0%,rgba(251,201,80,1) 4%,rgba(250,196,68,1) 23%,rgba(244,175,9,1) 88%,rgba(243,173,5,1) 96%,rgba(239,169,3,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#facc60', endColorstr='#efa903',GradientType=0 ); /* IE6-9 */
+	opacity: .8;
+}
+.order_search:hover,.record_search:hover, .order_search:hover, .order_select_all:hover{
+	opacity: 1
+}
+.order_search:active,.record_search:active, .order_search:active, .order_select_all:active{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#efa903+0,f3ad05+4,f4af09+12,fac444+77,fbc950+96,facc60+100 */
+	background: rgb(239,169,3); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(239,169,3,1) 0%, rgba(243,173,5,1) 4%, rgba(244,175,9,1) 12%, rgba(250,196,68,1) 77%, rgba(251,201,80,1) 96%, rgba(250,204,96,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(239,169,3,1) 0%,rgba(243,173,5,1) 4%,rgba(244,175,9,1) 12%,rgba(250,196,68,1) 77%,rgba(251,201,80,1) 96%,rgba(250,204,96,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(239,169,3,1) 0%,rgba(243,173,5,1) 4%,rgba(244,175,9,1) 12%,rgba(250,196,68,1) 77%,rgba(251,201,80,1) 96%,rgba(250,204,96,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efa903', endColorstr='#facc60',GradientType=0 ); /* IE6-9 */
+
+}
+.record_dep_atten{
+	font-size: 13px;
+	background: #5f4238;
+}
+.record_dep_atten i{
+	color:#ffb400;
+}
+tr.record_dep_nav{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f4ebe2+0,ede4dd+31,e2d9d0+50,ece3dc+66,eee5dc+75,f5ece5+100 */
+	background: rgb(244,235,226); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(244,235,226,1) 0%, rgba(237,228,221,1) 31%, rgba(226,217,208,1) 50%, rgba(236,227,220,1) 66%, rgba(238,229,220,1) 75%, rgba(245,236,229,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(244,235,226,1) 0%,rgba(237,228,221,1) 31%,rgba(226,217,208,1) 50%,rgba(236,227,220,1) 66%,rgba(238,229,220,1) 75%,rgba(245,236,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(244,235,226,1) 0%,rgba(237,228,221,1) 31%,rgba(226,217,208,1) 50%,rgba(236,227,220,1) 66%,rgba(238,229,220,1) 75%,rgba(245,236,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4ebe2', endColorstr='#f5ece5',GradientType=0 ); /* IE6-9 */
+}
+th.record_dep_nav_menu {
+    border-right: 1px solid #cfbeac;
+    border-left: 1px solid #f8f5ef;
+    border-top: 1px solid #cfbeac;
+    border-bottom: 1px solid #cfbeac;
+    color: #000;
+}
+.report_date{
+	border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fdf8f2;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+.report_date:before{
+	display: none;
+}
+.report_date:after{
+	display: none;
+}
+.report_date_small_chi ul li, ul.record_dep_list_btn_choice li,.report_date_small_chi ul li:hover, ul.record_dep_list_btn_choice li:hover{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9b644b+0,61360e+100 */
+	background: rgb(155,100,75); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(155,100,75,1) 0%, rgba(97,54,14,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(155,100,75,1) 0%,rgba(97,54,14,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(155,100,75,1) 0%,rgba(97,54,14,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9b644b', endColorstr='#61360e',GradientType=0 ); /* IE6-9 */
+	line-height: 22px;
+	
+}
+.report_date_small_chi ul li:hover, ul.record_dep_list_btn_choice li:hover{
+	opacity: .9;
+}
+.report_date_small_chi ul li:active, ul.record_dep_list_btn_choice li:active{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#57320f+0,8a5941+100 */
+	background: rgb(87,50,15); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(87,50,15,1) 0%, rgba(138,89,65,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(87,50,15,1) 0%,rgba(138,89,65,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(87,50,15,1) 0%,rgba(138,89,65,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57320f', endColorstr='#8a5941',GradientType=0 ); /* IE6-9 */
+}
+
+.report_date_small_chi ul li a, ul.record_dep_list_btn_choice li a{
+	color: #fff;
+}
+.report_date_small_chi ul li:hover a,ul.record_dep_list_btn_choice li:hover a,ul.record_dep_list_btn_choice li:active a,ul.record_dep_list_btn_choice li:active a{
+	color: #fff;
+}
+.report_date_small_chi ul, ul.record_dep_list_btn_choice {
+    border-top: 1px solid #56382a;
+    border-left: 1px solid #a78676;
+    border-bottom: 1px solid #a78676;
+    border-right: 1px solid #56382a;
+}
+.report_date_small_chi ul{
+	margin: 2px 0;
+}
+.report_date_small_chi ul li, ul.record_dep_list_btn_choice li {
+    border-left: 1px solid #56382a;
+}
+.order_scorllbar,.lottery_scorllbar{
+	background: #fff;
+}
+.report_scorllbar .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.order_scorllbar .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.lottery_scorllbar .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.Not_order_list_scorllbar .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.Chase_scorllbar .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.Chase_Details_scorllbar .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.bet_content_scorllbar .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
+	width: 10px;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9d664d+0,905d45+22,714734+56,905d45+89,98624a+100 */
+	background: rgb(157,102,77); /* Old browsers */
+	background: -moz-linear-gradient(left,  rgba(157,102,77,1) 0%, rgba(144,93,69,1) 22%, rgba(113,71,52,1) 56%, rgba(144,93,69,1) 89%, rgba(152,98,74,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left,  rgba(157,102,77,1) 0%,rgba(144,93,69,1) 22%,rgba(113,71,52,1) 56%,rgba(144,93,69,1) 89%,rgba(152,98,74,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right,  rgba(157,102,77,1) 0%,rgba(144,93,69,1) 22%,rgba(113,71,52,1) 56%,rgba(144,93,69,1) 89%,rgba(152,98,74,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9d664d', endColorstr='#98624a',GradientType=1 ); /* IE6-9 */
+
+}
+
+body.clottery-body{
+	background: none;
+}
+.lottery_dep_closet{
+	padding: 12px 0;
+	background: #fff;
+}
+/*.lottery_dep_closet .lottery_dep {
+    margin: 0px 15px;
+    line-height: 20px;
+    height: 20px;
+}*/
+#LotteryPager{
+	margin-top: 0;
+}
+div.page_select_div{
+	color: #333 !important;
+}
+body.trend-body{
+	background: url(../images/road_bg.jpg);
+}
+.lottery_dep {
+    margin: 0px;
+    background: rgba(255,255,255,1);
+    padding: 0 15px;
+}
+th.lottery_dep_nav_menu{
+	border-right: 1px solid #cfbeac;
+	border-left: 1px solid #f8f5ef;
+	border-top:1px solid #cfbeac;
+	border-bottom:1px solid #cfbeac;
+}
+th.lottery_dep_nav_menu .fiveunit tr:first-child .lottery_dep_nav_menu {
+    border-bottom: 1px solid #cfbeac;
+}
+.shenblue{
+	background:#5f4238;
+}
+#ZgWindow .Windows .WinTitle .tool > div:hover{
+	background: none;
+}
+/*.lottery_dep {
+    height: 52px;
+    line-height: 52px;
+}*/
+#ZgWindow .Windows .Cn {
+    box-shadow: 2px 7px 12px 3px rgba(0, 0, 0, 0.5);
+}
+#ZgWindow .Windows .WinTitle .title_string{
+	text-shadow: 1px 1px 1px #000;
+	font-weight: bold;
+}
+.glyphicon{
+	text-shadow: 1px 1px 1px #000;
+}
+.record_dep_atten .fa{
+	position: relative;
+
+}
+.fa-exclamation-circle:before {
+    content: "\f06a";
+    z-index: 2;
+    position: relative;
+}
+.record_dep_atten .fa::after{
+	content: '';
+    position: absolute;
+    width: 3px;
+    height: 10px;
+    background: #fff;
+    top: 1px;
+    left: 4px;
+    z-index: 0;
+}
+ul.report_sum li.amount {
+    background-color: #fdf8f2;
+    border-top: 1px solid #c5bcb3;
+    border-left: 1px solid #c5bcb3;
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff;
+}
+#report_bet_real_pl{
+	color: #e7080b;
+}
+.record_dep_main tbody tr:nth-child(even) td {
+    background-color: #f7f7f7;
+}
+.record_dep_main tbody tr:hover td {
+    background-color: #53bb53;
+    color: #FFF;
+}
+.record_dep{
+	color:#2e2720;
+}
+.report_listin_defint,.report_listin_defint:hover{
+	background: rgb(155,100,75); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(155,100,75,1) 0%, rgba(97,54,14,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(155,100,75,1) 0%,rgba(97,54,14,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(155,100,75,1) 0%,rgba(97,54,14,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9b644b', endColorstr='#61360e',GradientType=0 ); /* IE6-9 */
+}
+.report_listin_defint:hover{
+	opacity: .9;
+}
+.report_listin_defint:active{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#57320f+0,8a5941+100 */
+	background: rgb(87,50,15); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(87,50,15,1) 0%, rgba(138,89,65,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(87,50,15,1) 0%,rgba(138,89,65,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(87,50,15,1) 0%,rgba(138,89,65,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57320f', endColorstr='#8a5941',GradientType=0 ); /* IE6-9 */
+}
+.order_search i.fa,.record_search i.fa{
+	text-shadow: 0px 2px 3px #333;
+	top: 0px;
+    position: relative;
+    vertical-align: baseline;
+}
+.order_search,.record_search,.order_select_all  {
+	text-shadow: 1px 1px 3px #333;
+}
+.order_search,.record_search{
+	line-height: 29px;
+}
+th.lottery_dep_nav_menu .fiveunit tr:first-child .lottery_dep_nav_menu:first-child{
+	border-right: 1px solid #cfbeac;
+}
+#LotteryPager{
+	border-top: 1px solid #cfbeac;
+	background: #edecec;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+div.PageClass li.amount {
+    background-color: #fdf8f2;
+    border-radius: 5px;
+    border-top: 1px solid #c5bcb3;
+    border-left: 1px solid #c5bcb3;
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff;
+    color: #342d27;
+    line-height: 21px;
+}
+div.PageClass select{
+	border: 1px solid #cbb88e;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fefefe+0,f6f3ed+36,ede8dc+50,f6f3ed+64,fefefe+100 */
+	background: rgb(254,254,254); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(254,254,254,1) 0%, rgba(246,243,237,1) 36%, rgba(237,232,220,1) 50%, rgba(246,243,237,1) 64%, rgba(254,254,254,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(254,254,254,1) 0%,rgba(246,243,237,1) 36%,rgba(237,232,220,1) 50%,rgba(246,243,237,1) 64%,rgba(254,254,254,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(254,254,254,1) 0%,rgba(246,243,237,1) 36%,rgba(237,232,220,1) 50%,rgba(246,243,237,1) 64%,rgba(254,254,254,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#fefefe',GradientType=0 ); /* IE6-9 */
+}
+div.PageClass li.ToFirst,div.PageClass li.ToFirst:hover{
+	width:20px;
+	height:20px;
+	background:url("../images/top_pre_page.png") no-repeat;
+	opacity: .9;
+}
+div.PageClass li.ToLast,div.PageClass li.ToLast:hover{
+	width:20px;
+	height:20px;
+	background:url("../images/last_next_page.png") no-repeat;
+	opacity: .9;
+}
+div.PageClass li.ToPrev,div.PageClass li.ToPrev:hover{
+	width:20px;
+	height:20px;
+	background:url("../images/pre_page.png") no-repeat;
+	opacity: .9;
+}
+div.PageClass li.ToNext,div.PageClass li.ToNext:hover{
+	width:20px;
+	height:20px;
+	background:url("../images/next_page.png") no-repeat;
+	opacity: .9;
+}
+div.PageClass li.ToFirst:hover,div.PageClass li.ToLast:hover,div.PageClass li.ToPrev:hover,div.PageClass li.ToNext:hover{
+	opacity: 1;
+}
+div.PageClass li.ToPrev.disabled{
+	opacity: 0.75;
+}
+div.PageClass li.ToNext.disabled{
+	opacity: 0.75;
+}
+div.page_info{
+	color: #2e2720;
+}
+
+.maintain-box{
+	position: absolute;
+	top: 76px;
+	left: 240px;
+	background: url(../images/close_bg.png) no-repeat;
+	width: 469px;
+	height: 196px;
+	font-family: 'Microsoft YaHei';
+}
+.maintain-title{
+	text-align: center;
+	padding-top: 35px;
+}
+.maintain-title span{
+	display: inline-block;
+	position: relative;
+	padding:0 45px;
+	font-size: 24px;
+	color: #3d2207;
+	font-weight: bold;
+}
+.maintain-title span::before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	height: 100%;
+	width: 29px;
+	background: url(../images/close_title_before.png) no-repeat left;
+}
+.maintain-title span::after{
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	height: 100%;
+	width: 29px;
+	background: url(../images/close_title_after.png) no-repeat right;
+}
+.maintain-content{
+	color:#3d2207;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 20px 40px;
+}
+.maintain-img{
+	position: absolute;
+	width: 84px;
+	height: 122px;
+	background: url(../images/close_img.png) no-repeat;
+	top: 286px;
+    right: 224px;
+}
+.close-box{
+	position: absolute;
+    top: 0;
+    margin-top: 77px;
+    left: 50%;
+    margin-left: -233.5px;
+    color: #fad114;
+    padding-top: 20px;
+    background-image: url(../images/ladder_bg.png);
+    background-repeat: no-repeat;
+    display: block;
+    width: 467px;
+    height: 127px;
+    background-position: -457px -657px;
+	font-family: 'Microsoft YaHei';
+}
+.close-title{
+	text-align: center;
+	padding-top: 23px;
+}
+.close-title span{
+	display: inline-block;
+	position: relative;
+	padding:0 45px;
+	font-size: 24px;
+	color: #3d2207;
+	font-weight: bold;
+}
+.close-title span::before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	height: 100%;
+	width: 29px;
+	background: url(../images/close_title_before.png) no-repeat left;
+}
+.close-title span::after{
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	height: 100%;
+	width: 29px;
+	background: url(../images/close_title_after.png) no-repeat right;
+}
+#ToDayPeriods-menu .mCSB_draggerContainer{
+	background: none;
+}
+#ToDayPeriods-menu .mCS-dark-3.mCSB_scrollTools .mCSB_draggerRail {
+    background-color: #834B2A;
+}
+
+#ToDayPeriods-menu .mCSB_scrollTools .mCSB_draggerContainer {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    bottom: 4px;
+    right: 0;
+    height: auto;
+}
+.modal-content .modal-header {
+	padding: 0 15px;
+	height: 50px;
+    border-bottom: none;
+    color: #FFF;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#914d20+0,88471f+29,763e19+61,683717+100 */
+	background: rgb(145,77,32); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(145,77,32,1) 0%, rgba(136,71,31,1) 29%, rgba(118,62,25,1) 61%, rgba(104,55,23,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(145,77,32,1) 0%,rgba(136,71,31,1) 29%,rgba(118,62,25,1) 61%,rgba(104,55,23,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(145,77,32,1) 0%,rgba(136,71,31,1) 29%,rgba(118,62,25,1) 61%,rgba(104,55,23,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#914d20', endColorstr='#683717',GradientType=0 ); /* IE6-9 */
+}
+.modal-title{
+	line-height: 50px;
+}
+.modal-header .close{
+	width: 26px;
+	height: 26px;
+	background: url(../images/pop_close_btn.png) no-repeat;
+	background-position: -5px -5px;
+	margin-top: 10px;
+	opacity: 1;
+	text-indent: -9999px;
+	position: absolute;
+    top: 0;
+    right: 10px;
+}
+.modal-header .close:hover{
+	background-position: -77px -5px;
+}
+.modal-header .close:active{
+	background-position: -41px -5px;
+}
+.btn-primary{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0490fb+0,0292f8+3,058ff8+5,0291f6+8,058ff4+13,038df1+15,0587e7+33,0373c5+77,0570be+90,026fc0+92,046eb9+95,056dbc+97,0a71b9+100 */
+	background: rgb(4,144,251); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(4,144,251,1) 0%, rgba(2,146,248,1) 3%, rgba(5,143,248,1) 5%, rgba(2,145,246,1) 8%, rgba(5,143,244,1) 13%, rgba(3,141,241,1) 15%, rgba(5,135,231,1) 33%, rgba(3,115,197,1) 77%, rgba(5,112,190,1) 90%, rgba(2,111,192,1) 92%, rgba(4,110,185,1) 95%, rgba(5,109,188,1) 97%, rgba(10,113,185,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(4,144,251,1) 0%,rgba(2,146,248,1) 3%,rgba(5,143,248,1) 5%,rgba(2,145,246,1) 8%,rgba(5,143,244,1) 13%,rgba(3,141,241,1) 15%,rgba(5,135,231,1) 33%,rgba(3,115,197,1) 77%,rgba(5,112,190,1) 90%,rgba(2,111,192,1) 92%,rgba(4,110,185,1) 95%,rgba(5,109,188,1) 97%,rgba(10,113,185,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(4,144,251,1) 0%,rgba(2,146,248,1) 3%,rgba(5,143,248,1) 5%,rgba(2,145,246,1) 8%,rgba(5,143,244,1) 13%,rgba(3,141,241,1) 15%,rgba(5,135,231,1) 33%,rgba(3,115,197,1) 77%,rgba(5,112,190,1) 90%,rgba(2,111,192,1) 92%,rgba(4,110,185,1) 95%,rgba(5,109,188,1) 97%,rgba(10,113,185,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0490fb', endColorstr='#0a71b9',GradientType=0 ); /* IE6-9 */
+}
+.btn-primary:hover{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#239ff9+0,209ffe+3,249df6+5,209df8+8,1e97f2+21,1b93ea+28,1890e7+36,1282d4+56,0b7acb+69,0670bd+90,0570c0+92,066eb7+97,1678c0+100 */
+	background: rgb(35,159,249); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(35,159,249,1) 0%, rgba(32,159,254,1) 3%, rgba(36,157,246,1) 5%, rgba(32,157,248,1) 8%, rgba(30,151,242,1) 21%, rgba(27,147,234,1) 28%, rgba(24,144,231,1) 36%, rgba(18,130,212,1) 56%, rgba(11,122,203,1) 69%, rgba(6,112,189,1) 90%, rgba(5,112,192,1) 92%, rgba(6,110,183,1) 97%, rgba(22,120,192,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(35,159,249,1) 0%,rgba(32,159,254,1) 3%,rgba(36,157,246,1) 5%,rgba(32,157,248,1) 8%,rgba(30,151,242,1) 21%,rgba(27,147,234,1) 28%,rgba(24,144,231,1) 36%,rgba(18,130,212,1) 56%,rgba(11,122,203,1) 69%,rgba(6,112,189,1) 90%,rgba(5,112,192,1) 92%,rgba(6,110,183,1) 97%,rgba(22,120,192,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(35,159,249,1) 0%,rgba(32,159,254,1) 3%,rgba(36,157,246,1) 5%,rgba(32,157,248,1) 8%,rgba(30,151,242,1) 21%,rgba(27,147,234,1) 28%,rgba(24,144,231,1) 36%,rgba(18,130,212,1) 56%,rgba(11,122,203,1) 69%,rgba(6,112,189,1) 90%,rgba(5,112,192,1) 92%,rgba(6,110,183,1) 97%,rgba(22,120,192,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#239ff9', endColorstr='#1678c0',GradientType=0 ); /* IE6-9 */
+}
+.btn-primary:active{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0e71b9+0,056db8+3,0670bc+13,0b7acb+33,1f9bf4+87,219df8+95,229cf6+97,20a0fc+100 */
+	background: rgb(14,113,185); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(14,113,185,1) 0%, rgba(5,109,184,1) 3%, rgba(6,112,188,1) 13%, rgba(11,122,203,1) 33%, rgba(31,155,244,1) 87%, rgba(33,157,248,1) 95%, rgba(34,156,246,1) 97%, rgba(32,160,252,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(14,113,185,1) 0%,rgba(5,109,184,1) 3%,rgba(6,112,188,1) 13%,rgba(11,122,203,1) 33%,rgba(31,155,244,1) 87%,rgba(33,157,248,1) 95%,rgba(34,156,246,1) 97%,rgba(32,160,252,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(14,113,185,1) 0%,rgba(5,109,184,1) 3%,rgba(6,112,188,1) 13%,rgba(11,122,203,1) 33%,rgba(31,155,244,1) 87%,rgba(33,157,248,1) 95%,rgba(34,156,246,1) 97%,rgba(32,160,252,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e71b9', endColorstr='#20a0fc',GradientType=0 ); /* IE6-9 */
+}
+.btn-danger{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e81212+0,e50f0f+24,d90706+59,d10101+91,d20202+97,d00000+100 */
+	background: rgb(232,18,18); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(232,18,18,1) 0%, rgba(229,15,15,1) 24%, rgba(217,7,6,1) 59%, rgba(209,1,1,1) 91%, rgba(210,2,2,1) 97%, rgba(208,0,0,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(232,18,18,1) 0%,rgba(229,15,15,1) 24%,rgba(217,7,6,1) 59%,rgba(209,1,1,1) 91%,rgba(210,2,2,1) 97%,rgba(208,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(232,18,18,1) 0%,rgba(229,15,15,1) 24%,rgba(217,7,6,1) 59%,rgba(209,1,1,1) 91%,rgba(210,2,2,1) 97%,rgba(208,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e81212', endColorstr='#d00000',GradientType=0 ); /* IE6-9 */
+}
+.btn-danger:hover{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f62c2c+0,f12727+21,d70909+76,d10101+100 */
+	background: rgb(246,44,44); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(246,44,44,1) 0%, rgba(241,39,39,1) 21%, rgba(215,9,9,1) 76%, rgba(209,1,1,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(246,44,44,1) 0%,rgba(241,39,39,1) 21%,rgba(215,9,9,1) 76%,rgba(209,1,1,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(246,44,44,1) 0%,rgba(241,39,39,1) 21%,rgba(215,9,9,1) 76%,rgba(209,1,1,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f62c2c', endColorstr='#d10101',GradientType=0 ); /* IE6-9 */
+}
+.btn-danger:active{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d00000+0,db0d0d+35,ea1e1f+65,f62c2c+100 */
+	background: rgb(208,0,0); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(208,0,0,1) 0%, rgba(219,13,13,1) 35%, rgba(234,30,31,1) 65%, rgba(246,44,44,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(208,0,0,1) 0%,rgba(219,13,13,1) 35%,rgba(234,30,31,1) 65%,rgba(246,44,44,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(208,0,0,1) 0%,rgba(219,13,13,1) 35%,rgba(234,30,31,1) 65%,rgba(246,44,44,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d00000', endColorstr='#f62c2c',GradientType=0 ); /* IE6-9 */
+}
+.btn{
+	outline: 0 !important;
+	border: none !important;
+}
+.confirm-tr + .confirm-tr div{
+	border-top: 1px solid #e4e4e4;
+}
+.confirm-tr .confirm-td{
+	display: inline-block;
+	width: 188px;
+	padding: 0 15px;
+	text-align: left;
+	font-family: arial , 'Microsoft JhengHei';
+	font-size: 14px;
+    color: #1f1f1f;
+}
+.confirm-tr .confirm-td:first-child{
+	width: 100px;
+	text-align: center
+}
+.confirm-tr .confirm-td + .confirm-td{
+	border-left: 1px solid #e4e4e4;
+}
+
+.MoneyDialog{
+	position:absolute;
+	width:100px;
+	height:191px;
+	text-align:center;
+	background:#fff;
+	border: solid 1px #333;
+	display:none;
+	border-radius:3px;
+	z-index: 10;
+}
+.MoneyDialog:before{
+	content:'';
+	width:0px;
+	height:0px;
+	border-width:15px;
+	border-style:solid;
+	border-color:#333 transparent transparent transparent ;
+	position:absolute;
+	bottom:-30px;
+	left:50%;
+	margin-left: -15px;
+}
+.MoneyDialog:after{
+	content:'';
+	width:0px;
+	height:0px;
+	border-width:15px;
+	border-style:solid;
+	border-color:#fff transparent transparent transparent ;
+	position:absolute;
+	bottom:-29px;
+	left:50%;
+	margin-left: -15px;
+}
+.Money_ul{
+	font-size:14px;
+}
+.Money_ul > li{
+	position: relative;
+	padding:3px 0;
+	border-top:1px #CCC solid;
+}
+.Money_ul > li > .minus,
+.Money_ul > li > .plus{
+	position:absolute;
+	font-size:19px;
+	top:3px;
+	cursor: pointer;
+}
+.Money_ul > li > .minus:active,
+.Money_ul > li > .plus:active {
+    color:#FF6600;
+}
+.Money_ul > li > .minus{
+	left:3px;
+}
+.Money_ul > li > .plus{
+	right:3px;
+}
+.Money_ul > li:first-child{
+	border-top:none;
+}
+
+.historyTable-wrap-scale{
+	background: #68aa1b;
+	width:92%;
+	height: 10px;
+	margin-left:4%;
+	position: relative;
+	margin-top: 0px;
+	border: 2px solid #fff;
+	border-radius: 15px;
+}
+.historyTable-wrap-scale .historyTable-wrap-scale-r{
+	position: absolute;
+	background:#d00000;
+	height:100%;
+	top:0;
+	left: 0;
+	border-top-left-radius:15px; 
+	border-bottom-left-radius:15px; 
+}
+.historyTable-wrap-scale .historyTable-wrap-scale-r::before{
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	background:#fff;
+	width: 10px;
+	height: 18px;
+	border:2px solid #a8a8a8; 
+	top:-6px;
+	margin-right: -5px;
+	border-radius: 15px;
+}
+.historyTable-wrap-scale .historyTable-wrap-scale-b{
+	position: absolute;
+	background:#005dc6;
+	height:100%;
+	top:0;
+	right: 0;
+	border-top-right-radius:15px; 
+	border-bottom-right-radius:15px; 
+}
+.historyTable-wrap-scale .historyTable-wrap-scale-b::before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	background:#fff;
+	width: 10px;
+	height: 18px;
+	border:2px solid #a8a8a8; 
+	top:-6px;
+	margin-left: -5px;
+	border-radius: 15px;
+}
+
+.ball_sanil_1{
+	border: 1px #d00000 solid;
+	background: #d00000;
+}
+.ball_sanil_2{
+	border: 1px #68aa1b solid;
+	background: #68aa1b;
+}
+.ball_sanil_3{
+	border: 1px #005dc6 solid;
+	background: #005dc6;
+}
+body.lottery-body{
+	background: transparent;
+}
+
+/*---- 路值 ----*/
+.snail-way-red,.snail-way-green,.snail-way-blue,.snail-way-periods-1,.snail-way-periods-2,.snail-way-periods-3{
+	background-repeat: no-repeat;
+    display: inline-block;
+    text-shadow: 0px 0px 0px #080808;
+	width: 50px;
+    height: 46px;
+    margin-bottom: 2px;
+}
+.snail-way-red{
+	background-image: url(../images/red_txt_ico.png);
+}
+.snail-way-green{
+	background-image: url(../images/green_txt_ico.png);
+}
+.snail-way-blue{
+	background-image: url(../images/blue_txt_ico.png);
+}
+
+.snail-way-periods-1,.snail-way-periods-2,.snail-way-periods-3{
+	line-height: 46px;
+
+}
+.snail-way-periods-1{
+	background-image: url(../images/red_ico.png);
+}
+.snail-way-periods-2{
+	background-image: url(../images/green_ico.png);
+}
+.snail-way-periods-3{
+	background-image: url(../images/blue_ico.png);
+}
+
+
+#splash{
+	background-color: #8ab53f !important;
+}
+
+#game-mask{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	background: rgba(0,0,0,.7);
+	z-index: 0;
+	display: none;
+}
+
+.maintain_content{
+	position:absolute;
+	width:100%;
+	height:100%;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,.7);
+	z-index:999;
+	display:none;
+}
+.maintain_content .maintain_con{
+	position:absolute;
+	width:685px;
+	height:290px;
+	top: 100px;
+	left: 50%;
+	margin-left:-342px;
+	background: url("../images/maintain/maintain_bg.png") ;
+}
+.maintain_content .maintain_con:before{
+	content:"";
+	position:absolute;
+	width:330px;
+	height:70px;
+	top: 33px;
+	left: 50px;
+	background: url("../images/maintain/maintain_title.gif") ;
+}
+.maintain_content .maintain_con .maintain_area{
+	position:relative;
+	color: #FFF;
+    background:#8f5e3d;
+    width: 330px;
+    margin-top: 125px;
+    margin-left: 56px;
+    line-height: 25px;
+	padding:8px;
+	-webkit-box-shadow: inset 0 0 4px 4px #412116;
+	-moz-box-shadow: inset 0 0 4px 4px #412116;
+	box-shadow: inset 0 0 4px 4px #412116;
+}
+.maintain_content .maintain_con .maintain_area:before{
+	position:absolute;
+	content:"";
+    background: url(../images/maintain/c_time_left.png);
+	top:0;
+	width:9px;
+	height:100%;
+	left:-9px;
+}
+.maintain_content .maintain_con .maintain_area:after{
+	position:absolute;
+	content:"";
+    background: url(../images/maintain/c_time_right.png);
+	background-position: top right;
+	top:0;
+	width:9px;
+	height:100%;
+	right:-9px;
+}
+
+.game_close_content{
+	position:absolute;
+	width:100%;
+	height:100%;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,.7);
+	z-index:999;
+	display:none;
+}
+.game_close_content .game_close_con{
+	position:absolute;
+	width:685px;
+	height:290px;
+	top: 100px;
+	left: 50%;
+	margin-left:-342px;
+	background: url("../images/maintain/close_bg.png") ;
+}
+.game_close_content .game_close_con:before{
+	content:"";
+	position:absolute;
+	width:180px;
+	height:190px;
+	top: 33px;
+	left: 50%;
+	margin-left:-90px;
+	background: url("../images/maintain/close_title.png") ;
+}
+.game_close_content .game_close_con .game_close_area{
+	position:relative;
+	color: #FFF;
+    background:#8f5e3d;
+    width: 410px;
+    margin: 0 auto;
+    margin-top: 232px;
+    line-height: 25px;
+	padding:8px;
+	-webkit-box-shadow: inset 0 0 4px 4px #412116;
+	-moz-box-shadow: inset 0 0 4px 4px #412116;
+	box-shadow: inset 0 0 4px 4px #412116;
+}
+.game_close_content .game_close_con .game_close_area:before{
+	position:absolute;
+	content:"";
+    background: url(../images/maintain/c_time_left.png);
+	top:0;
+	width:9px;
+	height:100%;
+	left:-9px;
+}
+.game_close_content .game_close_con .game_close_area:after{
+	position:absolute;
+	content:"";
+    background: url(../images/maintain/c_time_right.png);
+	background-position: top right;
+	top:0;
+	width:9px;
+	height:100%;
+	right:-9px;
+}
+
+
+.float-nav{
+	position: absolute;
+	top: 196px;
+	left: 0;
+	background: #5f3415;
+	border-bottom: 2px solid #3d2207;
+	padding-bottom: 18px;
+	z-index: 10;
+	display:none;
+	font-size:14px;
+}
+.float-nav .float-nav-outer {
+	position:relative;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	cursor: pointer;
+}
+.float-nav .float-nav-outer > .float-nav-inner{
+	width: 70px;
+	position: relative;
+	padding-bottom: 1px;
+	text-align: center;
+	z-index: 1;
+	background: #5f3415;
+}
+.float-nav .float-nav-outer > .float-nav-inner::after{
+	content: '';
+	position: absolute;
+	width: 56px;
+	height: 1px;
+	bottom: 0;
+	left: 50%;
+	margin-left: -28px;
+	background: #987b64;
+}
+.float-nav .float-nav-outer > .float-nav-inner span{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #FFFFD7;
+	border-radius: 20px;
+	line-height: 38px;
+	color: #FFFFD7;
+	text-align: center;
+	margin: 10px 0;
+}
+.float-nav .float-nav-outer>.float-nav-inner span {
+	border-radius: 3.5rem;
+    font-size: 2.2rem;
+}
+.float-nav .float-nav-outer>.float-nav-inner span[class^="gamelogo-game-type-"]::before {
+    color: #fff;
+}
+
+.float-nav .float-nav-outer > ul.float-nav-list{
+	position: absolute;
+	left: 0;
+	padding: 0;
+	margin: 0;
+	-webkit-transition: .3s;
+	-o-transition: .3s;
+	transition: .3s;
+	background: #fff;
+	min-width: 90px;
+	opacity:0;
+	top:0;
+	border:none;
+	background: #f7e8ce;
+	border-radius: 2px;
+}
+.float-nav .float-nav-outer > ul.float-nav-list li{
+	text-align: center;
+	padding: 0 15px;
+	line-height: 28px;
+	color: #0d456d;
+	white-space: nowrap;
+	-webkit-transition: .3s;
+	-o-transition: .3s;
+	transition: .3s;
+	cursor: pointer;
+	color:#3d2207;
+}
+.float-nav .float-nav-outer > ul.float-nav-list li:hover{
+	background: #834b2a;
+	color: #ffb400;
+}
+.float-nav .float-nav-outer:hover > .float-nav-inner{
+	background: #3d2207;
+	-webkit-transition: .3s;
+	-o-transition: .3s;
+	transition: .3s;
+}
+.float-nav .float-nav-outer:hover  > .float-nav-inner::after{
+	background: #3d2207;
+	-webkit-transition: .3s;
+	-o-transition: .3s;
+	transition: .3s;
+}
+.float-nav .float-nav-outer:hover  > .float-nav-inner span{
+	border: 1px solid #FFF;
+	color: #FFF;
+	-webkit-transition: .3s;
+	-o-transition: .3s;
+	transition: .3s;
+}
+@media only screen and (max-width: 1100px) {
+	.float-nav .float-nav-outer > .float-nav-inner {
+		width: 30px;
+	}
+	.float-nav .float-nav-outer > .float-nav-inner span {
+		width: 20px;
+		height: 20px;
+		border-radius: 10px;
+		line-height: 18px;
+		margin: 5px 0;
+		overflow: hidden;
+	}
+	.float-nav .float-nav-outer > .float-nav-inner::after {
+		width: 100%;
+		left: 0;
+		margin-left: 0;
+	}
+}
+
+#ZgWindow .Windows.GoLottery .WinContent{
+	background: #FFF;
+} 
+#Not_order_list table, .OrderReportDiv_inner table, .OrderListDiv_inner table {
+    table-layout: fixed;
+    border-spacing: 0;
+}

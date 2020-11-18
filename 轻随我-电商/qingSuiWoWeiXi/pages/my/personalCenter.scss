@@ -1,0 +1,135 @@
+.header{
+	height: _opx(220);
+	background: #378df0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	.zhongxin{
+		width: _opx(200);
+		height: _opx(200);
+		background: rgba($color: #fff, $alpha: 0.3);
+		border-radius: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		>view{
+			width: _opx(150);
+			height: _opx(150);
+			background: rgba($color: #fff, $alpha: 0.2);
+			border-radius: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			image{
+				width: _opx(75);
+				height: _opx(75);
+				border: 1px solid #fff;
+				border-radius: 100%;
+				object-fit:cover;
+			}
+			cover-view{
+				width: _opx(75);
+				height: _opx(75);
+				border: 2px solid #fff;
+				border-radius: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			cover-image{
+				height: auto;
+			}
+		}
+	}
+	text{
+		position: absolute;
+		bottom: _opx(35);
+		color: #fff;
+	}
+	.btn_1{
+		position: absolute;
+		bottom: _opx(20);
+		color: #fff;
+		width: auto;
+		height: auto;
+		line-height: initial;
+		padding: 2px 4px;
+		border: 1px solid red;
+		border-radius: 0px;
+		color: red;
+	}
+}
+
+.huobi{
+	height: _opx(65);
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	text-align: center;
+	background: #fff;
+	position: relative;
+	margin: 10px auto;
+	>view{
+		width: 50%;
+	}
+	&::after{
+		position: absolute;
+		left: 50%;
+		height: 70%;
+		width: 2px;
+		content: '';
+		background: #f5f5f5;
+	}
+	.text{
+		color: #616161;
+	}
+	.jinge{
+		font-weight: bold;
+		margin: 0px 0px 5px;
+		color:#378df0;
+	}
+}
+
+.box_1{
+	margin: 5px 0px 5px;
+	background: #fff;
+	height: _opx(70);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	button{
+		width: _opx(125);
+		height: _opx(40);
+		line-height: _opx(40);
+		color: #fff;
+		font-size: _opx(14);
+	}
+	>button:nth-child(1){
+		background: linear-gradient(45deg,#ffa05d, #fc6074);
+	}
+	>button:nth-child(2){
+		background: linear-gradient(45deg,#87baf1, #8577fd);
+	}
+}
+
+.box_2{
+	margin: 5px 0px 0px;
+}
+
+.tuichu{
+	margin: 20px 0px;
+	border: none;
+	border-radius: 0px;
+}
+
+
+.banben{
+	text-align: center;
+	color: #8c8c8c;
+	margin: 20px 0px;
+}
+
+
+
+

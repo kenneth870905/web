@@ -1,0 +1,86 @@
+{
+  "id": "1372991",
+  "name": "彩票通",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "251929",
+      "name": "duihua",
+      "font_class": "pinglunshu",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "1771186",
+      "name": "通知",
+      "font_class": "tongzhi",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "3502282",
+      "name": "点赞",
+      "font_class": "zan1",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "4715780",
+      "name": "点赞",
+      "font_class": "dianzan",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "4962747",
+      "name": "记录",
+      "font_class": "jilu",
+      "unicode": "e6b1",
+      "unicode_decimal": 59057
+    },
+    {
+      "icon_id": "6192475",
+      "name": "下 拉",
+      "font_class": "xiala",
+      "unicode": "e709",
+      "unicode_decimal": 59145
+    },
+    {
+      "icon_id": "8572516",
+      "name": "左边",
+      "font_class": "zuobian",
+      "unicode": "e6a3",
+      "unicode_decimal": 59043
+    },
+    {
+      "icon_id": "8882611",
+      "name": "眼",
+      "font_class": "yan",
+      "unicode": "e75b",
+      "unicode_decimal": 59227
+    },
+    {
+      "icon_id": "9798752",
+      "name": "帮 助",
+      "font_class": "bangzhu",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "9962362",
+      "name": "帮助",
+      "font_class": "bangzhu1",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "10341651",
+      "name": "右边",
+      "font_class": "youbian",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    }
+  ]
+}

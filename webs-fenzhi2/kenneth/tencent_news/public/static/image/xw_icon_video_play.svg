@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
+    <title>icon_video_play</title>
+    <desc>Created with Sketch.</desc>
+    <g id="底层页_视频" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="底层页-视频" transform="translate(-164.000000, -125.000000)">
+            <g id="分组-2" transform="translate(0.000000, 44.000000)">
+                <g id="Button/Function/Play_big" transform="translate(164.000000, 81.000000)">
+                    <g id="Button_Play">
+                        <circle id="icon_Background" fill-opacity="0.48" fill="#000000" cx="24" cy="24" r="24"></circle>
+                        <path d="M28.0492844,16.2627184 L36.9106778,31.7701568 C37.2975154,32.4471226 37.0623201,33.3095057 36.3853542,33.6963433 C36.1720399,33.8182372 35.9306079,33.8823529 35.6849228,33.8823529 L17.962136,33.8823529 C17.1824399,33.8823529 16.5503713,33.2502844 16.5503713,32.4705882 C16.5503713,32.2249031 16.6144871,31.9834712 16.736381,31.7701568 L25.5977744,16.2627184 C25.984612,15.5857525 26.846995,15.3505572 27.5239609,15.7373948 C27.7428285,15.862462 27.9242172,16.0438507 28.0492844,16.2627184 Z" id="icon_play" fill="#FFFFFF" fill-rule="nonzero" transform="translate(26.823529, 24.000000) rotate(-270.000000) translate(-26.823529, -24.000000) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

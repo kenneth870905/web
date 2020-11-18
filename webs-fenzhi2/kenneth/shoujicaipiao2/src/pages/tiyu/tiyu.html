@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui,viewport-fit=cover">
+
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+
+    <!-- <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache"> -->
+
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1 , maximum-scale=1, user-scalable=no"> -->
+    <link rel="stylesheet" href="static/mui/css/mui.min.css">
+    <!-- mui时间选择器 -->
+    <link rel="stylesheet" href="static/mui/css/mui.picker.min.css" />
+    <link rel="stylesheet" href="static/mui/css/mui.poppicker.css" />
+    <!-- 字体图标 -->
+    <link rel="stylesheet" href="static/fontClass/iconfont.css?v=0809">
+    <link rel="icon" >
+    <title></title>
+    
+    <%= process.env.NODE_ENV =='development' ? '<script src="config.js"></script>' : '<script src="/index/config.js"></script>' %>
+    <script src="webConfig/config.js"></script>
+
+    <style>
+        #_Loading_{
+            position: fixed;
+            z-index: 2;
+            background: rgba(0,0,0,0.5);
+            width: 100%;
+            height: 100%;
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            display: none;
+        }
+        #_Loading_ i{
+            font-size: 30px;
+            animation: _xunzhuan 1s linear infinite;
+        }
+        @keyframes _xunzhuan{
+            0%{
+                transform: rotateZ(0deg);
+            }100%{
+                transform: rotateZ(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <noscript>
+        <strong>你好，你的浏览器不支持，请升级或使用其他浏览器访问!pages 体育</strong>
+    </noscript>
+    <div id="_Loading_">
+        <i class="mui-icon mui-icon-loop"></i>
+    </div>
+    <div id="app"></div>
+    <script src="static/jquery/jquery-3.4.1.min.js"></script>
+    <!-- <script src="update.js" type="text/javascript" charset="utf-8"></script> -->
+    <script>
+        if (typeof config == "undefined"){
+            console.log('设置默认')
+            var config = {}
+        }
+        config.title="HG-4体育"
+        function setStyle(){
+            let name = plus.os.name;
+            var ws = plus.webview.currentWebview();
+			if (name != 'iOS') {
+					ws.setStyle({
+						bounce: "vertical",
+                        bounceBackground:"#efeff4",
+                    })
+            }
+		}
+		if(window.plus){
+			setStyle()
+		}else{
+			document.addEventListener('plusready', ()=>{
+				setStyle()
+			})
+        }
+        
+        // var 本地开发=true
+        // var LineSwitch=true    //路线切换
+    </script>
+
+    <%= process.env.NODE_ENV =='development' ? 
+    `<script src="static/base/bridge.min.js"></script>
+    <script src="static/base/markSixNums.min.js"></script>
+    <script src="static/base/Lottery.min.js"></script>`
+    :
+    `<script src="/Scripts/libs/lottery/bridge.min.js"></script>
+    <script src="/Scripts/libs/lottery/markSixNums.min.js"></script>
+    <script src="/Scripts/libs/lottery/Lottery.min.js"></script>`
+    %>
+    
+    <!-- built files will be auto injected -->
+    <script src="static/mui/js/mui.min.js"></script>
+    <script src="static/mui/js/mui.picker.min.js"></script>
+    <script src="static/mui/js/mui.poppicker.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,367 @@
+/*---- 開獎結果 ----*/
+body.lottery-body { background: transparent; }
+body.lottery-body .common_form { background: none; }
+body.lottery-body .lottery_top { 
+	background: none; 
+	height: 42px;
+    padding: 0px 15px 0 15px;
+}
+body.lottery-body .order_left {
+	display: inline-block;
+	padding: 0;
+	font-size: 18px;
+	color: #fff;
+}
+
+body.lottery-body .order_left select {
+	border-radius: 0;
+	border: none;
+	font-family: 'Microsoft JhengHei';
+	font-size: 16px;
+	background: #fff;
+	color: #000;
+}
+
+body.lottery-body .record_right {
+	display: inline-block;
+}
+
+body.lottery-body .record_right .order_search {
+	display: inline-block;
+	width: 118px;
+    height: 27px;
+    background: #e9543e;
+    color: #fff;
+	font-family: 'Microsoft JhengHei';
+	font-size: 18px;
+    text-align: center;
+    border-radius: 3px;
+    line-height: 27px;
+    cursor: pointer;
+    box-shadow: none;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+}
+
+body.lottery-body .record_right .order_search:hover{
+	background: #e3270b;
+}
+
+body.lottery-body .lottery_dep_closet .lottery_dep {
+	font-size: 16px;
+	color: #fff;
+	font-family: 'Microsoft JhengHei';
+}
+
+body.lottery-body #LotteryListDiv {
+	padding: 0 15px;
+}
+
+body.lottery-body #LotteryListDiv th {
+	border: none;
+	color: #fff;
+}
+
+body.lottery-body #LotteryListDiv > table {
+	border: 1px solid rgba(199, 199, 199, .8);
+	border-radius: 8px 8px 0px 0;
+	border-collapse: inherit;
+	border-bottom: none;
+	color: #fff;
+}
+
+body.lottery-body #LotteryListDiv > table tr.record_dep_nav{
+	background: none;
+}
+
+body.lottery-body #LotteryListDiv > table tr th {
+	text-align: center;
+	border-bottom: 1px solid rgba(199, 199, 199, .3);
+	line-height: 34px;
+	font-size: 14px;
+}
+
+body.lottery-body #LotteryListDiv > table tr th > table tr:nth-of-type(2) th {
+	border-bottom: none;
+}
+
+body.lottery-body #LotteryListDiv >  table tr th + th {
+	border-left: 1px solid rgba(199, 199, 199, .3);
+}
+
+body.lottery-body .lottery_scorllbar {
+    border-right: 1px solid rgba(199, 199, 199, .8);
+    border-left: 1px solid rgba(199, 199, 199, .8);
+    border-bottom: 1px solid rgba(199, 199, 199, .8);
+    border-radius: 0 0 4px 4px;
+}
+
+body.lottery-body .lottery_scorllbar .record_dep_main {
+	text-align: center;
+	font-size: 14px;
+}
+
+body.lottery-body .lottery_scorllbar .record_dep_main > tbody > tr > td {
+	padding: 10px 0;
+	border-bottom: 1px solid rgba(199, 199, 199, .3);
+	color: #fff;
+}
+
+body.lottery-body .lottery_scorllbar .record_dep_main > tbody > tr > td.record_dep_list_txt.right {
+	border-right: none;
+}
+
+body.lottery-body .lottery_scorllbar .record_dep_main > tbody > tr > td.record_dep_list_txt.right td {
+	background: none !important;
+}
+
+body.lottery-body .lottery_scorllbar .record_dep_main tr > td.last {
+	border-bottom: none;
+	border-left: 1px solid rgba(199, 199, 199, .3);
+}
+
+body.lottery-body .lottery_scorllbar .record_dep_main tbody tr:nth-child(even) td,
+body.lottery-body .lottery_scorllbar .record_dep_main tbody tr td.record_dep_nav_menu.last {
+	background: none;
+}
+
+body.lottery-body .lottery_scorllbar .record_dep_main > tbody > tr:hover > td {
+    background: rgba(255,255,255,.2);
+}
+
+body.lottery-body .mCSB_inside>.mCSB_container {
+	margin: 0;
+}
+
+body.lottery-body .mCSB_scrollTools {
+	margin: 5px 0;
+}
+
+body.lottery-body .mCSB_scrollTools .mCSB_draggerContainer {
+	left: 2px;
+}
+
+body.lottery-body .mCS-dark-thick.mCSB_scrollTools .mCSB_draggerRail, .mCS-light-thick.mCSB_scrollTools .mCSB_draggerRail {
+	width: 2px;
+	background: #fff;
+}
+
+body.lottery-body .mCS-dark-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar, .mCS-light-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+	background: #fff;
+}
+
+body.lottery-body .lottery_scorllbar .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+	width: 6px;
+}
+
+body.lottery-body .ball{
+	background: #b32020;
+	border: 1px solid #b32020;
+}
+
+body.lottery-body #LotteryPager{
+	background: none;
+	border: none;
+	display: flex;
+	justify-content: space-between;
+}
+
+body.lottery-body div.page_info{
+	color: #fff;
+	font-size: 16px;
+}
+
+body.lottery-body div.PageClass li,
+body.lottery-body div.PageClass li:hover{
+	width: 15px;
+	height: 15px;
+}
+
+body.lottery-body div.PageClass li.ToFirst,
+body.lottery-body div.PageClass li.ToLast,
+body.lottery-body div.PageClass li.ToPrev,
+body.lottery-body div.PageClass li.ToNext,
+body.lottery-body div.PageClass li.disabled{opacity:0.5;}
+
+body.lottery-body div.PageClass li:hover{opacity:0.9;}
+body.lottery-body div.PageClass li.amount {
+	width: inherit;
+	min-width: 117px;
+	border: none;
+	border-radius: 0;
+	background: #fff;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+    vertical-align: top;
+    margin: 0 7px 0 5px;
+}
+
+body.lottery-body div.PageClass select{
+	height: 24px;
+	background: #fff;
+	border: 0;
+	border-radius: 0;
+}
+
+body.lottery-body div.page_select_div { vertical-align: top;display: flex;align-items: center;}
+
+body.lottery-body div.PageClass.quotes{
+	/* margin-top: 13px; */
+	float: left;
+}
+
+.historyTable-wrap-scale{
+	background: #68aa1b;
+	width:92%;
+	height: 10px;
+	margin-left:4%;
+	position: relative;
+	margin-top: 0px;
+	border: 2px solid #fff;
+	border-radius: 15px;
+}
+.historyTable-wrap-scale .historyTable-wrap-scale-r{
+	position: absolute;
+	background:#d00000;
+	height:100%;
+	top:0;
+	left: 0;
+	border-top-left-radius:15px; 
+	border-bottom-left-radius:15px; 
+}
+.historyTable-wrap-scale .historyTable-wrap-scale-r::before{
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	background:#fff;
+	width: 10px;
+	height: 18px;
+	border:2px solid #a8a8a8; 
+	top:-6px;
+	margin-right: -5px;
+	border-radius: 15px;
+}
+.historyTable-wrap-scale .historyTable-wrap-scale-b{
+	position: absolute;
+	background:#005dc6;
+	height:100%;
+	top:0;
+	right: 0;
+	border-top-right-radius:15px; 
+	border-bottom-right-radius:15px; 
+}
+.historyTable-wrap-scale .historyTable-wrap-scale-b::before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	background:#fff;
+	width: 10px;
+	height: 18px;
+	border:2px solid #a8a8a8; 
+	top:-6px;
+	margin-left: -5px;
+	border-radius: 15px;
+}
+
+body[game-type-id='7'] .historyTable-wrap-scale {
+	background: #be1a20;
+}
+body.lottery-body .ball.ball_sanil_1{
+	border: 1px #d00000 solid;
+	background: #d00000;
+}
+body.lottery-body .ball.ball_sanil_2{
+	border: 1px #68aa1b solid;
+	background: #68aa1b;
+}
+body.lottery-body .ball.ball_sanil_3{
+	border: 1px #005dc6 solid;
+	background: #005dc6;
+}
+
+#AgentLot {
+	background: #fff;
+}
+
+#AgentLot .lottery_top {
+	background: #056887;
+    height: initial;
+    padding: 15px;
+}
+
+#AgentLot .lottery_top .order_left,
+#AgentLot .lottery_top .record_right {
+	float: none;
+}
+
+#AgentLot .lottery_dep_closet .lottery_dep {
+	color: #000;
+}
+
+#AgentLot #LotteryListDiv {
+    padding: 0;
+    width: 100%;
+}
+
+#AgentLot #LotteryListDiv > table,
+#AgentLot .lottery_scorllbar {
+	border-radius: 0;
+	border: none;
+}
+
+#AgentLot #LotteryListDiv > table{
+	background: #0097c6;
+}
+
+#AgentLot #LotteryListDiv > table tr th {
+	border-color: #edf7ff;
+}
+
+#AgentLot .record_dep_main > tbody > tr:nth-of-type(even) > td {
+	background: #f2f2f2;
+}
+
+#AgentLot .record_dep_main > tbody > tr > td{
+	color: #3e3a39
+}
+
+#AgentLot .record_dep_main > tbody > tr:hover > td{
+	color: #000;
+	background: #ffefd4;
+}
+
+#AgentLot div.PageClass ul {
+	vertical-align: middle;
+}
+
+#AgentLot div.page_select_div{
+	color: #000;
+}
+
+#AgentLot div.page_select_div span#SelectBox{
+	border: 1px solid #000;
+    display: inline-block;
+    vertical-align: middle;
+    height: 17px;
+}
+
+#AgentLot div.PageClass li.amount {
+	border: 1px solid #000;
+}
+
+#AgentLot div.page_info { color: #000;float: right; }
+
+#AgentLot .lottery_scorllbar { border-bottom: 1px solid #e6e6e6; }
+
+#AgentLot .record_right .order_search { background: #c60048; }
+
+#AgentLot .record_right .order_search:hover { background: #b50344; }
+
+.scroll-content {
+	overflow-y: scroll;
+	height: 400px;
+}

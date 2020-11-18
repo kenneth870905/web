@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #playFlv{
+            color: #ff5151;
+            display: inline-block;
+            padding: 0px 10px;
+            background: #f3f3f3;
+            line-height: 30px;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+        .live-box{
+            height: 368px;
+            margin: 5px auto;
+            text-align: center;
+            background: #353536 ;
+            position: relative;
+            overflow: hidden;
+            display: none;
+        }
+        .live-box.open{
+            display: block;
+        }
+        .live-tips{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            background: #353536 ;
+        }
+        .live-tips span{
+            color: red;
+        }
+        #videoElement{
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="playFlv">观看开奖直播</div>
+    <div class="live-box">
+        <div class="live-tips">
+            开奖直播时间为<span>21:32-21:45</span> (北京时间)
+        </div>
+        <!-- <video id="videoElement"></video> -->
+    </div>
+
+    
+    <!-- <video controlslist="nofullscreen" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"></video> -->
+    // if (document.fullscreenElement) {
+    //     document.exitFullscreen()
+    // } else {
+    //     document.documentElement.requestFullscreen()
+    // }
+</body>
+
+<!-- <script src="http://bilibili.github.io/flv.js/dist/flv.js"></script> -->
+<script src="jquery-3.5.1.min.js"></script>
+<script src="flv.js"></script>
+<script>
+
+    var liveTime='' //定时器
+    // var minT = 2132
+    var minT = 1700
+    var maxT= 2145 
+    $('#playFlv').click(function(){
+        if($(".live-box").hasClass('open')){
+            $('#playFlv').html('观看开奖直播')
+            $('.live-box').removeClass('open')
+            $('#videoElement').remove()
+            try {
+                clearInterval(liveTime)
+            } catch (error) {}
+            return
+        }else{
+            $('#playFlv').html('关闭开奖直播')
+            $('.live-box').addClass('open')
+        }
+
+        var date = new Date()
+        // var t1 = date.getHours()+date.getMinutes().toString()
+        // if(t1>minT && t1<maxT){
+            $('.live-box').append('<video id="videoElement"></video>')
+            var videoElement = document.getElementById('videoElement');
+            var flvPlayer = flvjs.createPlayer({
+                type: 'flv',
+                url: '2032-2.flv'
+                // url:"https://vd1-qq.kangtuoshe.com/live/2032-2.flv"
+            });
+            flvPlayer.attachMediaElement(videoElement);
+            flvPlayer.load();
+            flvPlayer.play();
+            // liveTime = setInterval(function(){
+            //     var date1 = new Date()
+            //     var t2 = date1.getHours()+date1.getMinutes().toString()
+            //     if(t2<minT || t2>maxT){
+            //         flvPlayer.pause()
+            //         $('#videoElement').remove()
+            //         clearInterval(liveTime)
+            //     }
+            // }, 1000);
+        // }
+    })
+    
+    // function 点击(){
+    //     flvPlayer.play();
+    // }
+</script>
+
+</html>

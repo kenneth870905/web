@@ -1,0 +1,51 @@
+{
+  "id": "2156245",
+  "name": "轻随我",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "豪哥商城",
+  "glyphs": [
+    {
+      "icon_id": "551962",
+      "name": "箭头",
+      "font_class": "arrow-right",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "3315139",
+      "name": "选中",
+      "font_class": "xuanzhong",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "5147506",
+      "name": "未选中",
+      "font_class": "weixuanzhong",
+      "unicode": "e647",
+      "unicode_decimal": 58951
+    },
+    {
+      "icon_id": "451564",
+      "name": "积分",
+      "font_class": "jifen",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "16336211",
+      "name": "现金",
+      "font_class": "xianjin",
+      "unicode": "e6b6",
+      "unicode_decimal": 59062
+    },
+    {
+      "icon_id": "5809193",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e690",
+      "unicode_decimal": 59024
+    }
+  ]
+}

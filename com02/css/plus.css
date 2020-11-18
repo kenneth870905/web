@@ -1,0 +1,128 @@
+/*body{transform:scale(0.8) }*/
+
+.kuan5 {
+    width: 33%;
+}
+
+.kuan6 {
+    width: 60%;
+}
+
+.zihao18 {
+    font-size: 20px
+}
+
+.zihao25 {
+    font-size: 30px
+}
+
+.shenlv {
+    color: #1e7e34
+}
+
+.hongdibai {
+    color: #FFFFFF;
+    background-color: #c82333
+}
+
+.landibai {
+    color: #FFFFFF;
+    background-color: #0062c8
+}
+
+.jvzhongv {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+table {
+    width: 230px;
+    text-align: center;
+    border: 1px solid #9b9b9b;
+}
+
+.fbiaoti {
+    background-color: #000000;
+}
+
+.biaoti, .biaoti1 {
+    font-weight: 800
+}
+
+.zong {
+    /* min-width: 1400px; */
+    width: 1400px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.fen1 {
+    font-size: 12px;
+}
+
+.Xshu {
+    width: 6%;
+}
+
+.Xjia {
+    width: 17%;
+}
+
+.Xni {
+    width: 43%;
+}
+
+.Xliang {
+    width: 22%;
+}
+
+.fen1 tr td {
+    border: 1px solid #9b9b9b;
+    height: 22px;
+}
+
+.biaoti, .biaoti1 {
+    font-size: 25px;
+}
+
+.biaoti1 {
+    color: #c82333;
+}
+
+.biaoti {
+    color: #1e7e34;
+}
+
+.zuojv1 {
+    margin-left: 5px;
+}
+
+.Xshu, .Xjia, .Xliang, .Xni {
+    color: #FFFFFF;
+}
+
+#cssxia .Xshu, #cssxia .Xjia, #cssxia .Xliang, #cssxia .Xni {
+    height: 2px;
+}
+
+.fudong {
+    float: left
+}
+
+.qianhong {
+    color: #c82333
+}
+
+.beijinghui {
+    background-color: #d4d4d6;
+    overflow: hidden;
+    width: 1390px;
+}
+
+.lirun {
+    color: #c82333
+}
+
+;
+/*
+word-break:keep-all;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;*/

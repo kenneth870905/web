@@ -1,0 +1,202 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>开奖结果</title>
+	<link href="./css/lottery-results.css" rel="stylesheet">
+	<link href="./css/openlotcustom.css" rel="stylesheet">
+	<link href="./css/normalize.css" rel="stylesheet">
+	<link href="./css/res1.css" rel="stylesheet">
+	<link href="./css/res2.css" rel="stylesheet">
+	<link href="./css/jquery.datetimepicker.min.css" rel="stylesheet">
+	<script src="./webConfig/config.js"></script>
+	<script src="./js/vue.js"></script>
+	<script src="./js/jquery-3.1.0.min.js"></script>
+	<script src="./js/jquery-ui.min.js"></script>
+	<script src="./js/jquery.datetimepicker.min.js"></script>
+</head>
+
+<body class="lottery-body" game-id="23" game-type-id="8">
+	<div id="Vue" style="position:absolute;width:100%;height:100%;">
+		<div id="OpenLottery_history" style="height: 100%; position: relative;">
+			<div class="common_form">
+				<div class="lottery_top">
+					<div class="order_left">
+						彩 类 :
+						<select name="select_type">
+							<option value="23">蜗牛赛跑</option>
+						</select>
+					</div>
+					<div class="order_left">
+						开奖日期 :
+						<span class="report_date_choice_div">
+							<input class="dpk" id="datetimepicker" type="text">
+							<img src="images/calendar.png" alt>
+
+						</span>
+					</div>
+					<div class="record_right">
+						<div class="order_search" @click="GoSelect">开奖查询</div>
+					</div>
+				</div>
+				<div class="lottery_dep_closet">
+					<div class="lottery_dep"><span id="game_name">蜗牛赛跑</span><span> 开奖结果 </span>
+						<span style="float: right;">※查询以05:00:00 为跨日基准※</span>
+					</div>
+				</div>
+				<div id="LotteryListDiv" style>
+					<table width="100%">
+						<tbody>
+							<tr class="record_dep_nav">
+								<th class="lottery_dep_nav_menu" width="110">期数</th>
+								<th class="lottery_dep_nav_menu" width="110">开奖日期</th>
+								<th class="lottery_dep_nav_menu" width="110">开奖时间</th>
+								<th class="lottery_dep_nav_menu" id="lotter_number_title">
+									<table class="fiveunit" style="width: 100%;">
+										<tbody>
+											<tr>
+												<th class="lottery_dep_nav_menu" colspan="31">排名</th>
+											</tr>
+											<tr>
+												<th class="lottery_dep_nav_menu" style="width: 110px; border-bottom: none;">冠军</th>
+												<th class="lottery_dep_nav_menu" style="width: 110px; border-bottom: none;">亚军</th>
+												<th class="lottery_dep_nav_menu" style="width: 110px; border-bottom: none;">季军</th>
+											</tr>
+										</tbody>
+									</table>
+								</th>
+							</tr>
+						</tbody>
+					</table>
+					<div class="scroll-wrapper lottery_scorllbar" style="position: relative;">
+						<div class="lottery_scorllbar scroll-content scroll-scrolly_visible" style="margin-bottom: 0px; margin-right: 0px;">
+							<table class="record_dep_main" id="lottery_list" width=" 100%">
+								<tbody>
+
+									<tr class="order_dep_list" v-for="(item,index) in list" :key="index">
+										<td class="record_dep_list_txt" style="width: 110px;">{{item.IssueCode}}</td>
+										<td class="record_dep_list_txt" style="width: 110px;">{{item.Createtime.slice(0,10)}}</td>
+										<td class="record_dep_list_txt" style="width: 110px;">{{item.Createtime.slice(10,19)}}</td>
+
+										<td class="record_dep_list_txt right">
+											<table style="width: 100%;">
+												<tbody>
+													<tr>
+														<td class="lottery_dep_nav_menu" style="width: 100px;">
+															<div class="ball" :class="[item.Content.slice(0,1) == 1 ? 'ball_sanil_1': (item.Content.slice(0,1) == 2 ? 'ball_sanil_2' : (item.Content.slice(0,1) == 3 ? 'ball_sanil_3' : ''))]">
+																{{
+																	item.Content.slice(0,1) == 1 ? '红': (item.Content.slice(0,1) == 2 ? '绿' : (item.Content.slice(0,1) == 3 ? '蓝' : ''))
+																}}
+															</div>
+														</td>
+														<td class="lottery_dep_nav_menu" style="width: 100px;">
+															<div class="ball" :class="[item.Content.slice(2,3) == 1 ? 'ball_sanil_1': (item.Content. slice(2,3) == 2 ? 'ball_sanil_2' : (item.Content. slice(2,3) == 3 ? 'ball_sanil_3' : ''))]">
+																{{
+																	item.Content.slice(2,3) == 1 ? '红': (item.Content.slice(2,3) == 2 ? '绿' : (item.Content.slice(2,3) == 3 ? '蓝' : ''))
+																}}
+															</div>
+														</td>
+														<td class="lottery_dep_nav_menu" style="width: 100px;">
+															<div class="ball" :class="[item.Content.slice(-1) == 1 ? 'ball_sanil_1': (item.Content.slice(-1) == 2 ? 'ball_sanil_2' : (item.Content.slice(-1) == 3 ? 'ball_sanil_3' : ''))]">
+																{{
+																	item.Content.slice(-1) == 1 ? '红': (item.Content.slice(-1) == 2 ? '绿' : (item.Content.slice(-1) == 3 ? '蓝' : ''))
+																}}
+															</div>
+														</td>
+
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+				</div>
+
+				<div id="LotteryPager" style="margin-top:0px;">
+					<div class="PageClass quotes">
+						<div class="page_select_div">第 <span id="SelectBox"><select class="PageSelect" name="PageSelect" @change="PageSelect()">
+									<option :value="item" v-for="(item,index) in Math.ceil(total/ 20)">
+										{{item}}
+									</option>
+								</select></span> 页</div>
+
+						<div style="clear: both;"></div>
+					</div>
+					<div class="page_info">每页 20 笔记录 / 共 {{total}} 笔 / 共 {{Math.ceil(total/ 20)}} 页</div>
+
+				</div>
+			</div>
+			<div class="bg_mask" style="display: block;" v-show="alertState"></div>
+		</div>
+	</div>
+</body>
+
+
+
+<script>
+
+	new Vue({
+		el: '#Vue',
+		data: {
+			list: [],
+			total: '',
+			page: 1,
+			alertState: false
+		},
+		methods: {
+			getList(SelectDate) {
+				this.list = []
+				$.ajax({
+					url: `${config.baseUrl}/Lottery/SnailBet/GetSnailBetResultList`,
+					type: "POST",
+					data: {
+						gameType: 'wnsp',
+						date: SelectDate,
+						page: this.page,
+						rows: 20
+					},
+					error: function (xhr) { },
+					success: (rt) => {
+						this.alertState = false
+						if (!rt.rows.length) {
+							alert('暂无查询内容')
+							return
+						}
+						this.list = rt.rows
+						this.total = rt.total
+					}
+				});
+			},
+			// 开奖查询
+			GoSelect() {
+				this.alertState = true
+				var date = $('.dpk').val()
+				this.getList(date)
+			},
+			PageSelect() {
+				this.alertState = true
+				var page = $('.PageSelect option:selected').val()
+				this.page = page
+				this.GoSelect()
+			}
+
+		},
+		mounted() {
+			$("#datetimepicker").datetimepicker({
+				value: new Date(),
+				// format: "Y-m-d H:i",
+				format: "Y-m-d",
+				timepicker: false,
+			});
+			this.alertState = true
+			this.getList($("#datetimepicker").val());
+		},
+	})
+
+</script>
+
+</html>

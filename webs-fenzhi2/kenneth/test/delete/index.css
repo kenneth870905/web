@@ -1,0 +1,75 @@
+html,body{
+    height: 100%;
+    padding: 0;
+    margin: 0px;
+}
+ul{
+    margin: 0px;
+    padding:0px;
+}
+li{
+    list-style: none;
+}
+*{
+    box-sizing: border-box;;
+}
+
+#vue{
+    height: 100%;
+    overflow: auto;
+    display: grid;
+    grid-auto-rows: auto 50px;
+}
+.list{
+    overflow: auto;
+    display: grid;
+    grid-template-columns:repeat(10,auto);
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    padding: 10px;
+}
+.list li{
+    position: relative;
+}
+.list li:hover .img1{
+    filter: grayscale(1);
+}
+.list li:hover .img2{
+    opacity: 1;
+}
+.list .img1{
+    width: 100%;
+    transition: all 0.3s;
+}
+.list .img2{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: auto;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.type{
+    position: absolute;
+    top: 5px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    width: 250px;
+    z-index: 1;
+    text-align: center;
+    opacity: 0.6;
+}
+.type:hover{
+    opacity: 1;
+}

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>订单管理</title>
+  <link rel="stylesheet" type="text/css" href="./css/ladder.css">
+  <link rel="stylesheet" type="text/css" href="./css/jquery.scrollbar.css">
+  <script src="./webConfig/config.js"></script>
+  <script type="text/javascript" src="./js/jquery-3.1.0.min.js"></script>
+  <script type="text/javascript" src="./js/jquery-migrate-3.0.0.min.js"></script>
+  <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.datetimepicker.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.Scrollbar.js"></script>
+  <script type="text/javascript" src="./js/jquery.scrollbar.min.js"></script>
+  <script>
+    $.fn.datetimepicker.defaults.lang = "zh_cn";
+  </script>
+  <script type="text/javascript" src="./js/global.js"></script>
+  <script type="text/javascript" src="./js/loading.js"></script>
+  <script type="text/javascript" src="./js/ZgCreate.js"></script>
+  <script type="text/javascript" src="./js/Page_mem.js"></script>
+  <script type="text/javascript" src="./js/js_computing.min.js"></script>
+  <script type="text/javascript" src="./js/ZgCountDown.js"></script>
+  <script type="text/javascript" src="./js/ZgWindow.min.js"></script>
+  <script type="text/javascript" src="./js/peasantcalendar.js"></script>
+  <script type="text/javascript" src="./js/poker.js"></script>
+  <script src="./js/zh_cn.js"></script>
+</head>
+
+<body>
+  <div id="OrderListNot" style="height: 100%;">
+    <div class="common_form">
+      <div class="order_top">
+        <div class="order_chi">
+          <ul id="Not_OrderTabs" class="clearfix">
+            <li class="active"><a href="javascript:void(0)" rel="payout">订单管理</a></li>
+          </ul>
+        </div>
+        <div class="order_left">
+          <span>彩 类 :</span>
+          <select name="select_type">
+            <option value="梯子游戏">梯子游戏</option>
+            <option value="蜗牛赛跑">蜗牛赛跑</option>
+
+          </select>
+        </div>
+        <div class="record_right">
+          <div class="order_search btn-red" id="GoSelect" style="min-width: 125px">订单查询</div>
+        </div>
+      </div>
+      <div style="position:relative;" class="record_dep_closet">
+        <table class="record_dep">
+          <tr>
+            <td class="record_dep_txt">*订单查询</td>
+            <td class="record_dep_txt">彩 类：<span id="OrderGameName"> 梯子游戏 </span></td>
+            <td class="record_dep_txt"><span id="OrderSDate"> 2020-01-03 </span> </td>
+          </tr>
+        </table>
+
+      </div>
+      <div>
+        <div id="Not_order_list">
+          <table width="100%">
+            <tbody>
+              <tr class="record_dep_nav">
+                <th width="90" class="record_dep_nav_menu">注单号</th>
+                <th width="110" class="record_dep_nav_menu">下注时间</th>
+                <th width="95" class="record_dep_nav_menu">彩种</th>
+                <th width="92" class="record_dep_nav_menu">期号</th>
+                <th width="124" class="record_dep_nav_menu">玩法</th>
+                <th width="90" class="record_dep_nav_menu">单注额</th>
+                <th width="90" class="record_dep_nav_menu">总额</th>
+              </tr>
+            </tbody>
+          </table>
+          <div class="Not_order_list_scorllbar" style="overflow: auto;">
+            <table width="100%" class="record_dep_main order_inquiry_list">
+              <tbody id="dataList">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="report_footer" style="margin-top:0px;">
+        <ul class="report_sum">
+          <li class="total">统计</li>
+          <li>下注金额 :</li>
+          <li class="amount" id="order_bet_money"> 0 </li>
+        </ul>
+      </div>
+    </div>
+    <div class="bg_mask" style="display: block;"></div>
+  </div>
+  <script>
+    var date = new Date();
+    var years = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    if (month < 10) {
+      month = '0' + month
+    };
+    if (day < 10) {
+      day = '0' + day
+    };
+    var timer = years + '-' + month + '-' + day;
+    $('#OrderSDate').html(timer);
+    function getListAPi() {
+      $.ajax({
+        url: `${config.url}/Lottery/SnailBet/GetSnailBetOrderList`,
+        method: 'POST',
+        crossDomain: true, //设置跨域为true
+        xhrFields: {
+          withCredentials: true //默认情况下，标准的跨域请求是不会发送cookie的
+        },
+        data: {
+          gameType: $('select[name="select_type"]').val() == '蜗牛赛跑' ? 'wnsp' : 'tz'
+        },
+        success: function (x) {
+          $('.bg_mask').css({ display: 'none' })
+          $('#OrderGameName').html($('select[name="select_type"]').val())
+          if (!x.rows) {
+            $('#dataList').append(
+              `<tr class="record_dep_list">
+                      <td colspan="10" class="record_dep_list_txt">尚无资料。</td>
+                    </tr>`
+            )
+            return;
+          }
+          if (x.rows.length) {
+            var numberArr = [];
+            x.rows.map(item => {
+              $('#dataList').append(
+                `
+                    <tr class="record_dep_list">
+                    <td width="90" class="record_dep_list_txt">${item.Id}</td>
+                    <td width="110" class="record_dep_list_txt">${item.Createtime.slice(10, 19)}</td>
+                    <td width="95" class="record_dep_list_txt">${$('#OrderGameName').html()}</td>
+                    <td width="92" class="record_dep_list_txt">${item.IssueCode}</td>
+                    <td width="124" class="record_dep_list_txt">${item.MethodName}</td>
+                    <td width="90" class="record_dep_list_txt">${item.Price}</td>
+                    <td width="90" class="record_dep_list_txt">${item.ResultMoney}</td>
+                  </tr>
+                  `
+              );
+              numberArr.push(item.Price);
+            });
+            $('#order_bet_money').html(
+              numberArr.reduce(function (a, b) {
+                return a + b
+              }, 0)
+            )
+          } else {
+            $('#dataList').append(
+              `<tr class="record_dep_list">
+                      <td colspan="10" class="record_dep_list_txt">尚无资料。</td>
+                    </tr>`
+            )
+            return;
+          }
+        },
+        error: function (x) {
+          console.log(x)
+        }
+      })
+    };
+
+
+    $('#GoSelect').click(function () {
+      $('.bg_mask').css({ display: 'block' });
+      $('#dataList').html('');
+      getListAPi();
+    });
+    getListAPi()
+
+
+
+  </script>
+</body>
+
+</html>

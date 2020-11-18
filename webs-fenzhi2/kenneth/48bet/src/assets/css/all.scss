@@ -1,0 +1,14 @@
+@mixin w1200 {
+    width: 1200px;
+    // @media screen and (max-width: 750px) {
+    //     width: 100%;
+    // }
+    margin: 0px auto;
+}
+
+.w1200{
+    width: 1200px;
+    margin: 0px auto;
+}
+
+$color:#ff9600;

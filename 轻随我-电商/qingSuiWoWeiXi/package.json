@@ -1,0 +1,16 @@
+{
+  "name": "dianshang",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "md5": "^2.3.0",
+    "vuex-persistedstate": "^4.0.0-beta.1"
+  }
+}

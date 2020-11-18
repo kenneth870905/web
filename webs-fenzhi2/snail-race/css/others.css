@@ -1,0 +1,87 @@
+.SnailRacemain {
+  width: 1024px;
+  margin: 0 auto;
+}
+
+.bet_class {
+  border: 1px #CCC solid;
+  margin-top: 10px;
+}
+
+.bet_class>.title {
+  border-bottom: 1px #CCC solid;
+  padding: 3px 10px;
+}
+
+#LotteryCode {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.confirm-tr+.confirm-tr div {
+  border-top: 1px solid #e4e4e4;
+}
+
+.confirm-tr .confirm-td {
+  display: inline-block;
+  width: 188px;
+  padding: 0 15px;
+  text-align: left;
+  font-family: arial, 'Microsoft JhengHei';
+  font-size: 14px;
+  color: #1f1f1f;
+}
+
+.confirm-tr .confirm-td:first-child {
+  width: 120px;
+  text-align: center
+}
+
+.confirm-tr .confirm-td+.confirm-td {
+  border-left: 1px solid #e4e4e4;
+}
+
+.Money_ul>li {
+  padding: 6px 0;
+}
+
+.record_dep_closet .cancelBtn {
+  position: absolute;
+  right: 33px;
+  top: 0px;
+}
+
+.icon-13 {
+  display: none;
+}
+
+.order_search.btn-red {
+  border: 0;
+}
+
+.order_search:hover {
+  color: #FFF;
+}
+
+.exp-content {
+  background: rgba(255,255,255,.75) !important;
+}
+
+#GoSelect {
+  background: rgb(233, 67, 53);
+}
+
+.bg_mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 2;
+  text-align: center;
+  background: rgba( 0, 0, 0, .8 ) url(../images/loading.gif) 50% 50% no-repeat;
+  color: #FFF;
+  top: 0;
+  left: 0;
+  cursor: wait;
+}

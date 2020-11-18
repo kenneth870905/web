@@ -1,0 +1,348 @@
+
+/**---- 角色蝸牛 ----**/
+
+.snails {
+
+  background-image: url(../images/snails.png);
+
+  background-repeat: no-repeat;
+
+  display: block;
+
+}
+
+.snails-snailA_115 {
+
+  width: 115px;
+
+  height: 115px;
+
+  background-position: -5px -5px;
+
+}
+
+.snails-snailA_80 {
+
+  width: 80px;
+
+  height: 80px;
+
+  background-position: -192px -5px;
+
+}
+
+.snails-snailA_52 {
+
+  width: 52px;
+
+  height: 52px;
+
+  background-position: -130px -5px;
+
+}
+
+.snails-snailB_115 {
+
+  width: 115px;
+
+  height: 115px;
+
+  background-position: -130px -95px;
+
+}
+
+.snails-snailB_80 {
+
+  width: 80px;
+
+  height: 80px;
+
+  background-position: -282px -5px;
+
+}
+
+.snails-snailB_52 {
+
+  width: 52px;
+
+  height: 52px;
+
+  background-position: -5px -220px;
+
+}
+
+.snails-snailC_115 {
+
+  width: 115px;
+
+  height: 115px;
+
+  background-position: -255px -95px;
+
+}
+
+.snails-snailC_80 {
+
+  width: 80px;
+
+  height: 80px;
+
+  background-position: -129px -220px;
+
+}
+
+.snails-snailC_52 {
+
+  width: 52px;
+
+  height: 52px;
+
+  background-position: -67px -220px;
+
+}
+
+/**---- 角色蝸牛 End ----**/
+
+/**---- 按鈕類 ----**/
+
+.button {
+
+  background-image: url(../images/button.png);
+
+  background-repeat: no-repeat;
+
+  display: block;
+
+}
+
+.button-advance-txt-bet {
+
+  width: 88px;
+
+  height: 30px;
+
+  background-position: -10px -10px;
+
+}
+
+.button-advance-txt-first {
+
+  width: 48px;
+
+  height: 30px;
+
+  background-position: -118px -10px;
+
+}
+
+.button-advance-txt-money {
+
+  width: 110px;
+
+  height: 30px;
+
+  background-position: -186px -10px;
+
+}
+
+.button-advance-txt-ranking {
+
+  width: 89px;
+
+  height: 30px;
+
+  background-position: -316px -10px;
+
+}
+
+.button-advance-txt-second {
+
+  width: 73px;
+
+  height: 30px;
+
+  background-position: -10px -60px;
+
+}
+
+.button-advance-txt-win {
+
+  width: 89px;
+
+  height: 30px;
+
+  background-position: -103px -60px;
+
+}
+
+.button-buA_01 {
+
+  width: 100px;
+
+  height: 55px;
+
+  background-position: -212px -60px;
+
+}
+
+.button-buA_02 {
+
+  width: 100px;
+
+  height: 55px;
+
+  background-position: -332px -60px;
+
+}
+
+.button-buA_03 {
+
+  width: 100px;
+
+  height: 55px;
+
+  background-position: -10px -135px;
+
+}
+
+.button-buA_04 {
+
+  width: 100px;
+
+  height: 55px;
+
+  background-position: -130px -135px;
+
+}
+
+.button-buB_01 {
+
+  width: 100px;
+
+  height: 55px;
+
+  background-position: -250px -135px;
+
+}
+
+.button-buB_02 {
+
+  width: 100px;
+
+  height: 55px;
+
+  background-position: -370px -135px;
+
+}
+
+.button-buB_03 {
+
+  width: 100px;
+
+  height: 55px;
+
+  background-position: -10px -210px;
+
+}
+
+.button-buB_04 {
+
+  width: 100px;
+
+  height: 55px;
+
+  background-position: -130px -210px;
+
+}
+
+.button-buC_01 {
+
+  width: 206px;
+
+  height: 58px;
+
+  background-position: -250px -210px;
+
+}
+
+.button-buC_02 {
+
+  width: 206px;
+
+  height: 58px;
+
+  background-position: -10px -288px;
+
+}
+
+.button-buC_03 {
+
+  width: 206px;
+
+  height: 58px;
+
+  background-position: -236px -288px;
+
+}
+
+.button-buC_04 {
+
+  width: 206px;
+
+  height: 58px;
+
+  background-position: -10px -366px;
+
+}
+
+.button-buD_01 {
+
+  width: 170px;
+
+  height: 58px;
+
+  background-position: -236px -366px;
+
+}
+
+.button-buD_02 {
+
+  width: 170px;
+
+  height: 58px;
+
+  background-position: -452px -10px;
+
+}
+
+.button-buD_03 {
+
+  width: 170px;
+
+  height: 58px;
+
+  background-position: -490px -88px;
+
+}
+
+.button-buD_04 {
+
+  width: 170px;
+
+  height: 58px;
+
+  background-position: -490px -166px;
+
+}
+
+.button-select_arrow {
+
+  width: 20px;
+
+  height: 18px;
+
+  background-position: -642px -10px;
+
+}
+
+/**---- 按鈕類 End ----**/

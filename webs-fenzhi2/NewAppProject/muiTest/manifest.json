@@ -1,0 +1,147 @@
+{
+	"@platforms": [
+		"android",
+		"iPhone",
+		"iPad"
+	],
+	"id" : "H5358FA3F",/*必选，应用的标识*/
+	"name" : "muiTest",/*必选，应用名称*/
+	"version": {
+		"name": "1.0",/*必选，版本名称*/
+		"code": ""
+	},
+	"description": "",/*可选，应用描述信息*/
+	"icons": {
+		"72": "icon.png"
+	},
+	"fullscreen": true,
+	"launch_path": "index.html",/*必选，应用的入口页面，默认为根目录下的index.html；也可以是网络地址，网络地址必须以http://或https://开头*/
+	"developer": {
+		"email": "",/*可选，开发者名称*/
+		"name": "",/*可选，开发者邮箱地址*/
+		"url": ""
+	},
+	"permissions": {
+
+		"Events": {
+			"description": "应用扩展事件"
+		},
+		"Speech": {
+			"description": "管理语音识别插件"
+		},
+		"Payment": {},
+		"Share": {},
+		"Push": {},
+		"Maps": {},
+		"OAuth": {},
+		"Contacts": {},
+		"Statistic": {},
+		"Messaging": {}
+	},
+	"plus": {
+		"launchwebview": {
+			// "titleNView": {
+			// 	"backgroundcolor": "#f7f7f7",
+			// 	"titletext": "首页",
+			// 	"titlecolor": "#000000"
+			// }
+		},
+		// "statusbar": {
+		// 	"immersed": "supportedDevice",
+		// 	"style": "dark"
+		// },
+		// "popGesture": "close",/*设置应用默认侧滑返回关闭Webview窗口，none为无侧滑返回功能，hide为侧滑隐藏Webview窗口。参考ask.dcloud.net.cn/article/102*/
+		// "splashscreen": {
+		// 	"autoclose": false,/*如果为true，程序启动的图片可以自动关闭，如果为false，开发者需要手动关闭*/
+		// 	"waiting": true
+		// },
+		// "runmode": "normal",/*两个值，liberate或normal，前者在应用安装时释放资源，后者不需要释放资源*/
+		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
+		"distribute": {
+			"debug": "",/*可选，是否为debug模式，可取值：true表示debug模式运行，false表示release模式运行，默认值为false*/
+			"apple": {
+				"appid": "",/*iOS必选，苹果开发网站申请的appid，如io.dcloud.HelloMUI*/
+				"mobileprovision": "",/*iOS必选，打包配置文件*/
+				"password": "",/*iOS必选，导入配置文件密码*/
+				"p12": "",/*iOS必选，打包配置文件关联的个人证书*/
+				"devices": "universal",/*iphone，可取值iphone/ipad/universal*/
+				"frameworks": []
+			},
+			"google": {
+				"packagename": "",/*Android必选，程序包名，如io.dcloud.HelloMUI*/
+				"keystore": "",/*Android必选，打包证书文件*/
+				"password": "",/*Android必选，打包证书密码*/
+				"aliasname": "",/*Android必选，打包证书别名*/
+				"permissions": ["<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.SEND_SMS\"/>","<uses-permission android:name=\"android.permission.INTERNET\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>","<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>","<uses-permission android:name=\"android.permission.WRITE_SMS\"/>","<uses-permission android:name=\"android.permission.READ_SMS\"/>"]
+			},
+			"orientation": [
+				"portrait-primary",
+				"landscape-primary",
+				"portrait-secondary",
+				"landscape-secondary"
+			],/*必选*/
+			"icons": {
+				"ios": {
+					"prerendered": "", /*必选，是否高亮显示*/
+					"auto": "", /*可选，512x512，用于自动生成各种尺寸图标的大分辨率程序图标*/
+					"iphone": {
+						"normal": "",/*可选，57x57，iPhone普通屏幕程序图标*/
+						"retina": "",/*可选，114x114，iPhone高分屏程序图标*/
+						"retina7": "",/*可选，120x120，iPhone iOS7高分屏程序图标*/
+						"spotlight-normal": "", /*可选，29x29，iPhone Spotlight搜索程序图标*/
+						"spotlight-retina": "", /*可选，58x58，iPhone高分屏Spotlight搜索程序图标*/
+						"spotlight-retina7": "",/*可选，80x80，iPhone iOS7高分屏Spotlight搜索程序图标*/
+						"settings-normal": "", /*可选，29x29，iPhone设置页面程序图标*/
+						"settings-retina": ""
+					},
+					"ipad": {
+						"normal": "", /*可选，72x72，iPad普通屏幕程序图标*/
+						"retina": "", /*可选，144x144，iPad高分屏程序图标*/
+						"normal7": "", /*可选，76x76，iPad iOS7程序图标*/
+						"retina7": "", /*可选，152x152，iPad iOS7高分屏程序图标*/
+						"spotlight-normal": "", /*可选，50x50，iPad Spotlight搜索程序图标*/
+						"spotlight-retina": "", /*可选，100x100，iPad高分屏Spotlight搜索程序图标*/
+						"spotlight-normal7": "",/*可选，40x40，iPad iOS7 Spotlight搜索程序图标*/
+						"spotlight-retina7": "",/*可选，80x80，iPad iOS7高分屏Spotlight搜索程序图标*/
+						"settings-normal": "",/*可选，29x29，iPad设置页面程序图标*/
+						"settings-retina": ""
+					}
+				},
+				"android": {
+					"mdpi": "", /*必选，48x48，普通屏程序图标*/
+					"ldpi": "", /*必选，48x48，大屏程序图标*/
+					"hdpi": "", /*必选，72x72，高分屏程序图标*/
+					"xhdpi": "",/*必选，96x96，720P高分屏程序图标*/
+					"xxhdpi": ""
+				}
+			},
+			"splashscreen": {
+				"ios": {
+					"iphone": {
+						"default": "", /*必选，320x480，iPhone3启动图片*/
+						"retina35": "",/*必选，640x960，3.5英寸设备(iPhone4)启动图片*/
+						"retina40": ""
+					},
+					"ipad": {
+						"portrait": "", /*可选，768x1004，需支持iPad时必选，iPad竖屏启动图片*/
+						"portrait-retina": "",/*可选，1536x2008，需支持iPad时必选，iPad高分屏竖屏图片*/
+						"landscape": "", /*可选，1024x748，需支持iPad时必选，iPad横屏启动图片*/
+						"landscape-retina": "", /*可选 ，2048x1496，需支持iPad时必选，iPad高分屏横屏启动图片*/
+						"portrait7": "", /*可选，768x1024，需支持iPad iOS7时必选，iPad竖屏启动图片*/
+						"portrait-retina7": "",/*可选，1536x2048，需支持iPad iOS7时必选，iPad高分屏竖屏图片*/
+						"landscape7": "", /*可选，1024x768，需支持iPad iOS7时必选，iPad横屏启动图片*/
+						"landscape-retina7": ""
+					}
+				},
+				"android": {
+					"mdpi": "", /*必选，240x282，普通屏启动图片*/
+					"ldpi": "", /*必选，320x442，大屏启动图片*/
+					"hdpi": "", /*必选，480x762，高分屏启动图片*/
+					"xhdpi": "", /*必选，720x1242，720P高分屏启动图片*/
+					"xxhdpi": ""
+				}
+			}
+		}
+		// "schemeWhitelist":["market"]
+	}
+}

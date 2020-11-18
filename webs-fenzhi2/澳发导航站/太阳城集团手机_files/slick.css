@@ -1,0 +1,60 @@
+.slick-slider {
+	display: block; position: relative; box-sizing: border-box; -ms-user-select: none; -ms-touch-action: pan-y; touch-action: pan-y; -webkit-user-select: none; -moz-user-select: none; user-select: none; -webkit-touch-callout: none; -khtml-user-select: none; -webkit-tap-highlight-color: transparent;
+}
+.slick-list {
+	margin: 0px; padding: 0px; overflow: hidden; display: block; position: relative;
+}
+.slick-list:focus {
+	
+}
+.slick-list.dragging {
+	cursor: pointer;
+}
+.slick-slider .slick-track {
+	transform: translate3d(0px, 0px, 0px); -webkit-transform: translate3d(0, 0, 0); -moz-transform: translate3d(0, 0, 0); -o-transform: translate3d(0, 0, 0);
+}
+.slick-slider .slick-list {
+	transform: translate3d(0px, 0px, 0px); -webkit-transform: translate3d(0, 0, 0); -moz-transform: translate3d(0, 0, 0); -o-transform: translate3d(0, 0, 0);
+}
+.slick-track {
+	left: 0px; top: 0px; display: block; position: relative;
+}
+.slick-track::before {
+	display: table; content: "";
+}
+.slick-track::after {
+	display: table; content: "";
+}
+.slick-track::after {
+	clear: both;
+}
+.slick-loading .slick-track {
+	visibility: hidden;
+}
+.slick-slide {
+	height: 100%; float: left; display: none; min-height: 1px;
+}
+[dir='rtl'] .slick-slide {
+	float: right;
+}
+.slick-slide img {
+	display: block;
+}
+.slick-slide.slick-loading img {
+	display: none;
+}
+.slick-slide.dragging img {
+	pointer-events: none;
+}
+.slick-initialized .slick-slide {
+	display: block;
+}
+.slick-loading .slick-slide {
+	visibility: hidden;
+}
+.slick-vertical .slick-slide {
+	border: 1px solid transparent; border-image: none; height: auto; display: block;
+}
+.slick-arrow.slick-hidden {
+	display: none;
+}

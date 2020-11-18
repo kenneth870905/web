@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  <script type="text/javascript" src="./js/jquery-3.1.0.min.js"></script>
+  <script src="./webConfig/config.js"></script>
+</head>
+<body>
+    <div ><div class="WinContent" style="overflow: auto;"><div class="Cnn">
+        <div class="WinContent" style="overflow: auto;">
+          <style>
+            #LotteryStatistics {
+              background: rgba(255, 255, 255, .8)
+            }
+      
+            .Statistics-box-top {
+              padding: 8px 16px 7px;
+              background: #fff;
+              line-height: 26px;
+            }
+      
+            .Statistics-box-top>span {
+              display: inline-block;
+              padding: 0 10px;
+              font-size: 12px;
+            }
+      
+            .Statistics-box-main {
+              z-index: 999;
+              width: 100%;
+              padding: 15px;
+              background: #fff;
+              overflow: auto;
+              padding-top: 0;
+            }
+      
+            .Statistics-box-main table {
+              width: 450px;
+              border-left: 1px solid #e7e2e2;
+              border-right: 1px solid #e7e2e2;
+              border-collapse: collapse;
+            }
+      
+            .Statistics-box-main table td {
+              width: 50%;
+              padding: 5px 8px;
+              text-align: center;
+              font-size: 13px;
+              font-weight: bold;
+              border-bottom: 1px solid #e7e2e2;
+            }
+      
+            .Statistics-box-main table tr:first-child td {
+              /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f4ebe2+0,ede4dd+31,e2d9d0+50,ece3dc+66,eee5dc+75,f5ece5+100 */
+              background: rgb(244, 235, 226);
+              /* Old browsers */
+              background: -moz-linear-gradient(top, rgba(244, 235, 226, 1) 0%, rgba(237, 228, 221, 1) 31%, rgba(226, 217, 208, 1) 50%, rgba(236, 227, 220, 1) 66%, rgba(238, 229, 220, 1) 75%, rgba(245, 236, 229, 1) 100%);
+              /* FF3.6-15 */
+              background: -webkit-linear-gradient(top, rgba(244, 235, 226, 1) 0%, rgba(237, 228, 221, 1) 31%, rgba(226, 217, 208, 1) 50%, rgba(236, 227, 220, 1) 66%, rgba(238, 229, 220, 1) 75%, rgba(245, 236, 229, 1) 100%);
+              /* Chrome10-25,Safari5.1-6 */
+              background: linear-gradient(to bottom, rgba(244, 235, 226, 1) 0%, rgba(237, 228, 221, 1) 31%, rgba(226, 217, 208, 1) 50%, rgba(236, 227, 220, 1) 66%, rgba(238, 229, 220, 1) 75%, rgba(245, 236, 229, 1) 100%);
+              /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+              filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4ebe2', endColorstr='#f5ece5', GradientType=0);
+              /* IE6-9 */
+              border: 1px solid #cfbeac;
+              position: relative;
+              font-size: 14px;
+            }
+      
+            .Statistics-box-main table tr:first-child td::before {
+              content: '';
+              position: absolute;
+              width: 1px;
+              height: 30px;
+              top: 0;
+              left: 0;
+              background: #f8f5ef;
+            }
+      
+            .Statistics-box-main table tr:first-child td:first-child {
+              border-right: 0;
+            }
+      
+            .Statistics-box-main table tr:first-child td:first-child::before {
+              display: none;
+            }
+      
+            .continuous-open {
+              font-size: 18px;
+              color: #c19f3b;
+            }
+      
+            .continuous-un-open {
+              font-size: 18px;
+              color: #919191;
+            }
+      
+            .continuous-open i,
+            .continuous-un-open i {
+              background: url(images/ladder_piece.png) no-repeat;
+              display: inline-block;
+              width: 28px;
+              height: 24px;
+              margin-right: 8px;
+              vertical-align: top;
+            }
+      
+            .continuous-open i {
+              background-position: -716px -105px;
+            }
+      
+            .continuous-un-open i {
+              background-position: -749px -105px;
+            }
+      
+            #ZgWindow .Windows.big .WinContent {
+              background: url(images/road_bg.jpg);
+              border-bottom-left-radius: 5px;
+              border-bottom-right-radius: 5px;
+            }
+      
+            .refresh-btn-s,
+            .refresh-btn-s:hover {
+              /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9b644b+0,61360e+100 */
+              background: rgb(155, 100, 75);
+              /* Old browsers */
+              background: -moz-linear-gradient(top, rgba(155, 100, 75, 1) 0%, rgba(97, 54, 14, 1) 100%);
+              /* FF3.6-15 */
+              background: -webkit-linear-gradient(top, rgba(155, 100, 75, 1) 0%, rgba(97, 54, 14, 1) 100%);
+              /* Chrome10-25,Safari5.1-6 */
+              background: linear-gradient(to bottom, rgba(155, 100, 75, 1) 0%, rgba(97, 54, 14, 1) 100%);
+              /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+              filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9b644b', endColorstr='#61360e', GradientType=0);
+              /* IE6-9 */
+              line-height: 17px;
+              color: #fff;
+              border-radius: 4px;
+              padding: 2px 10px !important;
+              cursor: pointer;
+            }
+      
+            .refresh-btn-s:hover {
+              opacity: .9;
+            }
+      
+            .refresh-btn-s:active {
+              /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#57320f+0,8a5941+100 */
+              background: rgb(87, 50, 15);
+              /* Old browsers */
+              background: -moz-linear-gradient(top, rgba(87, 50, 15, 1) 0%, rgba(138, 89, 65, 1) 100%);
+              /* FF3.6-15 */
+              background: -webkit-linear-gradient(top, rgba(87, 50, 15, 1) 0%, rgba(138, 89, 65, 1) 100%);
+              /* Chrome10-25,Safari5.1-6 */
+              background: linear-gradient(to bottom, rgba(87, 50, 15, 1) 0%, rgba(138, 89, 65, 1) 100%);
+              /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+              filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#57320f', endColorstr='#8a5941', GradientType=0);
+              /* IE6-9 */
+            }
+      
+            .statisics_periods {
+              color: #f00;
+            }
+      
+            .bg_masks {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background: #000;
+              z-index: 2;
+              text-align: center;
+              background: rgba(0, 0, 0, .8) url(../images/loading.gif) 50% 50% no-repeat;
+              color: #FFF;
+              top: 0;
+              left: 0;
+              cursor: wait;
+            }
+          </style>
+          <div id="LotteryStatistics" style="margin: 0px 5px; position: relative;">
+            <div class="bg_masks" style="display: none;"></div>
+            <div style="padding-top: 20px;">
+              <div class="Statistics-box-top continuous-open">
+                <i></i>连续开奖记录
+                <span class="statisics_periods">統計至 <span class="last-period">20200115571</span> 期</span>
+                <span class="refresh-btn-s">刷新</span>
+              </div>
+              <div class="Statistics-box-main">
+                <table id="LotteryOpen">
+                  <tbody><tr>
+                    <td>项目</td>
+                    <td>累积期数</td>
+                  </tr><tr>
+                      <td>
+                        冠军 - 蓝
+                        </td>
+                      <td>4&nbsp;期</td>
+                    </tr><tr>
+                      <td>
+                        亚军 - 绿
+                        </td>
+                      <td>2&nbsp;期</td>
+                    </tr><tr>
+                      <td>
+                        冠亚季军 - 蓝绿红
+                        </td>
+                      <td>2&nbsp;期</td>
+                    </tr></tbody></table>
+              </div>
+            </div>
+            <div style="padding-top: 20px;padding-bottom: 20px;">
+              <div class="Statistics-box-top continuous-un-open cc_cursor">
+                <i></i>连续未开纪录
+                <span class="statisics_periods cc_cursor">統計至 <span class="last-period cc_cursor">20200115571</span> 期</span>
+              </div>
+              <div class="Statistics-box-main">
+                <table id="LotteryUnOpen">
+                  <tbody><tr>
+                    <td>项目</td>
+                    <td>累积期数</td>
+                  </tr><tr>
+                      <td>
+                        冠军 - 红
+                        </td>
+                      <td>4&nbsp;期</td>
+                    </tr><tr>
+                      <td>
+                        冠军 - 绿
+                        </td>
+                      <td>5&nbsp;期</td>
+                    </tr><tr>
+                      <td>
+                        亚军 - 红
+                        </td>
+                      <td>2&nbsp;期</td>
+                    </tr><tr>
+                      <td>
+                        亚军 - 蓝
+                        </td>
+                      <td>4&nbsp;期</td>
+                    </tr><tr>
+                      <td>
+                        冠亚季军 - 红绿蓝
+                        </td>
+                      <td>8&nbsp;期</td>
+                    </tr><tr>
+                      <td>
+                        冠亚季军 - 绿红蓝
+                        </td>
+                      <td>5&nbsp;期</td>
+                    </tr><tr>
+                      <td>
+                        冠亚季军 - 蓝红绿
+                        </td>
+                      <td>2&nbsp;期</td>
+                    </tr><tr>
+                      <td>
+                        冠亚季军 - 红蓝绿
+                        </td>
+                      <td>4&nbsp;期</td>
+                    </tr><tr>
+                      <td>
+                        冠亚季军 - 绿蓝红
+                        </td>
+                      <td>7&nbsp;期</td>
+                    </tr></tbody></table>
+              </div>
+            </div>
+      
+      
+            
+            <script>
+              var openList = {
+                "TZ_E0": '单',
+                "TZ_E1": '双',
+                "TZ_S0": '左',
+                "TZ_S1": '右',
+                "TZ_L3": '3',
+                "TZ_L4": '4',
+                "TZ_T03": '单3',
+                "TZ_T13": '双3',
+                "TZ_T04": '单4',
+                "TZ_T14": '双4',
+              };
+              function getList() {
+                $.ajax({
+                  url: `${config.url}/Lottery/LadderBet/GetLadderBetTotal`,
+                  type: "POST",
+                  data: false,
+                  async: true,
+                  crossDomain: true, //设置跨域为true
+                  xhrFields: {
+                     withCredentials: true //默认情况下，标准的跨域请求是不会发送cookie的
+                  },
+                  error: function (xhr) {
+                  },
+                  success: function (rt) {
+                      console.log(rt)
+                    $('.bg_masks').hide()
+                    $('#LotteryOpen > tbody').html('').append(`<tr>
+                    <td>项目</td>
+                    <td>累积期数</td>
+                  </tr>`);
+                    $('#LotteryUnOpen > tbody').html('').append(`<tr>
+                    <td>项目</td>
+                    <td>累积期数</td>
+                  </tr>`);
+                    $('.last-period').eq(0).html(rt.issueCode);
+                    $('.last-period').eq(1).html(rt.issueCode)
+                    let list = rt.Items;
+                    let openLo = list.filter(item => {
+                      return item.GetOrLose
+                    });
+                    let noLo = list.filter(item => {
+                      return !item.GetOrLose
+                    });
+      
+                    for (let i = 0; i < openLo.length; i++) {
+                      $('#LotteryOpen > tbody').append(`<tr>
+                      <td>
+                        ${openList[openLo[i].ItemName]}
+                        </td>
+                      <td>${openLo[i].TotalCount}&nbsp;期</td>
+                    </tr>`)
+                    };
+                    for (let i = 0; i < noLo.length; i++) {
+                      $('#LotteryUnOpen > tbody').append(`<tr>
+                      <td>
+                        ${openList[noLo[i].ItemName]}
+                        </td>
+                      <td>${noLo[i].TotalCount}&nbsp;期</td>
+                    </tr>`)
+                    }
+                  }
+                });
+              };
+      
+              $('.refresh-btn-s').click(function () {
+                $('.bg_masks').show()
+                getList()
+              })
+      
+              getList()
+      
+            </script></div></div></div></div></div></div>
+</body>
+</html>

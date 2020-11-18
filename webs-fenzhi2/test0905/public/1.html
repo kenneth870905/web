@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <br>
+    账号：
+    <input type="text" value="xxx0224" id="userName">
+    <br>
+    密码：
+    <input type="text" value="1q2w3e" id="password">
+    <br>
+    随机数：
+    <input type="text" id="random" style="width: 300px;">
+    <br>
+    <button id="btn1">生成</button>
+    <div id="jieguo">
+
+    </div>
+    <!-- <script src="https://raw.githubusercontent.com/blueimp/JavaScript-MD5/master/js/md5.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="md5.js"></script>
+    <script>
+        document.getElementById('random').value="dafacloud_" + Math.random()
+
+        // 字符串转base64
+        function encode(str) {
+            // 对字符串进行编码
+            var encode = encodeURI(str);
+            // 对编码的字符串转化base64
+            var base64 = btoa(encode);
+            return base64;
+        }
+
+        // base64转字符串
+        // function decode(base64) {
+        //     // 对base64转编码
+        //     var decode = atob(base64);
+        //     // 编码转字符串
+        //     var str = decodeURI(decode);
+        //     return str;
+        // }
+
+        document.getElementById('btn1').onclick=function(){
+            var userName = document.getElementById('userName').value;       // xxx0224
+            var password = document.getElementById('password').value        // 1q2w3e
+            // 第一步
+            var 随机数 = document.getElementById('random').value             
+            
+            var random = encode(随机数)
+                password = md5(md5(userName + md5(password)) + 随机数);
+
+            var obj={
+                userName:userName,
+                password:password,
+                random:random
+            }
+            document.getElementById('jieguo').innerText = JSON.stringify(obj)
+
+            // console.log(decode(random))
+        }
+
+        
+
+
+    </script>
+</body>
+</html>

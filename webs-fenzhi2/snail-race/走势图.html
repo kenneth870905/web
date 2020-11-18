@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>走势图</title>
+  <link href="./css/zoushitu.css" rel="stylesheet">
+
+</head>
+
+<body class="trend-body">
+  <div id="Vue" style="position:absolute;width:100%;height:100%;">
+    <div id="OpenLottery_history" style="height: 100%; position: relative;">
+      <div class="common_form">
+        <div class="lottery_top">
+          <div class="order_left">
+            彩 类 :
+            <!-- <select name="GameID" style="width:auto;padding-right: 20px;">
+              <option value="23" data-game_type="8">蜗牛赛跑</option>
+            </select> -->
+            <span>蜗牛赛跑</span>
+          </div>
+          <div class="order_left" id="trend_type_div">
+            走势类别 :
+            <!-- <select name="trend_type" style="width:auto;padding-right: 20px;">
+              <option value="basic">基本走势图</option>
+            </select> -->
+            <span>基本走势图</span>
+          </div>
+          <div class="order_left" id="trend_periods">
+            选择期数：
+            <select name="periods_number" style="width:auto;padding-right: 20px;">
+
+              <option value="30">30 期</option>
+              <option value="50">50 期</option>
+              <option value="100">100 期</option>
+            </select>
+          </div>
+          <div class="order_left" id="other_select"></div>
+          <div class="record_right">
+            <div class="order_search" id="GoSelect" @click="GoSelect">走势图查询</div>
+          </div>
+        </div>
+        <div class="lottery_dep">
+          <span id="game_name">蜗牛赛跑</span>
+          <span id="select_condition"> － 基本走势图 － 期数：30</span>
+          <div class="ChooseLocation"><span class="active">冠军</span>｜<span>亚军</span>｜<span>季军</span></div>
+        </div>
+        <div id="LotteryListDiv" style="position:relative;">
+          <table width="100%">
+            <tbody>
+              <tr class="record_dep_nav">
+                <th class="lottery_dep_nav_menu" width="110">期数</th>
+                <th class="lottery_dep_nav_menu" id="open_lottery_th" width="160">开奖号码</th>
+                <th class="lottery_dep_nav_menu" id="lotter_number_title">
+                  <table class="fiveunit" style="width: 100%;">
+                    <tbody>
+                      <tr>
+                        <th class="lottery_dep_nav_menu spanTitle" colspan="3">冠军走势</th>
+                      </tr>
+                      <tr>
+                        <th class="lottery_dep_nav_menu" style="width: 33.3333%;">红</th>
+                        <th class="lottery_dep_nav_menu" style="width: 33.3333%; border-right: none;">绿</th>
+                        <th class="lottery_dep_nav_menu" style="width: 33.3333%; border-right: none;padding-right: 18px;">蓝</th>
+                      </tr>
+                    </tbody>
+                  </table>
+                </th>
+                <!-- <th width="150" class="lottery_dep_nav_menu ReturnList">
+                  <table width="100%" class="fiveunit">
+                    <tbody>
+                      <tr>
+                        <th colspan="3" class="lottery_dep_nav_menu">回摆</th>
+                      </tr>
+                      <tr>
+                        <th width="33%" class="lottery_dep_nav_menu">反向</th>
+                        <th width="33%" class="lottery_dep_nav_menu">重号</th>
+                        <th width="33%" class="lottery_dep_nav_menu last">正向</th>
+                      </tr>
+                    </tbody>
+                  </table>
+                </th> -->
+
+              </tr>
+            </tbody>
+          </table>
+          <canvas id="canvas"></canvas>
+          <div class="scroll-wrapper lottery_scorllbar" id="Vue" style="position: relative; height: 579px;">
+            <div class="lottery_scorllbar scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 579px;">
+              <table class="record_dep_main" id="lottery_list" width="100%">
+                <tbody>
+                  <tr class="order_dep_list" v-for="(item,index) in list">
+                    <td class="record_dep_list_txt" style="width: 110px;">{{item.IssueCode}}</td>
+                    <td class="record_dep_list_txt" style="width: 160px;">
+                      {{number_Arr[item.Content.replace(/\|/g, ',').split('')[0]]}},
+                      {{number_Arr[item.Content.replace(/\|/g, ',').split('')[2]]}},
+                      {{number_Arr[item.Content.replace(/\|/g, ',').split('')[4]]}}
+                    </td>
+                    <td class="record_dep_list_txt">
+                      <table style="width: 100%;">
+                        <tbody>
+                          <tr v-if="tarNumber == 0">
+                            <td class="lottery_dep_nav_menu number_td" style="width: 33.3333%;">
+                              <!-- '<div class="ball red">红</div>' : '<div class="miss_ball">1</div>'} -->
+                              <!-- {{number_Arr[item.Content.replace(/\|/g, ',').split('')[0]] == '红' ? "<div class="ball red">红</div>" : ''}} -->
+                              <div class="ball red" v-if="number_Arr[item.Content.replace(/\|/g, ',').split('')[0]] == '红'">红</div>
+                              <div class="miss_ball" v-else>{{item.obj.list[0].累计1}}</div>
+                            </td>
+                            <td class="lottery_dep_nav_menu number_td" style="width: 34.3333%;">
+                              <div class="ball green" v-if="number_Arr[item.Content.replace(/\|/g, ',').split('')[0]] == '绿'">绿</div>
+                              <div class="miss_ball" v-else>{{item.obj.list[0].累计2}}</div>
+                            </td>
+                            <td class="lottery_dep_nav_menu number_td" style="width: 34.3333%;">
+                              <div class="ball blue" v-if="number_Arr[item.Content.replace(/\|/g, ',').split('')[0]] == '蓝'">蓝 </div>
+                              <div class="miss_ball" v-else>{{item.obj.list[0].累计3}}</div>
+                            </td>
+                          </tr>
+
+                          <tr v-if="tarNumber == 1">
+                            <td class="lottery_dep_nav_menu number_td" style="width: 33.3333%;">
+                              <!-- '<div class="ball red">红</div>' : '<div class="miss_ball">1</div>'} -->
+                              <!-- {{number_Arr[item.Content.replace(/\|/g, ',').split('')[0]] == '红' ? "<div class="ball red">红</div>" : ''}} -->
+                              <div class="ball red" v-if="number_Arr[item.Content.replace(/\|/g, ',').split('')[2]] == '红'">红</div>
+                              <div class="miss_ball" v-else>{{item.obj.list[0].累计1}}</div>
+                            </td>
+                            <td class="lottery_dep_nav_menu number_td" style="width: 33.3333%;">
+                              <div class="ball green" v-if="number_Arr[item.Content.replace(/\|/g, ',').split('')[2]] == '绿'">绿</div>
+                              <div class="miss_ball" v-else>{{item.obj.list[0].累计2}}</div>
+                            </td>
+                            <td class="lottery_dep_nav_menu number_td" style="width: 33.3333%;">
+                              <div class="ball blue" v-if="number_Arr[item.Content.replace(/\|/g, ',').split('')[2]] == '蓝'">蓝</div>
+                              <div class="miss_ball" v-else>{{item.obj.list[0].累计3}}</div>
+                            </td>
+                          </tr>
+
+                          <tr v-if="tarNumber == 2">
+                            <td class="lottery_dep_nav_menu number_td" style="width: 33.3333%;">
+                              <!-- '<div class="ball red">红</div>' : '<div class="miss_ball">1</div>'} -->
+                              <!-- {{number_Arr[item.Content.replace(/\|/g, ',').split('')[0]] == '红' ? "<div class="ball red">红</div>" : ''}} -->
+                              <div class="ball red" v-if="number_Arr[item.Content.replace(/\|/g, ',').split('')[4]] == '红'">红</div>
+                              <div class="miss_ball" v-else>{{item.obj.list[0].累计1}}</div>
+                            </td>
+                            <td class="lottery_dep_nav_menu number_td" style="width: 33.3333%;">
+                              <div class="ball green" v-if="number_Arr[item.Content.replace(/\|/g, ',').split('')[4]] == '绿'">绿</div>
+                              <div class="miss_ball" v-else>{{item.obj.list[0].累计2}}</div>
+                            </td>
+                            <td class="lottery_dep_nav_menu number_td" style="width: 33.3333%;">
+                              <div class="ball blue" v-if="number_Arr[item.Content.replace(/\|/g, ',').split('')[4]] == '蓝'">蓝</div>
+                              <div class="miss_ball" v-else>{{item.obj.list[0].累计3}}</div>
+                            </td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+                    </td>
+                    <!-- <td class="record_dep_list_txt" style="width: 150px;">
+                      <table style="width: 100%;">
+                        <tbody>
+                          <tr>
+                            <td class="lottery_dep_nav_menu" style="width: 33%;">
+                              <div class="miss_ball">1</div>
+                            </td>
+                            <td class="lottery_dep_nav_menu" style="width: 33%;">
+                              <div class="miss_ball">2</div>
+                            </td>
+                            <td class="lottery_dep_nav_menu" style="width: 33%;">
+                              <div class="shenblue">正</div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                    <td class="record_dep_nav_menu last" style="width: 15px;">&nbsp;</td> -->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+          <table class="trend-statistics" width="100%">
+
+            <tbody>
+              <tr class="record_dep_nav" style="height: auto;">
+                <th class="lottery_dep_nav_menu SumStr" width="270">
+                  <table class="fiveunit" width="100%">
+                    <tbody>
+                      <tr>
+                        <th class="lottery_dep_nav_menu " style="text-align:right;padding-right:10px;">总次数</th>
+                      </tr>
+                      <tr>
+                        <th class="lottery_dep_nav_menu" style="text-align:right;padding-right:10px;">最大遗漏</th>
+                      </tr>
+                    </tbody>
+                  </table>
+                </th>
+                <th class="lottery_dep_nav_menu" id="lotter_number_fotter">
+                  <table class="fiveunit" id="footer_table" style="width: 100%;">
+                    <tbody>
+                      <tr>
+                        <th class="lottery_dep_nav_menu red-total" style="width: 33.3333%;"></th>
+                        <th class="lottery_dep_nav_menu green-total" style="width: 33.3333%;"></th>
+                        <th class="lottery_dep_nav_menu blue-total" style="width: 33.3333%;"></th>
+                      </tr>
+                      <tr>
+                        <th class="lottery_dep_nav_menu" style="width: 33.3333%;">{{arrSort1}}</th>
+                        <th class="lottery_dep_nav_menu" style="width: 33.3333%;">{{arrSort2}}</th>
+                        <th class="lottery_dep_nav_menu" style="width: 33.3333%;">{{arrSort3}}</th>
+                      </tr>
+                    </tbody>
+                  </table>
+                </th>
+                <!-- <th width="150" class="lottery_dep_nav_menu ReturnList">
+                  <table width="100%" class="fiveunit">
+                    <tbody>
+                      <tr>
+                        <th style="width:33%" id="total_reverse" class="lottery_dep_nav_menu">9</th>
+                        <th style="width:33%" id="total_repeat" class="lottery_dep_nav_menu">10</th>
+                        <th style="width:33%" id="total_forward" class="lottery_dep_nav_menu last">10</th>
+                      </tr>
+                      <tr>
+                        <th style="width:33%" id="miss_reverse" class="lottery_dep_nav_menu">5</th>
+                        <th style="width:33%" id="miss_repeat" class="lottery_dep_nav_menu">6</th>
+                        <th style="width:33%" id="miss_forward" class="lottery_dep_nav_menu last">6</th>
+                      </tr>
+                    </tbody>
+                  </table>
+                </th> -->
+
+                <th class="lottery_dep_nav_menu last" width="15">&nbsp;</th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="NotDevelop">
+        </div>
+      </div>
+      <div class="bg_mask" v-if="mask"></div>
+    </div>
+  </div>
+
+
+</body>
+<script src="./js/jquery-3.1.0.min.js"></script>
+<script src="./webConfig/config.js"></script>
+<script src="./js/vue.js"></script>
+<script>
+
+
+
+  function canvas() {
+    let canList = []
+    console.log(canList)
+    var ballAll = $('.ball')
+    for (let i = 0; i < ballAll.length; i++) {
+      canList.push({
+        left: ballAll[i].offsetLeft + 15,
+        top: ballAll[i].offsetTop + 15
+      })
+    }
+    let table = $('#lottery_list')
+    let cvs = document.querySelector('canvas')
+    cvs.style.position = 'absolute'
+    cvs.style.left = 0 + 'px'
+    cvs.style.top = 0 + 'px'
+    cvs.width = table[0].scrollWidth    // 获取表格的宽并用来确定画布的宽度
+    cvs.height = table[0].scrollHeight         // 表格的高度等同画布高度
+    let cxt = cvs.getContext('2d')
+    cxt.strokeStyle = 'red'
+    cxt.moveTo(canList[0].left, canList[0].top)
+    for (let i = 0; i < canList.length; i++) {         // 循环上面的数组，绘制绘画的点位
+      cxt.lineTo(canList[i].left, canList[i].top)
+    }
+    cxt.stroke()
+    table.append(cvs)
+  }
+
+
+
+  window.onresize = function () {
+    canvas()
+  }
+
+  new Vue({
+    el: '#Vue',
+    data() {
+      return {
+        number_Arr: [null, '红', '绿', '蓝'],
+        list: [],
+        arrSort1: '',
+        arrSort2: '',
+        arrSort3: '',
+        累计1: 0,
+        累计2: 0,
+        累计3: 0,
+        tarNumber: 0,
+        mask: false
+      }
+    },
+    methods: {
+      numberList() {
+        this.list = []
+        this.累计1 = this.累计2 = this.累计3 = 0
+        this.arrSort1 = this.arrSort2 = this.arrSort3 = false
+        $('#select_condition').html(` － 基本走势图 － 期数：${$('select[name="periods_number"]').val()}`)
+        $.ajax({
+          method: 'POST',
+          url: `${config.baseUrl}/Lottery/SnailBet/GetSanilBetContinuResult`,
+          data: {
+            rows: $('select[name="periods_number"]').val()
+          },
+          success: x => {
+            this.mask = false
+            this.list = x
+            for (let i = this.list.length - 1; i >= 0; i--) {
+              var obj = {}
+              var 开奖号 = this.list[i].Content.split('|')
+              obj.开奖号 = 开奖号
+              obj.list = []
+              if (obj.开奖号[this.tarNumber] == 1) {
+                this.累计1 = 0
+              } else {
+                this.累计1++
+              }
+              if (obj.开奖号[this.tarNumber] == 2) {
+                this.累计2 = 0
+              } else {
+                this.累计2++
+              }
+              if (obj.开奖号[this.tarNumber] == 3) {
+                this.累计3 = 0
+              } else {
+                this.累计3++
+              }
+              obj.list.push({
+                累计1: this.累计1,
+                累计2: this.累计2,
+                累计3: this.累计3,
+              })
+              this.list[i].obj = obj
+            }
+            this.arrSort1 = Math.max.apply(Math, this.list.map(function (o) { return o.obj.list[0].累计1 }))
+            this.arrSort2 = Math.max.apply(Math, this.list.map(function (o) { return o.obj.list[0].累计2 }))
+            this.arrSort3 = Math.max.apply(Math, this.list.map(function (o) { return o.obj.list[0].累计3 }))
+            this.$nextTick(() => {
+              canvas()
+              $('.red-total').html($('.ball.red').length)
+              $('.green-total').html($('.ball.green').length)
+              $('.blue-total').html($('.ball.blue').length)
+            })
+          },
+          error: x => {
+            console.log(x)
+          }
+        })
+      },
+      GoSelect() {
+        this.mask = true
+        this.numberList()
+      },
+      changeSpan() {
+        var _this = this
+        $('.ChooseLocation span').click(function () {
+          _this.mask = true
+
+          $('.ChooseLocation span').removeClass('active');
+          $(this).addClass('active')
+          if (this.innerHTML == '冠军') {
+            $('#lottery_list > tbody').html('')
+            $('.lottery_dep_nav_menu.spanTitle').html('冠军走势')
+            _this.tarNumber = 0
+            _this.numberList()
+          } else if (this.innerHTML == '亚军') {
+            _this.mask = true
+            $('#lottery_list > tbody').html('')
+            $('.lottery_dep_nav_menu.spanTitle').html('亚军走势')
+            _this.tarNumber = 1
+            _this.numberList()
+          } else {
+            _this.mask = true
+            $('#lottery_list > tbody').html('')
+            $('.lottery_dep_nav_menu.spanTitle').html('季军走势')
+            _this.tarNumber = 2
+            _this.numberList()
+          }
+        });
+      }
+    },
+    mounted() {
+      this.mask = true
+      this.numberList();
+      this.changeSpan()
+    },
+  })
+
+
+</script>
+
+</html>

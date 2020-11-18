@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>淘猫猫</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="../plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <style>
+        .img1 {
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+        }
+
+        .table td,
+        .table th {
+            vertical-align: middle;
+        }
+
+        .tbodyList tr td:nth-child(4),
+        .tbodyList tr td:nth-child(5) {
+            width: 100px;
+        }
+
+        .img2 {
+            margin: 0px auto;
+            width: 250px;
+            height: 250px;
+            border: 1px solid #ccc;
+            position: relative;
+            cursor: pointer;
+            border-radius: 100%;
+        }
+
+        .img2 img {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            object-fit: cover;
+        }
+
+        .img2:empty:before {
+            content: '点击选择图片';
+            color: gray;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+            </ul>
+
+        </nav>
+        <!-- /.navbar -->
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="../index.html" class="brand-link">
+                <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                    style="opacity: .8">
+                <span class="brand-text font-weight-light">淘猫猫</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="personalCenter.html" class="d-block 用户名"></a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    基础设置
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="slideshow.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>顶部轮播图</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="bzjs.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>首页保障简介</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="project.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>服务项目</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="centre/HomeVideo.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>首页视频</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Add icons to the links using the .nav-icon class
+                            with font-awesome or any other icon font library -->
+                        <li class="nav-item has-treeview menu-open">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    幼猫管理
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="KittenType.html" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>幼猫类型</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="Kitten.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>幼猫</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="CatCafes.html" class="nav-link">
+                                <!-- <i class="nav-icon fas fa-edit"></i> -->
+                                <i class="nav-icon far fa-image"></i>
+                                <p class="text">猫咖</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="SafeGuard.html" class="nav-link">
+                                <!-- <i class="nav-icon fas fa-edit"></i> -->
+                                <i class="nav-icon far fa-image"></i>
+                                <p class="text">保障</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Shop.html" class="nav-link">
+                                <!-- <i class="nav-icon fas fa-edit"></i> -->
+                                <i class="nav-icon fas fa-book"></i>
+                                <p class="text">体验馆</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="About.html" class="nav-link">
+                                <!-- <i class="nav-icon fas fa-edit"></i> -->
+                                <i class="nav-icon fas fa-book"></i>
+                                <p class="text">关于我们</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    百科/新闻
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="BaikeType.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>百科类型</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="Baike.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>百科文章</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="javascript:;" class="nav-link 退出">
+                                <!-- <i class="nav-icon fas fa-edit"></i> -->
+                                <i class="nav-icon far fa-edit text-danger"></i>
+                                <p class="text">安全退出</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark">幼猫类型</h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active">幼猫类型</li>
+                            </ol>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="card">
+                        <div class="card-header">
+                            <!-- <h3 class="card-title"></h3> -->
+                            <button type="button" class="addbtn float-right btn btn-primary btn-xs">添加类型</button>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 10px">#</th>
+                                        <th>图片</th>
+                                        <th>名称</th>
+                                        <th>猫咪数量</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tbodyList">
+                                    <!-- <tr>
+                                        <td>1.</td>
+                                        <td>
+                                            <img class="img1"
+                                                src="http://tmmkf.com/data/upload/image/201905/5e8b53eecc879157b558edf86c0407d9.jpg"
+                                                alt="">
+                                        </td>
+                                        <td>
+                                            咖啡毛
+                                        </td>
+                                        <td>1</td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary btn-xs">修改</button>
+                                            <button type="button" class="btn btn-danger btn-xs">删除</button>
+                                        </td>
+                                    </tr> -->
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                        <!-- <div class="card-footer clearfix">
+                            <ul class="pagination pagination-sm m-0 float-right">
+                                <li class="page-item"><a class="page-link" href="#">«</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">»</a></li>
+                            </ul>
+                        </div> -->
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer clearfix">
+            <strong></strong>
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Version</b> 1.0
+            </div>
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+
+    <div class="modal fade" id="addType" tabindex="1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title title1">添加</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">类型名称</label>
+                        <input type="text" class="typeName form-control" placeholder="请输入名称">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">封面图</label>
+                        <div class="img2"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="button" class="sub btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="tishi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">提示</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body tishi1">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="shanchuTk" tabindex="1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title title1">提示</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    确定删除？
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="button" class="queding1 btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="file_box">
+        <input type="file" accept="image/*">
+    </div>
+
+    <!-- jQuery -->
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="../plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="../plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    <script src="../plugins/sparklines/sparkline.js"></script>
+    <!-- JQVMap -->
+    <script src="../plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="../plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="../plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="../plugins/moment/moment.min.js"></script>
+    <script src="../plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="../plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <!-- <script src="../dist/js/pages/dashboard.js"></script> -->
+    <!-- AdminLTE for demo purposes -->
+    <script src="../dist/js/demo.js"></script>
+    <script src="../config.js"></script>
+    <script>
+        $('.退出').click(function () {
+            var tmmUser = JSON.parse(localStorage.tmmUser);
+            var token = tmmUser.token
+            $.ajax({
+                type: "post",
+                url: api_url + "/tmm/public/index.php/user/out",
+                // data: JSON.stringify(obj) ,
+                headers: {
+                    Authorization: 'bearer ' + token
+                },
+                dataType: "json",
+                // contentType:'application/json',
+                success: function (response) {
+                    console.log(response)
+                    location.href = '../login.html'
+                },
+                error(err) {
+                    location.href = '../login.html'
+                    console.log(err)
+                }
+            });
+        })
+        
+        function setUser() {
+            var tmmUser = ''
+            try {
+                tmmUser = JSON.parse(localStorage.tmmUser);
+            } catch (error) {
+                return
+            }
+            $('.用户名').html(tmmUser.nickname ? tmmUser.nickname : '点击进入个人中心')
+            if(tmmUser.portrait){
+                $('.user-panel .image').html('<img style="width: 33px;height: 33px;" src="'+api_url+'/tmm/public/storage/'+tmmUser.portrait+'" alt="User Image" class="img-circle elevation-2">')
+            }
+        }
+        setUser();
+
+        // 验证token
+        function yanzheng() {
+            var tmmUser = ''
+            try {
+                tmmUser = JSON.parse(localStorage.tmmUser);
+            } catch (error) {
+                location.href = '../login.html'
+                return
+            }
+            var token = tmmUser.token
+            $.ajax({
+                type: "post",
+                headers: {
+                    Authorization: 'bearer ' + token
+                },
+                url: api_url + "/tmm/public/index.php/user/yanzheng",
+                data: "data",
+                dataType: "json",
+                success: function (response) {
+                    if (response.code != 1) {
+                        location.href = '../login.html'
+                    }
+                },
+                error(err) {
+                    location.href = '../login.html'
+                }
+            });
+        }
+        yanzheng()
+        
+        var list = [];
+        function chaxun() {
+            $.post(api_url + "/tmm/public/index.php/kitten/selectList", '', function (data, textStatus, jqXHR) {
+                console.log(data)
+                if(data.code!=1){
+                    return
+                }
+                list = data.data;
+                var html = ''
+                for (let index = 0; index < list.length; index++) {
+                    html+=` <tr>
+                                <td>${list[index].id}</td>
+                                <td>
+                                    <img class="img1" src="${api_url}/tmm/public/storage/${list[index].imgUrl}" alt="">
+                                </td>
+                                <td>${list[index].name}</td>
+                                <td>--</td>
+                                <td>
+                                    <button type="button"  class="xiugai btn btn-primary btn-xs">修改</button>
+                                    <button type="button"  class="shanchu btn btn-danger btn-xs">删除</button>
+                                </td> 
+                            </tr>`
+                }
+                $('.tbodyList').html(html)
+
+            }, "json").catch(function (err) {
+                console.log(err)
+            });
+        }
+        chaxun()
+
+        // 添加
+        var addimg = '';
+        var updateIndex = ''
+        // $('#addType').modal({show:true})
+        var type = 1 //1添加2修改
+        $('.addbtn').click(function () {
+            type = 1
+            var addimg = '';
+            $('.title1').html('添加')
+            $('.img2').html('')
+            $('.typeName').val('')
+            $('#addType').modal({ show: true })
+        })
+
+        $('.img2').click(function () {
+            $('.file_box').html('<input type="file" accept="image/*">');
+            $('.file_box').find('input').click()
+        })
+
+        $('.file_box').on('change', 'input', function () {
+            var file = $(this)[0].files[0]
+            var reader = new FileReader();
+            if (file) {
+                //通过文件流将文件转换成Base64字符串
+                reader.readAsDataURL(file);
+                //转换成功后
+                reader.onloadend = function () {
+                    // preview.src = reader.result;
+                    //输出结果    
+                    addimg = reader.result
+                    $('.img2').html('<img src="' + reader.result + '" alt="">')
+                    // document.getElementById("showText").value = reader.result;
+                }
+            }
+        })
+
+        function add(){
+            var typeName = $('.typeName').val();
+            if (!typeName) {
+                $('.tishi1').html('请输入名称')
+                $('#tishi').modal('show')
+                return
+            } else if (!addimg) {
+                $('.tishi1').html('请选择图片')
+                $('#tishi').modal('show')
+                return
+            }
+            var formData = new FormData()
+            formData.append('image', $('.file_box input')[0].files[0])
+            formData.append('name', typeName)
+            $.ajax({
+                type: "post",
+                url: api_url + "/tmm/public/index.php/kitten/addKittenType",
+                data: formData,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+                success: function (response) {
+                    if (response.code == 1) {
+                        $('#addType').modal('hide')
+                        $('.tishi1').html('添加成功')
+                        $('#tishi').modal('show')
+                    } else {
+                        $('.tishi1').html('添加失败请联系管理员')
+                        $('#tishi').modal('show')
+                    }
+                    chaxun()
+                },
+                error: function (err) {
+                    console.log(err)
+                    $('.tishi1').html('添加失败请联系管理员')
+                    $('#tishi').modal('show')
+                }
+            });
+        }
+
+        function xiugai(){
+            var typeName = $('.typeName').val();
+            var formData = new FormData()
+                formData.append('name', typeName)
+                formData.append('id',list[updateIndex].id)
+            if(addimg){
+                formData.append('image', $('.file_box input')[0].files[0])
+            }
+            $.ajax({
+                type: "post",
+                url: api_url + "/tmm/public/index.php/kitten/update",
+                data: formData,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+                success: function (response) {
+                    if (response.code == 1) {
+                        $('#addType').modal('hide')
+                        $('.tishi1').html('修改成功')
+                        $('#tishi').modal('show')
+                    } else {
+                        $('.tishi1').html('修改失败请联系管理员')
+                        $('#tishi').modal('show')
+                    }
+                    chaxun()
+                },
+                error: function (err) {
+                    console.log(err)
+                    $('.tishi1').html('修改失败请联系管理员')
+                    $('#tishi').modal('show')
+                }
+            });
+            
+        }
+        $('.sub').click(function () {
+            if(type==1){
+                add()
+            }else{
+                xiugai()
+            }
+        })
+        
+        // 修改
+        $('.tbodyList').on('click','.xiugai',function(){
+            type = 2
+            var i = $(this).parents('tr').index()
+            updateIndex = i 
+            addimg = '';
+            $('.title1').html('修改')
+            $('.img2').html('<img src="' +api_url+'/tmm/public/storage/' + list[i].imgUrl + '">')
+            $('.typeName').val(list[i].name)
+            $('#addType').modal({ show: true })
+            console.log(list[i])
+        })
+
+        var deleteIndex = ''
+        $('.tbodyList').on('click','.shanchu',function(){
+            deleteIndex = $(this).parents('tr').index()
+            $('#shanchuTk').modal('show');
+        })
+        $('.queding1').click(function(){
+            $('#shanchuTk').modal('hide');
+            console.log(list[deleteIndex])
+            $.post(api_url+"/tmm/public/index.php/kitten/delete", {'id':list[deleteIndex].id},
+                function (data, textStatus, jqXHR) {
+                    if(data.code==1){
+                        $('.tishi1').html('删除成功')
+                        $('#tishi').modal('show')
+                        chaxun()
+                    }else{
+                        $('.tishi1').html('删除失败，请联系管理员')
+                        $('#tishi').modal('show')
+                    }
+                },
+                "json"
+            ).catch(function(){
+
+            });
+        })
+
+
+    </script>
+</body>
+
+</html>

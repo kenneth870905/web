@@ -1,0 +1,11 @@
+{
+  "index.html": {
+    "href": "index.html",
+    "resources": [
+      "js/mui.js",
+      "js/zepto.js"
+    ],
+    "refer": [],
+    "priority": 0
+  }
+}

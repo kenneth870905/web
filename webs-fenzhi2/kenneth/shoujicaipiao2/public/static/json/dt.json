@@ -1,0 +1,1159 @@
+{
+    "title": "DT电子",
+    "type": "DT",
+    "img": "dt",
+    "ext": ".png",
+    "children": [
+        {
+            "id": "dtdz",
+            "imgid": "0",
+            "title": "DT电子大厅"
+        },
+        {
+            "id": "dragonball",
+            "imgid": "dragonball",
+            "title": "赛亚烈战"
+        },
+        {
+            "id": "king5x25",
+            "imgid": "king5x25",
+            "title": "老子是皇帝"
+        },
+        {
+            "id": "genie",
+            "imgid": "genie",
+            "title": "阿拉丁愿望"
+        },
+        {
+            "id": "tombshadow",
+            "imgid": "tombshadow",
+            "title": "古潼京"
+        },
+        {
+            "id": "klnz5x20",
+            "imgid": "klnz5x20",
+            "title": "快乐农庄"
+        },
+        {
+            "id": "france",
+            "imgid": "france",
+            "title": "法兰西风情"
+        },
+        {
+            "id": "camgirl5x25",
+            "imgid": "camgirl5x25",
+            "title": "心动女主播"
+        },
+        {
+            "id": "rocknight",
+            "imgid": "rocknight",
+            "title": "摇滚之夜"
+        },
+        {
+            "id": "museum",
+            "imgid": "museum",
+            "title": "奇妙博物馆"
+        },
+        {
+            "id": "sgkill5x20",
+            "imgid": "sgkill5x20",
+            "title": "三国杀"
+        },
+        {
+            "id": "estate5x25",
+            "imgid": "estate5x25",
+            "title": "地产大亨"
+        },
+        {
+            "id": "casino",
+            "imgid": "casino",
+            "title": "3D老虎机"
+        },
+        {
+            "id": "onenight5x243",
+            "imgid": "onenight5x243",
+            "title": "兰桂坊"
+        },
+        {
+            "id": "fortuneNewYear5x25",
+            "imgid": "fortuneNewYear5x25",
+            "title": "财神过年"
+        },
+        {
+            "id": "legendary",
+            "imgid": "legendary",
+            "title": "荣耀风云"
+        },
+        {
+            "id": "train",
+            "imgid": "train",
+            "title": "寻宝之旅"
+        },
+        {
+            "id": "shokudo",
+            "imgid": "shokudo",
+            "title": "深夜食堂"
+        },
+        {
+            "id": "hotspot5x9",
+            "imgid": "hotspot5x9",
+            "title": "温泉物语"
+        },
+        {
+            "id": "galaxywars",
+            "imgid": "galaxywars",
+            "title": "银河战争"
+        },
+        {
+            "id": "dnp",
+            "imgid": "dnp",
+            "title": "龙凤呈祥"
+        },
+        {
+            "id": "bloodmoon",
+            "imgid": "bloodmoon",
+            "title": "血狼传说"
+        },
+        {
+            "id": "fourbeauty",
+            "imgid": "fourbeauty",
+            "title": "倾城四美"
+        },
+        {
+            "id": "crusader",
+            "imgid": "crusader",
+            "title": "圣战骑士"
+        },
+        {
+            "id": "dinosaur5x25",
+            "imgid": "dinosaur5x25",
+            "title": "恐龙世界"
+        },
+        {
+            "id": "naruto",
+            "imgid": "naruto",
+            "title": "NINJA"
+        },
+        {
+            "id": "cheekyemojis",
+            "imgid": "cheekyemojis",
+            "title": "魔性表情包"
+        },
+        {
+            "id": "crazy5x243",
+            "imgid": "crazy5x243",
+            "title": "疯狂转转转"
+        },
+        {
+            "id": "casinomagnates",
+            "imgid": "casinomagnates",
+            "title": "赌场大亨"
+        },
+        {
+            "id": "diceslot1x1",
+            "imgid": "diceslot1x1",
+            "title": "幸运数字"
+        },
+        {
+            "id": "dollmachine",
+            "imgid": "dollmachine",
+            "title": "3D娃娃机"
+        },
+        {
+            "id": "shopping5x243",
+            "imgid": "shopping5x243",
+            "title": "全民狂欢"
+        },
+        {
+            "id": "westwild",
+            "imgid": "westwild",
+            "title": "西部荒野"
+        },
+        {
+            "id": "doraemon3x5",
+            "imgid": "doraemon3x5",
+            "title": "哆啦A梦"
+        },
+        {
+            "id": "worldCup5x25",
+            "imgid": "worldCup5x25",
+            "title": "决战世界杯"
+        },
+        {
+            "id": "alchemist",
+            "imgid": "alchemist",
+            "title": "疯狂炼金师"
+        },
+        {
+            "id": "fourss",
+            "imgid": "fourss",
+            "title": "四圣兽"
+        },
+        {
+            "id": "vampire",
+            "imgid": "vampire",
+            "title": "夜影传说"
+        },
+        {
+            "id": "hiphop5x25",
+            "imgid": "hiphop5x25",
+            "title": "这就是！街舞"
+        },
+        {
+            "id": "perfectdet",
+            "imgid": "perfectdet",
+            "title": "全能侦探"
+        },
+        {
+            "id": "football",
+            "imgid": "football",
+            "title": "传奇之路"
+        },
+        {
+            "id": "pethouse",
+            "imgid": "pethouse",
+            "title": "萌宠小窝"
+        },
+        {
+            "id": "dessert5x20",
+            "imgid": "dessert5x20",
+            "title": "快乐甜品"
+        },
+        {
+            "id": "fantasyforest3x1",
+            "imgid": "fantasyforest3x1",
+            "title": "梦幻森林"
+        },
+        {
+            "id": "crossing",
+            "imgid": "crossing",
+            "title": "十字路口"
+        },
+        {
+            "id": "tlod",
+            "imgid": "tlod",
+            "title": "封神榜"
+        },
+        {
+            "id": "clash",
+            "imgid": "clash",
+            "title": "乱斗三国"
+        },
+        {
+            "id": "wrathofthor",
+            "imgid": "wrathofthor",
+            "title": "雷霆神域"
+        },
+        {
+            "id": "legendMir5x25",
+            "imgid": "legendMir5x25",
+            "title": "传奇霸业"
+        },
+        {
+            "id": "hotpot5x25",
+            "imgid": "hotpot5x25",
+            "title": "麻辣火锅"
+        },
+        {
+            "id": "wheel",
+            "imgid": "wheel",
+            "title": "秘境之轮"
+        },
+        {
+            "id": "sincity",
+            "imgid": "sincity",
+            "title": "罪恶都市"
+        },
+        {
+            "id": "lnd5x25",
+            "imgid": "lnd5x25",
+            "title": "谁是首富"
+        },
+        {
+            "id": "nightclub5x20",
+            "imgid": "nightclub5x20",
+            "title": "夜店之王"
+        },
+        {
+            "id": "icefire",
+            "imgid": "icefire",
+            "title": "冰火之歌"
+        },
+        {
+            "id": "magician",
+            "imgid": "magician",
+            "title": "大魔术师"
+        },
+        {
+            "id": "sd5",
+            "imgid": "sd5",
+            "title": "灌篮大师2"
+        },
+        {
+            "id": "piratetreasure",
+            "imgid": "piratetreasure",
+            "title": "海盗宝藏"
+        },
+        {
+            "id": "aladdin5x243",
+            "imgid": "aladdin5x243",
+            "title": "阿拉丁神灯"
+        },
+        {
+            "id": "sd",
+            "imgid": "sd",
+            "title": "灌篮大师"
+        },
+        {
+            "id": "watermargin5x25",
+            "imgid": "watermargin5x25",
+            "title": "水浒传"
+        },
+        {
+            "id": "easyrider",
+            "imgid": "easyrider",
+            "title": "逍遥骑士"
+        },
+        {
+            "id": "whitesnake",
+            "imgid": "whitesnake",
+            "title": "白蛇传"
+        },
+        {
+            "id": "san",
+            "imgid": "san",
+            "title": "赤壁之战"
+        },
+        {
+            "id": "xiyouji5x25",
+            "imgid": "xiyouji5x25",
+            "title": "西游记"
+        },
+        {
+            "id": "garden",
+            "imgid": "garden",
+            "title": "小小大花园"
+        },
+        {
+            "id": "whackamole",
+            "imgid": "whackamole",
+            "title": "地鼠嘎嘣脆"
+        },
+        {
+            "id": "tgow",
+            "imgid": "tgow",
+            "title": "财神到"
+        },
+        {
+            "id": "oceanpark5x50",
+            "imgid": "oceanpark5x50",
+            "title": "海洋游乐场"
+        },
+        {
+            "id": "jtw",
+            "imgid": "jtw",
+            "title": "西游降妖"
+        },
+        {
+            "id": "baseball",
+            "imgid": "baseball",
+            "title": "热血棒球"
+        },
+        {
+            "id": "streetdance5x25",
+            "imgid": "streetdance5x25",
+            "title": "街头劲舞"
+        },
+        {
+            "id": "secretdate",
+            "imgid": "secretdate",
+            "title": "秘密约会"
+        },
+        {
+            "id": "armorCrisis5x25",
+            "imgid": "armorCrisis5x25",
+            "title": "战甲危机"
+        },
+        {
+            "id": "magicbean",
+            "imgid": "magicbean",
+            "title": "魔豆传奇"
+        },
+        {
+            "id": "jungle",
+            "imgid": "jungle",
+            "title": "丛林探险"
+        },
+        {
+            "id": "fantasyforest",
+            "imgid": "fantasyforest",
+            "title": "精灵王国"
+        },
+        {
+            "id": "onepiece",
+            "imgid": "onepiece",
+            "title": "海盗无双"
+        },
+        {
+            "id": "bigred",
+            "imgid": "bigred",
+            "title": "满堂红"
+        },
+        {
+            "id": "wildchaser5x20",
+            "imgid": "wildchaser5x20",
+            "title": "荒野追捕"
+        },
+        {
+            "id": "mysticalstones",
+            "imgid": "mysticalstones",
+            "title": "巨石迷阵"
+        },
+        {
+            "id": "foryouth5x25",
+            "imgid": "foryouth5x25",
+            "title": "致青春"
+        },
+        {
+            "id": "boxingarena",
+            "imgid": "boxingarena",
+            "title": "铁拳擂台"
+        },
+        {
+            "id": "kof5x9",
+            "imgid": "kof5x9",
+            "title": "拳皇98"
+        },
+        {
+            "id": "hotpotfeast",
+            "imgid": "hotpotfeast",
+            "title": "火锅盛宴"
+        },
+        {
+            "id": "newyear",
+            "imgid": "newyear",
+            "title": "新年到"
+        },
+        {
+            "id": "greatgatsby",
+            "imgid": "greatgatsby",
+            "title": "大亨小传"
+        },
+        {
+            "id": "btball5x20",
+            "imgid": "btball5x20",
+            "title": "劲爆篮球"
+        },
+        {
+            "id": "superstar5x50",
+            "imgid": "superstar5x50",
+            "title": "时代巨星"
+        },
+        {
+            "id": "starburst",
+            "imgid": "starburst",
+            "title": "燃烧星球"
+        },
+        {
+            "id": "shogun",
+            "imgid": "shogun",
+            "title": "幕府风云"
+        },
+        {
+            "id": "fls",
+            "imgid": "fls",
+            "title": "福禄寿"
+        },
+        {
+            "id": "dash",
+            "imgid": "dash",
+            "title": "四驱英雄"
+        },
+        {
+            "id": "sq5x243",
+            "imgid": "sq5x243",
+            "title": "四驱大赛"
+        },
+        {
+            "id": "bacteria",
+            "imgid": "bacteria",
+            "title": "萌菌实验室"
+        },
+        {
+            "id": "egyptian",
+            "imgid": "egyptian",
+            "title": "埃及帝国"
+        },
+        {
+            "id": "bwzq5x25",
+            "imgid": "bwzq5x25",
+            "title": "比武招亲"
+        },
+        {
+            "id": "watermargin",
+            "imgid": "watermargin",
+            "title": "武松传"
+        },
+        {
+            "id": "bluesea",
+            "imgid": "bluesea",
+            "title": "深蓝海域"
+        },
+        {
+            "id": "cute5x50",
+            "imgid": "cute5x50",
+            "title": "守护萌主"
+        },
+        {
+            "id": "halloween",
+            "imgid": "halloween",
+            "title": "女巫派对"
+        },
+        {
+            "id": "goldjade5x50",
+            "imgid": "goldjade5x50",
+            "title": "金玉满堂"
+        },
+        {
+            "id": "circus",
+            "imgid": "circus",
+            "title": "疯狂马戏团"
+        },
+        {
+            "id": "legend5x25",
+            "imgid": "legend5x25",
+            "title": "王者传奇"
+        },
+        {
+            "id": "kof",
+            "imgid": "kof",
+            "title": "格斗之魂"
+        },
+        {
+            "id": "lovefighters",
+            "imgid": "lovefighters",
+            "title": "仙侠情缘"
+        },
+        {
+            "id": "rocket6x25",
+            "imgid": "rocket6x25",
+            "title": "喜气冲天"
+        },
+        {
+            "id": "sweethouse",
+            "imgid": "sweethouse",
+            "title": "甜蜜糖果屋"
+        },
+        {
+            "id": "hiphopman",
+            "imgid": "hiphopman",
+            "title": "嘻哈侠"
+        },
+        {
+            "id": "guhuozai",
+            "imgid": "guhuozai",
+            "title": "热血街头"
+        },
+        {
+            "id": "opera",
+            "imgid": "opera",
+            "title": "曲艺大秀场"
+        },
+        {
+            "id": "dragonball2",
+            "imgid": "dragonball2",
+            "title": "皇权天下"
+        },
+        {
+            "id": "xiaoxiaole7x50",
+            "imgid": "xiaoxiaole7x50",
+            "title": "DT消消乐"
+        },
+        {
+            "id": "crystal",
+            "imgid": "crystal",
+            "title": "英雄荣耀"
+        },
+        {
+            "id": "merryxmas",
+            "imgid": "merryxmas",
+            "title": "圣诞快乐"
+        },
+        {
+            "id": "zombie",
+            "imgid": "zombie",
+            "title": "丧尸来袭"
+        },
+        {
+            "id": "restaurant",
+            "imgid": "restaurant",
+            "title": "美味西餐厅"
+        },
+        {
+            "id": "bxgh5x25",
+            "imgid": "bxgh5x25",
+            "title": "八仙过海"
+        },
+        {
+            "id": "xjqy5x9",
+            "imgid": "xjqy5x9",
+            "title": "仙剑奇缘"
+        },
+        {
+            "id": "newyear5x25",
+            "imgid": "newyear5x25",
+            "title": "猪年大吉"
+        },
+        {
+            "id": "seiya",
+            "imgid": "seiya",
+            "title": "圣域传说"
+        },
+        {
+            "id": "bikini",
+            "imgid": "bikini",
+            "title": "比基尼派对"
+        }
+    ]
+},
+{
+    "title": "申博电子",
+    "type": "TG",
+    "img": "tgp",
+    "ext": ".png",
+    "children": [
+        {
+            "id": "lh",
+            "imgid": "0lh",
+            "title": "申博电子大厅"
+        },
+        {
+            "id": "Arcade_Bomb",
+            "imgid": "Arcade_Bomb",
+            "title": "水果大爆炸"
+        },
+        {
+            "id": "7971_Big_Rich_Fortune",
+            "imgid": "7971_Big_Rich_Fortune",
+            "title": "财神到"
+        },
+        {
+            "id": "Red_Phoenix_Rising",
+            "imgid": "Red_Phoenix_Rising",
+            "title": "凤凰涅槃"
+        },
+        {
+            "id": "Temple_Of_Gold",
+            "imgid": "Temple_Of_Gold",
+            "title": "金殿丽影"
+        },
+        {
+            "id": "The_Equalizer",
+            "imgid": "The_Equalizer",
+            "title": "劲爆迪斯科"
+        },
+        {
+            "id": "Pirates_Plenty",
+            "imgid": "Pirates_Plenty",
+            "title": "幽灵海盗"
+        },
+        {
+            "id": "7971_Rising_Phoenix",
+            "imgid": "7971_Rising_Phoenix",
+            "title": "凤凰崛起"
+        },
+        {
+            "id": "Persian_Fortune",
+            "imgid": "Persian_Fortune",
+            "title": "波斯宝藏"
+        },
+        {
+            "id": "Winter_Wonders",
+            "imgid": "Winter_Wonders",
+            "title": "精灵童话"
+        },
+        {
+            "id": "Gems_Gone_Wild",
+            "imgid": "Gems_Gone_Wild",
+            "title": "宝石暴走"
+        },
+        {
+            "id": "Chinese_Wilds",
+            "imgid": "Chinese_Wilds",
+            "title": "珍兽秘境"
+        },
+        {
+            "id": "7971_Gate_to_Gold",
+            "imgid": "7971_Gate_to_Gold",
+            "title": "跃金门"
+        },
+        {
+            "id": "Five_Star",
+            "imgid": "Five_Star",
+            "title": "幸运五星"
+        },
+        {
+            "id": "Macau_Racing",
+            "imgid": "Macau_Racing",
+            "title": "澳门赛车"
+        },
+        {
+            "id": "Totem_Lightning",
+            "imgid": "Totem_Lightning",
+            "title": "图腾的秘密"
+        },
+        {
+            "id": "Fruit_Blox",
+            "imgid": "Fruit_Blox",
+            "title": "水果宝藏"
+        },
+        {
+            "id": "Imperial_Palace",
+            "imgid": "Imperial_Palace",
+            "title": "甄妃传奇"
+        },
+        {
+            "id": "Laser_Fruit",
+            "imgid": "Laser_Fruit",
+            "title": "镭射水果"
+        },
+        {
+            "id": "Jade_Charms",
+            "imgid": "Jade_Charms",
+            "title": "珠光宝器"
+        },
+        {
+            "id": "Grand_Wheel",
+            "imgid": "Grand_Wheel",
+            "title": "幸运大转盘"
+        },
+        {
+            "id": "Thors_Lightning",
+            "imgid": "Thors_Lightning",
+            "title": "雷电之子"
+        },
+        {
+            "id": "Ninja_Ways",
+            "imgid": "Ninja_Ways",
+            "title": "忍者传奇"
+        },
+        {
+            "id": "Golden_Toad",
+            "imgid": "Golden_Toad",
+            "title": "富贵金蟾"
+        },
+        {
+            "id": "Fortune_House",
+            "imgid": "Fortune_House",
+            "title": "财富满屋"
+        },
+        {
+            "id": "Snow_Wild_and_the_7_Features",
+            "imgid": "Snow_Wild_and_the_7_Features",
+            "title": "白雪派对"
+        },
+        {
+            "id": "7971_Dragons_Legend",
+            "imgid": "7971_Dragons_Legend",
+            "title": "龙王"
+        },
+        {
+            "id": "Puss_N_Boots",
+            "imgid": "Puss_N_Boots",
+            "title": "靴猫剑客"
+        },
+        {
+            "id": "The_Greatest_Train_Robbery",
+            "imgid": "The_Greatest_Train_Robbery",
+            "title": "列车神偷"
+        },
+        {
+            "id": "Lucky_Valentine",
+            "imgid": "Lucky_Valentine",
+            "title": "甜蜜情人节"
+        },
+        {
+            "id": "Emerald_Diamond",
+            "imgid": "Emerald_Diamond",
+            "title": "绿钻风暴"
+        },
+        {
+            "id": "7971_FaFa_Babies",
+            "imgid": "7971_FaFa_Babies",
+            "title": "发发宝贝"
+        },
+        {
+            "id": "Fortune_Charm",
+            "imgid": "Fortune_Charm",
+            "title": "幸运宝箱"
+        },
+        {
+            "id": "Sumo_Spins",
+            "imgid": "Sumo_Spins",
+            "title": "相扑大赏"
+        },
+        {
+            "id": "Masquerade",
+            "imgid": "Masquerade",
+            "title": "假面舞会"
+        },
+        {
+            "id": "Tiki_Fruits",
+            "imgid": "Tiki_Fruits",
+            "title": "水果消消乐"
+        },
+        {
+            "id": "Wild_Nords",
+            "imgid": "Wild_Nords",
+            "title": "诺德英雄传"
+        },
+        {
+            "id": "Spin_Town",
+            "imgid": "Spin_Town",
+            "title": "疯狂小镇"
+        },
+        {
+            "id": "7971_Double_Dragon",
+            "imgid": "7971_Double_Dragon",
+            "title": "双龙共舞"
+        },
+        {
+            "id": "Jack_In_A_Pot",
+            "imgid": "Jack_In_A_Pot",
+            "title": "杰克的聚宝盆"
+        },
+        {
+            "id": "Gemtastic",
+            "imgid": "Gemtastic",
+            "title": "宝石记"
+        },
+        {
+            "id": "Ancient_Script",
+            "imgid": "Ancient_Script",
+            "title": "寻找法老"
+        },
+        {
+            "id": "Three_Musketeers",
+            "imgid": "Three_Musketeers",
+            "title": "三剑客"
+        },
+        {
+            "id": "Lucky_Fortune_Cat",
+            "imgid": "Lucky_Fortune_Cat",
+            "title": "招财猫"
+        },
+        {
+            "id": "Mayan_Gods",
+            "imgid": "Mayan_Gods",
+            "title": "玛雅时代"
+        },
+        {
+            "id": "Flaming_Fox",
+            "imgid": "Flaming_Fox",
+            "title": "火狐传说"
+        },
+        {
+            "id": "Golden_Offer",
+            "imgid": "Golden_Offer",
+            "title": "麒麟送宝"
+        },
+        {
+            "id": "Red_Diamond",
+            "imgid": "Red_Diamond",
+            "title": "红钻风暴"
+        },
+        {
+            "id": "Reel_Heist",
+            "imgid": "Reel_Heist",
+            "title": "追击劫匪"
+        },
+        {
+            "id": "Wild_Fight",
+            "imgid": "Wild_Fight",
+            "title": "功夫神话"
+        },
+        {
+            "id": "Ocean_Fortune",
+            "imgid": "Ocean_Fortune",
+            "title": "深海宝藏"
+        },
+        {
+            "id": "Wild_Spartans",
+            "imgid": "Wild_Spartans",
+            "title": "斯巴达勇士"
+        },
+        {
+            "id": "Treasure_Mine",
+            "imgid": "Treasure_Mine",
+            "title": "矿洞奇遇"
+        },
+        {
+            "id": "Esqueleto_Mariachi",
+            "imgid": "Esqueleto_Mariachi",
+            "title": "狂欢亡灵节"
+        },
+        {
+            "id": "Mystery_Reels",
+            "imgid": "Mystery_Reels",
+            "title": "神秘水果"
+        },
+        {
+            "id": "7971_Fortune_Festival",
+            "imgid": "7971_Fortune_Festival",
+            "title": "过大年"
+        },
+        {
+            "id": "Blue_Diamond",
+            "imgid": "Blue_Diamond",
+            "title": "蓝钻风暴"
+        },
+        {
+            "id": "Gold_Star",
+            "imgid": "Gold_Star",
+            "title": "摇滚星"
+        },
+        {
+            "id": "Rainbow_Jackpots",
+            "imgid": "Rainbow_Jackpots",
+            "title": "彩虹的祝福"
+        },
+        {
+            "id": "God_Of_Wealth",
+            "imgid": "God_Of_Wealth",
+            "title": "财神"
+        },
+        {
+            "id": "Golden_Lamps",
+            "imgid": "Golden_Lamps",
+            "title": "神灯之谜"
+        },
+        {
+            "id": "7971_Winning_Scroll",
+            "imgid": "7971_Winning_Scroll",
+            "title": "胜利卷轴"
+        },
+        {
+            "id": "Wild_Circus",
+            "imgid": "Wild_Circus",
+            "title": "疯狂马戏团"
+        },
+        {
+            "id": "Lucky_Easter",
+            "imgid": "Lucky_Easter",
+            "title": "兔子的彩蛋"
+        },
+        {
+            "id": "Rocket_Men",
+            "imgid": "Rocket_Men",
+            "title": "火箭对决"
+        },
+        {
+            "id": "Ten_Elements",
+            "imgid": "Ten_Elements",
+            "title": "妖神传说"
+        },
+        {
+            "id": "Asian_Fortune",
+            "imgid": "Asian_Fortune",
+            "title": "亚洲财富"
+        },
+        {
+            "id": "Wild_Wild_Chest",
+            "imgid": "Wild_Wild_Chest",
+            "title": "狂野西部诱惑"
+        },
+        {
+            "id": "Piggy_Pirates",
+            "imgid": "Piggy_Pirates",
+            "title": "猪猪海盗"
+        },
+        {
+            "id": "Dragons_Luck",
+            "imgid": "Dragons_Luck",
+            "title": "龙之谕"
+        },
+        {
+            "id": "Dragons_Luck_Power_Reels",
+            "imgid": "Dragons_Luck_Power_Reels",
+            "title": "龙之谕II"
+        },
+        {
+            "id": "7971_Heavenly_Rich",
+            "imgid": "7971_Heavenly_Rich",
+            "title": "天上财富"
+        },
+        {
+            "id": "Magic_Gate",
+            "imgid": "Magic_Gate",
+            "title": "五福临门"
+        },
+        {
+            "id": "Lucky_Halloween",
+            "imgid": "Lucky_Halloween",
+            "title": "幸运万圣节"
+        },
+        {
+            "id": "7971_Fortune_Dragon",
+            "imgid": "7971_Fortune_Dragon",
+            "title": "幸运龙"
+        },
+        {
+            "id": "Lucky_Carnival",
+            "imgid": "Lucky_Carnival",
+            "title": "幸运嘉年华"
+        },
+        {
+            "id": "Red_Hot_Slot",
+            "imgid": "Red_Hot_Slot",
+            "title": "火辣辣"
+        },
+        {
+            "id": "7971_Lucky_Koi",
+            "imgid": "7971_Lucky_Koi",
+            "title": "幸运锦鲤"
+        },
+        {
+            "id": "Mega_Dragon",
+            "imgid": "Mega_Dragon",
+            "title": "巨龙传说"
+        },
+        {
+            "id": "Dragons_Fire",
+            "imgid": "Dragons_Fire",
+            "title": "神龙火焰"
+        },
+        {
+            "id": "Divine_Ways",
+            "imgid": "Divine_Ways",
+            "title": "圣兽传奇"
+        },
+        {
+            "id": "Jester_Spins",
+            "imgid": "Jester_Spins",
+            "title": "欢乐小丑"
+        },
+        {
+            "id": "Jingle_Bells",
+            "imgid": "Jingle_Bells",
+            "title": "铃儿响叮当"
+        },
+        {
+            "id": "Fortune_Fest",
+            "imgid": "Fortune_Fest",
+            "title": "恭贺新禧"
+        },
+        {
+            "id": "7971_Celebrating_Lions",
+            "imgid": "7971_Celebrating_Lions",
+            "title": "狮子的庆典"
+        },
+        {
+            "id": "7971_Money_Frog",
+            "imgid": "7971_Money_Frog",
+            "title": "招财金蟾"
+        },
+        {
+            "id": "Mega_Jade",
+            "imgid": "Mega_Jade",
+            "title": "翡翠王"
+        },
+        {
+            "id": "Lucky_Wizard",
+            "imgid": "Lucky_Wizard",
+            "title": "幸运魔法师"
+        },
+        {
+            "id": "Totem_Lightning_Power_Reels",
+            "imgid": "Totem_Lightning_Power_Reels",
+            "title": "图腾的秘密II"
+        },
+        {
+            "id": "Golden_Lotus",
+            "imgid": "Golden_Lotus",
+            "title": "金莲呈祥"
+        },
+        {
+            "id": "Cinderella",
+            "imgid": "Cinderella",
+            "title": "灰姑娘"
+        },
+        {
+            "id": "Elven_Magic",
+            "imgid": "Elven_Magic",
+            "title": "魔箭精灵"
+        },
+        {
+            "id": "Epic_Journey",
+            "imgid": "Epic_Journey",
+            "title": "西游寻宝"
+        },
+        {
+            "id": "Chinese_Treasures",
+            "imgid": "Chinese_Treasures",
+            "title": "华夏祥瑞"
+        },
+        {
+            "id": "Ras_Legend",
+            "imgid": "Ras_Legend",
+            "title": "拉神的恩赐"
+        },
+        {
+            "id": "Midas_Gold",
+            "imgid": "Midas_Gold",
+            "title": "点石成金"
+        },
+        {
+            "id": "Mystery_Reels_MegaWays",
+            "imgid": "Mystery_Reels_MegaWays",
+            "title": "神秘水果大中奖MegaWays"
+        },
+        {
+            "id": "Lion_Dance",
+            "imgid": "Lion_Dance",
+            "title": "雄狮纳财"
+        },
+        {
+            "id": "Elephant_Treasure",
+            "imgid": "Elephant_Treasure",
+            "title": "金象探宝"
+        },
+        {
+            "id": "Vicky_Ventura",
+            "imgid": "Vicky_Ventura",
+            "title": "维琪冒险记"
+        },
+        {
+            "id": "Crazy_Genie",
+            "imgid": "Crazy_Genie",
+            "title": "淘气的神灯"
+        },
+        {
+            "id": "Reactor",
+            "imgid": "Reactor",
+            "title": "财富引擎"
+        },
+        {
+            "id": "7971_Happy_Panda",
+            "imgid": "7971_Happy_Panda",
+            "title": "快乐熊猫"
+        },
+        {
+            "id": "Stage_888",
+            "imgid": "Stage_888",
+            "title": "梦想好声音"
+        }
+    ]
+},
+{
+    "title": "欧博电子",
+    "type": "AB",
+    "img": "ab",
+    "ext": ".png",
+    "children": [
+        {
+            "id": "kzsj",
+            "imgid": "kz",
+            "title": "空战世纪"
+        }
+    ]
+}

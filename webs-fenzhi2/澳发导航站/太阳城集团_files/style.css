@@ -1,0 +1,159 @@
+* {
+	margin: 0px; padding: 0px;
+}
+.w1000 {
+	margin: 0px auto; width: 1000px;
+}
+.clear {
+	clear: both;
+}
+a {
+	color: rgb(255, 255, 255); text-decoration: none;
+}
+body {
+	background: url("bg01.jpg") no-repeat top rgb(255, 246, 240); font-family: "΢���ź�"; font-size: 12px;
+}
+.header {
+	background: url("h_bg.jpg") no-repeat top; padding: 14px 0px 0px; height: 100px;
+}
+.header .logo {
+	margin-right: 130px; float: left;
+}
+.header .hImg {
+	 float: left;
+}
+.header .hService {
+	margin-top: 15px; float: right;
+}
+#main {
+	background: url("../_files/bg02.png") no-repeat top; padding: 88px 0px 40px;
+}
+.wrap {
+	margin: 0px auto; width: 1000px;
+}
+.inner {
+	margin: 0px 70px 88px;
+}
+.ulList {
+	float: left;
+}
+.ulList.fR {
+	float: right;
+}
+.ulList li {
+	width: 106px; height: 80px; text-align: center; color: rgb(255, 255, 255); margin-bottom: 11px; position: relative;
+}
+.ulList .li01 {
+	padding-left: 80px;
+}
+.ulList .li02 {
+	padding-left: 40px;
+}
+.ulList .li08 {
+	padding-left: 80px;
+}
+.ulList .li07 {
+	padding-left: 40px;
+}
+.ulList .li04 {
+	padding-right: 85px;
+}
+.ulList .li05 {
+	padding-left: 40px;
+}
+.ulList .li06 {
+	padding-left: 80px;
+}
+.ulList .li09 {
+	padding-left: 40px;
+}
+.ulList li .open {
+	border-radius: 25px; height: 28px; text-align: center; color: rgb(157, 37, 0); line-height: 28px; font-size: 14px; margin-bottom: 9px; display: none; background-color: rgb(255, 241, 0);
+}
+.ulList li a {
+	padding: 15px 0px 0px; text-align: center; display: block;
+}
+.ulList li a em {
+	color: rgb(118, 144, 181); font-style: normal !important;
+}
+.ulList li a .web {
+	margin: 0px auto 8px; border-radius: 25px; border: 1px solid rgb(108, 204, 198); border-image: none; color: rgb(255, 255, 255); line-height: 26px; font-size: 13px; display: block;
+}
+.ulList li a .ttl {
+	color: rgb(255, 255, 255); font-size: 14px; margin-bottom: 10px; display: block;
+}
+.ulList li a:hover .ttl {
+	color: rgb(255, 241, 0);
+}
+.ulList li a:hover .web {
+	display: none;
+}
+.ulList li a:hover .open {
+	display: block;
+}
+.imgBox {
+	margin: 0px 0px 38px 20px; padding: 20px 0px 20px 20px; border-radius: 10px; width: 940px; background-color: rgb(255, 255, 255);
+}
+.title {
+	text-align: center; margin-bottom: 18px;
+}
+.imgBox .ulLink li {
+	text-align: center; margin-right: 10px; float: left;
+}
+.imgBox .ulLink li a {
+	transition:0.4s; display: block;
+}
+.imgBox .ulLink li a:hover {
+	margin-top: -5px;
+}
+.subBox {
+	margin: 0px auto; padding: 20px 20px 0px; border-radius: 10px; width: 960px; position: relative; box-sizing: border-box; background-color: rgb(255, 255, 255);
+}
+.subBox::before {
+	left: 0px; top: 202px; width: 960px; height: 2px; position: absolute; content: ""; background-color: rgb(242, 242, 242);
+}
+.subBox .photoUl li {
+	width: 184px; height: 162px; margin-bottom: 35px; float: left; position: relative;
+}
+.subBox .photoUl li a {
+	transition:0.4s; display: block;
+}
+.subBox .photoUl li a:hover {
+	color: rgb(255, 0, 0); margin-top: -5px;
+}
+.subBox .photoUl li::before {
+	top: 0px; width: 1px; height: 160px; right: 0px; position: absolute; content: ""; background-color: rgb(242, 242, 242);
+}
+.subBox .photoUl li:nth-child(5n)::before {
+	display: none;
+}
+.subBox .photoUl li a {
+	text-align: center; color: rgb(102, 102, 102); font-size: 16px; display: block;
+}
+.subBox .photoUl li span {
+	margin-top: 20px; display: block;
+}
+.footer {
+	padding-bottom: 40px;
+}
+.footer .fImg {
+	text-align: center; margin-bottom: 40px;
+}
+.footer .fBox {
+	margin: 0px auto; width: 960px;
+}
+.footer .fBox .fNavi {
+	float: left;
+}
+.footer .fBox .fNavi li {
+	color: rgb(153, 153, 153); margin-right: 5px; display: inline;
+}
+.footer .fBox .fNavi li a {
+	color: rgb(153, 153, 153); margin-right: 5px;
+}
+.footer .fBox .fNavi li a:hover {
+	color: rgb(255, 0, 0);
+}
+.footer .fBox .copyright {
+	color: rgb(153, 153, 153); float: right;
+}

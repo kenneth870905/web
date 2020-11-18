@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        var L1 = [0, 0, 0, 1, 0, 1, 1, 1, 0, 3, 3, 0, 4, 4, 5];
+        var L2 = [];
+        for (let i = 0; i < L1.length; i++) {
+            if (i == 0) {
+                var a = [L1[i]]
+                L2.push(a)
+            } else {
+                var a = L2[L2.length - 1][0];
+                if (a == L1[i]) {
+                    L2[L2.length - 1].push(L1[i]);
+                } else {
+                    var a = [L1[i]]
+                    L2.push(a)
+                }
+            }
+        }
+        console.log(L2)
+    </script>
+</body>
+
+</html>

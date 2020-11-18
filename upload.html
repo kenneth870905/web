@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="http://test.yooy8.com/huobi/public/index.php/Excel/upload2" enctype="multipart/form-data" method="post">
+        <input id="avatar" type="file" name="image[]" /> <br> 
+        <!-- <input id="avatar1" type="file" name="image[]" /> <br>  -->
+        <input type="submit" value="上传" /> 
+    </form>
+        
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script>
+
+        $('form').submit(function(){
+            var files = $('#avatar').prop('files');
+            // var files1 = $('#avatar1').prop('files');
+            var data = new FormData();
+                data.append('image[]', files[0]);
+                // data.append('image[]', files1[0]);
+                $.ajax({
+                    url: 'http://test.yooy8.com/huobi/public/index.php/Excel/upload2',
+                    type: 'POST',
+                    data: data,
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    success:function(x){
+                        console.log(x)
+                    },
+                    error:function(error){
+                        console.log(error)
+                    }
+                });
+
+            return false
+        })
+
+    </script>
+</body>
+</html>
+

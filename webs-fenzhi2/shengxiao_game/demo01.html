@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>生肖游戏</title>
+    <script src="js/vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <link rel='stylesheet' href='1.css' />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- vant -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.1/lib/index.css">
+    <!-- 引入组件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vant@2.1/lib/vant.min.js"></script>
+    <script>
+        var viewport = document.querySelector("meta[name=viewport]");
+        viewport.setAttribute('content', 'width=640');
+        var t;
+        t = 60;
+        function shua() {
+            t = t - 1;
+            document.getElementById("hints").innerHTML = " " + t + " 秒";
+            if (t == 0) {
+                // document.location.reload();
+                t = 60;
+            }
+        }
+        setInterval(shua, 1000);
+        // onload="window.setInterval(shua,1000);"
+        //     document.onkeydown = function(e) {
+        //     e = window.event || e;
+        //     var k = e.keyCode;
+        //     //屏蔽ctrl+R，F5键，ctrl+F5键  F3键！验证
+        //     if ((e.ctrlKey == true && k == 82) || (k == 116)
+        //             || (e.ctrlKey == true && k == 116)||k==114) {
+        //         e.keyCode = 0;
+        //         e.returnValue = false;
+        //         e.cancelBubble = true;
+        //         return false;
+        //     }
+        // };
+        var phoneWidth = parseInt(window.screen.width);
+        var phoneScale = phoneWidth / 640;
+        var ua = navigator.userAgent;
+        if (/Android (\d+\.\d+)/.test(ua)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                document.write('<meta name="viewport" content="width=640, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+            } else {
+
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="top ui">
+                <div class="yuanbao"></div>
+                <div class="caishen ui"></div>
+                <div class="haoyun ui"></div>
+                <div class="baoxi">
+                    <p>{{resData.nv}} · {{resData.fl}} · {{resData.sx}}</p>
+                    <div class="xiajiantou" @click="xlkaijiang">
+
+                    </div>
+                </div>
+                <div class="xlkaijiang" v-if="xlkaijiang_show">
+                    <table>
+                        <tr>
+                            <th>期号</th>
+                            <th>开奖号码</th>
+                            <th>金玉</th>
+                            <th>五福</th>
+                            <th>生肖</th>
+                        </tr>
+                        <tr>
+                            <td>12345678</td>
+                            <td>金童*福*马</td>
+                            <td>金童</td>
+                            <td>福</td>
+                            <td>马</td>
+                        </tr>
+                        <tr>
+                            <td>12345678</td>
+                            <td>金童*福*马</td>
+                            <td>金童</td>
+                            <td>福</td>
+                            <td>马</td>
+                        </tr>
+                        <tr>
+                            <td>12345678</td>
+                            <td>金童*福*马</td>
+                            <td>金童</td>
+                            <td>福</td>
+                            <td>马</td>
+                        </tr>
+                        <tr>
+                            <td>12345678</td>
+                            <td>金童*福*马</td>
+                            <td>金童</td>
+                            <td>福</td>
+                            <td>马</td>
+                        </tr>
+                        <tr>
+                            <td>12345678</td>
+                            <td>金童*福*马</td>
+                            <td>金童</td>
+                            <td>福</td>
+                            <td>马</td>
+                        </tr>
+                        <tr>
+                            <td>12345678</td>
+                            <td>金童*福*马</td>
+                            <td>金童</td>
+                            <td>福</td>
+                            <td>马</td>
+                        </tr>
+                        <tr>
+                            <td>12345678</td>
+                            <td>金童*福*马</td>
+                            <td>金童</td>
+                            <td>福</td>
+                            <td>马</td>
+                        </tr>
+                        <tr>
+                            <td>12345678</td>
+                            <td>金童*福*马</td>
+                            <td>金童</td>
+                            <td>福</td>
+                            <td>马</td>
+                        </tr>
+
+                    </table>
+
+                </div>
+                <div class="jishi">
+                    <p>吉时还有<span style="font-size: 20px;font-weight: bold;" id="hints">60S</span></p>
+                </div>
+            </div>
+            <div class="main">
+                <div class="leftblock ui" @click="leftblocktk()">
+                    <div class="circle_left ui"></div>
+                    <div class="text_left">X 19</div>
+                    <div class="text_left1">牛</div>
+                    <div class="text_left2">玉女</div>
+                </div>
+                <div class="leftblock_tk" v-if="leftblock">
+                    <div class="leftblock_tk_header">
+                        选择金玉和生肖
+                    </div>
+                    <div>
+                        <div class="leftblock_jy">金玉</div>
+
+                        <div class="leftblock_jt" @click="leftblockjt(1)"
+                            :class="{'leftblockjyactive':下注次数.find(x=>x==1)}">金童</div>
+                        <div class="leftblock_yn" @click="leftblockjt(2)"
+                            :class="{'leftblockjyactive':下注次数.find(x=>x==2)}">玉女</div>
+                    </div>
+                    <!-- <div class="hengxiang1"></div> -->
+                    <div>
+                        <div class="leftblock_sx">生肖</div>
+                        <!-- <div class="hengxiang3"></div> -->
+                        <div class="leftblock_zhu" @click="leftblockjt(3)"
+                            :class="{'leftblockjyactive':下注次数.find(x=>x==3)}">猪</div>
+                        <div class="leftblock_shu" @click="leftblockjt(4)"
+                            :class="{'leftblockjyactive':下注次数.find(x=>x==4)}">鼠</div>
+                        <div class="leftblock_niu" @click="leftblockjt(5)"
+                            :class="{'leftblockjyactive':下注次数.find(x=>x==5)}">牛</div>
+                        <div class="leftblock_hu" @click="leftblockjt(6)"
+                            :class="{'leftblockjyactive':下注次数.find(x=>x==6)}">虎</div>
+                        <div class="leftblock_tu" @click="leftblockjt(7)"
+                            :class="{'leftblockjyactive':下注次数.find(x=>x==7)}">兔</div>
+                        <div class="leftblock_long" @click="leftblockjt(8)"
+                            :class="{'leftblockjyactive':下注次数.find(x=>x==8)}">龙</div>
+                        <div class="leftblock_she" @click="leftblockjt(9)"
+                            :class="{'leftblockjyactive':下注次数.find(x=>x==9)}">蛇</div>
+                        <div class="leftblock_ma" @click="leftblockjt(10)"
+                            :class="{'leftblockjyactive':下注次数.find(x=>x==10)}">马</div>
+                        <div class="leftblock_yang" @click="leftblockjt(11)"
+                            :class="{'leftblockjyactive':下注次数.find(x=>x==11)}">羊</div>
+                        <div class="leftblock_hou" @click="leftblockjt(12)"
+                            :class="{'leftblockjyactive':下注次数.find(x=>x==12)}">猴</div>
+                        <div class="leftblock_ji" @click="leftblockjt(13)"
+                            :class="{'leftblockjyactive':下注次数.find(x=>x==13)}">鸡</div>
+                        <div class="leftblock_gou" @click="leftblockjt(14)"
+                            :class="{'leftblockjyactive':下注次数.find(x=>x==14)}">狗</div>
+                    </div>
+                    <div class="leftblock_quxiao" @click="leftblock_gb">
+                        <p>取消</p>
+                    </div>
+                    <div class="xiazhujine">
+                        <input type="text" placeholder="请输入金额" v-model="leftblock_xiazhu">
+                    </div>
+                    <div class="leftblock_queren" @click="leftblockqueren">
+                        <p>确认</p>
+                    </div>
+                </div>
+
+                <div class="确认下注" v-for="订单确认 in 最终下注订单" v-if="下注详情显示隐藏">
+                    <div class="确认下注头部">下注详情</div>
+                    <div>
+                        <p> <span>金玉:{{订单确认[0].sx}}</span><span>下注金额:{{订单确认[0].xiazhuqs}}元</span><span>赔率:X19</span></p>
+
+                        <p><span>生肖:{{订单确认[1].sx}}</span><span> 下注金额:{{订单确认[1].xiazhuqs}}元</span><span>赔率:X19</span></p>
+                    </div>
+                    <div class="querenxz_quxiao" @click="querenxz_quxiao()">
+                        <p>取消</p>
+                    </div>
+                    <div class="querenxz_queren" @click="querenxz_queren()">
+                        <p>确认</p>
+                    </div>
+                </div>
+                <div class="rightblock ui" @click="rightblock_tk()">
+                    <div class="circle_right ui"></div>
+                    <div class="text_right">X 89</div>
+                    <div class="text_right1">金童</div>
+                    <div class="text_right2">财</div>
+                    <div class="text_right3">牛</div>
+                </div>
+                <div class="rightblock_tk" v-if="rightblock">
+                    <div class="rightblock_tk_header">
+                        选择金玉和五福和生肖
+                    </div>
+                    <div>
+                        <div class="rightblock_jy">金玉</div>
+                        <!-- <div class="hengxiang"></div> -->
+                        <div class="rightblock_jt" @click="rightblocktz(1)"
+                            :class="{'leftblockjyactive':下注次数1.find(x=>x==1)}">金童</div>
+                        <div class="rightblock_yn" @click="rightblocktz(2)"
+                            :class="{'leftblockjyactive':下注次数1.find(x=>x==2)}">玉女</div>
+                    </div>
+                    <!-- <div class="hengxiang"></div> -->
+                    <div>
+                        <div class="rightblock_wf">五福</div>
+                        <div class="rightblock_fu" @click="rightblocktz(3)"
+                            :class="{'leftblockjyactive':下注次数1.find(x=>x==3)}">福</div>
+                        <div class="rightblock_lu" @click="rightblocktz(4)"
+                            :class="{'leftblockjyactive':下注次数1.find(x=>x==4)}">禄</div>
+                        <div class="rightblock_shou" @click="rightblocktz(5)"
+                            :class="{'leftblockjyactive':下注次数1.find(x=>x==5)}">寿</div>
+                        <div class="rightblock_xi" @click="rightblocktz(6)"
+                            :class="{'leftblockjyactive':下注次数1.find(x=>x==6)}">喜</div>
+                        <div class="rightblock_cai" @click="rightblocktz(7)"
+                            :class="{'leftblockjyactive':下注次数1.find(x=>x==7)}">财</div>
+                    </div>
+                    <!-- <div class="hengxiang3"></div> -->
+                    <div>
+                        <div class="rightblock_sx">生肖</div>
+                        <div class="rightblock_zhu" @click="rightblocktz(8)"
+                            :class="{'leftblockjyactive':下注次数1.find(x=>x==8)}">猪</div>
+                        <div class="rightblock_shu" @click="rightblocktz(9)"
+                            :class="{'leftblockjyactive':下注次数1.find(x=>x==9)}">鼠</div>
+                        <div class="rightblock_niu" @click="rightblocktz(10)"
+                            :class="{'leftblockjyactive':下注次数1.find(x=>x==10)}">牛</div>
+                        <div class="rightblock_hu" @click="rightblocktz(11)"
+                            :class="{'leftblockjyactive':下注次数1.find(x=>x==11)}">虎</div>
+                        <div class="rightblock_tu" @click="rightblocktz(12)"
+                            :class="{'leftblockjyactive':下注次数1.find(x=>x==12)}">兔</div>
+                        <div class="rightblock_long" @click="rightblocktz(13)"
+                            :class="{'leftblockjyactive':下注次数1.find(x=>x==13)}">龙</div>
+                        <div class="rightblock_she" @click="rightblocktz(14)"
+                            :class="{'leftblockjyactive':下注次数1.find(x=>x==14)}">蛇</div>
+                        <div class="rightblock_ma" @click="rightblocktz(15)"
+                            :class="{'leftblockjyactive':下注次数1.find(x=>x==15)}">马</div>
+                        <div class="rightblock_yang" @click="rightblocktz(16)"
+                            :class="{'leftblockjyactive':下注次数1.find(x=>x==16)}">羊</div>
+                        <div class="rightblock_hou" @click="rightblocktz(17)"
+                            :class="{'leftblockjyactive':下注次数1.find(x=>x==17)}">猴</div>
+                        <div class="rightblock_ji" @click="rightblocktz(18)"
+                            :class="{'leftblockjyactive':下注次数1.find(x=>x==18)}">鸡</div>
+                        <div class="rightblock_gou" @click="rightblocktz(19)"
+                            :class="{'leftblockjyactive':下注次数1.find(x=>x==19)}">狗</div>
+                    </div>
+                    <div class="rightblock_quxiao" @click="rightblock_gb()">
+                        <p>取消</p>
+                    </div>
+                    <div class="xiazhujine">
+                        <input type="text" placeholder="请输入金额" v-model="rightblock_xiazhu">
+                    </div>
+                    <div class="rightblock_queren" @click="rightblockqueren()">
+                        <p>确认</p>
+                    </div>
+                    <!-- v-for="订单确认 in 最终下注订单" v-if="下注详情显示隐藏" -->
+
+                </div>
+                <div class="确认下注" v-for="订单确认1 in 最终下注订单1" v-if="下注详情显示隐藏1">
+                    <div class="确认下注头部">下注详情</div>
+                    <div>
+                        <p> <span>金玉:{{订单确认1[0].sx}}</span><span>下注金额:{{订单确认1[0].xiazhuqs}}元</span><span>赔率:X89</span>
+                        </p>
+
+                        <p><span>五福:{{订单确认1[1].sx}}</span> <span>下注金额:</span>{{订单确认1[1].xiazhuqs}}元<span>赔率:X89</span>
+                        </p>
+
+                        <p><span>生肖:{{订单确认1[2].sx}}</span> <span>下注金额:</span>{{订单确认1[2].xiazhuqs}}元<span>赔率:X89</span>
+                        </p>
+
+
+                    </div>
+                    <div class="querenxz_quxiao" @click="querenxz_quxiao1()">
+                        <p>取消</p>
+                    </div>
+                    <div class="querenxz_queren" @click="querenxz_queren1()">
+                        <p>确认</p>
+                    </div>
+                </div>
+                <div>
+
+                </div>
+                <div class="zhuanpan ui">
+                    <div class="circle1">X 10</div>
+                    <div class="circle2">X4.5</div>
+                    <div class="circle3">X 1.86</div>
+                    <div class="xiazhu">
+                        <span id="zhu" @click="投注(1)"><b v-if="classlist2[1]">{{classlist2[1]}}</b></span>
+                        <span id="shu" @click="投注(2)"><b v-if="classlist2[2]">{{classlist2[2]}}</b></span>
+                        <span id="niu" @click="投注(3)"><b v-if="classlist2[3]">{{classlist2[3]}}</b></span>
+                        <span id="hu" @click="投注(4)"><b v-if="classlist2[4]">{{classlist2[4]}}</b></span>
+                        <span id="tu" @click="投注(5)"><b v-if="classlist2[5]">{{classlist2[5]}}</b></span>
+                        <span id="long" @click="投注(6)"><b v-if="classlist2[6]">{{classlist2[6]}}</b></span>
+                        <span id="she" @click="投注(7)"><b v-if="classlist2[7]">{{classlist2[7]}}</b></span>
+                        <span id="ma" @click="投注(8)"><b v-if="classlist2[8]">{{classlist2[8]}}</b></span>
+                        <span id="yang" @click="投注(9)"><b v-if="classlist2[9]">{{classlist2[9]}}</b></span>
+                        <span id="hou" @click="投注(10)"><b v-if="classlist2[10]">{{classlist2[10]}}</b></span>
+                        <span id="ji" @click="投注(11)"><b v-if="classlist2[11]">{{classlist2[11]}}</b></span>
+                        <span id="gou" @click="投注(12)"><b v-if="classlist2[12]">{{classlist2[12]}}</b></span>
+                        <span id="fu" @click="投注(13)"><b v-if="classlist2[13]">{{classlist2[13]}}</b></span>
+                        <span id="lu" @click="投注(14)"><b v-if="classlist2[14]">{{classlist2[14]}}</b></span>
+                        <span id="shou" @click="投注(15)"><b v-if="classlist2[15]">{{classlist2[15]}}</b></span>
+                        <span id="xi" @click="投注(16)"><b v-if="classlist2[16]">{{classlist2[16]}}</b></span>
+                        <span id="cai" @click="投注(17)"><b v-if="classlist2[17]">{{classlist2[17]}}</b></span>
+                        <span id="jingtong" @click="投注(18)"><b v-if="classlist2[18]">{{classlist2[18]}}</b></span>
+                        <span id="yunv" @click="投注(19)"><b v-if="classlist2[19]">{{classlist2[19]}}</b></span>
+                    </div>
+                    <!-- <div class="xiazhu " v-for="(item1, index) in list" :class="item1.clanem" :key="index" >
+                        <div>{{item1.money}}</div>
+                    </div> -->
+                </div>
+                <div class="touxiang">
+                    <span id="touxiang_1">
+                        <img src="./image/touxiang.jpg" alt="">
+                        <p>我</p>
+                    </span>
+                    <span id="touxiang_2">
+                        <img src="./image/touxiang1.jpg" alt="">
+                        <p>苹果</p>
+                    </span>
+                    <span id="touxiang_3">
+                        <img src="./image/touxiang2.jpg" alt="">
+                        <p>蓝冰</p>
+                    </span>
+                    <span id="touxiang_4">
+                        <img src="./image/touxiang3.jpg" alt="">
+                        <p>......</p>
+                    </span>
+                    <span id="touxiang_5">
+                        <img src="./image/touxiang4.jpg" alt="">
+                        <p>Monk...</p>
+                    </span>
+                </div>
+            </div>
+            <div style="clear:both"></div>
+            <div class="bottom ui">
+                <div class="balanceinfo">
+                    <p>我的金豆</p>
+                    <div class="balance ui">
+                        <span id="money">8888</span>
+                        <div class="paybutton ui" @click="diy_money"></div>
+                        <div class="diy_tk" v-if='show'>
+                            <!-- <div class="diy_gb" >关闭</div> -->
+                            <div class="xzje_txt">
+                                <p>选择下注面额</p>
+                            </div>
+                            <div class="xiazhu_1" @click="自定义投注(1)" :class="{'diygaoliang':面额.find(x=>x==1)}">
+                                <div>1</div>
+                            </div>
+                            <div class="xiazhu_5" @click="自定义投注(2)" :class="{'diygaoliang':面额.find(x=>x==2)}">
+                                <div>5</div>
+                            </div>
+                            <div class="xiazhu_10" @click="自定义投注(3)" :class="{'diygaoliang':面额.find(x=>x==3)}">
+                                <div>10</div>
+                            </div>
+                            <div class="xiazhu_20" @click="自定义投注(4)" :class="{'diygaoliang':面额.find(x=>x==4)}">
+                                <div>20</div>
+                            </div>
+                            <div class="xiazhu_50" @click="自定义投注(5)" :class="{'diygaoliang':面额.find(x=>x==5)}">
+                                <div>50</div>
+                            </div>
+                            <div class="xiazhu_100" @click="自定义投注(6)" :class="{'diygaoliang':面额.find(x=>x==6)}">
+                                <div>100</div>
+                            </div>
+                            <div class="xiazhu_200" @click="自定义投注(7)" :class="{'diygaoliang':面额.find(x=>x==7)}">
+                                <div>200</div>
+                            </div>
+                            <div class="xiazhu_300" @click="自定义投注(8)" :class="{'diygaoliang':面额.find(x=>x==8)}">
+                                <div>300</div>
+                            </div>
+                            <div class="xiazhu_500" @click="自定义投注(9)" :class="{'diygaoliang':面额.find(x=>x==9)}">
+                                <div>500</div>
+                            </div>
+                            <div class="xiazhu_700" @click="自定义投注(10)" :class="{'diygaoliang':面额.find(x=>x==10)}">
+                                <div>700</div>
+                            </div>
+                            <div class="xiazhu_1000" @click="自定义投注(11)" :class="{'diygaoliang':面额.find(x=>x==11)}">
+                                <div>1000</div>
+                            </div>
+                            <div class="xiazhu_2000" @click="自定义投注(12)" :class="{'diygaoliang':面额.find(x=>x==12)}">
+                                <div>2000</div>
+                            </div>
+                            <div class="quxiao" @click="diy_gb">
+                                <p>取消</p>
+                            </div>
+                            <div class="queren" @click="xiazhuquren()">
+                                <p>确认</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="balanceload">
+                    <div class="balanceload_100 ui" @click="yibai(0)" :class="{active:active == 0}">
+                        <div>{{面额[0] ? 额度[面额[0]] : '0'}}</div>
+                    </div>
+                    <div class="balanceload_1000 ui " @click="yibai(1)" :class="{active:active == 1}">
+                        <div>{{面额[1] ? 额度[面额[1]] : '0'}}</div>
+                    </div>
+                    <div class="balanceload_10000 ui" @click="yibai(2)" :class="{active:active == 2}">
+                        <div>{{ 面额[2] ? 额度[面额[2]] : '0'}}</div>
+                    </div>
+                    <!-- //飞行 -->
+                    <div class="balanceload_jd ui " v-for="(item, index) in list" :class="item.clanem" :key="index">
+                        <div>{{item.money}}</div>
+                    </div>
+                </div>
+                <div class="clearbtn ui" @click="del_money()">
+                </div>
+            </div>
+            <div id="tankuang" :class="donghua">
+                <div class="zhezhao" @click="zhezhao_show()"></div>
+                <div class="hengfu"></div>
+                <div class="denglong1">
+                    <div class="kjbj1"></div>
+                    <!-- jyj jtj yvj -->
+                    <div class="kaijiang1 " :class="classname">
+
+                    </div>
+                </div>
+                <div class="denglong2">
+                    <div class="kjbj2"></div>
+                    <!-- wfj fuj luj shouj caij -->
+                    <div class="kaijiang2 " :class="classname1">
+
+                    </div>
+                </div>
+                <div class="denglong3 ">
+                    <div class="kjbj3"></div>
+                    <!-- shuj zhuj maj tuj niuj yangj jj gouj longj huj shej houj sxj -->
+                    <div class="kaijiang3 " :class="classname2">
+
+                    </div>
+                </div>
+                <!-- <div class="kj_qs">第{{resData.qs}}期</div> --> 
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            resData: [],     //接口开奖数据
+            classname: "",   //金玉开奖
+            classname1: "",  //五福开奖
+            classname2: '',  //生肖开奖
+            donghua: '',      //灯笼弹出循环动画
+            index: '',        //100(1)   1000(2)    10000(3)
+            index1: '',
+            diymoney: '',
+            list: [],
+            show: false,
+            classlist2: ['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  //下注钱数
+            active: "",  //下注金豆高亮
+            diylist: [],
+            classlist3: ['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            leftblock: false,
+            rightblock: false,
+            leftblockjyactive: "",
+            index3: "",
+            qiehuanmoney: [],
+            qiehuanmoney1: [],
+            diygaoliang: "",
+            面额: [],
+            额度: [0, 1, 5, 10, 20, 50, 100, 200, 300, 500, 700, 1000, 2000],
+            已确认: [],
+            // 左边下注 金玉 生肖
+            leftblock_xiazhu: "20",   //左上金玉和生肖下注金额
+            下注生肖: ['', '金童', '玉女', '猪', '鼠', '牛', '虎', '兔', '龙', '蛇', '马', '羊', '猴', '鸡', '狗'],
+            下注次数: [],
+            下注订单: [],
+            下注订单确认: [],
+            下注详情显示隐藏: false,
+            最终下注订单: [],
+            // 右面下注  金玉 五福 生肖
+            index4: "",
+            rightblock_xiazhu: "20",
+            下注生肖右边: ['', '金童', '玉女', '福', '禄', '寿', '喜', '财', '猪', '鼠', '牛', '虎', '兔', '龙', '蛇', '马', '羊', '猴', '鸡', '狗'],
+            下注次数1: [],
+            下注订单1: [],
+            下注订单确认1: [],
+            最终下注订单1: [],
+            下注详情显示隐藏1: false,
+            // 下拉开奖
+            xlkaijiang_show: false,
+            十条开奖数据: [],
+        },
+        methods: {
+            // 清除下注
+            del_money() {
+                this.classlist2 = ['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            },
+            diy_money() {
+                this.show = true;
+            },
+            diy_gb() {
+                this.show = false;
+            },
+            yibai(index) {
+                console.log(index)
+                this.index = index
+                this.active = index
+            },
+            投注(index1, diymoney) {
+                this.index1 = index1;
+                // console.log(index1)
+                var classList = ['', 'zhuf', 'shuf', 'niuf', 'huf', 'tuf', 'longf', 'shef', 'maf', 'yangf', 'houf', 'jif', 'gouf', 'fuf', 'luf', 'shouf', 'xif', 'caif', 'jintongf', 'yunvf']
+                var 钱 = this.额度[this.已确认[this.index]]
+                if (this.index || this.index == '0') {
+                    this.list.push({ clanem: classList[this.index1], money: 钱 });
+                    var qina = this.classlist2[this.index1] += 钱
+                    console.log({ clanem: classList[this.index1] })
+                    console.log(qina)
+                }
+            },
+            自定义投注(diymoney) {
+                console.log(this.面额)
+                if (this.面额.find(x => x == diymoney)) {
+                    //删除
+                    this.面额.splice(this.面额.findIndex(x => x == diymoney), 1)
+                } else if (this.面额.length < 3) {
+                    this.面额.push(diymoney)
+                }
+                this.diymoney = diymoney;
+                this.diygaoliang = "diygaoliang"
+                diymoneylist = [0, 1, 5, 10, 20, 50, 100, 200, 300, 500, 700, 1000, 2000];
+                console.log(diymoneylist[this.diymoney])
+                this.qiehuanmoney.push({ money2: diymoneylist[this.diymoney] })
+                console.log(this.qiehuanmoney)
+            },
+            xiazhuquren() {
+                this.已确认 = this.面额
+                // vant.Toast('面额选择成功');
+                if (this.已确认) {
+                    this.show = false;
+                }
+            },
+            leftblockjt(index3) {
+                this.index3 = index3;
+                console.log(index3)
+                console.log(this.下注生肖[this.index3]);
+                if (this.下注次数.find(x => x == index3)) {
+                    //删除
+                    this.下注次数.splice(this.下注次数.findIndex(x => x == index3), 1)
+                } else if (this.下注次数.length < 2) {
+                    this.下注次数.push(index3)
+                }
+                
+                this.index3 = index3
+                this.leftblockjyactive = "leftblockjyactive"
+                this.下注订单.push({ sx: this.下注生肖[this.index3], xiazhuqs: this.leftblock_xiazhu })
+                console.log(this.下注订单);
+            },
+            leftblockqueren(index3) {
+                this.下注订单确认 = this.下注次数;
+                this.下注详情显示隐藏 = true;
+                if(this.下注订单确认 == ""){
+                    vant.Toast('请选择生肖或金玉');
+                    return;
+                }else if(!this.leftblock_xiazhu){
+                    vant.Toast('请输入金额');
+                    return;
+                }
+                this.leftblock = false;
+                this.最终下注订单.push(this.下注订单);
+                
+            },
+            rightblocktz(index4) {
+                console.log(index4)
+                this.index4 = index4
+                console.log(this.下注生肖右边[this.index4]);
+                if (this.下注次数1.find(x => x == index4)) {
+                    //删除 
+                    this.下注次数1.splice(this.下注次数1.findIndex(x => x == index4), 1)
+                } else if (this.下注次数1.length < 3) {
+                    this.下注次数1.push(index4)
+                }
+                this.leftblockjyactive = "leftblockjyactive";
+                this.下注订单1.push({ sx: this.下注生肖右边[this.index4], xiazhuqs: this.rightblock_xiazhu })
+                console.log(this.下注订单1);
+            },
+            rightblockqueren(index4) {
+                this.下注订单确认1 = this.下注次数1;
+                console.log(this.下注订单1)
+                this.下注详情显示隐藏1 = true
+                if(this.下注订单确认1 == ""){
+                    vant.Toast('请选择生肖或金玉');
+                    return;
+                }else if(!this.rightblock_xiazhu){
+                    vant.Toast('请输入金额');
+                    return;
+                }
+                this.rightblock = false;
+                this.最终下注订单1.push(this.下注订单1)
+            },
+            leftblocktk() {
+                this.leftblock = true;
+            },
+            leftblock_gb() {
+                this.leftblock = false
+            },
+            querenxz_quxiao() {
+                this.下注详情显示隐藏 = false;
+                this.leftblock = true;
+            },
+            querenxz_queren() {
+                console.log(this.下注订单);
+                vant.Toast('下注成功');
+                this.下注详情显示隐藏 = false;
+            },
+            rightblock_tk() {
+                this.rightblock = true;
+            },
+            rightblock_gb() {
+                this.rightblock = false;
+            },
+            querenxz_queren1() {
+                console.log(this.下注订单1);
+                vant.Toast('下注成功');
+                this.下注详情显示隐藏1 = false
+            },
+            querenxz_quxiao1() {
+                this.下注详情显示隐藏1 = false
+                this.rightblock = true;
+            },
+            xlkaijiang() { 
+                if (this.xlkaijiang_show == false) {
+                    this.xlkaijiang_show = true
+                } else {
+                    this.xlkaijiang_show = false
+                }
+                this.十条开奖数据.push([{ qh: this.resData.qs }, { kjhmnv: this.resData.nv }, { kjhmfl: this.resData.fl }, { kjhmsx: this.resData.sx }])
+            },
+            gbhide() {
+                var hide = document.getElementById("tankuang");
+                hide.style.display = "none";
+            },
+            zhezhao_show(){
+                var hide1 = document.getElementById("tankuang");
+                hide1.style.display = "none";
+            }
+        },
+        created() {
+            var Vue = window.Vue;
+            var vant = window.vant;
+            Vue.config.devtools = true
+            // 调用函数式组件
+            function show() {
+                var divNode = document.getElementById("tankuang");
+                divNode.style.display = "block";
+            }
+            function gbhide() {
+                console.log(123)
+            }
+            setInterval(() => {
+                this.donghua = "";
+                var url = "http://www.ceshi.com/hylh/test.php";
+                axios.post(url).then(res => {
+                    console.log(res.data);
+                    this.resData = res.data;
+                    show();
+                    // setTimeout(() => {
+                    this.donghua = "donghua";
+                    // }, 5000);
+                    if (this.resData.nv == "金童") {
+                        this.classname = "jtj"
+                    } else if (this.resData.nv == "玉女") {
+                        this.classname = "yvj"
+                    }
+                    // wfj fuj luj shouj caij
+                    if (this.resData.fl == "福") {
+                        this.classname1 = "fuj"
+                        console.log("福")
+                    } else if (this.resData.fl == "禄") {
+                        console.log("禄")
+                        this.classname1 = "luj"
+                    } else if (this.resData.fl == "寿") {
+                        console.log("寿")
+                        this.classname1 = "shouj"
+                    } else if (this.resData.fl == "财") {
+                        console.log("财")
+                        this.classname1 = "caij"
+                    } else if (this.resData.fl == "喜") {
+                        console.log("喜")
+                        this.classname1 = "xij"
+                    }
+                    // shuj zhuj maj tuj niuj yangj jj gouj longj huj shej houj sxj
+                    if (this.resData.sx == "鼠") {
+                        this.classname2 = "shuj"
+                    } else if (this.resData.sx == "牛") {
+                        this.classname2 = "niuj"
+                    } else if (this.resData.sx == "虎") {
+                        this.classname2 = "huj"
+                    } else if (this.resData.sx == "兔") {
+                        this.classname2 = "tuj"
+                    } else if (this.resData.sx == "龙") {
+                        this.classname2 = "longj"
+                    } else if (this.resData.sx == "蛇") {
+                        this.classname2 = "shej"
+                    } else if (this.resData.sx == "马") {
+                        this.classname2 = "maj"
+                    } else if (this.resData.sx == "羊") {
+                        this.classname2 = "yangj"
+                    } else if (this.resData.sx == "猴") {
+                        this.classname2 = "houj"
+                    } else if (this.resData.sx == "鸡") {
+                        this.classname2 = "jj"
+                    } else if (this.resData.sx == "狗") {
+                        this.classname2 = "gouj"
+                    } else if (this.resData.sx == "猪") {
+                        this.classname2 = "zhuj"
+                    }
+                });
+            }, 60000)
+        },
+    }) 
+</script>
+
+</html>
