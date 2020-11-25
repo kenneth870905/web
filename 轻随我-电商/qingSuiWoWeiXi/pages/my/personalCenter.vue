@@ -16,7 +16,7 @@
 		<view class="huobi">
 			<view @click="go('/pages/my/yongJinList')">
 				<view class="jinge">
-					{{loginInfo.kickback}}
+					{{loginInfo.kickback ? loginInfo.kickback : 0}}
 				</view>
 				<view class="text">
 					现金货币

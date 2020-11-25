@@ -52,9 +52,8 @@
 		},
 		methods:{
 			提现(){
-				uni.showToast({
-					title:'暂未开放',
-					icon:'none'
+				uni.navigateTo({
+					url:'/pages/my/tiXian'
 				})
 			},
 			getList(){

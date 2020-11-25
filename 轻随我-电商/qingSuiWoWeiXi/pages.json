@@ -106,6 +106,14 @@
             }
             
         }
+        ,{
+            "path" : "pages/my/tiXian",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "提现到微信"
+            }
+            
+        }
     ],
 	// "globalStyle": {
 	// 	"navigationBarTextStyle": "white",

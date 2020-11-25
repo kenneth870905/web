@@ -26,7 +26,8 @@
         <jryxtk />
         <!-- 系统消息弹框 -->
         <xtxx />
-        
+
+
     </div>
 </template>
 
@@ -72,8 +73,7 @@ export default {
         },
         router_1() {
             return this.$route
-        },
-        
+        }
     },
     methods: {
         ...mapMutations({

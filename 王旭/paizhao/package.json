@@ -12,7 +12,8 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "electron": "^10.1.5"
+        "electron": "^10.1.5",
+        "electron-reloader": "^1.0.1"
     },
     "dependencies": {
         "electron-reloader": "^1.0.1",

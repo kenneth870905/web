@@ -8,7 +8,7 @@
                 <router-link to="shop" tag="li">体验馆</router-link>
                 <router-link to="about" tag="li">联系</router-link>
             </ul>
-            <img src="static/images/logo2.png">
+            <img src="static/images/logo2.png" />
         </div>
         <topSwiper />
 
@@ -18,23 +18,25 @@
         </div>
 
         <div class="xz">
-            <div v-for="(item,index) in kittenType" :key="index" v-if="index<5">
-                <span @click="$router.push(`/Kitten/${item.id}`)">{{item.name}}</span>
+            <div v-for="(item, index) in kittenType" :key="index" v-if="index < 5">
+                <span @click="$router.push(`/Kitten/${item.id}`)">{{ item.name }}</span>
             </div>
             <div>
                 <span @click="$router.push(`/Kitten`)" class="last">全部</span>
             </div>
         </div>
 
-        <div class="jd" :class="{jd1:index%2==0,jd2:index%2==1}" v-for="(item,index) in SySafeGuard" :key="index">
-            <div class="jd-img"><img :src="`${$api_url}/tmm/public/storage/${item.cover}`"></div>
+        <div class="jd" :class="{ jd1: index % 2 == 0, jd2: index % 2 == 1 }" v-for="(item, index) in SySafeGuard" :key="index">
+            <div class="jd-img">
+                <img :src="`${$api_url}/tmm/public/storage/${item.cover}`" />
+            </div>
             <div>
                 <div class="jd-tit">科学繁育</div>
                 <div class="jd-des">
                     <div>优生优育 拒绝带病繁殖</div>
                     <div>科学喂养 精心照顾80天</div>
                 </div>
-                <div  @click="$router.push('/SafeGuard')" class="jd-more">查看更多></div>
+                <div @click="$router.push('/SafeGuard')" class="jd-more">查看更多></div>
             </div>
         </div>
 
@@ -49,18 +51,18 @@
                 </div>
                 <div  @click="$router.push('/SafeGuard')" class="jd-more">查看更多></div>
             </div>
-        </div> -->
+        </div>-->
 
         <div class="gy">
             <div class="gy-tit">关于我们</div>
             <div class="gy-line"></div>
             <div class="gy-des">
-                {{about.intro}}
+                {{ about.intro }}
                 <!-- <p>“淘喵喵”品牌自创立以来，已经有九年的时间；</p>
                 <p>我们坚持为消费者提供健康活泼、性格稳定的品种猫咪;</p>
                 <p>目前在上海拥有2家宠物店3家名猫体验馆；</p>
                 <p>宠物店以销售猫咪活体为主，猫咪的周边用品为辅；</p>
-                <p>名猫体验馆提供与猫咪互动的体验服务。</p> -->
+                <p>名猫体验馆提供与猫咪互动的体验服务。</p>-->
             </div>
         </div>
 
@@ -69,10 +71,12 @@
             <div class="lx-line"></div>
             <ul class="lx-ul">
                 <li v-for="item in shop">
-                    <div class="lx-img" @click="$router.push(`/shopDetails?id=${item.id}`)"><img :src="`${$api_url}/tmm/public/storage/${item.cover}`"></div>
-                    <div class="lx-bt">{{item.shopName}}</div>
-                    <div class="lx-dz">{{item.address}}</div>
-                    <div class="lx-dh">{{item.contact}}</div>
+                    <div class="lx-img" @click="$router.push(`/shopDetails?id=${item.id}`)">
+                        <img :src="`${$api_url}/tmm/public/storage/${item.cover}`" />
+                    </div>
+                    <div class="lx-bt">{{ item.shopName }}</div>
+                    <div class="lx-dz">{{ item.address }}</div>
+                    <div class="lx-dh">{{ item.contact }}</div>
                 </li>
             </ul>
         </div>
@@ -90,36 +94,36 @@ export default {
     },
     data() {
         return {
-            kittenType:[],
-            about:{},
-            shop:[],
-            SySafeGuard:[]
+            kittenType: [],
+            about: {},
+            shop: [],
+            SySafeGuard: []
         }
     },
     methods: {
-        getKittenType(){
-            this.$axios.post('Kitten/selectList',{}).then(res => {
-                if(res.data.code==1)
-                this.kittenType = res.data.data;
-            }).catch(err => {})
+        getKittenType() {
+            this.$axios.post('Kitten/selectList', {}).then(res => {
+                if (res.data.code == 1)
+                    this.kittenType = res.data.data;
+            }).catch(err => { })
         },
-        getAuto(){
-            this.$axios.post('About/getAbout',{}).then(res => {
-                if(res.data.code==1)
-                this.about = res.data.data
-            }).catch(err => {})
+        getAuto() {
+            this.$axios.post('About/getAbout', {}).then(res => {
+                if (res.data.code == 1)
+                    this.about = res.data.data
+            }).catch(err => { })
         },
-        getShop(){
-            this.$axios.post('Shop/getList',{'pageSize':6}).then(res => {
+        getShop() {
+            this.$axios.post('Shop/getList', { 'pageSize': 6 }).then(res => {
                 this.shop = res.data.data
-            }).catch(err => {})
+            }).catch(err => { })
         },
         //获取首页保障说明
-        getSySafeGuard(){
-            this.$axios.post('SySafeGuard/getList','').then(res => {
+        getSySafeGuard() {
+            this.$axios.post('SySafeGuard/getList', '').then(res => {
                 console.log(res)
-                if(res.data.code)
-                this.SySafeGuard = res.data.data
+                if (res.data.code)
+                    this.SySafeGuard = res.data.data
             }).catch(err => {
             })
         }
@@ -307,9 +311,9 @@ export default {
             width: 100%;
         }
     }
-    .lx-img{
+    .lx-img {
         height: 105px;
-        img{
+        img {
             height: 100%;
             width: 100%;
         }
@@ -348,7 +352,7 @@ export default {
     text-align: center;
     padding-left: 15px;
 }
-/deep/ .swiper-pagination-bullet{
+/deep/ .swiper-pagination-bullet {
     background: #000;
 }
 </style>
