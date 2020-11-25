@@ -1,7 +1,6 @@
 <template>
 <div id="app">
-    <!-- 推送测试 -->
-    <!-- <navigation /> -->
+    <!-- <navigation />哈哈 -->
     <router-view />
 </div>
 </template>
