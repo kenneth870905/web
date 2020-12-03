@@ -1,6 +1,6 @@
 {
     "name": "paizhao",
-    "version": "1.0.0",
+    "version": "1.0.5",
     "description": "",
     "main": "main.js",
     "scripts": {
@@ -8,11 +8,20 @@
         "start": "electron .",
         "build": "electron-builder"
     },
+    "build": {
+        "extraResources": [
+          {
+            "from": "src/images/", 
+            "to": "src/images/"
+          }
+        ]
+    },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "devDependencies": {
         "electron": "^10.1.5",
+        "electron-builder": "^22.9.1",
         "electron-reloader": "^1.0.1"
     },
     "dependencies": {

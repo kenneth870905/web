@@ -8,10 +8,10 @@ function upload(imgData) {
     // 引入七牛模块  
     var qiniu = require("qiniu");
     //要上传的空间名
-    var bucket = 'itons-test';
-    var imageUrl = 'qjp2feit1.hn-bkt.clouddn.com'; // 域名名称
-    var accessKey = 'B0UhEbbpFBvkHv3kZV1C76MMNOpl5uxL_k0nRKlE';
-    var secretKey = 'ZRqBA8ubyFHSpvyv4N-752M_N25t2DnjFRhEDjrL';
+    var bucket = 'cszh-project';
+    var imageUrl = 'jsmx.viveducd.com'; // 域名名称
+    var accessKey = 'Ah_0dn_bFbiELmhv_-LAUkkx16fiC56cA71mbQJa';
+    var secretKey = 'yrRK3rnceY_g7ynzE_A-48niWcKOTlhkkmc8TLxr';
     var mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
     var options = {
         scope: bucket,
