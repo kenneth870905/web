@@ -1,10 +1,14 @@
+const { remote } = require('electron')
+// let configDir = remote.app.getPath('userData');
+var path = require('path')
+// console.log(path.dirname (remote.app.getPath ('exe')))
+// console.log(process.env.PORTABLE_EXECUTABLE_DIR)
 new Vue({
     el: '#vue',
     data() {
         return {
             step: 1,    //步骤
             style: 'pointillism',     // "cubism"表示立体主义 "pointillism" 表示点彩风格 "the_scream"表示呐喊风格。
-            img1: "",
             img2: "",
             img3: "",
             btoaString: "",
@@ -24,8 +28,10 @@ new Vue({
             showVideo: true,
             newBg: '',
             showVideo2: true,
-            erweima:"images/erweima.png",
-            showErweima:false
+            erweima:"",
+            erweimaType:0,  //0 正在生成 1 成功 2 失败 
+            t:new Date().getTime(),
+            videoSrc: remote.app.isPackaged ? path.dirname(remote.app.getPath('exe'))+"/resources/src/images/home_video.mp4" : "images/home_video.mp4"
         }
     },
     methods: {
@@ -121,9 +127,9 @@ new Vue({
                 console.log('调用上传接口', x)
                 this.video2Init()
                 if (x.data.state == "success") {
-                    // this.img1 = x.data.image
                     this.newBg = x.data.image
                     this.step = 6
+                    this.openerweima()
                     setTimeout(() => {
                         this.step = 7
                         try {
@@ -138,15 +144,16 @@ new Vue({
                         }, 1000 * 15);
                     }, 1500);
                 } else {
-                    this.err('上传错误，请重试')
+                    this.err('上传错误，请重试。')
                 }
-
             }).catch(err => {
                 console.log('cuowu')
+                
+                this.err('上传错误，请重试！')
                 this.video2Init()
-                this.err('上传错误，请重试')
                 
                 // this.newBg = 'images/下载.jpg'
+                // this.openerweima()
                 // this.step = 6
                 // setTimeout(() => {
                 //     this.step = 7
@@ -165,6 +172,7 @@ new Vue({
             })
         },
         chongXing(type) {
+            console.log('重选')
             if(this.style==type) return
             this.style = type
             this.submit()
@@ -183,10 +191,9 @@ new Vue({
             setTimeout(() => {
                 this.step = 1
                 this.btoaString = ""
-            }, 3000);
+            }, 5000);
         },
         full() {
-            const { remote } = require('electron')
             var wind = remote.getCurrentWindow()
             wind.simpleFullScreen = !wind.simpleFullScreen;
 
@@ -201,25 +208,35 @@ new Vue({
             this.showVideo2 = false
         },
         async openerweima(){
+            this.erweimaType = 0
+            try {
+                clearTimeout(this.time_3)
+            } catch (error) { }
+            this.video2Init()
             this.erweima = ''
-            this.showErweima = true
             //上传base64图片
             var r = await upload(this.newBg)
+            this.video2Init()
             if(r.status!=200){
-                alert(r.msg)
+                this.erweima = ''
+                this.erweimaType = 2
                 return
             }
             console.log(r)
             var imgurl = r.imageUrl
             var QRCode = require('qrcode')
             QRCode.toDataURL(imgurl, (err, url)=> {
-                console.log(url)
-                this.erweima = url
+                this.video2Init()
+                if(err){
+                    this.erweima = ''
+                    this.erweimaType = 2
+                    this.video2Init()
+                }else{
+                    this.erweima = url
+                    this.erweimaType = 1
+                }
                 // upload(url)
             })
-        },
-        生成二维码(){
-            
         },
         点击屏幕(e){
             var video2 = document.querySelector('#video2')
@@ -233,8 +250,6 @@ new Vue({
         // console.log('test')
         // console.log('ttt',remote)
 
-        // this.生成二维码()
-
         setInterval(() => {
             this.time_2--
             if(this.time_2<=0){
@@ -245,5 +260,6 @@ new Vue({
                 })
             }
         }, 1000);
+
     }
 })

@@ -22,7 +22,7 @@ function createWindow() {
     //全屏
     // win.simpleFullScreen = true
     win.loadFile('src/index.html')
-
+    // win.webContents.openDevTools()
 }
 
 app.whenReady().then(createWindow)
