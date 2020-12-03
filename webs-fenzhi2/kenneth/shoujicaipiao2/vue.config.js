@@ -84,7 +84,7 @@ module.exports = {
         proxy: {
             '/apis': {
                 // target:"https://afcp08.com",
-                target:"https://0698aa.com",
+                target:"https://209125.com",
                 // target:"http://10.10.27.72:789",            // 益达
                 // target: 'http://10.10.27.30:100',        // jin
                 // target: 'http://10.10.27.121:82',        // 小段
