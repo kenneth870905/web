@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="diZhi" @click="收货地址()">
-			<text>请选择收货地址</text>
+			<text :class="{active:!shdz.id}">{{shdz.id ? shdz.address : '请选择收货地址'}}</text>
 			<icon class="icon iconfont iconarrow-right"></icon>
 		</view>
 		
@@ -13,13 +13,14 @@
 						{{item.product.name}}
 					</view>
 					<view class="jiage">
-						￥{{item.product.levelOnePrice}}-{{item.product.levelTwoPrice}}
+						<text v-if="!isMiaosha">￥{{item.product.levelOnePrice}}-{{item.product.levelTwoPrice}}</text>
+						<text v-if="isMiaosha">￥{{item.product.seckillPrice}}</text>
 					</view>
-					<view class="jifenjiage">
+					<view class="jifenjiage" v-if="!isMiaosha">
 						<text v-if="item.product.creditPrice">积分价格：{{item.product.creditPrice}}</text>
 						<text v-if="!item.product.creditPrice">不可使用积分</text>
 					</view>
-					<view class="shijijiage">
+					<view class="shijijiage" v-if="!isMiaosha">
 						实际价格：￥{{loginInfo.level==2 ? item.product.levelTwoPrice : item.product.levelOnePrice}}
 					</view>
 				</view>
@@ -34,7 +35,7 @@
 				<text>备注</text>
 				<input type="text" v-model="comment" placeholder="建议留言眼先于卖家沟通确认" />
 			</view>
-			<view class="item2">
+			<view class="item2" v-if="!isMiaosha">
 				<text>支付方式</text>
 				<picker mode="selector" :range="arr" range-key="rangeKey" @change="change1">
 					<view>
@@ -69,17 +70,28 @@
 				api_url:this.$api_url,
 				arr:[{payType:2,rangeKey:"现金支付"},{payType:1,rangeKey:"积分支付"}],
 				zhifufangshi:{payType:2,rangeKey:"现金支付"},
-				comment:"",
-				orderid:""
+				comment:"",		//备注
+				orderid:"",
 			};
 		},
 		computed:{
 			...mapState({
 				loginInfo:x=>x.loginInfo,
-				spList:x=>x.确认购物商品
+				spList:x=>x.确认购物商品,
+				shdz:x=>x.选择收货地址
 			}),
+			isMiaosha(){
+				return this.spList[0].product.isSeckill
+			},
 			zongjine(){
-				if(this.zhifufangshi.payType==2){
+				// 秒杀商品
+				if(this.spList[0].product.isSeckill){
+					var 金额 = 0;
+					this.spList.forEach(item=>{
+						金额 +=item.count * item.product.seckillPrice
+					})
+					return '￥'+ 金额.toFixed(2);
+				}else if(this.zhifufangshi.payType==2){
 					var 金额 = 0;
 					this.spList.forEach(item=>{
 						if(this.loginInfo.level==2){
@@ -102,15 +114,21 @@
 		},
 		methods:{
 			收货地址(){
-				uni.showToast({
-					title:"暂未开通,敬请期待",
-					icon:'none'
+				uni.navigateTo({
+					url:'/pages/address/address'
 				})
 			},
 			change1(e){
 				this.zhifufangshi = this.arr[e.detail.value]
 			},
 			提交订单(){
+				if(!this.shdz.id){
+					uni.showToast({
+						title:'请选择收货地址',
+						icon:'none'
+					})
+					return
+				}
 				if(this.zhifufangshi.payType==1 && this.spList.find(x=>x.product.creditPrice==0)){
 					uni.showModal({
 						title:'提示',
@@ -122,7 +140,8 @@
 				var obj ={
 						"payType": this.zhifufangshi.payType, 		//支付方式,积分支付1，现金支付2
 						"items": [],			//商品列表
-						"comment":this.comment
+						"comment":this.comment,
+						addressId: this.shdz.id , //收货地址Id
 					}
 				this.spList.forEach(item=>{
 					obj.items.push({productId:item.productId,count:item.count})
@@ -233,6 +252,11 @@
 	border-bottom: 2px solid #ede1ba;
 	margin: 0px 0px 15px;
 	text{
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.active{
 		color: #a0a0a0;
 	}
 }

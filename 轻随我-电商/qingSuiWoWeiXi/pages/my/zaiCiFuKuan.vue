@@ -1,8 +1,9 @@
 <template>
 	<view>
-		<view class="diZhi" @click="收货地址()">
-			<text>请选择收货地址</text>
-			<icon class="icon iconfont iconarrow-right"></icon>
+		<view class="diZhi">
+			收货地址：{{shdz.address ? shdz.address : '未设置'}}
+			<!-- <text>请选择收货地址</text> -->
+			<!-- <icon class="icon iconfont iconarrow-right"></icon> -->
 		</view>
 		
 		<view class="list">
@@ -50,7 +51,7 @@
 				<text class="jine">{{order.payType==2 ? '￥'+order.totalPrice : order.totalCreditPrice+'积分'}}</text>
 			</view>
 		</view>
-		<uni-notice-bar text="提示:订单已生成,不可修改支付方式和备注"></uni-notice-bar>
+		<uni-notice-bar text="提示:订单已生成,不可修改支付方式,备注,以及重新选择地址"></uni-notice-bar>
 
 		
 		<view class="bottom">
@@ -74,7 +75,8 @@
 				arr:[{payType:2,rangeKey:"现金支付"},{payType:1,rangeKey:"积分支付"}],
 				zhifufangshi:{payType:2,rangeKey:"现金支付"},
 				comment:"",
-				orderid:""
+				orderid:"",
+				shdz:{},	//收获地址
 			};
 		},
 		computed:{
@@ -83,18 +85,11 @@
 			}),
 		},
 		methods:{
-			收货地址(){
-				uni.showToast({
-					title:"暂未开通,敬请期待",
-					icon:'none'
-				})
-			},
 			change1(e){
 				this.zhifufangshi = this.arr[e.detail.value]
 			},
 			支付接口(){
 				this.$http(`/api/order/${this.order.id}/pay`,'',"POST").then(x=>{
-					console.log(x)
 					if(x.code===0){
 						var data= x.data
 						uni.requestPayment({
@@ -130,10 +125,19 @@
 				}).catch(err=>{
 					uni.showToast({ title:"网络错误，稍后再试", icon:'none' })
 				})
+			},
+			获取收获地址(){
+				this.$http(`/api/user/${this.order.userId}/address/${this.order.addressId}`).then(x=>{
+					console.log(x)
+					if(x.code===0)
+					this.shdz = x.data
+				}).catch(err=>{
+				})
 			}
 		},
 		mounted() {
 			console.log(this.order)
+			this.获取收获地址()
 		}
 	}
 </script>

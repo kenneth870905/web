@@ -24,6 +24,15 @@ export default {
 	},
 	onHide: function() {
 		console.log('App Hide');
+		
+		// 图片地址
+		// http://8.210.239.106/images/2020-12-06/13/50/ULVdJLrN2lzuVleF.png
+		// http://8.210.239.106/images/2020-12-06/13/50/0Xxo8tm1QuLjcrMR.png
+		// http://8.210.239.106/images/2020-12-06/13/50/YkQMe68sJ32CUJ7H.png
+		// http://8.210.239.106/images/2020-12-06/13/50/noeIdMqZv9VxRDe5.png
+		// http://8.210.239.106/images/2020-12-06/13/56/sI2TW3AzU4FfqC8b.png
+		// https://sm.ms/  部分图片地址
+		// https://i.loli.net/2020/12/06/3HXBJC9Lnhi64Ky.png   
 	},
 };
 </script>
@@ -42,7 +51,15 @@ page {
   background: #f5f5f5;
 }
 
-.iconfont{
+/* .iconfont{
 	font-size: inherit !important;
+} */
+
+
+.Loading{
+	text-align: center;
+	line-height: 44px;
+	color: #1f1f1f;
+	font-size: 14px;
 }
 </style>

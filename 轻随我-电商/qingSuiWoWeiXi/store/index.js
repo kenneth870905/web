@@ -42,6 +42,7 @@ const store = new Vuex.Store({
 		topath:"", //跳转地址
 		确认购物商品:[],		//  [{id:"",productId:"商品id",count:"数量",product:"商品"}]
 		二次付款:{},	  //订单中再次付款
+		选择收货地址:{}
 	},
 	mutations: {
 		setItem(state,[key,value]){

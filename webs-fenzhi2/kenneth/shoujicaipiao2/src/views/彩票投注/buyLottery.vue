@@ -4,6 +4,10 @@
         <!-- <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a> -->
         <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
         <h1 class="mui-title">
+            <div>
+                <div>玩</div>
+                <div>法</div>
+            </div>
             <button class="btn_1" @click="选择类型()">
                 <!-- 朴素按钮 -->
                 {{玩法一级.Label}}--{{玩法三级.Label}}
@@ -333,6 +337,11 @@ export default {
         justify-content: center;
         align-items: center;
         height: 100%;
+        div{
+            line-height: initial;
+            font-size: 12px;
+            margin-right: 3px;
+        }
         .btn_1 {
             font-size: 14px;
             background: none;

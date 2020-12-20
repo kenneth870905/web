@@ -152,7 +152,7 @@ new Vue({
                 this.err('上传错误，请重试！')
                 this.video2Init()
                 
-                // this.newBg = 'images/下载.jpg'
+                // this.newBg = '这里需要换成base64'
                 // this.openerweima()
                 // this.step = 6
                 // setTimeout(() => {
@@ -223,7 +223,8 @@ new Vue({
                 return
             }
             console.log(r)
-            var imgurl = r.imageUrl
+            var imgurl = 'http://'+r.imageUrl
+            console.log(imgurl)
             var QRCode = require('qrcode')
             QRCode.toDataURL(imgurl, (err, url)=> {
                 this.video2Init()

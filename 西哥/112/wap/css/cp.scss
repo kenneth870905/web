@@ -1,0 +1,40 @@
+.list-1{
+    padding: 20px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 14px;
+    li{
+        margin: 0px 0px 10px;
+        width: calc((100vw - 20px - 10px)/2 );
+        >div:nth-child(1){
+            border: 1px solid #cacaca;
+            height: calc((100vw - 20px - 10px)/2 );
+        }
+    }
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+.yema{
+    border-top: 1px solid #ccc;
+    padding: 10px 10px 30px;
+    font-size: 14px;
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    a{
+        color: #0075ff;
+        margin: 0px 10px 0px 0px;
+    }
+}
+
+.title-2{
+    text-align: center;
+    padding: 20px 0px 10px;
+    border-bottom: 1px solid #ccc;
+    font-size: 18px;
+}

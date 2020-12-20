@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import ElementUI, { Loading , MessageBox  } from 'element-ui';
+import ElementUI, { Loading , MessageBox , Message  } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 
@@ -15,6 +15,12 @@ Vue.prototype.$axios = axios
 Vue.prototype.$api_url = api_url
 
 
+Vue.prototype.正确 = (str)=>{
+    Message({ showClose: true, message: str, type: 'success' });
+}
+Vue.prototype.错误 = (str)=>{
+    Message({ showClose: true, message: str, type: 'error' });
+}
 
 var Vueloading = ''
 Vue.prototype.$loading = (type) => {

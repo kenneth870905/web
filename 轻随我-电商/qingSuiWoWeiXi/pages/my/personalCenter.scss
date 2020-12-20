@@ -1,93 +1,152 @@
-.header{
-	height: _opx(220);
-	background: #378df0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-	.zhongxin{
-		width: _opx(200);
-		height: _opx(200);
-		background: rgba($color: #fff, $alpha: 0.3);
-		border-radius: 100%;
+.personalCenter{
+	padding: 0px 27rpx;
+}
+.box-1{
+	background-image: linear-gradient(96deg,  #2e5858 0%,  #4ec3b1 100%);
+	border-radius: 3rpx;
+	margin: 10px auto 0px;
+	// 顶部
+	.t1{
 		display: flex;
+		padding: 33rpx 0px 0px 38rpx;
 		align-items: center;
-		justify-content: center;
-		>view{
-			width: _opx(150);
-			height: _opx(150);
-			background: rgba($color: #fff, $alpha: 0.2);
+	}
+	.touxiang{
+		flex-shrink: 0;
+		width: 109rpx;
+		height: 109rpx;
+		background-color: #000000;
+		border: solid 3rpx #ffffff;
+		position: relative;
+		border-radius: 100%;
+		box-sizing: border-box;
+		margin: 0px 30rpx 0px 0px;
+		image{
+			width: 100%;
+			height: 100%;
 			border-radius: 100%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			image{
-				width: _opx(75);
-				height: _opx(75);
-				border: 1px solid #fff;
-				border-radius: 100%;
-				object-fit:cover;
-			}
-			cover-view{
-				width: _opx(75);
-				height: _opx(75);
-				border: 2px solid #fff;
-				border-radius: 100%;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
-			cover-image{
-				height: auto;
-			}
+		}
+		i{
+			position: absolute;
+			top: -8px;
+			right: -8px;
+			font-size: 46rpx;
+			color: #ff7326;
+			transform:rotate(30deg);
 		}
 	}
-	text{
-		position: absolute;
-		bottom: _opx(35);
-		color: #fff;
+	.btn-2{
+		flex: 1;
 	}
-	.btn_1{
-		position: absolute;
-		bottom: _opx(20);
-		color: #fff;
-		width: auto;
-		height: auto;
-		line-height: initial;
-		padding: 2px 4px;
-		border: 1px solid red;
-		border-radius: 0px;
+	.btn-denglu{
+		padding: 0px;
+		font-size: 16px;
+		border: none;
 		color: red;
+		display: inline-block;
+		margin: 0px 0px 0px 10px;
+	}
+	.name{
+		flex: 1;
+		display: flex;
+		align-items: center;
+		color: #fff;
+		
+		input{
+			border-bottom: 1px solid #fff;
+		}
+		text{
+			font-size: 35rpx;
+			font-weight: bold;
+			margin: 0px 23rpx 0px 0px;
+		}
+		i{
+			margin: 0px 5px 0px 0px;
+		}
+		.iconxuanzhong,
+		.iconshanchu{
+			color: #ff7326;
+			font-size: 40rpx;
+		}
+	}
+	.btn-1{
+		flex-shrink: 0;
+		width: 210rpx;
+		height: 58rpx;
+		margin: 0px 0px 0px 10px;
+		text-align: center;
+		border-top-left-radius: 19rpx;
+		border-bottom-left-radius: 19rpx;
+		background: rgba(0,0,0,0.2);
+		line-height: 58rpx;
+		font-size: 21rpx;
+		color: #ffffff;
+	}
+	// 下面
+	.t2{
+		height: 143rpx;
+		display: flex;
+		align-items: center;
+		text-align: center;
+		>view{
+			width: calc(100% / 3);
+		}
+		text{
+			font-size: 33rpx;
+			color: #fff;
+			margin: 0px 0px 15rpx 0px;
+		}
+		view{
+			font-size: 17rpx;
+			color: #adbbbb;
+		}
 	}
 }
 
-.huobi{
-	height: _opx(65);
+.box-2{
 	display: flex;
-	align-items: center;
-	flex-direction: row;
-	text-align: center;
-	background: #fff;
-	position: relative;
-	margin: 10px auto;
+	margin-top: 15rpx;
 	>view{
-		width: 50%;
+		flex: 1;
+		height: 126rpx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #ffffff;
+		border-radius: 3rpx;
+		&:nth-child(1){
+			margin-right: 18rpx;
+		}
+		font-size: 28rpx;
+		icon{
+			font-size: 56rpx;
+			margin: 0px 38rpx 0px 0px;
+		}
 	}
-	&::after{
-		position: absolute;
-		left: 50%;
-		height: 70%;
-		width: 2px;
-		content: '';
-		background: #f5f5f5;
+}
+
+.box-3{
+	background: #fff;
+	margin: 20rpx 0px 0px;
+	>view{
+		height: 90rpx;
+		display: flex;
+		align-items: center;
+		padding: 0px 30rpx;
 	}
-	.text{
-		color: #616161;
+	>view:not(:last-child){
+		border-bottom:1px solid #eee;
 	}
-	.jinge{
-		font-weight: bold;
-		margin: 0px 0px 5px;
-		color:#378df0;
+	i:nth-child(1){
+		width: 62rpx;
+		font-size: 40rpx;
+	}
+	text{
+		font-size: 25rpx;
+		flex: 1;
+	}
+	.iconarrow-right{
+		color: #bbb;
 	}
 }
 
@@ -128,6 +187,7 @@
 	text-align: center;
 	color: #8c8c8c;
 	margin: 20px 0px;
+	font-size: 12px;
 }
 
 

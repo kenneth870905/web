@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/cp.css">
+    <link rel="stylesheet" href="../css/swiper.css">
+</head>
+<body>
+    <section class="header">
+        <div class="header-1">
+            <img onclick="history.back()" class="fanhui" src="../icon/返回.png" alt="" srcset="">
+
+            <div class="title">西杨级纸箱厂</div>
+            <img class="open" src="../icon/导航.png" alt="" srcset="">
+        </div>
+        <div class="nav">
+            <ul>
+                <a href="../index.html"><li>首页</li></a>
+                <a href="../aboutus.html"><li>关于我们</li></a>
+                <a href="../cp.html"><li>产品展示</li></a>
+                <a href="../news.html"><li>新闻咨询</li></a>
+                <a href="../rencai.html"><li>人才招募</li></a>
+                <a href="../contactus.html"><li>联系我们</li></a>
+            </ul>
+        </div>
+    </section>
+
+    <div class="swiper-container banner" >
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="../image/banner1.jpg" alt="" srcset="">
+            </div>
+            <div class="swiper-slide">
+                <img src="../image/banner2.jpg" alt="" srcset="">
+            </div>
+            <div class="swiper-slide">
+                <img src="../image/banner3.jpg" alt="" srcset="">
+            </div>
+        </div>
+    </div>
+    <div class="rexian">
+        <a href="javascript:;" class="tel-2">
+            <img src="../icon/手机.png" alt="" srcset="">
+            咨询热线：<span class="tel-1"></span>
+        </a>
+    </div>
+    <div class="title-2">产品</div>
+
+    <!-- 纸箱 -->
+    <ul class="list-1">
+        <li>
+            <div>
+                <img src="../image/zhixiang/1.jpg" alt="">
+            </div>
+            <div>纸箱</div>
+        </li>
+        <li>
+            <div>
+                <img src="../image/zhixiang/2.jpg" alt="">
+            </div>
+            <div>纸箱</div>
+        </li>
+        <li>
+            <div>
+                <img src="../image/zhixiang/1.jpg" alt="">
+            </div>
+            <div>纸箱</div>
+        </li>
+        <li>
+            <div>
+                <img src="../image/zhixiang/2.jpg" alt="">
+            </div>
+            <div>纸箱</div>
+        </li>
+        <li>
+            <div>
+                <img src="../image/zhixiang/1.jpg" alt="">
+            </div>
+            <div>纸箱</div>
+        </li>
+        <li>
+            <div>
+                <img src="../image/zhixiang/2.jpg" alt="">
+            </div>
+            <div>纸箱</div>
+        </li>
+    </ul>
+
+    <!-- 修改上一页和下一页 -->
+    <div class="yema">
+        <span>第6页</span>
+        <div>
+            <!-- 注意如果上一页是第一页就用   ../cp.html -->
+            <a href="cp5.html">上一页</a>
+            <!-- <a href="cp4.html">下一页</a> -->
+        </div>
+    </div>
+
+    <footer>
+        <a href="../index.html">
+            <img src="../icon/定位.png" alt="" srcset="">
+            <div>首页</div>
+        </a>
+        <a class="tel" href="javascript:;">
+            <img src="../icon/电话.png" alt="" srcset="">
+            <div>电话</div>
+        </a>
+        <a class="sms" href="../cp.html">
+            <img src="../icon/短信.png" alt="">
+            <div>产品</div>
+        </a>
+        <a href="../aboutus.html">
+            <img src="../icon/分享.png" alt="">
+            <div>简介</div>
+        </a>
+    </footer>
+
+    <script src="../jquery-3.5.1.min.js"></script>
+    <script src="../swiper.js"></script>
+    <script src="../config.js"></script>
+    <script>
+        $('.tel').attr('href','tel:'+tel)
+
+
+        $('.open').click(function(){
+            $('.nav').toggle();
+        })
+        $('.nav').click(function(e){
+            // console.log($(e.target).is('li'))
+            $('.nav').hide()
+        })
+        
+        
+        $('.tel-1').attr('href','tel:'+tel)
+        $('.tel-2').html(tel)
+
+        var swiper = new Swiper('.swiper-container',{
+            loop : true,
+            autoplay : {
+                delay:3000,
+                disableOnInteraction:false
+            }
+        });
+    </script>
+</body>
+</html>

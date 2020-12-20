@@ -1,0 +1,45 @@
+{
+  "_from": "@miniprogram-component-plus/index-list",
+  "_id": "@miniprogram-component-plus/index-list@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-f7gRSTKnh+zNYuX68wIaPA7Ahk/NlPziP7GJ4A+z363MtqFrXUcPpuGT7qGpgCpF7aQIHtCJjg44RGxxUtbh3A==",
+  "_location": "/@miniprogram-component-plus/index-list",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@miniprogram-component-plus/index-list",
+    "name": "@miniprogram-component-plus/index-list",
+    "escapedName": "@miniprogram-component-plus%2findex-list",
+    "scope": "@miniprogram-component-plus",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@miniprogram-component-plus/index-list/-/index-list-1.0.0.tgz",
+  "_shasum": "2182907c64717e76b61cf2b3691e302804a45ead",
+  "_spec": "@miniprogram-component-plus/index-list",
+  "_where": "F:\\web\\轻随我-电商\\qingSuiWoWeiXi",
+  "author": {
+    "name": "sanfordsun"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "",
+  "keywords": [
+    "index",
+    "list",
+    "miniprogram"
+  ],
+  "license": "ISC",
+  "main": "miniprogram_dist/index.js",
+  "name": "@miniprogram-component-plus/index-list",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}

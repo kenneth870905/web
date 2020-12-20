@@ -7,7 +7,7 @@
 
 /*通用 */
 view{
-	font-size:28rpx;
+	/* font-size:28rpx; */
 	/* line-height:1.8; */
 }
 progress, checkbox-group{
