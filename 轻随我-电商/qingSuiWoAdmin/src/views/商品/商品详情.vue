@@ -5,8 +5,34 @@
         </div>
         <div class="form">
             <el-form :model="sp" :rules="spRules" ref="spFrom" size="small" label-width="80px" @submit.native.prevent>
+                <el-form-item label="商品分类" prop="categoryId">
+                    <el-select v-model="sp.categoryId">
+                        <el-option v-if="!sp.categoryId" label="请选择分类" :value="0"></el-option>
+                        <el-option v-for="(item, index) in 分类" :label="item.name" :value="item.id"></el-option>
+                        <!-- <el-option label="一级和二级用户都可以购买" :value="1" :key="1"></el-option>
+                        <el-option label="只有二级用户才可以购买" :key="2" :value="2"></el-option> -->
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="放置首页">
+                    <el-select v-model="sp.isHomePage">
+                        <el-option label="否" :value="false"></el-option>
+                        <el-option label="是" :value="true"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="是否推荐">
+                    <el-select v-model="sp.isRecommend">
+                        <el-option label="否" :value="false"></el-option>
+                        <el-option label="是" :value="true"></el-option>
+                    </el-select>
+                </el-form-item>
                 <el-form-item label="商品名称" prop="name">
-                    <el-input v-model="sp.name" placeholder="情输入商品名称"></el-input>
+                    <el-input v-model="sp.name" placeholder="请输入商品名称"></el-input>
+                </el-form-item>
+                <el-form-item label="商品标题">
+                    <el-input v-model="sp.title" placeholder="放置首页商品请输入标题，其他可忽略"></el-input>
+                </el-form-item>
+                <el-form-item label="商品简介">
+                    <el-input type="textarea" v-model="sp.brief"></el-input>
                 </el-form-item>
                 <el-form-item label="购买级别">
                     <el-select v-model="sp.level">
@@ -96,13 +122,28 @@ export default {
                 levelTwoPrice: '', //二级价格
                 creditPrice: '',    //积分价格
                 isKickback: true,   //是否返佣
-                kickbackRate: '',  //返佣比例
+                kickbackRate: 0,  //返佣比例
                 maxPurchaseCount:0,     //限购 0 不限购
                 imgs: [],           //轮播图片
                 coverImg: "",       //封面
-                description: ""     //详情
+                description: "",     //详情
+                categoryId:'',
+                isHomePage:false,   //否放置首页
+                isRecommend:false,  //表示是否推荐
+                brief:"",       //简介
             },
             spRules: {
+                categoryId:[
+                    { required: true, trigger: 'blur',
+                        validator:(rule, value, callback)=>{
+                            if(!value){ 
+                                callback(new Error('请选择分类'));
+                            }else{
+                                callback()
+                            }
+                        }
+                    }
+                ],
                 name: [
                     { required: true, message: '请输入商品名称', trigger: 'blur' }
                 ],
@@ -192,7 +233,7 @@ export default {
                     }
                 }
             },
-
+            分类:[]
         }
     },
     computed: {
@@ -374,9 +415,21 @@ export default {
         },
         change_1(key){
             this.sp[key] = this.sp[key] ? Math.ceil(this.sp[key]*100)/100 : 0
+        },
+        获取商品分类(){
+            this.$axios.get(`/api/category`,{params:{page:1,size:1000}})
+            .then(res => {
+                if(res.code===0){
+                    this.分类 = res.data
+                    if(!this.sp.id && this.分类.length>0){
+                        this.sp.categoryId = this.分类[0].id
+                    }
+                }
+            })
         }
     },
     mounted() {
+        this.获取商品分类()
         this.sp.id = this.$route.query.id
         if(this.sp.id){
             this.getproduct()

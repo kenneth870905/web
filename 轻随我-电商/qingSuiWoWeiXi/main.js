@@ -38,6 +38,13 @@ Vue.prototype.$http = (url,data,m)=>{
 	})
 }
 
+Vue.prototype.$toTabBar=(url)=>{
+	uni.switchTab({
+		url:url
+	})
+}
+
+
 
 
 App.mpType = 'app'

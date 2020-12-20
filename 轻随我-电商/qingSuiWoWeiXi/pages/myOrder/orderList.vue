@@ -13,6 +13,12 @@
 			<view @click="改变类型(3)" :class="{active:query.status==3}">
 				已取消
 			</view>
+			<view @click="改变类型(4)" :class="{active:query.status==4}">
+				待发货
+			</view>
+			<view @click="改变类型(5)" :class="{active:query.status==5}">
+				待收货
+			</view>
 		</view>
 		<view class="list">
 			<view class="item" v-for="item in list">
@@ -181,6 +187,7 @@
 	background: #f5f5f5;
 	position: sticky;
 	top: 0px;
+	font-size: 12px;
 	view{
 		width: 100px;
 		line-height: 34px;

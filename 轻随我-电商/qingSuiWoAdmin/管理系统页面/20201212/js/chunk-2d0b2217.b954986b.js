@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0b2217"],{2399:function(n,e,t){"use strict";t.r(e);var r=function(){var n=this,e=n.$createElement;n._self._c;return n._m(0)},a=[function(){var n=this,e=n.$createElement,t=n._self._c||e;return t("div",[n._v(" 首页轮播 "),t("br"),n._v(" 暂未开通 ")])}],c={name:"",data:function(){return{}}},u=c,i=t("2877"),s=Object(i["a"])(u,r,a,!1,null,"11a16b42",null);e["default"]=s.exports}}]);
+//# sourceMappingURL=chunk-2d0b2217.b954986b.js.map

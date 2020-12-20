@@ -28,6 +28,21 @@ const routes = [
 				name:"",
 				component:()=>import('@/views/商品/商品详情.vue')
 			},
+			{
+				path:"productCategory",
+				name:"",
+				component:()=>import('@/views/商品/商品分类.vue')
+			},
+			{
+				path:"miaosha",
+				name:"",
+				component:()=>import('@/views/商品/秒杀商品.vue')
+			},
+			{
+				path:"miaoshaXQ",
+				name:"",
+				component:()=>import('@/views/商品/秒杀详情.vue')
+			},
 			// 会员
 			{
 				path:"userList",
@@ -62,6 +77,23 @@ const routes = [
 				path:"lunbo",
 				name:"",
 				component:()=>import('@/views/首页轮播.vue')
+			},
+			//意见反馈
+			{
+				path:"fankui",
+				name:"",
+				component:()=>import('@/views/反馈列表.vue')
+			},
+			//管理员
+			{
+				path:"adminList",
+				name:"",
+				component:()=>import('@/views/管理员/管理员列表.vue')
+			},
+			{
+				path:"admin",
+				name:"",
+				component:()=>import('@/views/管理员/管理员详情.vue')
 			},
 		]
 	},

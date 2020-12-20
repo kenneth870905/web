@@ -45,6 +45,11 @@
         "appid" : "wxf790773d8045fddf",
         "setting" : {
             "urlCheck" : true
+        },
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : "定位当前，添加收货地址"
+            }
         }
     },
     "h5" : {

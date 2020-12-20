@@ -1,0 +1,1825 @@
+/*Index-start*/
+@charset "utf-8";
+
+html {
+    color: #000;
+    background: #FFF;
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+p,
+blockquote,
+th,
+td {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #666666;
+    font: 12px/1.231 Verdana, Arial, Helvetica, sans-serif, "";
+    background: #fff;
+    min-width: 1160px
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var,
+optgroup {
+    font-style: inherit;
+    font-weight: inherit;
+}
+
+del,
+ins {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+caption,
+th {
+    text-align: left;
+}
+
+q:before,
+q:after {
+    content: '';
+}
+
+abbr,
+acronym {
+    border: 0;
+    font-variant: normal;
+}
+
+sup {
+    vertical-align: baseline;
+}
+
+sub {
+    vertical-align: baseline;
+}
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+}
+
+input,
+button,
+textarea,
+select {
+    *font-size: 100%;
+}
+
+input,
+select {
+    vertical-align: middle;
+}
+
+select,
+input,
+button,
+textarea,
+button {
+    font: 99% arial, helvetica, clean, sans-serif;
+}
+
+table {
+    font-size: inherit;
+    font: 100%;
+    border-collapse: collapse;
+}
+
+pre,
+code,
+kbd,
+samp,
+tt {
+    font-family: monospace;
+    *font-size: 108%;
+    line-height: 100%;
+}
+
+/*title*/
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 26px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+h4 {
+    font-size: 14px;
+}
+
+h5 {
+    font-size: 12px;
+}
+
+h6 {
+    font-size: 10px;
+}
+
+a {
+    color: #666666;
+    text-decoration: none;
+}
+
+/*for ie f6n.net*/
+a:focus {
+    outline: 0;
+}
+
+/*for ff f6n.net*/
+a:hover {
+    text-decoration: underline;
+}
+
+.vam {
+    vertical-align: middle;
+}
+
+.clear {
+    clear: both;
+    font-size: 0;
+    line-height: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.tr {
+    text-align: right;
+}
+
+.tl {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.fw {
+    font-family: "微软雅黑", "宋体";
+}
+
+.pa {
+    position: absolute;
+}
+
+.pr {
+    position: relative
+}
+
+.mt8 {
+    margin-top: 8px;
+}
+
+.font14 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.mb10 {
+    margin-bottom: 10px;
+}
+
+.ml10 {
+    margin-left: 10px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+/*万能清除浮动开始*/
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.clearfix {
+    display: inline-table;
+}
+
+/* Hides from IE-mac */
+* html .clearfix {
+    height: 1%;
+}
+
+.clearfix {
+    display: block;
+}
+
+.png {
+    background-image: expression(this.runtimeStyle.backgroundImage="none", this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+ this.src + "', sizingMethod='image')", this.src="images/png.gif")
+}
+
+/* -- 页面整体布局 -- */
+.wbyheader {
+    width: 100%;
+    min-width: 1160px;
+    background: url("../t_bg.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/t_bg.gif*/
+        no-repeat center top;
+}
+
+.content,
+.footer {
+    width: 1160px;
+    margin: 0 auto;
+}
+
+.contentbg {
+    background: url("../ab_bg.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/ab_bg.gif*/
+        no-repeat center top;
+    min-width: 1160px;
+    padding-top: 50px;
+}
+
+.left {
+    width: 201px;
+    float: left;
+    overflow: hidden;
+}
+
+.right {
+    width: 954px;
+    float: left;
+    display: inline;
+    margin-left: 5px;
+    overflow: hidden;
+}
+
+.righttop {
+    background: url("../right_top_img.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/right_top_img.gif*/
+        no-repeat;
+    height: 3px;
+    font-size: 0;
+    overflow: hidden;
+}
+
+.rightbot {
+    background: url("../right_bot_img.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/right_bot_img.gif*/
+        no-repeat;
+    height: 3px;
+    font-size: 0;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.right_main {
+    width: 952px;
+    min-height: 458px;
+    border-top: 0;
+    border-bottom: 0;
+    padding-bottom: 15px;
+    overflow: hidden;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+/*头部开始*/
+.topbg {
+    width: 100%;
+    min-width: 1160px;
+    height: 28px;
+    color: #fff
+}
+
+.h_top {
+    width: 1160px;
+    margin: 0 auto;
+    height: 28px;
+    font: 12px/28px "宋体";
+    color: #333;
+}
+
+.h_top p a {
+    display: inline-block;
+    color: #333;
+    padding: 0 14px;
+    height: 33px;
+    background: url("../tbor.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/tbor.gif*/
+        no-repeat right 8px;
+    margin-left: -1px;
+}
+
+.h_top p a:hover,
+.h_top a.cur {
+    color: #1367c5;
+    text-decoration: none;
+}
+
+.h_top p .nobot {
+    background: none;
+}
+
+.h_con {
+    width: 1160px;
+    margin: 0 auto;
+    height: 130px;
+}
+
+.h_con h1 {
+    overflow: hidden;
+    padding: 10px 0 0 10px;
+}
+
+.h_con h1 img {
+    float: left;
+}
+
+.h_con h1 span {
+    padding-left: 24px;
+    margin-top: 24px;
+    float: left;
+    color: #d80000;
+    font: 25px "宋体";
+    width: 400px;
+    border-left: 1px solid #CCC;
+}
+
+.h_con h1 span em {
+    display: block;
+    font: normal 16px/30px "微软雅黑";
+    color: #555555;
+}
+
+
+
+.top_r {
+    width: 270px;
+    overflow: hidden;
+}
+
+.tel {
+    padding-left: 52px;
+    margin-top: 35px;
+    color: #555555;
+    font: 16px "Microsoft YaHei";
+    background: url("../tel.jpg")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/tel.jpg*/
+        no-repeat left center;
+}
+
+.tel span {
+    font: bold 30px "Arial";
+    color: #d80000;
+}
+
+
+
+.h_pho {
+    padding: 18px 0 0 0;
+}
+
+.h_pho .pho01 {
+    color: #6e6e6e;
+    font: 12px/14px "微软雅黑";
+    background: url("../tel.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/tel.gif*/
+        no-repeat left 5px;
+    overflow: hidden;
+    padding: 5px 0 0 42px;
+    display: block;
+}
+
+.h_pho .pho01 span {
+    font: 24px/26px "Georgia";
+    display: block;
+    color: #e64710;
+}
+
+.h_pho .tzxi {
+    margin: 10px 0 0 42px;
+    width: 135px;
+    height: 29px;
+    text-align: center;
+    display: block;
+    background: #e64710;
+}
+
+.h_pho .tzxi a {
+    color: #fff;
+    font: 17px/29px "微软雅黑";
+}
+
+.navbg {
+    width: 100%;
+    min-width: 1160px;
+    height: 54px;
+}
+
+.h_nav {
+    width: 1160px;
+    margin: 0 auto;
+    height: 54px;
+    overflow: hidden;
+}
+
+.h_nav ul li {
+    float: left;
+    background: url("../n_lin.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/n_lin.gif*/
+        no-repeat right center;
+    height: 54px;
+    font: 14px/54px "微软雅黑";
+    text-align: center;
+}
+
+.h_nav ul li span {
+    padding-right: 12px;
+}
+
+.h_nav ul li a:hover,
+.h_nav ul .cur a {
+    background: url("../nav_l.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/nav_l.gif*/
+        no-repeat left top;
+    display: block;
+    text-decoration: none;
+    float: left;
+}
+
+.h_nav ul li a:hover span,
+.h_nav ul .cur a span {
+    background: url("../nav_r.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/nav_r.gif*/
+        no-repeat right top;
+    display: block;
+    float: left;
+    color: #fff;
+}
+
+
+
+.h_nav ul li a {
+    color: #fff;
+    padding-left: 13px;
+    text-decoration: none;
+    font-size: 15px;
+    margin: 0 20px;
+}
+
+.h_nav ul li a:-webkit-any-link {
+    display: block;
+}
+
+.h_nav ul .nobot {
+    background: none;
+}
+
+.soubg {
+    width: 100%;
+    min-width: 1160px;
+    height: 57px;
+    background: url("../sou_bg.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/sou_bg.gif*/
+        repeat-x;
+}
+
+.h_ser {
+    width: 1160px;
+    height: 45px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.h_ser p {
+    height: 47px;
+    font: 14px/47px "微软雅黑";
+    overflow: hidden;
+    padding: 0 0 0 5px;
+    color: #1367c5;
+}
+
+.h_ser p a {
+    padding: 0 8px 0 2px;
+    color: #989898;
+}
+
+.s_inp {
+    width: 250px;
+    height: 28px;
+    padding: 10px 0 0 0;
+}
+
+.inp01 {
+    background: #d8d8d8;
+    width: 192px;
+    height: 28px;
+    font: 12px/26px "宋体";
+    border: none medium;
+    text-align: left;
+    padding-left: 10px;
+    color: #8d8d8d;
+    display: inline;
+}
+
+.s_sbtn {
+    width: 40px;
+    height: 28px;
+    border: 0px;
+    cursor: pointer;
+    float: left;
+    background: url("../soso.jpg")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/soso.jpg*/
+        no-repeat right center;
+}
+
+
+.otherbanner {
+    width: 1160px;
+    margin: 0 auto;
+}
+
+.banner {
+    position: relative;
+    height: 468px;
+    background: url("../loading.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/loading.gif*/
+        50% no-repeat;
+    overflow: hidden;
+    min-width: 1160px;
+}
+
+.slides {
+    position: relative;
+    z-index: 1;
+}
+
+.slides li {
+    height: 468px;
+}
+
+.flex-control-nav {
+    position: absolute;
+    bottom: 10px;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+}
+
+.flex-control-nav li {
+    display: inline-block;
+    width: 50px;
+    height: 3px;
+    margin: 0 5px;
+    *display: inline;
+    zoom: 1;
+}
+
+.flex-control-nav a {
+    display: inline-block;
+    width: 50px;
+    height: 3px;
+    overflow: hidden;
+    background: #fff;
+    cursor: pointer;
+}
+
+.flex-control-nav .flex-active {
+    background: #1367c5;
+}
+
+.flex-direction-nav {
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    top: 45%;
+}
+
+.flex-direction-nav li a {
+    display: block;
+    width: 50px;
+    height: 38px;
+    overflow: hidden;
+    cursor: pointer;
+    position: absolute;
+    filter: alpha(opacity=80);
+    -moz-opacity: 0.8;
+    -khtml-opacity: 0.8;
+    opacity: 0.8;
+}
+
+.flex-direction-nav li a.flex-prev {
+    left: 40px;
+    background: url("../prev_icon.png")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/prev_icon.png*/
+        center center no-repeat;
+}
+
+.flex-direction-nav li a.flex-next {
+    right: 40px;
+    background: url("../next_icon.png")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/next_icon.png*/
+        center center no-repeat;
+}
+
+.flex-direction-nav li a:hover {
+    filter: alpha(opacity=60);
+    -moz-opacity: 0.6;
+    -khtml-opacity: 0.6;
+    opacity: 0.6;
+}
+
+/*头部结束*/
+
+.prolist {
+    width: 225px;
+    overflow: hidden;
+    margin-top: 26px;
+}
+
+.prolist h2 {
+    height: 53px;
+    font: bold 18px"微软雅黑";
+    text-align: center;
+    padding-top: 12px;
+    background: url("../h2.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/h2.gif*/
+        no-repeat
+}
+
+.prolist h2 a {
+    color: #fff;
+}
+
+.prolist h2 span {
+    display: block;
+    color: #a5b9d4;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 20px;
+}
+
+.pro {
+    width: 100%;
+    /* width:929px;  */
+    margin-top: 26px;
+    position: relative;
+    border: 1px solid #cfcfcf;
+    border-radius: 5px;
+}
+
+.pro h2 {
+    height: 43px;
+    background-image: url("../pr_lin.gif");
+    background-repeat:no-repeat ;
+    background-position: 5px bottom ;
+    background-size: calc(100% - 10px)  auto;
+    font: normal 16px/43px "微软雅黑";
+    padding: 0 16px;
+    overflow: hidden;
+    color: #333
+}
+
+.pro h2 a {
+    color: #333;
+}
+
+.pro h2 span {
+    margin: 13px 0 0 0;
+}
+
+.pro_c {
+    padding: 8px 0 0 0;
+}
+
+.pro_c ul li {
+    float: left;
+    overflow: hidden;
+    margin: 0 4px 4px 4px;
+    display: display;
+    _width: 229px;
+}
+
+.pro_c ul li a {
+    color: #8B8B8B;
+}
+
+.pro_c ul li a:hover img {
+    border: 1px solid #1367c5
+}
+
+.pro_c ul li img {
+    border: 1px solid #dfdfdf
+}
+
+.pro_c ul li span {
+    text-align: center;
+    display: block;
+    font: 14px "宋体";
+    padding: 5px 0 0 0;
+    width: 210px;
+    height: 21px;
+    line-height: 21px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.pro_c ul li a:hover {
+    text-decoration: underline;
+}
+
+
+.about {
+    width: 1140px;
+    overflow: hidden;
+    padding: 0 10px;
+}
+
+.about h2 {
+    height: 44px;
+    font: 20px/44px "微软雅黑";
+    text-align: center;
+}
+
+.about h2 a {
+    color: #fff;
+}
+
+.about h2 em {
+    color: #acacac;
+    font: 14px/44px "Times New Roman", Times, serif;
+    padding: 0 0 0 10px;
+    text-transform: uppercase;
+}
+
+.about h2 span {
+    margin: 12px 0 0 0;
+}
+
+.a_c {
+    height: 270px;
+    overflow: hidden;
+    padding: 25px 0 0 0;
+}
+
+.a_c dl {
+    height: 251px;
+    overflow: hidden;
+}
+
+.a_c dl dt {
+    width: 400px;
+    height: 251px;
+    overflow: hidden;
+}
+
+.a_c dl dt img {
+    width: 400px;
+    height: 251px;
+}
+
+.a_c dl dd {
+    width: 690px;
+    height: 251px;
+    padding: 0 0 0 20px;
+    color: #fff;
+    overflow: hidden;
+}
+
+.a_c dl dd p {
+    font: 14px/25px "微软雅黑";
+}
+
+.a_c dl dd em a {
+    display: block;
+    margin: 28px 0 0 0;
+    color: #e64710;
+    font: normal 12px/24px "微软雅黑";
+}
+
+.xc {
+    width: 1140px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.xc h2 a {
+    color: #000;
+}
+
+.xc h2 {
+    color: #000;
+}
+
+.xc_c {
+    padding: 25px 0 0 0;
+    height: 254px;
+    overflow: hidden;
+}
+
+.xc_c ul {
+    height: 270px;
+    overflow: hidden;
+}
+
+.xc_c ul li {
+    float: left;
+    margin-right: 7px;
+    display: inline;
+    overflow: hidden;
+}
+
+.xc_c ul li img {
+    padding: 2px;
+    border: 1px solid #8B8B8B
+}
+
+.xc_c ul li a {
+    color: #8B8B8B;
+}
+
+.xc_c ul li a:hover img {
+    padding: 2px;
+    border: 1px solid #1367C5;
+    color: #AD1C3B;
+}
+
+.xc_c ul li span {
+    text-align: center;
+    display: block;
+    width: 210px;
+    height: 28px;
+    font: 14px/28px "微软雅黑";
+    overflow: hidden;
+}
+
+.xc_c ul li a:hover {
+    text-decoration: none;
+    color: #1367C5;
+}
+
+.xc_c ul .nobot {
+    margin: 0;
+}
+
+.xc_c .btn {
+    display: block;
+    text-align: center;
+    height: 31px;
+    overflow: hidden;
+    padding-left: 548px;
+    clear: both;
+    *zoom: 1;
+}
+
+.xc_c .btn a {
+    display: block;
+    width: 31px;
+    height: 31px;
+    float: left
+}
+
+.xc_c .btn a.a01 {
+    background: url("../xl.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/xl.gif*/
+        no-repeat;
+    width: 31px;
+    height: 31px;
+    display: block;
+}
+
+.xc_c .btn a.a01:hover {
+    background: url("../xl02.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/xl02.gif*/
+        no-repeat;
+    display: block;
+}
+
+.xc_c .btn a.a02 {
+    background: url("../xr.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/xr.gif*/
+        no-repeat;
+    width: 31px;
+    height: 31px;
+    display: block;
+}
+
+.xc_c .btn a.a02:hover {
+    background: url("../xr02.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/xr02.gif*/
+        no-repeat;
+    display: block;
+}
+
+.new {
+    width: 852px;
+    height: 319px;
+    overflow: hidden;
+    margin-top: 40px;
+}
+
+.newbar {
+    height: 33px;
+    background: url("../bardt.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/bardt.gif*/
+        repeat-x left bottom;
+    overflow: hidden;
+}
+
+.newbar ul li {
+    float: left;
+    height: 33px;
+    overflow: hidden;
+}
+
+.newbar ul li a {
+    color: #333;
+    height: 33px;
+    font: 16px/33px "微软雅黑";
+    width: 209px;
+    text-align: center;
+    display: inline-block;
+}
+
+.newbar ul li em {
+    color: #acacac;
+    font: normal 14px/33px "微软雅黑";
+    text-transform: uppercase;
+    padding: 0 0 0 8px;
+}
+
+.newbar ul li a:hover,
+.newbar ul .cur a {
+    color: #fff;
+    background: #1367c5;
+    display: inline-block;
+}
+
+.newbar ul li a:hover em,
+.newbar ul .cur a em {
+    color: #fff;
+}
+
+.newbar span {
+    margin-top: 4px;
+}
+
+.n_con {
+    padding: 28px 0 0 0;
+    height: 258px;
+    overflow: hidden;
+}
+
+.n_con dl {
+    height: 222px;
+    overflow: hidden;
+}
+
+.n_con dl dt {
+    width: 326px;
+    height: 222px;
+}
+
+.n_con dl dt img {
+    width: 326px;
+    height: 222px;
+}
+
+.n_con dl dd {
+    width: 502px;
+    overflow: hidden;
+    padding: 0 0 0 22px;
+}
+
+.n_con dl dd ul li {
+    width: 500px;
+    overflow: hidden;
+    border-bottom: 1px dashed #d7d7d7;
+}
+
+.n_con dl dd ul li a {
+    color: #646464;
+    height: 32px;
+    font: 14px/32px "微软雅黑";
+    padding: 0 0 0 14px;
+    display: block;
+    background: url("../lidd.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/lidd.gif*/
+        no-repeat left center;
+}
+
+.n_con dl dd ul li span {
+    display: block;
+    float: right;
+    padding-left: 10px;
+    height: 32px;
+    line-height: 32px;
+}
+
+.n_con dl dd ul li a:hover,
+.n_con dl dd ul .cur a {
+    color: #e64710;
+}
+
+.faq {
+    width: 267px;
+    height: 358px;
+    overflow: hidden;
+    margin-top: 30px;
+}
+
+.faq h2 {
+    background: url("../barfaq.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/barfaq.gif*/
+        no-repeat left bottom;
+}
+
+.faq h2 a {
+    color: #1367c5;
+}
+
+.fa_con {
+    height: 286px;
+    overflow: hidden;
+}
+
+.fa_con dl {
+    padding: 10px 0;
+    overflow: hidden;
+    border-bottom: 1px dashed #ddd;
+}
+
+.fa_con dl dt {
+    background: url("../wen.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/wen.gif*/
+        no-repeat 0 center;
+    padding: 0 0 0 38px;
+    font: 12px/30px "微软雅黑";
+    margin-bottom: 5px;
+}
+
+.fa_con dl dt a {
+    color: #333;
+}
+
+.fa_con dl dd {
+    font: 12px/20px "微软雅黑";
+    overflow: hidden;
+    background: url("../da.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/da.gif*/
+        no-repeat 0 2px;
+    padding: 0 0 0 38px;
+    height: 40px;
+    overflow: hidden;
+}
+
+.fa_con dl dd a {
+    color: #e64710;
+    text-align: right;
+    display: inline-block;
+    padding: 0 0 0 55px;
+}
+
+.fa_con .nobot {
+    border: 0;
+}
+
+.link {
+    position: relative;
+    margin-top: 25px;
+    padding: 15px 17px 5px 17px;
+    background: #fff;
+}
+
+.link_tit {
+    height: 25px;
+    background: url("../link_line.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/link_line.gif*/
+        no-repeat left bottom;
+}
+
+.link_tit .tit_tx {
+    float: left;
+    padding-left: 73px;
+    font: 14px/25px "Microsoft Yahei";
+    color: #1367c5
+}
+
+.link_tit .tit_tx a {
+    color: #777;
+    padding-left: 20px;
+}
+
+/*底部开始*/
+.fbg {
+    overflow: hidden;
+    background: url("../f_bg.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/f_bg.gif*/
+        repeat-x;
+    margin: 20px 0 0 0;
+    padding-bottom: 20px;
+    min-width: 1160px;
+}
+
+.f_nav {
+    height: 41px;
+    font: 14px/41px "微软雅黑";
+    text-align: center;
+    border-bottom: 1px solid #034b84;
+}
+
+.f_nav a {
+    padding: 0 15px;
+    color: #fff;
+    display: inline-block;
+}
+
+.f_con {
+    padding: 36px 0 0 0;
+    overflow: hidden;
+    color: #fff;
+    font: 12px/24px "宋体";
+    text-align: center;
+    padding: 5px 0 0 36px;
+}
+
+.f_con h1 {
+    margin: 0 0 0 170px;
+    display: inline;
+}
+
+.f_con p {
+    color: #979696;
+    font: 12px/24px "宋体";
+    text-align: left;
+    padding: 5px 0 0 36px;
+}
+
+.f_con p a {
+    color: #979696;
+}
+
+.f_con p img {
+    vertical-align: middle;
+    margin: 0 0 0 10px;
+    display: inline-block;
+}
+
+.footer {
+    position: relative
+}
+
+/*底部结束*/
+
+/*Index-end*/
+
+/*分页*/
+.Page {
+    width: 95%;
+    text-align: center;
+    padding: 50px 0px;
+    padding-left: 20px;
+}
+
+.Page a {
+    display: inline-block;
+    width: 65px;
+    background: #ffffff;
+    height: 48px;
+    vertical-align: middle;
+    line-height: 48px;
+    font-size: 14px;
+    border: 1px solid #e5e5e5;
+    margin-left: -1px;
+    float: left;
+    text-decoration: none;
+    color: #333;
+    outline: none;
+}
+
+.Page a:hover {
+    background: #1367c5;
+    color: #FFF;
+    background-repeat: no-repeat;
+}
+
+.Page span {
+    display: inline-block;
+    min-width: 45px;
+    padding: 0 10px;
+    background: #ffffff;
+    height: 48px;
+    vertical-align: middle;
+    line-height: 48px;
+    font-size: 14px;
+    border: 1px solid #e5e5e5;
+    margin-left: -1px;
+    float: left;
+}
+
+.Page span.current {
+    background: #1367c5;
+    color: #FFF
+}
+
+/*联系我们*/
+.leib2 {
+    /*width:218px;*/
+}
+
+.leib2 .tit {
+    background: #1367c5;
+    height: 38px;
+    font: bold 16px/38px "微软雅黑";
+    text-align: center;
+    color: #fff;
+}
+
+.leib2 .tit a {
+    color: #333;
+}
+
+
+
+
+/*左边联系方式*/
+.leftlx {
+    background: #FFF;
+    border: 1px solid #1367c5;
+    border-top: none;
+}
+
+.leftlx h1 {
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+}
+
+.leftlx .dianh {
+    padding: 0 5px 0 10px;
+}
+
+.leftlx p {
+    line-height: 24px;
+}
+
+.leftlx .dianhua {
+    background: url("../tel.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/tel.gif*/
+        no-repeat scroll 0 18px transparent;
+    color: #666666;
+    line-height: 20px;
+    padding: 10px 0 10px 46px;
+}
+
+.leftlx .dianhua span {
+    display: block;
+    font: 18px "Impact";
+    color: #E64710;
+}
+
+
+
+.leib .tit {
+    background: #1367c5;
+    height: 38px;
+    font: bold 16px/38px "微软雅黑";
+    text-align: center;
+    color: #fff;
+}
+
+.leib .tit a {
+    color: #333;
+}
+
+.leib .tit a:hover {
+    color: #333;
+}
+
+.leib .nr {
+    border: 1px solid #1367c5;
+    padding: 12px 5px 10px 5px;
+    background: #fff;
+    border-top: 0px
+}
+
+.leib .nr h4 a {
+    font-weight: bold;
+    color: #333;
+    font-size: 12px;
+    padding-left: 26px;
+    height: 24px;
+    line-height: 24px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.leib .nr h3 a {
+    color: #484646;
+    height: 32px;
+    font: 16px/32px "微软雅黑";
+    background: #fdf1ec url("../listh3.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/listh3.gif*/
+        no-repeat 12px center;
+    padding: 0 0 0 26px;
+    display: block;
+}
+
+.leib .nr h3 a:hover,
+.leib .nr h3.cur a {
+    font-weight: normal;
+    color: #E64710;
+}
+
+.leib .nr li.cur a,
+.leib .nr li a:hover {
+    display: block;
+    color: #E64710;
+    font-weight: normal;
+}
+
+.leib .nr ul {
+    padding-bottom: 5px;
+}
+
+.leib .nr li a {
+    display: block;
+    padding-left: 26px;
+    background: url("../ico003.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/ico003.gif*/
+        no-repeat 16px 10px;
+    line-height: 28px;
+    height: 28px;
+    overflow: hidden
+}
+
+.leib .nr h4 {
+    background: #ccc;
+}
+
+.helpleftclom .leib .nr h3 {
+    padding-bottom: 10px;
+}
+
+
+
+
+/* -- 当前位置 -- */
+.plc {
+    background-color: #fff;
+    height: 30px;
+    line-height: 30px;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    padding: 0 10px;
+    position: relative;
+    color: #666;
+    overflow: hidden;
+}
+
+.plc span {}
+
+.plc img {
+    margin-top: 2px;
+    vertical-align: middle;
+}
+
+.plc_tit {
+    font-weight: bold;
+    line-height: 50px;
+}
+
+.plc_tit:hover {
+    text-decoration: none;
+}
+
+.plc2 {
+    background-position: -63px -57px;
+    line-height: 27px;
+    text-indent: 10px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+
+/*-----------------详细页---------------------*/
+.con_tit {
+    color: #f00;
+    background: url("../ico8.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/ico8.gif*/
+        no-repeat 0 6px;
+    padding-left: 10px;
+    line-height: 20px;
+}
+
+/*内容小标题*/
+.con_tit a {
+    color: #DD3904;
+}
+
+.age_li_about h4 {
+    line-height: 27px;
+}
+
+.agent_con {
+    width: 910px;
+    padding-top: 10px;
+    line-height: 30px;
+    margin-left: 19px;
+    font-size: 14px;
+}
+
+.agent_con p {
+    text-indent: 2em;
+    margin: 5px 0;
+}
+
+
+
+/*新闻列表*/
+.news_con {
+    /* width: 930px; */
+    margin: 0 auto;
+    padding-top: 15px;
+}
+
+.news_top {
+    width: 920px;
+    height: 132px;
+    overflow: hidden;
+    border-bottom: solid 1px #ccc;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+dl.news_dl {
+    font-size: 14px;
+    color: #666;
+    padding: 0 5px;
+    line-height: 22px;
+    border-bottom: 1px dashed #CCCCCC;
+}
+
+dl.news_dl a {
+    color: #000;
+}
+
+dl.news_dl dt {
+    margin-bottom: 3px;
+    margin-top: 5px;
+    line-height: 24px;
+    height: 24px;
+    width: 920px;
+    overflow: hidden;
+}
+
+dl.news_dl .dt_1 {
+    height: 20px;
+    background: url("../ico10.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/ico10.gif*/
+        no-repeat 0 6px;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+}
+
+dl.news_dl .dt_1:hover {
+    background: url("../ico7.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/ico7.gif*/
+        no-repeat 0 6px;
+    color: #E64710;
+}
+
+dl.news_dl .dt_2 {
+    font-size: 12px;
+    float: right;
+    padding: 0 10px 0 8px;
+    font-family: "宋体";
+}
+
+dl.news_dl .dt_3 {
+    font-size: 12px;
+}
+
+dl.news_dl .dt_3 a {
+    color: #E64710;
+    text-decoration: underline;
+}
+
+dl.news_dl dd {
+    font-size: 12px;
+    padding-left: 10px;
+    height: 45px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.mb10 {
+    margin-bottom: 10px;
+}
+
+.newchang {
+    border-bottom: 1px dashed #ccc;
+    height: 25px;
+    padding-left: 30px;
+}
+
+#subnavs {
+    width: 223px;
+    color: #7e4703;
+    line-height: 20px;
+    overflow: hidden;
+    border: 1px solid #e3e3e3;
+}
+
+.expmenu {
+    width: 198px;
+    overflow: hidden;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.expmenu li div.header {
+    width: 198px;
+    height: 44px;
+    line-height: 42px;
+}
+
+.expmenu li div.header h3 {
+    font-size: 16px;
+    font-weight: normal;
+    background: url("../h3.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/h3.gif*/
+        no-repeat left center;
+    padding-left: 38px;
+    height: 44px;
+    line-height: 42px;
+}
+
+.expmenu li div.header a {
+    height: 32px;
+    font-size: 12px;
+    font-family: "微软雅黑";
+    font-weight: normal;
+    color: #333;
+}
+
+.expmenu li div.color a {
+    color: #E64710;
+}
+
+/*三角按钮*/
+.expmenu li div.header .arrow {
+    display: block;
+    width: 20px;
+    height: 42px;
+    float: right;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.expmenu li div.header .arrow.down {
+    background: url("../jian.png")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/jian.png*/
+        right no-repeat;
+    margin-right: 15px;
+}
+
+.expmenu li div.header .arrow.up {
+    background: url("../jia.png")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/jia.png*/
+        right no-repeat;
+    margin-right: 15px;
+}
+
+/*二级导航*/
+.expmenu li .menu {
+    padding: 0 8px 5px;
+    overflow: hidden;
+}
+
+.expmenu li .menu li {
+    height: 28px;
+    line-height: 28px;
+    font-size: 12px;
+    background: url("../lt_bor.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/lt_bor.gif*/
+        center bottom no-repeat;
+    overflow: hidden;
+}
+
+.expmenu li .menu li a {
+    color: #333;
+    background: url("../lt_li.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/lt_li.gif*/
+        left center no-repeat;
+    padding-left: 15px;
+}
+
+.prolist h4 {
+    color: #ff6800;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 39px 0 0 25px;
+    font-family: "微软雅黑";
+}
+
+.prolist h4 b {
+    display: block;
+    color: #ff6800;
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+.prolist h4 span {
+    padding-left: 22px;
+}
+
+
+
+
+.agent_tit {
+    font-size: 22px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.agent_data {
+    font-size: 12px;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.agent_img {
+    text-align: center;
+}
+
+.agent_img img {
+    max-width: 840px;
+}
+
+.agent_page {
+    padding: 20px;
+    font-size: 14px;
+}
+
+.agent_page a:hover {
+    color: #e64710;
+}
+
+
+
+/*详细页 推荐资讯*/
+.RandomNews {
+    margin: 10px 0;
+}
+
+.diysr {
+    height: 36px;
+    line-height: 36px;
+    padding-left: 27px;
+    color: #1367c5;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-right: none;
+}
+
+.diysr a {
+    color: #1367c5;
+    font-weight: bold;
+}
+
+.diysr a:hover,
+.tit a:hover {
+    text-decoration: underline;
+}
+
+.news_random {
+    width: 938px;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+.news_random li {
+    background: url("../ico7.gif")
+        /*tpa=http://junweizpcom.q2017111401.bdy.smp06.cn/templates/web/images/ico7.gif*/
+        no-repeat left;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 17px 0 15px;
+    width: 430px;
+    float: left;
+    overflow: hidden;
+}
+
+.wbytable td {
+    padding: 8px;
+}
+
+.wbytable .wbytext {
+    outline: none;
+    padding: 5px;
+    height: 22px;
+    width: 320px;
+    border: 1px solid #e3e3e3;
+}
+
+.wbytable .wbyarea {
+    padding: 5px;
+    outline: none;
+    width: 450px;
+    border: 1px solid #e3e3e3;
+    height: 125px;
+}
+
+.wbytable .msgbut {
+    width: 90px;
+    height: 32px;
+    line-height: 32px;
+    cursor: pointer;
+    color: #555;
+}
+
+.wbytable .wbytextyz {
+    outline: none;
+    padding: 5px;
+    height: 22px;
+    width: 100px;
+    border: 1px solid #e3e3e3;
+    float: left;
+}
+
+.wbytable .wyzm {
+    padding-top: 6px;
+    display: block;
+    width: 48px;
+    height: 22px;
+    float: left;
+    padding-left: 8px;
+}

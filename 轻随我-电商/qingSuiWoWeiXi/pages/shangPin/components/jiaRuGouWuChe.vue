@@ -9,12 +9,15 @@
 				<view class="right1">
 					<view class="jiage">
 						<text>￥</text>
-						<text>{{sp.levelOnePrice}}-{{sp.levelTwoPrice}}</text>
+						<!-- 不是秒杀商品 -->
+						<text v-if="!sp.isSeckill">{{sp.levelOnePrice}}-{{sp.levelTwoPrice}}</text>
+						<!-- 秒杀商品 -->
+						<text v-if="sp.isSeckill">{{sp.seckillPrice}}</text>
 					</view>
 					<!-- <view class="shijijige">
 						实际价格：{{shiJiJia}}
 					</view> -->
-					<view class="jifen">
+					<view class="jifen" v-if="!sp.isSeckill">
 						积分价格：{{sp.creditPrice ? sp.creditPrice : '不可用积分'}}
 					</view>
 					<view class="jifen">
