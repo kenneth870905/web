@@ -60,6 +60,16 @@ const routes = [
 				name:"",
 				component:()=>import('@/views/订单/订单列表.vue')
 			},
+			{
+				path:"orderSp",
+				name:"",
+				component:()=>import('@/views/订单/普通商品.vue')
+			},
+			{
+				path:"orderMsSp",
+				name:"",
+				component:()=>import('@/views/订单/秒杀商品.vue')
+			},
 			//基础信息
 			{
 				path:"basicInfo",
@@ -95,6 +105,23 @@ const routes = [
 				name:"",
 				component:()=>import('@/views/管理员/管理员详情.vue')
 			},
+			//无权限
+			{
+				path:"wuquan",
+				name:"",
+				component:()=>import('@/views/无权访问.vue')
+			},
+			//文章
+			{
+				path:"article",
+				name:"",
+				component:()=>import('@/views/文章/文章.vue')
+			},
+			{
+				path:"articleDetails",
+				name:"",
+				component:()=>import('@/views/文章/文章详情.vue')
+			}
 		]
 	},
 	// {

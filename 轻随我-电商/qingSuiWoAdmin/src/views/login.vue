@@ -8,9 +8,10 @@
 				</el-input>
 			</el-form-item>
 			<el-form-item label="" prop="password">
-				<el-input type="password" v-model="form.password" placeholder="请输入密码">
+				<el-input type="password" auto-complete="new-password" v-model="form.password" placeholder="请输入密码">
 					<i slot="prefix" class="el-input__icon el-icon-lock"></i>
 				</el-input>
+				<input type="password" style="display:none">
 			</el-form-item>
 			<el-form-item label="">
 				<el-button native-type="submit" class="btn-1" type="primary" @click="onSubmit()">登陆</el-button>

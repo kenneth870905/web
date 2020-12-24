@@ -19,7 +19,7 @@
 				<view class="footer">
 					<text class="danwei">￥</text>
 					<text class="jiage">{{item.levelOnePrice}}</text>
-					<text class="renqi">99付款</text>
+					<text class="renqi">{{item.soldCount}}付款</text>
 				</view>
 			</view>
 		</view>

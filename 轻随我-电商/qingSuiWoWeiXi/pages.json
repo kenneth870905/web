@@ -185,6 +185,14 @@
             }
             
         }
+        ,{
+            "path" : "pages/wenzhang/wenzhang",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": ""
+            }
+            
+        }
     ],
 	"globalStyle": {
 	// 	"navigationBarTextStyle": "white",

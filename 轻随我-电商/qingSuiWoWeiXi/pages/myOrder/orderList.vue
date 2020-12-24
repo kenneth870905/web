@@ -4,20 +4,20 @@
 			<view @click="改变类型('')" :class="{active:query.status==''}">
 				全部订单
 			</view>
-			<view @click="改变类型(2)" :class="{active:query.status==2}">
+			<!-- <view @click="改变类型(2)" :class="{active:query.status==2}">
 				已支付
-			</view>
+			</view> -->
 			<view @click="改变类型(1)" :class="{active:query.status==1}">
 				未支付
 			</view>
-			<view @click="改变类型(3)" :class="{active:query.status==3}">
-				已取消
-			</view>
-			<view @click="改变类型(4)" :class="{active:query.status==4}">
+			<view @click="改变类型(2)" :class="{active:query.status==2}">
 				待发货
 			</view>
-			<view @click="改变类型(5)" :class="{active:query.status==5}">
+			<view @click="改变类型(4)" :class="{active:query.status==4}">
 				待收货
+			</view>
+			<view @click="改变类型(3)" :class="{active:query.status==3}">
+				已取消
 			</view>
 		</view>
 		<view class="list">
@@ -43,8 +43,10 @@
 				</view>
 				<view class="footer1">
 					<text>实付 {{item.payType==2 ? '￥'+item.totalPrice : item.totalCreditPrice+' 积分'}}</text>
-					<text class="btn statusBtn-2" v-if="item.status==2" @click="评价()">评价</text>
+					<text class="btn statusBtn-2" v-if="item.status==2">待发货</text>
+					<text class="btn statusBtn-2" v-if="item.status==5">已收货</text>
 					
+					<text class="btn statusBtn-quxiao" v-if="item.status==4" @click="收货(item)">确认收货</text>
 					<text class="btn statusBtn-quxiao" v-if="item.status==1" @click="取消(item)">取消</text>
 					<text class="btn statusBtn-zhifu" v-if="item.status==1" @click="支付(item)">支付</text>
 				</view>
@@ -69,13 +71,40 @@
 				list:[],
 				total:0,
 				api_url:this.$api_url,
-				status:{1:'未支付',2:'已支付',3:'取消'},
+				status:{1:'未支付',2:'待发货（已支付）',3:'已取消',4:'待收货',5:'已收货'},
 			};
 		},
 		methods:{
 			...mapMutations({
 				setItem:"setItem"
 			}),
+			async 收货(item){
+				await new Promise((resolve, reject) => {
+					 uni.showModal({
+						title:"提示",
+						content:'确认收货请点击下方确定按钮！',
+						success:(r)=>{
+							if(r.confirm) resolve()
+						}
+					})
+				});
+				console.log('点击了确认收货')
+				this.$http(`/api/order/${item.id}`,{status:5},'PUT').then(x=>{
+					if(x.code===0){
+						uni.showToast({
+							title:'收货成功'
+						})
+						item.status=5
+					}else{
+						uni.showToast({title:x.message,icon:'none'})
+					}
+				}).catch(err=>{
+					uni.showToast({
+						title:'网络错误，稍后再试',
+						icon:'none'
+					})
+				})
+			},
 			支付(item){
 				console.log(item)
 				this.setItem(['二次付款',item])
@@ -206,12 +235,12 @@
 	padding: 1px 10px;
 	border-radius: 10px;
 	.title{
-		
-		line-height: 40px;
+		line-height: 30px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		border-bottom: 1px solid #eee;
+		font-size: 13px;
 		text:nth-child(1){
 			color: #969696;
 			font-size: 12px;
@@ -219,7 +248,6 @@
 		.status-1{
 			color: #ff6801;
 		}
-		
 	}
 	.shangping{
 		display: flex;
@@ -235,6 +263,7 @@
 		.xiangqing{
 			width: 0;
 			flex: 1;
+			font-size: 14px;
 		}
 		.title2{
 			white-space: nowrap;
@@ -265,6 +294,7 @@
 		justify-content: space-between;
 		align-items: center;
 		padding: 5px 0px;
+		font-size: 13px;
 		text:nth-child(1){
 			color: #969696;
 			font-weight: bold;
