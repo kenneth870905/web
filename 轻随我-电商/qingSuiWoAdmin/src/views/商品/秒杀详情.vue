@@ -26,6 +26,9 @@
                 <el-form-item label="商品名称" prop="name">
                     <el-input v-model="sp.name" placeholder="请输入商品名称"></el-input>
                 </el-form-item>
+                <el-form-item label="文章Id">
+                    <el-input v-model="sp.articleId" placeholder="请输入关联文章Id"></el-input>
+                </el-form-item>
                 <!-- <el-form-item label="商品标题">
                     <el-input v-model="sp.title" placeholder="放置首页商品请输入标题，其他可忽略"></el-input>
                 </el-form-item>
@@ -134,6 +137,7 @@ export default {
                 brief:"",       //简介
                 seckillPrice:0,     //秒杀价格
                 isSeckill:true,     //是否秒杀
+                articleId:"",   //关联文章
             },
             spRules: {
                 categoryId:[
@@ -367,6 +371,7 @@ export default {
         },
         async add(){
             this.$loading(1)
+            this.sp.articleId = this.sp.articleId ? parseInt(this.sp.articleId) : 0 
             Promise.all([this.upload1(),this.upload2()]).then(list=>{
                 this.$axios.post('/api/product',this.sp)
                 .then(res => {
@@ -387,6 +392,7 @@ export default {
         },
         修改(){
             this.$loading(1)
+            this.sp.articleId = this.sp.articleId ? parseInt(this.sp.articleId) : 0 
             Promise.all([this.upload1(),this.upload2()]).then(list=>{
                 delete this.sp.createdAt
                 delete this.sp.updatedAt

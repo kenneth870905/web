@@ -9,7 +9,7 @@
                 <el-button type="success" size="mini" @click="筛选('isHomePage')" :plain="!query.isHomePage">查看放置首页</el-button>
                 <el-button type="success" size="mini" @click="筛选('isRecommend')" :plain="!query.isRecommend">查看推荐</el-button>
             </div>
-            <el-button @click="$router.push('/index/product')" type="primary" size="mini">添加商品</el-button>
+            <el-button @click="$router.push('/index/product')" v-if="roles.Admin || roles.ProductWrite" type="primary" size="mini">添加商品</el-button>
         </div>
 
         <div class="table">
@@ -49,7 +49,7 @@
                 </el-table-column>
                 <el-table-column label="销量" prop="soldCount"></el-table-column>
                 <el-table-column label="创建时间" prop="createdAt"></el-table-column>
-                <el-table-column label="操作" width="100px">
+                <el-table-column label="操作" width="100px" v-if="roles.Admin || roles.ProductWrite">
                     <template slot-scope="scope">
                         <el-button @click="$router.push(`/index/product?id=${scope.row.id}`)" type="primary" size="mini" icon="el-icon-edit" circle></el-button>
                         <el-button @click="删除(scope.row)" type="danger" size="mini" icon="el-icon-delete" circle></el-button>
@@ -66,6 +66,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
     name: "",
     data() {
@@ -82,6 +83,11 @@ export default {
             },
             分类:[]
         }
+    },
+    computed:{
+        ...mapGetters({
+            roles:"roles" 
+        })
     },
     methods: {
         筛选(key){

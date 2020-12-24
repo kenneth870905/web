@@ -148,6 +148,7 @@
 			},
 			获取分类(){
 				this.$http('/api/category',{page:1,size:1000},'GET').then(x=>{
+					this.typelist = [{name:"推荐",id:0}]
 					this.typelist = [...this.typelist , ...x.data] 
 					let data = x.data
 					data.forEach(item=>{

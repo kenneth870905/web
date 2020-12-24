@@ -4,8 +4,10 @@
         <div class="title2">
             <el-button-group>
                 <el-button size="mini" :plain="query.status!=''" @click="changeStatus('')" type="primary">全部订单</el-button>
-                <el-button size="mini" :plain="query.status!=1" @click="changeStatus(1)" type="primary">已支付</el-button>
-                <el-button size="mini" :plain="query.status!=2" @click="changeStatus(2)" type="primary">未支付</el-button>
+                <el-button size="mini" :plain="query.status!=1" @click="changeStatus(1)" type="primary">未支付</el-button>
+                <el-button size="mini" :plain="query.status!=2" @click="changeStatus(2)" type="primary">待发货（已支付）</el-button>
+                <el-button size="mini" :plain="query.status!=4" @click="changeStatus(4)" type="primary">已发货</el-button>
+                <el-button size="mini" :plain="query.status!=5" @click="changeStatus(5)" type="primary">已收货</el-button>
                 <el-button size="mini" :plain="query.status!=3" @click="changeStatus(3)" type="primary">已取消</el-button>
             </el-button-group>
             <el-date-picker style="width: 250px;margin-left:10px;" value-format="yyyy-MM-dd" @change="changeTime3" size="mini" v-model="time3" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
@@ -28,6 +30,7 @@
                 <el-table-column label="商品">
                     <template slot-scope="scope">
                         <div class="商品列表">
+                            <div v-if="!scope.row.items">商品已被删除</div>
                             <div v-for="item in scope.row.items">
                                 <span @click="查看商品详情(item)" class="name">{{item.product.name}}</span>
                                 <span class="数量">x{{item.count}}</span>
@@ -36,7 +39,7 @@
                             <!-- <div class="商品图片" v-for="item in scope.row.items">
                                 <el-image style="width: 60px; height: 60px" :src="$api_url+'/'+item.product.coverImg" :preview-src-list="srcList(scope.row)"></el-image>
                                 <span>x{{item.count}}</span>
-                            </div> -->
+                            </div>-->
                         </div>
                     </template>
                 </el-table-column>
@@ -57,17 +60,22 @@
                 <el-table-column label="支付" width="100px">
                     <template slot-scope="scope">{{scope.row.payType==2 ? '现金':"积分"}}</template>
                 </el-table-column>
-                <el-table-column label="状态" width="100px">
+                <el-table-column label="状态" width="130px">
                     <template slot-scope="scope">
                         <span v-show="scope.row.status==1">未支付</span>
-                        <span v-show="scope.row.status==2">已支付</span>
+                        <span v-show="scope.row.status==2">待发货（已支付）</span>
                         <span v-show="scope.row.status==3">取消</span>
-                        <span v-show="scope.row.status==4">取消</span>
+                        <span v-show="scope.row.status==4">已发货</span>
                         <span v-show="scope.row.status==5">已收货</span>
                     </template>
                 </el-table-column>
                 <el-table-column label="时间" width="150px" prop="createdAt"></el-table-column>
-                <el-table-column label="操作" width="50px"></el-table-column>
+                <el-table-column label="操作" v-if="roles.OrderWrite || roles.Admin" width="120px">
+                    <template slot-scope="s">
+                        <el-button :type="s.row.status==2 ? 'primary' : 'warning'" @click="更改订单(s.row)" size="mini" v-if="s.row.status==2 || s.row.status==4">{{s.row.status==2 ? '设为已发货' : "设为已收货"}}</el-button>
+                    </template>
+                    <!-- <el-button type="" size="mini">修改状态</el-button> -->
+                </el-table-column>
             </el-table>
         </div>
 
@@ -124,7 +132,7 @@
 
 <script>
 import moment from 'moment'
-import { mapState } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import AboutUs from '../../../../qingSuiWoWeiXi/pages/AboutUs/AboutUs.vue'
 import province from '@/assets/diqu/province.js'
 import city from '@/assets/diqu/city.js'
@@ -139,17 +147,17 @@ export default {
                 page: 1,
                 status: "",   //未支付：1 已支付：2 取消：3
                 uid: "",       //用户id
-                orderSn:'',      //订单编号
-                startDate:"",
-                endDate:""
+                orderSn: '',      //订单编号
+                startDate: "",
+                endDate: ""
             },
-            time3:'',
+            time3: '',
             // time3: [
             //     moment().subtract(7, 'days').format('YYYY-MM-DD'),
             //     moment().add(1, 'days').format('YYYY-MM-DD')
             // ],
-            searchType:1, //1 根据用户名查询 2 订单编号
-            searchText:"",
+            searchType: 1, //1 根据用户名查询 2 订单编号
+            searchText: "",
 
 
             list: [],
@@ -172,23 +180,58 @@ export default {
     computed: {
         ...mapState({
             loginInfo: "loginInfo"
+        }),
+        ...mapGetters({
+            roles: 'roles'
         })
     },
     methods: {
-        查看商品详情(item){
+        更改订单(item) {
             console.log(item)
-            if(item.product.isSeckill){
-                var msgWindow = window.open('#/index/miaoshaXQ?id='+item.product.id,'product')
-            }else{
-                var msgWindow = window.open('#/index/product?id='+item.product.id,'product')
+            if (item.status == 2) {
+                //设为已发货
+                var o = { status: 4 }
+                var text = '确定将此订单设置为已发货?'
+            } else {
+                //设为已收货
+                var o = { status: 5 }
+                var text = '确定将此订单设置为已收货?'
             }
-            if(msgWindow){
-                msgWindow.location.reload(true); 
-            }
+            this.$confirm(text, '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                this.$axios.put(`/api/order/${item.id}`, o).then(res => {
+                    console.log(res)
+                    if(res.code===0){
+                        this.正确('设置成功')
+                        this.getList()
+                    }else{
+                        this.错误(res.message)
+                    }
+                }).catch(err => {
+                    console.error(err);
+                    this.错误('设置失败，请联系管理员')
+                })
+            })
+            
         },
-        changeTime3(){
+        查看商品详情(item) {
+            if (item.product.isSeckill) {
+                this.$router.push('/index/orderMsSp?id=' + item.product.id)
+                // var msgWindow = window.open('#/index/orderMsSp?id='+item.product.id,'product')
+            } else {
+                this.$router.push('/index/orderSp?id=' + item.product.id)
+                // var msgWindow = window.open('#/index/orderSp?id='+item.product.id,'product')
+            }
+            // if(msgWindow){
+            //     msgWindow.location.reload(true); 
+            // }
+        },
+        changeTime3() {
             console.log(123)
-            this.query.page=1
+            this.query.page = 1
             this.getList()
         },
         获取收货地址(item) {
@@ -203,10 +246,10 @@ export default {
         },
         下载订单() {
             var query = {
-                startDate:this.time3 ? this.time3[0] : '',
-                endDate:this.time3 ? this.time3[1] : '',
-                orderSn:this.searchType==2 ? this.searchText : '',      //订单编号
-                uid: this.searchType==1 ? this.searchText : '',
+                startDate: this.time3 ? this.time3[0] : '',
+                endDate: this.time3 ? this.time3[1] : '',
+                orderSn: this.searchType == 2 ? this.searchText : '',      //订单编号
+                uid: this.searchType == 1 ? this.searchText : '',
                 status: this.query.status
             }
             this.$axios.get('/api/export/order', { params: query })
@@ -246,10 +289,10 @@ export default {
             return list
         },
         getList() {
-            this.query.startDate = this.time3 ? this.time3[0] :''
+            this.query.startDate = this.time3 ? this.time3[0] : ''
             this.query.endDate = this.time3 ? this.time3[1] : ''
-            this.query.uid = this.searchType==1 ? this.searchText : ''
-            this.query.orderSn = this.searchType==2 ? this.searchText : ""
+            this.query.uid = this.searchType == 1 ? this.searchText : ''
+            this.query.orderSn = this.searchType == 2 ? this.searchText : ""
             this.list = []
             this.$axios.get('/api/order', { params: this.query }).then(res => {
                 if (res.code == 0) {
@@ -318,7 +361,7 @@ export default {
     //     font-size: 14px;
     //     color: #5d5d5d;
     // }
-    .搜索名字{
+    .搜索名字 {
         font-size: 14px;
     }
     span {
@@ -334,16 +377,16 @@ export default {
 .商品列表 {
     // display: flex;
     // flex-wrap: wrap;
-    .name{
+    .name {
         color: #1d6bcc;
         cursor: pointer;
     }
-    .数量{
+    .数量 {
         margin: 0px 0px 0px 5px;
         color: red;
     }
-    .商品类型{
-        margin: 0px 0px 0px 5px ;
+    .商品类型 {
+        margin: 0px 0px 0px 5px;
         color: #a7a7a7;
     }
     // .商品图片 {

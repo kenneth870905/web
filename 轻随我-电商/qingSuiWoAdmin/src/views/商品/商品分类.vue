@@ -2,7 +2,7 @@
     <div>
         <div class="title1">
             <span>商品分类</span>
-            <el-button type size="mini" @click="添加()">添加</el-button>
+            <el-button v-if="roles.Admin || roles.ProductWrite" type size="mini" @click="添加()">添加</el-button>
         </div>
 
         <el-table :data="list" border>
@@ -13,7 +13,7 @@
                     <img class="图标" v-if="s.row.img" :src="$api_url+'/'+s.row.img" alt="" srcset="">
                 </template>
             </el-table-column>
-            <el-table-column label="操作" width="150px">
+            <el-table-column label="操作" width="150px" v-if="roles.Admin || roles.ProductWrite">
                 <template slot-scope="s">
                     <el-button size="mini" @click="修改(s.row)">修改</el-button>
                     <el-button type="danger" @click="删除(s.row)" size="mini">删除</el-button>
@@ -31,7 +31,6 @@
                     <i v-if="!分类.img && !base64" class="el-icon-plus"></i>
                     <img v-if="分类.img && !base64" :src="$api_url+'/'+分类.img" alt="" srcset="">
                     <img v-if="base64" :src="base64" alt="" srcset="">
-                    
                 </div>
             </div>
             <span slot="footer" class="dialog-footer">
@@ -44,6 +43,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
     name: "",
     data() {
@@ -64,6 +64,11 @@ export default {
             showFile: false,
             base64:""
         }
+    },
+    computed:{
+        ...mapGetters({
+            roles:'roles'
+        })
     },
     methods: {
         async clickFile() {

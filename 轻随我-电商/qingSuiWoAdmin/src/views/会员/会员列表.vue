@@ -32,7 +32,7 @@
                 <el-table-column label="消费金额" prop="totalCost"></el-table-column>
                 <el-table-column label="下级人数" prop="subordinateCount"></el-table-column>
                 <el-table-column label="创建时间" prop="createdAt" width="150px"></el-table-column>
-                <el-table-column label="操作" width="100px">
+                <el-table-column label="操作" width="100px" v-if="roles.Admin || roles.UserWrite">
                     <template slot-scope="scope">
                         <!-- <el-button @click="删除(scope.row)" type="danger" size="mini" icon="el-icon-delete" circle></el-button> -->
                         <el-button @click="$router.push(`/index/user?id=${scope.row.id}`)" type="primary" size="mini">详情</el-button>
@@ -70,6 +70,7 @@
 
 <script>
 import moment from 'moment'
+import { mapGetters } from 'vuex'
 export default {
     name: "",
     data() {
@@ -99,6 +100,11 @@ export default {
             }
 
         }
+    },
+    computed:{
+        ...mapGetters({
+            roles:'roles'
+        })
     },
     methods: {
         下载(){

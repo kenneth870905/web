@@ -3,15 +3,15 @@
         <el-aside width="200px">
             <div class="header1">{{loginInfo.name}}</div>
             <el-menu :default-active="defaultActive" router class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
-                <el-menu-item index="/index/orderList">
+                <el-menu-item index="/index/orderList" v-if="roles.Admin || roles.OrderRead || roles.OrderWrite">
                     <i class="el-icon-menu"></i>
                     <span slot="title">订单管理</span>
                 </el-menu-item>
-                <el-menu-item index="/index/userList">
+                <el-menu-item index="/index/userList" v-if="roles.Admin || roles.UserRead || roles.UserWrite">
                     <i class="el-icon-user"></i>
                     <span slot="title">会员管理</span>
                 </el-menu-item>
-                <el-submenu index="/商品">
+                <el-submenu index="/商品" v-if="roles.Admin || roles.ProductRead || roles.ProductWrite">
                     <template slot="title">
                         <i class="el-icon-menu"></i>
                         <span>商品管理</span>
@@ -28,11 +28,15 @@
                         <span>基础设置</span>
                     </template>
                     <el-menu-item index="/index/basicInfo">基本信息</el-menu-item>
-                    <el-menu-item index="/index/lunbo">首页轮播</el-menu-item>
+                    <!-- <el-menu-item index="/index/lunbo">首页轮播</el-menu-item> -->
                 </el-submenu>
                 <el-menu-item index="/index/fankui">
                     <i class="el-icon-menu"></i>
                     <span slot="title">用户反馈</span>
+                </el-menu-item>
+                <el-menu-item index="/index/article">
+                    <i class="el-icon-menu"></i>
+                    <span slot="title">文章管理</span>
                 </el-menu-item>
                 <el-menu-item index="/index/adminList">
                     <i class="el-icon-menu"></i>
@@ -62,7 +66,7 @@
                         <el-input type="password" v-model="user.password1" show-password clearable></el-input>
                     </el-form-item>
                     <el-form-item label="确认密码" prop="password2">
-                        <el-input type="password" v-model="user.password2" show-password clearable></el-input>
+                        <el-input type="password" @keyup.enter.native="确定()" v-model="user.password2" show-password clearable></el-input>
                     </el-form-item>
                 </el-form>
             </div>
@@ -74,13 +78,16 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex'
+import { mapGetters, mapMutations, mapState } from 'vuex'
 export default {
     name: "",
     data() {
         return {
             密码弹框: false,
-            user: {},
+            user: {
+                password1:"",
+                password2:""
+            },
             rulesUser:{
                 password1: [
                     { 
@@ -117,14 +124,15 @@ export default {
             let urlList = {
                 '/index/productList': ['/index/productList', '/index/product'],
                 '/index/userList': ['/index/userList'],
-                '/index/orderList': ['/index/orderList'],
+                '/index/orderList': ['/index/orderList','/index/orderSp'],
                 '/index/basicInfo': ['/index/basicInfo'],
                 '/index/operating': ['/index/operating'],
                 '/index/lunbo': ['/index/lunbo'],
                 '/index/productCategory': ['/index/productCategory'],
                 '/index/miaosha': ['/index/miaosha', '/index/miaoshaXQ'],
                 '/index/fankui': ['/index/fankui'],
-                '/index/adminList':['/index/adminList','/index/admin']
+                '/index/adminList':['/index/adminList','/index/admin'],
+                '/index/article':['/index/article']
             }
             let i = ''
             for (const key in urlList) {
@@ -136,11 +144,15 @@ export default {
         },
         ...mapState({
             loginInfo: 'loginInfo'
+        }),
+        ...mapGetters({
+            roles:'roles' 
         })
     },
     methods: {
         ...mapMutations({
-            setItem: "setItem"
+            setItem: "setItem",
+            setRoles:"setRoles"
         }),
         退出() {
             this.setItem(['loginInfo', {}])
@@ -156,25 +168,29 @@ export default {
             })
         },
         修改密码(){
-            var user = Object.assign({},this.loginInfo)
-                user.password = this.user.password1
-                delete user.deletedAt
-                delete user.createdAt
-                delete user.updatedAt
-                delete user.token
-            this.$axios.put(`/api/user/${this.loginInfo.id}`,user).then(res => {
+            this.$axios.put(`/api/auth/password`,{password:this.user.password1}).then(res => {
                 if (res.code === 0) {
                     this.正确('修改成功')
+                    this.密码弹框 = false
                 }else{
                     this.错误(x.message)
                 }
             }).catch(err => {
                 this.错误('修改失败，请联系管理员')
             })
+        },
+        获取个人信息(){
+            this.$axios.get(`/api/admin/${this.loginInfo.id}`).then(res=>{
+                if(res.code===0 && res.data){
+                    this.setRoles(res.data.roles)
+                }
+            }).catch(err=>{
+            })
         }
     },
     mounted() {
-        console.log(this.$route.path)
+        // console.log(this.$route.path)
+        this.获取个人信息()
     },
 }
 </script>

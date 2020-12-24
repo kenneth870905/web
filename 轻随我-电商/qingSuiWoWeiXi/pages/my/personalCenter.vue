@@ -112,7 +112,7 @@
 		</uni-list> -->
 		
 		<view class="banben">
-			当前版本 1.0.6
+			当前版本 1.0.7
 		</view>
 		<!-- <button class="tuichu" type="warn">安全退出</button> -->
 	</view>

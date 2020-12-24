@@ -24,24 +24,24 @@
 			</button>
 		</view>
 
-		<view class="box-4">
+		<view class="box-4" v-if="wz.id">
 			<view class="content">
 				<view class="img">
-					<image src="http://8.210.239.106/images/2020-12-06/13/56/sI2TW3AzU4FfqC8b.png" mode="aspectFill"></image>
+					<image :src="api_url+'/'+wz.coverImg" mode="aspectFill"></image>
 				</view>
 				<view class="right1">
 					<view class="title">
-						肤白貌美小仙女必备神器，姐妹们肤白貌美小仙女必备神器，姐妹们一...
+						{{wz.title}}
 					</view>
 					<view class="jianjie">
-						肤白貌美小仙女必备神器，姐妹们肤白貌美小仙女必备神器，姐妹们一...
+						{{wz.brief}}
 					</view>
 					<view class="foot">
 						<view class="img2">
 							<image src="../../static/images/logo.png" mode="aspectFill"></image>
 						</view>
 						<text class="text1">轻随我编</text>
-						<text class="text2">查看帖子>></text>
+						<text class="text2" @click="查看帖子()">查看帖子>></text>
 					</view>
 				</view>
 			</view>
@@ -133,6 +133,7 @@ export default {
 			},
 			api_url:this.$api_url,
 			type:0,	// 0 加入购物车 1 直接购买
+			wz:{}
 		};
 	},
 	computed:{
@@ -148,6 +149,11 @@ export default {
 		...mapMutations({
 			setItem:"setItem"
 		}),
+		查看帖子(){
+			uni.navigateTo({
+				url:'/pages/wenzhang/wenzhang?id='+this.wz.id
+			})
+		},
 		去商店(){
 			uni.switchTab({
 				url:'/pages/shangDian/shangDian'
@@ -175,13 +181,13 @@ export default {
 				})
 				return
 			} 
-			
 			this.type = 1
 			this.$refs.jiaRuGouWuChe.open()
 		},
 		getSP(){
 			this.$http(`/api/product/${this.id}`).then(x=>{
 				this.sp = x.data
+				this.获取文章()
 				this.$nextTick(()=>{
 					setTimeout(()=>{
 						var query = wx.createSelectorQuery()
@@ -191,6 +197,14 @@ export default {
 					},1000)
 				})
 			}).catch(err=>{})
+		},
+		获取文章(){
+			if(!this.sp.articleId) return
+			this.$http(`/api/article/${this.sp.articleId}`,'').then(x=>{
+				console.log(x)
+				if(x.code===0)
+				this.wz = x.data
+			})
 		}
 	},
 	mounted() {
@@ -199,6 +213,7 @@ export default {
 	onLoad(option) {
 		this.wh = wx.getSystemInfoSync().windowHeight
 		this.id = option.id
+		// this.id = 39
 		this.getSP()
 		if(option.uid){
 			this.setItem(['fxuid',option.id])

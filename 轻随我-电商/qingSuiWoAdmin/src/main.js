@@ -74,7 +74,7 @@ axios.interceptors.response.use(function (response) {
     if(data.code==1001){
         MessageBox({
             title:"提示",
-            message:"登录过去需要重新登录",
+            message:"登录过期，请重新登录",
             type:"error",
             showClose:false,
             closeOnClickModal:false,
@@ -90,10 +90,64 @@ axios.interceptors.response.use(function (response) {
 });
 
 router.beforeEach((to, from, next) => {
+    if(to.path == '/login'){
+        next()
+        return
+    }
     if(to.path!='/login' && !store.state.loginInfo.id){
         next('/login')
+        return
     }
-    next()
+    // // return
+    let path = to.path
+    let roles = store.getters.roles
+    let isok = false
+    let newpath = ''
+    if(roles.Admin){
+        isok = true
+    }else if(path == '/index/wuquan'){
+        next()
+        return
+    }else{
+        let pathList = {
+            //订单
+            '/index/orderList':roles.OrderRead || roles.OrderWrite,
+            //会员
+            '/index/userList':roles.UserRead || roles.UserWrite,
+            '/index/user':roles.UserWrite,
+            //商品
+            '/index/productCategory':roles.ProductRead || roles.ProductWrite,
+            'index/productList':roles.ProductRead || roles.ProductWrite,
+            '/index/product':roles.ProductWrite,
+            '/index/miaosha':roles.ProductRead || roles.ProductWrite,
+            '/index/miaoshaXQ':roles.ProductWrite,
+        }
+        if(pathList.hasOwnProperty(path)){
+            isok = pathList[path]
+            if(!isok){
+                // let key = 
+                for (const key in pathList) {
+                    console.log(pathList[key])
+                    if(pathList[key]){
+                        newpath = key
+                        break
+                    }
+                }
+            }
+        }else{
+            isok = true
+        }
+    }
+    if(isok){
+        next()
+    }else{
+        console.log(newpath)
+        if(from.path == '/login' && newpath){
+            router.push(newpath)
+        }else{
+            router.push('/index/wuquan')
+        }
+    }
 })
 
 
