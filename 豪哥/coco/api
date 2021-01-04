@@ -1,0 +1,36 @@
+权限
+	登陆
+	/api/auth/login
+	方法	POST
+	数据	{"name": "", "password": ""}
+
+	注册
+	/api/auth/register
+	方法	POST
+	数据	{"name": "", "password": ""}
+
+订单
+	下单
+	/api/order
+	方法	POST
+	数据	{"count": 1, "setId": 230}
+
+	订单列表
+	/api/order
+	方法	GET
+	参数	page, size
+
+设备
+	设备列表
+	/api/device
+	方法	GET
+	参数	page, size
+
+	设备续费
+	/api/device/{id}/renew
+	方法	POST
+
+	设备远程控制地址
+	/api/device/{id}/remote
+	方法	GET
+

@@ -1,0 +1,99 @@
+<template>
+    <div class="header">
+        <div class="l">
+            <span class="全选">全选</span>
+            <ButtonGroup class="btn-1">
+                <Button>
+                    <Tooltip content="预览图" placement="bottom">
+                        <Icon type="md-apps" />
+                    </Tooltip>
+                </Button>
+                <Button type="primary">
+                    <Tooltip content="列表显示" placement="bottom">
+                        <Icon type="md-menu" />
+                    </Tooltip>
+                </Button>
+            </ButtonGroup>
+            <Poptip trigger="hover">
+                <Button class="btn-1">
+                    移动分组
+                    <Icon type="md-swap" />
+                </Button>
+                <div class="分组列表" slot="content">
+                    <div>分组1</div>
+                    <div>分组2</div>
+                </div>
+            </Poptip>
+            <Button type="primary" class="btn-1">
+                <Icon type="logo-android" />
+                安装应用
+            </Button>
+            <Button class="btn-1">
+                <Icon type="md-cloud-upload" />
+                上传文件
+            </Button>
+            <Button type="primary" class="btn-1">
+                <Icon type="md-add-circle" />
+                购买机器
+            </Button>
+        </div>
+        <div class="r">
+            <Icon class="icon-1" type="md-search" />
+            <Icon class="icon-1" type="md-refresh" />
+            <Icon class="icon-1" type="md-cloud-done" />
+            <Icon class="icon-1" type="logo-twitch" />
+            <Icon class="icon-1" type="md-flower" />
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    name: "",
+    data() {
+        return {
+
+        }
+    },
+}
+</script>
+
+
+<style lang="scss" scoped>
+.header {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.l {
+    display: flex;
+    align-items: center;
+    .全选 {
+        color: #1890ff;
+        cursor: pointer;
+        margin: 0px 15px 0px 0px;
+    }
+    .btn-1{
+        margin: 0px 10px 0px 0px;
+    }
+    .分组列表{
+        line-height: 30px;
+        div{
+            cursor: pointer;
+            &:hover{
+                color: #1890ff;
+            }
+        }
+    }
+}
+.r{
+    display: flex;
+    align-items: center;
+    .icon-1{
+        cursor: pointer;
+        font-size: 20px;
+        margin: 0px 0px 0px 15px;
+    }
+}
+</style>
