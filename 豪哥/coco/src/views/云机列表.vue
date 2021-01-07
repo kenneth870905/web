@@ -23,10 +23,29 @@
 
 <script>
 export default {
+    inject:[],
     data() {
         return {
-            
+            query:{
+                page:1,
+                size:10
+            }
         }
+    },
+    methods: {
+        获取设备(){
+            console.log('获取新数据')
+            this.$axios.get(`/api/device`,{params:this.query})
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.error(err); 
+            })
+        }
+    },
+    mounted() {
+        this.获取设备()
     },
 }
 </script>

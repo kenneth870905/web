@@ -355,7 +355,7 @@ class 投注70 extends 循环选号 {
                 { code: 'ZTWS_W8', name: '尾8' }, { code: 'ZTWS_W9', name: '尾9' }
             ];
             var list = [];
-            list[0] = { name: '特码头尾数', notitle: true, style: '方形4', 选号: JSON.parse(JSON.stringify(rows)) }
+            list[0] = { name: '正特尾数', notitle: true, style: '方形4', 选号: JSON.parse(JSON.stringify(rows)) }
             list[0].选号.forEach(item => {
                 item.赔率 = iOdds[item.code];
             });

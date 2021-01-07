@@ -5,10 +5,10 @@
         </Sider>
         <Layout>
             <Header class="Header">
-                <header2 />
+                <header2/>
             </Header>
             <Content>
-                <router-view></router-view>
+                <router-view ref="routerView"></router-view>
                 <!-- <div v-for="item in 100">{{item}}</div> -->
             </Content>
             <Footer>Footer</Footer>
@@ -21,6 +21,14 @@ import left from "@/components/左侧.vue"
 import header2 from "@/components/header.vue"
 export default {
     name: 'Home',
+    provide(){
+        return{
+            获取设备列表:()=>{
+                if(this.$route.path=='/')
+                this.$refs.routerView.获取设备()
+            },
+        }
+    },
     components:{
         left,
         header2
@@ -29,7 +37,10 @@ export default {
         return {
             云机类型:1
         }
-    }
+    },
+    methods: {
+        
+    },
 }
 </script>
 
@@ -55,7 +66,11 @@ export default {
 }
 
 .ivu-layout-content{
-    padding: 10px;
+    padding: 15px 15px 0px;
+    >div{
+        min-height: 100%;
+        padding: 10px;
+    }
 }
 
 

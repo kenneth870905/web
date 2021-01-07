@@ -25,8 +25,8 @@ const routes = [
                 component:()=>import('@/views/云机列表.vue')
             },
             {
-                path:"test",
-                component:()=>import('@/views/测试.vue')
+                path:"borderList",
+                component:()=>import('@/views/订单/订单列表.vue')
             }
         ]
     },

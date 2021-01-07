@@ -28,8 +28,20 @@ Vue.prototype.错误=(string)=>{
     })
 }
 
-
 Vue.config.productionTip = false
+
+// 添加请求拦截器
+axios.interceptors.request.use(function (config) {
+    let url = config.url
+    if(url!='/api/auth/login' && url!='/api/auth/register'){
+        let token = store.state.userInfo.token
+        config.headers['X-Token'] = token; 
+    }
+    return config;
+}, function (error) {
+    // 对请求错误做些什么
+    return Promise.reject(error);
+});
 
 new Vue({
     router,

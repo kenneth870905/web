@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     plugins: [
         createPersistedState({
+            key:"coco",
             reducer(val){
                 return {
                     userInfo:val.userInfo,
@@ -23,8 +24,9 @@ export default new Vuex.Store({
         }
     },
     mutations: {
-        setItem(state,obj){
-            obj = obj
+        setItem(state,[key,value]){
+            console.log(value)
+            state[key] = value
         }
     },
     actions: {
