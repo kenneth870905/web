@@ -32,9 +32,13 @@
                 <Icon type="md-cloud-upload" />
                 上传文件
             </Button>
-            <Button type="primary" class="btn-1">
+            <Button type="primary" class="btn-1" @click="购买()">
                 <Icon type="md-add-circle" />
                 购买机器
+            </Button>
+            <Button class="btn-1" @click="$router.push('/borderList')">
+                <Icon type="md-list" />
+                购买记录
             </Button>
         </div>
         <div class="r">
@@ -43,17 +47,45 @@
             <Icon class="icon-1" type="md-cloud-done" />
             <Icon class="icon-1" type="logo-twitch" />
             <Icon class="icon-1" type="md-flower" />
+            <Poptip trigger="hover" placement="bottom-end" width="150">
+                <div class="touxiang">
+                    <img src="static/image/touxiang.png" alt="" srcset="">
+                </div>
+                <div class="分组列表2" slot="content">
+                    <div>修改资料</div>
+                    <div>修改密码</div>
+                    <div>安全退出</div>
+                </div>
+            </Poptip>
         </div>
+        <gjtk ref="gjtk"/>
     </div>
 </template>
 
 <script>
+import gjtk from '@/components/选机弹框.vue'
+import {mapState} from 'vuex'
 export default {
     name: "",
     data() {
         return {
 
         }
+    },
+    components:{
+        gjtk
+    },
+    computed:{
+       ...mapState({
+           userInfo:'userInfo'
+       })
+    },
+    methods: {
+        购买(){
+            this.$refs.gjtk.显示弹框=true
+        }
+    },
+    mounted() {
     },
 }
 </script>
@@ -94,6 +126,24 @@ export default {
         cursor: pointer;
         font-size: 20px;
         margin: 0px 0px 0px 15px;
+    }
+}
+.touxiang{
+    display: flex;
+    align-items: center;
+    margin: 0px 0px 0px 15px;
+    img{
+        width: 30px;
+    }
+}
+.分组列表2{
+    text-align: center;
+    line-height: 30px;
+    div{
+        cursor: pointer;
+        &:hover{
+            color: #2778ff;
+        }
     }
 }
 </style>

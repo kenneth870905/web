@@ -73,10 +73,9 @@ export default {
                         this.登录信息.name = ""
                         this.登录信息.password = ''
                     }
-                    this.setItem(this.登录信息)
+                    this.setItem(['登录信息',this.登录信息])
                     this.正确('登录成功')
-                    this.userInfo = res.data.data
-                    this.setItem(this.userInfo)
+                    this.setItem(['userInfo',res.data.data])
                     this.$router.push('/')
                 }else{
                     this.错误(res.data.message)
