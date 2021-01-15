@@ -2,6 +2,11 @@
     <Modal class="购机弹框" v-model="显示弹框" width="350">
         <div class="tittle">购买云机</div>
         <Form :label-width="80" size="small">
+            <FormItem label="分组">
+                <Select v-model="setName" placeholder="请选择分组">
+                    <Option v-for="item in 分组" :value="item.name">{{item.name}}</Option>
+                </Select>
+            </FormItem>
             <FormItem label="型号">
                 <Select v-model="setId">
                     <Option v-for="item in 机型list" :value="item.setId">{{item.name}}</Option>
@@ -30,6 +35,7 @@ export default {
     data() {
         return {
             显示弹框:false,
+            setName:"",
             setId:230,
             机型list:[
                 {
@@ -45,31 +51,44 @@ export default {
                     setId:13,
                     价格:13
                 }
-            ]
+            ],
         }
     },
     computed:{
+        ...mapState({
+            分组:"分组"
+        }),
         价格(){
             return this.机型list.find(x=>x.setId==this.setId).价格
         }
     },
     methods: {
         确定(){
-            var o = {"count": 1, "setId": this.setId}
+            if(!this.setName){
+                this.错误('请选择分组')
+                return
+            }
+            this.$Spin.show();
+            var o = {"count": 1, "setId": this.setId,setName:this.setName}
             this.$axios.post('/api/order',o)
             .then(res => {
+                this.$Spin.hide();
                 if(res.data.code===0){
                     this.显示弹框 = false
                     this.正确('购买成功')
-                    this.获取设备列表()
+                    // this.获取设备列表()
                 }else{
                     this.错误(res.data.message)
                 }
+                this.$Spin.hide();
             })
             .catch(err => {
+                this.$Spin.hide();
                 this.错误('系统错误，稍后再试')
             })
         },
+    },
+    mounted() {
     },
 }
 </script>

@@ -8,7 +8,8 @@ import 'view-design/dist/styles/iview.css';
 Vue.use(ViewUI);
 
 import axios from 'axios'
-var api = 'http://98.126.219.242'
+// var api = 'http://98.126.219.242'
+var api = 'https://test.infuwu.com'
 Vue.prototype.$api = api
 axios.defaults.baseURL=api
 Vue.prototype.$axios = axios
@@ -17,14 +18,14 @@ Vue.prototype.正确=(string)=>{
     Message.success({
         content:string,
         closable:true,
-        duration:2
+        duration:3
     })
 }
 Vue.prototype.错误=(string)=>{
     Message.error({
         content:string,
         closable:true,
-        duration:2
+        duration:3
     })
 }
 
@@ -42,6 +43,8 @@ axios.interceptors.request.use(function (config) {
     // 对请求错误做些什么
     return Promise.reject(error);
 });
+
+
 
 new Vue({
     router,

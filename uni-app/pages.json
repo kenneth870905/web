@@ -1,4 +1,16 @@
 {
+	"leftWindow": {
+		"path": "windows/left-window.vue",
+		"style": {
+			"width": "350px"
+		}
+	},
+	"topWindow": {
+		"path": "windows/top-window.vue",
+		"style": {
+			"height": "60px"
+		}
+	},
 	"pages": [
 		// pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
@@ -309,6 +321,14 @@
 				"navigationBarTitleText": "问题反馈"
 			}
 		}
+		// #ifdef H5
+		, {
+			"path": "pages/error/404",
+			"style": {
+				"navigationBarTitleText": "Not Found"
+			}
+		}
+		// #endif
 	],
 	"subPackages": [{
 			"root": "pages/API",
@@ -468,13 +488,13 @@
 				{
 					"path": "get-network-type/get-network-type",
 					"style": {
-						"navigationBarTitleText": "获取手机网络状态"
+						"navigationBarTitleText": "获取设备网络状态"
 					}
 				},
 				{
 					"path": "get-system-info/get-system-info",
 					"style": {
-						"navigationBarTitleText": "获取手机系统信息"
+						"navigationBarTitleText": "获取设备系统信息"
 					}
 				},
 				{
@@ -623,6 +643,14 @@
 					}
 				},
 				// #endif
+				// #ifdef APP-PLUS
+				{
+					"path": "full-screen-video-ad/full-screen-video-ad",
+					"style": {
+						"navigationBarTitleText": "全屏视频广告"
+					}
+				},
+				// #endif
 				// #ifndef H5
 				{
 					"path": "brightness/brightness",
@@ -686,6 +714,24 @@
 		{
 			"root": "pages/extUI",
 			"pages": [{
+					"path": "forms/forms",
+					"style": {
+						"navigationBarTitleText": "Form 表单"
+					}
+				},
+				{
+					"path": "field/field",
+					"style": {
+						"navigationBarTitleText": "Field 字段"
+					}
+				},
+				{
+					"path": "group/group",
+					"style": {
+						"navigationBarTitleText": "Group 分组"
+					}
+				},
+				{
 					"path": "badge/badge",
 					"style": {
 						"navigationBarTitleText": "Badge 数字角标"
@@ -923,6 +969,34 @@
 				{
 					"path": "test/test",
 					"style": {}
+				},
+				{
+					"path": "table/table",
+					"style": {
+						"navigationBarTitleText": "",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "dateformat/dateformat",
+					"style": {
+						"navigationBarTitleText": "Dateformat 日期格式化",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "data-checkbox/data-checkbox",
+					"style": {
+						"navigationBarTitleText": "",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "easyinput/easyinput",
+					"style": {
+						"navigationBarTitleText": "",
+						"enablePullDownRefresh": false
+					}
 				}
 			]
 		},
@@ -1167,15 +1241,21 @@
 	],
 	"globalStyle": {
 		"pageOrientation": "portrait",
-		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "Hello uniapp",
+		"navigationBarTextStyle": "white",
 		"navigationBarBackgroundColor": "#007AFF",
 		"backgroundColor": "#F8F8F8",
 		"backgroundColorTop": "#F4F5F6",
 		"backgroundColorBottom": "#F4F5F6",
 		"mp-360": {
 			"navigationStyle": "custom"
+		},
+		"h5": {
+			"maxWidth": 1190,
+			"navigationBarTextStyle": "black",
+			"navigationBarBackgroundColor": "#F1F1F1"
 		}
+
 	},
 	"tabBar": {
 		"color": "#7A7E83",
@@ -1186,7 +1266,7 @@
 				"pagePath": "pages/tabBar/component/component",
 				"iconPath": "static/component.png",
 				"selectedIconPath": "static/componentHL.png",
-				"text": "内置组件"
+				"text": "内置组件1"
 			},
 			{
 				"pagePath": "pages/tabBar/API/API",

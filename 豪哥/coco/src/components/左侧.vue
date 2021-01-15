@@ -17,17 +17,17 @@
         </ul>
 
         <div class="input-1">
-            <Input placeholder="新建分组">
+            <Input placeholder="新建分组" v-model="name">
                 <Icon @click="添加分组()" slot="append" type="md-add" />
             </Input>
         </div>
 
         <ul class="分组">
-            <li v-for="item in 分组" :class="{active:item.active}">
-                <Input type="text" @on-keyup.enter="保存()" v-show="item.xiugai" />
-                <span v-show="!item.xiugai">未分组（0）</span>
+            <li v-for="item in 分组" :class="{active:$route.fullPath=='/device?name='+item.name}">
+                <!-- <Input type="text" @on-keyup.enter="保存()" v-show="item.xiugai" /> -->
+                <span @click="$router.push(`/device?name=${item.name}`)" class="name" v-show="!item.xiugai">{{item.name}}</span>
                 <div v-show="!item.xiugai">
-                    <Icon class="icon-1" @click="item.xiugai=true" type="ios-create-outline" />
+                    <!-- <Icon class="icon-1" @click="item.xiugai=true" type="ios-create-outline" /> -->
                     <Poptip confirm class="" title="确定删除?" @on-ok="ok(item)" >
                         <Icon class="icon-1" type="ios-close-circle-outline" />
                     </Poptip>
@@ -38,28 +38,59 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
     name: "",
     data() {
         return {
             云机类型: 1,
-            分组: [
-                { xiugai: true, active: true },
-                { xiugai: false, active: false },
-                { xiugai: false, active: true }
-            ]
+            name:"",
         }
     },
+    computed:{
+        ...mapState({
+            分组:"分组" 
+        })
+    },
     methods: {
+        ...mapActions({
+            获取分组:"获取分组"
+        }),
         添加分组() {
-            console.log(123)
+            if(!this.name){
+                this.错误('请输入分组名称')
+                return
+            }
+            this.$axios.post(`/api/deviceset`,{name:this.name}).then(res => {
+                console.log(res)
+                if(res.data.code===0){
+                    this.获取分组()
+                }else{
+                    this.错误(res.data.message)
+                }
+            }).catch(err => {
+                this.错误('系统错误，稍后再试')
+            })
         },
         保存() {
             console.log('保存')
         },
         ok(item){
-            console.log(item)
-        }
+            this.$axios.delete(`/api/deviceset/${item.id}`,'').then(res => {
+                console.log(res)
+                if(res.data.code===0){
+                    this.正确('删除成功')
+                    this.获取分组()
+                }else{
+                    this.错误(res.data.message)
+                }
+            }).catch(err => {
+                console.log(err)
+                this.错误('系统错误，稍后再试')
+            })
+        },
+    },
+    mounted() {
     },
 }
 </script>
@@ -134,6 +165,8 @@ export default {
         padding: 0px 15px;
         cursor: pointer;
         &:hover {
+            background: #1890ff;
+            color: #fff;
             .icon-1 {
                 display: inline-block;
             }
@@ -142,6 +175,10 @@ export default {
     li.active {
         background: #1890ff;
         color: #fff;
+    }
+    .name{
+        line-height: 40px;
+        flex: 1;
     }
     .icon-1 {
         color: #d2d2d2;

@@ -13,12 +13,30 @@
 	下单
 	/api/order
 	方法	POST
-	数据	{"count": 1, "setId": 230}
+	数据	{"count": 1, "setId": 230, "setName": "aaaaa"}
 
 	订单列表
 	/api/order
 	方法	GET
 	参数	page, size
+
+设备类型
+	获取类型列表
+	/api/devicetype/
+	方法GET
+
+	增加类型
+	/api/devicetype/
+	方法POST
+	POST数据	{"name": "", "setId": 230, "description": "", "price": 100}		price的单位是分
+
+	删除类型
+	/api/devicetype/{id}
+	方法DELETE
+
+	修改类型
+	/api/devicetype/{id}
+	方法PUT
 
 设备
 	设备列表
@@ -34,3 +52,56 @@
 	/api/device/{id}/remote
 	方法	GET
 
+	获取可分发应用列表
+	/api/device/{id}/applist
+	方法	GET
+	目前所有的设备都一样，id可以全部写0
+
+	下发应用
+	/api/device/{id}/apkissue
+	方法	POST
+	POST数据	{"deviceId": "", "packageName": ""}
+
+	重启应用
+	/api/device/{id}/apkrestart
+	方法	POST
+	POST数据	{"packageName": "", "arg": ""}
+
+	删除应用
+	/api/device/{id}/apkdelete
+	方法	POST
+	POST数据	{"packageName": ""}
+
+	设备重置
+	/api/device/{id}/devicereset
+	方法	POST
+
+	新增应用
+	/api/device/{id}/apkupload		id可以全部写0
+	方法	POST
+	POST数据	{"fileUrl": ""}		文件地址
+
+	设备截屏
+	/api/device/{id}/snapshot
+	方法	GET
+
+
+文件
+	上传文件
+	URL:	/api/upload
+	方法:	POST
+
+分组
+	分组列表
+	URL:	/api/deviceset
+	方法:	GET
+
+	新增分组
+	URL:	/api/deviceset
+	方法:	POST
+	POST数据	{"name": "aaaa"}		名称只允许字母和数字
+	新增分组会默认带上前缀，用以区分不同用户的分组名，比如传过来的分组名是abcd，用户id是1，那么分组名就是1-abcd
+
+	删除分组
+	URL:	/api/deviceset/{id}
+	方法:	DELETE

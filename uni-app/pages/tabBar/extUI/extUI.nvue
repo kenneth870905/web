@@ -1,14 +1,14 @@
 <template>
 	<view class="uni-container">
-		<view class="uni-header-logo">
+		<view v-if="!hasLeftWin" class="uni-header-logo">
 			<image class="uni-header-image" src="/static/extuiIndex.png"></image>
 		</view>
-		<view class="uni-hello-text">
+		<view v-if="!hasLeftWin" class="uni-hello-text">
 			<text class="hello-text">以下是uni-app扩展组件示例，更多组件见插件市场：</text>
 			<u-link class="hello-link" :href="'https://ext.dcloud.net.cn/'" :text="'https://ext.dcloud.net.cn'" :inWhiteList="true"></u-link>
 		</view>
-		<view class="uni-panel" v-for="item in lists" :key="item.url">
-			<view class="uni-panel-h" @click="goDetailPage(item.url)">
+		<view :class="{'pc-hide': hideList.indexOf(item.url) !== -1  && hasLeftWin}" class="uni-panel" v-for="item in lists" :key="item.url">
+			<view :class="{'left-win-active': leftWinActive ===  item.url && hasLeftWin}" class="uni-panel-h" @click="goDetailPage(item.url)">
 				<text class="uni-panel-text">{{item.name}}</text>
 				<text class="uni-panel-icon uni-icon">&#xe470;</text>
 			</view>
@@ -16,16 +16,28 @@
 	</view>
 </template>
 <script>
+	import {
+		mapState,
+		mapMutations
+	} from 'vuex';
 	export default {
 		data() {
 			return {
+				hideList: [
+					'notice-bar',
+					'nav-bar',
+					'popup',
+					'swiper-dot',
+					'transition',
+					'rate',
+					'indexed-list',
+					'swipe-action',
+					'combox',
+					'fab'
+				],
 				lists: [{
 						name: "Badge 数字角标",
 						url: "badge"
-					},
-					{
-						name: "Calendar 日历",
-						url: "calendar"
 					},
 					{
 						name: "Card 卡片",
@@ -44,8 +56,20 @@
 						url: "countdown"
 					},
 					{
+						name: "DataCheckbox 数据选择器",
+						url: "data-checkbox"
+					},
+					{
+						name: "Dateformat 日期格式化",
+						url: "dateformat"
+					},
+					{
 						name: "Drawer 抽屉",
 						url: "drawer"
+					},
+					{
+						name: "Easyinput 增强输入框",
+						url: "easyinput"
 					},
 					{
 						name: "Fab 悬浮按钮",
@@ -56,12 +80,20 @@
 						url: "fav"
 					},
 					{
+						name: "Forms 表单",
+						url: "forms"
+					},
+					{
 						name: "GoodsNav 商品导航",
 						url: "goods-nav"
 					},
 					{
 						name: "Grid 宫格",
 						url: "grid"
+					},
+					{
+						name: "Group 分组",
+						url: "group"
 					},
 					{
 						name: "Icons 图标",
@@ -87,10 +119,12 @@
 						name: "NavBar 自定义导航栏",
 						url: "nav-bar"
 					},
+					// #ifndef QUICKAPP-WEBVIEW 
 					{
 						name: "NoticeBar 通告栏",
 						url: "notice-bar"
 					},
+					// #endif 
 					{
 						name: "NumberBox 数字输入框",
 						url: "number-box"
@@ -99,10 +133,12 @@
 						name: "Pagination 分页器",
 						url: "pagination"
 					},
+					// #ifndef QUICKAPP-WEBVIEW-HUAWEI 
 					{
 						name: "PopUp 弹出层",
 						url: "popup"
 					},
+					// #endif 
 					{
 						name: "Rate 评分",
 						url: "rate"
@@ -127,6 +163,12 @@
 						name: "SwiperDot 轮播图指示点",
 						url: "swiper-dot"
 					},
+					// #ifdef H5 
+					{
+						name: "Table 表格",
+						url: "table"
+					},
+					// #endif 
 					{
 						name: "Tag 标签",
 						url: "tag"
@@ -161,11 +203,38 @@
 				url: '/pages/about/about'
 			});
 		},
+		computed: {
+			...mapState({
+				hasLeftWin: state => !state.noMatchLeftWindow,
+				leftWinActive: state => state.leftWinActive.split('/')[3],
+				activeOpen: state => state.activeOpen
+			})
+		},
+		// #ifdef H5
+		watch: {
+			$route: {
+				immediate: true,
+				handler(newRoute) {
+					if (newRoute.matched.length) {
+						this.setLeftWinActive(newRoute.path)
+					}
+				}
+			}
+		},
+		// #endif
 		methods: {
+			...mapMutations(['setMenu', 'setMatchLeftWindow', 'setLeftWinActive', 'setActiveOpen']),
 			goDetailPage(path) {
-				uni.navigateTo({
-					url: '/pages/extUI/' + path + '/' + path
-				});
+				const url = '/pages/extUI/' + path + '/' + path
+				if (this.hasLeftWin) {
+					uni.reLaunch({
+						url: url
+					})
+				} else {
+					uni.navigateTo({
+						url: url
+					})
+				}
 			}
 		}
 	}
