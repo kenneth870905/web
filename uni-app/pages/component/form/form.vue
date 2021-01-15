@@ -11,7 +11,7 @@
 					<view class="title">性别</view>
 					<radio-group name="gender">
 						<label>
-							<radio value="男" /><text>男1</text>
+							<radio value="男" /><text>男</text>
 						</label>
 						<label>
 							<radio value="女" /><text>女</text>

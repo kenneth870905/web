@@ -1,0 +1,108 @@
+{
+	"pages": [
+		{
+			"path": "pages/home",
+			"aliasPath":"/",
+			"style":{
+				"app-plus":{
+					"titleNView":false
+				}
+			}
+		},
+	    {
+            "path" : "pages/products/product",
+			// "aliasPath":"/product",
+			"style":{
+				"app-plus":{
+					"titleNView":false
+				}
+			}
+        },
+		{
+		    "path" : "pages/game/game",
+			"aliasPath":"/game",
+			"style":{
+				"app-plus":{
+					"titleNView":false
+				}
+			}
+		},
+		{
+		    "path" : "pages/my/personal",
+			"aliasPath":"/my",
+			"style":{
+				"app-plus":{
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "uni-ui基础项目"
+			}
+		}
+        ,{
+            "path" : "pages/products/productDetails",
+			// "aliasPath":"/productdetails",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "Product"
+            }
+        },
+		{
+		    "path" : "pages/login",
+			// "aliasPath":"/productdetails",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "Login"
+		    }
+		},
+		{
+		    "path" : "pages/registered",
+			// "aliasPath":"/productdetails",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "Register"
+		    }
+		}
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarBackgroundColor": "#009688"
+	}
+	,
+	"tabBar":{
+		"custom":true,
+		"color": "#FFFFFF",
+		"selectedColor": "#fff",
+		"borderStyle": "black",
+		"backgroundColor": "#009688",
+		"list":[
+			{
+				"pagePath": "pages/home",
+				"iconPath": "static/tabber/home.png",
+				"selectedIconPath": "static/tabber/home.png",
+				"text": "Home"
+			},
+			{
+				"pagePath": "pages/products/product",
+				"iconPath": "static/tabber/sousuo.png",
+				"selectedIconPath": "./static/tabber/sousuo.png",
+				"text": "Search"
+			},
+			{
+				"pagePath": "pages/game/game",
+				"iconPath": "static/tabber/qian.png",
+				"selectedIconPath": "static/tabber/qian.png",
+				"text": "game"
+			},
+			{
+				"pagePath":"pages/my/personal",
+				"iconPath": "static/tabber/my.png",
+				"selectedIconPath": "static/tabber/my.png",
+				"text":"My"
+			}
+		]
+	}
+}

@@ -1,20 +1,20 @@
 <template>
     <div class="header">
         <div class="l">
-            <span class="全选">全选</span>
-            <ButtonGroup class="btn-1">
-                <Button>
+            <!-- <span class="全选">全选</span> -->
+            <ButtonGroup class="btn-1" >
+                <Button :type="列表显示 ? 'default' : 'primary'" @click="查看设备(false)">
                     <Tooltip content="预览图" placement="bottom">
                         <Icon type="md-apps" />
                     </Tooltip>
                 </Button>
-                <Button type="primary">
+                <Button :type="列表显示 ? 'primary' : 'default'" @click="查看设备(true)">
                     <Tooltip content="列表显示" placement="bottom">
                         <Icon type="md-menu" />
                     </Tooltip>
                 </Button>
             </ButtonGroup>
-            <Poptip trigger="hover">
+            <!-- <Poptip trigger="hover">
                 <Button class="btn-1">
                     移动分组
                     <Icon type="md-swap" />
@@ -23,11 +23,11 @@
                     <div>分组1</div>
                     <div>分组2</div>
                 </div>
-            </Poptip>
-            <Button type="primary" class="btn-1">
+            </Poptip> -->
+            <!-- <Button type="primary" @click="安装应用()" class="btn-1" v-show="$route.path=='/device'">
                 <Icon type="logo-android" />
                 安装应用
-            </Button>
+            </Button> -->
             <Button class="btn-1">
                 <Icon type="md-cloud-upload" />
                 上传文件
@@ -58,7 +58,9 @@
                 </div>
             </Poptip>
         </div>
+        <!-- 选机弹框 -->
         <gjtk ref="gjtk"/>
+
     </div>
 </template>
 
@@ -67,22 +69,35 @@ import gjtk from '@/components/选机弹框.vue'
 import {mapState} from 'vuex'
 export default {
     name: "",
-    data() {
-        return {
-
-        }
-    },
+    inject:['安装应用'],
     components:{
         gjtk
     },
+    data() {
+        return {
+            列表显示:true
+        }
+    },
     computed:{
        ...mapState({
-           userInfo:'userInfo'
+           userInfo:'userInfo',
+           分组:"分组"
        })
     },
     methods: {
         购买(){
+            if(this.分组.length==0){
+                this.$Modal.warning({
+                    title: '提示',
+                    content: '您还没有分组，请在右侧先添加分组'
+                });
+                return
+            }
             this.$refs.gjtk.显示弹框=true
+        },
+        查看设备(type){
+            this.列表显示 = type
+            this.$router.push('/')
         }
     },
     mounted() {

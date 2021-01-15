@@ -31,11 +31,11 @@
         </script> -->
         <!-- 正式发布的时候使用，开发期间不启用。↑ -->
 		<script>
-			document.addEventListener('DOMContentLoaded', function() {
-				document.documentElement.style.fontSize = document.documentElement.clientWidth / 20 + 'px'
-			})
+			// document.addEventListener('DOMContentLoaded', function() {
+			// 	document.documentElement.style.fontSize = document.documentElement.clientWidth / 20 + 'px'
+			// })
 		</script>
-		<link rel="stylesheet" href="<%= BASE_URL %>static/index.css" />
+		<link rel="stylesheet" href="<%= BASE_URL %>static/index.<%= VUE_APP_INDEX_CSS_HASH %>.css" />
 	</head>
 	<body>
 		<!-- 该文件为 H5 平台的模板 HTML，并非应用入口。 -->

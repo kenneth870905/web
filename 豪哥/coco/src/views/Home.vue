@@ -13,12 +13,18 @@
             </Content>
             <Footer>Footer</Footer>
         </Layout>
+        
+        <!-- 安装应用 -->
+        <azyy ref="azyy" />
     </Layout>
 </template>
 
 <script>
 import left from "@/components/左侧.vue"
 import header2 from "@/components/header.vue"
+import azyy from '@/components/安装应用.vue'
+import { mapActions } from 'vuex'
+
 export default {
     name: 'Home',
     provide(){
@@ -27,19 +33,28 @@ export default {
                 if(this.$route.path=='/')
                 this.$refs.routerView.获取设备()
             },
+            安装应用:()=>{
+                this.$refs.azyy.init()
+            }
         }
     },
     components:{
         left,
-        header2
+        header2,
+        azyy
     },
     data() {
         return {
-            云机类型:1
+            云机类型:1,
         }
     },
     methods: {
-        
+        ...mapActions({
+            获取分组:'获取分组'
+        })
+    },
+    mounted() {
+        this.获取分组()
     },
 }
 </script>
@@ -58,6 +73,7 @@ export default {
     padding: 0px 15px;
     position: sticky;
     top: 0px;
+    z-index: 5;
 }
 .Left{
     background: #001529;
@@ -68,6 +84,7 @@ export default {
 .ivu-layout-content{
     padding: 15px 15px 0px;
     >div{
+        background: #fff;
         min-height: 100%;
         padding: 10px;
     }

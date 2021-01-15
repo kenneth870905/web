@@ -1,0 +1,209 @@
+<template>
+	<view class="">
+		<view class="status_bar"></view>
+		
+		<view class="personal">
+			<view class="box-1">
+				<view class="top">
+					<image class="touxiang" src="/static/image/touxiang2.png" mode="aspectFill"></image>
+					<view class="right">
+						<view class="zhanghao">
+							<text>{{userInfo.mobile}}</text>
+							<view class="xiugai">
+								<image src="../../static/image/bi.png" mode="widthFix"></image>
+							</view>
+						</view>
+						<view class="p">
+							ID:{{userInfo.user_id}}
+						</view>
+					</view>
+				</view>
+				<view class="p">
+					Mobile：{{userInfo.mobile}}
+				</view>
+				<view class="p">
+					 Available Balance： {{userInfo.available}}
+				</view>
+			</view>
+			
+			<view class="box-2">
+				<view class="">
+					<text>Orders</text>
+				</view>
+				<view>
+					<text>Promotion</text>
+					<uni-icons type="arrowright" size="20"></uni-icons>
+				</view>
+				<view class="">
+					<text>Wallet</text>
+					<uni-icons type="arrowright" size="20"></uni-icons>
+				</view>
+				<view class="">
+					<text>Bank Card</text>
+					<uni-icons type="arrowright" size="20"></uni-icons>
+				</view>
+				<view class="">
+					<text>Address</text>
+				</view>
+				<view class="">
+					<text>Account Security</text>
+					<uni-icons type="arrowright" size="20"></uni-icons>
+				</view>
+				<view class="">
+					<text>APP Download</text>
+					<uni-icons type="arrowright" size="20"></uni-icons>
+				</view>
+				<view class="">
+					<text>Complaints & Suggestions</text>
+					<uni-icons type="arrowright" size="20"></uni-icons>
+				</view>
+				<view class="">
+					<text>About</text>
+					<uni-icons type="arrowright" size="20"></uni-icons>
+				</view>
+			</view>
+			
+			<view class="btn-1" @click="tuichu()">
+				Log out
+			</view>
+		</view>
+		
+		<newTabber />
+	</view>
+</template>
+
+<script>
+	import newTabber from '@/components/azidingyi/newTabber.vue'
+	import { mapState , mapMutations } from 'vuex'
+	export default {
+		components:{
+			newTabber
+		},
+		data() {
+			return {
+			};
+		},
+		computed:{
+			...mapState({
+				userInfo:x=>x.userInfo,
+				islogin:x=>x.登录
+			})
+		},
+		methods:{
+			...mapMutations({
+				setItem:"setItem"
+			}),
+			tuichu(){
+				this.setItem(['登录',false])
+				this.setItem(['userInfo',{}])
+				uni.switchTab({
+					url:"/pages/home"
+				})
+			},
+			获取用户(){
+				this.$http('/user/info','','POST').then(x=>{
+					if(x.code===0){
+						this.setItem(['userInfo',x.data])
+					}
+				}).catch(err=>{
+					console.log(err)
+				})
+			}
+		},
+		mounted() {
+			this.获取用户()
+		},
+		onShow() {
+			// if(!this.islogin){
+				// var pages = getCurrentPages();
+				// uni.navigateTo({
+				// 	url:"/pages/login"
+				// })
+			// }
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+.personal{
+	padding: 10px;
+}
+.box-1{
+	background: #009688;
+	box-shadow: 0.33vw 0.33vw 1vw rgba(0,0,0,.15);
+	border-radius: 1vw;
+	color: #fff;
+	padding: 12px;
+	.top{
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 8px;
+	}
+	.touxiang{
+		flex-shrink: 0;
+		width: 60px;
+		height: 60px;
+		border-radius: 100%;
+		margin: 0px 10px 0px 0px;
+	}
+	.right{
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		// align-items: center;
+		justify-content: space-between;
+	}
+	.zhanghao{
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		.xiugai{
+			width: 25px;
+			height: 25px;
+			background: #fff;
+			border-radius: 100%;
+			box-sizing: border-box;
+			padding: 5px;
+			image{
+				width: 100%;
+			}
+		}
+	}
+	.p{
+		margin: 7px 0px 0px;
+		font-size: 14px;
+	}
+}
+
+.box-2{
+	margin-top: 15px;
+	padding: 0px 10px;
+	background: #fff;
+	box-shadow: 0.33vw 0.33vw 1vw rgba(0,0,0,.15);
+	color: #212121;
+	font-size: 14px;
+	>view{
+		display: flex;
+		height: 42px;
+		justify-content: space-between;
+		align-items: center;
+	}
+	>view:not(:nth-child(1)){
+		border-top: 1px solid #eee;
+	}
+}
+
+.btn-1{
+	background: #FFFFFF;
+	line-height: 42px;
+	font-size: 14px;
+	margin: 15px 0px 55px;
+	text-align: center;
+}
+
+
+
+</style>
