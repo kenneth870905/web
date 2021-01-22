@@ -38,7 +38,8 @@
             },
             "ios" : {},
             "sdkConfigs" : {}
-        }
+        },
+        "nvueLaunchMode" : ""
     },
     "quickapp" : {},
     "mp-weixin" : {

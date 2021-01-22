@@ -12,8 +12,8 @@
                 <span @click="操作(3)">旋转</span>
                 <span @click="操作(4)">多任务</span>
                 <span @click="截屏()">截屏</span>
-                <span @click="音量(1)">音量+</span>
-                <span @click="音量(0)">音量-</span>
+                <!-- <span @click="音量(1)">音量+</span>
+                <span @click="音量(0)">音量-</span> -->
             </p>
         </Modal>
         <Modal v-model="显示截图" title="截图详情" :width="300" class="截图" :mask-closable="false">

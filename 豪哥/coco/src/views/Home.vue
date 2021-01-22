@@ -11,11 +11,13 @@
                 <router-view ref="routerView"></router-view>
                 <!-- <div v-for="item in 100">{{item}}</div> -->
             </Content>
-            <Footer>Footer</Footer>
+            <!-- <Footer>Footer</Footer> -->
         </Layout>
         
         <!-- 安装应用 -->
         <azyy ref="azyy" />
+        <!-- 充值弹框 -->
+        <cz ref="cz"/>
     </Layout>
 </template>
 
@@ -23,6 +25,7 @@
 import left from "@/components/左侧.vue"
 import header2 from "@/components/header.vue"
 import azyy from '@/components/安装应用.vue'
+import cz from '@/components/充值弹框.vue'
 import { mapActions } from 'vuex'
 
 export default {
@@ -30,31 +33,42 @@ export default {
     provide(){
         return{
             获取设备列表:()=>{
-                if(this.$route.path=='/')
-                this.$refs.routerView.获取设备()
+                if(this.$route.path=='/device'){
+                    this.$refs.routerView.获取设备()
+                }
             },
-            安装应用:()=>{
-                this.$refs.azyy.init()
+            安装应用:(setName)=>{
+                this.$refs.azyy.init(setName)
+            },
+            显示充值:(type)=>{
+                this.$refs.cz.充值弹框 = type
             }
         }
     },
     components:{
         left,
         header2,
-        azyy
+        azyy,
+        cz
     },
     data() {
         return {
-            云机类型:1,
+            云机类型:1
         }
     },
     methods: {
         ...mapActions({
-            获取分组:'获取分组'
+            获取分组:'获取分组',
+            获取机型:"获取机型",
+            统计:"统计",
+            获取入款账户:"获取入款账户"
         })
     },
     mounted() {
         this.获取分组()
+        this.获取机型()
+        this.统计()
+        this.获取入款账户()
     },
 }
 </script>

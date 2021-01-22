@@ -6,7 +6,7 @@
         
         <Table class="table" :loading="loading" border :columns="columns" :data="list">
             <template slot-scope="{ row, index }" slot="xinhao">
-                {{row.setId | filterName}}
+                {{filterName(row.setId)}}
             </template>
         </Table>
 
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     data() {
         return {
@@ -43,27 +44,15 @@ export default {
             loading:true
         }
     },
-    filters:{
-        filterName(setId){
-            var 机型list = [
-                {
-                    name:"荣耀30天",
-                    setId:230,
-                    价格:230
-                },{
-                    name:"荣耀15天",
-                    setId:46,
-                    价格:46
-                },{
-                    name:"荣耀7天",
-                    setId:13,
-                    价格:13
-                }
-            ]
-            return 机型list.find(x=>x.setId == setId).name
-        }
+    computed:{
+        ...mapState({
+            设备类型:"设备类型"
+        })
     },
     methods: {
+        filterName(setId){
+            return this.设备类型.find(x=>x.setId == setId) ? this.设备类型.find(x=>x.setId == setId).name : '' 
+        },
         orderList() {
             this.loading=true
             this.$axios.get(`/api/order`, { params: this.q })

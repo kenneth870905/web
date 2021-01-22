@@ -8,21 +8,22 @@
 					<image class="touxiang" src="/static/image/touxiang2.png" mode="aspectFill"></image>
 					<view class="right">
 						<view class="zhanghao">
-							<text>{{userInfo.mobile}}</text>
+							<!-- <text>{{userInfo.mobile}}</text> -->
+							<text>123456789111</text>
 							<view class="xiugai">
 								<image src="../../static/image/bi.png" mode="widthFix"></image>
 							</view>
 						</view>
 						<view class="p">
-							ID:{{userInfo.user_id}}
+							ID:00
 						</view>
 					</view>
 				</view>
 				<view class="p">
-					Mobile：{{userInfo.mobile}}
+					Mobile：123456789111
 				</view>
 				<view class="p">
-					 Available Balance： {{userInfo.available}}
+					 Available Balance： 100.00
 				</view>
 			</view>
 			
@@ -30,43 +31,61 @@
 				<view class="">
 					<text>Orders</text>
 				</view>
-				<view>
+				<view @click="go('/pages/my/promotion')">
 					<text>Promotion</text>
 					<uni-icons type="arrowright" size="20"></uni-icons>
 				</view>
-				<view class="">
+				<view @click="openPopup('Wallet')">
 					<text>Wallet</text>
 					<uni-icons type="arrowright" size="20"></uni-icons>
 				</view>
-				<view class="">
+				<view class="" @click="go('/pages/card/cardList')">
 					<text>Bank Card</text>
 					<uni-icons type="arrowright" size="20"></uni-icons>
 				</view>
 				<view class="">
 					<text>Address</text>
 				</view>
-				<view class="">
+				<view class="" @click="go('/pages/my/ResetPassword')">
 					<text>Account Security</text>
 					<uni-icons type="arrowright" size="20"></uni-icons>
 				</view>
+				
 				<view class="">
 					<text>APP Download</text>
 					<uni-icons type="arrowright" size="20"></uni-icons>
 				</view>
-				<view class="">
+				<view class="" @click="go('/pages/Feedback/Feedback')">
 					<text>Complaints & Suggestions</text>
 					<uni-icons type="arrowright" size="20"></uni-icons>
 				</view>
-				<view class="">
+				<view class="" @click="openPopup('About')">
 					<text>About</text>
 					<uni-icons type="arrowright" size="20"></uni-icons>
 				</view>
 			</view>
 			
-			<view class="btn-1" @click="tuichu()">
+			<view class="btn-1 shadow" @click="tuichu()">
 				Log out
 			</view>
 		</view>
+		
+		<uni-popup ref="popup" type="bottom">
+			<view class="popup-box">
+				<view class="list" v-if="popupType=='Wallet'">
+					<view class="" @click="go('/pages/my/Recharge')">Recharge</view>
+					<view class="" @click="go('/pages/my/withdrawal')">Withdrawal</view>
+					<view class="" @click="go('/pages/my/Transactions')">Transactions</view>
+				</view>
+				<view class="list" v-if="popupType=='About'">
+					<view class="" @click="go('/pages/about/PrivacyPolicy')">Privacy Policy</view>
+					<view class="" @click="go('/pages/about/RiskAgreement')">Risk Disclosure Agreement</view>
+				</view>
+				<view class="btn-1" @click="$refs.popup.close()">
+					Cancel
+				</view>
+			</view>
+		</uni-popup>
 		
 		<newTabber />
 	</view>
@@ -81,6 +100,7 @@
 		},
 		data() {
 			return {
+				popupType:""
 			};
 		},
 		computed:{
@@ -108,10 +128,23 @@
 				}).catch(err=>{
 					console.log(err)
 				})
+			},
+			go(url){
+				uni.navigateTo({
+					url:url
+				})
+			},
+			
+			openPopup(type){
+				this.popupType = type
+				this.$refs.popup.open()
 			}
 		},
 		mounted() {
-			this.获取用户()
+			// this.获取用户()
+		},
+		onHide() {
+			this.$refs.popup.close()
 		},
 		onShow() {
 			// if(!this.islogin){
@@ -204,6 +237,28 @@
 	text-align: center;
 }
 
+.popup-box {
+		text-align: center;
+
+		.list {
+			background: #fff;
+			margin: 10px 10px 10px;
+			line-height: 48px;
+			border-radius: 5px;
+
+			view:not(:nth-child(1)) {
+				border-top: 1px solid #cecece;
+			}
+		}
+
+		.btn-1 {
+			line-height: 44px;
+			margin: 10px;
+			border-radius: 5px;
+			background: #fff;
+			color: #ca9500;
+		}
+	}
 
 
 </style>

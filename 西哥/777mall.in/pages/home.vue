@@ -2,9 +2,9 @@
 	<view>
 		<view class="status_bar"></view>
 		<view class="t1">
-			<image src="../static/image/奖杯.png" mode="aspectFit"></image>
+			<image src="../static/image/jiangbei.png" mode="aspectFit"></image>
 			<a>Open with an app</a>
-			<image src="../static/image/奖杯.png" mode="aspectFit"></image>
+			<image src="../static/image/jiangbei.png" mode="aspectFit"></image>
 		</view>
 		<view class="t2">
 			<view class="text-1">

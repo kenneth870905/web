@@ -1,5 +1,5 @@
 <template>
-	<view class="">
+	<view class="" >
 		<view class="status_bar"></view>
 		
 		<view class="game">
@@ -8,8 +8,8 @@
 					Available Balance：<text>{{userInfo.available}}</text>
 				</view>
 				<view class="ft">
-					<view class="btn-1">Recharge</view>
-					<view class="btn-2">Read Rule</view>
+					<view class="btn-1" @click="cunKuan()">Recharge</view>
+					<view class="btn-2" @click="openGuiZe()">Read Rule</view>
 					<view class="icon-box">
 						<uni-icons type="loop" color="#fff" size="25"></uni-icons>
 					</view>
@@ -152,6 +152,20 @@
 			</view>
 		</view>
 		
+		<uni-popup ref="popup" type="center" @change="popupChange">
+			<view class="guize">
+				<view class="title-1">
+					Rule of Guess
+				</view>
+				<view class="cont">
+					<div data-v-573f1a04="" class="rule-box"><p data-v-573f1a04=""> 3 minutes 1 issue, 2 minutes and 30 seconds to order, 30 seconds to show the lottery result. It opens all day. The total number of trade is 480 issues </p><p data-v-573f1a04=""> If you spend 100 to trade, after deducting 2 service fee, your contract amount is 98: </p><p data-v-573f1a04=""> 1. JOIN GREEN: if the result shows 1,3,7,9, you will get (98*2) 196 </p><p data-v-573f1a04="">If the result shows 5, you will get (98*1.5) 147</p><p data-v-573f1a04=""> 2. JOIN RED: if the result shows 2,4,6,8, you will get (98*2) 196; If the result shows 0, you will get (98*1.5) 147 </p><p data-v-573f1a04=""> 3. JOIN VIOLET: if the result shows 0 or 5, you will get (98*4.5) 441 </p><p data-v-573f1a04=""> 4. SELECT NUMBER: if the result is the same as the number you selected, you will get (98*9) 882 </p></div>
+				</view>
+				<view class="fot" @click="$refs.popup.close()">
+					Close
+				</view>
+			</view>
+		</uni-popup>
+		
 		<newTabber />
 	</view>
 </template>
@@ -172,14 +186,36 @@
 		},
 		data() {
 			return {
-				list:[{id:1,open:false},{id:2,open:false},{id:3,open:false}]
+				list:[{id:1,open:false},{id:2,open:false},{id:3,open:false}],
+				overflowHide:false
 			};
 		},
+		methods:{
+			cunKuan(){
+				uni.navigateTo({
+					url:'/pages/my/Recharge'
+				})
+			},
+			openGuiZe(){
+				this.$refs.popup.open()
+			},
+			popupChange(e){
+				console.log(e)
+				this.overflowHide = e.show
+			}
+		},
+		onLoad() {
+		}
 
 	}
 </script>
 
 <style lang="scss" scoped>
+	
+	.overflowHide{
+		overflow: hidden;
+		pointer-events:none;
+	}
 	.game {
 		padding: 10px 10px 60px;
 		font-size: 14px;
@@ -491,4 +527,31 @@
 		}
 	}
 	
+	.guize{
+		overflow: hidden;
+		background: #fff;
+		width: 90%;
+		margin: 0px auto;
+		.title-1{
+			text-align: center;
+			font-size: 20px;
+			text-align: center;
+			padding: 20px 0px 0px;
+		}
+		.cont{
+			padding: 15px;
+			margin-top: 10px;
+			font-size: 12px;
+			color: rgba(0,0,0,.6);
+			p{
+				margin: 10px 0px;
+			}
+		}
+		.fot{
+			padding: 12px;
+			text-align: center;
+			color: #2196f3;
+			
+		}
+	}
 </style>

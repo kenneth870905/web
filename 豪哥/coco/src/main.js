@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import ViewUI,{Message} from 'view-design';
+import ViewUI,{Message,Modal} from 'view-design';
 import 'view-design/dist/styles/iview.css';
 Vue.use(ViewUI);
 
@@ -44,7 +44,46 @@ axios.interceptors.request.use(function (config) {
     return Promise.reject(error);
 });
 
+axios.interceptors.response.use(function (response) {
+    // 对响应数据做点什么
+    if(response.data.code==1001){
+        console.log('登录过期，需要重新登录')
+        Modal.info({
+            title: '提示',
+            content:"登录过期，请重新登录",
+            onOk:()=>{
+                router.push('/login')
+            }
+        })
+        // MessageBox({
+        //     title:"提示",
+        //     message:"登录过期，请重新登录",
+        //     type:"error",
+        //     showClose:false,
+        //     closeOnClickModal:false,
+        //     confirmButtonText: '确定',
+        //     callback: action => {
+        //         router.push('/login')
+        //     }
+        // });
+    }
+    return response
+}, function (error) {
+    return Promise.reject(error);
+});
 
+// 路由拦截
+router.beforeEach((to, from, next) => {
+    if(to.path=='/login' || to.path=='/register'){
+        next()
+    }else{
+        if(store.state.userInfo.id){
+            next()
+        }else{
+            next('/login')
+        }
+    }
+})
 
 new Vue({
     router,

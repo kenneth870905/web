@@ -1,18 +1,20 @@
 <template>
     <div>
-        <div class="title-1">coco</div>
+        <div class="title-1">{{userInfo.name}}</div>
         <ul class="云机状态">
-            <li @click="云机类型=1" :class="{active:云机类型==1}">
+            <!-- <li @click="云机类型=1" :class="{active:云机类型==1}"> -->
+            <li @click="$router.push('/statistics')" :class="{active:$route.fullPath=='/statistics'}">
                 <div>云机总数</div>
-                <div>0</div>
+                <div>{{统计.totalDeviceCount}}</div>
             </li>
-            <li @click="云机类型=2" :class="{active:云机类型==2}">
+            <!-- <li @click="云机类型=2" :class="{active:云机类型==2}">
                 <div>故障数</div>
-                <div>0</div>
-            </li>
-            <li @click="云机类型=3" :class="{active:云机类型==3}">
-                <div>今日到期</div>
-                <div>0</div>
+                <div>--</div>
+            </li> -->
+            <!-- <li @click="云机类型=3" :class="{active:云机类型==3}"> -->
+            <li @click="$router.push('/statistics?t=2')" :class="{active:$route.fullPath=='/statistics?t=2'}">
+                <div>即将到期</div>
+                <div>{{统计.threeDaysDueDeviceCount}}</div>
             </li>
         </ul>
 
@@ -49,7 +51,9 @@ export default {
     },
     computed:{
         ...mapState({
-            分组:"分组" 
+            分组:"分组" ,
+            userInfo:'userInfo',
+            统计:'统计'
         })
     },
     methods: {
@@ -91,6 +95,7 @@ export default {
         },
     },
     mounted() {
+        console.log(this.$route)
     },
 }
 </script>
@@ -109,7 +114,7 @@ export default {
     display: flex;
     text-align: center;
     li {
-        width: calc(100% / 3);
+        width: calc(100% / 2);
         margin: 0px 5px;
         position: relative;
         cursor: pointer;

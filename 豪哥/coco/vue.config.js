@@ -1,4 +1,9 @@
+var date= new Date();
 module.exports = {
+    publicPath: './',
+    // assetsDir: './',
+    assetsDir:`${date.getFullYear()}${date.getMonth()+1}${date.getDate()}`,
+    productionSourceMap: false,
     devServer: {
         proxy:"/",
         // open: process.platform === 'darwin',

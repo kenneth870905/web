@@ -1,6 +1,6 @@
 <template>
     <Modal class="购机弹框" v-model="显示弹框" width="350">
-        <div class="tittle">购买云机</div>
+        <div class="tittle">购买主机</div>
         <Form :label-width="80" size="small">
             <FormItem label="分组">
                 <Select v-model="setName" placeholder="请选择分组">
@@ -8,7 +8,7 @@
                 </Select>
             </FormItem>
             <FormItem label="型号">
-                <Select v-model="setId">
+                <Select v-model="setId" placeholder="请选择机型">
                     <Option v-for="item in 机型list" :value="item.setId">{{item.name}}</Option>
                 </Select>
             </FormItem>
@@ -17,7 +17,7 @@
             </FormItem>
             <FormItem label="账号余额">
                 <div>
-                    ￥0<span class="btn-1">充值</span>
+                    ￥{{userInfo.balance | qian}}<span class="btn-1" @click="显示充值(true)">充值</span>
                 </div>
             </FormItem>
             <div class="btn-list">
@@ -29,43 +29,48 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
-    inject:['获取设备列表'],
+    inject:['获取设备列表','显示充值'],
     data() {
         return {
             显示弹框:false,
             setName:"",
-            setId:230,
-            机型list:[
-                {
-                    name:"荣耀30天",
-                    setId:230,
-                    价格:230
-                },{
-                    name:"荣耀15天",
-                    setId:46,
-                    价格:46
-                },{
-                    name:"荣耀7天",
-                    setId:13,
-                    价格:13
-                }
-            ],
+            setId:'',
         }
     },
     computed:{
         ...mapState({
-            分组:"分组"
+            分组:"分组",
+            机型list:'设备类型',
+            userInfo:'userInfo'
         }),
         价格(){
-            return this.机型list.find(x=>x.setId==this.setId).价格
+            var num = this.机型list.find(x=>x.setId==this.setId) ? this.机型list.find(x=>x.setId==this.setId).price : ''
+            if(num){
+                return num/100
+            }
+            return ''
+        }
+    },
+    filters: {
+        qian(num) {
+            if(!num){
+                return 0
+            }
+            return new Intl.NumberFormat('en-IN', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(num / 100)
         }
     },
     methods: {
+        ...mapActions({
+            统计:"统计" 
+        }),
         确定(){
             if(!this.setName){
                 this.错误('请选择分组')
+                return
+            }else if(!this.setId){
+                this.错误('请选择机型')
                 return
             }
             this.$Spin.show();
@@ -76,7 +81,8 @@ export default {
                 if(res.data.code===0){
                     this.显示弹框 = false
                     this.正确('购买成功')
-                    // this.获取设备列表()
+                    this.获取设备列表()
+                    this.统计()
                 }else{
                     this.错误(res.data.message)
                 }
