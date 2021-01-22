@@ -1,7 +1,13 @@
 <template>
     <div class="login">
-        <div class="title-2">coco</div>
+        <img class="bg" src="static/image/bg.png" alt="" srcset="">
+
         <div class="box-1">
+            <input type="text" class="name" :class="{active:登录信息.name}" v-model="登录信息.name">
+            <input type="password" @keyup.enter="logon()" class="password" :class="{active:登录信息.password}" v-model="登录信息.password">
+            <button class="btn-1" @click="logon()">Logon</button>
+        </div>
+        <!-- <div class="box-1">
             <div class="left">
                 <img src="~@/assets/login2.jpg" alt srcset />
             </div>
@@ -23,8 +29,8 @@
                     <span @click="$router.push('/register')">注册新用户</span>
                 </FormItem>
             </Form>
-        </div>
-        <!-- <div class="footer">Copyright&copy;</div> -->
+        </div> -->
+
     </div>
 </template>
 
@@ -66,6 +72,16 @@ export default {
                 }
             })
         },
+        logon(){
+            if(!this.登录信息.name){
+                this.错误('请输入账号')
+                return
+            }else if(!this.登录信息.password){
+                this.错误('请输入密码')
+                return
+            }
+            this.登录()
+        },
         登录(){
             this.$axios.post('/api/auth/login',this.登录信息).then(res => {
                 if(res.data.code===0){
@@ -93,66 +109,85 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.login {
-    min-height: 100%;
-    display: flex;
-    overflow: auto;
-    padding: 50px 0px;
-    align-items: center;
-    justify-content: center;
-    background-image:url(~@/assets/login1.svg) ;
-    background-color: #f0f2f5;
-    background-size: cover;
+.login{
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background: #000000;
 }
-.title-2{
+.bg{
     position: absolute;
-    top: 35px;
-    left: 26px;
-    color: #1890ff;
-    font-weight: 600;
-    font-size: 38px;
-    font-family: Avenir,"Helvetica Neue",Arial,Helvetica,sans-serif;
+    width: 100%;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    // height: 100%;
 }
-.box-1 {
-    height: 620px;
-    overflow: auto;
-    display: flex;
-    .left {
-        width: 558px;
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-top-left-radius: 15px;
-            border-bottom-left-radius: 15px;
+.box-1{
+    width: calc(100vw / 1920 * 904);
+    height: calc(100vw / 1920 * 430);
+    // border: 2px solid red;
+    position: absolute;
+    z-index: 1;
+    top: calc(100vw / 1920 * 53);
+    left: calc(100vw / 1920 * 112);
+    right: 0px;
+    bottom: 0px;
+    margin: auto;
+    input,
+    button{
+        position: absolute;
+        outline: none;
+    }
+    input:focus{
+        background: #8a4420;
+    }
+    input.active{
+        background: #8a4420;
+    }
+
+    .name{
+        width: calc( 100vw / 1920 * 554);
+        height: calc(100vw / 1920 * 78);
+        top: calc(100vw / 1920 * 69);
+        left: calc(100vw / 1920 * 41);
+        right: 0px;
+        margin: auto;
+        background: none;
+        border: 7px solid #01c2eb;
+        text-align: center;
+        color: #fff;
+        font-size: 33px;
+    }
+    .password{
+        width: calc( 100vw / 1920 * 554);
+        height: calc(100vw / 1920 * 78);
+        top: calc(100vw / 1920 * 157);
+        left: calc(100vw / 1920 * 41);
+        right: 0px;
+        margin: auto;
+        background: none;
+        border: 7px solid #01c2eb;
+        text-align: center;
+        color: #fff;
+        font-size: 33px;
+    }
+    .btn-1{
+        width: calc( 100vw / 1920 * 554);
+        height: calc(100vw / 1920 * 78);
+        top: calc(100vw / 1920 * 290);
+        left: calc(100vw / 1920 * 41);
+        right: 0px;
+        margin: auto;
+        background: none;
+        border: 6px solid #01c2eb;
+        cursor: pointer;
+        font-size: 30px;
+        background: #00ffff;
+        color: #fff;
+        &:hover{
+            background: #01e2e2;
         }
     }
 }
-.right{
-    width: 528px;
-    padding: 120px 70px;
-    background: #fff;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    .title-1{
-        font-size: 28px;
-        margin-bottom: 80px;
-    }
-}
-
-.footer{
-    position: absolute;
-    left: 0px;
-    width: 100%;
-    bottom: 10px;
-    text-align: center;
-}
-
-.zhuce{
-    text-align: right;
-    span{
-        cursor: pointer;
-    }
-}
-
 </style>

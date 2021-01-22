@@ -3,6 +3,13 @@ import App from './App'
 
 import store from './store'
 
+// 阿里巴巴图标 icon
+import '@/static/icon/iconfont.css'
+
+// 复制剪切板
+// https://ext.dcloud.net.cn/plugin?id=415
+import '@/js_sdk/ican-H5Api/ican-H5Api.js'
+
 Vue.config.productionTip = false
 
 var api = 'https://777mall.in/api/v1/api'

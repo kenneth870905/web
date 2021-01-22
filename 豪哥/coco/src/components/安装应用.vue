@@ -1,32 +1,36 @@
 <template>
     <div>
-        <Modal class="安装" title="安装应用" v-model="显示弹框" width="1000" :mask-closable="false">
+        <Modal class="安装" title="安装/卸载应用" v-model="显示弹框" width="1000" :mask-closable="false">
             <div class="box-1">
                 <div class="title-1">
                     请选择需要安装的应用
-                    <Button class="btn" type="success" @click="上传应用=true" size="small">上传应用</Button>
+                    <Button class="btn" type="success" @click="上传应用=true" size="small">上传应用(点击应用进行安装)</Button>
                     <!-- <Checkbox class="btn" v-model="全选应用">全选</Checkbox> -->
-                    <Button class="btn" @click="获取应用列表()" size="small">刷新列表</Button>
+                    <Button class="btn" @click="获取所有应用()" size="small">刷新列表</Button>
                 </div>
-                <RadioGroup class="RadioGroup-1" v-model="packageName">
+                <!-- <RadioGroup class="RadioGroup-1" v-model="packageName"> -->
                     <ul class="list-1">
-                        <li v-for="item in 应用">
-                            <Radio :label="item.packagename" class="btn">{{item.appname}}</Radio >
+                        <li v-for="item in 所有应用.list" @click="点击安装(item)" :class="{disable:选中分组.appList.find(x=>x==item.packagename)}">
+                            <!-- <Radio :label="item.packagename" class="btn">{{item.appname}}</Radio > -->
+                            {{item.appname}}({{item.packagename}})_{{选中分组.appList.find(x=>x==item)}}
                         </li>
                     </ul>
-                </RadioGroup>
-                <Spin fix v-if="loading_1">加载中</Spin>
+                <!-- </RadioGroup> -->
+                <Spin fix v-if="所有应用.loading">加载中</Spin>
             </div>
             <div class="box-1">
                 <div class="title-1">
-                    已安装应用
+                    已安装应用(点击卸载)
                 </div>
-                
+                <ul class="list-2">
+                    <li v-for="item in 选中分组.appList" @click="卸载应用(item)">
+                        {{item}}
+                        <Icon type="md-close" />
+                    </li>
+                </ul>
             </div>
-
             <div slot="footer">
-                <Button type="text" @click="显示弹框=false">取消</Button>
-                <Button type="primary" @click="安装应用()">确定</Button>
+                
             </div>
         </Modal>
 
@@ -52,13 +56,13 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
     data() {
         return {
             显示弹框: false,
             全选: false,
             上传应用: false,
-            应用: [],
             // 上传类型 1 网络上传 2 本地上传
             showFile:true,
             type:"1",
@@ -66,7 +70,6 @@ export default {
             fileName:"",
             全选应用:false,
             packageName:"",
-            loading_1:false,   //获取应用
             //获取设备参数
             query:{
                 page:1,
@@ -86,25 +89,30 @@ export default {
                     key: 'deviceId'
                 }
             ],
-            选中:[]
+            选中:[],
+            setName:''
+        }
+    },
+    computed:{
+        ...mapState({
+            分组:'分组',
+            所有应用:"所有应用"
+        }),
+        选中分组(){
+            if(this.分组.find(x=>x.name==this.setName)){
+                var obj = this.分组.find(x=>x.name==this.setName)
+                    obj.appList = obj.appList || []
+                return obj
+            }else{
+                return {appList:[]}
+            }
         }
     },
     methods: {
-        获取应用列表() {
-            this.loading_1 =true
-            this.$axios.get('/api/device/0/applist', '').then(res => {
-                if (res.data.code === 0) {
-                    let data = res.data.data
-                    // data.forEach(element => {
-                    //     element.active = false
-                    // });
-                    this.应用 = data
-                }
-                this.loading_1 = false
-            }).catch(err => {
-                this.loading_1 = false
-            })
-        },
+        ...mapActions({
+            获取分组:"获取分组",
+            获取所有应用:"获取所有应用"
+        }),
         changePage(i){
             this.query.page = i
             this.获取设备()
@@ -129,7 +137,7 @@ export default {
                     this.showFile=false
                     this.fileUrl = ''
                     this.fileName = ''
-                    this.获取应用列表()
+                    this.获取所有应用()
                     this.正确('上传成功')
                 }else{
                     this.错误(res.data.message)
@@ -186,42 +194,68 @@ export default {
         select_2(selection,row){
             this.选中 = selection
         },
-        安装应用(){
-            if(!this.packageName){
-                this.错误('请选择应用')
+        点击安装(item){
+            if(this.选中分组.appList.find(x=>x==item.packagename)){
+                this.错误('已安装此引用无需再次安装')
                 return
-            }else if(this.选中.length==0){
-                this.错误('请选择设备')
-                return
-            }else{
-                let deviceIdList = []
-                for (let index = 0; index < this.选中.length; index++) {
-                    deviceIdList.push(this.选中[index].deviceId)
-                }
-                let o ={
-                    packageName:this.packageName,
-                    deviceId:deviceIdList.join(',')
-                }
-                this.$Spin.show()
-                this.$axios.post('/api/device/0/apkissue',o).then(res => {
-                    if(res.data.code===0){
-                        this.成功('安装成功')
-                    }else{
-                        this.错误(res.data.message)
-                    }
-                    this.$Spin.hide()
-                }).catch(err => {
-                    console.error(err); 
-                    this.错误('系统错误，稍后再试')
-                    this.$Spin.hide()
-                })
             }
+            
+            this.$Modal.confirm({
+                title: '提示',
+                content: '确定为分组安装<'+item.appname+'>应用？',
+                onOk:()=>{
+                    let o = {deviceId: "", packageName: item.packagename, setName:this.选中分组.name}
+                    this.$Spin.show()
+                    this.$axios.post('/api/device/0/apkissue',o).then(res => {
+                        console.log(res)
+                        if(res.data.code===0){
+                            this.正确('安装成功，同步可能需要1-2分钟同步')
+                            this.获取分组()
+                        }else{
+                            this.错误(res.data.message)
+                        }
+                        this.$Spin.hide()
+                    }).catch(err => {
+                        console.log(err); 
+                        this.错误('安装失败，请联系管理员')
+                        this.$Spin.hide()
+                    })
+                }
+            })
         },
-        init(){
+        卸载应用(item){
+            this.$Modal.confirm({
+                title: '提示',
+                content: '确定为分组卸载此应用？',
+                onOk:()=>{
+                    this.$Spin.show()
+                    let o = {deviceId: "", packageName: item, setName: this.setName}
+                    this.$axios.post('/api/device/0/apkdelete',o).then(res => {
+                        console.log(res)
+                        if(res.data.code===0){
+                            this.正确('卸载成功，同步可能需要1-2分钟同步')
+                            this.获取分组()
+                        }else{
+                            this.错误(res.data.message)
+                        }
+                        this.$Spin.hide()
+                    }).catch(err => {
+                        this.错误('卸载失败，请联系管理员')
+                        this.$Spin.hide()
+                    })
+                }
+            })
+        },
+        
+        init(setName){
+            this.setName = setName
             // this.选中 = []
             // this.packageName = ''
             this.显示弹框=true
-            this.获取应用列表()
+            if(this.所有应用.list.length==0){
+                this.获取所有应用()
+            }
+
             // this.获取设备()
         }
     },
@@ -272,8 +306,27 @@ export default {
     flex-wrap: wrap;
     position: relative;
     li{
+        cursor: pointer;
+        border: 1px solid #bbb;
         margin: 5px;
-        width: 200px;
+        padding: 5px 15px;
+    }
+    li.disable{
+        background:#bbb ;
+        cursor: no-drop;
+        color: #fff;
+    }
+}
+
+.list-2{
+    display: flex;
+    flex-wrap: wrap;
+    li{
+        cursor: pointer;
+        margin:10px 10px;
+        padding: 3px 5px;
+        background: #999999;
+        color: #fff;
     }
 }
 

@@ -12,7 +12,9 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+// @import url("~@/static/icon/iconfont.css");
+
 /* 解决头条小程序组件内引入字体不生效的问题 */
 /* #ifdef MP-TOUTIAO */
 @font-face {
@@ -22,8 +24,11 @@ export default {
 /* #endif */
 
 page{
+	height: 100%;
 	background: #f5f5f5;
+	font-size: 14px;
 }
+
 
 /* 自定义的顶部站位 */
 .status_bar {
@@ -35,4 +40,16 @@ page{
 	left: 0px;
 	z-index: 1;
 }
+
+.shadow{
+	// box-shadow: 0px 0px 5px rgba(0,0,0,.15);
+	@include shadow;
+}
+.padding10{
+	padding: 10px;
+}
+*{
+	box-sizing: border-box;
+}
+
 </style>

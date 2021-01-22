@@ -32,6 +32,17 @@ const routes = [
             {
                 path:"borderList",
                 component:()=>import('@/views/订单/订单列表.vue')
+            },
+            {
+                path:"TransactionRecord",
+                component:()=>import('@/views/充值记录.vue')
+            },
+            {
+                path:"TransactionRecord",
+                component:()=>import('@/views/充值记录.vue')
+            },{
+                path:"statistics",
+                component:()=>import('@/views/云机统计.vue')
             }
         ]
     },

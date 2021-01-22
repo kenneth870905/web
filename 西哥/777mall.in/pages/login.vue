@@ -63,6 +63,12 @@
 						})
 						return
 				}else{
+					this.setItem(['登录',true])
+					this.setItem(['token','测试token'])
+					uni.switchTab({
+						url:'/pages/my/personal'
+					})
+					return
 					var user = {
 						name:this.phone,
 						password:this.password
