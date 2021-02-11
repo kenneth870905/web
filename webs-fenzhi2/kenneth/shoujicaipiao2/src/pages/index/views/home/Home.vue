@@ -167,7 +167,7 @@
                 </div>
             </div>
 
-            <div class="刮刮乐" @click="$router.push('/guaguale/buy')">
+            <div class="刮刮乐" @click="guaguale()">
                 <img :src="config.img_url+'static/image/gglhome.jpg'" />
             </div>
             <zxzj />
@@ -363,6 +363,10 @@ export default {
             设置state_1:'设置state',
             设置state:'user/设置state',
         }),
+        guaguale(){
+            mui.alert('功能更新升级中，敬请期待！','提示');
+            // $router.push('/guaguale/buy')
+        },
         天天礼包(){
             this.显示礼包弹框=true;
             if(this.特邀引导.步骤==1){

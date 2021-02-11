@@ -1,6 +1,6 @@
 <template>
     <div class="login">
-        <div class="title-2">coco</div>
+        <!-- <div class="title-2">coco</div> -->
         <div class="box-1">
             <Form ref="user" class="right"  :model="user" :rules="ruleValidate">
                 <div class="title-1">注册账号</div>
@@ -17,7 +17,7 @@
                     <Button size="large" style="width:100%" type="primary" @click="handleSubmit()">注 册</Button>
                 </FormItem>
                 <FormItem class="zhuce">
-                    <span @click="$router.push('/login')">已有账号</span>
+                    <span @click="$router.push('/login')">已有账号前往登录</span>
                 </FormItem>
             </Form>
         </div>

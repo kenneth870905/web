@@ -27,7 +27,7 @@
                                 <span>：</span>
                                 <a class="btn_1" target="_blank" :href="在线客服">点击咨询</a>
                             </li>
-                            <li v-if="qq">
+                            <li v-if="qq && 站点配置.qq!==false">
                                 <i class="icon iconfont iconfont icon-QQ"></i>
                                 <div>QQ客服</div>
                                 <span>：</span>
@@ -38,9 +38,9 @@
                                 <div>电话客服</div>
                                 <span>：</span>
                                 <!-- <span v-popover:popover4 @click="微信客服()" class="btn_1">点击获取二维码</span> -->
-                                <span  class="btn_1">{{config.kefu_phone}}</span>
+                                <span class="btn_1">{{config.kefu_phone}}</span>
                             </li>
-                            <li v-if="config.wx_kefu">
+                            <li v-if="config.wx_kefu && !站点配置.hideWx">
                                 <i class="icon iconfont icon-big-WeChat"></i>
                                 <div>微信客服</div>
                                 <span>：</span>

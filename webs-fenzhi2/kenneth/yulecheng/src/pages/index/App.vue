@@ -32,13 +32,13 @@
                 <li @click="onLineService()"><i class="iconfont icon-liaotian"></i>
                     <p>在线客服</p>
                 </li>
-                <li v-popover:popover4 @click="设置微信二维码()"><i class="iconfont icon-weixin"></i>
+                <li v-if="!隐藏wx" v-popover:popover4 @click="设置微信二维码()"><i class="iconfont icon-weixin"></i>
                     <p>微信客服</p>
                 </li>
                 <el-popover popper-class="二维码弹框" v-model="显示二维码" ref="popover4" :disabled="disabled" placement="right" width="150">
                     <img :src="vuexconfig.api_url+'/App_Upload/wechatkf.jpg'" alt="">
                 </el-popover>
-                <li @click="QQService()"><i class="iconfont icon-qq"></i>
+                <li v-if="!隐藏qq" @click="QQService()"><i class="iconfont icon-qq"></i>
                     <p>QQ客服</p>
                 </li>
                 <li v-if="!userInfo.UserId" @click="playTest()"><i class="iconfont icon-huaban"></i>
@@ -144,6 +144,13 @@ export default {
                     return true
                 }
             }
+        },
+        隐藏qq(){
+            return this.站点配置.qq === false
+        },
+        //隐藏微信客服
+        隐藏wx(){
+            return this.站点配置.hideWx
         }
     },
     methods: {
@@ -297,7 +304,7 @@ export default {
         $.ajax({
             type: 'get',
             url: config.api_url + '/App_Upload/Agents/Json/' + url + '.json',
-            // url: config.api_url+'/App_Upload/Agents/Json/www.20200520.com.json',
+            // url: config.api_url+'/App_Upload/Agents/Json/www.209132.com.json',
             data: '',
             success: (data) => {
                 console.log(data)

@@ -136,7 +136,12 @@ export default {
         }
     },
     mounted() {
+        mui.alert('功能更新升级中，敬请期待！','提示','确定',()=>{
+            this.$router.push('/')
+        });
+
         this.获取剩余刮刮乐()
+
     },
     watch: {
         $route(){

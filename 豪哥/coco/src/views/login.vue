@@ -1,11 +1,15 @@
 <template>
     <div class="login">
-        <img class="bg" src="static/image/bg.png" alt="" srcset="">
 
-        <div class="box-1">
-            <input type="text" class="name" :class="{active:登录信息.name}" v-model="登录信息.name">
-            <input type="password" @keyup.enter="logon()" class="password" :class="{active:登录信息.password}" v-model="登录信息.password">
-            <button class="btn-1" @click="logon()">Logon</button>
+        <div class="box-2">
+            <img class="bg" src="static/image/bg1.png" alt="" srcset="">
+
+            <div class="box-1">
+                <input type="text" class="name" :class="{active:登录信息.name}" v-model="登录信息.name" placeholder="UserName">
+                <input type="password" @keyup.enter="logon()" class="password" :class="{active:登录信息.password}" v-model="登录信息.password" placeholder="Password">
+                <div class="btn btn-1" @click="$router.push('/register')">注册</div>
+                <div class="btn btn-2" @click="logon()">登录</div>
+            </div>
         </div>
         <!-- <div class="box-1">
             <div class="left">
@@ -111,82 +115,114 @@ export default {
 <style lang="scss" scoped>
 .login{
     height: 100%;
-    position: relative;
     overflow: hidden;
     background: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.box-2{
+    width: 1280px;
+    height: 720px;
+    position: relative;
+    flex-shrink: 0;
 }
 .bg{
-    position: absolute;
     width: 100%;
-    top: 0px;
-    bottom: 0px;
-    margin: auto;
-    // height: 100%;
+    height: 100%;
 }
 .box-1{
-    width: calc(100vw / 1920 * 904);
-    height: calc(100vw / 1920 * 430);
-    // border: 2px solid red;
-    position: absolute;
-    z-index: 1;
-    top: calc(100vw / 1920 * 53);
-    left: calc(100vw / 1920 * 112);
-    right: 0px;
-    bottom: 0px;
-    margin: auto;
     input,
+    .btn,
     button{
         position: absolute;
         outline: none;
     }
-    input:focus{
-        background: #8a4420;
-    }
-    input.active{
-        background: #8a4420;
-    }
+    // input:focus{
+    //     background: #8a4420;
+    //     box-shadow: inset 0px 0px 6px 0px #fff;
+    // }
+    // input.active{
+    //     background: #8a4420;
+    //     box-shadow: inset 0px 0px 6px 0px #fff;
+    // }
 
     .name{
-        width: calc( 100vw / 1920 * 554);
-        height: calc(100vw / 1920 * 78);
-        top: calc(100vw / 1920 * 69);
-        left: calc(100vw / 1920 * 41);
-        right: 0px;
-        margin: auto;
+        width: 370px;
+        height: 51px;
+        top: 280px;
+        left: 507px;
         background: none;
-        border: 7px solid #01c2eb;
+        // border: 4px solid #01c2eb;
+        border: none;
         text-align: center;
         color: #fff;
-        font-size: 33px;
+        font-size: 24px;
+        &::-webkit-input-placeholder {
+            color: #d2d2d2;
+        }
+        &:-moz-placeholder {/* Firefox 18- */
+            color: #d2d2d2;
+        }
+        &::-moz-placeholder{/* Firefox 19+ */
+            color: #d2d2d2;
+        }
+        &:-ms-input-placeholder {
+            color: #d2d2d2;
+        }
     }
     .password{
-        width: calc( 100vw / 1920 * 554);
-        height: calc(100vw / 1920 * 78);
-        top: calc(100vw / 1920 * 157);
-        left: calc(100vw / 1920 * 41);
-        right: 0px;
-        margin: auto;
+        width: 370px;
+        height: 50px;
+        top: 343px;
+        left: 507px;
         background: none;
-        border: 7px solid #01c2eb;
+        border: none;
+        // border: 4px solid #01c2eb;
         text-align: center;
         color: #fff;
-        font-size: 33px;
+        font-size: 24px;
+        &::-webkit-input-placeholder {
+            color: #d2d2d2;
+        }
+        &:-moz-placeholder {/* Firefox 18- */
+            color: #d2d2d2;
+        }
+        &::-moz-placeholder{/* Firefox 19+ */
+            color: #d2d2d2;
+        }
+        &:-ms-input-placeholder {
+            color: #d2d2d2;
+        }
     }
     .btn-1{
-        width: calc( 100vw / 1920 * 554);
-        height: calc(100vw / 1920 * 78);
-        top: calc(100vw / 1920 * 290);
-        left: calc(100vw / 1920 * 41);
-        right: 0px;
-        margin: auto;
+        width: 120px;
+        text-align: center;
+        line-height: 50px;
+        left: 543px;
+        top: 423px;
         background: none;
-        border: 6px solid #01c2eb;
         cursor: pointer;
-        font-size: 30px;
-        background: #00ffff;
+        font-size: 22px;
+        // border: 1px solid #fff;
         color: #fff;
         &:hover{
-            background: #01e2e2;
+            font-size: 24px;
+        }
+    }
+    .btn-2{
+        width: 120px;
+        text-align: center;
+        line-height: 50px;
+        left: 706px;
+        top: 422px;
+        background: none;
+        cursor: pointer;
+        font-size: 22px;
+        // border: 1px solid #fff;
+        color: #fff;
+        &:hover{
+             font-size: 24px;
         }
     }
 }
