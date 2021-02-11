@@ -22,8 +22,8 @@
                 </el-popover>
 
                 <div class="sw_box" @click="在线客服()"><span class="iconfont icon-kefu"></span>&nbsp;<span>{{config.coupletRightTopText}}</span></div>
-                <div class="bz_box" @click="QQ客服()"><span class="iconfont icon-QQ"></span>&nbsp;<span>QQ客服</span></div>
-                <div class="bz_box" v-show="config.QQ2" @click="QQ客服2()"><span class="iconfont icon-QQ"></span>&nbsp;<span>QQ客服2</span></div>
+                <div class="bz_box" v-if="!隐藏qq" @click="QQ客服()"><span class="iconfont icon-QQ"></span>&nbsp;<span>QQ客服</span></div>
+                <div class="bz_box" v-if="!隐藏qq" v-show="config.QQ2" @click="QQ客服2()"><span class="iconfont icon-QQ"></span>&nbsp;<span>QQ客服2</span></div>
                 <div class="wx_ewm" v-if="站点配置.appUrl"><img :src="站点配置.appUrl" alt=""></div>
                 <div class="img_a" @click="couplet_imgUrl('right')" v-show="config.couplet">
                     <div class="img_a_box"><img :src="config.coupletImgRight" alt=""></div>
@@ -100,6 +100,9 @@ export default {
             userInfo: "userInfo",
             站点配置: '站点配置',
         }),
+        隐藏qq(){
+            return this.站点配置.qq ===false
+        }
     },
     methods: {
         ...mapActions({

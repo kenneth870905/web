@@ -1,6 +1,6 @@
 <template>
     <div class="mui-fullscreen">
-        <iframe @load="load1()" :src="config.online_chat" frameborder="0"></iframe>
+        <iframe @load="load1()" :src="online_chat" frameborder="0"></iframe>
         <!-- <header class="mui-bar mui-bar-nav">
             <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
             <h1 class="mui-title">在线客服</h1>
@@ -22,8 +22,27 @@ export default {
     },
     computed: {
         ...mapState({
-            config:'config' 
-        })
+            config:'config'
+        }),
+        online_chat(){
+            if(typeof website == "object"){
+                var url = location.hostname.replace('www.','');
+                var obj={}
+                if (website.list.hasOwnProperty(url)) {
+                    var key = website.list[url]
+                    if (website.hasOwnProperty(key)) {
+                        obj = website[key]
+                    }
+                }
+                if(obj.online_chat){
+                    return obj.online_chat
+                }else{
+                    return this.config.online_chat;
+                }
+            }else{
+                return this.config.online_chat;
+            }
+        }
     },
     methods: {
         ...mapMutations({

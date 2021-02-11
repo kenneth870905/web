@@ -33,6 +33,13 @@ var config={
         kefu_phone:"+63 9278935888",
         title: title ,
         logo:"webConfig/image/logo.png",
+        // domain:[
+        //     {
+        //         url:"localhost",
+        //         logo:"webConfig/image/logo2.png",
+        //         title:"测试",
+        //     }
+        // ],
         logoType:1,  //0 文件夹图片 1 威尼斯动图
         //页面底部图片 共两张
         footer_1:"webConfig/image/footer_1.jpg",

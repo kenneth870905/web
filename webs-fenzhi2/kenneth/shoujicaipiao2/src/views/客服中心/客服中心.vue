@@ -14,15 +14,15 @@
                         <span class="复制">点击进入</span>
 					</a>
 				</li>
-                <li class="mui-table-view-cell item" @click="复制(config.qq)">
+                <li class="mui-table-view-cell item" @click="复制(config.qq)" v-if="站点配置.qq !== false">
 					<!-- <a class="mui-navigate-right item"> -->
                         <div class="img_box"><img :src="config.img_url+'static/image/kefuCenter/qq.png'" alt=""></div>
-                        <span class="红色">{{config.qq}}</span>
+                        <span class="红色">{{站点配置.qq ? 站点配置.qq : config.qq}}</span>
                         <span class="复制">点击复制</span>
                     <!-- </a> -->
 				</li>
                 
-                <li class="mui-table-view-cell" v-if="显示客服微信">
+                <li class="mui-table-view-cell" v-if="显示客服微信 && !站点配置.hideWx">
                     <div class="item1" @click="显示微信=!显示微信">
                         <div class="img_box">
                             <img :src="config.img_url+'static/image/zhifu/wechat.png'" alt="" srcset="">
@@ -42,16 +42,16 @@
                     </transition>
                 </li>
 
-                <li class="mui-table-view-cell item" @click="复制(config.mail)">
+                <li class="mui-table-view-cell item" @click="复制(站点配置.mail ? 站点配置.mail : config.mail)">
                     <div class="img_box"><img :src="config.img_url+'static/image/kefuCenter/youxiang.png'" alt=""></div>
-                    <span class="红色">{{config.mail}}</span>
+                    <span class="红色">{{站点配置.mail ? 站点配置.mail : config.mail}}</span>
                     <span class="复制">点击复制</span>
 				</li>
                 
                 <li class="mui-table-view-cell">
-                    <a class="item" :href="`tel:${config.kefu_phone}`">
+                    <a class="item" :href="`tel:${站点配置.kefu_phone ? 站点配置.kefu_phone : config.kefu_phone}`">
                         <div class="img_box"><img :src="config.img_url+'static/image/kefuCenter/dianhua.png'" alt=""></div>
-                        <span class="红色">{{config.kefu_phone}}</span>
+                        <span class="红色">{{站点配置.kefu_phone ? 站点配置.kefu_phone : config.kefu_phone}}</span>
                         <span class="复制">点击拨打</span>
                     </a>
                 </li>
@@ -76,6 +76,20 @@ export default {
             config:'config',
             userinfo:x=>x.user.userinfo
         }),
+        站点配置(){
+            var obj={}
+            if(typeof website == "object"){
+                var url = location.hostname.replace('www.','');
+                
+                if (website.list.hasOwnProperty(url)) {
+                    var key = website.list[url]
+                    if (website.hasOwnProperty(key)) {
+                        obj = website[key]
+                    }
+                }
+            }
+            return obj
+        },
         显示客服微信(){
             if(this.config.ck==0){
                 return true

@@ -34,7 +34,7 @@ module.exports = {
     devServer: {
         proxy: {
             '/apis': { // 将www.exaple.com印射为/apis
-                target: 'https://0698aa.com', // 接口域名
+                target: 'https://209125.com', // 接口域名
                 // target: 'http://10.10.27.30:99', // 接口域名
                 // target: "http://10.10.27.31:82",    //虎哥
                 // target:"http://10.10.27.122:98",

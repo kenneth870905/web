@@ -1,0 +1,73 @@
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Home from '../views/Home.vue'
+import tabber from '@/components/tabber.vue'
+Vue.use(VueRouter)
+
+const routes = [
+    {
+        path: '/',
+        // component: Home,
+        components: {
+            default: Home,
+            tabber: tabber,
+        }
+    },{
+        path:"/search",
+        component:()=>import('@/views/search.vue')
+    },
+    {
+        path:"/products",
+        component:()=>import('@/views/商品/products.vue')
+    },
+    {
+        path:"/typeList",
+        component:()=>import('@/views/typeList.vue')
+    },
+    {
+        path:"/productList",
+        component:()=>import('@/views/productList.vue')
+    },
+    {
+        path:"/login",
+        component:()=>import('@/views/login.vue')
+    },
+    {
+        path:"/register",
+        component:()=>import('@/views/register.vue')
+    },
+    {
+        path:"/cart",
+        components:{
+            default:()=>import('@/views/购物车.vue'),
+            // tabber:tabber
+        }
+    },
+    {
+        path:"/Checkout",
+        component:()=>import('@/views/订单确认.vue')
+    },{
+        path:"/addrList",
+        component:()=>import('@/views/my/addrList.vue')
+    },{
+        path:"/address",
+        component:()=>import('@/views/my/address.vue')
+    },{
+        path:"/orderList",
+        component:()=>import('@/views/my/orderList.vue')
+    },
+    {
+        path:"/review",
+        component:()=>import('@/views/my/review.vue')
+    },
+    {
+        path:"/userInfo",
+        component:()=>import('@/views/my/个人资料.vue')
+    }
+]
+
+const router = new VueRouter({
+    routes
+})
+
+export default router

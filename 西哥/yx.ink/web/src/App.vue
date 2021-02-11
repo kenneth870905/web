@@ -1,32 +1,77 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="app">
+        <top v-show="showTop"/>
+        <top2 v-show="showTop" ref="top2"/>
+
+        <router-view />
+        <el-backtop ></el-backtop>
+        <fot />
     </div>
-    <router-view/>
-  </div>
 </template>
 
+<script>
+import top from '@/components/top.vue'
+import top2 from '@/components/top2.vue'
+import fot from '@/components/fot.vue'
+export default {
+    name:"",
+    provide(){
+        return {
+            setLeftMenu:(type)=>{
+                // console.log(this.$refs.top2)
+                if(type){
+                    this.$refs.top2.showLfetMenu=true
+                }
+            }
+        }
+    },
+    components:{
+        top,
+        top2,
+        fot
+    },
+    data() {
+        return {
+            
+        }
+    },
+    computed:{
+        showTop(){
+            return this.$route.path != '/register'
+        }
+    },
+    watch:{
+        $route(){
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+        }
+    }
+}
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+body{
+    margin: 0px;
+    // background: #f5f5f5;
 }
 
-#nav {
-  padding: 30px;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.w1200,
+.w1280{
+    width: 1280px;
+    margin: auto;
+}
+ul{
+    margin: 0px;
+    padding: 0px;
+}
+li{
+    list-style: none;
+}
+*{
+    box-sizing: border-box;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.breadcrumb{
+    padding: 20px 0px;
 }
 </style>

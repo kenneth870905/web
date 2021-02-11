@@ -7,8 +7,8 @@
         <div class="nav_box">
             <div class="container nav_div" @mouseleave="mouseleave_1()">
                 <div class="logo" @click="$router.push('/')" v-if="vuexConfig.showlogo">
-                    <img v-if="vuexConfig.logoType == '0' || !vuexConfig.logoType" :src="vuexConfig.logo" />
-                    <logo v-if="vuexConfig.logoType =='1' "/>
+                    <img v-if="(vuexConfig.logoType == '0' || !vuexConfig.logoType)" :src="logUrl" />
+                    <logo v-if="vuexConfig.logoType =='1'"/>
                 </div>
 
                 <div class="nav_div-routet">
@@ -125,7 +125,25 @@ export default {
         }),
         ...mapState({
             vuexConfig: 'config'
-        })
+        }),
+        // 自定义logo(){
+        //     if(this.vuexConfig.domain){
+        //         return this.vuexConfig.domain.find(x=>x.url==document.domain) ? true : false
+        //     }else{
+        //         return false
+        //     }
+        // },
+        logUrl(){
+            if(this.vuexConfig.domain){
+                if(this.vuexConfig.domain.find(x=>x.url==document.domain)){
+                    return this.vuexConfig.domain.find(x=>x.url==document.domain).logo ? this.vuexConfig.domain.find(x=>x.url==document.domain).logo : this.vuexConfig.logo
+                }else{
+                    return this.vuexConfig.logo
+                }
+            }else{
+                return this.vuexConfig.logo
+            }
+        }
     },
     methods: {
         ...mapActions({// 获取vuex里的函数mapGetters
