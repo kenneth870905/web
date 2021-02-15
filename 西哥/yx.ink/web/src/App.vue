@@ -40,6 +40,12 @@ export default {
             return this.$route.path != '/register'
         }
     },
+    mounted() {
+        if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+            location.href='/h5/'
+        // 移动端操作
+        }
+    },
     watch:{
         $route(){
             window.scrollTo({ top: 0, behavior: 'smooth' })

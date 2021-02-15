@@ -6,7 +6,7 @@
                     <span class="search">
                         <van-icon name="search" />
                     </span>
-                    <span class="text">Search in Lazada</span>
+                    <span class="text">请输入需要搜索的商品名字</span>
                 </div>
             </div>
         </van-sticky>

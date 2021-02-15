@@ -14,7 +14,11 @@ export default {
         }
     },
     mounted() {
-
+        if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        // 移动端操作
+        }else{
+            location.href='/index/'
+        }
         // this.$toast.loading({ message: '加载中...', forbidClick: true,duration:0});
         // this.$toast.clear();
     },

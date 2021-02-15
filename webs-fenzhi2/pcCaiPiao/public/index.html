@@ -7,15 +7,26 @@
     <link rel="icon">
     <link rel="stylesheet" href="fonts/iconfont.css">
     <title></title>
+    <%= process.env.NODE_ENV =='development' ? 
+        `
+        <script src="config.js"></script>
+        `:`
+        <script src="/index/config.js"></script>
+        `
+    %>
     
-    <script src="/index/config.js"></script>
-    <script src="config.js"></script>    
+     
     <script src="webConfig/config.js"></script>
     
-    <script src="https://0698aa.com/Scripts/jquery-1.12.4.min.js"></script>
-    <script src="/Scripts/jquery-1.12.4.min.js"></script>
-    <script src="https://0698aa.com/Scripts/libs/lottery/markSixNums.min.js"></script>
-    <script src="/Scripts/libs/lottery/markSixNums.min.js"></script>
+    <%= process.env.NODE_ENV =='development' ? 
+        `
+        <script src="/apis/Scripts/jquery-1.12.4.min.js"></script>
+        <script src="/apis/Scripts/libs/lottery/markSixNums.js"></script>
+        `:`
+        <script src="/Scripts/jquery-1.12.4.min.js"></script>
+        <script src="/Scripts/libs/lottery/markSixNums.js"></script>
+        `
+    %>
 
   </head>
   <body>

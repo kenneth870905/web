@@ -124,6 +124,7 @@ export default {
         }
     },
     mounted() {
+        this.query.type = this.$route.query.type ? this.$route.query.type : ''
         this.获取订单()
     },
 }

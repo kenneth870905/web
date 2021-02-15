@@ -19,17 +19,22 @@
     var wuxt = ["01", "14", "15", "22", "23", "30", "31", "44", "45"];        //土
     var wuxings = { "J": { name: "金", list: wuxj }, "M": { name: "木", list: wuxm }, "S": { name: "水", list: wuxs }, "H": { name: "火", list: wuxh }, "T": { name: "土", list: wuxt } };
 
-    var shengXiaoNameNow = 'A1';   //*****当前生肖
+    var shengXiaoNameNow = 'A2';   //*****当前生肖
     var shengXiaoNames = {
         "A1": { name: "鼠" }, "A2": { name: "牛" }, "A3": { name: "虎" }, "A4": { name: "兔" }, "A5": { name: "龙" }, "A6": { name: "蛇" },
         "A7": { name: "马" }, "A8": { name: "羊" }, "A9": { name: "猴" }, "AA": { name: "鸡" }, "AB": { name: "狗" }, "AC": { name: "猪" }
     };
+    // var shengXiaoNames = {
+    //     "A1": { name: "牛" }, "A2": { name: "虎" }, "A3": { name: "兔" }, "A4": { name: "龙" }, "A5": { name: "蛇" },"A6": { name: "马" }, 
+    //     "A7": { name: "羊" }, "A8": { name: "猴" }, "A9": { name: "鸡" }, "AA": { name: "狗" }, "AB": { name: "猪" },"AC": { name: "鼠" }, 
+    // };
     var shengXiaoNameIndex = ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "AA", "AB", "AC"];
 
     var shengXiaoNums = [["01", "13", "25", "37", "49"], ["02", "14", "26", "38"], ["03", "15", "27", "39"],
     ["04", "16", "28", "40"], ["05", "17", "29", "41"], ["06", "18", "30", "42"], ["07", "19", "31", "43"],
     ["08", "20", "32", "44"], ["09", "21", "33", "45"], ["10", "22", "34", "46"], ["11", "23", "35", "47"], ["12", "24", "36", "48"]];
 
+    
     var nums = {};
     for (var i = 1; i <= 49; i++) {
         var markSixNum = {};

@@ -197,6 +197,7 @@ export default {
         img {
             height: 100%;
             width: 100%;
+            object-fit: contain;
         }
     }
     .title-1 {
@@ -254,7 +255,7 @@ export default {
         position: relative;
         img {
             width: 100%;
-            height: 100%0;
+            height: 266px;
             object-fit: cover;
         }
         .title-1 {

@@ -1,12 +1,13 @@
 <template>
     <div>
         <van-tabbar v-model="active" active-color="#d3232a" :before-change="beforeChange">
-            <van-tabbar-item icon="home-o" @click="$router.push('/')">首页</van-tabbar-item>
-            <van-tabbar-item icon="apps-o" @click="$router.push('/typeList')">分类</van-tabbar-item>
+            <van-tabbar-item icon="home-o" name="/" @click="$router.push('/')">首页</van-tabbar-item>
+            <van-tabbar-item icon="apps-o" name="/typeList" @click="$router.push('/typeList')">分类</van-tabbar-item>
+            <van-tabbar-item icon="chat-o" @click="点击客服()">消息</van-tabbar-item>
             <van-tabbar-item icon="cart-o" @click="$router.push('/cart')">购物车</van-tabbar-item>
-            <van-tabbar-item icon="contact" @click="我的()">我的</van-tabbar-item>
+            <van-tabbar-item icon="contact" name="/my" @click="我的()">我的</van-tabbar-item>
         </van-tabbar>
-        <van-popup v-model="showPopup" position="left">
+        <!-- <van-popup v-model="showPopup" position="left">
             <div class="个人中心">
                 <div class="box-1" style="background-image:url(static/img/bg.png);">
                     <div class="touxiang">
@@ -38,7 +39,7 @@
                     退出当前账号
                 </div>
             </div>
-        </van-popup>
+        </van-popup> -->
     </div>
 </template>
 
@@ -47,7 +48,7 @@ import { mapMutations, mapState } from 'vuex'
 export default {
     data() {
         return {
-            active:0,
+            active:'/',
             showPopup:false
         }
     },
@@ -55,14 +56,22 @@ export default {
         ...mapState({
             userInfo:'userInfo',
             token:"token" 
-        })
+        }),
     },
     methods: {
         ...mapMutations({
             setValue:"setValue"
         }),
+        点击客服(){
+            this.$toast('客服升级中，请求期待')
+        },
         我的(){
-            this.showPopup=true
+            if(this.userInfo.id){
+                this.$router.push('/my')
+            }else{
+                this.$router.push('/login?url=my')
+            }
+            //  this.showPopup=true
             // this.$router.push('/my/personal')
             // this.$router.push('/login')
         },
@@ -83,6 +92,9 @@ export default {
             this.$toast('退出成功')
             this.showPopup=false
         }
+    },
+    mounted() {
+        this.active= this.$route.path
     },
 }
 </script>

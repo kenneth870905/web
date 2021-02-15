@@ -3,7 +3,7 @@
         <van-nav-bar fixed title="订单确认" left-arrow @click-left="$back()"></van-nav-bar>
 
         <van-cell v-if="!选中收货地址" title="添加收货地址" icon="location-o" is-link to="/addrList" />
-        <van-cell v-if="选中收货地址" icon="location-o" :title="选中收货地址.name" is-link center to="/addrList">
+        <van-cell v-if="选中收货地址" icon="location-o" :title="选中收货地址.name" is-link center to="/addrList?back=1">
             <template #label>
                 <div class="dizhi">{{选中收货地址.address}}</div>
             </template>
