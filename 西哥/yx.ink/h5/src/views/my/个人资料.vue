@@ -1,6 +1,6 @@
 <template>
     <div>
-        <van-nav-bar title="基本信息" left-arrow @click-left="$back()" :right-text="编辑 ? '' : '编辑'" @click-right="onClickRight"></van-nav-bar>
+        <van-nav-bar title="个人资料" left-arrow @click-left="$back()" :right-text="编辑 ? '' : '编辑'" @click-right="onClickRight"></van-nav-bar>
         
         <div class="form">
             <van-form @submit="submit" :readonly="!编辑">

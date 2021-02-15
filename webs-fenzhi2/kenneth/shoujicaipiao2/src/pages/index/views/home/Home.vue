@@ -364,8 +364,8 @@ export default {
             设置state:'user/设置state',
         }),
         guaguale(){
-            mui.alert('功能更新升级中，敬请期待！','提示');
-            // $router.push('/guaguale/buy')
+            // mui.alert('功能更新升级中，敬请期待！','提示');
+            this.$router.push('/guaguale/buy')
         },
         天天礼包(){
             this.显示礼包弹框=true;

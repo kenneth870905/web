@@ -22,7 +22,19 @@ const routes = [
     },
     {
         path:"/typeList",
-        component:()=>import('@/views/typeList.vue')
+        // component:()=>import('@/views/typeList.vue'),
+        components:{
+            default:()=>import('@/views/typeList.vue'),
+            tabber: tabber
+        }
+    },
+    {
+        path:"/my",
+        // component:()=>import('@/views/typeList.vue'),
+        components:{
+            default:()=>import('@/views/my/我的.vue'),
+            tabber: tabber
+        }
     },
     {
         path:"/productList",
@@ -63,6 +75,10 @@ const routes = [
     {
         path:"/userInfo",
         component:()=>import('@/views/my/个人资料.vue')
+    },
+    {
+        path:"/setCenter",
+        component:()=>import('@/views/my/设置中心.vue')
     }
 ]
 

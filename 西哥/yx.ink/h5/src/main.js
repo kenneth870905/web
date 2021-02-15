@@ -11,7 +11,7 @@ Vue.use(Vant);
 
 import axios from 'axios'
 axios.defaults.baseURL=api + '/public/index.php'
-Vue.prototype.$img_url= api + '/runtime/storage/'
+Vue.prototype.$img_url= (typeof img=='undefined' ? api : img) + '/runtime/storage/'
 Vue.prototype.$axios = axios
 Vue.use(axios)
 

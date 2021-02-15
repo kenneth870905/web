@@ -45,7 +45,9 @@ export default {
                 if(res.code==1){
                     this.setValue(['token',res.data.token])
                     this.setValue(['userInfo',res.data.user])
-                    if(this.$route.query.r){
+                    if(this.$route.query.url){
+                        this.$router.push('/'+this.$route.query.url)
+                    }else if(this.$route.query.r){
                         history.back()
                     }else{
                         this.$router.push('/')

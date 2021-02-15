@@ -1,6 +1,6 @@
 <template>
     <div class="typeList">
-        <van-nav-bar title="选择分类" left-arrow @click-left="$back()" fixed />
+        <van-nav-bar title="选择分类"  fixed />
 
         <van-tree-select class="box-1" height="100%" :items="typeList" :main-active-index.sync="active">
             <template #content>

@@ -56,8 +56,10 @@ export default {
             })
         },
         选中地址(item){
-            this.setValue(['选中收货地址',item])
-            history.back()
+            if(this.$route.query.back){
+                this.setValue(['选中收货地址',item])
+                history.back()
+            }
         }
     },
     mounted() {

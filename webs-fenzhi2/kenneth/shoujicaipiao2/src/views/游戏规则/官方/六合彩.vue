@@ -226,22 +226,22 @@
                             <p>对开奖特码所属生肖进行投注，任选1个生肖为一注。开奖特码在所选生肖范围内，即为中奖，特码开出49为和局，退还本金。</p>
                         </div>
                         <div class="content"><span>野兽</span>
-                            <p>鼠（01 13 25 37 49）、虎（11 23 35 47）、兔（10 22 34 46）、龙（09 21 33 45）、蛇（08 20 32 44）、猴（05 17 29 41）</p>
+                            <p>鼠（{{getSx('鼠')}}）、虎（{{getSx('虎')}}）、兔（{{getSx('兔')}}）、龙（{{getSx('龙')}}）、蛇（{{getSx('蛇')}}）、猴（{{getSx('猴')}}）</p>
                         </div>
                         <div class="content"><span>家禽</span>
-                            <p>牛（12 24 36 48）、马（07 19 31 43）、羊（06 18 30 42）、鸡（04 16 28 40）、狗（03 15 27 39）、猪（02 14 26 38）</p>
+                            <p>牛（{{getSx('牛')}}）、马（{{getSx('马')}}）、羊（{{getSx('羊')}}）、鸡（{{getSx('鸡')}}）、狗（{{getSx('狗')}}）、猪（{{getSx('猪')}}）</p>
                         </div>
                         <div class="content"><span>天肖</span>
-                            <p>牛（12 24 36 48）、兔（10 22 34 46）、龙（09 21 33 45）、马（07 19 31 43）、猴（05 17 29 41）、猪（02 14 26 38）</p>
+                            <p>牛（{{getSx('牛')}}）、兔（{{getSx('兔')}}）、龙（{{getSx('龙')}}）、马（{{getSx('马')}}）、猴（{{getSx('猴')}}）、猪（{{getSx('猪')}}）</p>
                         </div>
                         <div class="content"><span>地肖</span>
-                            <p>鼠（01 13 25 37 49）、虎（11 23 35 47）、蛇（08 20 32 44）、羊（06 18 30 42）、鸡（04 16 28 40）、狗（03 15 27 39）</p>
+                            <p>鼠（{{getSx('鼠')}}）、虎（{{getSx('虎')}}）、蛇（{{getSx('蛇')}}）、羊（{{getSx('羊')}}）、鸡（{{getSx('鸡')}}）、狗（{{getSx('狗')}}）</p>
                         </div>
                         <div class="content"><span>前肖</span>
-                            <p>鼠（01 13 25 37 49）、牛（12 24 36 48）、虎（11 23 35 47）、兔（10 22 34 46）、龙（09 21 33 45）蛇（08 20 32 44）</p>
+                            <p>鼠（{{getSx('鼠')}}）、牛（{{getSx('牛')}}）、虎（{{getSx('虎')}}）、兔（{{getSx('兔')}}）、龙（{{getSx('龙')}}）蛇（{{getSx('蛇')}}）</p>
                         </div>
                         <div class="content"><span>后肖</span>
-                            <p>马（07 19 31 43）、羊（06 18 30 42）、猴（05 17 29 41）、鸡（04 16 28 40）、狗（03 15 27 39）、猪（02 14 26 38）</p>
+                            <p>马（{{getSx('马')}}）、羊（{{getSx('羊')}}）、猴（{{getSx('猴')}}）、鸡（{{getSx('鸡')}}）、狗（{{getSx('狗')}}）、猪（{{getSx('猪')}}）</p>
                         </div>
                         <!---->
                     </div>
@@ -337,11 +337,28 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     name: "",
     data() {
         return {
 
+        }
+    },
+    computed:{
+        ...mapState({
+            marSixNums:"marSixNums"
+        })
+    },
+    methods:{
+        getSx(name){
+            let list = []
+                for (const key in this.marSixNums.sx) {
+                    if(this.marSixNums.sx[key].name == name){
+                        list = this.marSixNums.sx[key].list
+                    }
+                }
+            return list.join(' ')
         }
     },
     mounted() {

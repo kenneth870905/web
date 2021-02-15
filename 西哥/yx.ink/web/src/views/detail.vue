@@ -9,7 +9,9 @@
             <el-col :span="7">
                 <div class>
                     <div class="datu">
-                        <vue-photo-zoom-pro class="zoom-pro" :out-zoomer="true" v-if="大图" :url="$img_url + 大图"></vue-photo-zoom-pro>
+                        <vue-photo-zoom-pro class="zoom-pro" :out-zoomer="true" v-if="大图" :url="encodeURI($img_url + 大图)"></vue-photo-zoom-pro>
+                        <!-- <vue-photo-zoom-pro class="zoom-pro" :out-zoomer="true" v-if="大图" url="http://110.34.166.141/yiku/yx-serve/runtime/storage/image/20210213/0.11452600%201613227445.jpeg"></vue-photo-zoom-pro> -->
+                        
                     </div>
                     <div class="lunbo">
                         <swiper ref="mySwiper" class="swiper" :options="swiperOptions"  @clickSlide="clickSwipr1">
