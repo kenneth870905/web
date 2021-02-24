@@ -87,13 +87,16 @@ export default {
         return {
             isFixed:false,
             sp:[],
-            list1:[]
         }
     },
     computed:{
         ...mapState({
-            typeList:'goodsType'
-        })
+            typeList:'goodsType',
+            basic:"basic"
+        }),
+        list1(){
+            return this.basic.filter(x=>x.keyName=='h5Carousel')
+        }
     },
     filters:{
         qian(number){
@@ -106,16 +109,6 @@ export default {
         }),
         scroll(e){
             this.isFixed = e.isFixed
-        },
-        查询轮播图(){
-            this.$axios.post('/Basic/get',{keyName:'h5Carousel'}).then(res => {
-                if(res.code==1){
-                    this.list1 = res.data
-                }
-            })
-            .catch(err => {
-                console.error(err); 
-            })
         },
         查询商品(){
             let q= {
@@ -135,7 +128,6 @@ export default {
             })
         },
         clickSw(item){
-            console.log(item)
             if(item.url){
                 if(item.url[0]=='/'){
                     this.$router.push(item.url)
@@ -146,7 +138,6 @@ export default {
         }
     },
     mounted() {
-        this.查询轮播图()
         this.获取商品类型()
         this.查询商品()
     },

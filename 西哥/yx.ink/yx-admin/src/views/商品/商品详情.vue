@@ -7,6 +7,9 @@
                 </el-select> -->
                 <el-cascader placeholder="请选择分类"  v-model="typeValue" size="small" style="width: 200px;" :props="{ checkStrictly: true,expandTrigger: 'hover',value:'id',label:'title' }" :options="goodsType" ></el-cascader>
             </el-form-item>
+            <el-form-item label="编码">
+                <el-input v-model="sp.coding" placeholder="主要用于查询,可以不填写，如：#1001#"></el-input>
+            </el-form-item>
             <el-form-item label="标题">
                 <el-input v-model="sp.title" placeholder></el-input>
             </el-form-item>
@@ -44,7 +47,7 @@
                     </div>
                 </template>
             </el-form-item>
-            <el-form-item label="尺寸">
+            <el-form-item label="规格">
                 <template>
                     <div class="尺寸">
                         <el-button-group class="btn" size="mini" v-for="(item,index) in sp.size">
@@ -59,7 +62,7 @@
                 <template>
                     <el-table :data="sp.priceList" style="width: 50%;" size="mini" border>
                         <el-table-column label="颜色" prop="color"></el-table-column>
-                        <el-table-column label="尺寸" prop="size"></el-table-column>
+                        <el-table-column label="规格" prop="size"></el-table-column>
                         <el-table-column label="价格">
                             <template slot-scope="s">
                                 <el-input v-model="s.row.price" placeholder></el-input>

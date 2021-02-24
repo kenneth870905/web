@@ -6,18 +6,12 @@
                     联系我们
                </div>
                <p>
-                    Q  Q：23788662
+                    飞机：{{飞机 ? 飞机.content : ""}}
                     <br>
-                    微信：FXKJ0579
+                    微信：{{weixin ? weixin.content : ''}}
                     <br>
-                    电报：@dfour
+                    手机：{{phone ? phone.content : ''}}
                     <br>
-                    手机：09277037037
-               </p>
-               <p>
-                   官方电报频道：
-                   <br>
-                   <a href="https://t.me/yx_ink">https://t.me/yx_ink</a>
                </p>
            </div>
            <div class="item">
@@ -25,7 +19,7 @@
                    运费说明
                 </div>
                 <p>一件起送</p>
-                <p>满8000P包邮</p>
+                <p>满{{baoyou ? baoyou.content : ''}}p包邮</p>
                 <p>不满则运费到付</p>
                 <p>换货运费自行承担</p>
            </div>
@@ -43,12 +37,33 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     data() {
         return {
             
         }
     },
+    computed:{
+        ...mapState({
+            basic:"basic"
+        }),
+        飞机(){
+            return this.basic.find(x=>x.keyName=='telegram')
+        },
+        weixin(){
+            return this.basic.find(x=>x.keyName=='weixin')
+        },
+        phone(){
+            return this.basic.find(x=>x.keyName=='phone')
+        },
+        wechatQR(){
+            return this.basic.find(x=>x.keyName=='wechatQR')
+        },
+        baoyou(){
+            return this.basic.find(x=>x.keyName=='baoyou')
+        }
+    }
 }
 </script>
 
@@ -63,6 +78,7 @@ export default {
     display: flex;
     .item{
         width: 33%;
+        
     }
     .title-1{
         font-size: 24px;

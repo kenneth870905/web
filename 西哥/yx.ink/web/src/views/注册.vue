@@ -21,20 +21,26 @@
                 <el-form ref="user" :model="user" :rules="rules">
                     <el-form-item label prop="userName">
                         <div class="input-box">
-                            <span>用户名</span>
-                            <el-input placeholder="用于登录" v-model="user.userName"></el-input>
+                            <span>+63</span>
+                            <el-input placeholder="请输入9开头10位菲律宾手机号码" v-model="user.userName"></el-input>
                         </div>
                     </el-form-item>
-                    <el-form-item label>
+                    <!-- <el-form-item label>
                         <div class="input-box">
                             <span>电子邮箱</span>
-                            <el-input v-model="user.email" placeholder="请输入电子邮箱"></el-input>
+                            <el-input v-model="user.email" placeholder="电子邮箱（可不填写）"></el-input>
                         </div>
-                    </el-form-item>
-                    <el-form-item label>
-                        <div class="input-box">
+                    </el-form-item> -->
+                    <el-form-item label prop="password">
+                        <div class="input-box" >
                             <span>登录密码</span>
                             <el-input show-password v-model="user.password" placeholder="请输入登录密码"></el-input>
+                        </div>
+                    </el-form-item>
+                    <el-form-item label prop="password2">
+                        <div class="input-box" >
+                            <span>确认密码</span>
+                            <el-input show-password v-model="user.password2" placeholder="请确认密码"></el-input>
                         </div>
                     </el-form-item>
                     <el-form-item label>
@@ -67,11 +73,36 @@ export default {
             user: {
                 userName:"",
                 password:"",
+                password2:"",
                 email:""
             },
             rules:{
                 userName:[
-                    { required: true, message: '请输入用户名', trigger: 'blur' ,}
+                    { required: true , trigger: 'blur' ,
+                        validator:(rule, value, callback)=>{
+                            if(/^9[0-9].{8}$/.test(value)){
+                                callback();
+                            }else{
+                                callback(new Error('请输入9开头10位菲律宾手机号码'));
+                            }
+                        }
+                    }
+                ],
+                password:[
+                    { required: true, message: '请输入登录密码', trigger: 'blur' ,}
+                ],
+                password2:[
+                    { required: true, trigger: 'blur' ,
+                        validator:(rule, value, callback)=>{
+                            if(!value){
+                                callback(new Error('请确认密码'));
+                            }else if(value!=this.user.password){
+                                callback(new Error('两次密码不一致'));
+                            }else{
+                                callback();
+                            }
+                        }
+                    }
                 ]
             }
         }

@@ -9,6 +9,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "element-ui": "^2.15.0",
+    "moment": "^2.29.1",
     "swiper": "^5.4.5",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^4.1.1",

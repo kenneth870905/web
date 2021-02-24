@@ -1,6 +1,6 @@
 <template>
     <div class="orderList">
-        <van-nav-bar fixed title="订单" left-arrow @click-left="$back()"></van-nav-bar>
+        <van-nav-bar fixed title="订单" left-arrow @click-left="$router.push('/my')"></van-nav-bar>
         <van-tabs v-model="query.type" @change="changeTabs">
             <van-tab name="" title="全部订单"></van-tab>
             <van-tab name="0" title="待付款"></van-tab>
@@ -16,15 +16,18 @@
             </div>
             <div v-if="item.orderInfo.length==0" class="商品异常">商品信息异常</div>
             <ul>
-                <li class="sp" v-for="item2 in item.orderInfo" @click="$router.push('/products?id='+item2.goodsInfo.id)">
-                    <div class="img-box">
+                <li class="sp" v-for="item2 in item.orderInfo" >
+                    <div class="img-box" @click="$router.push('/products?id='+item2.goodsInfo.id)">
                         <img :src="$img_url+item2.goodsInfo.cover" alt srcset />
-                    </div>
-                    <div class="xiangqing">
+                    </div >
+                    <div class="xiangqing" @click="$router.push('/products?id='+item2.goodsInfo.id)">
                         <div class="t2">{{item2.goodsInfo.title}}</div>
-                        <div class="guige">{{item2.specification.color}};{{item2.specification.color}}</div>
+                        <div class="guige">{{item2.specification.color}};{{item2.specification.size}}</div>
                         <div class="jiage">₱{{item2.specification.price | qian}}</div>
                         <div class="number">x{{item2.number}}</div>
+                    </div>
+                    <div class="pingjia" v-if="item.type==3 && !item2.pingJia">
+                        <div class="btn-1" @click="$router.push('/addPj?goodsId='+item2.goodsInfo.id+'&orderId='+item.id)">评价</div>
                     </div>
                 </li>
             </ul>
@@ -35,10 +38,10 @@
                 <span>商品总价：₱{{总价(item)}}</span>
                 <!-- <span>实付：₱90.00</span> -->
             </div>
-            <div class="f2" v-if="item.type==3">
+            <div class="f2" v-if="item.type==2">
                 <!-- <span>删除订单</span>
                 <span>买了换钱</span> -->
-                <span @click="评价()">评论</span>
+                <span @click="确认收货(item)">确认收货</span>
             </div>
         </div>
         <load :loading="loading" :total="total" :length="list.length" :reachBottom="daoDi"/>
@@ -82,6 +85,22 @@ export default {
         },
         评价(){
             this.$toast('功能开发中')
+        },
+        确认收货(item){
+            this.$toast.loading({ message: '加载中...', forbidClick: true,duration:0});
+        // this.$toast.clear();
+            let o = Object.assign({},item)
+                o.type = 3
+            this.$axios.post('/Order/modifyOrder',o).then(res => {
+                if(res.code==1){
+                    item.type=3
+                    this.$toast('设置成功')
+                }else{
+                    this.$toast('设置失败，请联系客服')
+                }
+            }).catch(err => {
+                this.$toast('系统错误，请联系客服')
+            })
         },
         总价(item){
             let n = 0 
@@ -183,6 +202,20 @@ export default {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+        }
+        .pingjia{
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            .btn-1{
+                font-size: 12px;
+                border: 1px solid rgba($color: #000000, $alpha: 0.6);
+                color: rgba($color: #000000, $alpha: 0.6);
+                line-height: 22px;
+                width: 50px;
+                text-align: center;
+                border-radius: 22px;
+            }
         }
         .t2 {
             color: #333;

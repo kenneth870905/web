@@ -49,12 +49,24 @@ export default {
     methods: {
         handleClickOutside() {
             this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
+        },
+        获取评价数量(){
+            this.$axios.post('/Translation/getCount',{type:0})
+            .then(res => {
+                let routers = this.$router.options.routes
+                let 路由 = routers.find(x=>x.path=='/comment')
+                    路由.children[0].meta.数量 = res.data
+            })
+            .catch(err => {
+                console.error(err); 
+            })
         }
     },
     mounted() {
         if(!this.token){
             this.$router.push('/login')
         }
+        this.获取评价数量()
     },
 }
 </script>

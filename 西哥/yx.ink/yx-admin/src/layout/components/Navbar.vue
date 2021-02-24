@@ -11,26 +11,41 @@
                     <i class="el-icon-caret-bottom" />
                 </div>
                 <el-dropdown-menu slot="dropdown" class="user-dropdown">
-                    <router-link to="/">
-                        <el-dropdown-item>Home</el-dropdown-item>
-                    </router-link>
+                    <el-dropdown-item @click.native="点击修改()">
+                        <span style="display:block;">修改密码</span>
+                    </el-dropdown-item>
                     <!-- <a target="_blank" href="https://github.com/PanJiaChen/vue-admin-template/">
                         <el-dropdown-item>Github</el-dropdown-item>
                     </a> -->
                     <!-- <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
                         <el-dropdown-item>Docs</el-dropdown-item>
                     </a> -->
-                    <el-dropdown-item divided @click.native="logout">
-                        <span style="display:block;">Log Out</span>
+                    <el-dropdown-item @click.native="logout">
+                        <span style="display:block;">退出</span>
                     </el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
         </div>
+
+        <el-dialog title="修改登录密码" :visible.sync="dialogVisible" width="400px" :close-on-click-modal="false">
+            <el-form>
+                <el-form-item label="新密码">
+                    <el-input v-model="newUser.password" show-password placeholder=""></el-input>
+                </el-form-item>
+                <el-form-item label="确认密码">
+                    <el-input v-model="newUser.password2" show-password placeholder=""></el-input>
+                </el-form-item>
+            </el-form>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible = false" size="small">取 消</el-button>
+                <el-button type="primary" @click="保存()" size="small">确 定</el-button>
+            </span>
+        </el-dialog>
     </div>
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters, mapMutations, mapState } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
 
@@ -39,7 +54,16 @@ export default {
         Breadcrumb,
         Hamburger
     },
+    data() {
+        return {
+            newUser:{},
+            dialogVisible:false
+        }
+    },
     computed: {
+        ...mapState({
+            user:x=>x.user.user
+        }),
         ...mapGetters([
             'sidebar',
             'avatar'
@@ -56,8 +80,37 @@ export default {
             this.setToken('')
             // await this.$store.dispatch('user/logout')
             this.$router.push(`/login`)
+        },
+        点击修改(){
+            this.dialogVisible=true
+        },
+        保存(){
+            if(!this.newUser.password){
+                this.错误('请输入新密码')
+            }else if(this.newUser.password!=this.newUser.password2){
+                this.错误('两次密码不一致')
+            }else{
+                this.$Loadading(1)
+                this.dialogVisible=false
+                this.$axios.post('/User/modify',this.newUser)
+                .then(res => {
+                    this.$Loadading()
+                    if(res.code==1){
+                        this.正确('修改成功')
+                    }else{
+                        this.错误('修改失败')
+                    }
+                })
+                .catch(err => {
+                    this.$Loadading()
+                    this.错误('系统错误，稍后再试')
+                })
+            }
         }
-    }
+    },
+    mounted() {
+        this.newUser=JSON.parse(JSON.stringify(this.user)) 
+    },
 }
 </script>
 

@@ -22,7 +22,7 @@
 
         <van-empty description="购物车空空如也" v-if="购物车.length==0"/>
 
-        <van-submit-bar currency="₱" :price="合计" button-text="结算" @submit="onSubmit" >
+        <van-submit-bar currency="₱" :price="合计" button-text="结算" @submit="jiesuan" >
             <van-checkbox v-model="checked" @click="全选()">全选</van-checkbox>
         </van-submit-bar>
     </div>
@@ -44,7 +44,8 @@ export default {
     },
     computed:{
         ...mapState({
-            购物车:"购物车"
+            购物车:"购物车",
+            立即购买:'立即购买'
         }),
         len(){
             return this.购物车.filter(x=>x.checked).length
@@ -63,27 +64,21 @@ export default {
     },
     methods: {
         ...mapMutations({
-            删除购物车:"删除购物车"
+            删除购物车:"删除购物车",
+            setValue:"setValue"
         }),
         ClickRight(){
-            let indexArr= []
-            for (let index = 0; index < this.购物车.length; index++) {
-                if(this.购物车[index].checked){
-                    indexArr.push(index)
+            this.购物车.forEach(item=>{
+                if(item.checked){
+                    this.删除购物车(item.gid)
                 }
-            }
-            console.log(indexArr)
-            if(indexArr.length>0){
-                this.删除购物车(indexArr)
-            }
+            })
         },
-        onSubmit(){
-            if(this.len==0){
-                this.$toast('请选择商品')
-                return 
-            }
+        jiesuan(){
+            this.立即购买.type=1
+            this.立即购买.list = this.购物车.filter(x=>x.checked)
+            this.setValue(['立即购买',this.立即购买])
             this.$router.push('/Checkout')
-
         },
         全选(){
             console.log(this.checked)
@@ -93,9 +88,9 @@ export default {
         }
     },
     mounted() {
-        this.购物车.forEach(element => {
-            element.checked = true
-        });
+        for (let i = 0; i < this.购物车.length; i++) {
+            this.$set(this.购物车[i],'checked',true)
+        }
     },
     watch:{
         len(){

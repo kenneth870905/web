@@ -7,11 +7,17 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
     data() {
         return {
             
         }
+    },
+    methods: {
+        ...mapActions({
+            获取基础信息:'获取基础信息'
+        })
     },
     mounted() {
         if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
@@ -19,6 +25,7 @@ export default {
         }else{
             location.href='/index/'
         }
+        this.获取基础信息()
         // this.$toast.loading({ message: '加载中...', forbidClick: true,duration:0});
         // this.$toast.clear();
     },
@@ -47,5 +54,8 @@ body{
     padding-bottom: 60px;
 }
 
+.van-nav-bar{
+    border-bottom: 1px solid #dedede;
+}
 
 </style>

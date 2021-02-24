@@ -3,16 +3,17 @@
         <div class="header-1">
             <div>
                 <el-cascader @change="changeType" v-model="value" size="small" style="width: 200px;margin-right:10px;" :props="{ checkStrictly: true,expandTrigger: 'hover',value:'id',label:'title' }" :options="goodsType" ></el-cascader>
-                <el-input style="width: 300px;" placeholder="请输入内容" v-model="query.title" class="input-with-select" size="small">
+                <el-input style="width: 300px;" placeholder="请输入标题或者编码查询" v-model="query.title" class="input-with-select" size="small">
                     <el-button slot="append" icon="el-icon-search" @click="查询()"></el-button>
                 </el-input>
-                <el-button type size="small" @click="展开规格=!展开规格" style="margin-left:10px;">{{展开规格 ? '收起规格':"展开规格"}}</el-button>
+                <el-button type size="small" @click="全部展开()" style="margin-left:10px;">{{展开规格 ? '收起规格':"展开规格"}}</el-button>
             </div>
             <el-button type size="small" @click="$router.push('/goodsDetails')">添加商品</el-button>
         </div>
 
         <el-table :data="list" size="mini" border>
             <el-table-column label="id" prop="id" align="center" width="50px"></el-table-column>
+            <el-table-column label="编码" prop="coding" align="center" width="80px"></el-table-column>
             <el-table-column label="标题" prop="title"></el-table-column>
             <el-table-column label="封面" width="80px" align="center">
                 <template slot-scope="s">
@@ -21,15 +22,24 @@
             </el-table-column>
             <el-table-column label="基础价格" prop="price"></el-table-column>
             <el-table-column label="库存" prop="amount"></el-table-column>
-            <el-table-column label="销量"></el-table-column>
+            <!-- <el-table-column label="销量"></el-table-column> -->
             <el-table-column label="规格" width="400px">
                 <template slot-scope="s">
-                    <el-table :data="s.row.priceList" size="mini" border v-if="展开规格">
+                    <el-table :data="s.row.priceList" size="mini" border v-if="s.row.展开">
                         <el-table-column label="颜色" prop="color"></el-table-column>
-                        <el-table-column label="尺寸" prop="size"></el-table-column>
-                        <el-table-column label="价格" prop="price"></el-table-column>
-                        <el-table-column label="数量" prop="stock_num"></el-table-column>
+                        <el-table-column label="规格" prop="size"></el-table-column>
+                        <el-table-column label="价格" prop="price">
+                            <template slot-scope="s2">
+                                <el-input @focus="获取焦点(s.row.priceList)" @blur="失去焦点(s.row)" v-model="s2.row.price" placeholder="" size="mini"></el-input>
+                            </template>
+                        </el-table-column>
+                        <el-table-column label="数量" prop="stock_num">
+                            <template slot-scope="s2">
+                                <el-input @focus="获取焦点(s.row.priceList)" @blur="失去焦点(s.row)" v-model="s2.row.stock_num" placeholder="" size="mini"></el-input>
+                            </template>
+                        </el-table-column>
                     </el-table>
+                    <el-button style="margin-top:3px;" type="" size="mini" @click="s.row.展开=!s.row.展开">{{s.row.展开 ? '收起':"展开"}}</el-button>
                 </template>
             </el-table-column>
             <el-table-column label width="150px" align="center" prop="creationTime"></el-table-column>
@@ -61,12 +71,41 @@ export default {
                 title: '',
                 goodsType: ""
             },
-            展开规格:false
+            展开规格:false,
+            原始数据:{},
+            改变数据:{}
         }
     },
     methods: {
+        获取焦点(item){
+            this.原始数据 = JSON.parse(JSON.stringify(item))
+        },
+        失去焦点(item){
+            if(JSON.stringify(item.priceList) != JSON.stringify(this.原始数据) ){
+                console.log('有修改')
+                let sp = Object.assign({},item)
+                    delete sp.展开
+                let o = {
+                        color:[],
+                        cover:{},
+                        image:[],
+                        sp:sp
+                    }
+                this.$Loadading(1)
+                this.$axios.post('/Goods/setGoods',o).then(res => {
+                    this.$Loadading()
+                }).catch(err => {
+                    this.$Loadading()
+                })
+            }
+        },
+        全部展开(){
+            this.展开规格=!this.展开规格
+            this.list.forEach(item=>{
+                item.展开 = this.展开规格
+            })
+        },
         changeType(value){
-            console.log(value)
             this.query.page=1
             this.查询商品()
         },
@@ -94,7 +133,7 @@ export default {
         查询类型() {
             this.$axios.post('/Goods/getGoodsType', '').then(res => {
                 let treeData = this.toTreeData(res.data,0)
-                this.goodsType = [...this.goodsType,...treeData]; 
+                this.goodsType = [...this.goodsType,...treeData];
             }).catch(err => {
                 console.error(err);
             })
@@ -108,11 +147,18 @@ export default {
             this.查询商品()
         },
         查询商品() {
+            this.$Loadading(1)
             this.query.goodsType = this.value[this.value.length-1]
             this.$axios.post('/Goods/getGoods', this.query).then(res => {
-                this.list = res.data.data
+                let data = res.data.data;
+                    data.forEach(item=>{
+                        item.展开 = this.展开规格
+                    })
+                this.list = data
                 this.total = res.data.total
+                this.$Loadading()
             }).catch(err => {
+                this.$Loadading()
             })
         },
         toTreeData(data, pid) {

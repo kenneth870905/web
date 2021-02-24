@@ -15,9 +15,13 @@
 	<script src="js/swiper.min.js" type="text/javascript"></script>
 	<script src="js/TouchSlide.1.1.js" type="text/javascript"></script>
 	<script src="js/clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+
+	<link rel="icon" href="../favicon.ico">
+
 </head>
+
 <body>
-	
+
 	<!-- 悬挂小足球 -->
 	<img class="big-1" src="images/big.png" alt="" srcset="">
 	<img class="big-2" src="images/big.png" alt="" srcset="">
@@ -28,21 +32,27 @@
 	<!-- header -->
 	<div class="header w1200">
 		<a href="https://www.yb467.app?i_code=2297507">
+			<!-- 棋牌游戏 -->
 			<img src="images/n1.png" />
 		</a>
 		<a href="https://www.yb467.app?i_code=2297507">
+			<!-- 彩票投注 -->
 			<img src="images/n2.png" />
 		</a>
 		<a href="https://www.yb467.app?i_code=2297507">
+			<!-- yabo体育 -->
 			<img src="images/n3.png" />
 		</a>
 		<a href="https://www.yb467.app?i_code=2297507">
+			<!-- 真人娱乐 -->
 			<img src="images/n4.png" />
 		</a>
 		<a href="https://www.yb467.app?i_code=2297507">
+			<!-- 电子竞技 -->
 			<img src="images/n5.png" />
 		</a>
 		<a href="https://www.yb467.app?i_code=2297507">
+			<!-- 捕鱼电玩 -->
 			<img src="images/n6.png" />
 		</a>
 	</div>
@@ -50,11 +60,17 @@
 	<div id="certify" class="w1200">
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
+				<!-- 真人 -->
 				<div class="swiper-slide"><a href="https://www.yb467.app?i_code=2297507"><img src="images/slider1.png" /></a></div>
+				<!-- 棋牌 -->
 				<div class="swiper-slide"><a href="https://www.yb467.app?i_code=2297507"><img src="images/slider2.png" /></a></div>
+				<!-- 彩票 -->
 				<div class="swiper-slide"><a href="https://www.yb467.app?i_code=2297507"><img src="images/slider3.png" /></a></div>
+				<!-- 捕鱼 -->
 				<div class="swiper-slide"><a href="https://www.yb467.app?i_code=2297507"><img src="images/slider4.png" /></a></div>
+				<!-- 电竞 -->
 				<div class="swiper-slide"><a href="https://www.yb467.app?i_code=2297507"><img src="images/slider5.png" /></a></div>
+				<!-- 体育 -->
 				<div class="swiper-slide"><a href="https://www.yb467.app?i_code=2297507"><img src="images/slider6.png" /></a></div>
 			</div>
 		</div>
@@ -75,13 +91,34 @@
 		</a>
 	</div>
 
+	<!-- 滚动图片 -->
+	<!-- <div class="swiper3">
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<div><img src="images/g1.png" alt="" srcset=""></div>
+				</div>
+				<div class="swiper-slide">
+					<div><img src="images/g2.png" alt="" srcset=""></div>
+				</div>
+				<div class="swiper-slide">
+					<div><img src="images/g3.png" alt="" srcset=""></div>
+				</div>
+				<div class="swiper-slide">
+					<div><img src="images/g4.png" alt="" srcset=""></div>
+				</div>
+				<div class="swiper-slide">
+					<div><img src="images/g5.png" alt="" srcset=""></div>
+				</div>
+			</div>
+		</div>
+	</div> -->
+
 	<div class="swiper2">
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
-					<div>
-						<img src="images/form1.png" alt="" srcset="">
-					</div>
+					<div><img src="images/form1.png" alt="" srcset=""></div>
 				</div>
 				<div class="swiper-slide">
 					<div><img src="images/form2.png" alt="" srcset=""></div>
@@ -101,25 +138,29 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="footer">
 		<img src="images/gift.png" alt="">
 	</div>
-	
+
+	<a href="mqqwpa://im/chat?chat_type=wpa&uin=1736163726&version=1&src_type=web&web_src=oicqzone.com" class="kefu">
+		<img src="images/客服.png" alt="" srcset="">
+	</a>
+
 	<script type="text/javascript">
 
 		var certifySwiper = new Swiper('#certify .swiper-container', {
-			effect:"coverflow",
+			effect: "coverflow",
 			// watchSlidesProgress: true,
 			slidesPerView: 'auto',
 			centeredSlides: true,
 			loop: true,
 			coverflowEffect: {
 				rotate: 0,	//slide做3d旋转时Y轴的旋转角度
-				stretch:13,	//每个slide之间的拉伸值，越大slide靠得越紧。5.3.6 后可使用%百分比
+				stretch: 13,	//每个slide之间的拉伸值，越大slide靠得越紧。5.3.6 后可使用%百分比
 				depth: 200,		//slide的位置深度。值越大z轴距离越远，看起来越小
 				modifier: 1,
-				slideShadows : false
+				slideShadows: false
 			},
 			autoplay: true,
 			autoplayDisableOnInteraction: false,
@@ -132,6 +173,15 @@
 				nextEl: '.swiper-button-next-1',
 				prevEl: '.swiper-button-prev-1',
 			},
+		})
+
+		var certifySwiper = new Swiper('.swiper3 .swiper-container', {
+			loop: true,
+			autoplay: {
+				disableOnInteraction: false,
+			},
+			effect:"flip",
+			autoplayDisableOnInteraction: false,
 		})
 
 		function IsPC() {
@@ -157,7 +207,7 @@
 		if (isPc) {
 			window.location.href = '../index.html'
 		}
-		window.onresize=function(){
+		window.onresize = function () {
 			isPc = IsPC();
 			if (isPc) {
 				window.location.href = '../index.html'

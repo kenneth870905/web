@@ -11,10 +11,9 @@
                     <div class="datu">
                         <vue-photo-zoom-pro class="zoom-pro" :out-zoomer="true" v-if="大图" :url="encodeURI($img_url + 大图)"></vue-photo-zoom-pro>
                         <!-- <vue-photo-zoom-pro class="zoom-pro" :out-zoomer="true" v-if="大图" url="http://110.34.166.141/yiku/yx-serve/runtime/storage/image/20210213/0.11452600%201613227445.jpeg"></vue-photo-zoom-pro> -->
-                        
                     </div>
                     <div class="lunbo">
-                        <swiper ref="mySwiper" class="swiper" :options="swiperOptions"  @clickSlide="clickSwipr1">
+                        <swiper ref="mySwiper" class="swiper" :options="swiperOptions" @clickSlide="clickSwipr1">
                             <swiper-slide v-for="(item,index) in sp.image" :class="{active:大图index==index}">
                                 <img :src="$img_url+item" alt srcset />
                             </swiper-slide>
@@ -43,7 +42,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <div class="label">选择尺码</div>
+                        <div class="label">选择规格</div>
                         <div class="size">
                             <!-- <span class="active">S</span> -->
                             <span :class="{active:item==size}" v-for="item in sp.size" @click="选择规格(2,item)">{{item.name}}</span>
@@ -59,6 +58,10 @@
                     <div class="item">
                         <div class="btn-1" @click="购买(0)">立即购买</div>
                         <div class="btn-2" @click="购买(1)">加入购物车</div>
+                    </div>
+                    <div class="item footprint">
+                        <i :class="{active:收藏}" @click="点击收藏()" class="icon-1 el-icon-star-on"></i>
+                        加入收藏
                     </div>
                 </div>
             </el-col>
@@ -103,33 +106,39 @@
             </el-col>
             <el-col :span="20">
                 <div class="box-4">
-                    <el-tabs class="tabs" value="0">
-                        <el-tab-pane>
+                    <el-tabs class="tabs" value="xq" @tab-click="changeTabs">
+                        <el-tab-pane name="xq">
                             <span class="label" slot="label">商品详情</span>
                             <div v-html="sp.details"></div>
                         </el-tab-pane>
-                        <el-tab-pane label="配置管理">
+                        <el-tab-pane name="pj">
                             <span class="label" slot="label">累计评价</span>
                             <div class="title-1">商品评价</div>
-                            <ul class="list-1">
-
-                                <li v-for="item in 0">
+                            <nodata v-if="评价total==0"/>
+                            <ul class="list-1" v-loading="评价Loading">
+                                <li v-for="item in 评价list">
                                     <div class="t1">
                                         <img src="static/img/peisong.jpg" alt />
-                                        <span class="name">余***云 的评论：</span>
-                                        <div class="time">2020-10-01</div>
+                                        <span class="name">
+                                            <span v-if="item.nickName">{{item.nickName | name}}</span>
+                                            <span v-else>{{item.userName | name}}</span>
+                                            的评价：
+                                        </span>
+                                        <el-rate v-model="item.number" disabled show-score text-color="#ff9900" score-template="{value}"></el-rate>
+                                        <div class="time">{{item.creationTime}}</div>
                                     </div>
-                                    <p class="comment">发货快的比较便宜，面料很舒服，手感不错，大小合适，穿身上很暖和，无色差，信赖京东，包退包换，服务一流。发货快，搞活动下单的，用优惠券买的比较便宜，面料很舒服，手感不错，大小合适，穿身上很暖和，无色差，信赖京东，包退包换，服务一流。</p>
+                                    <p class="comment">{{item.text}}</p>
                                     <div class="pic-list">
-                                        <img src="//img30.360buyimg.com/n0/s48x48_jfs/t1/157376/30/1108/273739/5fef27dcE6edefd7b/a126403222fcf24a.jpg" />
-                                        <img src="//img30.360buyimg.com/n0/s48x48_jfs/t1/160338/21/1080/321715/5fef27ddE3df7e691/8d8338955092bb62.jpg" />
+                                        <el-image v-for="item2 in item.image" fit="contain " style="margin: 0px 10px 10px 0px;background:#eee;width: 50px; height: 50px" :src="$img_url+item2" :preview-src-list="srcList(item.image)"></el-image>
                                     </div>
-                                    <div class="f">
-                                        <img src="static/img/点赞.png" alt srcset />
-                                        0
+                                    <div v-for="item2 in item.huifu"  class="回复">
+                                        <span>[商家回复]</span>{{item2.text}}
                                     </div>
                                 </li>
                             </ul>
+
+                            <el-pagination class="pagination" v-if="评价total>0" @current-change="pjfenye" :total="评价total" :page-size="评价query.size" :current-page="评价query.page" layout="prev, pager, next" background></el-pagination>
+                            
                         </el-tab-pane>
                     </el-tabs>
                 </div>
@@ -139,24 +148,26 @@
 </template>
 
 <script>
-import { toTreeData , setMoney } from "@/assets/自定义函数.js";
+import { toTreeData, setMoney } from "@/assets/自定义函数.js";
 import { mapMutations, mapState } from 'vuex'
+import nodata from '@/components/nodata.vue'
 
 export default {
     components: {
+        nodata
     },
     data() {
         return {
             id: "",
-            sp:{},
-            大图:'',
-            大图index:0,
-            color:'',
-            size:'',
-            
+            sp: {},
+            大图: '',
+            大图index: 0,
+            color: '',
+            size: '',
 
-            lookToLook:[],      //看了有看
-            新品:[],
+
+            lookToLook: [],      //看了有看
+            新品: [],
             购买数量: 1,
 
 
@@ -173,30 +184,39 @@ export default {
                 slideToClickedSlide: true,
                 // centeredSlides : true
             },
-            
-            
+            收藏: "",
+            评价query: {
+                page: 1,
+                size: 10,
+                goodsId:'',
+                type:1
+            },
+            评价list: [],
+            评价total: -1,
+            评价Loading: false
+
         }
     },
     computed: {
         ...mapState({
-            userInfo:'userInfo',
-            goodsType:"goodsType",
-            立即购买:"立即购买",
-            购物车:'购物车'
+            userInfo: 'userInfo',
+            goodsType: "goodsType",
+            立即购买: "立即购买",
+            购物车: '购物车'
         }),
-        newType(){
+        newType() {
             let list = JSON.parse(JSON.stringify(this.goodsType))
-            return this.goodsType ? toTreeData(list,0) : []
+            return this.goodsType ? toTreeData(list, 0) : []
         },
-        面包销(){
+        面包销() {
             let list = []
-            if(this.sp.goodsType){
-                let t1 = this.goodsType.find(x=>x.id==this.sp.goodsType)
-                if(t1){
+            if (this.sp.goodsType) {
+                let t1 = this.goodsType.find(x => x.id == this.sp.goodsType)
+                if (t1) {
                     list.push(t1)
-                    if(t1.parentId){
-                        let t2 = this.goodsType.find(x=>x.id==t1.parentId)
-                        if(t2) list.unshift(t2)
+                    if (t1.parentId) {
+                        let t2 = this.goodsType.find(x => x.id == t1.parentId)
+                        if (t2) list.unshift(t2)
                     }
                 }
             }
@@ -205,87 +225,99 @@ export default {
         swiper() {
             return this.$refs.mySwiper.$swiper
         },
-        选中规格(){
-            if(this.color && this.size){
-                if(this.sp.priceList.find(x=>x.color==this.color.name && x.size==this.size.name)){
-                    let o = this.sp.priceList.find(x=>x.color==this.color.name && x.size==this.size.name)
-                        o.stock_num = parseInt(o.stock_num)
+        选中规格() {
+            if (this.color && this.size) {
+                if (this.sp.priceList.find(x => x.color == this.color.name && x.size == this.size.name)) {
+                    let o = this.sp.priceList.find(x => x.color == this.color.name && x.size == this.size.name)
+                    o.stock_num = parseInt(o.stock_num)
                     return o
-                }else{
+                } else {
                     return ''
                 }
-            }else{
+            } else {
                 return ''
             }
         },
     },
-    filters:{
-        setMoney
+    filters: {
+        setMoney,
+        name(name) {
+            if (!name) return name
+            return name.substring(0, 4) + '***'
+        }
     },
     methods: {
         ...mapMutations({
-            setValue:"setValue"
+            setValue: "setValue"
         }),
-        购买(type){
-            if(!this.userInfo.id){
+        // 查看评论大图列表
+        srcList(list){
+            let L = []
+            list.forEach(x => {
+               L.push(this.$img_url+x) 
+            });
+            return L;
+        },
+        购买(type) {
+            if (!this.userInfo.id) {
                 this.错误('请先登录')
-            }else if(!this.选中规格){
+            } else if (!this.选中规格) {
                 this.错误('请选择规格')
-            }else if(this.选中规格.stock_num<=0){
+            } else if (this.选中规格.stock_num <= 0) {
                 this.错误('此规格库存不足')
-            }else if(this.购买数量<=0){
+            } else if (this.购买数量 <= 0) {
                 this.错误('请选择购买数量')
-            }else{
-                if(type==0){
-                    this.立即购买.type=0
+            } else {
+                if (type == 0) {
+                    this.立即购买.type = 0
                     this.立即购买.list = []
-                    let o = {sp:{},规格:{},数量:0}
-                        o.sp.id = this.sp.id
-                        o.sp.cover = this.sp.cover
-                        o.sp.title = this.sp.title
-                        o.规格 = this.选中规格
-                        o.数量 = this.购买数量
+                    let o = { sp: {}, 规格: {}, 数量: 0 }
+                    o.sp.id = this.sp.id
+                    o.sp.cover = this.sp.cover
+                    o.sp.title = this.sp.title
+                    o.规格 = this.选中规格
+                    o.数量 = this.购买数量
                     this.立即购买.list.push(o)
-                    this.setValue(['立即购买',this.立即购买]) 
+                    this.setValue(['立即购买', this.立即购买])
                     this.$router.push('/buy')
-                    
-                }else{
-                    let o = {sp:{},规格:{},数量:0}
-                        o.sp.id = this.sp.id
-                        o.sp.cover = this.sp.cover
-                        o.sp.title = this.sp.title
-                        o.规格 = this.选中规格
-                        o.数量 = this.购买数量
-                        o.gid=Math.random()
+
+                } else {
+                    let o = { sp: {}, 规格: {}, 数量: 0 }
+                    o.sp.id = this.sp.id
+                    o.sp.cover = this.sp.cover
+                    o.sp.title = this.sp.title
+                    o.规格 = this.选中规格
+                    o.数量 = this.购买数量
+                    o.gid = Math.random()
                     this.购物车.push(o)
-                    this.setValue(['购物车',this.购物车]) 
+                    this.setValue(['购物车', this.购物车])
                     this.$router.push('/cart')
                 }
             }
         },
-        选择规格(type,item){
+        选择规格(type, item) {
             // type 1选颜色 2选尺寸
-            if(type==1){
+            if (type == 1) {
                 this.color = item
-                if(item.previewImgUrl){
+                if (item.previewImgUrl) {
                     this.大图 = item.previewImgUrl
-                }else{
+                } else {
                     this.正确('该款未设置对应图片')
                     this.大图 = this.sp.image[this.大图index]
                 }
-            }else{
+            } else {
                 this.size = item
             }
-            if(this.选择规格 && this.购买数量>this.选中规格.stock_num){
+            if (this.选择规格 && this.购买数量 > this.选中规格.stock_num) {
                 this.购买数量 = this.选中规格.stock_num
             }
         },
         //点击轮播图
-        clickSwipr1(index){
+        clickSwipr1(index) {
             this.大图index = index
             this.大图 = this.sp.image[this.大图index]
         },
-        click2(item){
+        click2(item) {
             console.log(item)
         },
         加入购物车() {
@@ -299,15 +331,15 @@ export default {
             this.$Loading(1)
             this.$axios.post('/Goods/getGoodsById', { id: this.id }).then(res => {
                 if (res.code == 1 && res.data) {
-                    this.sp=res.data
-                    if(this.sp.image.length>0){
+                    this.sp = res.data
+                    if (this.sp.image.length > 0) {
                         this.大图 = this.sp.image[0]
                     }
                     this.查询相关商品()
                 } else {
                     this.$alert('该商品已下架', '提示', {
                         confirmButtonText: '确定',
-                        callback: action => {}
+                        callback: action => { }
                     })
                 }
                 this.$Loading()
@@ -316,42 +348,116 @@ export default {
                 this.$Loading()
             })
         },
-        查询相关商品(){
+        查询相关商品() {
             let q = {
-                page:1,
-                size:10,
-                goodsType:this.sp.goodsType
+                page: 1,
+                size: 10,
+                goodsType: this.sp.goodsType
             }
-            this.$axios.post('/Goods/getGoods',q).then(res => {
+            this.$axios.post('/Goods/getGoods', q).then(res => {
                 this.lookToLook = res.data.data
+            }).catch(err => { })
+        },
+        查询新品() {
+            let q = {
+                page: 1,
+                size: 10
+            }
+            this.$axios.post('/Goods/getGoods', q).then(res => {
+                this.新品 = res.data.data
+            }).catch(err => { })
+        },
+        changeTabs(e) {
+            if (e.name == "pj" && !this.评价Loading) {
+                this.查询评价()
+            }
+        },
+        pjfenye(i){
+            this.评价query.page=i
+            this.查询评价()
+        },
+        查询评价() {
+            this.评价Loading = true
+            this.评价query.goodsId = this.id
+            this.$axios.post('/Translation/getByGoodsId', this.评价query).then(res => {
+                if (res.code == 1) {
+                    this.评价list = res.data.data
+                    this.评价total = res.data.total
+                } else {
+                    this.评价total = 0
+                }
+                this.评价Loading = false
+            }).catch(err => {
+                this.评价total = 0
+                this.评价Loading = false
+            })
+        },
+        查询收藏() {
+            this.$axios.post('/Favorite/getOne', { goodsId: this.id })
+                .then(res => {
+                    if (res.code == 1) {
+                        this.收藏 = res.data
+                    } else {
+                        this.收藏 = ''
+                    }
+                })
+                .catch(err => {
+                    this.收藏 = ''
+                })
+        },
+        点击收藏() {
+            if (!this.userInfo.id) {
+                this.错误('请先登录')
+                return
+            }
+            this.收藏 = {
+                userId: this.userInfo.id,
+                goodsId: this.id
+            }
+            this.$Loading(1)
+            this.$axios.post('/Favorite/save', this.收藏).then(res => {
+                this.$Loading()
+                if (res.code == 1) {
+                    this.正确('设置成功')
+                    this.查询收藏()
+                } else {
+                    this.错误('设置失败')
+                }
+            }).catch(err => {
+                this.$Loading()
+                this.错误('系统错误，请联系客服')
+            })
+        },
+        添加足迹() {
+            this.$axios.post('/Footprint/add', { goodsId: this.id }).then(res => {
             }).catch(err => {})
         },
-        查询新品(){
-            let q = {
-                page:1,
-                size:10
-            }
-            this.$axios.post('/Goods/getGoods',q).then(res => {
-                this.新品 = res.data.data
-            }).catch(err => {})
-        }
-    },
-    mounted() {
-        this.id = this.$route.query.id
-        this.查询单个商品()
-        this.查询新品()
-    },
-    watch:{
-        $route(){
+        init() {
             this.id = this.$route.query.id
             this.查询单个商品()
             this.查询新品()
+            // this.查询评价()
+            if (this.userInfo.id) {
+                this.查询收藏()
+                this.添加足迹()
+            }
+        }
+    },
+    mounted() {
+        this.init()
+    },
+    watch: {
+        $route() {
+            this.init()
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
+.pagination{
+    text-align: right;
+}
 .datu {
     position: relative;
     height: 380px;
@@ -486,6 +592,16 @@ export default {
             background: #f40;
             text-align: center;
         }
+    }
+    .footprint {
+        .icon-1 {
+            font-size: 25px;
+            cursor: pointer;
+            &.active {
+                color: #ff5000;
+            }
+        }
+        font-size: 12px;
     }
 }
 
@@ -622,6 +738,7 @@ export default {
         font-size: 14px;
     }
     .list-1 {
+        min-height: 200px;
         margin-top: 10px;
         li {
             border-bottom: 1px solid #eee;
@@ -663,23 +780,15 @@ export default {
                 object-fit: contain;
             }
         }
-        .f {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            font-size: 12px;
-            img {
-                margin-right: 3px;
-                width: 18px;
-                cursor: pointer;
-                vertical-align: middle;
-                filter: brightness(0);
-                opacity: 0.5;
-                &:hover {
-                    filter: brightness(1);
-                    opacity: 1;
-                }
-            }
+    }
+    .回复{
+        margin-left: 140px;
+        font-size: 14px;
+        color: #BD7F00;
+        padding: 10px 10px 10px 10px;
+        background: #f6f6f6;
+        span{
+            color: #AAA;
         }
     }
 }

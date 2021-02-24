@@ -8,7 +8,7 @@
                     <i class="el-icon-arrow-down"></i>
                 </div>
                 <ul class="menu-root" @mouseleave="移出()">
-                    <li v-for="item in newType" @mouseenter="移入(item)" @click="$router.push('/productList?tid='+item.id)">
+                    <li v-if="index<9" v-for="(item,index) in newType" @mouseenter="移入(item)" @click="$router.push('/productList?tid='+item.id)">
                         {{item.title}}
                         <i class="el-icon-arrow-right" v-show="item.children"></i>
                     </li>
@@ -141,7 +141,8 @@ export default {
         font-size: 14px;
         color: #757575;
         li {
-            height: 40px;
+            height: 34px;
+            // height: 10%;
             padding: 0px 20px 0px 30px;
             cursor: pointer;
             display: flex;

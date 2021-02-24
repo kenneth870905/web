@@ -93,7 +93,7 @@ export default {
             },
             新品:[],
             随机商品:[],
-            list1:[],
+            // list1:[],
         }
     },
     filters:{
@@ -101,8 +101,12 @@ export default {
     },
     computed:{
         ...mapState({
-            goodsType:'goodsType'
-        })
+            goodsType:'goodsType',
+            basic:'basic'
+        }),
+        list1(){
+            return this.basic.filter(x=>x.keyName=='webCarousel')
+        }
     },
     methods: {
         查询新品(){
@@ -121,16 +125,16 @@ export default {
             })
             .catch(err => {})
         },
-        查询轮播图(){
-            this.$axios.post('/Basic/get',{keyName:'webCarousel'}).then(res => {
-                if(res.code==1){
-                    this.list1 = res.data
-                }
-            })
-            .catch(err => {
-                console.error(err); 
-            })
-        },
+        // 查询轮播图(){
+        //     this.$axios.post('/Basic/get',{keyName:'webCarousel'}).then(res => {
+        //         if(res.code==1){
+        //             this.list1 = res.data
+        //         }
+        //     })
+        //     .catch(err => {
+        //         console.error(err); 
+        //     })
+        // },
         clickSw(index,reallyIndex){
             if(this.list1[reallyIndex].url){
                 if(this.list1[reallyIndex].url[0]=='/'){
@@ -142,7 +146,7 @@ export default {
         }
     },
     mounted() {
-        this.查询轮播图()
+        // this.查询轮播图()
         this.查询新品()
         this.获取随机商品()
 

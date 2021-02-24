@@ -79,7 +79,23 @@ const routes = [
     {
         path:"/setCenter",
         component:()=>import('@/views/my/设置中心.vue')
-    }
+    },
+    {
+        path:"/addPj",
+        component:()=>import('@/views/评价/发表评价.vue')
+    },
+    {
+        path:"/goodsComment",
+        component:()=>import('@/views/评价/商品评价列表.vue')
+    },
+    {
+        path:"/favorite",
+        component:()=>import('@/views/my/收藏夹.vue')
+    },
+    {
+        path:"/footprint",
+        component:()=>import('@/views/my/足迹.vue')
+    },
 ]
 
 const router = new VueRouter({

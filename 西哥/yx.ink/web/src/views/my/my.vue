@@ -5,10 +5,12 @@
                 <el-col :span="4">
                     <div class="t1">欢迎：{{userInfo.nickName ? userInfo.nickName : userInfo.userName}}</div>
                     <div class="t2"> 管理我的账户 </div>
-                    <div class="t3" @click="$router.push('/my')">个人信息</div>
-                    <div class="t3" @click="$router.push('/my/address')">地址簿</div>
-                    <div class="t3" @click="$router.push('/my/orderlist')">我的订单</div>
-                    <div class="t3" @click="$router.push('/my/evaluate')">我的评论</div>
+                    <div class="t3" :class="{active:$route.path=='/my'}" @click="$router.push('/my')">个人信息</div>
+                    <div class="t3" :class="{active:$route.path=='/my/address'}" @click="$router.push('/my/address')">地址簿</div>
+                    <div class="t3" :class="{active:$route.path=='/my/orderlist'}" @click="$router.push('/my/orderlist')">我的订单</div>
+                    <div class="t3" :class="{active:$route.path=='/my/evaluate'}" @click="$router.push('/my/evaluate')">我的评论</div>
+                    <div class="t3" :class="{active:$route.path=='/my/favorite'}" @click="$router.push('/my/favorite')">我的收藏</div>
+                    <div class="t3" :class="{active:$route.path=='/my/footprint'}" @click="$router.push('/my/footprint')">我的足迹</div>
                 </el-col>
                 <el-col :span="20">
                     <router-view></router-view>
@@ -30,7 +32,10 @@ export default {
         ...mapState({
             userInfo:"userInfo"
         })
-    }
+    },
+    mounted() {
+        console.log(this.$route.path)
+    },
 }
 </script>
 
@@ -56,6 +61,9 @@ export default {
     margin: 10px 0px;
     cursor: pointer;
     &:hover{
+        color: #1a9cb7;
+    }
+    &.active{
         color: #1a9cb7;
     }
 }

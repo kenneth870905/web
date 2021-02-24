@@ -6,7 +6,7 @@
                 <span class="title-1">密码登录</span>
                 <el-form :model="user" :rules="rules" ref="user">
                     <el-form-item label="" prop="userName">
-                        <el-input @keyup.enter.native="登录()" v-model="user.userName" prefix-icon="el-icon-user" placeholder="请输入会员名"></el-input>
+                        <el-input class="phone" @keyup.enter.native="登录()" v-model="user.userName" placeholder="请输入手机号码"></el-input>
                     </el-form-item>
                     <el-form-item label="" prop="password">
                         <el-input @keyup.enter.native="登录()" show-password v-model="user.password" prefix-icon="el-icon-lock" placeholder="请输入登录密码"></el-input>
@@ -34,7 +34,15 @@ export default {
             },
             rules:{
                 userName:[
-                    { required: true, message: '请输入用户名', trigger: 'blur' ,}
+                    { required: true, message: '请输入9开头菲律宾手机号码', trigger: 'blur' ,
+                        validator:(rule, value, callback)=>{
+                            if(/^9[0-9].{8}$/.test(value)){
+                                callback();
+                            }else{
+                                callback(new Error('请输入9开头菲律宾手机号码'));
+                            }
+                        }
+                    }
                 ],
                 password:[
                     { required: true, message: '请输入密码', trigger: 'blur' ,}
@@ -115,6 +123,22 @@ export default {
         span{
             cursor: pointer;
             font-size: 14px;
+        }
+    }
+    .phone{
+        position: relative;
+        &::before{
+            position: absolute;
+            left: 0px;
+            content: '+63';
+            margin: 0px 10px 0px 0px;
+            color: rgba($color: #000000, $alpha: 0.6);
+            width: 40px;
+            text-align: center;
+            font-size: 12px;
+        }
+        /deep/ input{
+            padding-left: 40px;
         }
     }
 }
