@@ -11,7 +11,7 @@
 
         <ul class="spList">
             <van-cell title="商品信息" />
-            <li v-for="item in newList" v-if="item.checked">
+            <li v-for="item in newList">
                 <div class="img-1">
                     <img :src="$img_url+item.sp.cover" alt srcset />
                 </div>
@@ -62,18 +62,16 @@ export default {
     computed: {
         ...mapState({
             选中收货地址: "选中收货地址",
-            购物车: "购物车"
+            // 购物车: "购物车",
+            立即购买:"立即购买"
         }),
         合计() {
             let 合计 = 0
-            this.购物车.forEach(item => {
-                if (item.checked) {
-                    let num = item.数量 * item.规格.price
-                    num = parseFloat(num.toFixed(2))
-                    合计 += num
-                }
+            this.立即购买.list.forEach(item => {
+                let num = item.数量 * item.规格.price
+                num = parseFloat(num.toFixed(2))
+                合计 += num
             })
-            // return 合计
             return new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 4 }).format(合计)
         }
     },
@@ -111,19 +109,17 @@ export default {
         },
         核对商品(){
             let list = []
-            for (let i = 0; i < this.购物车.length; i++) {
-                if(this.购物车[i].checked){
-                    let p = new Promise((resolve, reject) => {
-                        console.log('查询单个商品')
-                        this.$axios.post('/Goods/getGoodsById',{id:this.购物车[i].sp.id}).then(res => {
-                            resolve(res.data)
-                        }).catch(err => {
-                            console.error(err); 
-                            resolve(false)
-                        })
-                    });
-                    list.push(p)
-                }
+            for (let i = 0; i < this.newList.length; i++) {
+                let p = new Promise((resolve, reject) => {
+                    console.log('查询单个商品')
+                    this.$axios.post('/Goods/getGoodsById',{id:this.newList[i].sp.id}).then(res => {
+                        resolve(res.data)
+                    }).catch(err => {
+                        console.error(err); 
+                        resolve(false)
+                    })
+                });
+                list.push(p)
             }
             this.$toast.loading({ message: '正在核对商品', forbidClick: true,duration:0});
             Promise.all(list).then(all=>{
@@ -172,13 +168,11 @@ export default {
             })
             this.$axios.post('/Order/addOrder',o).then(res => {
                 if(res.code==1){
-                    let l = []
-                    for (let i = 0; i < this.购物车.length; i++) {
-                        if(this.购物车[i].checked){
-                            l.push(i)
-                        }
+                    if(this.立即购买.type==1){
+                        this.立即购买.list.forEach(item=>{
+                            this.删除购物车(item.gid)
+                        })
                     }
-                    this.删除购物车(l)
                     this.$toast('提交成功')
                     this.$router.push('/orderList')
                 }else{
@@ -191,7 +185,8 @@ export default {
         },
     },
     mounted() {
-        this.newList = JSON.parse(JSON.stringify(this.购物车.filter(x=>x.checked)))
+        // this.newList = JSON.parse(JSON.stringify(this.购物车.filter(x=>x.checked)))
+        this.newList = JSON.parse(JSON.stringify( this.立即购买.list ))
 
         this.查询收货地址()
         this.核对商品()

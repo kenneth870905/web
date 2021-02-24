@@ -42,28 +42,14 @@
         </div>
 
         <div ref="md2" class="评价">
-            <van-cell title="评价(0)" value="查看全部" is-link></van-cell>
-            <ul class="list">
-                <!-- <li v-for="item in 3">
-                    <div class="title-1">
-                        <span>qsdf**sdf - 2021-10-01 00:00</span>
-                        <van-rate :value="5" size="14px" color="#ffd21e" />
-                    </div>
-                    <div class="text-1">还不错，质量挺好，做工精细，整体还不错还不错，质量挺好，做工精细，整体还不错还不错，质量挺好，做工精细，整体还不错还不错，质量挺好，做工精细，整体还不错</div>
-                    <div class="imgList">
-                        <img src="https://sg-test-11.slatic.net/other/roc/96cd42b0253362bbe966ceb0b27b438b.jpg" alt srcset />
-                        <img src="https://sg-test-11.slatic.net/other/roc/96cd42b0253362bbe966ceb0b27b438b.jpg" alt srcset />
-                    </div>
-                </li> -->
-                <van-empty description="暂无评论" />
-            </ul>
+            <van-cell :title="`评价(${评论.total})`" value="查看全部" is-link :to="`/goodsComment?goodsId=${id}`"></van-cell>
+            <pj :item="item" v-for="item in 评论.data"/>
+            <van-empty description="暂无评论" v-if="评论.total==0"/>
         </div>
 
         <div ref="md3" class="介绍">
             <div class="title-1">产品介绍</div>
-            <div class="cont" v-html="sp.details">
-                
-            </div>
+            <div class="cont" v-html="sp.details"></div>
         </div>
 
         <div ref="md4" class="推荐">
@@ -81,6 +67,7 @@
 
         <van-goods-action>
             <van-goods-action-icon icon="cart-o" text="购物车" :badge="购物车.length==0 ? '' : 购物车.length" @click="$router.push('/cart')"/>
+            <van-goods-action-icon icon="star" @click="点击收藏()" :text="收藏 ? '已收藏' : '收藏'" :color="收藏 ? '#ff5000' : ''" />
             <van-goods-action-button type="warning" text="加入购物车" @click="showSku=true" />
             <van-goods-action-button type="danger" text="立即购买" @click="showSku=true" />
         </van-goods-action>
@@ -97,8 +84,12 @@
 </template>
 
 <script>
+import pj from '@/components/商品评价.vue'
 import { mapMutations, mapState } from 'vuex'
 export default {
+    components:{
+        pj
+    },
     data() {
         return {
             id:"",
@@ -106,6 +97,8 @@ export default {
                 image:[],
             },
             推荐商品:[],
+            收藏:'',
+
 
             showBar: false,     //显示顶部导航
             mdDndex: 0,         //顶部锚点
@@ -116,28 +109,56 @@ export default {
                 picture: ''
             },
             // 用法参考 https://vant-contrib.gitee.io/vant/#/zh-CN/sku
-            规格:{}
+            规格:{},
+            评论:{
+                total:-1,
+                data:[]
+            }
         }
     },
     filters:{
         qian(number){
+            if(number)
             return new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 4 }).format(number)
-        }
+        },
+        
     },
     computed:{
         ...mapState({
-            购物车:"购物车"
+            购物车:"购物车",
+            立即购买:"立即购买",
+            userInfo:'userInfo'
         })
     },
     methods: {
         ...mapMutations({
-            添加购物车:"添加购物车"
+            添加购物车:"添加购物车",
+            setValue:"setValue"
         }),
+        // 立即购买
         BuyClicked(value) {
             console.log(value)
-
-            // this.$router.push('/Checkout')
+            this.立即购买.type=0
+            this.立即购买.list = []
+            let o = {
+                sp:{
+                    id:this.sp.id,
+                    cover:this.sp.cover,
+                    title:this.sp.title,
+                },
+                规格:{
+                    color:value.selectedSkuComb.color,
+                    size:value.selectedSkuComb.size,
+                    price:value.selectedSkuComb.price/100  //
+                },
+                数量:value.selectedNum,
+                gid:Math.random()
+            }
+            this.立即购买.list.push(o)
+            this.setValue(['立即购买',this.立即购买]) 
+            this.$router.push('/Checkout')
         },
+        // 添加到购物车
         AddCartClicked(value) {
             console.log(value)
             let o = {
@@ -152,7 +173,8 @@ export default {
                     price:value.selectedSkuComb.price/100  //
                 },
                 数量:value.selectedNum,
-                checked:true
+                // checked:true
+                gid:Math.random()
             }
             this.添加购物车(o)
             this.$toast('加入成功')
@@ -199,7 +221,7 @@ export default {
                     v:color
                 },
                 {
-                    k:"尺寸",
+                    k:"规格",
                     k_s:'size',
                     v:size
                 }
@@ -222,6 +244,13 @@ export default {
                 forbidClick: true,
             });
             this.$axios.post('/Goods/getGoodsById',{id:this.id}).then(res => {
+                if(res.code!=1 || !res.data){
+                    this.$dialog.alert({
+                        title: '提示',
+                        message: '商品查询失败或商品已下架',
+                    }).then(() => {});
+                    return
+                }
                 this.sp = res.data
                 this.缩略图.picture =this.$img_url+this.sp.cover
                 this.设置规格()
@@ -238,22 +267,82 @@ export default {
                 this.推荐商品 = res.data.data
             }).catch(err => {
             })
+        },
+        查询评价(){
+            let q = {
+                page:1,
+                size:5,
+                goodsId:this.id,
+                type:1
+            }
+            this.$axios.post('/Translation/getByGoodsId',q).then(res => {
+                if(res.code==1)
+                this.评论 = res.data
+            }).catch(err => {
+            })
+        },
+        点击收藏(){
+            if(!this.userInfo.id){
+                this.$toast('请先登录')
+                return
+            }
+            this.收藏 = {
+                userId:this.userInfo.id,
+                goodsId:this.id
+            }
+            this.$toast.loading({ message: '加载中...', forbidClick: true,duration:0});
+        // this.$toast.clear();
+            this.$axios.post('/Favorite/save',this.收藏).then(res => {
+                if(res.code==1){
+                    this.$toast('设置成功')
+                    this.查询收藏()
+                }else{
+                    this.$toast('设置失败')
+                }
+            }).catch(err => {
+                console.error(err); 
+                this.$toast('系统错误，请联系客服')
+            })
+        },
+        查询收藏(){
+            this.$axios.post('/Favorite/getOne',{goodsId:this.id})
+            .then(res => {
+                if(res.code==1){
+                    this.收藏 = res.data
+                } else{
+                    this.收藏 = ''
+                }
+            })
+            .catch(err => {
+                this.收藏 = ''
+            })
+        },
+        添加足迹(){
+            this.$axios.post('/Footprint/add',{goodsId:this.id}).then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+            })
+        },
+        init(){
+            this.id = this.$route.query.id
+            this.查询单个商品()
+            this.查询评价()
+            if(this.userInfo.id){
+                this.查询收藏()
+                this.添加足迹()
+            }
         }
     },
     mounted() {
-        // let offsetTopArr = []
-        //     offsetTopArr.push(this.$ref.md1)
-        // console.log(this.$refs.md2)
-        // console.log(this.$refs.md2.getBoundingClientRect())
-        // console.log(this.$refs.md2.getAttribute("class"))
-        this.id = this.$route.query.id
-        this.查询单个商品()
+
         this.查询商品列表()
+        this.init()
+        
     },
     watch:{
         '$route'(){
-            this.id = this.$route.query.id
-            this.查询单个商品()
+            this.init()
             this.$refs.products.scrollTo({top:0})
         }
     }
@@ -345,34 +434,6 @@ export default {
 .评价 {
     margin: 10px 0px 0px;
     background: #fff;
-    .list {
-        padding: 0px 15px;
-        li {
-            border-bottom: 1px solid #e7e8ec;
-        }
-        .title-1 {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-            height: 36px;
-            color: rgba($color: #000000, $alpha: 0.7);
-        }
-        .text-1 {
-            font-size: 14px;
-            color: #191919;
-        }
-        .imgList {
-            margin: 5px 0px 0px 0px;
-            img {
-                width: 40px;
-                height: 40px;
-                border: 1px solid #eee;
-                object-fit: contain;
-                margin: 0px 5px 5px 0px;
-            }
-        }
-    }
 }
 
 .介绍 {
@@ -434,5 +495,9 @@ export default {
             color: #f57224;
         }
     }
+}
+
+.van-goods-action{
+    border-top: 1px solid #eee;
 }
 </style>

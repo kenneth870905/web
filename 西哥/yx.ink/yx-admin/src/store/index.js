@@ -17,7 +17,8 @@ const store = new Vuex.Store({
             return {
                 // 只储存state中的user,不把page放在这里面
                 user: {
-                    token:val.user.token
+                    token:val.user.token,
+                    user:val.user.user
                 }
             }
        }

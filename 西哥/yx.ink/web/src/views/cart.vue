@@ -112,7 +112,7 @@ export default {
         结算(){
             if(!this.userInfo.id){
                 this.错误('请先登录')
-            }else if(this.选中数量.length==0){
+            }else if(this.选中数量==0){
                 this.错误('请选择需要结算的商品')
             }else{
                 this.立即购买.type=1

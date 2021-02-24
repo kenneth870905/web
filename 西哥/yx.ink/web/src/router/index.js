@@ -51,6 +51,14 @@ const routes = [
             {
                 path:"evaluate",
                 component:()=>import('@/views/my/评价.vue')
+            },
+            {
+                path:"favorite",
+                component:()=>import('@/views/my/收藏.vue')
+            },
+            {
+                path:"footprint",
+                component:()=>import('@/views/my/足迹.vue')
             }
         ]
     },

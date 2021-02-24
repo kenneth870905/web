@@ -5,7 +5,7 @@
             <h1 class="mui-title">玩法规则</h1>
         </header>
         <div class="mui-content mui-fullscreen">
-            <img :src="config.img_url+'static/image/guaguale/'+type+'.png'" alt="">
+            <img :src="config.img_url+'static/image/guaguale/'+type+'.png?v=0217'" alt="">
         </div>
     </div>
 </template>

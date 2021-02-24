@@ -36,7 +36,7 @@
             </el-table-column>
             <el-table-column label="总价" width="80px" align="center">
                 <template slot-scope="s">
-                    0
+                    {{总价(s.row)}}
                 </template>
             </el-table-column>
             <el-table-column label="收货人信息">
@@ -128,26 +128,35 @@ export default {
         }
     },
     methods: {
+        总价(item){
+            let n = 0
+            item.orderInfo.forEach(x => {
+                n += parseInt( Math.round(x.number* x.specification.price)*100 )/100
+            });
+            return new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 4 }).format(n)
+        },
         修改订单(item){
             this.订单 = JSON.parse(JSON.stringify(item))
             this.显示修改弹框=true
         },
         changeType(type){
             this.query.type = type
+            this.query.page = 1
+            this.获取订单()
         },
         fenye(i){
             this.query.page = i
             this.获取订单()
         },
         获取订单() {
-            if(this.loading || (this.total!=-1 && this.list.length>=this.total)){
+            if(this.loading){
                 return
             }
             this.loading=true
             var CancelToken = this.$axios.CancelToken;
             this.axios_source = CancelToken.source();
             this.$axios.post('/Order/getOrder', this.query,{cancelToken:this.axios_source.token}).then(res => {
-                this.list = [...this.list,...res.data.data]
+                this.list = res.data.data
                 this.total = res.data.total
                 this.loading=false
             }).catch(err => {

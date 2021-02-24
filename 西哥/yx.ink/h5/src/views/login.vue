@@ -2,7 +2,7 @@
     <div class="login">
         <van-nav-bar title="登录" left-arrow @click-left="$back()"></van-nav-bar>
         <van-form @submit="onSubmit" :show-error="false" class="form">
-            <van-field class="input-box" placeholder="请输入用户名" v-model="user.userName" :rules="rules.userName"/>
+            <van-field class="input-box phone" placeholder="请输入手机号" v-model="user.userName" :rules="rules.userName"/>
             <van-field class="input-box" type="password" placeholder="请输入密码" v-model="user.password" :rules="rules.password"/>
             <div style="margin: 16px;">
                 <van-button round block type="warning" native-type="submit">提交</van-button>
@@ -26,7 +26,11 @@ export default {
             },
             rules:{
                 userName:[
-                    { required: true, message: '请填写用户名1'}
+                    {   required: true, message: '请输入9开头10位数菲律宾手机号码',
+                        validator:(val)=>{
+                            return /^9[0-9].{8}$/.test(val)
+                        }
+                    }
                 ],
                 password:[
                     { required: true, message: '请填写密码'}
@@ -79,6 +83,16 @@ export default {
         margin: 0px 0px 20px;
         height: 68px;
         font-size: 20px;
+    }
+    .phone{
+        /deep/ .van-field__body{
+            position: relative;
+            &::before{
+                content: '+63';
+                margin: 0px 10px 0px 0px;
+                color: rgba($color: #000000, $alpha: 0.6);
+            }
+        }
     }
     /deep/ .van-cell::after{
         display: none;

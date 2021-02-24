@@ -4,7 +4,7 @@
             <van-tabbar-item icon="home-o" name="/" @click="$router.push('/')">首页</van-tabbar-item>
             <van-tabbar-item icon="apps-o" name="/typeList" @click="$router.push('/typeList')">分类</van-tabbar-item>
             <van-tabbar-item icon="chat-o" @click="点击客服()">消息</van-tabbar-item>
-            <van-tabbar-item icon="cart-o" @click="$router.push('/cart')">购物车</van-tabbar-item>
+            <van-tabbar-item icon="cart-o" :badge="购物车.length>0 ? 购物车.length : ''" @click="$router.push('/cart')">购物车</van-tabbar-item>
             <van-tabbar-item icon="contact" name="/my" @click="我的()">我的</van-tabbar-item>
         </van-tabbar>
         <!-- <van-popup v-model="showPopup" position="left">
@@ -55,7 +55,8 @@ export default {
     computed:{
         ...mapState({
             userInfo:'userInfo',
-            token:"token" 
+            token:"token" ,
+            购物车:"购物车"
         }),
     },
     methods: {

@@ -31,7 +31,7 @@ export const constantRoutes = [
         children: [{
             path: '',
             component: () => import('@/views/订单列表.vue'),
-            meta: { title: '订单列表', icon: 'el-icon-user-solid' }
+            meta: { title: '订单列表', icon: 'el-icon-menu' }
         }]
     },
     {
@@ -41,7 +41,7 @@ export const constantRoutes = [
         children: [{
             path: '/userList',
             component: () => import('@/views/会员列表.vue'),
-            meta: { title: '会员列表', icon: 'el-icon-user-solid' }
+            meta: { title: '会员列表', icon: 'el-icon-menu' }
         }]
     },
 
@@ -78,19 +78,9 @@ export const constantRoutes = [
         children: [{
             path: '',
             component: () => import('@/views/轮播图.vue'),
-            meta: { title: '轮播图设置', icon: 'el-icon-user-solid' }
+            meta: { title: '轮播图设置', icon: 'el-icon-menu' }
         }]
     },
-    // {
-    //     path: '/basics',
-    //     component: Layout,
-    //     redirect: '/basics',
-    //     children: [{
-    //         path: '',
-    //         component: () => import('@/views/基本信息.vue'),
-    //         meta: { title: '基本信息', icon: 'el-icon-user-solid' }
-    //     }]
-    // },
     
     {
         path: '/comment',
@@ -99,7 +89,27 @@ export const constantRoutes = [
         children: [{
             path: '',
             component: () => import('@/views/评论列表.vue'),
-            meta: { title: '评论列表', icon: 'el-icon-user-solid' }
+            meta: { title: '评论列表', icon: 'el-icon-menu' ,数量:0}
+        }]
+    },
+    {
+        path: '/basics',
+        component: Layout,
+        redirect: '/basics',
+        children: [{
+            path: '',
+            component: () => import('@/views/基本信息.vue'),
+            meta: { title: '基本信息', icon: 'el-icon-menu' }
+        }]
+    },
+    {
+        path: '/adminList',
+        component: Layout,
+        redirect: '/adminList',
+        children: [{
+            path: '',
+            component: () => import('@/views/管理员账号.vue'),
+            meta: { title: '管理员账号', icon: 'el-icon-menu' }
         }]
     },
 

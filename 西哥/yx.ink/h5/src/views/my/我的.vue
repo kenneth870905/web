@@ -14,12 +14,12 @@
                 </div>
             </div>
             <div class="box-1-2">
-                <div @click="$toast('功能升级中，敬请期待')">
-                    <div>0</div>
+                <div @click="$router.push('/favorite')">
+                    <div>{{收藏}}</div>
                     <div>收藏</div>
                 </div>
-                <div @click="$toast('功能升级中，敬请期待')">
-                    <div>0</div>
+                <div @click="$router.push('/footprint')">
+                    <div>{{足迹}}</div>
                     <div>足迹</div>
                 </div>
                 <div @click="$router.push('/cart')">
@@ -51,7 +51,8 @@
             </ul>
         </div>
 
-        <van-cell icon="smile-o" class="pingjia" to="/review" title="我的评价" is-link/>
+        <!-- <van-cell icon="smile-o" class="pingjia" to="/review" title="我的评价" is-link/> -->
+        <van-cell icon="smile-o" class="pingjia" to="/goodsComment" title="我的评价" is-link/>
         
         <ul class="box-3">
             <li>
@@ -71,6 +72,19 @@
 
 
         <div class="box-4">
+            <div>
+                联系方式
+            </div>
+            <ul>
+                <li v-if="telegram">飞机：{{telegram.content}}</li>
+                <li v-if="weixin">微信：{{weixin.content}}</li>
+                <li v-if="phone">手机：{{phone.content}}</li>
+                <li v-if="wechatQR">
+                    微信二维码:
+                    <img class="二维码" :src="$img_url+wechatQR.content" alt="" srcset="">
+                </li>
+            </ul>
+            <br>
             <div>平台介绍</div>
             <ul>
                 <li>1、衣尚致力于网上购物十多年，总部位于马来西亚最大的金融中心，服务质量和态度整个行业的佼佼者，得到消费者广泛好评</li>
@@ -86,15 +100,52 @@ import { mapState } from 'vuex'
 export default {
     data() {
         return {
-
+            收藏:0,
+            足迹:0
         }
     },
     computed:{
         ...mapState({
             userInfo:'userInfo',
-            购物车:"购物车"
-        })
-    }
+            购物车:"购物车",
+            basic:"basic"
+        }),
+        telegram(){
+            return this.basic.find(x=>x.keyName=='telegram')
+        },
+        weixin(){
+            return this.basic.find(x=>x.keyName=='weixin')
+        },
+        phone(){
+            return this.basic.find(x=>x.keyName=='phone')
+        },
+        wechatQR(){
+            return this.basic.find(x=>x.keyName=='wechatQR')
+        },
+    },
+    methods: {
+        查询收藏(){
+            this.$axios.post('/Favorite/getTotal','').then(res => {
+                if(res.code==1)
+                this.收藏 = res.data
+            }).catch(err => {
+                console.error(err); 
+            })
+        },
+        查询足迹(){
+            this.$axios.post('/Footprint/getCount','')
+            .then(res => {
+                if(res.code==1)
+                this.足迹 = res.data
+            })
+            .catch(err => {
+            })
+        }
+    },
+    mounted() {
+        this.查询收藏()
+        this.查询足迹()
+    },
 }
 </script>
 
@@ -189,6 +240,13 @@ export default {
     font-size: 14px;
     color: rgba($color: #000000, $alpha: 0.4);
     line-height: 22px;
+    ul{
+        padding: 0px 0px 0px 16px;
+    }
+    .二维码{
+        width: 50%;
+        display: block;
+    }
 }
 
 </style>

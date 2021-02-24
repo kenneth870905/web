@@ -61,11 +61,11 @@ export default new Vuex.Store({
                 //         price:""
                 //     },
                 //     数量:"",
-                //     checked:true
                 // }
             ]
         },
-        goodsType: []
+        goodsType: [],
+        basic:[]    //基本信息
     },
     mutations: {
         setValue(state,[key,value]){
@@ -85,6 +85,13 @@ export default new Vuex.Store({
                 if (res.code === 1) {
                     state.goodsType = res.data
                 }
+            }).catch(err => {
+            })
+        },
+        获取基本信息({state}){
+            axios.post('/Basic/get','').then(res => {
+                if(res.code==1)
+                state.basic = res.data
             }).catch(err => {
             })
         }

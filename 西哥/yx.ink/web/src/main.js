@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import ElementUI , {Loading,Message} from 'element-ui';
+import ElementUI , {Loading,Message , MessageBox} from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(ElementUI)
@@ -79,6 +79,8 @@ axios.interceptors.response.use(function (response) {
                 message:"登录已过期，请重新登录",
                 type:'warning',
                 callback:()=>{
+                    store.state.token = ''
+                    store.state.userInfo = {}
                     if(router.app.$route.path!='/login'){
                         router.push('/login')
                     }

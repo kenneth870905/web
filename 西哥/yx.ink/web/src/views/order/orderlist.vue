@@ -10,21 +10,31 @@
         </el-tabs>
 
         <orderItem  v-for="item in list" :order="item"/>
-        <el-pagination class="pagination" v-if="total>0" @current-change="fenye" :total="total" :page-size="query.size" :current-page="query.page" layout="prev, pager, next" background></el-pagination>
 
+        <el-pagination class="pagination" v-if="total>0" @current-change="fenye" :total="total" :page-size="query.size" :current-page="query.page" layout="prev, pager, next" background></el-pagination>
+        <nodata v-if="total==0" />
     </div>
 </template>
 
 <script>
+import nodata from '@/components/nodata.vue'
 import orderItem from './components/orderItem.vue'
 export default {
+    provide(){
+        return{
+            刷新列表:()=>{
+                this.查询订单()
+            }
+        }
+    },
     components:{
-        orderItem
+        orderItem,
+        nodata
     },
     data() {
         return {
-            // 0待付款1已付款或已支付定金待发货2已发货待收货，3已收货 -1订单异常或取消
-            type:'all',
+            //  0待付款1已付款或已支付定金待发货2已发货待收货，3已收货 -1订单异常或取消
+            type:'all',    //all
             query:{
                 page:1,
                 size:5,
