@@ -1,40 +1,40 @@
 <template>
 	<view class="padding10">
 		<view class="box-1 shadow">
-			Bonus：0.00
+			Bonus：{{agent.amount}}
 		</view>
 
 		<view class="box-2 shadow">
 			<view class="tabs">
-				<view class="active">Level 1</view>
-				<view class="">Level 2</view>
+				<view :class="{active:Level==1}" @click="Level=1">Level 1</view>
+				<view :class="{active:Level==2}"  @click="Level=2">Level 2</view>
 			</view>
 			<view class="content">
 				<view class="">
 					<view class="t1">Total People</view>
-					<view class="number">0</view>
+					<view class="number">{{Level==1 ? agent.agent_first_total : agent.agent_second_total}}</view>
 				</view>
 				<view class="">
 					<view class="t1">Contribution</view>
-					<view class="number">0.00</view>
+					<view class="number">{{Level==1 ? agent.agent_first_fee : agent.agent_second_fee}}</view>
 				</view>
 			</view>
 		</view>
 
-		<view class="box-3 shadow" @click="jianQieBan('IA37o9M')">
+		<view class="box-3 shadow" @click="jianQieBan(agent.invitecode)">
 			<text>Promotion Code：</text>
-			<text>IA37o9M</text>
+			<text>{{agent.invitecode}}</text>
 			<image src="@/static/image/fuzhi.png" mode="aspectFill"></image>
 		</view>
 
-		<view class="box-3 shadow" @click="jianQieBan('哈哈')">
+		<view class="box-3 shadow" @click="jianQieBan(url+agent.invitecode)">
 			<text>Promotion Link：</text>
-			<text>https://www.google.com/search?q=uniapp+%E5%A4%8D%E5%88%B6&oq=uniapp+fu&aqs=chrome.1.69i57j0i12j0i10l2.4326j1j7&sourceid=chrome&ie=UTF-8</text>
+			<text>{{url+agent.invitecode}}</text>
 			<image src="@/static/image/fuzhi.png" mode="aspectFill"></image>
 		</view>
 
 		<view class="box-4">
-			<uni-link color="#ff4081" showUnderLine="false" class="link shadow" href="http://localhost:8080/#/pages/my/promotion" text="Open Link"></uni-link>
+			<uni-link color="#ff4081" showUnderLine="false" class="link shadow" :href="url+agent.invitecode" text="Open Link"></uni-link>
 			<view class="shadow" @click="tixian()">Apply to Balance</view>
 		</view>
 
@@ -54,7 +54,9 @@
 	export default {
 		data() {
 			return {
-
+				Level:1,
+				agent:{},
+				url:""		//分享给地址
 			};
 		},
 		methods: {
@@ -88,12 +90,28 @@
 				uni.navigateTo({
 					url:url
 				})
+			},
+			查询代理信息(){
+				this.$http('/Agent/Info').then(res=>{
+					if(res.result){
+						this.agent = res.data
+					}
+				}).catch(err=>{
+				})
 			}
+		},
+		onLoad() {
+			this.查询代理信息()
+			this.url = location.href.replace(location.hash,'')+'#/pages/registered?invitecode='
+			
+		},
+		onShow() {
 		},
 		//自定义标题按钮点击事件
 		onNavigationBarButtonTap(e) {
 			this.$refs.popup.open()
-		}
+		},
+		
 	}
 </script>
 

@@ -1,15 +1,28 @@
 <script>
+	import {mapState} from 'vuex'
 export default {
 	onLaunch: function() {
-		console.log('App Launch');
+		// #ifndef APP-PLUS
+			if(this.color){
+				document.body.style.setProperty('--color',this.color);
+			}
+		// #endif
 	},
 	onShow: function() {
-		console.log('App Show');
+		// console.log('App Show');
 	},
 	onHide: function() {
-		console.log('App Hide');
-	}
+		// console.log('App Hide');
+	},
+	computed:{
+		...mapState({
+			color:x=>x.color
+		})
+	},
 };
+//系统错误提示
+// uni.showToast({ title:'Error, try again later', icon:'none' })
+
 </script>
 
 <style lang="scss">
@@ -28,13 +41,15 @@ page{
 	background: #f5f5f5;
 	font-size: 14px;
 }
-
+:root {
+	--color:#ec0909; 
+}
 
 /* 自定义的顶部站位 */
 .status_bar {
 	height: var(--status-bar-height);
 	width: 100%;
-	background: #009688;
+	background: var(--color);
 	position: sticky;
 	top: 0px;
 	left: 0px;
@@ -51,5 +66,11 @@ page{
 *{
 	box-sizing: border-box;
 }
+
+// 英文换行问题
+uni-toast .uni-simple-toast__text{
+	word-break:inherit;
+}
+
 
 </style>

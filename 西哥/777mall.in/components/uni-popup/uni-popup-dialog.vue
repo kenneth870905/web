@@ -5,14 +5,14 @@
 		</view>
 		<view class="uni-dialog-content">
 			<text class="uni-dialog-content-text" v-if="mode === 'base'">{{content}}</text>
-			<input v-else class="uni-dialog-input" v-model="val" type="text" :placeholder="placeholder" :focus="focus" placeholder="请输入内容">
+			<input v-else class="uni-dialog-input" v-model="val" type="text" :placeholder="placeholder" :focus="focus" >
 		</view>
 		<view class="uni-dialog-button-group">
 			<view class="uni-dialog-button" @click="close">
-				<text class="uni-dialog-button-text">取消</text>
+				<text class="uni-dialog-button-text">Cancel</text>
 			</view>
 			<view class="uni-dialog-button uni-border-left" @click="onOk">
-				<text class="uni-dialog-button-text uni-button-color">确定</text>
+				<text class="uni-dialog-button-text uni-button-color">Confirm</text>
 			</view>
 		</view>
 
@@ -147,7 +147,7 @@
 	}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 	.uni-popup-dialog {
 		width: 300px;
 		border-radius: 15px;
@@ -217,7 +217,7 @@
 	}
 
 	.uni-button-color {
-		color: #007aff;
+		color: $uni-color-primary;
 	}
 
 	.uni-dialog-input {
@@ -226,15 +226,15 @@
 	}
 
 	.uni-popup__success {
-		color: #4cd964;
+		color: $uni-color-success;
 	}
 
 	.uni-popup__warn {
-		color: #f0ad4e;
+		color: $uni-color-warning;
 	}
 
 	.uni-popup__error {
-		color: #dd524d;
+		color: $uni-color-error;
 	}
 
 	.uni-popup__info {

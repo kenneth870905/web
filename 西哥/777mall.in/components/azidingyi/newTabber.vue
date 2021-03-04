@@ -1,7 +1,7 @@
 <template>
 	<view class="">
 		<view class="newTabber">
-			<view v-for="item in list" class="item" @click="go(item)" v-if="!item.Authority || islogin">
+			<view v-for="item in list" class="item" @click="go(item)" v-if="!item.Authority || token">
 				<view class="img-box">
 					<image :src="item.iconPath" mode="widthFix"></image>
 				</view>
@@ -56,12 +56,12 @@
 				return route
 			},
 			...mapState({
-				islogin:x=>x.登录
+				token:x=>x.token
 			})
 		},
 		methods:{
 			go(item){
-				if(item.pagePath=='pages/my/personal' && !this.islogin){
+				if(item.pagePath=='pages/my/personal' && !this.token){
 					uni.navigateTo({
 						url:"/pages/login"
 					})
@@ -75,7 +75,6 @@
 		mounted() {
 		},
 		created(){
-			console.log('newTabber')
 			uni.hideTabBar()
 		}
 	}
@@ -83,7 +82,8 @@
 
 <style lang="scss" scoped>
 .newTabber{
-	background: #009688;
+	// background: #009688;
+	background: var(--color);
 	display: flex;
 	color: #fff;
 	text-align: center;

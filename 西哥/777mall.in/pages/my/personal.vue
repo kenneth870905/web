@@ -8,22 +8,21 @@
 					<image class="touxiang" src="/static/image/touxiang2.png" mode="aspectFill"></image>
 					<view class="right">
 						<view class="zhanghao">
-							<!-- <text>{{userInfo.mobile}}</text> -->
-							<text>123456789111</text>
-							<view class="xiugai">
-								<image src="../../static/image/bi.png" mode="widthFix"></image>
+							<text>{{userInfo.Username}}</text>
+							<view class="xiugai" @click="go('/pages/my/personalInfo')">
+								<image src="@/static/image/bi.png" mode="widthFix"></image>
 							</view>
 						</view>
 						<view class="p">
-							ID:00
+							{{userInfo.Nick ? userInfo.Nick : 'Not set'}}
 						</view>
 					</view>
 				</view>
 				<view class="p">
-					Mobile：123456789111
+					Mobile：{{userInfo.Username}}
 				</view>
 				<view class="p">
-					 Available Balance： 100.00
+					 Available Balance： {{userInfo.Amount}}
 				</view>
 			</view>
 			
@@ -46,10 +45,10 @@
 				<view class="">
 					<text>Address</text>
 				</view>
-				<view class="" @click="go('/pages/my/ResetPassword')">
+				<!-- <view class="" @click="go('/pages/my/ResetPassword')">
 					<text>Account Security</text>
 					<uni-icons type="arrowright" size="20"></uni-icons>
-				</view>
+				</view> -->
 				
 				<view class="">
 					<text>APP Download</text>
@@ -93,7 +92,7 @@
 
 <script>
 	import newTabber from '@/components/azidingyi/newTabber.vue'
-	import { mapState , mapMutations } from 'vuex'
+	import { mapState , mapMutations ,mapActions } from 'vuex'
 	export default {
 		components:{
 			newTabber
@@ -105,28 +104,21 @@
 		},
 		computed:{
 			...mapState({
-				userInfo:x=>x.userInfo,
-				islogin:x=>x.登录
+				userInfo:x=>x.userInfo
 			})
 		},
 		methods:{
 			...mapMutations({
 				setItem:"setItem"
 			}),
+			...mapActions({
+				getUserInfo:"getUserInfo"
+			}),
 			tuichu(){
-				this.setItem(['登录',false])
 				this.setItem(['userInfo',{}])
+				this.setItem(['token',''])
 				uni.switchTab({
 					url:"/pages/home"
-				})
-			},
-			获取用户(){
-				this.$http('/user/info','','POST').then(x=>{
-					if(x.code===0){
-						this.setItem(['userInfo',x.data])
-					}
-				}).catch(err=>{
-					console.log(err)
 				})
 			},
 			go(url){
@@ -138,21 +130,23 @@
 			openPopup(type){
 				this.popupType = type
 				this.$refs.popup.open()
+			},
+			获取游戏(){
+				this.$http('/Game/Period?id=10001','').then(x=>{
+					console.log(x)
+				}).catch(err=>{
+					console.log(err)
+				})
 			}
 		},
-		mounted() {
-			// this.获取用户()
+		onLoad() {
+			// this.获取游戏()
 		},
 		onHide() {
 			this.$refs.popup.close()
 		},
 		onShow() {
-			// if(!this.islogin){
-				// var pages = getCurrentPages();
-				// uni.navigateTo({
-				// 	url:"/pages/login"
-				// })
-			// }
+			this.getUserInfo()
 		}
 	}
 </script>

@@ -1,5 +1,9 @@
 <template>
 	<view class="productDetails">
+		<view class="huanfu">
+			换肤测试
+		</view>
+		
 		<view class="img-1">
 			<image :src="product.cover" mode="widthFix"></image>
 		</view>
@@ -40,7 +44,7 @@
 </template>
 
 <script>
-	import { mapGetters } from 'vuex'
+	import { mapGetters , mapActions } from 'vuex'
 	export default {
 		data() {
 			return {
@@ -56,22 +60,25 @@
 		methods:{
 			...mapGetters({
 				getproduct:"getproduct"
-			})
+			}),
 		},
 		onLoad(o) {
 			// console.log(o)
 			this.id = o ? o.id : '' 
 			// this.id = 8
 			this.product = this.getproduct()(this.id)
-			// console.log(this.getproduct()(this.id))
-		}
+		},
 	}
 </script>
 
 <style lang="scss" scoped>
-	.productDetails{
-		padding-bottom: 1px;
-	}
+.huanfu{
+	color: var(--color);
+}
+.productDetails{
+	padding-bottom: 1px;
+}
+
 .img-1{
 	image{
 		width: 100%;

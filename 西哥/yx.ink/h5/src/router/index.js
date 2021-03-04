@@ -96,6 +96,14 @@ const routes = [
         path:"/footprint",
         component:()=>import('@/views/my/足迹.vue')
     },
+    {
+        path:"/kefu",
+        // component:()=>import('@/views/客服.vue')
+        components:{
+            default:()=>import('@/views/客服.vue'),
+            tabber: tabber
+        }
+    },
 ]
 
 const router = new VueRouter({

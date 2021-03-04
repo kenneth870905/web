@@ -1,50 +1,51 @@
 <template>
 	<view class="padding10">
 		<view class="box-1 shadow">
-			Balance 000.00
+			Balance {{userInfo.Amount}}
 		</view>
 		
 		<view class="box-2 shadow">
 			<icon type="icon iconfont iconqiandai"></icon>
-			<input type="text" v-model="num" placeholder="Enter withdrawal amount"/>
+			<input type="number" @blur="blur" v-model="amount" placeholder="Enter withdrawal amount"/>
 		</view>
 		<view class="message-1">The amount field is required.</view>
 		
 		<view class="title-1">Pay Out</view>
 		
-		<view class="input-box disabled">
+		<!-- <view class="input-box disabled">
 			<uni-icons type="checkmarkempty" size="35"></uni-icons>
 			<text>ACF Payout</text>
-		</view>
+		</view> -->
 		<view class="input-box" @click="$refs.popup.open()">
 			<uni-icons type="checkmarkempty" size="35"></uni-icons>
-			<text>Select Bank Card</text>
+			<text>{{card ? card.accountname : 'Select Bank Card'}}</text>
 		</view>
-		<view class="input-box">
+		<!-- <view class="input-box">
 			<uni-icons type="locked" size="25"></uni-icons>
 			<input type="text" value="" placeholder="Enter your login password"/>
-		</view>
+		</view> -->
 		
-		<view class="message-2">
+		<!-- <view class="message-2">
 			<view class="t1">Withdraw Mode: T</view>
 			<view class="">
 				 Note: Please bind the correct UPI account information for withdrawal. Incorrect binding will cause withdrawal failure. If there is any problem, please email 
 				 <uni-link href="www.baidu.com" text="777mall.in@gmail.com"></uni-link>
 				  to help you deal with it. 
 			</view>
-		</view>
-		<view class="btn-1">
+		</view> -->
+		<view class="btn-1" @click="提交()">
 			Withdrawal
 		</view>
 		
 		<uni-popup ref="popup" type="bottom">
 			<view class="list">
-				<view class="item" v-for="item in 1">
+				<view class="btn-2" v-if="!cardLoading && cardList.length==0" @click="addcard()">Add Bank Card</view>
+				<view class="item" v-for="item in cardList" @click="card=item;$refs.popup.close()">
 					<view class="">
-						<text>accountName</text>
-						<text>bankname</text>
+						<text>{{item.accountname}}</text>
+						<text>{{item.bankname}}</text>
 					</view>
-					<view class="">upi</view>
+					<view class="">{{item.upi}}</view>
 				</view>
 			</view>
 		</uni-popup>
@@ -53,22 +54,67 @@
 </template>
 
 <script>
+	import { mapState , mapActions } from 'vuex'
 	export default {
 		data() {
 			return {
-				num:0
+				amount:0,
+				cardLoading:true,
+				cardList:[],
+				card:'',	//选择的银行卡
 			};
 		},
+		computed:{
+			...mapState({
+				userInfo:'userInfo'
+			})
+		},
 		methods:{
-				
+			提交(){
+				if(!this.amount){
+					uni.showToast({ title:'Please enter the amount', icon:'none' })
+				}else if(!this.card){
+					uni.showToast({ title:'Please select a bank card', icon:'none' })
+				}else{
+					let o = {
+						amount:this.amount,
+						cid:this.card.id
+					}
+					this.$http('/Withdraw',o).then(res=>{
+						if(res.result){
+							uni.showToast({ title:res.msg})
+						}else{
+							uni.showToast({ title:res.msg, icon:'none' })
+						}
+					}).catch(err=>{
+						console.log(err)
+						uni.showToast({ title:'Error, try again later', icon:'none' })
+					})
+				}
+			},
+			blur(){
+				this.amount = Math.abs(parseFloat( Math.round(this.amount*100)/100)) 
+			},
+			addcard(){
+				uni.navigateTo({
+					url:"/pages/card/card"
+				})
+			},
+			获取银行卡(){
+				this.$http('/CardList','').then(x=>{
+					if(x.result){
+						this.cardList=x.data
+					}
+					this.cardLoading=false
+				}).catch(err=>{
+					this.cardLoading=false
+				})
+			}
 		},
 		onLoad() {
-			setTimeout(()=>{
-				this.$refs.popup.open()
-			},1000)
+			this.获取银行卡()
 		},
 		onNavigationBarButtonTap(e) {
-			console.log(e)
 			uni.navigateTo({
 				url:'/pages/my/WithdrawalRecord'
 			})
@@ -139,7 +185,7 @@
 	line-height: 44px;
 	text-align: center;
 	color: #fff;
-	background: #009688;
+	background: var(--color);
 	margin: 20px 0px;
 }
 
@@ -162,6 +208,14 @@
 			text-align: right;
 		}
 	}
+}
+
+.btn-2{
+	background: var(--color);
+	color: #fff;
+	line-height: 44px;
+	text-align: center;
+	margin: 50px 0px 20px;
 }
 
 </style>

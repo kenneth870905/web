@@ -1,17 +1,17 @@
 <template>
 	<view class="login">
 		<view class="input-box">
-			<image src="/static/image/zhanghao.png" mode="widthFix"></image>
+			<uni-icons class="icon-1" type="phone-filled" size="20" color="#8c8c8c"/>
 			<text>+91</text>
-			<input type="text" value="" placeholder="Mobile Number" v-model="phone"/>
+			<input type="text" value="" placeholder="Mobile Number" v-model="username"/>
 		</view>
 		<view class="input-box">
-			<image src="/static/image/mima.png" mode="widthFix"></image>
+			<uni-icons class="icon-1" type="locked-filled" size="20" color="#8c8c8c"/>
 			<input type="password" value="" placeholder="Password" v-model="password"/>
 		</view>
-		<label>
+		<!-- <label>
 			<checkbox value="1" /><text>remember the password</text>
-		</label>
+		</label> -->
 		<view class="btn-list">
 			<view class="">
 				<button class="Register" @click="Register()" type="default">Register</button>
@@ -19,6 +19,10 @@
 			<view class="">
 				<button class="Login" @click="login()" type="default">Login</button>
 			</view>
+		</view>
+		
+		<view class="wangjimima">
+			<text @click="wjmm()">Forgot password</text>
 		</view>
 	</view>
 </template>
@@ -28,8 +32,8 @@
  	export default {
 		data() {
 			return {
-				phone:"",
-				password:""
+				username:"1234567890",
+				password:"123456"
 			};
 		},
 		computed:{
@@ -41,66 +45,58 @@
 			...mapMutations({
 				setItem:"setItem"
 			}),
+			wjmm(){
+				uni.navigateTo({
+					url:"/pages/ForgetPassword"
+				})
+			},
 			Register(){
 				uni.navigateTo({
 					url:"/pages/registered"
 				})
 			},
 			login(){
-				if(!this.phone){
-					uni.showModal({
-						content:"Cell phone number must be 10 digits",
-						showCancel:false,
-						confirmText:"Confirm"
+				if(!this.username){
+					uni.showToast({
+						title:'please enter account',
+						icon:'none'
 					})
-					return
 				}else if(!this.password){
-					
-						uni.showModal({
-							content:"The password length is between 8 and 20",
-							showCancel:false,
-							confirmText:"Confirm"
-						})
-						return
-				}else{
-					this.setItem(['登录',true])
-					this.setItem(['token','测试token'])
-					uni.switchTab({
-						url:'/pages/my/personal'
+					uni.showToast({
+						title:'Please enter the password',
+						icon:'none'
 					})
-					return
-					var user = {
-						name:this.phone,
-						password:this.password
-					}
+				}else{
+					
 					let data ={
-						mobile: "+91"+this.phone,
+						username: "+91"+this.username,
 						password: this.password
 					}
 					uni.showLoading({
 					    title: 'loading'
 					});
-					this.$http('/index/login',data,'post').then(x=>{
+					this.$http('/Login',data,'post').then(x=>{
 						console.log(x)
-						if(x.code===0){
-							this.setItem(['登录',true])
-							this.setItem(['token',x.data])
+						if(x.result){
+							this.setItem(['token',x.token])
+							this.setItem(['userInfo',{username:this.username}])
 							uni.switchTab({
 								url:'/pages/my/personal'
 							})
+							uni.showToast({
+								title:'login successful'
+							})
 						}else{
-							uni.showModal({
-								content:x.msg,
-								showCancel:false,
-								confirmText:"Confirm"
+							uni.showToast({
+								title:x.msg,
+								icon:'none'
 							})
 						}
 						uni.hideLoading()
 					}).catch(err=>{
-						uni.showModal({
-							content:'wrong password',
-							showCancel:false,
-							confirmText:"Confirm"
+						uni.showToast({
+							title:'Error, try again later',
+							icon:'none'
 						})
 						uni.hideLoading()
 					})
@@ -157,8 +153,15 @@
 		background: #fff;
 	}
 	.Login{
-		background: #009688;
+		background: var(--color);
 		color: #fff;
 	}
 }
+
+.wangjimima{
+	text-align: right;
+	margin: 40rpx 0px;
+	color: rgba($color: #000000, $alpha: 0.6);
+}
+
 </style>

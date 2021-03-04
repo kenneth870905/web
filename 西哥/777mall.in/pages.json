@@ -1,7 +1,6 @@
 {
 	"pages": [{
 			"path": "pages/home",
-			"aliasPath": "/",
 			"style": {
 				"app-plus": {
 					"titleNView": false
@@ -10,7 +9,6 @@
 		},
 		{
 			"path": "pages/products/product",
-			// "aliasPath":"/product",
 			"style": {
 				"app-plus": {
 					"titleNView": false
@@ -19,7 +17,6 @@
 		},
 		{
 			"path": "pages/game/game",
-			"aliasPath": "/game",
 			"style": {
 				"app-plus": {
 					"titleNView": false
@@ -28,7 +25,7 @@
 		},
 		{
 			"path": "pages/my/personal",
-			"aliasPath": "/my",
+			// "aliasPath": "/my",
 			"style": {
 				"app-plus": {
 					"titleNView": false
@@ -42,21 +39,18 @@
 			}
 		}, {
 			"path": "pages/products/productDetails",
-			// "aliasPath":"/productdetails",
 			"style": {
 				"navigationBarTitleText": "Product"
 			}
 		},
 		{
 			"path": "pages/login",
-			// "aliasPath":"/productdetails",
 			"style": {
 				"navigationBarTitleText": "Login"
 			}
 		},
 		{
 			"path": "pages/registered",
-			// "aliasPath":"/productdetails",
 			"style": {
 				"navigationBarTitleText": "Register"
 			}
@@ -209,17 +203,33 @@
             }
             
         }
+        ,{
+            "path" : "pages/ForgetPassword",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "Forget Password"
+            }
+            
+        }
+        ,{
+            "path" : "pages/my/personalInfo",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "Personal Info"
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
-		"navigationBarBackgroundColor": "#009688"
+		"navigationBarBackgroundColor": "#ec0909"
 	},
 	"tabBar": {
 		"custom": true,
 		"color": "#FFFFFF",
 		"selectedColor": "#fff",
 		"borderStyle": "black",
-		"backgroundColor": "#009688",
+		"backgroundColor": "#ec0909",
 		"list": [{
 				"pagePath": "pages/home",
 				"iconPath": "static/tabber/home.png",

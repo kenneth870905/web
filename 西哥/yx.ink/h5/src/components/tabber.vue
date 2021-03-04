@@ -3,43 +3,10 @@
         <van-tabbar v-model="active" active-color="#d3232a" :before-change="beforeChange">
             <van-tabbar-item icon="home-o" name="/" @click="$router.push('/')">首页</van-tabbar-item>
             <van-tabbar-item icon="apps-o" name="/typeList" @click="$router.push('/typeList')">分类</van-tabbar-item>
-            <van-tabbar-item icon="chat-o" @click="点击客服()">消息</van-tabbar-item>
+            <van-tabbar-item icon="chat-o" name="/kefu" @click="$router.push('/kefu')">客服</van-tabbar-item>
             <van-tabbar-item icon="cart-o" :badge="购物车.length>0 ? 购物车.length : ''" @click="$router.push('/cart')">购物车</van-tabbar-item>
             <van-tabbar-item icon="contact" name="/my" @click="我的()">我的</van-tabbar-item>
         </van-tabbar>
-        <!-- <van-popup v-model="showPopup" position="left">
-            <div class="个人中心">
-                <div class="box-1" style="background-image:url(static/img/bg.png);">
-                    <div class="touxiang">
-                        <img src="static/img/touxiang.jfif" alt="" srcset="">
-                    </div>
-                    <div class="text">
-                        <span @click="$router.push('/login')" v-if="!userInfo.id">登录</span>
-                        <span v-else>{{userInfo.nickName ? userInfo.nickName : userInfo.userName}}</span>
-                    </div>
-                </div>
-                <ul class="list1">
-                    <li @click="$router.push('/cart')">
-                        <van-icon name="cart-o"/>购物车
-                    </li>
-                    <li @click="go('/orderList')">
-                        <van-icon name="orders-o" />我的订单
-                    </li>
-                    <li @click="go('/review')">
-                        <van-icon name="orders-o" />我的评价
-                    </li>
-                    <li @click="go('/addrList')">
-                        <van-icon name="location-o" />收货地址
-                    </li>
-                    <li @click="go('/userInfo')">
-                        <van-icon name="manager-o" />个人资料
-                    </li>
-                </ul>
-                <div class="btn-1" v-if="userInfo.id" @click="退出()">
-                    退出当前账号
-                </div>
-            </div>
-        </van-popup> -->
     </div>
 </template>
 
@@ -97,6 +64,11 @@ export default {
     mounted() {
         this.active= this.$route.path
     },
+    watch:{
+        $route(){
+            this.active= this.$route.path
+        }
+    }
 }
 </script>
 

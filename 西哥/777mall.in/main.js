@@ -12,16 +12,26 @@ import '@/js_sdk/ican-H5Api/ican-H5Api.js'
 
 Vue.config.productionTip = false
 
-var api = 'https://777mall.in/api/v1/api'
+// uni app演示地址
+// https://hellouniapp.dcloud.net.cn/
+
+// var api = 'https://777mall.in/api/v1/api'
+// var api = 'https://43.249.83.146'
+// var api = 'http://www.order.com'
+// var api = 'http://order.com'
+var api = 'http://43.249.83.147'
 Vue.prototype.$api_url = api
 Vue.prototype.$http = (url,data,m)=>{
-	let method = m ? m.toUpperCase() : 'GET'
+	let method = m ? m.toUpperCase() : 'POST'
 	var header = {}
 	var urlList = ['index/login']
 	
 	if(!urlList.includes(url)){
 		let token = store.state.token
-		header['authorization'] ='Bearer '+token
+		if(token){
+			// header['Authorization'] ='Bearer '+token
+			header['Authorization'] =token
+		}
 	}
 	return new Promise((resolve, reject)=>{
 		uni.request({
@@ -30,10 +40,27 @@ Vue.prototype.$http = (url,data,m)=>{
 			header:header,
 			method:method,
 			success(res) {
-				//如果登录过去删除登录信息
-				// if(res.data.code==1001){
-				// 	store.state.loginInfo = {}
-				// }
+				if(res.data.msg ==='Please log in first'){
+					store.state.token = ''
+					console.log('需要重新登录')
+					uni.showModal({
+						title:'prompt',
+						content:"Login has expired, need to log in again",
+						cancelText:"cancel",
+						confirmText:"confirm",
+						success:(val)=>{
+							if (val.confirm) {
+								uni.navigateTo({
+									url:'/pages/login'
+								})
+							} else if (val.cancel) {
+								uni.switchTab({
+									url:'/pages/home'
+								})
+							}
+						}
+					})
+				}
 				resolve(res.data)
 			},
 			fail(err) {
@@ -56,15 +83,16 @@ const app = new Vue({
 	store,
 	...App
 })
-// app.$mount()
+
+app.$mount();
 
 //v1.3.5起 H5端 你应该去除原有的app.$mount();使用路由自带的渲染方式
 // #ifdef H5
 	// https://hhyang.cn/v2/start/quickstart.html
-	RouterMount(app,router,'#app')
+	// RouterMount(app,router,'#app')
 // #endif
 
 // #ifndef H5
-	app.$mount(); //为了兼容小程序及app端必须这样写才有效果
+	// app.$mount(); //为了兼容小程序及app端必须这样写才有效果
 // #endif
 

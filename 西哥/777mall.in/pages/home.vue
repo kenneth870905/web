@@ -6,6 +6,13 @@
 			<a>Open with an app</a>
 			<image src="../static/image/jiangbei.png" mode="aspectFit"></image>
 		</view>
+		
+		<!-- <button type="default" @click="open()">打开颜色选择器</button>
+		<view class="ceshi">
+			颜色测试
+		</view> -->
+		<!-- <t-color-picker ref="colorPicker" :color="color" @confirm="confirm"></t-color-picker> -->
+		
 		<view class="t2">
 			<view class="text-1">
 				Welcome Back
@@ -40,22 +47,46 @@
 </template>
 
 <script>
+	// import tColorPicker from '@/components/t-color-picker/t-color-picker.vue'
 	import newTabber from '@/components/azidingyi/newTabber.vue'
-	import {mapState} from 'vuex'
+	import {mapState , mapMutations , mapActions} from 'vuex'
 	export default {
 		components:{
-			newTabber
+			newTabber,
+			// tColorPicker
 		},
 		data() {
 			return {
+				color: {r: 0,g: 34,b: 255,a: 0.6},
 			};
 		},
 		computed:{
 			...mapState({
-				data:x=>x.data
+				data:x=>x.data,
 			})
 		},
 		methods:{
+			...mapMutations({
+				setItem:"setItem"
+			}),
+			...mapActions({
+				设置颜色:"设置颜色"
+			}),
+			open() {
+				this.$refs.colorPicker.open();
+			},
+			// confirm(e) {
+				// this.setItem(['color',e.hex])
+				// // #ifdef APP-PLUS
+				// 	const currentWebview = this.$mp.page.$getAppWebview();
+				// 	currentWebview.evalJS(
+				// 		`window.document.documentElement.style.setProperty('--color', '${e.hex}')`
+				// 	)
+				// // #endif
+				// // #ifndef APP-PLUS
+				// 	document.body.style.setProperty('--color',e.hex);
+				// // #endif
+			// },
 			xiangqing(item){
 				uni.navigateTo({
 					url:"/pages/products/productDetails?id="+item.id
@@ -65,12 +96,18 @@
 		onLoad() {
 			// uni.hideTabBar()
 			console.log('home')
+			
+			// this.设置颜色()
 		}
 	}
 </script>
 
-<style lang="scss" scoped>
+</style>
 
+<style lang="scss" scoped>
+.ceshi{
+	color: var(--color);
+}
 .t1{
 	height: 50px;
 	display: flex;
