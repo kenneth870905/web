@@ -5,12 +5,12 @@
 		<view class="game">
 			<view class="box-1">
 				<view class="qian">
-					Available Balance：<text>{{userInfo.available}}</text>
+					Available Balance：<text>{{userInfo.Amount}}</text>
 				</view>
 				<view class="ft">
 					<view class="btn-1" @click="cunKuan()">Recharge</view>
 					<view class="btn-2" @click="openGuiZe()">Read Rule</view>
-					<view class="icon-box">
+					<view class="icon-box" @click="获取用户()">
 						<uni-icons type="loop" color="#fff" size="25"></uni-icons>
 					</view>
 				</view>
@@ -18,20 +18,20 @@
 
 			<view class="box-2">
 				<view class="tabs">
-					<view class="active">Parity</view>
-					<view class="">Sapre</view>
-					<view class="">Bcone</view>
-					<view class="">Emerd</view>
+					<view :class="{active:id==10001}" @click="changeGame(10001)">Parity</view>
+					<view :class="{active:id==10002}" @click="changeGame(10002)">Sapre</view>
+					<view :class="{active:id==10003}" @click="changeGame(10003)">Bcone</view>
+					<view :class="{active:id==10004}" @click="changeGame(10004)">Emerd</view>
 				</view>
 				<view class="info">
 					<view class="">
 						<view class="title-1">Period</view>
-						<view class="qihao">20210114409</view>
+						<view class="qihao">{{即将开奖.period}}</view>
 					</view>
 					<view class="">
 						<view class="title-1">Count Down</view>
 						<view class="daojishi">
-							<uni-countdown background-color="#eeeeee" :show-hour="false" :show-day="false" :minute="30" :second="0"></uni-countdown>
+							<uni-countdown background-color="#eeeeee" :show-hour="false" :show-day="false" :second="倒计时" @timeup="timeup"></uni-countdown>
 						</view>
 					</view>
 				</view>
@@ -39,43 +39,56 @@
 
 			<view class="box-3">
 				<view class="btns">
-					<view class="">Join Green</view>
-					<view class="">Join Violet</view>
-					<view class="">Join Red</view>
+					<!-- <view :class="{active:method=='g'}" @click="method='g'">Join Green</view>
+					<view :class="{active:method=='v'}" @click="method='v'">Join Violet</view>
+					<view :class="{active:method=='r'}" @click="method='r'">Join Red</view> -->
+					
+					<view :class="{active:选中号码.find(x=>x=='Green')}" @click="选号('Green')">Join Green</view>
+					<view :class="{active:选中号码.find(x=>x=='Violet')}" @click="选号('Violet')">Join Violet</view>
+					<view :class="{active:选中号码.find(x=>x=='Red')}" @click="选号('Red')">Join Red</view>
 				</view>
 				<view class="number">
-					<view class="">0</view>
-					<view class="">1</view>
-					<view class="">2</view>
-					<view class="">3</view>
-					<view class="">4</view>
-					<view class="">5</view>
-					<view class="">6</view>
-					<view class="">7</view>
-					<view class="">8</view>
-					<view class="">9</view>
+					<view :class="{active:选中号码.find(x=>x=='0')}" @click="选号('0')">0</view>
+					<view :class="{active:选中号码.find(x=>x==1)}" @click="选号(1)">1</view>
+					<view :class="{active:选中号码.find(x=>x==2)}" @click="选号(2)">2</view>
+					<view :class="{active:选中号码.find(x=>x==3)}" @click="选号(3)">3</view>
+					<view :class="{active:选中号码.find(x=>x==4)}" @click="选号(4)">4</view>
+					<view :class="{active:选中号码.find(x=>x==5)}" @click="选号(5)">5</view>
+					<view :class="{active:选中号码.find(x=>x==6)}" @click="选号(6)">6</view>
+					<view :class="{active:选中号码.find(x=>x==7)}" @click="选号(7)">7</view>
+					<view :class="{active:选中号码.find(x=>x==8)}" @click="选号(8)">8</view>
+					<view :class="{active:选中号码.find(x=>x==9)}" @click="选号(9)">9</view>
 				</view>
-				<view class="btn-1">Submit</view>
+				<view class="btn-1" @click="购买()">Submit</view>
 			</view>
 
 			<view class="box-4">
 				<view class="title-1">
-					<text>Parity Record</text>
+					<text v-if="id==10001">Parity</text>
+					<text v-if="id==10002">Sapre</text>
+					<text v-if="id==10003">Bcone</text>
+					<text v-if="id==10004">Emerd</text>
+					<text>Record</text>
 				</view>
 				<view class="list">
 					<view class="">
 						<view class="">Period</view>
-						<view class="">Price</view>
 						<view class="">Number</view>
 						<view class="">Result</view>
 					</view>
-					<view class="" v-for="item in 15">
-						<view class="">20210114420</view>
-						<view class="">25411</view>
-						<view class="">1</view>
+					<view class="" v-for="item in 开奖记录.list">
+						<view class="">{{item.period}}</view>
+						<view class="">{{item.result}}</view>
 						<view class="">
-							<view class="yuan"></view>
-							<view class="yuan"></view>
+							<!-- // 1 3 7 9是绿
+							// 2 4 6 8 是 红
+							// 0是红紫 5是绿紫 -->
+							<!-- 绿 -->
+							<view class="yuan Green" v-if="[1,3,7,9,5].findIndex(x=>x==item.result)!=-1"></view>
+							<!-- 红 -->
+							<view class="yuan Red" v-if="[2,4,6,8,0].findIndex(x=>x==item.result)!=-1"></view>
+							<!-- 紫 -->
+							<view class="yuan Violet" v-if="[0,5].findIndex(x=>x==item.result)!=-1"></view>
 						</view>
 					</view>
 				</view>
@@ -83,12 +96,18 @@
 			</view>
 
 			<view class="box-5">
-				<view class="title-1">My Parity Record</view>
+				<view class="title-1">My Record</view>
 				<view class="list">
-					<view class="item" v-for="item in list">
+					<view class="item" v-for="item in 购买记录.list">
 						<view class="title-2" @click="item.open = !item.open">
-							<text>20210113422</text>
-							<uni-tag class="tag" text="标签" type="success" size="small"></uni-tag>
+							<text class="name">
+								<text v-if="item.gid==10001">Parity</text>
+								<text v-if="item.gid==10002">Sapre</text>
+								<text v-if="item.gid==10003">Bcone</text>
+								<text v-if="item.gid==10004">Emerd</text>
+							</text>
+							<text class="period">{{item.period}}</text>
+							<!-- <uni-tag class="tag" text="标签" type="success" size="small"></uni-tag> -->
 							<text class="red-text">+88.20</text>
 							<text class="lv-text">+88.20</text>
 							<view class="icon-box">
@@ -98,35 +117,41 @@
 						<view class="xiangqing" :class="{open:item.open}">
 							<view>
 								<view>Period</view>
-								<view>20210113422</view>
+								<view>{{item.period}}</view>
 							</view>
 							<view>
 								<view>Contract Money</view>
-								<view>10.00</view>
+								<view>{{item.amount}}</view>
 							</view>
-							<view>
-								<view>Contract Count</view>
-								<view>1</view>
-							</view>
-							<view>
+							<!-- <view>
 								<view>Delivery</view>
 								<view>9.80</view>
-							</view>
+							</view> -->
 							<view>
-								<view>Fee</view>
-								<view>0.20</view>
+								<view>odds</view>
+								<view>{{item.odds}}</view>
 							</view>
-							<view>
+							<!-- <view>
 								<view>Open Price</view>
 								<view>26261</view>
+							</view> -->
+							<view class="select">
+								<view>Buy</view>
+								<view>
+									<text v-if="item.method==1">{{item.content}}</text>
+									<text v-if="item.method==2">
+										<text v-if="item.content=='g'">Green</text>
+										<text v-if="item.content=='v'">Violet</text>
+										<text v-if="item.content=='r'">Red</text>
+									</text>
+								</view>
 							</view>
 							<view>
 								<view>Result</view>
-								<view> 1 <view class="yuan"></view></view>
-							</view>
-							<view class="select">
-								<view>Parity Select</view>
-								<view>1</view>
+								<view>
+									开奖号码
+									<view class="yuan"></view>
+								</view>
 							</view>
 							<view>
 								<view>Status</view>
@@ -138,21 +163,21 @@
 							</view>
 							<view>
 								<view>Create Time</view>
-								<view>2021/1/13 下午11:35:24</view>
+								<view>{{item.created_at}}</view>
 							</view>
-							<view class="btn-1">
+							<!-- <view class="btn-1">
 								<view>
 									Pre Pay
 								</view>
-							</view>
+							</view> -->
 						</view>
 					</view>
 				</view>
-				<uni-pagination class="fenye" show-icon="true" total="50" current="1"></uni-pagination>
+				<uni-pagination class="fenye" show-icon="true" @change="fenye2" :pageSize="购买记录.query.size" :total="购买记录.total" :current="购买记录.query.page"></uni-pagination>
 			</view>
 		</view>
 		
-		<uni-popup ref="popup" type="center" @change="popupChange">
+		<uni-popup ref="popup" type="center">
 			<view class="guize">
 				<view class="title-1">
 					Rule of Guess
@@ -166,31 +191,162 @@
 			</view>
 		</uni-popup>
 		
+		<!-- 订单确认 -->
+		<uni-popup type="center" ref="OrderConfirm" :maskClick="false">
+			<view class="OrderConfirm">
+				<view class="title-1">Order Confirm</view>
+				<view class="content">
+					<view>Selected number:</view>
+					<view class="list-1">
+						<text :class="item" v-for="item in 选中号码">{{item}}</text>
+					</view>
+					<view>Amount per bet:</view>
+					<view class="list-2">
+						<text :class="{active:单注金额==10}" @click="单注金额=10">10.00</text>
+						<text :class="{active:单注金额==100}" @click="单注金额=100">100.00</text>
+						<text :class="{active:单注金额==1000}" @click="单注金额=1000">1000.00</text>
+						<text :class="{active:单注金额==10000}" @click="单注金额=10000">10000.00</text>
+					</view>
+					<view>Number of bets:</view>
+					<input class="input-1" type="number" v-model="注数" @blur="blur1()"/>
+					<view class="zongjine">Total contract money is <text>{{总金额}}</text> </view>
+				</view>
+				<view class="foot">
+					<text @click="$refs.OrderConfirm.close()">Cancel</text>
+					<text @click="确认购买()">Confirm</text>
+				</view>
+			</view>
+		</uni-popup>
+		
+		
 		<newTabber />
 	</view>
 </template>
 
 <script>
 	import newTabber from '@/components/azidingyi/newTabber.vue'
-	import {
-		mapState
-	} from 'vuex'
+	import { mapState , mapMutations } from 'vuex'
 	export default {
 		components: {
 			newTabber
 		},
+		data() {
+			return {
+				id:10001, //10001-10004 Parity Sapre Bcone Emerd
+				即将开奖:{},
+				倒计时:0,	//秒
+				开奖记录:{
+					loading:true,
+					list:[],
+					query:{
+						gid:"",
+						size:10,
+						page:1
+					}
+				},
+				time1:"",	//倒计时用
+				// method:"g", //玩法 g r v 
+				选中号码:[],
+				单注金额:10,
+				注数:1,
+				购买记录:{
+					query:{
+						page:1,
+						size:10
+					},
+					list:[],
+					total:-1,
+					loading:false
+				},
+				
+			};
+		},
 		computed: {
 			...mapState({
 				userInfo: x => x.userInfo
-			})
-		},
-		data() {
-			return {
-				list:[{id:1,open:false},{id:2,open:false},{id:3,open:false}],
-				overflowHide:false
-			};
+			}),
+			总金额(){
+				if(!this.注数){
+					return 0.00
+				}
+				let n = Math.abs(parseInt(this.注数))  * this.选中号码.length * this.单注金额
+				return new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 4 }).format(n)
+			}
 		},
 		methods:{
+			...mapMutations({
+				setItem:"setItem"
+			}),
+			blur1(){
+				if(!this.注数){
+					this.注数 = 1
+				}else{
+					this.注数 = Math.abs( parseInt(this.注数) )
+				}
+			},
+			获取用户(){
+				this.$http('/UserInfo','').then(x=>{
+					if(x.result && x.data){
+						this.setItem(['userInfo',x.data])
+					}
+				}).catch(err=>{
+				})
+			},
+			确认购买(){
+				let o = {
+					gameid:this.id,
+					period:this.即将开奖.period,
+					order:[]
+				}
+				let name = {
+					Green:'g',
+					Violet:'v',
+					Red:'r'
+				}
+				this.选中号码.forEach(x=>{
+					o.order.push({
+						amount:this.单注金额*this.注数,
+						method: name[x] ? 2 : 1 ,
+						content: name[x] ? name[x] : x 
+					})
+				})
+				this.$refs.OrderConfirm.close()
+				this.$http('/Game/Buy',o).then(res=>{
+					if(res.result){
+						uni.showToast({ title:'Successful purchase'})
+						this.获取购买记录()
+					}else{
+						uni.showToast({ title:res.msg, icon:'none' })
+					}
+				}).catch(err=>{
+					uni.showToast({ title:'Error, try again later', icon:'none' })
+				})
+			},
+			购买(){
+				if(this.选中号码.length==0){
+					uni.showToast({ title:'Please select a number', icon:'none' })
+					return
+				}
+				this.$refs.OrderConfirm.open()
+			},
+			选号(number){
+				if(this.选中号码.find(x=>x==number)){
+					let i = this.选中号码.findIndex(x=>x==number)
+					this.选中号码.splice(i,1)
+				}else{
+					this.选中号码.push(number)
+				}
+			},
+			changeGame(id){
+				this.id = id
+				this.init()
+			},
+			//倒计时结束
+			timeup(){
+				setTimeout(()=>{
+					this.init()
+				},5000)
+			},
 			cunKuan(){
 				uni.navigateTo({
 					url:'/pages/my/Recharge'
@@ -199,12 +355,66 @@
 			openGuiZe(){
 				this.$refs.popup.open()
 			},
-			popupChange(e){
+			获取即将(){
+				uni.showLoading({ title:'loading' })
+				this.$http('/Game/Period',{id:this.id}).then(res=>{
+					if(res.result){
+						let data = res.data
+						this.即将开奖 = data
+						// 计算倒计时
+						this.倒计时 = data.endTime - parseInt(new Date().getTime() / 1000) 
+						console.log(this.倒计时)
+					}
+					uni.hideLoading()
+				}).catch(err=>{
+					uni.hideLoading()
+				})
+			},
+			获取开奖记录(){
+				this.开奖记录.loading=true
+				this.开奖记录.query.gid=this.id
+				this.$http('/Game/PeriodHistory',this.开奖记录.query).then(res=>{
+					this.开奖记录.loading=false		
+					if(res.result){
+						this.开奖记录.list = res.data
+					}
+				}).catch(err=>{
+					this.开奖记录.loading=false
+				})
+			},
+			fenye2(e){
 				console.log(e)
-				this.overflowHide = e.show
+				this.购买记录.query.page= e.current
+				this.获取购买记录()
+			},
+			获取购买记录(){
+				this.$http('/Game/BuyRecords',this.购买记录.query).then(res=>{
+					if(res.result){
+						let data = res.data
+						data.forEach(item=>{
+							item.open=false
+						})
+						this.购买记录.list = data
+						this.购买记录.total=res.total
+					}else{
+						this.购买记录.total=0
+					}
+				}).catch(err=>{
+					this.购买记录.total=0
+					console.log(err)
+				})
+			},
+			init(){
+				this.获取即将()
+				this.获取开奖记录()
+				this.获取购买记录()
 			}
 		},
-		onLoad() {
+		onShow(){
+			// this.init()
+		},
+		onLoad(){
+			this.init()
 		}
 
 	}
@@ -212,17 +422,13 @@
 
 <style lang="scss" scoped>
 	
-	.overflowHide{
-		overflow: hidden;
-		pointer-events:none;
-	}
 	.game {
 		padding: 10px 10px 60px;
 		font-size: 14px;
 	}
 
 	.box-1 {
-		background: #009688;
+		background: var(--color);
 		padding: 3vw;
 		border-radius: 1vw;
 		box-shadow: 0.33vw 0.33vw 1vw rgba(0, 0, 0, .15);
@@ -278,7 +484,7 @@
 			display: flex;
 			color: #fff;
 			line-height: 48px;
-			background: #009688;
+			background: var(--color);
 			text-align: center;
 
 			view {
@@ -286,7 +492,7 @@
 			}
 
 			.active {
-				border-bottom: 2px solid red;
+				border-bottom: 3px solid #000;
 			}
 		}
 
@@ -336,13 +542,18 @@
 	.box-3 {
 		text-align: center;
 		color: #fff;
-
+		.active{
+			opacity: 0.5;
+			// opacity: 1 !important;
+		}
 		.btns {
+			
 			margin-top: 10px;
 			display: flex;
 			justify-content: space-between;
 
 			view {
+				// opacity: 0.6;
 				width: calc((100% - 6vw)/3);
 				line-height: 36px;
 				box-shadow: 0.33vw 0.33vw 1vw rgba(0, 0, 0, .15);
@@ -365,8 +576,8 @@
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
-
 			view {
+				// opacity: 0.6;
 				width: calc((100% - 12vw)/5);
 				line-height: 44px;
 				margin: 15px 0px 0px;
@@ -389,14 +600,11 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			background: #009688;
+			background: var(--color);
 			color: #fff;
 			font-size: 16px;
-
-			image {
-				margin: 0px 5px 0px 0px;
-				width: 22px;
-				height: 22px;
+			text{
+				margin: 0px 5px;
 			}
 		}
 
@@ -421,9 +629,19 @@
 				height: 16px;
 				border-radius: 100%;
 				display: inline-block;
-				background: red;
 				margin: 0px 3px;
+				&.Green{
+					background: #4caf50;
+				}
+				&.Violet{
+					background: #673ab7;
+				}
+				&.Red{
+					background: red;
+				}
 			}
+			  
+			
 		}
 
 		.fenye {
@@ -441,7 +659,7 @@
 	.box-5 {
 		.title-1 {
 			margin: 15px 0px 0px;
-			background: #009688;
+			background: var(--color);
 			color: #fff;
 			line-height: 44px;
 			text-align: center;
@@ -457,8 +675,12 @@
 				height: 44px;
 				display: flex;
 				align-items: center;
-				.tag{
-					margin: 0px 10px;
+				font-size: 12px;
+				.name{
+					width: 50px;
+				}
+				.period{
+					width: 100px;
 				}
 				.icon-box{
 					flex: 1;
@@ -554,4 +776,89 @@
 			
 		}
 	}
+	
+	.OrderConfirm{
+		width: 80vw;
+		min-height: 60vh;
+		background: #fff;
+		display: flex;
+		flex-direction: column;
+		.title-1{
+			line-height: 36px;
+			text-align: center;
+			border-bottom: 1px solid #eee;
+		}
+		.content{
+			flex: 1;
+			overflow: auto;
+			padding: 10px;
+		}
+		.list-1{
+			margin: 5px 0px 10px;
+			display: flex;
+			flex-wrap: wrap;
+			text{
+				font-size: 12px;
+				text-align: center;
+				border-radius: 3px;
+				background: #2196f3;
+				line-height: 26px;
+				margin: 2px;
+				color: #fff;
+				width: calc(100% / 5 - 4px);
+				&.Green{
+					background: #4caf50;
+				}
+				&.Violet{
+					background: #673ab7;
+				}
+				&.Red{
+					background: #f44336;
+				}
+			}
+		}
+		.list-2{
+			margin: 5px 0px 10px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			text{
+				&.active{
+					opacity: 1;
+				}
+				opacity: 0.6;
+				width: 45%;
+				margin: 0px 0px 10px;
+				text-align: center;
+				color: #fff;
+				background: #f44336;
+				line-height: 30px;
+			}
+		}
+		.zongjine{
+			margin: 5px 0px 10px;
+			text{
+				color: red;
+			}
+		}
+		.input-1{
+			border-bottom: 1px solid #eee;
+			margin: 5px 0px 10px;
+		}
+		.foot{
+			border-top: 1px solid #eee;
+			display: flex;
+			line-height: 36px;
+			text-align: center;
+			text{
+				flex: 1;
+			}
+			text:nth-child(2){
+				border-left: 1px solid #eee;
+				color: #2196f3;
+			}
+		}
+	}
+	
+	
 </style>

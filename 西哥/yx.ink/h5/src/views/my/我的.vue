@@ -64,7 +64,7 @@
                 <div>个人资料</div>
             </li>
             <li>
-                <van-icon class="icon-1" name="chat" @click="$toast('功能升级中，敬请期待')"/>
+                <van-icon class="icon-1" name="chat" @click="$router.push('/kefu')"/>
                 <div>客服小蜜</div>
             </li>
         </ul>
@@ -72,7 +72,7 @@
 
 
         <div class="box-4">
-            <div>
+            <!-- <div>
                 联系方式
             </div>
             <ul>
@@ -84,7 +84,7 @@
                     <img class="二维码" :src="$img_url+wechatQR.content" alt="" srcset="">
                 </li>
             </ul>
-            <br>
+            <br> -->
             <div>平台介绍</div>
             <ul>
                 <li>1、衣尚致力于网上购物十多年，总部位于马来西亚最大的金融中心，服务质量和态度整个行业的佼佼者，得到消费者广泛好评</li>

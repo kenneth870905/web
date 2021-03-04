@@ -5,6 +5,7 @@
 </template>
 
 <script>
+	
 	/**
 	 * PopUp 弹出层-消息提示
 	 * @description 弹出层-消息提示
@@ -17,7 +18,7 @@
 	 * @property {String} message 消息提示文字
 	 * @property {String} duration 显示时间，设置为 0 则不会自动关闭
 	 */
-
+	
 	export default {
 		name: 'UniPopupMessage',
 		props: {
@@ -64,7 +65,7 @@
 		}
 	}
 </script>
-<style scoped>
+<style lang="scss" scoped>
 	.uni-popup-message {
 		/* #ifndef APP-NVUE */
 		display: flex;
@@ -76,7 +77,6 @@
 		border-style: solid;
 		border-width: 1px;
 	}
-
 	.uni-popup-message-text {
 		font-size: 14px;
 		padding: 0;

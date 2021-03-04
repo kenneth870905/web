@@ -35,7 +35,7 @@ var config = {
 
     //在线客服跳转地址
     online_chat: "https://e-143504.chatnow.meiqia.com/dist/standalone.html",
-    qq: "68383668",
+    qq: "1",
     // 邮箱
     mail: "yunlaiservice@gmail.com",
     kefu_phone:"+63 9278935888",  

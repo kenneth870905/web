@@ -9,6 +9,9 @@ import Vant , {Dialog} from 'vant';
 import 'vant/lib/index.css';
 Vue.use(Vant);
 
+import VueClipboard from 'vue-clipboard2'
+Vue.use(VueClipboard)
+
 import axios from 'axios'
 axios.defaults.baseURL=api + '/public/index.php'
 Vue.prototype.$img_url= (typeof img=='undefined' ? api : img) + '/runtime/storage/'

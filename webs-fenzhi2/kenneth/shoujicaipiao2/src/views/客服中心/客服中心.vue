@@ -14,7 +14,7 @@
                         <span class="复制">点击进入</span>
 					</a>
 				</li>
-                <li class="mui-table-view-cell item" @click="复制(config.qq)" v-if="站点配置.qq !== false">
+                <li class="mui-table-view-cell item" @click="复制(config.qq)" v-if="显示qq">
 					<!-- <a class="mui-navigate-right item"> -->
                         <div class="img_box"><img :src="config.img_url+'static/image/kefuCenter/qq.png'" alt=""></div>
                         <span class="红色">{{站点配置.qq ? 站点配置.qq : config.qq}}</span>
@@ -89,6 +89,17 @@ export default {
                 }
             }
             return obj
+        },
+        显示qq(){
+            if(this.站点配置.qq){
+                return true
+            }else if(this.站点配置.qq===false){
+                return false
+            }else if(this.config.qq){
+                return true
+            }else{
+                return false
+            }
         },
         显示客服微信(){
             if(this.config.ck==0){

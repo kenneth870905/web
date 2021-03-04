@@ -13,8 +13,8 @@ const store = new Vuex.Store({
 			reducer(val){
 				return {
 					userInfo:val.userInfo,
-					登录:val.登录,
-					token:val.token
+					token:val.token,
+					color:val.color
 				}
 			},
 			// 使用 sessionStorage
@@ -35,13 +35,14 @@ const store = new Vuex.Store({
 	state: {
 		//需要缓存的数据
 		userInfo:{},
-		登录:false,
 		token:"",
 		//不需要缓存的数据
 		data:data,
+		color:""//默认没有
 	},
 	mutations: {
 		setItem(state,[key,value]){
+			console.log(key)
 			state[key] = value
 		}
 	},
@@ -54,7 +55,57 @@ const store = new Vuex.Store({
         // }
     },
 	actions: {
-		
+		设置颜色({state} ){
+			// 也可以使用
+			// const currentWebview = this.$mp.page.$getAppWebview();
+			if(state.color){
+				// #ifndef APP-PLUS
+				var pages = getCurrentPages();
+				var page = pages[pages.length - 1];  
+				var currentWebview = page.$getAppWebview(); //页面栈最顶层就是当前webview 
+				currentWebview.evalJS(
+					`window.document.documentElement.style.setProperty('--color', "${state.color}")`
+				)
+				// #endif
+			}
+		},
+		getUserInfo({state,commit}){
+			// console.log(this._vm)
+			let api = this._vm.$api_url
+			uni.request({
+				url:api+'/UserInfo',
+				header:{
+					Authorization:state.token
+				},
+				success(res){
+					if(res.data.result){
+						commit('setItem',['userInfo',res.data.data])
+					}else if(res.data.msg ==='Please log in first'){
+						state.token = ''
+						uni.showModal({
+							title:'prompt',
+							content:"Login has expired, need to log in again",
+							cancelText:"cancel",
+							confirmText:"confirm",
+							success:(val)=>{
+								if (val.confirm) {
+									uni.navigateTo({
+										url:'/pages/login'
+									})
+								} else if (val.cancel) {
+									uni.switchTab({
+										url:'/pages/home'
+									})
+								}
+							}
+						})
+					}
+				},
+				fail(err) {
+					console.log(err)
+				}
+			})
+		}
 	},
 	modules:{
 		

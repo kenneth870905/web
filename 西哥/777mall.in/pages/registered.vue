@@ -1,31 +1,27 @@
 <template>
 	<view class="login">
 		<view class="input-box">
-			<image src="/static/image/zhanghao.png" mode="widthFix"></image>
+			<uni-icons class="icon-1" type="phone-filled" size="20" color="#8c8c8c"/>
 			<text>+91</text>
-			<input type="text" value="" placeholder="Mobile Number" v-model="phone"/>
+			<input type="text" value="" placeholder="Mobile Number" v-model="user.username"/>
 		</view>
 		<view class="input-box">
-			<image src="/static/image/mima.png" mode="widthFix"></image>
-			<input type="password" value="" placeholder="Password" v-model="password"/>
-			<button type="default">Send</button>
+			<uni-icons class="icon-1" type="locked-filled" size="20" color="#8c8c8c"/>
+			<input type="password" value="" placeholder="Password" v-model="user.password"/>
 		</view>
 		<view class="input-box">
-			<image src="/static/image/mima.png" mode="widthFix"></image>
-			<input type="password" value="" placeholder="Verify Code" />
+			<uni-icons class="icon-1" type="locked-filled" size="20" color="#8c8c8c"/>
+			<input type="password" value="" placeholder="confirm password" v-model="user.password2"/>
 		</view>
-		<label class="checkbox">
-			<checkbox value="1" /><text>Voice verification code</text>
-		</label>
 		<view class="input-box">
-			<image src="/static/image/mima.png" mode="widthFix"></image>
-			<input type="password" value="" placeholder="Invitation Code" />
+			<uni-icons class="icon-1" type="email-filled" color="#8c8c8c"></uni-icons>
+			<input type="text" value="" placeholder="SMS" v-model="user.sms"/>
+			<button type="default" @click="获取验证码()">{{time==0 ? 'Send' : time}}</button>
 		</view>
-		<label class="checkbox">
-			<checkbox value="1" /><text>I agree </text><text>PRIVACY POLICY</text>
-		</label>
-		
-		
+		<view class="input-box">
+			<uni-icons class="icon-1" type="redo-filled" color="#8c8c8c"></uni-icons>
+			<input type="text" value="" :disabled="invitecode ? true : false" placeholder="invitecode" v-model="user.invitecode"/>
+		</view>
 		<view class="btn-list">
 			<view class="">
 				<button class="Register" @click="login()" type="default">Login</button>
@@ -41,11 +37,52 @@
 	export default {
 		data() {
 			return {
-				phone:"",
-				password:""
+				user:{
+					username:"",
+					password:"",
+					password2:"",
+					sms:"",//短信验证码
+					invitecode:"" //邀请码
+				},
+				time:0,
+				invitecode:"",	//页面自带的邀请码
 			};
 		},
 		methods:{
+			获取验证码(){
+				let test1 = /^[0-9]{10}$/
+				if(!test1.test(this.user.username)){
+					uni.showToast({
+						title:'Please enter 10 digits phone',
+						icon:'none'
+					})
+					return
+				}else if(this.time>0){
+					return
+				}
+				this.time=60
+				let t = setInterval(()=>{
+					this.time--
+					if(this.time<=0){
+							clearInterval(t)
+					}
+				},1000)
+				this.$http('/SMS',{username:'+91'+this.user.username}).then(x=>{
+					console.log(x)
+					if(x.result){
+						uni.showToast({
+							title:'Verification sent'
+						})
+					}else{
+						uni.showToast({
+							icon:'none',
+							title:x.msg
+						})
+					}
+				}).catch(err=>{
+					uni.showToast({ title:'Error, try again later', icon:'none' })
+				})
+			},
 			login(){
 				uni.navigateBack({
 					
@@ -55,35 +92,59 @@
 				// })
 			},
 			Register(){
-				if(!this.phone){
-					uni.showModal({
-						content:"Cell phone number must be 10 digits",
-						showCancel:false,
-						confirmText:"Confirm"
-					})
-					return
-				}else if(!this.password){
-					
-						uni.showModal({
-							content:"The password length is between 8 and 20",
-							showCancel:false,
-							confirmText:"Confirm"
-						})
-						return
-				}else{
-					// uni.showModal({
-					// 	content:"Congratulations, registration is successful",
-					// 	showCancel:false,
-					// 	confirmText:"Confirm"
-					// })
+				let test1 = /^[0-9]{10}$/
+				if(!test1.test(this.user.username)){
 					uni.showToast({
-						title:'Congratulations, registration is successful'
+						title:'Please enter 10 digits phone',
+						icon:'none'
 					})
-					setTimeout(()=>{
-						uni.navigateBack({})
-					},2000)
+				}else if(!this.user.password){
+					uni.showToast({
+						title:'Please enter the password',
+						icon:'none'
+					})
+				}else if(this.user.password!=this.user.password2){
+					uni.showToast({
+						title:'Two passwords are inconsistent',
+						icon:'none'
+					})
+				}else if(!this.user.sms){
+					uni.showToast({
+						title:'Please enter the sms',
+						icon:'none'
+					})
+				}else {
+					let user = Object.assign({},this.user)
+						user.username = '+91'+user.username
+					this.$http('/Register',user,'POST').then(x=>{
+						if(x.result){
+							uni.showToast({
+								title:'registration success'
+							})
+							setTimeout(()=>{
+								uni.navigateTo({
+									url:"/pages/login"
+								})
+							},1000)
+						}else{
+							uni.showToast({
+								title:x.msg,
+								icon:'none'
+							})
+						}
+					}).catch(err=>{
+						uni.showToast({
+							title:'Error, try again later',
+							icon:'none'
+						})
+					})
 				}
 			}
+		},
+		onLoad(q) {
+			console.log(q)
+			this.invitecode = q.invitecode ? q.invitecode : ''
+			this.user.invitecode = q.invitecode ? q.invitecode : ''
 		}
 	}
 </script>
@@ -100,9 +161,9 @@
 	display: flex;
 	padding: 0px 0px 0px 10px;
 	align-items: center;
-	image{
-		width: 24px;
-		margin: 0px 5px 0px 0px;
+	.icon-1{
+		margin: 0px 10px 0px 0px;
+		color: rgba($color: #000000, $alpha: 0.6);
 	}
 	input{
 		flex: 1;
@@ -110,7 +171,7 @@
 		padding: 0px 5px;
 	}
 	button{
-		background: #009688;
+		background: var(--color);
 		line-height: 44px;
 		border-radius: 0px;
 		color: #fff;
@@ -141,7 +202,7 @@
 		background: #fff;
 	}
 	.Login{
-		background: #009688;
+		background: var(--color);
 		color: #fff;
 	}
 }
