@@ -14,10 +14,12 @@
 
         <div class="header1">
             <div>类型切换</div>
+            <!--<button class="btn btn-primary" type="button">BTC ETH USDT</button>-->
+           
             <a type="button" href="../1/" role="button" class="btn btn-outline-primary">BTC ETH USDT</a>
             <a type="button" href="../2/" role="button" class="btn btn-outline-primary">ETH EOS USDT</a>
             <a type="button" href="../3/" role="button" class="btn btn-outline-primary">BTC LTC USDT</a>
-            <button type="button" href="../4/" role="button" class="btn btn-primary">EOS LTC USDT</button>
+            <a type="button" href="../4/" role="button" class="btn btn-primary">EOS LTC USDT</a>
             <div class="out">
                 <!-- <button type="button" class="tuichu btn btn-danger">退出</button> -->
             </div>
@@ -217,7 +219,7 @@
                             <tbody>
                                 <tr v-for="(item, index) in mairu3" :key="index" :class="getClass3(item).trclass">
                                     <td>{{index+1}}</td>
-                                    <td>{{item.price ? parseFloat(item.price).toFixed(2) : ''}}</td>
+                                    <td>{{item.price}}</td>
                                     <!-- <td :class="getClass2(item).tdclass">{{jisuan_lirun21(item)}}</td> -->
                                     <td>{{item.tradeCount ? parseFloat(item.tradeCount).toFixed(2) : ''}}</td>
                                     <td>
@@ -230,7 +232,7 @@
                             <tbody>
                                 <tr v-for="(item, index) in mairu31" :key="index" :class="getClass3(item).trclass">
                                     <td>{{index+11}}</td>
-                                    <td>{{item.price ? parseFloat(item.price).toFixed(2) : ''}}</td>
+                                    <td>{{item.price}}</td>
                                     <!-- <td :class="getClass2(item).tdclass">{{jisuan_lirun21(item)}}</td> -->
                                     <td>{{item.tradeCount ? parseFloat(item.tradeCount).toFixed(2) : ''}}</td>
                                     <td>
@@ -258,7 +260,7 @@
                             <tbody>
                                 <tr v-for="(item, index) in maichu3" :key="index" :class="getClass3(item).trclass">
                                     <td>{{index+1}}</td>
-                                    <td>{{item.price ? parseFloat(item.price).toFixed(2) : ''}}</td>
+                                    <td>{{item.price}}</td>
                                     <!-- <td :class="getClass2(item).tdclass">{{jisuan_lirun21(item)}}</td> -->
                                     <td>{{item.tradeCount ? parseFloat(item.tradeCount).toFixed(2) : ''}}</td>
                                     <td>
@@ -271,7 +273,7 @@
                             <tbody>
                                 <tr v-for="(item, index) in maichu31" :key="index" :class="getClass3(item).trclass">
                                     <td>{{index+11}}</td>
-                                    <td>{{item.price ? parseFloat(item.price).toFixed(2) : ''}}</td>
+                                    <td>{{item.price}}</td>
                                     <!-- <td :class="getClass2(item).tdclass">{{jisuan_lirun21(item)}}</td> -->
                                     <td>{{item.tradeCount ? parseFloat(item.tradeCount).toFixed(2) : ''}}</td>
                                     <td>
@@ -295,7 +297,7 @@
                     <b id="hulv2" class="shenlv">00000</b>&nbsp;
                 </div>
                 <div class="text-primary zihao25 text-center">
-                    <b>BTC实时:</b>
+                    <b>EOS实时:</b>
                     <b id="hulv0">00000</b>
                 </div>
                 <div class="text-danger zihao18 text-center">
@@ -311,7 +313,7 @@
                     <b id="hulv2a" class="shenlv">00000</b>&nbsp;
                 </div>
                 <div class="text-primary zihao25 text-center">
-                    <b>ETH实时:</b>
+                    <b>LTC实时:</b>
                     <b id="hulv0a">00000</b>
                 </div>
                 <div class="text-danger zihao18 text-center">
@@ -357,5 +359,5 @@
 <script src="../js/bootstrap.js"></script>
 <script src="https://cdn.bootcss.com/pako/1.0.10/pako.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="4.js"></script>
+<script src="4.js?v=0305"></script>
 </html>

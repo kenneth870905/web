@@ -45,7 +45,7 @@
                                     <td>{{index+1}}</td>
                                     <td>{{parseInt(item.price)}}</td>
                                     <td :class="getClass1(item).tdclass">{{jisuan_lirun(item)}}</td>
-                                    <td>{{item.tradeCount ? parseFloat(item.tradeCount).toFixed(2) : ''}}</td>
+                                    <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
                                     <td>
                                         <div class="userName">
                                             <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
@@ -58,7 +58,7 @@
                                     <td>{{index+11}}</td>
                                     <td>{{parseInt(item.price)}}</td>
                                     <td :class="getClass1(item).tdclass">{{jisuan_lirun(item)}}</td>
-                                    <td>{{item.tradeCount ?  parseFloat(item.tradeCount).toFixed(2) : ''}}</td>
+                                    <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
                                     <td>
                                         <div class="userName">
                                             <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
@@ -87,7 +87,7 @@
                                 <td>{{index+1}}</td>
                                 <td>{{parseInt(item.price)}}</td>
                                 <td :class="getClass1(item).tdclass">{{jisuan_lirun11(item)}}</td>
-                                <td>{{item.tradeCount ? parseFloat(item.tradeCount).toFixed(2) : ''}}</td>
+                                <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
                                 <td>
                                     <div class="userName">
                                         <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
@@ -100,7 +100,7 @@
                                 <td>{{index+11}}</td>
                                 <td>{{parseInt(item.price)}}</td>
                                 <td :class="getClass1(item).tdclass">{{jisuan_lirun11(item)}}</td>
-                                <td>{{item.tradeCount ? parseFloat(item.tradeCount).toFixed(2) : ''}}</td>
+                                <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
                                 <td>
                                     <div class="userName">
                                         <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
@@ -131,9 +131,9 @@
                             <tbody>
                                 <tr v-for="(item, index) in mairu2" :key="index" :class="getClass2(item).trclass">
                                     <td>{{index+1}}</td>
-                                    <td>{{item.price ? parseFloat(item.price).toFixed(2) : ''}}</td>
+                                    <td>{{item.price ? item.price.toFixed(2) : ''}}</td>
                                     <td :class="getClass2(item).tdclass">{{jisuan_lirun2(item)}}</td>
-                                    <td>{{item.tradeCount ? parseFloat(item.tradeCount).toFixed(2) : ''}}</td>
+                                    <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
                                     <td>
                                         <div class="userName">
                                             <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
@@ -144,9 +144,9 @@
                             <tbody>
                                 <tr v-for="(item, index) in mairu21" :key="index" :class="getClass2(item).trclass">
                                     <td>{{index+11}}</td>
-                                    <td>{{item.price ? parseFloat(item.price).toFixed(2) : ''}}</td>
+                                    <td>{{item.price ? item.price.toFixed(2) : ''}}</td>
                                     <td :class="getClass2(item).tdclass">{{jisuan_lirun2(item)}}</td>
-                                    <td>{{item.tradeCount ? parseFloat(item.tradeCount).toFixed(2) : ''}}</td>
+                                    <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
                                     <td>
                                         <div class="userName">
                                             <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
@@ -173,9 +173,9 @@
                             <tbody>
                                 <tr v-for="(item, index) in maichu2" :key="index" :class="getClass2(item).trclass">
                                     <td>{{index+1}}</td>
-                                    <td>{{item.price ? parseFloat(item.price).toFixed(2) : ''}}</td>
+                                    <td>{{item.price ? item.price.toFixed(2) : ''}}</td>
                                     <td :class="getClass2(item).tdclass">{{jisuan_lirun21(item)}}</td>
-                                    <td>{{item.tradeCount ? parseFloat(item.tradeCount).toFixed(2) : ''}}</td>
+                                    <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
                                     <td>
                                         <div class="userName">
                                             <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
@@ -186,9 +186,9 @@
                             <tbody>
                                 <tr v-for="(item, index) in maichu21" :key="index" :class="getClass2(item).trclass">
                                     <td>{{index+11}}</td>
-                                    <td>{{item.price ? parseFloat(item.price).toFixed(2) : ''}}</td>
+                                    <td>{{item.price ? item.price.toFixed(2) : ''}}</td>
                                     <td :class="getClass2(item).tdclass">{{jisuan_lirun21(item)}}</td>
-                                    <td>{{item.tradeCount ? parseFloat(item.tradeCount).toFixed(2) : ''}}</td>
+                                    <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
                                     <td>
                                         <div class="userName">
                                             <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
@@ -220,7 +220,7 @@
                                     <td>{{index+1}}</td>
                                     <td>{{item.price}}</td>
                                     <!-- <td :class="getClass2(item).tdclass">{{jisuan_lirun21(item)}}</td> -->
-                                    <td>{{item.tradeCount ? parseFloat(item.tradeCount).toFixed(2) : ''}}</td>
+                                    <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
                                     <td>
                                         <div class="userName">
                                             <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
@@ -233,7 +233,7 @@
                                     <td>{{index+11}}</td>
                                     <td>{{item.price}}</td>
                                     <!-- <td :class="getClass2(item).tdclass">{{jisuan_lirun21(item)}}</td> -->
-                                    <td>{{item.tradeCount ? parseFloat(item.tradeCount).toFixed(2) : ''}}</td>
+                                    <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
                                     <td>
                                         <div class="userName">
                                             <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
@@ -261,7 +261,7 @@
                                     <td>{{index+1}}</td>
                                     <td>{{item.price}}</td>
                                     <!-- <td :class="getClass2(item).tdclass">{{jisuan_lirun21(item)}}</td> -->
-                                    <td>{{item.tradeCount ? parseFloat(item.tradeCount).toFixed(2) : ''}}</td>
+                                    <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
                                     <td>
                                         <div class="userName">
                                             <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
@@ -274,7 +274,7 @@
                                     <td>{{index+11}}</td>
                                     <td>{{item.price}}</td>
                                     <!-- <td :class="getClass2(item).tdclass">{{jisuan_lirun21(item)}}</td> -->
-                                    <td>{{item.tradeCount ? parseFloat(item.tradeCount).toFixed(2) : ''}}</td>
+                                    <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
                                     <td>
                                         <div class="userName">
                                             <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
@@ -358,5 +358,5 @@
 <script src="../js/bootstrap.js"></script>
 <script src="https://cdn.bootcss.com/pako/1.0.10/pako.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="3.js"></script>
+<script src="3.js?v=0305"></script>
 </html>

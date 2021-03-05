@@ -43,7 +43,7 @@ var app = new Vue({
             if (this.mairuhui !="" && this.maichuhui !="" && this.shouxufei !=""){
                 // chajia=item.price-$("#hulv4").text();
                 chajia=item.price-this.hulv4;
-                chajia = chajia.toFixed(2)
+                chajia = chajia.toFixed(4)
             }
             return chajia
         },
@@ -51,7 +51,7 @@ var app = new Vue({
             var chajia = "0000"
             if (this.mairuhui !="" && this.maichuhui !="" && this.shouxufei !=""){
                 chajia=item.price-this.hulv2;
-                chajia = chajia.toFixed(2)
+                chajia = chajia.toFixed(4)
             }
             return chajia
         },
@@ -115,7 +115,7 @@ var app = new Vue({
     },
 })
 // 开始调用接口
-var login_api = 'http://test.yooy8.com'
+var login_api = 'http://1.huobi456.com'
 // var login_api = 'http://127.0.0.1'
 
 function getQueryVariable(variable){
@@ -128,20 +128,19 @@ function getQueryVariable(variable){
        return(false);
 }
 
-
-
 var token = getQueryVariable('token') ? getQueryVariable('token') : sessionStorage.token
 if(!token){
     location.href = '../404.html'
 }else{
     sessionStorage.token = token
+
     $.ajax({
         type: "post",
         url: login_api+"/huobi/public/index.php/user/getuserinfo?token="+token,
         dataType:"json",
         success: function (response) {
             console.log(response)
-            var data = response.response
+            var data = response
             if(data.code!=1){
                 location.href = '../404.html'
             }
@@ -152,15 +151,6 @@ if(!token){
     });
 }
 
-// var hbtoken = sessionStorage.hbtoken
-// if(!hbtoken){
-//     location.href = '../login.html'
-// }
-// $('.tuichu').click(function(){
-//     sessionStorage.removeItem('hbtoken')
-//     location.href = '../login.html'
-// })
-
 
 function getall(){
     var zhuid = $("#zhuid").val();
@@ -169,9 +159,9 @@ function getall(){
     var maichuhui = $("#maichu").val();
     var shouxufei = $("#shouxu").val();
     var fuidarr=fuid.split("|");
-    // 买入BTC
+    // 买入XRP
     $.ajax({
-        type: "get",url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=3&currency=1&tradeType=sell&currPage=1&payMethod=0&country=37&blockType=general&online=1&range=0&amount=',
+        type: "get",url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=7&currency=1&tradeType=sell&currPage=1&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=',
         dataType: "json",
         success: function (response) {
             // console.log('买入BTC',response)
@@ -180,7 +170,7 @@ function getall(){
         }
     });
     $.ajax({
-        type: "get",url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=3&currency=1&tradeType=sell&currPage=2&payMethod=0&country=37&blockType=general&online=1&range=0&amount=',
+        type: "get",url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=7&currency=1&tradeType=sell&currPage=2&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=',
         // data: {url:},
         dataType: "json",
         success: function (response) {
@@ -188,9 +178,9 @@ function getall(){
             app.mairu11 = json
         }
     });
-     // 卖出BTC
+     // 卖出XRP
     $.ajax({
-        type: "get", url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=3&currency=1&tradeType=buy&currPage=1&payMethod=0&country=37&blockType=general&online=1&range=0&amount=',
+        type: "get", url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=7&currency=1&tradeType=buy&currPage=1&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=',
         // data: {url:},
         dataType: "json",
         success: function (response) {
@@ -200,7 +190,7 @@ function getall(){
         }
     });
     $.ajax({
-        type: "get", url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=3&currency=1&tradeType=buy&currPage=2&payMethod=0&country=37&blockType=general&online=1&range=0&amount=',
+        type: "get", url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=7&currency=1&tradeType=buy&currPage=2&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=',
         // data: {url:},
         dataType: "json",
         success: function (response) {
@@ -209,9 +199,9 @@ function getall(){
             app.maichu11 = json;
         }
     });
-    // 买入eth
+    // // 买入HT
     $.ajax({
-        type: "get",url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=5&currency=1&tradeType=sell&currPage=1&payMethod=0&country=37&blockType=general&online=1&range=0&amount=',
+        type: "get",url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=4&currency=1&tradeType=sell&currPage=1&payMethod=0&acceptOrder=0&country=&blockType=general&online=1&range=0&amount=',
         // data: {url:},
         dataType: "json",
         success: function (response) {
@@ -220,7 +210,8 @@ function getall(){
         }
     });
     $.ajax({
-        type: "get",url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=5&currency=1&tradeType=sell&currPage=2&payMethod=0&country=37&blockType=general&online=1&range=0&amount=',
+        type: "get",url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=4&currency=1&tradeType=sell&currPage=2&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=',
+        // type: "get",url: '',
         // data: {url:},
         dataType: "json",
         success: function (response) {
@@ -229,10 +220,10 @@ function getall(){
             app.mairu21 = json
         }
     });
-    // 卖出ETH
+    // 卖出HT
     $.ajax({
-        type: "get",
-        url: "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=5&currency=1&tradeType=buy&currPage=1&payMethod=0&country=37&blockType=general&online=1&range=0&amount=",
+        // type: "get",url: "https://otc-api.huobi.pr/v1/data/trade-market?coinId=5&currency=4&tradeType=buy&currPage=1&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=",
+        type: "get",url: "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=4&currency=1&tradeType=buy&currPage=1&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=",
         // data: {url:},
         dataType: "json",
         success: function (response) {
@@ -242,8 +233,7 @@ function getall(){
         }
     });
     $.ajax({
-        type: "get",
-        url: "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=5&currency=1&tradeType=buy&currPage=2&payMethod=0&country=37&blockType=general&online=1&range=0&amount=",
+        type: "get",url: "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=4&currency=1&tradeType=buy&currPage=2&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=",
         // data: {url:},
         dataType: "json",
         success: function (response) {
@@ -253,53 +243,53 @@ function getall(){
         }
     });
     
-    //买入USDT
-    $.ajax({
-        type: "get",
-        url: "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=2&currency=1&tradeType=sell&currPage=1&payMethod=0&country=37&blockType=general&online=1&range=0&amount=",
-        // data: {url:},
-        dataType: "json",
-        success: function (response) {
-            // console.log('买入USDT',response)
-            var json = response.data;
-            app.mairu3 = json
+    // //买入USDT
+    // $.ajax({
+    //     type: "get",
+    //     url: "https://otc-api.huobi.pr/v1/data/trade-market?coinId=2&currency=1&tradeType=sell&currPage=1&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=",
+    //     // data: {url:},
+    //     dataType: "json",
+    //     success: function (response) {
+    //         // console.log('买入USDT',response)
+    //         var json = response.data;
+    //         app.mairu3 = json
            
-        }
-    });
-    $.ajax({
-        type: "get",
-        url: "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=2&currency=1&tradeType=sell&currPage=2&payMethod=0&country=37&blockType=general&online=1&range=0&amount=",
-        // data: {url:},
-        dataType: "json",
-        success: function (response) {
-            // console.log('买入USDT',response)
-            var json = response.data;
-            app.mairu31 = json
-        }
-    });
-    //卖出USDT
-    $.ajax({
-        type: "get",
-        url: "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=2&currency=1&tradeType=buy&currPage=1&payMethod=0&country=37&blockType=general&online=1&range=0&amount=",
-        // data: {url:},
-        dataType: "json",
-        success: function (response) {
-            // console.log('卖出USDT',response)
-            var json = response.data;
-            app.maichu3 = json
-        }
-    });
-    $.ajax({
-        type: "get",
-        url: "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=2&currency=1&tradeType=buy&currPage=2&payMethod=0&country=37&blockType=general&online=1&range=0&amount=",
-        // data: {url:},
-        dataType: "json",
-        success: function (response) {
-            // console.log('卖出USDT',response)
-            var json = response.data;
-            app.maichu31 = json
-        }
-    });
+    //     }
+    // });
+    // $.ajax({
+    //     type: "get",
+    //     url: "https://otc-api.huobi.pr/v1/data/trade-market?coinId=2&currency=1&tradeType=sell&currPage=2&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=",
+    //     // data: {url:},
+    //     dataType: "json",
+    //     success: function (response) {
+    //         // console.log('买入USDT',response)
+    //         var json = response.data;
+    //         app.mairu31 = json
+    //     }
+    // });
+    // //卖出USDT
+    // $.ajax({
+    //     type: "get",
+    //     url: "https://otc-api.huobi.pr/v1/data/trade-market?coinId=2&currency=1&tradeType=buy&currPage=1&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=",
+    //     // data: {url:},
+    //     dataType: "json",
+    //     success: function (response) {
+    //         // console.log('卖出USDT',response)
+    //         var json = response.data;
+    //         app.maichu3 = json
+    //     }
+    // });
+    // $.ajax({
+    //     type: "get",
+    //     url: "https://otc-api.huobi.pr/v1/data/trade-market?coinId=2&currency=1&tradeType=buy&currPage=2&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=",
+    //     // data: {url:},
+    //     dataType: "json",
+    //     success: function (response) {
+    //         // console.log('卖出USDT',response)
+    //         var json = response.data;
+    //         app.maichu31 = json
+    //     }
+    // });
 }
 
 getall()
@@ -328,7 +318,7 @@ function diaoyongws() {
     //杩炴帴鎴愬姛鏃讹紝瑙﹀彂浜嬩欢
     ws.onopen = function () {
         //璇锋眰鍙傛暟
-        var param = "{\"sub\": \"market.btcusdt.kline.1min\",\"id\": \"id10\"}";
+        var param = "{\"sub\": \"market.xrpusdt.kline.1min\",\"id\": \"id10\"}";
         // 浣跨敤 send() 鏂规硶鍙戦€佹暟鎹� ;
         ws.send(param);
     }
@@ -354,12 +344,12 @@ function diaoyongws() {
                 var btcss2=btcss1-btcss1*shouxufei;
                 var btcss3=sshl*maichuhui;
                 var btcss4=btcss3+btcss3*shouxufei;
-                $("#hulv1").text(btcss1.toFixed(2));
-                $("#hulv2").text(btcss2.toFixed(2));
-                $("#hulv3").text(btcss3.toFixed(2));
-                $("#hulv4").text(btcss4.toFixed(2));
-                app.hulv4 = btcss4.toFixed(2)
-                app.hulv2 = btcss2.toFixed(2)
+                $("#hulv1").text(btcss1.toFixed(4));
+                $("#hulv2").text(btcss2.toFixed(4));
+                $("#hulv3").text(btcss3.toFixed(4));
+                $("#hulv4").text(btcss4.toFixed(4));
+                app.hulv4 = btcss4.toFixed(4)
+                app.hulv2 = btcss2.toFixed(4)
             }
             /* $("#hulv1").val();*/
         }
@@ -378,7 +368,7 @@ function diaoyongws1() {
     //杩炴帴鎴愬姛鏃讹紝瑙﹀彂浜嬩欢
     ws.onopen = function () {
         //璇锋眰鍙傛暟
-        var param = "{\"sub\": \"market.ethusdt.kline.1min\",\"id\": \"id10\"}";
+        var param = "{\"sub\": \"market.htusdt.kline.1min\",\"id\": \"id10\"}";
         // 浣跨敤 send() 鏂规硶鍙戦€佹暟鎹� ;
         ws.send(param);
     }
