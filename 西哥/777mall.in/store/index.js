@@ -5,11 +5,10 @@ Vue.use(Vuex)
 
 import data from '@/static/data/data.js'
 
-var api_url = 'https://33796088.com'
 const store = new Vuex.Store({
 	plugins: [
 		CreatePersistedState({
-			key : '777mall',
+			key : '777mallH5',
 			reducer(val){
 				return {
 					userInfo:val.userInfo,

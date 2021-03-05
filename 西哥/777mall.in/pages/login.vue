@@ -30,7 +30,7 @@ export default {
     data() {
         return {
             username: "1234567890",
-            password: "123456"
+            password: ""
         };
     },
     computed: {
