@@ -1,0 +1,32 @@
+{
+    "vetur.ignoreProjectWarning":true,
+    "vetur.format.options.tabSize": 4,
+    "vetur.format.defaultFormatter.js": "vscode-typescript",
+    "vetur.format.defaultFormatterOptions": {
+        // "js-beautify-html": {
+        //     "wrap_attributes": "force-expand-multiline"
+        // },
+        "prettyhtml": {
+            "printWidth": 1000,
+            // "singleQuote": false,
+            // "wrapAttributes": false,
+            // "sortAttributes": false
+        }
+    },
+    "html.format.wrapAttributes": "aligned-multiple",
+    "vetur.format.defaultFormatter.html": "prettyhtml",
+    "editor.quickSuggestions": {
+        "strings": true
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "html.format.wrapLineLength": 300,
+    "files.associations": {
+        "*.vue": "vue"
+    },
+    "editor.fontSize": 16,
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    }
+}
