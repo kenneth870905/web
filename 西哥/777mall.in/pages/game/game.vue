@@ -92,7 +92,7 @@
 						</view>
 					</view>
 				</view>
-				<uni-pagination class="fenye" show-icon="true" total="50" current="2"></uni-pagination>
+				<uni-pagination class="fenye" show-icon="true" @change="fenye1" :pageSize="购买记录.query.size" :total="开奖记录.total" :current="开奖记录.page"></uni-pagination>
 			</view>
 
 			<view class="box-5">
@@ -107,9 +107,13 @@
 								<text v-if="item.gid==10004">Emerd</text>
 							</text>
 							<text class="period">{{item.period}}</text>
-							<!-- <uni-tag class="tag" text="标签" type="success" size="small"></uni-tag> -->
-							<text class="red-text">+88.20</text>
-							<text class="lv-text">+88.20</text>
+															<!-- state 1是中  2是没中 -1是撤单  0是还没结算 -->
+							<text :class="{'red-text':item.state==2,'lv-text':item.state==1}">
+								<text v-if="item.state==1">+{{(Math.round(item.amount*item.odds*100)/100).toFixed(2)  }}</text>
+								<text v-if="item.state==2">-{{item.amount}}</text>
+								<text v-if="item.state==-1">Revoke</text>
+								<text v-if="item.state==0">Unsettlement</text>
+							</text>
 							<view class="icon-box">
 								<uni-icons type="arrowdown"></uni-icons>
 							</view>
@@ -149,8 +153,8 @@
 							<view>
 								<view>Result</view>
 								<view>
-									开奖号码
-									<view class="yuan"></view>
+									{{item.result}}
+									<!-- <view class="yuan"></view> -->
 								</view>
 							</view>
 							<view>
@@ -159,7 +163,12 @@
 							</view>
 							<view>
 								<view>Reward</view>
-								<view> +88.20 </view>
+								<view :class="{'red-text':item.state==2,'lv-text':item.state==1}">
+									<text v-if="item.state==1">+{{(Math.round(item.amount*item.odds*100)/100).toFixed(2)  }}</text>
+									<text v-if="item.state==2">-{{item.amount}}</text>
+									<text v-if="item.state==-1">Revoke</text>
+									<text v-if="item.state==0">Unsettlement</text>
+								</view>
 							</view>
 							<view>
 								<view>Create Time</view>
@@ -173,7 +182,8 @@
 						</view>
 					</view>
 				</view>
-				<uni-pagination class="fenye" show-icon="true" @change="fenye2" :pageSize="购买记录.query.size" :total="购买记录.total" :current="购买记录.query.page"></uni-pagination>
+				<Aloading :total="购买记录.total" :length="购买记录.list.length"></Aloading>
+				<uni-pagination v-if="购买记录.total>0" class="fenye" show-icon="true" @change="fenye2" :pageSize="购买记录.query.size" :total="购买记录.total" :current="购买记录.query.page"></uni-pagination>
 			</view>
 		</view>
 		
@@ -236,8 +246,9 @@
 				即将开奖:{},
 				倒计时:0,	//秒
 				开奖记录:{
-					loading:true,
+					loading:false,
 					list:[],
+					total:-1,
 					query:{
 						gid:"",
 						size:10,
@@ -263,7 +274,8 @@
 		},
 		computed: {
 			...mapState({
-				userInfo: x => x.userInfo
+				userInfo: x => x.userInfo,
+				token:x=>x.token
 			}),
 			总金额(){
 				if(!this.注数){
@@ -370,6 +382,10 @@
 					uni.hideLoading()
 				})
 			},
+			fenye1(e){
+				this.开奖记录.query.page= e.current
+				this.获取开奖记录()
+			},
 			获取开奖记录(){
 				this.开奖记录.loading=true
 				this.开奖记录.query.gid=this.id
@@ -377,6 +393,7 @@
 					this.开奖记录.loading=false		
 					if(res.result){
 						this.开奖记录.list = res.data
+						this.开奖记录.total = res.total
 					}
 				}).catch(err=>{
 					this.开奖记录.loading=false
@@ -388,6 +405,10 @@
 				this.获取购买记录()
 			},
 			获取购买记录(){
+				if(!this.token){
+					this.购买记录.total=0
+					return
+				}
 				this.$http('/Game/BuyRecords',this.购买记录.query).then(res=>{
 					if(res.result){
 						let data = res.data
@@ -411,10 +432,10 @@
 			}
 		},
 		onShow(){
-			// this.init()
+			this.init()
 		},
 		onLoad(){
-			this.init()
+			// this.init()
 		}
 
 	}
@@ -685,6 +706,10 @@
 				.icon-box{
 					flex: 1;
 					text-align: right;
+				}
+				.WinLose{
+					width: 80px;
+					font-size: 12px;
 				}
 			}
 			.xiangqing.open{
