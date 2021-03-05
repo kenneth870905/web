@@ -116,11 +116,8 @@ var app = new Vue({
 
 
 // 开始调用接口
-// var login_api = 'http://test.yooy8.com'
-// var login_api = 'http://127.0.0.1'
-
 var login_api = 'http://1.huobi456.com'
-
+// var login_api = 'http://127.0.0.1'
 
 function getQueryVariable(variable){
        var query = window.location.search.substring(1);
@@ -133,12 +130,13 @@ function getQueryVariable(variable){
 }
 
 
-
 var token = getQueryVariable('token') ? getQueryVariable('token') : sessionStorage.token
 if(!token){
     location.href = '../404.html'
 }else{
     sessionStorage.token = token
+
+
     $.ajax({
         type: "post",
         url: login_api+"/huobi/public/index.php/user/getuserinfo?token="+token,
@@ -156,17 +154,6 @@ if(!token){
     });
 }
 
-
-// var hbtoken = sessionStorage.hbtoken
-// if(!hbtoken){
-//     location.href = '../login.html'
-// }
-// $('.tuichu').click(function(){
-//     console.log('退出')
-//     sessionStorage.removeItem('hbtoken')
-//     location.href = '../login.html'
-// })
-
 function getall(){
     var zhuid = $("#zhuid").val();
     var fuid = $("#fuid").val();
@@ -176,7 +163,7 @@ function getall(){
     var fuidarr=fuid.split("|");
     // 买入BTC
     $.ajax({
-        type: "get",url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=1&currency=1&tradeType=sell&currPage=1&payMethod=0&country=37&blockType=general&online=1&range=0&amount=',
+        type: "get",url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=1&currency=1&tradeType=sell&currPage=1&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=',
         dataType: "json",
         success: function (response) {
             // console.log('买入BTC',response)
@@ -185,7 +172,7 @@ function getall(){
         }
     });
     $.ajax({
-        type: "get",url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=1&currency=1&tradeType=sell&currPage=2&payMethod=0&country=37&blockType=general&online=1&range=0&amount=',
+        type: "get",url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=1&currency=1&tradeType=sell&currPage=2&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=',
         // data: {url:},
         dataType: "json",
         success: function (response) {
@@ -195,7 +182,7 @@ function getall(){
     });
      // 卖出BTC
     $.ajax({
-        type: "get", url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=1&currency=1&tradeType=buy&currPage=1&payMethod=0&country=37&blockType=general&online=1&range=0&amount=',
+        type: "get", url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=1&currency=1&tradeType=buy&currPage=1&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=',
         // data: {url:},
         dataType: "json",
         success: function (response) {
@@ -205,7 +192,7 @@ function getall(){
         }
     });
     $.ajax({
-        type: "get", url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=1&currency=1&tradeType=buy&currPage=2&payMethod=0&country=37&blockType=general&online=1&range=0&amount=',
+        type: "get", url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=1&currency=1&tradeType=buy&currPage=2&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=',
         // data: {url:},
         dataType: "json",
         success: function (response) {
@@ -216,7 +203,7 @@ function getall(){
     });
     // 买入eth
     $.ajax({
-        type: "get",url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=3&currency=1&tradeType=sell&currPage=1&payMethod=0&country=37&blockType=general&online=1&range=0&amount=',
+        type: "get",url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=3&currency=1&tradeType=sell&currPage=1&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=',
         // data: {url:},
         dataType: "json",
         success: function (response) {
@@ -225,7 +212,7 @@ function getall(){
         }
     });
     $.ajax({
-        type: "get",url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=3&currency=1&tradeType=sell&currPage=2&payMethod=0&country=37&blockType=general&online=1&range=0&amount=',
+        type: "get",url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=3&currency=1&tradeType=sell&currPage=2&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=',
         // data: {url:},
         dataType: "json",
         success: function (response) {
@@ -237,7 +224,7 @@ function getall(){
     // 卖出ETH
     $.ajax({
         type: "get",
-        url: "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=3&currency=1&tradeType=buy&currPage=1&payMethod=0&country=37&blockType=general&online=1&range=0&amount=",
+        url: "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=3&currency=1&tradeType=buy&currPage=1&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=",
         // data: {url:},
         dataType: "json",
         success: function (response) {
@@ -248,7 +235,7 @@ function getall(){
     });
     $.ajax({
         type: "get",
-        url: "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=3&currency=1&tradeType=buy&currPage=2&payMethod=0&country=37&blockType=general&online=1&range=0&amount=",
+        url: "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=3&currency=1&tradeType=buy&currPage=2&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=",
         // data: {url:},
         dataType: "json",
         success: function (response) {
@@ -261,7 +248,7 @@ function getall(){
     //买入USDT
     $.ajax({
         type: "get",
-        url: "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=2&currency=1&tradeType=sell&currPage=1&payMethod=0&country=37&blockType=general&online=1&range=0&amount=",
+        url: "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=2&currency=1&tradeType=sell&currPage=1&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=",
         // data: {url:},
         dataType: "json",
         success: function (response) {
@@ -273,7 +260,7 @@ function getall(){
     });
     $.ajax({
         type: "get",
-        url: "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=2&currency=1&tradeType=sell&currPage=2&payMethod=0&country=37&blockType=general&online=1&range=0&amount=",
+        url: "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=2&currency=1&tradeType=sell&currPage=2&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=",
         // data: {url:},
         dataType: "json",
         success: function (response) {
@@ -285,7 +272,7 @@ function getall(){
     //卖出USDT
     $.ajax({
         type: "get",
-        url: "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=2&currency=1&tradeType=buy&currPage=1&payMethod=0&country=37&blockType=general&online=1&range=0&amount=",
+        url: "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=2&currency=1&tradeType=buy&currPage=1&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=",
         // data: {url:},
         dataType: "json",
         success: function (response) {
@@ -296,7 +283,7 @@ function getall(){
     });
     $.ajax({
         type: "get",
-        url: "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=2&currency=1&tradeType=buy&currPage=2&payMethod=0&country=37&blockType=general&online=1&range=0&amount=",
+        url: "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=2&currency=1&tradeType=buy&currPage=2&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=",
         // data: {url:},
         dataType: "json",
         success: function (response) {
