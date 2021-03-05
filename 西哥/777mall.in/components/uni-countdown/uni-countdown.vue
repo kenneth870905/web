@@ -152,6 +152,7 @@
 						return
 					}
 					this.countDown()
+					console.log('倒计时')
 				}, 1000)
 			},
 			changeFlag() {

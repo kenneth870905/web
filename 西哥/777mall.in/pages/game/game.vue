@@ -31,7 +31,7 @@
 					<view class="">
 						<view class="title-1">Count Down</view>
 						<view class="daojishi">
-							<uni-countdown background-color="#eeeeee" :show-hour="false" :show-day="false" :second="倒计时" @timeup="timeup"></uni-countdown>
+							<uni-countdown v-if="显示倒计时" background-color="#eeeeee" :show-hour="false" :show-day="false" :second="倒计时" @timeup="timeup"></uni-countdown>
 						</view>
 					</view>
 				</view>
@@ -244,6 +244,7 @@
 			return {
 				id:10001, //10001-10004 Parity Sapre Bcone Emerd
 				即将开奖:{},
+				显示倒计时:true,
 				倒计时:0,	//秒
 				开奖记录:{
 					loading:false,
@@ -355,7 +356,9 @@
 			},
 			//倒计时结束
 			timeup(){
+				uni.showLoading({mask:true})
 				setTimeout(()=>{
+					uni.hideLoading()
 					this.init()
 				},5000)
 			},
@@ -375,7 +378,11 @@
 						this.即将开奖 = data
 						// 计算倒计时
 						this.倒计时 = data.endTime - parseInt(new Date().getTime() / 1000) 
-						console.log(this.倒计时)
+						this.显示倒计时=false
+						this.$nextTick(()=>{
+							this.显示倒计时=true
+						})
+						console.log('倒计时',this.倒计时)
 					}
 					uni.hideLoading()
 				}).catch(err=>{
@@ -436,6 +443,9 @@
 		},
 		onLoad(){
 			// this.init()
+		},
+		onHide(){
+			this.显示倒计时=false
 		}
 
 	}
