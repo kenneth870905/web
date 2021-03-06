@@ -156,7 +156,7 @@
 	padding: 10px;
 }
 .box-1{
-	background: #009688;
+	background: var(--color);
 	box-shadow: 0.33vw 0.33vw 1vw rgba(0,0,0,.15);
 	border-radius: 1vw;
 	color: #fff;
