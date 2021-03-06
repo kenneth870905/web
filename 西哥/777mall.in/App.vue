@@ -3,9 +3,9 @@
 export default {
 	onLaunch: function() {
 		// #ifndef APP-PLUS
-			if(this.color){
-				document.body.style.setProperty('--color',this.color);
-			}
+			// if(this.color){
+			// 	document.body.style.setProperty('--color',this.color);
+			// }
 		// #endif
 	},
 	onShow: function() {
@@ -42,7 +42,7 @@ page{
 	font-size: 14px;
 }
 :root {
-	--color:#ec0909; 
+	--color:#e62534; 
 }
 
 /* 自定义的顶部站位 */

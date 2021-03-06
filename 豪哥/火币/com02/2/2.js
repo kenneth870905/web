@@ -201,7 +201,7 @@ function getall(){
     });
     // // 买入HT
     $.ajax({
-        type: "get",url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=4&currency=1&tradeType=sell&currPage=1&payMethod=0&acceptOrder=0&country=&blockType=general&online=1&range=0&amount=',
+        type: "get",url: 'https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=4&currency=1&tradeType=sell&currPage=1&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=',
         // data: {url:},
         dataType: "json",
         success: function (response) {

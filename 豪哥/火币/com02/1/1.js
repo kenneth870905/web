@@ -132,7 +132,7 @@ function getQueryVariable(variable){
 
 var token = getQueryVariable('token') ? getQueryVariable('token') : sessionStorage.token
 if(!token){
-    location.href = '../404.html'
+    // location.href = '../404.html'
 }else{
     sessionStorage.token = token
 
@@ -145,11 +145,11 @@ if(!token){
             console.log(response)
             var data = response
             if(data.code!=1){
-                location.href = '../404.html'
+                // location.href = '../404.html'
             }
         },
         error:function(error){
-            location.href = '../404.html'
+            // location.href = '../404.html'
         }
     });
 }
@@ -321,8 +321,11 @@ function diaoyongws() {
     ws.onopen = function () {
         //璇锋眰鍙傛暟
         var param = "{\"sub\": \"market.btcusdt.kline.1min\",\"id\": \"id10\"}";
+        // var param = "{\"sub\": \"market.symbols\",\"id\": \"id10\"}";
         // 浣跨敤 send() 鏂规硶鍙戦€佹暟鎹� ;
         ws.send(param);
+        // var param2 = "{\"sub\": \"market.ethusdt.kline.1min\",\"id\": \"id10\"}";
+        // ws.send(param2);
     }
     //鎺ユ敹鍒版湇鍔＄鍝嶅簲鐨勬暟鎹椂锛岃Е鍙戜簨浠�
     ws.onmessage = function (evt) {
@@ -335,6 +338,7 @@ function diaoyongws() {
             var shouxufei=$("#shouxu").val();
             var json=unzip(li);
             var jsona=JSON.parse(json);
+            console.log(jsona)
             var sshl=jsona.tick ? jsona.tick.close : 0;
             if(!jsona.tick){
                 return
@@ -385,6 +389,7 @@ function diaoyongws1() {
             var shouxufei=$("#shouxu").val();
             var json=unzip(li);
             var jsona=JSON.parse(json);
+            console.log(jsona)
             var sshl=jsona.tick ? jsona.tick.close : 0;
             if(!jsona.tick){
                 return
@@ -412,6 +417,6 @@ function diaoyongws1() {
     };
 }
 
-diaoyongws1()
+// diaoyongws1()
 
 
