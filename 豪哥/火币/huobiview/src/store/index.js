@@ -16,7 +16,14 @@ export default new Vuex.Store({
         })
     ],
     state: {
-        token:""
+        token:"",
+        // 详情:{
+        //     买入汇率:"",
+        //     手续费:"",
+        //     卖出汇率:"",
+        //     主ID:"",
+        //     副ID:""
+        // }
     },
     mutations: {
         setToken(state,t){

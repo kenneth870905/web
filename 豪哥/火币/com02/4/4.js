@@ -132,7 +132,7 @@ function getQueryVariable(variable){
 
 var token = getQueryVariable('token') ? getQueryVariable('token') : sessionStorage.token
 if(!token){
-    location.href = '../404.html'
+    // location.href = '../404.html'
 }else{
     sessionStorage.token = token
 
@@ -144,11 +144,11 @@ if(!token){
             console.log(response)
             var data = response
             if(data.code!=1){
-                location.href = '../404.html'
+                // location.href = '../404.html'
             }
         },
         error:function(error){
-            location.href = '../404.html'
+            // location.href = '../404.html'
         }
     });
 }

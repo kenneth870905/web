@@ -1,7 +1,14 @@
 <template>
 	<view class="padding10">
+		
+		<view class="box-5 shadow">
+			<text @click="go('/pages/my/PromotionRecord')">Promotion Record</text>
+			<text @click="go('/pages/my/BonusRecord')">Bonus Record</text>
+			<text @click="go('/pages/my/ApplyRecord')">Apply Record</text>
+		</view>
+		
 		<view class="box-1 shadow">
-			Bonus：{{agent.amount}}
+			Bonus：{{agent.agent_amount}}
 		</view>
 
 		<view class="box-2 shadow">
@@ -37,8 +44,14 @@
 			<uni-link color="#ff4081" showUnderLine="false" class="link shadow" :href="url+agent.invitecode" text="Open Link"></uni-link>
 			<view class="shadow" @click="tixian()">Apply to Balance</view>
 		</view>
+		
+		<!-- <uni-list class="box-5">
+			<uni-list-item title="Promotion Record" to="/pages/my/PromotionRecord" showArrow></uni-list-item>
+			<uni-list-item title="Bonus Record" to="/pages/my/BonusRecord" showArrow></uni-list-item>
+			<uni-list-item title="Apply Record" to="/pages/my/ApplyRecord" showArrow></uni-list-item>
+		</uni-list> -->
 
-		<uni-popup ref="popup" type="bottom">
+		<!-- <uni-popup ref="popup" type="bottom">
 			<view class="popup-box">
 				<view class="list">
 					<view class="" @click="go('/pages/my/PromotionRecord')">Promotion Record</view>
@@ -46,7 +59,26 @@
 					<view class="" @click="go('/pages/my/ApplyRecord')">Apply Record</view>
 				</view>
 			</view>
+		</uni-popup> -->
+		
+		<!-- 提现弹框 -->
+		<uni-popup type="center" ref="Apply" :maskClick="false">
+			<view class="Apply-box">
+				<view class="title-1">Apply to Balance</view>
+				<view class="item">Bonus：{{agent.agent_amount}}</view>
+				<view class="item">
+					<text>Amount：</text>
+					<input type="number" v-model="amount" value=""  @blur="blur"/>
+					<text class="btn-1" @click="amount = agent.agent_amount">All</text>
+				</view>
+				<view class="btn-2">
+					<text @click="$refs.Apply.close()">Cancel</text>
+					<text @click="Confirm()">Confirm</text>
+				</view>
+			</view>
+			
 		</uni-popup>
+		
 	</view>
 </template>
 
@@ -55,8 +87,11 @@
 		data() {
 			return {
 				Level:1,
-				agent:{},
-				url:""		//分享给地址
+				agent:{
+					// amount:100
+				},
+				url:"",		//分享给地址
+				amount:0,	//提现金额
 			};
 		},
 		methods: {
@@ -79,12 +114,12 @@
 				})
 			},
 			tixian(){
-				uni.showModal({
-					// title:"Prompt",
-					content:"The bonus is not enough to withdraw cash",
-					confirmText:'Confirm',
-					showCancel:false
-				})
+				// uni.showModal({
+				// 	content:"The bonus is not enough to withdraw cash",
+				// 	confirmText:'Confirm',
+				// 	showCancel:false
+				// })
+				this.$refs.Apply.open()
 			},
 			go(url){
 				uni.navigateTo({
@@ -98,7 +133,36 @@
 					}
 				}).catch(err=>{
 				})
-			}
+			},
+			Confirm(){
+				if(!this.amount){
+					uni.showToast({ title:'Please enter the amount', icon:'none' })
+				}else{
+					this.$http('/Agent/Withdraw',{amount:this.amount}).then(res=>{
+						console.log(res)
+						if(res.result){
+							uni.showModal({
+								title:'Prompt',
+								content:res.msg,
+								showCancel:false,
+								confirmText:"Ok"
+							})
+							// uni.showToast({ title:res.msg })
+							this.$refs.Apply.close()
+							this.查询代理信息()
+							this.amount = 0
+						}else{
+							uni.showToast({ title:res.msg , icon:'none' })
+						}
+					}).catch(err=>{
+						console.log(err)
+						uni.showToast({ title:'Error, try again later', icon:'none' })
+					})
+				}
+			},
+			blur(){
+				this.amount = Math.abs(parseFloat( Math.round(this.amount*100)/100)) 
+			},
 		},
 		onLoad() {
 			this.查询代理信息()
@@ -109,7 +173,7 @@
 		},
 		//自定义标题按钮点击事件
 		onNavigationBarButtonTap(e) {
-			this.$refs.popup.open()
+			// this.$refs.popup.open()
 		},
 		
 	}
@@ -249,4 +313,66 @@
 			color: #fff;
 		}
 	}
+	
+	.Apply-box{
+		background: #fff;
+		width: 60vw;
+		border-radius: 5px;
+		.title-1{
+			line-height: 36px;
+			text-align: center;
+			border-bottom: 1px solid #eee;
+			margin-bottom: 15px;
+		}
+		.item{
+			padding: 10px 15px;
+			display: flex;
+			input{
+				flex: 1;
+				border-bottom: 1px solid red;
+				color: red;
+			}
+			.btn-1{
+				font-size: 12px;
+				color: red;
+			}
+		}
+		.btn-2{
+			margin-top: 15px;
+			border-top: 1px solid #eee;
+			line-height: 36px;
+			display: flex;
+			color: rgba($color: #000000, $alpha: 0.6);
+			text{
+				flex: 1;
+				text-align: center;
+			}
+			text:nth-child(2){
+				color: #2196f3;
+				border-left: 1px solid #eee;
+			}
+		}
+	}
+	
+	.box-5{
+		// margin: 20px 0px 20px;
+		// color: #2196f3;
+		
+		margin: 0px 0px 10px;
+		background: #fff;
+		line-height: 40px;
+		display: flex;
+		text-align: center;
+		white-space: nowrap;
+		font-size: 12px;
+		color: #2196f3;
+		text{
+			flex: 1;
+		}
+		text:nth-child(2){
+			border-left: 1px solid #eee;
+			border-right: 1px solid #eee;
+		}
+	}
+	
 </style>

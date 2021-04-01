@@ -1,6 +1,7 @@
 <template>
 	<view>
 		<view class="list">
+			
 			<view class="item">
 				<view class="img">
 					<text class="icon iconfont icontubiao-"></text>
@@ -26,6 +27,11 @@
 				</view>
 			</view>
 		</view>
+		
+			<view class="">没有对接接口</view>
+			<view class="">没有对接接口</view>
+			<view class="">没有对接接口</view>
+			<view class="">没有对接接口</view>
 	</view>
 </template>
 

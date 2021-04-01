@@ -21,7 +21,7 @@ export default {
 	},
 };
 //系统错误提示
-// uni.showToast({ title:'Error, try again later', icon:'none' })
+// uni.showToast({ title:'Error, try again later', icon:'none',mask:true })
 
 </script>
 
@@ -69,6 +69,10 @@ page{
 
 // 英文换行问题
 uni-toast .uni-simple-toast__text{
+	word-break:inherit;
+}
+//模态框英文换行问题
+uni-modal .uni-modal__bd, uni-modal .uni-modal__title{
 	word-break:inherit;
 }
 

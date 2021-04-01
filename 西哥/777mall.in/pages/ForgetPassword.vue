@@ -7,7 +7,7 @@
 		</view>
 		<view class="input-box">
 			<uni-icons class="icon-1" type="locked-filled" size="20" color="#8c8c8c"/>
-			<input type="password" value="" placeholder="Password" v-model="user.password"/>
+			<input type="password" value="" placeholder="4-16 digits password" v-model="user.password"/>
 		</view>
 		<view class="input-box">
 			<uni-icons class="icon-1" type="locked-filled" size="20" color="#8c8c8c"/>
@@ -15,7 +15,7 @@
 		</view>
 		<view class="input-box">
 			<uni-icons class="icon-1" type="email-filled" color="#8c8c8c"></uni-icons>
-			<input type="text" value="" placeholder="SMS" v-model="user.sms"/>
+			<input type="text" value="" placeholder="6-digit SMS" v-model="user.sms"/>
 			<button type="default" @click="获取验证码()">{{time==0 ? 'Send' : time}}</button>
 		</view>
 		<view class="btn-list">
@@ -79,14 +79,16 @@
 			},
 			Register(){
 				let test1 = /^[0-9]{10}$/
+				let passwordTest = /^.{4,16}$/
+				let smsTest = /^.{6}$/
 				if(!test1.test(this.user.username)){
 					uni.showToast({
 						title:'Please enter 10 digits phone',
 						icon:'none'
 					})
-				}else if(!this.user.password){
+				}else if(!passwordTest.test(this.user.password)){
 					uni.showToast({
-						title:'Please enter the password',
+						title:'Please enter 4-16 digits password',
 						icon:'none'
 					})
 				}else if(this.user.password!=this.user.password2){
@@ -94,9 +96,9 @@
 						title:'Two passwords are inconsistent',
 						icon:'none'
 					})
-				}else if(!this.user.sms){
+				}else if(!smsTest.test(this.user.sms)){
 					uni.showToast({
-						title:'Please enter the sms',
+						title:'Please enter 6 digits sms',
 						icon:'none'
 					})
 				}else {

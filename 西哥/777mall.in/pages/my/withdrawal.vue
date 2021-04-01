@@ -70,6 +70,9 @@
 			})
 		},
 		methods:{
+			...mapActions({
+				getUserInfo:"getUserInfo"
+			}),
 			提交(){
 				if(!this.amount){
 					uni.showToast({ title:'Please enter the amount', icon:'none' })
@@ -82,7 +85,14 @@
 					}
 					this.$http('/Withdraw',o).then(res=>{
 						if(res.result){
-							uni.showToast({ title:res.msg})
+							this.amount = 0
+							uni.showModal({
+								title:'Prompt',
+								content:res.msg,
+								showCancel:false,
+								confirmText:"Ok"
+							})
+							this.getUserInfo()
 						}else{
 							uni.showToast({ title:res.msg, icon:'none' })
 						}
@@ -104,6 +114,21 @@
 				this.$http('/CardList','').then(x=>{
 					if(x.result){
 						this.cardList=x.data
+						if(this.cardList.length==0){
+							uni.showModal({
+								title:'prompt',
+								content:"No bank card is bound, do you want to bind it now?",
+								cancelText:"Cancel",
+								confirmText:"Confirm",
+								success(res){
+									if (res.confirm) {
+										uni.navigateTo({
+											url:"/pages/card/card"
+										})
+									}
+								}
+							})
+						}
 					}
 					this.cardLoading=false
 				}).catch(err=>{
@@ -112,6 +137,8 @@
 			}
 		},
 		onLoad() {
+		},
+		onShow() {
 			this.获取银行卡()
 		},
 		onNavigationBarButtonTap(e) {
@@ -196,7 +223,7 @@
 	max-height: 50vh;
 	overflow: auto;
 	.item{
-		background: #009688;
+		background: #e75571;
 		padding: 10px;
 		margin: 0px 0px 10px;
 		color: #fff;

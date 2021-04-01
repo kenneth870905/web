@@ -61,7 +61,11 @@
 		},
 		methods:{
 			go(item){
-				if(item.pagePath=='pages/my/personal' && !this.token){
+				if(item.pagePath=='pages/game/game'){
+					uni.navigateTo({
+						url:"/pages/game/game"
+					})
+				}else if(item.pagePath=='pages/my/personal' && !this.token){
 					uni.navigateTo({
 						url:"/pages/login"
 					})

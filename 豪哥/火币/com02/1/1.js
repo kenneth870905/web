@@ -405,8 +405,11 @@ function diaoyongws1() {
                 $("#hulv2a").text(btcss2.toFixed(2));
                 $("#hulv3a").text(btcss3.toFixed(2));
                 $("#hulv4a").text(btcss4.toFixed(2));
-                app.hulv4a = btcss4.toFixed(2);
+                
+                // 买入第二个 0000
                 app.hulv2a = btcss2.toFixed(2);
+                // 卖出第二个 0000
+                app.hulv4a = btcss4.toFixed(2);
             }
             /* $("#hulv1").val();*/
         }

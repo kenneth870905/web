@@ -3,21 +3,24 @@
 		
 		<view class="list">
 			<view class="item" v-for="item in list">
-				<view class="img">
-					<text class="icon iconfont icontubiao-"></text>
+				<view class="top">
+					<view class="center">
+						<text class="qian">{{item.amount}}</text>
+						<text class="time">{{item.created_at}}</text>
+					</view>
+					<view class="r">
+						<text v-if="item.state==0" class="state0">Wait</text>
+						<text v-if="item.state==1" class="state1">Success</text>
+						<text v-if="item.state==-1" class="state2">Failure</text>
+						
+						<text v-if="item.step==0" class="step">Unprocessed</text>
+						<text v-if="item.step==1" class="step">Reviewing</text>
+						<text v-if="item.step==2" class="step">Processing</text>
+						<text v-if="item.step==3" class="step">Reviewed</text>
+					</view>
 				</view>
-				<view class="center">
-					<text class="qian">{{item.amount}}</text>
-					<text class="time">{{item.created_at}}</text>
-				</view>
-				<view class="r">
-					<uni-tag v-if="item.state==0" text="未审核" type="default" size="small"></uni-tag>
-					<uni-tag v-if="item.state==1" text="审核通过" type="default" size="small"></uni-tag>
-					<uni-tag v-if="item.state==-1" text="已撤回" type="default" size="small"></uni-tag>
-					
-					<uni-tag v-if="item.step==1" text="客服审核中" type="default" size="small"></uni-tag>
-					<uni-tag v-if="item.step==2" text="出款中" type="default" size="small"></uni-tag>
-					<uni-tag v-if="item.step==3" text="审核完毕" type="default" size="small"></uni-tag>
+				<view class="remarks" v-if="item.remarks">
+					Remark: {{item.remarks}}
 				</view>
 			</view>
 		</view>
@@ -71,29 +74,22 @@
 </script>
 
 <style lang="scss" scoped>
-.list{
-			
+.tag{
+	line-height: 16px;
 }
 .item{
 	background: #fff;
-	padding: 8px 10px;
-	display: flex;
-	border-bottom: 1px solid #eee;
-	.img{
-		flex-shrink: 0;
-		width: 38px;
-		height: 38px;
-		background: #c0c4cc;
-		border-radius: 100%;
-		box-sizing: border-box;
+	border-bottom: 1px solid #dadada;
+	.top{
+		padding: 8px 10px;
 		display: flex;
-		justify-content: center;
 		align-items: center;
-		color: #FFF;
-		margin: 0px 10px 0px 0px;
-		.icon{
-			font-size: 26px;
-		}
+	}
+	.remarks{
+		border-top: 1px solid #f1f1f1;
+		padding: 5px 0px;
+		margin: 0px 10px ;
+		font-size: 12px;
 	}
 	.center{
 		flex: 1;
@@ -111,6 +107,28 @@
 	.r{
 		display: flex;
 		align-items: center;
+		border-top-left-radius: 22px;
+		border-bottom-left-radius: 22px;
+		// border-radius: 22px;
+		overflow: hidden;
+		text{
+			padding: 3px 8px;
+			font-size: 12px;
+		}
+		.state0{
+			background: red;
+			color: #fff;
+		}
+		.state1{
+			color: #fff;
+			background: #4cd964;
+		}
+		.state2{
+			background: #d2d2d2;
+		}
+		.step{
+			background: #ececec;
+		}
 	}
 }
 </style>

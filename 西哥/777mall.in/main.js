@@ -15,11 +15,9 @@ Vue.config.productionTip = false
 // uni app演示地址
 // https://hellouniapp.dcloud.net.cn/
 
-// var api = 'https://777mall.in/api/v1/api'
-// var api = 'https://43.249.83.146'
-// var api = 'http://www.order.com'
-// var api = 'http://order.com'
-var api = 'http://43.249.83.147'
+// var api = 'http://43.249.83.147'
+var api = 'http://indiacp1.com'
+
 Vue.prototype.$api_url = api
 Vue.prototype.$http = (url,data,m)=>{
 	let method = m ? m.toUpperCase() : 'POST'

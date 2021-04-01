@@ -26,25 +26,33 @@
 				</view>
 			</view>
 			
+			<!-- 充值/提现/交易记录 -->
+			<view class="box-3">
+				<text @click="go('/pages/my/Recharge')">Recharge</text>
+				<!-- <text @click="go('/pages/my/Transactions')">Transactions</text> -->
+				<text @click="go('/pages/my/withdrawal')">Withdrawal</text>
+			</view>
+			
 			<view class="box-2">
-				<view class="">
+				<view class=""  @click="go('/pages/my/orders')">
 					<text>Orders</text>
+					<uni-icons type="arrowright" size="20"></uni-icons>
 				</view>
 				<view @click="go('/pages/my/promotion')">
 					<text>Promotion</text>
 					<uni-icons type="arrowright" size="20"></uni-icons>
 				</view>
-				<view @click="openPopup('Wallet')">
+				<!-- <view @click="openPopup('Wallet')">
 					<text>Wallet</text>
 					<uni-icons type="arrowright" size="20"></uni-icons>
-				</view>
+				</view> -->
 				<view class="" @click="go('/pages/card/cardList')">
 					<text>Bank Card</text>
 					<uni-icons type="arrowright" size="20"></uni-icons>
 				</view>
-				<view class="">
+				<!-- <view class="">
 					<text>Address</text>
-				</view>
+				</view> -->
 				<!-- <view class="" @click="go('/pages/my/ResetPassword')">
 					<text>Account Security</text>
 					<uni-icons type="arrowright" size="20"></uni-icons>
@@ -64,7 +72,7 @@
 				</view>
 			</view>
 			
-			<view class="btn-1 shadow" @click="tuichu()">
+			<view class="btn-1" @click="tuichu()">
 				Log out
 			</view>
 		</view>
@@ -152,15 +160,11 @@
 </script>
 
 <style lang="scss" scoped>
-.personal{
-	padding: 10px;
-}
+
 .box-1{
 	background: var(--color);
-	box-shadow: 0.33vw 0.33vw 1vw rgba(0,0,0,.15);
-	border-radius: 1vw;
 	color: #fff;
-	padding: 12px;
+	padding: 15px 15px 30px;
 	.top{
 		display: flex;
 		flex-direction: row;
@@ -206,10 +210,9 @@
 }
 
 .box-2{
-	margin-top: 15px;
+	margin: 15px 10px 0px;
 	padding: 0px 10px;
 	background: #fff;
-	box-shadow: 0.33vw 0.33vw 1vw rgba(0,0,0,.15);
 	color: #212121;
 	font-size: 14px;
 	>view{
@@ -227,32 +230,52 @@
 	background: #FFFFFF;
 	line-height: 42px;
 	font-size: 14px;
-	margin: 15px 0px 55px;
+	margin: 15px 10px 55px;
 	text-align: center;
 }
 
 .popup-box {
-		text-align: center;
+	text-align: center;
 
-		.list {
-			background: #fff;
-			margin: 10px 10px 10px;
-			line-height: 48px;
-			border-radius: 5px;
+	.list {
+		background: #fff;
+		margin: 10px 10px 10px;
+		line-height: 48px;
+		border-radius: 5px;
 
-			view:not(:nth-child(1)) {
-				border-top: 1px solid #cecece;
-			}
-		}
-
-		.btn-1 {
-			line-height: 44px;
-			margin: 10px;
-			border-radius: 5px;
-			background: #fff;
-			color: #ca9500;
+		view:not(:nth-child(1)) {
+			border-top: 1px solid #cecece;
 		}
 	}
+
+	.btn-1 {
+		line-height: 44px;
+		margin: 10px;
+		border-radius: 5px;
+		background: #fff;
+		color: #ca9500;
+	}
+}
+
+.box-3{
+	margin: -15px 10px 10px;
+	padding: 10px 0px;
+	display: flex;
+	background: #fff;
+	line-height: 40px;
+	// border-radius: 10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	display: flex;
+	text-align: center;
+	text{
+		flex: 1;
+	}
+	text:nth-child(2){
+		border-left: 1px solid #eee;
+		border-right: 1px solid #eee;
+	}
+}
 
 
 </style>
