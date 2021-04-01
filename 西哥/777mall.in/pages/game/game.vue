@@ -1,85 +1,70 @@
 <template>
-	<view class="" >
+	<view class="game" >
 		<view class="status_bar"></view>
 		
-		<view class="game">
-			<view class="box-1">
-				<view class="qian">
-					Available Balance：<text>{{userInfo.Amount}}</text>
+		<view class="box-1">
+			<view class="qian">
+				Available Balance：<text>{{userInfo.Amount}}</text>
+			</view>
+			<view class="ft">
+				<view class="btn-1" @click="cunKuan()">Recharge</view>
+				<view class="btn-2" @click="openGuiZe()">Read Rule</view>
+				<view class="icon-box" @click="获取用户()">
+					<uni-icons type="loop" color="#fff" size="20"></uni-icons>
 				</view>
-				<view class="ft">
-					<view class="btn-1" @click="cunKuan()">Recharge</view>
-					<view class="btn-2" @click="openGuiZe()">Read Rule</view>
-					<view class="icon-box" @click="获取用户()">
-						<uni-icons type="loop" color="#fff" size="25"></uni-icons>
+			</view>
+		</view>
+			
+		<view class="box-1-1 shadow">
+			<view class="top">
+				<view class="left" @click="展开记录=!展开记录">
+					<view class="title-1">
+						<text>Recent Results</text>
+						<uni-icons type="arrowdown" color="red"></uni-icons>
+					</view>
+					<view class="Results" v-if="开奖记录.list[0]">
+						<text class="number">{{开奖记录.list[0].result}}</text>
+						<!-- 绿 -->
+						<view class="yuan Green" v-if="[1,3,7,9,5].findIndex(x=>x==开奖记录.list[0].result)!=-1"></view>
+						<!-- 红 -->
+						<view class="yuan Red" v-if="[2,4,6,8,0].findIndex(x=>x==开奖记录.list[0].result)!=-1"></view>
+						<!-- 紫 -->
+						<view class="yuan Violet" v-if="[0,5].findIndex(x=>x==开奖记录.list[0].result)!=-1"></view>
+					</view>
+					<view class="Results" v-if="开奖记录.list[1]">
+						<text class="number">{{开奖记录.list[1].result}}</text>
+						<view class="yuan Green" v-if="[1,3,7,9,5].findIndex(x=>x==开奖记录.list[1].result)!=-1"></view>
+						<!-- 红 -->
+						<view class="yuan Red" v-if="[2,4,6,8,0].findIndex(x=>x==开奖记录.list[1].result)!=-1"></view>
+						<!-- 紫 -->
+						<view class="yuan Violet" v-if="[0,5].findIndex(x=>x==开奖记录.list[1].result)!=-1"></view>
+					</view>
+				</view>
+				<view class="right">
+					<view class="title-1">{{即将开奖.period}}</view>
+					<view class="daojishi">
+						<uni-countdown v-if="显示倒计时" background-color="#eeeeee" :show-hour="false" :show-day="false" :second="倒计时" @timeup="timeup"></uni-countdown>
 					</view>
 				</view>
 			</view>
-
-			<view class="box-2">
-				<view class="tabs">
-					<view :class="{active:id==10001}" @click="changeGame(10001)">Parity</view>
-					<view :class="{active:id==10002}" @click="changeGame(10002)">Sapre</view>
-					<view :class="{active:id==10003}" @click="changeGame(10003)">Bcone</view>
-					<view :class="{active:id==10004}" @click="changeGame(10004)">Emerd</view>
+			<view class="list" :class="{close:!展开记录}">
+				<view class="More" @click="go('/pages/game/record')">
+					More Records
+					<uni-icons type="arrowright"></uni-icons>
 				</view>
-				<view class="info">
+				<view class="">
+					<view class="">Period</view>
+					<view class="">Number</view>
+					<view class="">Result</view>
+				</view>
+				<view class="" v-for="item in 开奖记录.list">
+					<view class="">{{item.period}}</view>
 					<view class="">
-						<view class="title-1">Period</view>
-						<view class="qihao">{{即将开奖.period}}</view>
+						<text class="textGreen" v-if="[1,3,7,9,5].findIndex(x=>x==item.result)!=-1">{{item.result}}</text>
+						<text class="textRed" v-if="[2,4,6,8,0].findIndex(x=>x==item.result)!=-1">{{item.result}}</text>
 					</view>
 					<view class="">
-						<view class="title-1">Count Down</view>
-						<view class="daojishi">
-							<uni-countdown v-if="显示倒计时" background-color="#eeeeee" :show-hour="false" :show-day="false" :second="倒计时" @timeup="timeup"></uni-countdown>
-						</view>
-					</view>
-				</view>
-			</view>
-
-			<view class="box-3">
-				<view class="btns">
-					<!-- <view :class="{active:method=='g'}" @click="method='g'">Join Green</view>
-					<view :class="{active:method=='v'}" @click="method='v'">Join Violet</view>
-					<view :class="{active:method=='r'}" @click="method='r'">Join Red</view> -->
-					
-					<view :class="{active:选中号码.find(x=>x=='Green')}" @click="选号('Green')">Join Green</view>
-					<view :class="{active:选中号码.find(x=>x=='Violet')}" @click="选号('Violet')">Join Violet</view>
-					<view :class="{active:选中号码.find(x=>x=='Red')}" @click="选号('Red')">Join Red</view>
-				</view>
-				<view class="number">
-					<view :class="{active:选中号码.find(x=>x=='0')}" @click="选号('0')">0</view>
-					<view :class="{active:选中号码.find(x=>x==1)}" @click="选号(1)">1</view>
-					<view :class="{active:选中号码.find(x=>x==2)}" @click="选号(2)">2</view>
-					<view :class="{active:选中号码.find(x=>x==3)}" @click="选号(3)">3</view>
-					<view :class="{active:选中号码.find(x=>x==4)}" @click="选号(4)">4</view>
-					<view :class="{active:选中号码.find(x=>x==5)}" @click="选号(5)">5</view>
-					<view :class="{active:选中号码.find(x=>x==6)}" @click="选号(6)">6</view>
-					<view :class="{active:选中号码.find(x=>x==7)}" @click="选号(7)">7</view>
-					<view :class="{active:选中号码.find(x=>x==8)}" @click="选号(8)">8</view>
-					<view :class="{active:选中号码.find(x=>x==9)}" @click="选号(9)">9</view>
-				</view>
-				<view class="btn-1" @click="购买()">Submit</view>
-			</view>
-
-			<view class="box-4">
-				<view class="title-1">
-					<text v-if="id==10001">Parity</text>
-					<text v-if="id==10002">Sapre</text>
-					<text v-if="id==10003">Bcone</text>
-					<text v-if="id==10004">Emerd</text>
-					<text>Record</text>
-				</view>
-				<view class="list">
-					<view class="">
-						<view class="">Period</view>
-						<view class="">Number</view>
-						<view class="">Result</view>
-					</view>
-					<view class="" v-for="item in 开奖记录.list">
-						<view class="">{{item.period}}</view>
-						<view class="">{{item.result}}</view>
-						<view class="">
+						<view class="number">
 							<!-- // 1 3 7 9是绿
 							// 2 4 6 8 是 红
 							// 0是红紫 5是绿紫 -->
@@ -92,100 +77,75 @@
 						</view>
 					</view>
 				</view>
-				<uni-pagination class="fenye" show-icon="true" @change="fenye1" :pageSize="购买记录.query.size" :total="开奖记录.total" :current="开奖记录.page"></uni-pagination>
-			</view>
-
-			<view class="box-5">
-				<view class="title-1">My Record</view>
-				<view class="list">
-					<view class="item" v-for="item in 购买记录.list">
-						<view class="title-2" @click="item.open = !item.open">
-							<text class="name">
-								<text v-if="item.gid==10001">Parity</text>
-								<text v-if="item.gid==10002">Sapre</text>
-								<text v-if="item.gid==10003">Bcone</text>
-								<text v-if="item.gid==10004">Emerd</text>
-							</text>
-							<text class="period">{{item.period}}</text>
-															<!-- state 1是中  2是没中 -1是撤单  0是还没结算 -->
-							<text :class="{'red-text':item.state==2,'lv-text':item.state==1}">
-								<text v-if="item.state==1">+{{(Math.round(item.amount*item.odds*100)/100).toFixed(2)  }}</text>
-								<text v-if="item.state==2">-{{item.amount}}</text>
-								<text v-if="item.state==-1">Revoke</text>
-								<text v-if="item.state==0">Unsettlement</text>
-							</text>
-							<view class="icon-box">
-								<uni-icons type="arrowdown"></uni-icons>
-							</view>
-						</view>
-						<view class="xiangqing" :class="{open:item.open}">
-							<view>
-								<view>Period</view>
-								<view>{{item.period}}</view>
-							</view>
-							<view>
-								<view>Contract Money</view>
-								<view>{{item.amount}}</view>
-							</view>
-							<!-- <view>
-								<view>Delivery</view>
-								<view>9.80</view>
-							</view> -->
-							<view>
-								<view>odds</view>
-								<view>{{item.odds}}</view>
-							</view>
-							<!-- <view>
-								<view>Open Price</view>
-								<view>26261</view>
-							</view> -->
-							<view class="select">
-								<view>Buy</view>
-								<view>
-									<text v-if="item.method==1">{{item.content}}</text>
-									<text v-if="item.method==2">
-										<text v-if="item.content=='g'">Green</text>
-										<text v-if="item.content=='v'">Violet</text>
-										<text v-if="item.content=='r'">Red</text>
-									</text>
-								</view>
-							</view>
-							<view>
-								<view>Result</view>
-								<view>
-									{{item.result}}
-									<!-- <view class="yuan"></view> -->
-								</view>
-							</view>
-							<view>
-								<view>Status</view>
-								<view>Success</view>
-							</view>
-							<view>
-								<view>Reward</view>
-								<view :class="{'red-text':item.state==2,'lv-text':item.state==1}">
-									<text v-if="item.state==1">+{{(Math.round(item.amount*item.odds*100)/100).toFixed(2)  }}</text>
-									<text v-if="item.state==2">-{{item.amount}}</text>
-									<text v-if="item.state==-1">Revoke</text>
-									<text v-if="item.state==0">Unsettlement</text>
-								</view>
-							</view>
-							<view>
-								<view>Create Time</view>
-								<view>{{item.created_at}}</view>
-							</view>
-							<!-- <view class="btn-1">
-								<view>
-									Pre Pay
-								</view>
-							</view> -->
-						</view>
-					</view>
+				<view class="close" @click="展开记录=false">
+					Retract <uni-icons type="arrowup"></uni-icons>
 				</view>
-				<Aloading :total="购买记录.total" :length="购买记录.list.length"></Aloading>
-				<uni-pagination v-if="购买记录.total>0" class="fenye" show-icon="true" @change="fenye2" :pageSize="购买记录.query.size" :total="购买记录.total" :current="购买记录.query.page"></uni-pagination>
 			</view>
 		</view>
+			
+		<view class="MoreRecords">
+			<view @click="go('/pages/game/record')">More Records</uni-icons> </view>
+			<view @click="go('/pages/my/orders')">My Orders <uni-icons type="arrowright"></uni-icons> </view>
+		</view>
+			
+		<view class="shadow">
+		
+			<view class="box-2">
+				<view class="tabs">
+					<view :class="{active:id==10001}" @click="changeGame(10001)">Parity</view>
+					<view :class="{active:id==10002}" @click="changeGame(10002)">Sapre</view>
+					<view :class="{active:id==10003}" @click="changeGame(10003)">Bcone</view>
+					<view :class="{active:id==10004}" @click="changeGame(10004)">Emerd</view>
+				</view>
+			</view>
+
+			<view class="box-3">
+				<view class="btns">
+					<view :class="{active:选中号码.find(x=>x.number=='Green')}" @click="选号('Green')">Join Green</view>
+					<view :class="{active:选中号码.find(x=>x.number=='Violet')}" @click="选号('Violet')">Join Violet</view>
+					<view :class="{active:选中号码.find(x=>x.number=='Red')}" @click="选号('Red')">Join Red</view>
+				</view>
+				<view class="number">
+					<!-- // 1 3 7 9是绿  Green
+					// 2 4 6 8 是 红 Red
+					// 0是红紫 RedViolet  5是绿紫 GreenViolet-->
+					
+					<view class="RedViolet" :class="{active:选中号码.find(x=>x.number=='0')}" @click="选号('0')">0</view>
+					<view class="Green" :class="{active:选中号码.find(x=>x.number==1)}" @click="选号(1)">1</view>
+					<view class="Red" :class="{active:选中号码.find(x=>x.number==2)}" @click="选号(2)">2</view>
+					<view class="Green" :class="{active:选中号码.find(x=>x.number==3)}" @click="选号(3)">3</view>
+					<view class="Red" :class="{active:选中号码.find(x=>x.number==4)}" @click="选号(4)">4</view>
+					<view class="GreenViolet" :class="{active:选中号码.find(x=>x.number==5)}" @click="选号(5)">5</view>
+					<view class="Red" :class="{active:选中号码.find(x=>x.number==6)}" @click="选号(6)">6</view>
+					<view class="Green" :class="{active:选中号码.find(x=>x.number==7)}" @click="选号(7)">7</view>
+					<view class="Red" :class="{active:选中号码.find(x=>x.number==8)}" @click="选号(8)">8</view>
+					<view class="Green" :class="{active:选中号码.find(x=>x.number==9)}" @click="选号(9)">9</view>
+				</view>
+			</view>
+		</view>
+	
+		<view class="box-5">
+			<view class="">
+				<text>Selected：</text>
+				<text>{{选中号码.length}}</text>
+				<text class="Empty" @click="选中号码=[]" v-if="选中号码.length>0">Reset</text>
+			</view>
+			<view class="">
+				<text>Amount：</text>
+				<input type="number" v-model="单注金额" />
+			</view>
+			<view class="">
+				<text>Quick input：</text>
+				<view class="list">
+					<text @click="单注金额=100">100.00</text>
+					<text @click="单注金额=1000">1000.00</text>
+					<text @click="单注金额=10000">10000.00</text>
+				</view>
+			</view>
+		</view>
+			
+		<view class="Submit" @click="购买()">Submit</view>
+		
 		
 		<uni-popup ref="popup" type="center">
 			<view class="guize">
@@ -206,20 +166,19 @@
 			<view class="OrderConfirm">
 				<view class="title-1">Order Confirm</view>
 				<view class="content">
-					<view>Selected number:</view>
 					<view class="list-1">
-						<text :class="item" v-for="item in 选中号码">{{item}}</text>
+						<view class="item" v-for="item in 选中号码">
+							<text class="number" :class="item.number">{{item.number}}</text>
+							<view class="flex1 Odds">odds:{{['Green','Violet','Red'].find(x=>x==item.number) ? '2.00' : '9.00'}}</view>
+							<text class="btn-1"  @click="item.amount=item.amount-单注金额" v-if="item.amount>单注金额">-</text>
+							<text class="jine">{{item.amount}}</text>
+							<text class="btn-1" @click="item.amount=item.amount+单注金额">+</text>
+						</view>
 					</view>
-					<view>Amount per bet:</view>
-					<view class="list-2">
-						<text :class="{active:单注金额==10}" @click="单注金额=10">10.00</text>
-						<text :class="{active:单注金额==100}" @click="单注金额=100">100.00</text>
-						<text :class="{active:单注金额==1000}" @click="单注金额=1000">1000.00</text>
-						<text :class="{active:单注金额==10000}" @click="单注金额=10000">10000.00</text>
-					</view>
-					<view>Number of bets:</view>
-					<input class="input-1" type="number" v-model="注数" @blur="blur1()"/>
-					<view class="zongjine">Total contract money is <text>{{总金额}}</text> </view>
+					<view class="">Game：Parity</view>
+					<view class="">Period：<text class="red-text">{{即将开奖.period}}</text></view>
+					<view class="">Quantity：<text class="red-text">{{选中号码.length}}</text></view>
+					<view class="">Total amount：<text class="red-text">{{总金额}}</text></view>
 				</view>
 				<view class="foot">
 					<text @click="$refs.OrderConfirm.close()">Cancel</text>
@@ -228,8 +187,12 @@
 			</view>
 		</uni-popup>
 		
+		<!-- <newTabber /> -->
 		
-		<newTabber />
+		<!-- <view class="xuanfu">
+			悬浮按钮
+		</view> -->
+		
 	</view>
 </template>
 
@@ -260,7 +223,6 @@
 				// method:"g", //玩法 g r v 
 				选中号码:[],
 				单注金额:10,
-				注数:1,
 				购买记录:{
 					query:{
 						page:1,
@@ -270,6 +232,7 @@
 					total:-1,
 					loading:false
 				},
+				展开记录:false
 				
 			};
 		},
@@ -279,10 +242,13 @@
 				token:x=>x.token
 			}),
 			总金额(){
-				if(!this.注数){
+				if(this.选中号码.length==0){
 					return 0.00
 				}
-				let n = Math.abs(parseInt(this.注数))  * this.选中号码.length * this.单注金额
+				var n = 0 
+				this.选中号码.forEach(item=>{
+					n = n + parseInt(Math.round( ( item.amount)*100 )) /100 
+				})
 				return new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 4 }).format(n)
 			}
 		},
@@ -290,12 +256,10 @@
 			...mapMutations({
 				setItem:"setItem"
 			}),
-			blur1(){
-				if(!this.注数){
-					this.注数 = 1
-				}else{
-					this.注数 = Math.abs( parseInt(this.注数) )
-				}
+			go(path){
+				uni.navigateTo({
+					url:path
+				})
 			},
 			获取用户(){
 				this.$http('/UserInfo','').then(x=>{
@@ -318,16 +282,16 @@
 				}
 				this.选中号码.forEach(x=>{
 					o.order.push({
-						amount:this.单注金额*this.注数,
-						method: name[x] ? 2 : 1 ,
-						content: name[x] ? name[x] : x 
+						amount:x.amount,
+						method: name[x.number] ? 2 : 1 ,
+						content: name[x.number] ? name[x.number] : x.number 
 					})
 				})
 				this.$refs.OrderConfirm.close()
 				this.$http('/Game/Buy',o).then(res=>{
 					if(res.result){
 						uni.showToast({ title:'Successful purchase'})
-						this.获取购买记录()
+						// this.获取购买记录()
 					}else{
 						uni.showToast({ title:res.msg, icon:'none' })
 					}
@@ -336,18 +300,22 @@
 				})
 			},
 			购买(){
+				var regPos = /^[0-9]+.?[0-9]*/;
 				if(this.选中号码.length==0){
 					uni.showToast({ title:'Please select a number', icon:'none' })
+					return
+				}else if(!regPos.test(this.单注金额) || this.单注金额<=0){
+					uni.showToast({ title:'The amount entered is incorrect', icon:'none' })
 					return
 				}
 				this.$refs.OrderConfirm.open()
 			},
 			选号(number){
-				if(this.选中号码.find(x=>x==number)){
-					let i = this.选中号码.findIndex(x=>x==number)
+				if(this.选中号码.find(x=>x.number==number)){
+					let i = this.选中号码.findIndex(x=>x.number==number)
 					this.选中号码.splice(i,1)
 				}else{
-					this.选中号码.push(number)
+					this.选中号码.push({number:number,n:1,amount:this.单注金额})
 				}
 			},
 			changeGame(id){
@@ -435,7 +403,7 @@
 			init(){
 				this.获取即将()
 				this.获取开奖记录()
-				this.获取购买记录()
+				// this.获取购买记录()
 			}
 		},
 		onShow(){
@@ -443,32 +411,67 @@
 		},
 		onLoad(){
 			// this.init()
+			// setTimeout(()=>{
+			// 	this.$refs.OrderConfirm.open()
+			// },1000)
 		},
 		onHide(){
 			this.显示倒计时=false
+		},
+		watch:{
+			单注金额(newValue,old){
+				console.log(newValue,old)
+				this.选中号码.forEach(x=>{
+					x.amount = newValue
+				})
+			}
 		}
 
 	}
 </script>
 
 <style lang="scss" scoped>
+	.xuanfu{
+		position: absolute;
+	}
+	.MoreRecords{
+		font-size: 12px;
+		display: flex;
+		justify-content: space-between;
+	}
 	
 	.game {
 		padding: 10px 10px 60px;
 		font-size: 14px;
+	}
+	
+	.yuan{
+		width: 16px;
+		height: 16px;
+		border-radius: 100%;
+		display: inline-block;
+		margin: 0px 3px;
+		&.Green{
+			background: #4caf50;
+		}
+		&.Red{
+			background: red;
+		}
+		&.Violet{
+			background: #673ab7;
+		}
 	}
 
 	.box-1 {
 		background: var(--color);
 		padding: 3vw;
 		border-radius: 1vw;
-		box-shadow: 0.33vw 0.33vw 1vw rgba(0, 0, 0, .15);
 		color: #fff;
 
 		.qian {
 			display: flex;
 			align-items: center;
-			padding: 12px 0px;
+			padding: 5px 0px;
 
 			text {
 				font-size: 22px;
@@ -481,8 +484,9 @@
 
 			.btn-1,
 			.btn-2 {
-				width: 94px;
-				line-height: 36px;
+				font-size: 13px;
+				width: 80px;
+				line-height: 28px;
 				text-align: center;
 				margin: 0px 5px 0px 0px;
 			}
@@ -503,9 +507,120 @@
 			}
 		}
 	}
-
+	
+	.box-1-1{
+		background: #fff;
+		margin: 10px 0px;
+		border-radius: 5px;
+		position: relative;
+		.top{
+			padding:5px 0px;
+			display: flex;
+			text-align: center;
+			align-items: center;
+			position: relative;
+			&::before{
+				position: absolute;
+				content: '';
+				left: 50%;
+				width: 1px;
+				height: 90%;
+				top: 5%;
+				background: #eee;
+			}
+		}
+		
+		.left{
+			flex: 1;
+		}
+		.right{
+			width: 50%;
+		}
+		.title-1{
+			margin: 0px 0px 5px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.daojishi{
+			display: flex;
+			justify-content: center;
+			color: red;
+			/deep/ uni-text {
+				line-height: 30px;
+				height: 30px;
+				font-size: 20px;
+				color: var(--color) !important;
+			}
+			/deep/ .uni-countdown__number {
+				width: 30px;
+			}
+		}
+		.Results{
+			display: flex;
+			align-items: center;
+			margin: 3px 0px;
+			padding-left: 35%;
+			.number{
+				font-size: 12px;
+				width: 20px;
+				line-height: 18px;
+				border-radius: 100%;
+				border: 1px solid #a7a7a7;
+				margin: 0px 10px 0px 0px;
+			}
+		}
+		.list {
+			// position: absolute;
+			// width: 100%;
+			// top: 100%;
+			transition: all 0.3s;
+			height: 326px;
+			overflow: hidden;
+			&.close{
+				height: 0px;
+			}
+			border-top: 1px solid #eee;
+			box-shadow: 0.33vw 0.33vw 1vw rgba(0, 0, 0, .15);
+			background: #fff;
+			text-align: center;
+			line-height: 25px;
+			font-size: 12px;
+			>view {
+				padding: 0px 10px;
+				display: flex;
+				&:nth-child(2n){
+					background: #eee;
+				}
+				>view {
+					flex: 1;
+				}
+			}
+			.textGreen{
+				color:#4caf50;
+			}
+			.textRed{
+				color: #f44336;
+			}
+			.More{
+				justify-content: flex-end;
+				align-items: center;
+			}
+			.number{
+				margin-left: 40%;
+				margin-top: 5px;
+				display: flex;
+				// padding-left: 40%;
+				// justify-content: center;
+				align-items: center;
+			}
+			.close{
+				justify-content: center;
+			}
+		}
+	}
+	
 	.box-2 {
-		box-shadow: 0.33vw 0.33vw 1vw rgba(0, 0, 0, .15);
 		border-radius: 4px;
 		overflow: hidden;
 		margin: 10px 0px 0px;
@@ -513,73 +628,30 @@
 
 		.tabs {
 			display: flex;
-			color: #fff;
-			line-height: 48px;
-			background: var(--color);
+			// color: #fff;
+			line-height: 36px;
+			// background: var(--color);
 			text-align: center;
-
 			view {
 				flex: 1;
 			}
-
 			.active {
-				border-bottom: 3px solid #000;
-			}
-		}
-
-		.info {
-			display: flex;
-			padding: 10px;
-			text-align: center;
-			height: 124px;
-			box-sizing: border-box;
-
-			>view {
-				flex: 1;
-				display: flex;
-				flex-direction: column;
-				justify-content: space-around;
-				align-items: center;
-			}
-
-			.title-1 {
-				color: #9e9e9e;
-			}
-
-			.qihao {
-				font-size: 22px;
-			}
-
-			.daojishi {
-
-				/deep/ uni-text:nth-child(1),
-				/deep/ uni-text:nth-child(2) {
-					display: none;
-				}
-
-				/deep/ uni-text {
-					line-height: 38px;
-					height: 38px;
-					font-size: 25px;
-				}
-
-				/deep/ .uni-countdown__number {
-					width: 38px;
-				}
+				color: var(--color);
+				border-bottom: 3px solid var(--color);
 			}
 		}
 	}
 
 	.box-3 {
 		text-align: center;
+		background: #fff;
 		color: #fff;
+		padding: 10px 10px 10px;
 		.active{
 			opacity: 0.5;
-			// opacity: 1 !important;
 		}
 		.btns {
-			
-			margin-top: 10px;
+			// margin-top: 10px;
 			display: flex;
 			justify-content: space-between;
 
@@ -610,9 +682,21 @@
 			view {
 				// opacity: 0.6;
 				width: calc((100% - 12vw)/5);
-				line-height: 44px;
-				margin: 15px 0px 0px;
-				background: #2196f3;
+				line-height: 30px;
+				margin: 10px 0px 0px;
+				// background: #2196f3;
+			}
+			.Green{
+				background: #4caf50;
+			}
+			.Red{
+				background: #f44336;
+			}
+			.RedViolet{
+				background: linear-gradient(135deg , #f44336 50%,#673ab7 50%);
+			}
+			.GreenViolet{
+				background: linear-gradient(135deg , #4caf50 50%,#673ab7 50%);
 			}
 		}
 
@@ -622,164 +706,32 @@
 			margin: 15px 0px 0px;
 		}
 	}
-
-	.box-4 {
-		margin-top: 15px;
-
-		.title-1 {
-			height: 44px;
+	
+	.box-5{
+		margin: 10px 0px 0px;
+		padding: 0px 0px 5px;
+		background: #fff;
+		>view{
 			display: flex;
-			justify-content: center;
-			align-items: center;
-			background: var(--color);
-			color: #fff;
-			font-size: 16px;
+			padding: 5px 10px;
+		}
+		input{
+			margin-left: 5px;
+			border-bottom: 1px solid red;
+			color: red;
+			flex: 1;
+		}
+		.Empty{
+			color: red;
+			font-size: 12px;
+			margin: 0px 0px 0px 15px;
+		}
+		.list{
 			text{
+				padding: 3px 5px;
+				background: #eee;
 				margin: 0px 5px;
-			}
-		}
-
-		.list {
-			box-shadow: 0.33vw 0.33vw 1vw rgba(0, 0, 0, .15);
-			background: #fff;
-			text-align: center;
-			line-height: 44px;
-			font-size: 13px;
-			>view {
-				padding: 0px 10px;
-				display: flex;
-				border-bottom: 1px solid #d6d6d6;
-
-				>view {
-					flex: 1;
-				}
-			}
-
-			.yuan {
-				width: 16px;
-				height: 16px;
-				border-radius: 100%;
-				display: inline-block;
-				margin: 0px 3px;
-				&.Green{
-					background: #4caf50;
-				}
-				&.Violet{
-					background: #673ab7;
-				}
-				&.Red{
-					background: red;
-				}
-			}
-			  
-			
-		}
-
-		.fenye {
-			margin: 10px auto 0px;
-			width: 50%;
-
-			/deep/ .uni-pagination__btn {
-				width: 30px;
-				border-radius: 100%;
-				background: #fff;
-			}
-		}
-	}
-
-	.box-5 {
-		.title-1 {
-			margin: 15px 0px 0px;
-			background: var(--color);
-			color: #fff;
-			line-height: 44px;
-			text-align: center;
-		}
-		.list {
-			background: #fff;
-			box-shadow: 0.33vw 0.33vw 1vw rgba(0, 0, 0, .15);
-			.item{
-				border-bottom: 1px solid #eee;
-				padding: 0px 15px 0px;
-			}
-			.title-2{
-				height: 44px;
-				display: flex;
-				align-items: center;
 				font-size: 12px;
-				.name{
-					width: 50px;
-				}
-				.period{
-					width: 100px;
-				}
-				.icon-box{
-					flex: 1;
-					text-align: right;
-				}
-				.WinLose{
-					width: 80px;
-					font-size: 12px;
-				}
-			}
-			.xiangqing.open{
-				height: 325px;
-			}
-			.xiangqing {
-				height: 0px;
-				transition: all 0.5s;
-				padding: 0px 10px 0px;
-				font-size: 12px;
-				box-sizing: border-box;
-				overflow: auto;
-				>view:not(.btn-1){
-					display: flex;
-					padding: 5px 0px;
-					>view{
-						display: flex;
-						align-items: center;
-					}
-					>view:nth-child(1){
-						width: 124px;
-						flex-shrink: 0;
-					}
-				}
-				.yuan{
-					width: 16px;
-					height: 16px;
-					border-radius: 100%;
-					background: #4caf50;
-					margin: 0px 0px 0px 10px;
-				}
-				.btn-1{
-					margin-bottom: 10px;
-					text-align: right;
-					view{
-						display: inline-block;
-						width: 88px;
-						line-height: 28px;
-						text-align: center;
-						color: #fff;
-						font-size: 14px;
-						background: #2196f3;
-					}
-				}
-			}
-			.red-text{
-				color: #f44336;
-			}
-			.lv-text{
-				color: #4caf50;
-			}
-		}
-		.fenye {
-			margin: 10px auto 0px;
-			width: 50%;
-		
-			/deep/ .uni-pagination__btn {
-				width: 30px;
-				border-radius: 100%;
-				background: #fff;
 			}
 		}
 	}
@@ -814,8 +766,9 @@
 	
 	.OrderConfirm{
 		width: 80vw;
-		min-height: 60vh;
+		height: 70vh;
 		background: #fff;
+		border-radius: 5px;
 		display: flex;
 		flex-direction: column;
 		.title-1{
@@ -827,58 +780,63 @@
 			flex: 1;
 			overflow: auto;
 			padding: 10px;
+			display: flex;
+			flex-direction: column;
 		}
 		.list-1{
-			margin: 5px 0px 10px;
-			display: flex;
-			flex-wrap: wrap;
-			text{
+			flex: 1;
+			overflow: auto;
+			border-bottom: 1px solid #a5a5a5;
+			.item{
+				display: flex;
+				align-items: center;
+				padding: 3px ;
+				border-bottom: 1px solid #eee;
+			}
+			.flex1{
+				flex: 1;
+			}
+			.Odds{
+				margin: 0px 0px 0px 15px;
+				font-size: 12px;
+			}
+			.btn-1{
+				width: 26px;
+				text-align: center;
+				line-height: 26px;
+				background: #eaeaea;
+			}
+			.jine{
+				color: var(--color);
+				width: 50px;
+				text-align: center;
+			}
+			.number{
 				font-size: 12px;
 				text-align: center;
-				border-radius: 3px;
 				background: #2196f3;
-				line-height: 26px;
+				// line-height: 20px;
 				margin: 2px;
+				padding: 3px 5px;
 				color: #fff;
-				width: calc(100% / 5 - 4px);
+				// width: 40px;
 				&.Green{
 					background: #4caf50;
+					// color: #4caf50;
 				}
 				&.Violet{
+					// color: #673ab7;
 					background: #673ab7;
 				}
 				&.Red{
+					// color:#f44336 ;
 					background: #f44336;
 				}
 			}
 		}
-		.list-2{
-			margin: 5px 0px 10px;
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-between;
-			text{
-				&.active{
-					opacity: 1;
-				}
-				opacity: 0.6;
-				width: 45%;
-				margin: 0px 0px 10px;
-				text-align: center;
-				color: #fff;
-				background: #f44336;
-				line-height: 30px;
-			}
-		}
-		.zongjine{
-			margin: 5px 0px 10px;
-			text{
-				color: red;
-			}
-		}
-		.input-1{
-			border-bottom: 1px solid #eee;
-			margin: 5px 0px 10px;
+		
+		.red-text{
+			color: red;
 		}
 		.foot{
 			border-top: 1px solid #eee;
@@ -895,5 +853,14 @@
 		}
 	}
 	
-	
+	.Submit{
+		background: var(--color);
+		position: fixed;
+		width: 100%;
+		line-height: 44px;
+		color: #fff;
+		left: 0px;
+		bottom: 0px;
+		text-align: center;
+	}
 </style>

@@ -18,9 +18,7 @@
 		{
 			"path": "pages/game/game",
 			"style": {
-				"app-plus": {
-					"titleNView": false
-				}
+				"navigationBarTitleText": "Game"
 			}
 		},
 		{
@@ -57,21 +55,21 @@
 		}, {
 			"path": "pages/my/promotion",
 			"style": {
-				"navigationBarTitleText": "Promotion",
-				"app-plus": {
-					"titleNView": {
-						"buttons": [{
-							"type": "menu"
-						}]
-					}
-				},
-				"h5": {
-					"titleNView": {
-						"buttons": [{
-							"type": "menu"
-						}]
-					}
-				}
+				"navigationBarTitleText": "Promotion"
+				// "app-plus": {
+				// 	"titleNView": {
+				// 		"buttons": [{
+				// 			"type": "menu"
+				// 		}]
+				// 	}
+				// },
+				// "h5": {
+				// 	"titleNView": {
+				// 		"buttons": [{
+				// 			"type": "menu"
+				// 		}]
+				// 	}
+				// }
 			}
 
 		}, {
@@ -219,17 +217,33 @@
             }
             
         }
+        ,{
+            "path" : "pages/my/orders",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "My Orders"
+            }
+            
+        }
+        ,{
+            "path" : "pages/game/record",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "Game Record"
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
-		"navigationBarBackgroundColor": "#ec0909"
+		"navigationBarBackgroundColor": "#e62534"
 	},
 	"tabBar": {
 		"custom": true,
 		"color": "#FFFFFF",
 		"selectedColor": "#fff",
 		"borderStyle": "black",
-		"backgroundColor": "#ec0909",
+		"backgroundColor": "#e62534",
 		"list": [{
 				"pagePath": "pages/home",
 				"iconPath": "static/tabber/home.png",
@@ -242,12 +256,12 @@
 				"selectedIconPath": "./static/tabber/sousuo.png",
 				"text": "Search"
 			},
-			{
-				"pagePath": "pages/game/game",
-				"iconPath": "static/tabber/qian.png",
-				"selectedIconPath": "static/tabber/qian.png",
-				"text": "game"
-			},
+			// {
+			// 	"pagePath": "pages/game/game",
+			// 	"iconPath": "static/tabber/qian.png",
+			// 	"selectedIconPath": "static/tabber/qian.png",
+			// 	"text": "game"
+			// },
 			{
 				"pagePath": "pages/my/personal",
 				"iconPath": "static/tabber/my.png",

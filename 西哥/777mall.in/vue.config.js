@@ -1,5 +1,6 @@
 const TransformPages = require('uni-read-pages')
-const {webpack} = new TransformPages()
+const { webpack } = new TransformPages()
+
 module.exports = {
 	configureWebpack: {
 		plugins: [
@@ -9,7 +10,7 @@ module.exports = {
 						includes: ['path', 'name', 'aliasPath']
 					});
 					return JSON.stringify(tfPages.routes)
-				}, true )
+				}, true)
 			})
 		]
 	}

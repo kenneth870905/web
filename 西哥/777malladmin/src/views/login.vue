@@ -6,7 +6,7 @@
             </div>
 
             <el-form-item prop="username">
-                <el-input prefix-icon="el-icon-user-solid" v-model="loginForm.username" placeholder="Username" tabindex="1" autocomplete="on" />
+                <el-input prefix-icon="el-icon-user-solid" @keyup.enter.native="handleLogin" v-model="loginForm.username" placeholder="Username" tabindex="1" autocomplete="on" />
             </el-form-item>
 
             <el-form-item prop="password">
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-
+import { mapActions, mapMutations, mapState } from "vuex";
 export default {
     name: 'Login',
     data() {
@@ -41,8 +41,8 @@ export default {
         }
         return {
             loginForm: {
-                username: 'admin',
-                password: '111111'
+                username: '',  // admin xiaomeng
+                password: '123456'
             },
             loginRules: {
                 username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -51,21 +51,56 @@ export default {
             loading: false,
         }
     },
+    computed:{
+        ...mapState({
+            nav:"nav" 
+        })
+    },
     methods: {
+        ...mapActions({
+            getNav:"getNav"
+        }),
+        ...mapMutations({
+            setToken:'setToken'
+        }),
         handleLogin() {
             this.$refs.loginForm.validate(valid => {
                 if (valid) {
-                    this.loading = true
-                    this.$router.push('/')
+                    this.Login()
                 } else {
                     console.log('error submit!!')
                     return false
                 }
             })
-        }
+        },
+        Login(){
+            this.loading = true
+            this.$axios.get('Login',{params:this.loginForm}).then(res => {
+                console.log(res)
+                if(res.result){
+                    this.正确('login successful')
+                    this.setToken(res.token)
+                    this.getNav()
+                    // this.$router.push('/')
+                }else{
+                    this.错误(res.msg)
+                }
+                this.loading=false
+            }).catch(err => {
+                this.loading=false
+                this.错误('System error, try again later')
+            })
+        },
+        // getNav(){
+        //     this.$axios.post('Nav','').then(res => {
+        //         console.log(res)
+        //     }).catch(err => {
+        //         console.error(err); 
+        //     })
+        // }
     },
     mounted() {
-        
+        // this.getNav()
     },
 }
 </script>

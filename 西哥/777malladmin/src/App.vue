@@ -4,6 +4,37 @@
     </div>
 </template>
 
+<script>
+import { mapActions, mapMutations, mapState } from 'vuex'
+export default {
+    data() {
+        return {
+            
+        }
+    },
+    computed:{
+        ...mapState({
+            nav:"nav",
+            navList:"navList",
+            navList2:'navList2'
+        })
+    },
+    methods:{
+        ...mapActions({
+            addNav:"addNav"
+        })
+    },
+    mounted() {
+        this.addNav()
+        
+        // var a = '123',b={},c=[]
+        // console.log(a.constructor === String)
+        // console.log(b.constructor === Object)
+        // console.log(c.constructor === Array)
+    },
+}
+</script>
+
 <style lang="scss">
 html,body{
     height: 100%;
@@ -18,6 +49,13 @@ html,body{
 .分页{
     text-align: right;
     margin: 10px 0px;
+    // padding-bottom:10px !important;
+    // padding-top: 10px !important;
+    // border-top: 1px solid #eee;
+    position: sticky;
+    bottom: 0px;
+    background: rgba($color: #fff, $alpha: 0.9);
+    z-index: 3;
 }
 
 ul,li{
@@ -29,4 +67,19 @@ ul,li{
 :root {
     --color:#ec0909;
 }
+
+.bjTime{
+    color: #0905ec;
+}
+
+.el-dialog__header{
+    border-bottom: 1px solid #eee;
+}
+
+// .fade-enter-active, .fade-leave-active {
+//   transition: opacity 0.5s;
+// }
+// .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+//   opacity: 0;
+// }
 </style>

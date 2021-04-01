@@ -14,6 +14,10 @@
 				</view>
 			</view>
 		</view>
+		
+		<view class="">没有对接</view>
+		<view class="">没有对接</view>
+		<view class="">没有对接</view>
 	</view>
 </template>
 

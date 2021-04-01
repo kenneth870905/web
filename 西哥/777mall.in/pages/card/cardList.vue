@@ -9,7 +9,7 @@
 				<view class="">{{item.upi}}</view>
 			</view>
 		</view> -->
-		<view class="title-1">Swipe left to delete</view>
+		<view class="title-1" v-if="list.length>0">Swipe left to delete</view>
 		<uni-swipe-action class="list">
 			<uni-swipe-action-item :options="options" @click="bindClick(item,index)"  v-for="(item,index) in list" class="item1">
 				<view class="item">
@@ -36,7 +36,8 @@
 					{
 						text: 'Delete',
 						style: {
-							backgroundColor: '#dd524d'
+							backgroundColor: '#fff',
+							color:'red'
 						}
 					}
 				]
@@ -108,7 +109,7 @@
 	}
 	.item{
 		flex: 1;
-		background: #009688;
+		background: #e75571;
 		padding: 12px;
 		// margin: 0px 0px 10px;
 		border-radius: 5px;

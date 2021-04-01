@@ -29,7 +29,7 @@ import { mapState, mapMutations } from 'vuex'
 export default {
     data() {
         return {
-            username: "",
+            username: "1000000006",
             password: ""
         };
     },
@@ -53,7 +53,7 @@ export default {
             })
         },
         login() {
-			let test1 = /^[0-9]{10}$/
+			var test1 = /^[0-9]{10}$/
 			if(!test1.test(this.username)){
 				uni.showToast({
 					title:'Please enter 10 digits phone',
