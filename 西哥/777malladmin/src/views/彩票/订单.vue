@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="flex100">
         <div class="header-1">
             <el-date-picker class="r15" style="width: 350px;" size="mini" v-model="time" :picker-options="pickerOptions" type="datetimerange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" ></el-date-picker>
             <!-- <el-input class="r15" v-model="单号" placeholder="单号" size="mini" style="width: 100px;"></el-input>
@@ -37,10 +37,10 @@
             <el-button type="primary" style="mini" size="mini">查询</el-button>
         </div>
 
-        <el-table v-loading="loading" class="table" :data="list" border stripe  size="mini" @sort-change="change1">
+        <el-table v-loading="loading" height="100%" class="table" :data="list" border stripe  size="mini" @sort-change="change1">
             <el-table-column label="用户" prop="uid" width="50px">
                 <template slot-scope="s">
-                    <userPopover>
+                    <userPopover :userId="s.row.uid">
                         <el-button type="text">{{s.row.uid}}</el-button>
                     </userPopover>
                 </template>
@@ -200,6 +200,12 @@ export default {
     }
 }
 .table{
-    min-height: 300px;
+    flex: 1;
+}
+
+.flex100{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 </style>

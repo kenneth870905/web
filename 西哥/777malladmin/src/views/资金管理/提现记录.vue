@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="flex100">
         <div class="header-1">
             <!-- <span>查询条件：</span> -->
             <el-date-picker class="r15" style="width: 350px;" size="mini" v-model="value1" type="datetimerange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" :picker-options="pickerOptions"></el-date-picker>
@@ -7,7 +7,7 @@
             <el-button size="mini">查询</el-button>
         </div>
 
-        <el-table class="table" v-loading="loading" :data="list" stripe border size="mini">
+        <el-table height="100%" class="table" v-loading="loading" :data="list" stripe border size="mini">
         <!-- <el-table v-loading="loading" :data="list" stripe border size="mini" @sort-change="change1"> -->
             <!-- <el-table-column type="selection" width="55"></el-table-column> -->
             <el-table-column fixed label="会员id" prop="uid" width="60px" align="center">
@@ -176,10 +176,12 @@ export default {
         flex: 1;
     }
 }
-.nowrap{
-    white-space: nowrap;
+.flex100{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
-.table{
-    min-height: 300px;
+.table {
+    flex: 1;
 }
 </style>

@@ -64,15 +64,8 @@ const verification = [
     },
 ]
 // 不需要动态 用于加入路由
-const NoVerification = [
-    {
-        path: '/LotteryManagement',
-        name:"LotteryManagement",
-        component: () => import('@/views/彩票/期数管理.vue'),
-        meta: { title: '期数管理'}
-    },
 
-
+let 资金管理 = [
     {
         path: '/funds/KeepRecords',
         name:"",
@@ -91,13 +84,9 @@ const NoVerification = [
         component: () => import('@/views/资金管理/提现记录.vue'),
         meta: { title: '提现记录'}
     },
-    // {
-    //     path: '/tksh',
-    //     name:"",
-    //     component: () => import('@/views/资金管理/取款审核.vue'),
-    //     meta: { title: '取款审核'}
-    // },
+]
 
+let 会员管理 =[
     {
         path: '/user/Online',
         name:"",
@@ -109,9 +98,9 @@ const NoVerification = [
         name:"",
         component: () => import('@/views/会员/会员分层.vue'),
         meta: { title: '会员分层'}
-    },
-
-
+    }
+]
+let 系统设置 =[
     {
         path: '/system/administrator',
         name:"",
@@ -124,26 +113,44 @@ const NoVerification = [
         component: () => import('@/views/系统设置/公告设置.vue'),
         meta: { title: '公告设置'}
     },
+]
+const NoVerification = [
+    {
+        path: '/LotteryManagement',
+        name:"LotteryManagement",
+        component: () => import('@/views/彩票/期数管理.vue'),
+        meta: { title: '期数管理'}
+    },
+    {
+        path: '/Log',
+        name:"",
+        component: () => import('@/views/操作日志.vue'),
+        meta: { title: '操作日志'}
+    },
+    ...资金管理,
+    ...会员管理,
+    ...系统设置,
+
 
 ]
 // 不需要动态 用于显示导航
 const navlist = [
     NoVerification[0],
+    NoVerification[1],
     {
         meta:{title:'资金管理'},
-        children:[...NoVerification.slice(1,3)]
+        children:[...资金管理]
     },
     {
         meta:{title:'会员管理'},
-        children:[...NoVerification.slice(3,5)]
+        children:[...会员管理]
     },
-    
     {
         meta:{title:'系统设置'},
-        children:[...NoVerification.slice(5)]
-    }
+        children:[...系统设置]
+    },
+    // NoVerification.pop(),
 ]
-
 
 export {
     verification,

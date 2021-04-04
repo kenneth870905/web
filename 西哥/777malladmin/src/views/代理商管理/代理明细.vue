@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="flex100">
         <div class="header-1">
             <el-input class="r15" placeholder v-model="会员账号" size="mini" style="width: 250px;">
                 <el-select style="width:80px" v-model="账号类型" slot="prepend">
@@ -10,11 +10,11 @@
             <el-button type size="mini">查询</el-button>
         </div>
 
-        <el-table class="table" v-loading="loading" :data="list" border stripe  size="mini" row-key="id" :tree-props="{children: 'children', hasChildren: 'hasChildren'}">
+        <el-table class="table" height="100%" v-loading="loading" :data="list" border stripe  size="mini" row-key="id" :tree-props="{children: 'children', hasChildren: 'hasChildren'}">
         <!-- <el-table class="table" v-loading="loading" :data="list" border size="mini" row-key="id" :tree-props="{children: 'children', hasChildren: 'hasChildren'}"> -->
-            <el-table-column label="用户Id" prop="uid" width="60px">
+            <el-table-column label="用户Id" prop="uid" width="60px" align="center">
                 <template slot-scope="s">
-                    <userPopover>
+                    <userPopover :userId="s.row.uid">
                         <el-button type="text">{{s.row.uid}}</el-button>
                     </userPopover>
                 </template>
@@ -40,11 +40,12 @@
 
         <el-pagination class="分页" background layout="sizes,prev, pager, next , jumper" :current-page="query.page" :page-count="pageCount" @current-change="fenye" @size-change="changeSize" :page-sizes="[10, 20 , 50]" ></el-pagination>
         
-        
-        <el-button type="" @click="$router.push('/BillingDetails')">跳转结算详情</el-button>
-        <el-button type="" @click="$router.push('/ordersDetails')">跳转下单详情</el-button>
-        <el-button type="" @click="$router.push('/withdrawDetails')">跳转提现详情</el-button>
-        <el-button type="" @click="$router.push('/commission')">跳转佣金转入详情</el-button>
+        <!-- <div>
+            <el-button type="" @click="$router.push('/BillingDetails')">跳转结算详情</el-button>
+            <el-button type="" @click="$router.push('/ordersDetails')">跳转下单详情</el-button>
+            <el-button type="" @click="$router.push('/withdrawDetails')">跳转提现详情</el-button>
+            <el-button type="" @click="$router.push('/commission')">跳转佣金转入详情</el-button>
+        </div> -->
 
     </div>
 </template>
@@ -129,7 +130,13 @@ export default {
         font-size: 14px;
     }
 }
-.table{
-    min-height: 300px;
+
+.flex100{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.table {
+    flex: 1;
 }
 </style>

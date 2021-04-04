@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="flex100">
         <div class="header-1">
             <el-input class="r15" placeholder v-model="会员账号" size="mini" style="width: 250px;">
                 <el-select style="width:80px" v-model="账号类型" slot="prepend">
@@ -10,11 +10,11 @@
             <el-button type size="mini">查询</el-button>
         </div>
 
-        <el-table class="table" v-loading="loading" :data="list" border stripe  size="mini" row-key="id" :tree-props="{children: 'children', hasChildren: 'hasChildren'}">
+        <el-table class="table" height="100%" v-loading="loading" :data="list" border stripe  size="mini" row-key="id" :tree-props="{children: 'children', hasChildren: 'hasChildren'}">
         <!-- <el-table class="table" v-loading="loading" :data="list" border size="mini" row-key="id" :tree-props="{children: 'children', hasChildren: 'hasChildren'}"> -->
             <el-table-column label="用户id" prop="uid" width="60px" align="center">
                 <template slot-scope="s">
-                    <userPopover>
+                    <userPopover :userId="s.row.uid">
                         <el-button type="text">{{s.row.uid}}</el-button>
                     </userPopover>
                 </template>
@@ -132,7 +132,13 @@ export default {
         font-size: 14px;
     }
 }
-.table{
-    min-height: 300px;
+
+.flex100{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.table {
+    flex: 1;
 }
 </style>
