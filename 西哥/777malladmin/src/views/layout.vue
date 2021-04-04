@@ -16,7 +16,7 @@
                             <i class="el-icon-menu"></i>
                             <span slot="title">{{item.meta.title}}</span>
                         </template>
-                        <el-menu-item :index="item2.path" v-for="(item2,index2) in item.children">{{item2.meta.title}}</el-menu-item>
+                        <el-menu-item :index="item2.path" v-for="(item2,index2) in item.children" :key="index2">{{item2.meta.title}}</el-menu-item>
                     </el-submenu>
                     <el-menu-item :index="item.path" v-else>
                         <i class="el-icon-s-grid"></i>
@@ -33,7 +33,7 @@
                             <i class="el-icon-menu"></i>
                             <span slot="title">{{item.meta.title}}</span>
                         </template>
-                        <el-menu-item :index="item2.path" v-for="(item2,index2) in item.children">{{item2.meta.title}}</el-menu-item>
+                        <el-menu-item :index="item2.path" v-for="(item2,index2) in item.children" :key="index2">{{item2.meta.title}}</el-menu-item>
                     </el-submenu>
                     <el-menu-item :index="item.path" v-else>
                         <i class="el-icon-s-grid"></i>
@@ -88,6 +88,9 @@
 
                 <router-view></router-view>
             </el-main>
+            <el-footer height="40px">
+                System version 1.0.0
+            </el-footer>
         </el-container>
     </el-container>
 </template>
@@ -109,7 +112,6 @@ export default {
             },
             closeTk: () => {
                 this.showTk=false
-                console.log('关闭弹框')
             }
         }
     },
@@ -232,6 +234,14 @@ export default {
         margin: 3px 5px 3px 0px;
         cursor: pointer;
     }
+}
+
+.el-footer{
+    line-height: 40px;
+    font-size: 13px;
+    color: rgba($color: #000000, $alpha: 0.6);
+    text-align: right;
+    box-shadow: 0px 0px 3px 0px #9c9c9c;
 }
 
 // 左侧导航栏

@@ -48,7 +48,7 @@ html,body{
 }
 .分页{
     text-align: right;
-    margin: 10px 0px;
+    margin: 10px 0px 0px;
     // padding-bottom:10px !important;
     // padding-top: 10px !important;
     // border-top: 1px solid #eee;
@@ -74,6 +74,10 @@ ul,li{
 
 .el-dialog__header{
     border-bottom: 1px solid #eee;
+    padding: 10px 20px 10px !important;
+}
+.el-dialog__headerbtn{
+    top: 15px !important;
 }
 
 // .fade-enter-active, .fade-leave-active {
@@ -82,4 +86,6 @@ ul,li{
 // .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
 //   opacity: 0;
 // }
+
+
 </style>

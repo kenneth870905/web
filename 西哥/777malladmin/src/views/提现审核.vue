@@ -23,7 +23,7 @@
             </el-table-column>
             <el-table-column label="会员Id" prop="uid" width="60px" align="center">
                 <template slot-scope="s">
-                    <userPopover>
+                    <userPopover :userId="s.row.uid">
                         <el-button type="text">{{s.row.uid}}</el-button>
                     </userPopover>
                 </template>

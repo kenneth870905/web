@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-popover placement="right" trigger="hover" ref="popover">
+        <el-popover placement="right" trigger="click" ref="popover">
             <slot slot="reference"></slot>
             <div class="list">
                 <el-button type size="mini" @click="setTk('user')">会员信息</el-button>

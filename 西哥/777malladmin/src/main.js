@@ -65,6 +65,7 @@ router.beforeEach((to, from, next) => {
 
 import axios from 'axios'
 axios.defaults.baseURL = api
+// axios.defaults.headers.post['Content-Type'] = 'application/json'    //主要是去掉 charset=utf-8
 Vue.prototype.$axios = axios
 
 axios.interceptors.request.use(function (config) {
