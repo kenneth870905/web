@@ -1,53 +1,68 @@
 <template>
-    <div>
-        <h1>未对接</h1>
+    <div class="flex100">
         <div class="header-1">
             <span>查询条件：</span>
-            <el-date-picker class="r15" style="width: 350px;" size="mini" v-model="time" type="datetimerange" start-placeholder="开始日期" end-placeholder="结束日期" :picker-options="pickerOptions"></el-date-picker>
-            <el-select class="r15" v-model="类型" size="mini" style="width: 100px;">
-                <el-option label="全部类型" value></el-option>
-                <el-option label="普通" value="1"></el-option>
-                <el-option label="普通2" value="2"></el-option>
-            </el-select>
-
-            <el-input class="r15" placeholder v-model="会员账号" size="mini" style="width: 250px;">
-                <el-select style="width:80px" v-model="账号类型" slot="prepend">
-                    <el-option label="账号" value></el-option>
-                    <el-option label="Id" value="2"></el-option>
-                </el-select>
+            <el-date-picker class="r15" value-format="yyyy-MM-dd HH:mm:ss" style="width: 350px;" size="mini" v-model="time" type="datetimerange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" :picker-options="pickerOptions"></el-date-picker>
+            <el-input class="r15" placeholder="请输入内容" v-model="input1" size="mini" style="width: 350px;">
+                <template slot="prepend">操作员账号</template>
             </el-input>
-            <el-button type size="mini">查询</el-button>
-        </div>
-        <div class="header-1">
-            <span>相关操作：</span>
-            <el-button type size="mini">重置密码</el-button>
-            <el-button type size="mini">域名/返水</el-button>
-            <el-button type size="mini">旗下会员</el-button>
-            <el-button type="warning" size="mini">删除</el-button>
+            <el-button size="mini" @click="查询()">查询</el-button>
         </div>
 
-        <el-table :data="list" border size="mini">
-            <el-table-column type="selection" width="40"></el-table-column>
-            <el-table-column label="账号"></el-table-column>
-            <el-table-column label="代理余额"></el-table-column>
-            <el-table-column label="姓名"></el-table-column>
-            <el-table-column label="分成"></el-table-column>
-            <el-table-column label="上级代理"></el-table-column>
-            <el-table-column label="注册时间"></el-table-column>
-            <el-table-column label="操作" width="150px">
-                <template>
-                    <el-button type="" size="mini">禁用</el-button>
+        <el-table class="table" height="100%" v-loading="loading" :data="list" stripe border size="mini" >
+            <el-table-column label="用户" prop="uid" width="200px" align="center">
+                <template slot-scope="s">
+                    <userPopover :userId="s.row.username">
+                        <el-button type="text">{{s.row.username}}</el-button>
+                    </userPopover>
+                </template>
+            </el-table-column>
+            <el-table-column label="用户总数" prop="userTotal"></el-table-column>
+            <el-table-column label="状态" prop="state">
+                <template slot-scope="s">
+                    {{userState[s.row.state]}}
+                </template>
+            </el-table-column>
+            <el-table-column label="一级代理奖金费率" prop="agent_first_fee_rate">
+                <template slot-scope="s">
+                    {{s.row.agent_first_fee_rate*100}}%
+                </template>
+            </el-table-column>
+            <el-table-column label="一级代理充值费率" prop="agent_first_recharge_rate">
+                <template slot-scope="s">
+                    {{s.row.agent_first_recharge_rate*100}}%
+                </template>
+            </el-table-column>
+            <el-table-column label="二级代理奖金费率" prop="agent_second_fee_rate">
+                <template slot-scope="s">
+                    {{s.row.agent_second_fee_rate*100}}%
+                </template>
+            </el-table-column>
+            <el-table-column label="二级代理充值费率" prop="agent_second_recharge_rate">
+                <template slot-scope="s">
+                    {{s.row.agent_second_recharge_rate*100}}%
+                </template>
+            </el-table-column>
+            <el-table-column label="创建时间" prop="created_at" width="160px" align="center">
+                <template slot-scope="s">
+                    <div>{{s.row.created_at}}</div>
+                    <div class="bjTime">{{s.row.created_at | bjTime}}</div>
                 </template>
             </el-table-column>
         </el-table>
+
+        <el-pagination v-show="last_page>0" class="分页" :current-page="query.page" :page-count="last_page" @current-change="fenye" @size-change="changeSize" layout="sizes,prev, pager, next , jumper" :page-sizes="[10, 20 , 50]"></el-pagination>
+
     </div>
 </template>
 
 <script>
 import moment from 'moment'
 export default {
+    props: ['userId'],
     data() {
         return {
+            time: '',
             pickerOptions: {
                 shortcuts: [
                     {
@@ -93,17 +108,66 @@ export default {
                     }
                 ]
             },
-            time: "",
-            类型: "",
-            账号类型: "",
-            会员账号: "",
+            input1: "",
+
+            userState: {
+                1: '正常',
+                0: '注册异常',
+                '-1': '冻结',
+                99: "内部账号"
+            },
+
+            // cid 1为赠送彩金  2为冻结账户  3为解冻账户
+            query: {
+                page: 1,
+                size: 10,
+            },
             list: [{ id: 1 }, { id: 2 }, { id: 3 }],
+            loading: false,
+            last_page: 0,
+           
+
         }
     },
+    methods: {
+        changeSize(size) {
+            this.query.page = 1
+            this.query.size = size
+            this.getList()
+        },
+        fenye(i) {
+            this.query.page = i
+            this.getList()
+        },
+        getList() {
+            this.loading=true
+            this.$axios.post('Agentline',this.query ).then(res => {
+                if (res.result) {
+                    this.list = res.data
+                    this.last_page = res.last_page
+                }
+                this.loading = false
+            }).catch(err => {
+                this.loading = false
+            })
+        }
+    },
+    mounted() {
+        this.getList()
+    }
 }
 </script>
 
 <style lang="scss" scoped>
+.flex100{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.table {
+    flex: 1;
+}
+
 .header-1 {
     display: flex;
     align-items: center;
@@ -111,11 +175,15 @@ export default {
     border-bottom: 1px solid #eee;
     padding: 0px 0px 10px;
     margin: 0px 0px 10px;
+    font-size: 14px;
     .r15 {
         margin-right: 15px;
     }
-    span {
-        font-size: 14px;
+    .flex1 {
+        flex: 1;
     }
 }
+
+
+
 </style>

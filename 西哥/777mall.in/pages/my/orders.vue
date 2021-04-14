@@ -4,10 +4,10 @@
 			<view class="item" v-for="item in 购买记录.list">
 				<view class="title-2" @click="item.open = !item.open">
 					<text class="name">
-						<text v-if="item.gid==10001">Parity</text>
-						<text v-if="item.gid==10002">Sapre</text>
-						<text v-if="item.gid==10003">Bcone</text>
-						<text v-if="item.gid==10004">Emerd</text>
+						<text v-if="item.gid==10001">{{game[10001] ? game[10001].name : '' }}</text>
+						<text v-if="item.gid==10002">{{game[10002] ? game[10002].name : ''}}</text>
+						<text v-if="item.gid==10003">{{game[10003] ? game[10003].name : ''}}</text>
+						<text v-if="item.gid==10004">{{game[10004] ? game[10004].name : ''}}</text>
 					</text>
 					<text class="period">{{item.period}}</text>
 			<!-- state 1是中  2是没中 -1是撤单  0是还没结算 -->
@@ -76,6 +76,7 @@
 </template>
 
 <script>
+	import { mapState  , mapActions } from 'vuex'
 	export default {
 		data() {
 			return {
@@ -90,7 +91,15 @@
 				}
 			};
 		},
+		computed:{
+			...mapState({
+				game:x=>x.game
+			}),
+		},
 		methods:{
+			...mapActions({
+				getGame:"getGame"
+			}),
 			获取购买记录(){
 				if(this.购买记录.loading || (this.购买记录.total!=-1 && this.购买记录.total<=this.购买记录.list.length)){
 					return
@@ -117,6 +126,9 @@
 		},
 		onLoad() {
 			this.获取购买记录()
+			if(Object.keys(this.game).length==0){
+				this.getGame()
+			}
 		},
 		onReachBottom(){
 			this.获取购买记录()

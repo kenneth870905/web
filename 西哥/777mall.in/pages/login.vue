@@ -29,7 +29,7 @@ import { mapState, mapMutations } from 'vuex'
 export default {
     data() {
         return {
-            username: "1000000006",
+            username: "",	//1000000006
             password: ""
         };
     },
