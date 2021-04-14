@@ -127,6 +127,26 @@ const NoVerification = [
         component: () => import('@/views/操作日志.vue'),
         meta: { title: '操作日志'}
     },
+    {
+        path: '/Message',
+        name:"",
+        component: () => import('@/views/消息列表.vue'),
+        meta: { title: '消息列表'}
+    },
+    {
+        path: '/GameManage',
+        name:"",
+        component: () => import('@/views/游戏管理.vue'),
+        meta: { title: '游戏管理'}
+    },
+    {
+        path: '/GameConfig',
+        name:"",
+        component: () => import('@/views/彩票/游戏配置.vue'),
+        meta: { title: '游戏配置',notag:true}
+    },
+
+    
     ...资金管理,
     ...会员管理,
     ...系统设置,
@@ -137,6 +157,8 @@ const NoVerification = [
 const navlist = [
     NoVerification[0],
     NoVerification[1],
+    NoVerification[2],
+    NoVerification[3],
     {
         meta:{title:'资金管理'},
         children:[...资金管理]

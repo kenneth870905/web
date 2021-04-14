@@ -43,7 +43,8 @@
 				<view class="right">
 					<view class="title-1">{{即将开奖.period}}</view>
 					<view class="daojishi">
-						<uni-countdown v-if="显示倒计时" background-color="#eeeeee" :show-hour="false" :show-day="false" :second="倒计时" @timeup="timeup"></uni-countdown>
+						<uni-countdown v-if="显示倒计时 && 即将开奖.state==1" background-color="#eeeeee" :show-hour="false" :show-day="false" :second="倒计时" @timeup="timeup"></uni-countdown>
+						<text v-if="即将开奖.state==0">Game is closed</text>
 					</view>
 				</view>
 			</view>
@@ -92,10 +93,18 @@
 		
 			<view class="box-2">
 				<view class="tabs">
-					<view :class="{active:id==10001}" @click="changeGame(10001)">Parity</view>
-					<view :class="{active:id==10002}" @click="changeGame(10002)">Sapre</view>
-					<view :class="{active:id==10003}" @click="changeGame(10003)">Bcone</view>
-					<view :class="{active:id==10004}" @click="changeGame(10004)">Emerd</view>
+					<view :class="{active:id==10001}" @click="changeGame(10001)">
+						{{game[10001] ? game[10001].name :''}}
+					</view>
+					<view :class="{active:id==10002}" @click="changeGame(10002)">
+						{{game[10002] ? game[10002].name : ''}}
+					</view>
+					<view :class="{active:id==10003}" @click="changeGame(10003)">
+						{{game[10003] ? game[10003].name : ''}}
+					</view>
+					<view :class="{active:id==10004}" @click="changeGame(10004)">
+						{{game[10004] ? game[10004].name : ''}}
+					</view>
 				</view>
 			</view>
 
@@ -175,7 +184,7 @@
 							<text class="btn-1" @click="item.amount=item.amount+单注金额">+</text>
 						</view>
 					</view>
-					<view class="">Game：Parity</view>
+					<view class="">Game：{{game[id] ? game[id].name : ''}}</view>
 					<view class="">Period：<text class="red-text">{{即将开奖.period}}</text></view>
 					<view class="">Quantity：<text class="red-text">{{选中号码.length}}</text></view>
 					<view class="">Total amount：<text class="red-text">{{总金额}}</text></view>
@@ -198,7 +207,7 @@
 
 <script>
 	import newTabber from '@/components/azidingyi/newTabber.vue'
-	import { mapState , mapMutations } from 'vuex'
+	import { mapState , mapMutations , mapActions } from 'vuex'
 	export default {
 		components: {
 			newTabber
@@ -239,7 +248,8 @@
 		computed: {
 			...mapState({
 				userInfo: x => x.userInfo,
-				token:x=>x.token
+				token:x=>x.token,
+				game:x=>x.game
 			}),
 			总金额(){
 				if(this.选中号码.length==0){
@@ -255,6 +265,9 @@
 		methods:{
 			...mapMutations({
 				setItem:"setItem"
+			}),
+			...mapActions({
+				getGame:"getGame"
 			}),
 			go(path){
 				uni.navigateTo({
@@ -300,6 +313,13 @@
 				})
 			},
 			购买(){
+				if(this.即将开奖.state==0){
+					uni.showToast({
+						title:'Game is closed',
+						icon:'none'
+					})
+					return
+				}
 				var regPos = /^[0-9]+.?[0-9]*/;
 				if(this.选中号码.length==0){
 					uni.showToast({ title:'Please select a number', icon:'none' })
@@ -324,11 +344,11 @@
 			},
 			//倒计时结束
 			timeup(){
-				uni.showLoading({mask:true})
+				uni.showLoading({title:'Waiting the draw',mask:true})
 				setTimeout(()=>{
 					uni.hideLoading()
 					this.init()
-				},5000)
+				},1000 * 10)
 			},
 			cunKuan(){
 				uni.navigateTo({
@@ -344,6 +364,14 @@
 					if(res.result){
 						let data = res.data
 						this.即将开奖 = data
+						if(data.state==0){
+							uni.showModal({
+								title:'Prompt',
+								content:"Game is closed",
+								showCancel:false,
+								confirmText:"Ok"
+							})
+						}
 						// 计算倒计时
 						this.倒计时 = data.endTime - parseInt(new Date().getTime() / 1000) 
 						this.显示倒计时=false
@@ -407,9 +435,18 @@
 			}
 		},
 		onShow(){
-			this.init()
+			if(process.env.NODE_ENV != 'development'){
+				this.init()
+			}
 		},
 		onLoad(){
+			if(Object.keys(this.game).length==0){
+				this.getGame()
+			}
+			
+			if(process.env.NODE_ENV == 'development'){
+				this.init()
+			}
 			// this.init()
 			// setTimeout(()=>{
 			// 	this.$refs.OrderConfirm.open()

@@ -37,7 +37,10 @@ const store = new Vuex.Store({
 		token:"",
 		//不需要缓存的数据
 		data:data,
-		color:""//默认没有
+		color:"", //默认没有
+		game:{
+			// 10001:{.....}
+		}
 	},
 	mutations: {
 		setItem(state,[key,value]){
@@ -68,7 +71,27 @@ const store = new Vuex.Store({
 				// #endif
 			}
 		},
-		getUserInfo({state,commit}){
+		chongXinDengLu(){
+			state.token = ''
+			uni.showModal({
+				title:'prompt',
+				content:"Login has expired, need to log in again",
+				cancelText:"cancel",
+				confirmText:"confirm",
+				success:(val)=>{
+					if (val.confirm) {
+						uni.navigateTo({
+							url:'/pages/login'
+						})
+					} else if (val.cancel) {
+						uni.switchTab({
+							url:'/pages/home'
+						})
+					}
+				}
+			})
+		},
+		getUserInfo({state,commit , dispatch}){
 			// console.log(this._vm)
 			let api = this._vm.$api_url
 			uni.request({
@@ -80,28 +103,28 @@ const store = new Vuex.Store({
 					if(res.data.result){
 						commit('setItem',['userInfo',res.data.data])
 					}else if(res.data.msg ==='Please log in first'){
-						state.token = ''
-						uni.showModal({
-							title:'prompt',
-							content:"Login has expired, need to log in again",
-							cancelText:"cancel",
-							confirmText:"confirm",
-							success:(val)=>{
-								if (val.confirm) {
-									uni.navigateTo({
-										url:'/pages/login'
-									})
-								} else if (val.cancel) {
-									uni.switchTab({
-										url:'/pages/home'
-									})
-								}
-							}
-						})
+						dispatch('chongXinDengLu')
 					}
 				},
 				fail(err) {
 					console.log(err)
+				}
+			})
+		},
+		getGame({state} , dispatch){
+			let api = this._vm.$api_url
+			uni.request({
+				url:api+'/Game/List',
+				header:{
+					Authorization:state.token
+				},
+				success(res){
+					console.log(res)
+					if(res.data.result){
+						state.game = res.data.data
+					}else if(res.data.msg ==='Please log in first'){
+						dispatch('chongXinDengLu')
+					}
 				}
 			})
 		}

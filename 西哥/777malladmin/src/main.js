@@ -20,7 +20,7 @@ import moment from 'moment'
 Vue.filter('bjTime', function (daraStr, pattern = 'YYYY-MM-DD HH:mm:ss') {
     // return moment(daraStr).format(pattern)
     if(store.state.BjTime.show){
-        return daraStr ? moment(daraStr).add(150,'minute').format(pattern) : ''
+        return moment(daraStr).isValid() ? moment(daraStr).add(150,'minute').format(pattern) : daraStr
     }else{
         return ''
     }
@@ -40,7 +40,7 @@ Vue.prototype.错误 = (str) => {
 router.beforeEach((to, from, next) => {
     // console.log(to)
     // 添加tag
-    if(to.path!='/' && to.meta.title){
+    if(to.path!='/' && to.meta.title && !to.meta.notag){
         if(!store.state.tag.find(x=>x.path==to.path)){
             let obj = {
                 path:to.path,
