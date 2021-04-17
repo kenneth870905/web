@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>货币管理系统</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <noscript>
-      <strong>We're sorry but <%= webpackConfig.name %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+        <strong>We're sorry but <%= webpackConfig.name %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
     <script>
-      // var api_url = 'http://127.0.0.1'
-      var api_url = "http://1.huobi456.com"
-      var zhushou = "http://huobi456.com/1/index.html"
-      var zhushou2 = 'http://api.huobi456.com/2/index.html'
-      var zhushou3 = ''
-      var zhushou4 = 'http://api.huobi456.com/4/index.html'
+
+        <%= process.env.NODE_ENV =='development' ? 
+            `
+            var api_url = 'http://127.0.0.1/php/'
+            `
+            :
+            `
+            var api_url = "http://1.huobi456.com"
+            `
+        %>
+        
+        var zhushou = "http://api.huobi456.com/1/index.html"
+        var zhushou2 = "http://api.huobi456.com/2/index.html"
+        var zhushou3 = 'http://1.huobi456.com/huobiview/index.html#/'
+        var zhushou4 = 'http://api.huobi456.com/4/index.html'
     </script>
     <!-- built files will be auto injected -->
-  </body>
+</body>
+
 </html>
