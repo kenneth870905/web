@@ -20,6 +20,7 @@ Vue.prototype.$Loading = function(t){
 
 Vue.prototype.$axios = axios
 Vue.prototype.$qs = qs
+Vue.prototype.$api_url = api_url
 axios.defaults.baseURL = api_url
 // axios.defaults.baseURL = 'http://test.yooy8.com'
 

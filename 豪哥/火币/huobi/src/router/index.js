@@ -78,15 +78,21 @@ export const constantRoutes = [
                 meta:{name:"考勤记录",login:true,root:1}
             },
             {
-                    path: 'zhangmuhuizong',
-                    component: () => import('@/views/账目汇总/账目汇总.vue'),
-                    meta:{name:"b币汇总",login:true,root:1}
-                },
-            // {
-            //     path: 'zhangmu/bibi',
-            //     component: () => import('@/views/账目汇总/b币汇总.vue'),
-            //     meta:{name:"b币汇总",login:true,root:1}
-            // },
+                path: 'zhangmuhuizong',
+                component: () => import('@/views/账目汇总/账目汇总.vue'),
+                meta:{name:"b币汇总",login:true,root:1}
+            },
+            
+            {
+                path: 'VipList',
+                component: () => import('@/views/vip管理/viplist.vue'),
+                meta:{name:"vip管理",login:true,root:0}
+            },
+            {
+                path: 'VipDetails',
+                component: () => import('@/views/vip管理/vipDetails.vue'),
+                meta:{name:"vip详情",login:true,root:0}
+            },
             // {
             //     path: 'zhangmu/fabi',
             //     component: () => import('@/views/账目汇总/法币汇总.vue'),

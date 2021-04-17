@@ -15,19 +15,19 @@
                 <span slot="title">个人资料</span>
             </el-menu-item>
             
-            <el-menu-item @click="跳转助手()" >
+            <el-menu-item @click="跳转助手()" index="">
                 <i class="el-icon-menu"></i>
                 <span slot="title">助手</span>
             </el-menu-item>
-            <el-menu-item @click="跳转助手2()" v-if="zhushou2">
+            <el-menu-item @click="跳转助手2()" v-if="zhushou2" index="">
                 <i class="el-icon-menu"></i>
                 <span slot="title">助手2</span>
             </el-menu-item>
-            <el-menu-item @click="跳转助手3()" v-if="zhushou3">
+            <el-menu-item @click="跳转助手3()" v-if="zhushou3" index="">
                 <i class="el-icon-menu"></i>
                 <span slot="title">助手3</span>
             </el-menu-item>
-            <el-menu-item @click="跳转助手4()" v-if="zhushou4">
+            <el-menu-item @click="跳转助手4()" v-if="zhushou4" index="">
                 <i class="el-icon-menu"></i>
                 <span slot="title">助手4</span>
             </el-menu-item>
@@ -48,6 +48,10 @@
             <el-menu-item index="/zhangmuhuizong" v-if="user.type==1">
                 <i class="el-icon-menu"></i>
                 <span slot="title">账目汇总</span>
+            </el-menu-item>
+            <el-menu-item index="/VipList">
+                <i class="el-icon-menu"></i>
+                <span slot="title">vip管理</span>
             </el-menu-item>
             
             <!-- <el-submenu v-if="user.type==1" index='1'>
@@ -106,3 +110,9 @@ export default {
     }
 };
 </script>
+
+<style lang="scss" scoped>
+.导航栏 .el-menu{
+    overflow: auto;
+}
+</style>
