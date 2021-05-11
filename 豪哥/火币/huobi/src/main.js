@@ -45,7 +45,7 @@ axios.interceptors.response.use(
     err => {
         if (err.response) {
             // token 失效
-            if(err.response.data.message == 'Token Signature could not be verified.'){
+            if(err.response.data.message.toLocaleLowerCase().includes('token')){
                 router.push('/login')
             }
             console.log(err.response)

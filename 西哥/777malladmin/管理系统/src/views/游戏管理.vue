@@ -7,7 +7,9 @@
                 <template slot="prepend">操作员账号</template>
             </el-input>
             <el-button size="mini" @click="查询()">查询</el-button>-->
-            <el-button size="mini" @click="近期开奖()">近期开奖</el-button>
+            <el-button class="r15" size="mini" @click="近期开奖()">近期开奖</el-button>
+
+            <el-switch v-model="killstart" @change="change" active-text="杀率模式"></el-switch>
         </div>
 
         <div class="header-2" v-if="显示下期">
@@ -38,17 +40,41 @@
                     <template slot-scope="s">最后{{s.row.closetime}}秒</template>
                 </el-table-column>
                 <el-table-column label="状态(state)" prop="state" align="center">
-                    <template slot-scope="s">{{s.row.state==1 ? '运行中': "停止中"}}</template>
+                    <template slot-scope="s">{{s.row.state==1 ? '运行中': "已封盘"}}</template>
+                </el-table-column>
+                <el-table-column label="亏损警戒线" prop="state" align="center" width="220px">
+                    <template slot-scope="s">
+                        <el-input size="mini" style="width: 60px;margin-right:10px;" />
+                        <el-switch active-text="强制盈亏" size="mini"></el-switch>
+                    </template>
                 </el-table-column>
                 <el-table-column label="操作" width="250px">
                     <template slot-scope="s">
                         <el-button size="mini" @click="$router.push('/GameConfig?state='+s.row.state+'&gid='+s.row.gameId+'&name='+s.row.name)">修改赔率/配置</el-button>
                         <el-button type="success" v-if="s.row.state==0" size="mini" @click="start('start',s.row)">启动</el-button>
-                        <el-button type="warning" v-else size="mini" @click="start('close',s.row)">停止</el-button>
+                        <el-button type="warning" v-else size="mini" @click="start('close',s.row)">封盘</el-button>
                     </template>
                 </el-table-column>
             </el-table-column>
         </el-table>
+
+        <el-dialog title="盈亏警戒线设置" :visible.sync="yingKui.show" width="300px" :close-on-click-modal="false">
+            <el-form :model="yingKui.data" label-width="90px" size="mini">
+                <el-form-item label="亏损警戒线">
+                    <template>
+                        <el-input v-model="yingKui.data.cordon" placeholder style="width: 80px;"></el-input>倍
+                    </template>
+                </el-form-item>
+                <el-form-item label="强制盈利">
+                    <el-switch v-model="yingKui.data.profit" :active-text="yingKui.data.profit ? '已开启' : '已关闭'"></el-switch>
+                </el-form-item>
+            </el-form>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="yingKui.show = false" size="mini">取 消</el-button>
+                <el-button type="primary" @click="yingKui.show = false" size="mini">确 定</el-button>
+            </span>
+        </el-dialog>
+
         <!-- <el-pagination v-show="last_page>0" class="分页" :current-page="query.page" :page-count="last_page" @current-change="fenye" @size-change="changeSize" layout="sizes,prev, pager, next , jumper" :page-sizes="[10, 20 , 50]"></el-pagination> -->
     </div>
 </template>
@@ -127,7 +153,11 @@ export default {
                 10003: "Bcone",
                 10004: "Emerd",
             },
-
+            killstart: true,
+            yingKui: {
+                show: true,
+                data: {}
+            }
         }
     },
     methods: {
@@ -198,20 +228,20 @@ export default {
                 type: 'warning'
             }).then(() => {
                 let o = {
-                    action:type,
-                    gid:parseInt(item.gameId) 
+                    action: type,
+                    gid: parseInt(item.gameId)
                 }
-                this.$axios.post('GameManage',o).then(res => {
-                    if(res.result){
+                this.$axios.post('GameManage', o).then(res => {
+                    if (res.result) {
                         this.正确('设置成功')
                         this.getList()
-                    }else{
+                    } else {
                         this.错误(res.msg)
                     }
                 }).catch(err => {
                     this.错误('连接错误，稍后再试')
                 })
-            }).catch(() => {});
+            }).catch(() => { });
         },
     },
     mounted() {
@@ -236,7 +266,7 @@ export default {
 .header-1 {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    // justify-content: flex-end;
     flex-wrap: wrap;
     border-bottom: 1px solid #eee;
     padding: 0px 0px 10px;
@@ -256,15 +286,16 @@ export default {
     justify-content: flex-end;
 }
 
-.table2{
+.table2 {
     width: 100%;
-    th,td{
+    th,
+    td {
         text-align: center;
     }
-    th{
+    th {
         border: 1px solid #eee;
     }
-    td{
+    td {
         border: 1px solid #eee;
     }
 }

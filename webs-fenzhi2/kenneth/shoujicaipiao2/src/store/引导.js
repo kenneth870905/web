@@ -65,6 +65,7 @@ export default {
         设置扫雷({ state, rootState }) {
             if (rootState.config.noTelegram && rootState.config.noTelegram.path == '/hbgame' && state.扫雷) {
                 state.扫雷 = true
+                // console.log('扫雷扫雷扫雷扫雷扫雷扫雷扫雷扫雷扫雷扫雷')
             } else {
                 state.扫雷 = false
             }

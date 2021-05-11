@@ -1,0 +1,238 @@
+{
+	"pages": [
+		{
+			"path": "pages/home/home",
+			"style": {
+				"navigationBarTitleText": "轻随我 | 首页",
+				"enablePullDownRefresh":true
+			}
+		},
+		{
+			"path": "pages/my/personalCenter",
+			"style": {
+				"navigationBarTitleText": "个人中心"
+			}
+		},
+		{
+			"path": "pages/tuiGuang/guiGuangMa",
+			"style": {
+				"navigationBarTitleText": "轻随我 | 分享"
+			}
+		},
+        {
+            "path" : "pages/my/huiyuan",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "会员"
+            }
+        }
+        ,{
+            "path" : "pages/shangPin/productDetails",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "商品详情"
+            }
+            
+        }
+        ,{
+            "path" : "pages/my/qianBao",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "钱包"
+            }
+        }
+        ,{
+            "path" : "pages/myOrder/orderList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的订单",
+				"enablePullDownRefresh":true
+            }
+            
+        }
+        ,{
+            "path" : "pages/AboutUs/AboutUs",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "关于轻随我",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/my/jifen",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的积分"
+            }
+            
+        }
+        ,{
+            "path" : "pages/my/jifenZengsong",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "积分赠送"
+            }
+            
+        }
+        ,{
+            "path" : "pages/my/gouWuChe",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "购物车"
+            }
+        }
+        ,{
+            "path" : "pages/myOrder/quRenOrder",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "确认订单"
+            }
+            
+        }
+        ,{
+            "path" : "pages/my/zaiCiFuKuan",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "支付订单"
+            }
+            
+        }
+        ,{
+            "path" : "pages/my/yongJinList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "佣金记录"
+            }
+            
+        }
+        ,{
+            "path" : "pages/my/tiXian",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "提现到微信"
+            }
+            
+        }
+        ,{
+            "path" : "pages/address/address",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "收货地址"
+            }
+        }
+        ,{
+            "path" : "pages/address/addressDetails",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "地址详情"
+            }
+            
+        }
+        ,{
+            "path" : "pages/kaihei/kaihei",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "秒杀"
+            }
+            
+        }
+        ,{
+            "path" : "pages/shangPin/pingTuan",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "秒杀购买"
+            }
+            
+        }
+        ,{
+            "path" : "pages/shangDian/shangDian",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "商店"
+            }
+            
+        }
+        ,{
+            "path" : "pages/fankui/fankui",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "意见反馈"
+            }
+        }
+        ,{
+            "path" : "pages/fankui/fankuiList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "反馈记录"
+            }
+            
+        }
+        ,{
+            "path" : "pages/souSuo/souSuo",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": ""
+            }
+            
+        }
+        ,{
+            "path" : "pages/fenlei/fenlei",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/wenzhang/wenzhang",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": ""
+            }
+            
+        }
+    ],
+	"globalStyle": {
+	// 	"navigationBarTextStyle": "white",
+	// 	"navigationBarTitleText": "uni-app",
+	// 	"navigationBarBackgroundColor": "#007AFF",
+	// 	"backgroundColor": "#FFFFFF"
+		// "usingComponents":{
+			// "slide-view": "/wxcomponents/miniprogram-slide-view/miniprogram_dist"
+			// "mp-index-list": "/wxcomponents/@miniprogram-component-plus/index-list"
+		// }
+	},
+	"tabBar": {
+		"color": "#fff",
+		"selectedColor": "#f8d213",
+		// "borderStyle": "black",
+		"backgroundColor": "#000",
+		"list": [{
+				"pagePath": "pages/home/home",
+				"iconPath":"static/tabBar/1-1.png",
+				"selectedIconPath":"static/tabBar/1.png",
+				"text": "首页"
+			},
+			{
+				"pagePath":"pages/shangDian/shangDian",
+				"iconPath":"static/tabBar/2-1.png",
+				"selectedIconPath":"static/tabBar/2.png",
+				"text":"商店"
+			},
+			{
+				"pagePath": "pages/kaihei/kaihei",
+				"iconPath":"static/tabBar/3.png",
+				"selectedIconPath":"static/tabBar/3-1.png",
+				"text": "秒杀"
+			},
+			{
+				"pagePath": "pages/my/personalCenter",
+				"iconPath":"static/tabBar/4.png",
+				"selectedIconPath":"static/tabBar/4-1.png",
+				"text": "我的"
+			}
+		]
+	}
+}

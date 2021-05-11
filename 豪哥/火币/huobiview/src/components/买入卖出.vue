@@ -175,7 +175,7 @@ export default {
             }
 
             Promise.all([g1,g2]).then(all=>{
-                console.log(all)
+                // console.log(all)
                 let L1 = all[0].data
                 let len = this.item.pageSize - 10
                 let L2 = all[1].data ? all[1].data.slice(0,len) : []

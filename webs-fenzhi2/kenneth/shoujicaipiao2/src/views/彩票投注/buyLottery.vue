@@ -41,11 +41,16 @@
                     <span class="红色字体">{{userinfo.Money}}</span>
                 </div>
                 <span v-show="当前彩种.id==70002" class="直播按钮"  @click="显示直播=!显示直播">{{显示直播 ? '关闭观看' : "观看直播"}}</span>
+                <span v-show="当前彩种.id==20000" class="直播按钮"  @click="pk10Video()">{{显示直播 ? '关闭观看' : "观看直播"}}</span>
+                <!-- <span v-show="当前彩种.id==20000" class="直播按钮">视频</span> -->
                 <div class="历史按钮" @click="$router.push(`/kjzs?id=${当前彩种.id}`)">{{当前彩种.title}}历史</div>
             </div>
             <!-- 开奖直播 -->
             <kaiJiangZhiBo v-if="显示直播"/>
             
+            <!-- <iframe v-if="showpk10Video" ref="pk10Iframe" class="pk10Video" :src="`http://localhost:8080/pk10%E5%BC%80%E5%A5%96/index.html?hideT1=1`" frameborder="0"></iframe> -->
+            <iframe v-if="showpk10Video" ref="pk10Iframe" class="pk10Video" :src="`http://localhost:8080/pk10%E5%BC%80%E5%A5%96/index.html?`" frameborder="0"></iframe>
+
             <div class="选号区">
                 <!-- 主要正对官方玩法 -->
                 <div class="组数" v-if="选号配置.官方玩法投注">
@@ -171,7 +176,8 @@ export default {
             开奖头部: '',
             底部: "",
             transitionName: "slide",
-            显示直播:false
+            显示直播:false,
+            showpk10Video:false
         }
     },
     computed: {
@@ -212,6 +218,13 @@ export default {
             数据初始化: '投注/数据初始化',
             停止定时器: "投注/停止定时器"
         }),
+        pk10Video(){
+            if(this.showpk10Video){
+                this.showpk10Video=false
+            }else{
+                this.showpk10Video = true
+            }
+        },
         g() {
             this.$router.replace('/buyLottery?i=70000&t=2')
         },
@@ -242,7 +255,7 @@ export default {
             this.设置state(['官信', (this.$route.query.t ? this.$route.query.t : 1)])
             this.数据初始化()
             this.设置组件()
-        }
+        },
     },
     mounted() {
         this.初始化();
@@ -268,11 +281,39 @@ export default {
                 }, 500);
             })
         },
+        '即将开奖.Timer'(){
+            if(this.$refs.pk10Iframe && this.$refs.pk10Iframe.contentWindow){
+                var children = this.$refs.pk10Iframe.contentWindow.vue
+                
+                // Countdown 倒计时  ready 准备 go 比赛中 EndGame 结束  Receive 开奖
+                // children.periods = this.即将开奖.IssueCode
+                children.setPeriods(this.即将开奖.IssueCode)
+                if(this.即将开奖.Timer>5){
+                    children.daojishi( parseInt(this.即将开奖.Timer) );
+                }else if(this.即将开奖.Timer<5 && this.即将开奖.Timer>0){
+                    children.daojishi( parseInt(this.即将开奖.Timer) );
+                }else{
+                    children.go()
+                }
+            }
+        },
+        '近期开奖'(){
+            if(this.$refs.pk10Iframe && this.$refs.pk10Iframe.contentWindow && this.近期开奖[0].Content){
+                let children = this.$refs.pk10Iframe.contentWindow.vue
+                children.end(this.近期开奖[0].Content)
+            }
+        }
     }
 }
 </script>
 
 <style lang="scss" scoped>
+.pk10Video{
+    height:540 / 960 * 100vw;
+    flex-shrink: 0;
+    margin: 0px 0px 10px;
+}
+
 .六合彩遮罩{
     width: 100%;
     height: 100%;
@@ -415,6 +456,7 @@ export default {
         top: 0px;
         bottom: 0px;
         margin: auto;
+        text-align: center;
     }
 }
 

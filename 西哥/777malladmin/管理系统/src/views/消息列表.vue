@@ -19,9 +19,18 @@
             </el-table-column>
             <el-table-column label="标题" prop="title"></el-table-column>
             <el-table-column label="内容" prop="content"></el-table-column>
-            <el-table-column label="状态" prop="state"></el-table-column>
-            <el-table-column label="状态" prop="state"></el-table-column>
-            <el-table-column label="时间" prop="created_at" width="160px" align="center">
+            <el-table-column label="状态" prop="state">
+                <template slot-scope="s">
+                    {{s.row.state==0 ? '未读' : '已读'}}
+                </template>
+            </el-table-column>
+            <el-table-column label="阅读时间" prop="created_at" width="160px" align="center">
+                <template slot-scope="s">
+                    <div>{{s.row.readed_at}}</div>
+                    <div class="bjTime">{{s.row.readed_at | bjTime}}</div>
+                </template>
+            </el-table-column>
+            <el-table-column label="创建时间" prop="created_at" width="160px" align="center">
                 <template slot-scope="s">
                     <div>{{s.row.created_at}}</div>
                     <div class="bjTime">{{s.row.created_at | bjTime}}</div>
@@ -35,7 +44,6 @@
 </template>
 
 <script>
-var 啊 = {"id":"18","nick":"孟总","oid":"24","cid":"2","name":"冻结账户","content":"冻结账户ID[24]","remarks":"dongjie yige","created_at":"2021-04-02 20:09:18"}
 import moment from 'moment'
 export default {
     props: ['userId'],

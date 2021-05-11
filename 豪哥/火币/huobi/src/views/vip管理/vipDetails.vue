@@ -7,6 +7,13 @@
                     <el-button type="" slot="append" @click="验证()">验证是否可用</el-button>
                 </el-input>
             </el-form-item>
+            <el-form-item label="用户状态">
+                <el-select v-model="vip.type" placeholder="" style="width: 100%;">
+                     <el-option :value="0" label="正常"></el-option>
+                     <el-option :value='1' label="疑似黑名单"></el-option>
+                     <el-option :value='2' label="黑名单"></el-option>
+                </el-select>
+            </el-form-item>
             <el-form-item label="法币昵称">
                 <el-input v-model="vip.fiatNickname" placeholder></el-input>
             </el-form-item>
@@ -86,6 +93,7 @@ export default {
             UID:"",
             vip: {
                 UID: "",
+                type:0,
                 fiatNickname: "",   //法币昵称
                 name: "",    //姓名
                 phone: "",   //手机号码

@@ -40,6 +40,7 @@ export default {
         },
         time1:"",
         封盘:false,  //针对 70002 和 70003
+        this_:""
     },
     getters: {
         当前彩种(state, getters, rootState, rootGetters) {
@@ -152,7 +153,6 @@ export default {
                 dispatch('获取即将开奖')
             ]).then(x => {
                 state.init=true
-                console.log('数据初始化完成')
                 dispatch('设置购彩样式')
             }).catch(err => {
                 state.init=true
@@ -202,7 +202,7 @@ export default {
                     state: 1
                 }
                 api_获取近期开奖(query).then(x => {
-                    console.log('获取近期开奖')
+                    console.log('获取近期开奖',x)
                     state.近期开奖 = x.data.Top5
                     if(x.data.Top1){
                         if(x.data.Top1 && x.data.Top1.Content){
@@ -217,7 +217,7 @@ export default {
                                 state.定时近期 = setTimeout(() => {
                                     dispatch('获取近期开奖')
                                     state.定时近期 = ''
-                                }, 3000);
+                                }, 5000);
                             }
                         }
                     }
@@ -279,8 +279,10 @@ export default {
                     state.time1 = null;
                     setTimeout(() => {
                         dispatch('获取即将开奖');  
-                        dispatch('获取近期开奖')                      
                     }, 2000);
+                    setTimeout(() => {
+                        dispatch('获取近期开奖')                      
+                    }, 5000);
                 } else {
                     var h = '00' + Math.floor(state.即将开奖.Timer / 3600);
                     var m = '00' + Math.floor((state.即将开奖.Timer / 60 % 60));
