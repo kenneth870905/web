@@ -1,0 +1,131 @@
+{
+	"pages": [
+		{
+			"path": "pages/productList/productList",
+			"style": {
+				"navigationBarTitleText": "商品选购"
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/shoppingCart/shoppingCart",
+			"style": {
+				"navigationBarTitleText": "购物车"
+			}
+		},
+		{
+			"path": "pages/my",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+
+		}, {
+			"path": "pages/ArticleList",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+
+		}, {
+			"path": "pages/article",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+
+		}, {
+			"path": "pages/address",
+			"style": {
+				"navigationBarTitleText": "收货地址"
+			}
+
+		}, {
+			"path": "pages/addressDetails",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/orderList",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/productDetails",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+
+		}, {
+			"path": "pages/queRenGouMai",
+			"style": {
+				"navigationBarTitleText": "订单确认"
+			}
+		},
+		{
+			"path": "pages/zaiCiFuKuan",
+			"style": {
+				"navigationBarTitleText": "支付订单"
+			}
+		},
+		
+		{
+			"path": "pages/fankui/fankuiList",
+			"style": {
+				"navigationBarTitleText": "意见反馈"
+			}
+		},
+		{
+			"path": "pages/fankui/fankui",
+			"style": {
+				"navigationBarTitleText": "反馈"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"background": "#efeff4"
+		}
+	},
+	"tabBar": {
+		// "color": "#fff",
+		// "selectedColor": "#f8d213",
+		// "borderStyle": "black",
+		// "backgroundColor": "#000",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/tabBar/shouye-1.png",
+				"selectedIconPath": "static/tabBar/shouye.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/productList/productList",
+				"iconPath": "static/tabBar/shangpin-1.png",
+				"selectedIconPath": "static/tabBar/shangpin.png",
+				"text": "商品选购"
+			},
+			{
+				"pagePath": "pages/shoppingCart/shoppingCart",
+				"iconPath": "static/tabBar/shangpin-1.png",
+				"selectedIconPath": "static/tabBar/shangpin.png",
+				"text": "购物车"
+			},
+			{
+				"pagePath": "pages/my",
+				"iconPath": "static/tabBar/wode-1.png",
+				"selectedIconPath": "static/tabBar/wode.png",
+				"text": "我的"
+			}
+		]
+	}
+}

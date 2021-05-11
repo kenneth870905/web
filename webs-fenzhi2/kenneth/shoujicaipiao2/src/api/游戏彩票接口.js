@@ -3,7 +3,7 @@ import qs from 'qs'
 
 const api_获取游戏彩票=()=>{
     // return axios.get(config.img_url+'static/json/home.json')
-    return axios.get(config.img_url+'webConfig/json/home.json')
+    return axios.get(config.img_url+'webConfig/json/home.json?v=0430')
 }
 
 //pc 版

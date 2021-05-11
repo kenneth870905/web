@@ -133,12 +133,12 @@
 <script>
 import moment from 'moment'
 import { mapGetters, mapState } from 'vuex'
-import AboutUs from '../../../../qingSuiWoWeiXi/pages/AboutUs/AboutUs.vue'
+// import AboutUs from '../../../../qingSuiWoWeiXi/pages/AboutUs/AboutUs.vue'
 import province from '@/assets/diqu/province.js'
 import city from '@/assets/diqu/city.js'
 import district from '@/assets/diqu/district.js'
 export default {
-    components: { AboutUs },
+    // components: { AboutUs },
     name: "",
     data() {
         return {

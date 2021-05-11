@@ -6,10 +6,10 @@
             <!-- <el-checkbox-group v-model="checkboxGroup2" :max="6" @change="change1"> -->
             <div class="border" v-for="(item, index) in list" :key="index">
                 <el-checkbox class="checkbox" :disabled="newList.length>=6 && !item.check" @change="change1(item)" v-model="item.check" :label="item.name"></el-checkbox>
-                <el-select v-model="item.pageSize" size="mini" style="width: 100px;">
-                    <el-option label="每页10条" :value="10"></el-option>
-                    <el-option label="每页15条" :value="15"></el-option>
-                    <el-option label="每页20条" :value="20"></el-option>
+                <el-select v-model="item.pageSize" size="mini" style="width: 80px;">
+                    <el-option label="10条" :value="10"></el-option>
+                    <el-option label="15条" :value="15"></el-option>
+                    <el-option label="20条" :value="20"></el-option>
                 </el-select>
             </div>
             <div>
@@ -19,7 +19,7 @@
                     <el-option label="10秒刷新一次" :value="10"></el-option>
                     <el-option label="20秒刷新一次" :value="20"></el-option>
                 </el-select>
-                (请求完成间隔时间)
+                (请求间隔时间)
             </div>
             <!-- </el-checkbox-group> -->
         </div>
@@ -61,6 +61,7 @@ export default {
                 { name: 'LTC', coinId: 8, ws: 'market.ltcusdt.kline.1min', tick: { close: "" }, 排序: 5, check: false, pageSize: 10 },
                 { name: 'EOS', coinId: 5, ws: "market.eosusdt.kline.1min", tick: { close: "" }, 排序: 6, check: false, pageSize: 10 },
                 { name: 'USDT', coinId: 2, ws: 'market.usdt.kline.1min', tick: { close: "" }, 排序: 7, check: false, pageSize: 10 },
+                { name: 'DOGE', coinId: 29, ws: 'market.dogeusdt.kline.1min', tick: { close: "" }, 排序: 7, check: false, pageSize: 10 },
             ],
             checkboxGroup2: [],
             ws: '', //连接对象
@@ -88,6 +89,7 @@ export default {
             setToken: "setToken"
         }),
         验证登录() {
+            // return
             let token = this.$route.query.token ? this.$route.query.token : this.token
             if (!token) {
                 this.$router.push('/404')
@@ -116,8 +118,8 @@ export default {
         },
         链接ws() {
             // https://huobiapi.github.io/docs/spot/v1/cn/#k-2 说明
-            // var ws = new WebSocket("wss://api.huobiasia.vip/ws");
-            this.ws = new WebSocket("wss://api.huobi.pro/ws");
+            this.ws = new WebSocket("wss://api.huobiasia.vip/ws");
+            // this.ws = new WebSocket("wss://api.huobi.pro/ws");
             this.ws.onopen = () => {
                 this.list.forEach(item => {
                     if (item.check && item.name != 'USDT') {
@@ -135,7 +137,7 @@ export default {
                     var data = pako.inflate(binData);
                     var json = String.fromCharCode.apply(null, new Uint16Array(data));
                     json = JSON.parse(json);
-                    // console.log(json)
+                    console.log(json)
                     if (!json.tick) {
                         return
                     }

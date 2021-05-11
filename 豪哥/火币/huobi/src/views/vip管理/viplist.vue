@@ -6,13 +6,14 @@
                     <el-button @click="查询()" slot="append" icon="el-icon-search"></el-button>
                 </el-input>
             </div>
+            <div class="tishi">提示：<span class="黄色">黄色为疑似黑名单</span>，<span class="红色">红色为黑名单</span></div>
             <div class="flex1"></div>
             <div>
                 <el-button type size="mini" @click="$router.push('/VipDetails')">添加</el-button>
             </div>
         </div>
-        <el-table class="table" border :data="list" size="mini">
-            <el-table-column align="center" label="UID" prop="UID" width="120"></el-table-column>
+        <el-table class="table" border :data="list" size="mini" :row-class-name="tableRowClassName">
+            <el-table-column align="center" label="UID" prop="UID" width="120" fixed=""></el-table-column>
             <el-table-column align="center" label="法币昵称" prop="fiatNickname"></el-table-column>
             <el-table-column align="center" label="姓名" prop="name"></el-table-column>
             <el-table-column align="center" label="电话号码" prop="phone" width="150px"></el-table-column>
@@ -28,7 +29,7 @@
             </el-table-column>
             <el-table-column align="center" label="人脸视频验证" prop="FaceAuthentication" width="120px">
                 <template slot-scope="s">
-                    <a :href="$api_url+'/huobi/public/storage/'+s.row.FaceAuthentication" target="target">点击查看</a>
+                    <a v-if="s.row.FaceAuthentication" :href="$api_url+'/huobi/public/storage/'+s.row.FaceAuthentication" target="target">点击查看</a>
                 </template>
             </el-table-column>
             <el-table-column align="center" label="银行流水" prop="BankFlow">
@@ -76,6 +77,9 @@ export default {
         }
     },
     methods: {
+        tableRowClassName({row, rowIndex}){
+            return 'type-'+row.type
+        },
         async 删除(item) {
             await this.$confirm(`确定将UID为：${item.UID}的信息删除吗?`, '提示', {
                 confirmButtonText: '确定',
@@ -128,9 +132,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/deep/ .type-1{
+    background: #ffffad;
+}
+/deep/ .type-2{
+    background: #ffb1b1;
+}
+
 .header {
     margin: 0px 0px 20px;
     display: flex;
+    align-items: center;
     /* justify-content: flex-end; */
     > div {
         margin: 0px 15px 0px 0px;
@@ -138,6 +150,15 @@ export default {
     .flex1 {
         flex: 1;
     }
+    .tishi{
+        background: rgba($color: #000000, $alpha: 0.3);
+        padding: 5px 10px;
+        font-size: 12px;
+        color: #fff;
+    }
+}
+.黄色{
+    color: #ffffad;
 }
 
 .考勤记录 {

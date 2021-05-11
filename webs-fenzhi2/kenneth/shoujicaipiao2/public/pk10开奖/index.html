@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pk10开奖</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div id="vue">
+        <!-- Countdown 倒计时 ready 准备 go -->
+        <div class="container" :class="step" :style="{zoom:zoom}">
+            <div class="t1" v-show="!hideT1">
+                <div class="numbers">
+                    <span v-if="step=='go' || step=='EndGame' || step=='Receive'" v-for="(item, index) in numbers" :key="index" :class="'number-'+item"></span>
+                </div>
+                <div class="periods">
+                    期数：{{periods}}
+                </div>
+            </div>
+            <div class="content-1">
+                <div class="time" v-show="time>0">{{time}}s</div>
+                <div class="t2"></div>
+                <div class="start"></div>
+                <div class="paodao"></div>
+                <div class="end"></div>
+                <div class="cars">
+                    <div v-for="(item,index) in left" :style="{left:item+'px'}"><span></span></div>
+                </div>
+                <div class="open">
+                    <div class="medal">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="top_three_car_box">
+                        <span :class="'car-'+item" v-for="(item, index) in numbers" :key="index" v-if="index<3"></span>
+                    </div>
+                    <div class="show_girl"></div>
+                </div>
+            </div>
+        </div>
+        <button @click="daojishi(7)">倒计时30秒</button>
+        <button @click="go()">开始</button>
+        <button @click='end(["09","04","06","10","01","02","08","05","03","07"])'>结束</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+
+        // // 用法
+            // 高度比例  960*540
+        // var children = document.getElementById('iframe的Id').contentWindow.vue
+        // 设置期号 只能在倒计时期间设置才生效
+        // children.setPeriods('期号')
+        // // 倒计时 
+        // children.daojishi(30);
+        // //起跑  起跑过程中无法重新倒计时必须等结束才能倒计时
+        // children.go()
+        // //结束 开奖结果
+        // children.end(['01','02','03','04','05','06','07','08','09','10'])
+
+
+        var left = [817 , 807, 800, 791, 784, 775, 767, 759 , 751 , 743 ]
+        var vue = new Vue({
+            el:"#vue",
+            data() {
+                return {
+                    time:0,
+                    periods:'', //期号
+                    numbers:['01','02','03','04','05','06','07','08','09','10'],
+                    left: Object.assign({},left),
+                    time0:"",
+                    time1:"",
+                    time2:"",
+                    step:'Countdown',   // Countdown 倒计时  ready 准备 go 比赛中 EndGame 结束  Receive 开奖
+                    zoom:1,
+                    hideT1:false
+                }
+            },
+            computed: {
+            },
+            methods: {
+                setPeriods(periods){
+                    if(this.step=='Countdown'){
+                        this.periods = periods
+                    }
+                },
+                daojishi:function(time){
+                    if(this.step!='Countdown' && this.step!='ready'){
+                        return
+                    }
+                    this.left = Object.assign({},left)
+                    this.step = time >= 5 ? 'Countdown' : 'ready'
+                    this.time = time
+                    try {
+                        clearInterval(this.time1)
+                    } catch (error) {}
+                    try {
+                        clearInterval(this.time2)
+                    } catch (error) {}
+                },
+                go(){
+                    
+                    if(this.step=='EndGame' || this.step=='Receive'){
+                        return
+                    }
+                    try {
+                        clearInterval(this.time1)
+                    } catch (error) {}
+                    try {
+                        clearInterval(this.time2)
+                    } catch (error) {}
+
+                    this.step = 'go'
+                    this.numbers.sort(function() {
+                        return .5 - Math.random();
+                    });
+                    console.log(this.numbers)
+                    for (let i = 0; i < this.numbers.length; i++) {
+                        // console.log(this.numbers[i])
+                        this.left[ parseInt(this.numbers[i])-1 ]= i*30+50
+                    }
+                   
+                    this.time1 = setInterval(() => {
+                        this.numbers.sort(function() {
+                            return .5 - Math.random();
+                        });
+                        console.log('倒计时1')
+                    }, 200);
+                    this.time2 = setInterval(() => {
+                        for (let i = 0; i < this.numbers.length; i++) {
+                            this.left[ parseInt(this.numbers[i])-1 ]= i*80+50
+                        }
+                        console.log('倒计时2')
+                    }, 1000);
+                },
+                end(list){
+                    try {
+                        clearInterval(this.time1)
+                    } catch (error) {}
+                    try {
+                        clearInterval(this.time2)
+                    } catch (error) {}
+                    if(this.step!='go'){
+                        return
+                    }
+                    this.step = 'EndGame'
+                    this.numbers = list
+                    for (let i = 0; i < this.numbers.length; i++) {
+                        this.left[ parseInt(this.numbers[i])-1 ]= i*80+50
+                    }
+                    setTimeout(() => {
+                        this.step = 'Receive'
+                        setTimeout(() => {
+                            this.step = 'Countdown'
+                            this.left = Object.assign({},left)
+                        }, 3000);
+                    }, 1000);
+                }
+            },
+            mounted() {
+                function getQueryVariable(variable){
+                    var query = window.location.search.substring(1);
+                    var vars = query.split("&");
+                    for (var i=0;i<vars.length;i++) {
+                            var pair = vars[i].split("=");
+                            if(pair[0] == variable){return pair[1];}
+                    }
+                    return(false);
+                }
+                this.hideT1 = getQueryVariable('hideT1')
+
+                window.onhashchange = function () {
+                    console.log('URL发生变化了');
+                };
+
+                if(window.innerWidth<960){
+                    this.zoom = window.innerWidth/960
+                }
+                
+                window.onresize=()=>{
+                    if(window.innerWidth<960){
+                        this.zoom = window.innerWidth/960
+                    }
+                }
+            },
+        })
+        console.log(vue)
+    </script>
+</body>
+</html>

@@ -509,6 +509,7 @@ export default {
         }
     },
     mounted() {
+        this.引导.扫雷引导.已查看=true
         // http://10.10.27.30:100/other/play/IsOldPlayer
         if(this.getJson){
             // console.log('mounted中调用get特邀getinfo')
