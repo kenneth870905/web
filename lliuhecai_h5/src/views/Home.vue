@@ -154,7 +154,7 @@ export default {
             lastIssue:""
         })
         let 下次 = ref('')
-        let 倒计时秒=""
+        let 倒计时秒=0
         let 倒计时 = ref({
             // h:'00',m:"00",s:'00'
         })
@@ -230,15 +230,15 @@ export default {
         }
         
         let 设置时间 =()=>{
-            if(new Date() < new Date(moment().format('YYYY-MM-DD')+开始)){
+            if(new Date() < new Date(moment().format('YYYY/MM/DD')+开始)){
                 console.log('没到开奖时间')
-                下次.value = moment().format('YYYY-MM-DD')+开始
+                下次.value = moment().format('YYYY/MM/DD')+开始
                 开奖中.value=false
                 随机号.stop()
                 倒计时秒 = (new Date(下次.value).getTime() - new Date().getTime())/1000
                 setVal2()
-            }else if(new Date() < new Date(moment().format('YYYY-MM-DD')+开始2)){
-                下次.value = moment().add(1,'days').format('YYYY-MM-DD')+开始
+            }else if(new Date() < new Date(moment().format('YYYY/MM/DD')+开始2)){
+                下次.value = moment().add(1,'days').format('YYYY/MM/DD')+开始
                 console.log('等待开奖')
                 开奖中.value=true
                 随机号.start()
@@ -246,8 +246,8 @@ export default {
                 setTimeout(() => {
                     设置时间()
                 }, 1000*10);
-            }else if(new Date() < new Date(moment().format('YYYY-MM-DD')+结束)){
-                下次.value = moment().add(1,'days').format('YYYY-MM-DD')+开始
+            }else if(new Date() < new Date(moment().format('YYYY/MM/DD')+结束)){
+                下次.value = moment().add(1,'days').format('YYYY/MM/DD')+开始
                 console.log('开奖时间内')
                 if(最近一期.content){
                     开奖中.value=false
@@ -264,7 +264,7 @@ export default {
                 // 倒计时秒 = 0
             }else{
                 console.log('等待明天开奖')
-                下次.value = moment().add(1,'days').format('YYYY-MM-DD')+开始
+                下次.value = moment().add(1,'days').format('YYYY/MM/DD')+开始
                 开奖中.value=false
                 随机号.stop()
                 倒计时秒 = (new Date(下次.value).getTime() - new Date().getTime())/1000
