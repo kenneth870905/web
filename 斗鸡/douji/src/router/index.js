@@ -5,6 +5,7 @@ const routes = [
         path: '/',
         component: ()=>import('@/views/Home.vue')
     },
+    // 斗鸡
     {
         path:"/cockfighting",
         component:()=>import('@/views/cockfighting.vue')
@@ -17,6 +18,8 @@ const routes = [
         path:"/alliance",
         component:()=>import('@/views/合作伙伴.vue')
     },
+
+    // sv388 和digmaan 说明
     {
         path:"/infoDetail/:type",
         component:()=>import('@/views/infoDetail.vue')
