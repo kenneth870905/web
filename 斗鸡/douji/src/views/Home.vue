@@ -1,10 +1,10 @@
 <template>
     <el-carousel trigger="click" class="banner">
         <el-carousel-item >
-            <img src="static/image/banner-1.jpg" alt="" srcset="">
+            <img src="static/image/home-banner-1.jpg" alt="" srcset="">
         </el-carousel-item>
         <el-carousel-item >
-            <img src="static/image/banner-2.jpg" alt="" srcset="">
+            <img src="static/image/home-banner-2.jpg" alt="" srcset="">
         </el-carousel-item>
     </el-carousel>
     <div class="box-1">
