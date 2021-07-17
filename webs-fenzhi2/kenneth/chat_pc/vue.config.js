@@ -13,8 +13,8 @@ module.exports = {
     filenameHashing: true,
     css: {
         loaderOptions: {
-            sass: {
-                data: '@import "~@/assets/css/vw.scss";'
+            scss: {
+                additionalData: '@import "~@/assets/css/vw.scss";'
             }
         }
     },

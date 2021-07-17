@@ -186,7 +186,7 @@ export default {
             flvPlayer = flvjs.createPlayer({
                 type: 'flv',
                 // url: '2032-2.flv'
-                url:"https://vd1-aliqq.dancheqike.com/live/2032-2.flv"
+                url:videoUrl
             });
             flvPlayer.attachMediaElement(videoElement.value);
             flvPlayer.load();
