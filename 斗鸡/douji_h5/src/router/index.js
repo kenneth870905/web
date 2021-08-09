@@ -38,6 +38,9 @@ const routes = [
     {
         path:"/contactUs",
         component:()=>import('@/views/contactUs.vue')
+    },{
+        path:"/personal",
+        component:()=>import('@/views/personal.vue')
     }
 ]
 
