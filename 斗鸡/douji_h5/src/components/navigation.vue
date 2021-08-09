@@ -9,7 +9,7 @@
             </div>
         </template>
         <template #right>
-            <van-icon name="manager" size="20" color="var(--color)"/>
+            <van-icon name="manager" size="20" color="var(--color)" @click="$router.push('/personal')"/>
         </template>
     </van-nav-bar>
 
