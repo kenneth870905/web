@@ -8,10 +8,12 @@
 </head>
 <body>
     <div id="vue" @click="点击屏幕($event)">
-
+        <!-- <div class="btns">
+            <button @click="sedchildren()">按钮1</button>
+        </div> -->
 
         <div class="bg1" >
-            <img class="bg2" v-if="!btoaString || newBg" src="images/bg2.png" alt="" srcset="">
+            <img class="bg2" v-if="!btoaString || newBg" :src="`${src}images/bg2.png`" alt="" srcset="">
             <div class="bg4" v-if="newBg" >
                 <img :src="newBg" alt="" srcset="">
             </div>
@@ -30,23 +32,23 @@
             <div class="title">请选择一名画家为您画像</div>
             <ul>
                 <li>
-                    <img @click="xuanZuoZhe('cubism')" src="images/step-2-1.png" alt="" srcset="">
+                    <img @click="xuanZuoZhe('cubism')" :src="`${src}images/step-2-1.png`" alt="" srcset="">
                     <div>毕加索</div>
                 </li>
                 <li>
-                    <img @click="xuanZuoZhe('pointillism')" src="images/step-2-2.png" alt="" srcset="">
+                    <img @click="xuanZuoZhe('pointillism')" :src="`${src}images/step-2-2.png`" alt="" srcset="">
                     <div>印象主义点彩</div>
                 </li>
                 <li>
-                    <img @click="xuanZuoZhe('the_scream')" src="images/step-2-3.png" alt="" srcset="">
+                    <img @click="xuanZuoZhe('the_scream')" :src="`${src}images/step-2-3.png`" alt="" srcset="">
                     <div>爱德华蒙克的呐喊</div>
                 </li>
                 <li>
-                    <img @click="xuanZuoZhe('rain')" src="images/rain.png" alt="" srcset="">
+                    <img @click="xuanZuoZhe('rain')" :src="`${src}images/rain.png`" alt="" srcset="">
                     <div>阿夫列莫夫</div>
                 </li>
                 <li>
-                    <img @click="xuanZuoZhe('starry')" src="images/starry.png" alt="" srcset="">
+                    <img @click="xuanZuoZhe('starry')" :src="`${src}images/starry.png`" alt="" srcset="">
                     <div>梵高</div>
                 </li>
             </ul>
@@ -56,7 +58,7 @@
             <canvas id="canvas" ></canvas>
             <video v-show="showVideo" id="video" autoplay ></video>
 
-            <img v-show="step == 3 " src="images/icon-camera.svg" alt="" srcset="" @click="daojishi()" >
+            <!-- <img v-show="step == 3 " :src="`${src}images/icon-camera.svg`" alt="" srcset="" @click="daojishi()" > -->
             <div class="daojishi" v-show="step == 4">
                 <div>{{time_1}}</div>
             </div>
@@ -64,12 +66,12 @@
         
         <!-- 制作中 -->
         <div class="step-3" v-show="step==5">
-            <img src="images/icon-prompt.svg" alt="" srcset="">
+            <img :src="`${src}images/icon-prompt.svg`" alt="" srcset="">
             <span>{{user[style]}} 正在为您画像，请耐心等待!</span>
         </div>
         <!-- 完成 -->
         <div class="step-4" v-show="step==6">
-            <img src="images/icon-carry-out.svg" alt="" srcset="">
+            <img :src="`${src}images/icon-carry-out.svg`" alt="" srcset="">
             <span>提示：画像完成</span>
         </div>
 
@@ -79,34 +81,34 @@
             <!-- <img @click="openerweima()" class="erweima1" src="images/erweima.png" alt="" srcset=""> -->
             <ul>
                 <li>
-                    <img @click="step=2" src="images/chongxin.png" alt="" srcset="">
+                    <img @click="step=2" :src="`${src}images/chongxin.png`" alt="" srcset="">
                     <div>重新画像</div>
                 </li>
                 <li :class="{active:style=='cubism'}">
-                    <img @click="chongXing('cubism')" src="images/step-2-1.png" alt="" srcset="">
+                    <img @click="chongXing('cubism')" :src="`${src}images/step-2-1.png`" alt="" srcset="">
                     <div>毕加索</div>
                 </li>
                 <li :class="{active:style=='pointillism'}">
-                    <img @click="chongXing('pointillism')" src="images/step-2-2.png" alt="" srcset="">
+                    <img @click="chongXing('pointillism')" :src="`${src}images/step-2-2.png`" alt="" srcset="">
                     <div>印象主义点彩</div>
                 </li>
                 <li :class="{active:style=='the_scream'}">
-                    <img @click="chongXing('the_scream')" src="images/step-2-3.png" alt="" srcset="">
+                    <img @click="chongXing('the_scream')" :src="`${src}images/step-2-3.png`" alt="" srcset="">
                     <div>爱德华蒙克的呐喊</div>
                 </li>
                 <li :class="{active:style=='rain'}">
-                    <img @click="chongXing('rain')" src="images/rain.png" alt="" srcset="">
+                    <img @click="chongXing('rain')" :src="`${src}images/rain.png`" alt="" srcset="">
                     <div>阿夫列莫夫</div>
                 </li>
                 <li :class="{active:style=='starry'}">
-                    <img @click="chongXing('starry')" src="images/starry.png" alt="" srcset="">
+                    <img @click="chongXing('starry')" :src="`${src}images/starry.png`" alt="" srcset="">
                     <div>梵高</div>
                 </li>
             </ul>
         </div>
 
         <div class="step-err" v-show="step=='err'">
-            <img src="images/icon_err.png" alt="" srcset="">
+            <img :src="`${src}images/icon_err.png`" alt="" srcset="">
             <span>提示：{{errText}}</span>
         </div>
 
@@ -123,13 +125,13 @@
             <div class="text">扫码二维码下载图片</div>
         </div>
 
-        <img class="full" src="images/full.png" alt="" srcset="" @click="full()">
+        <img class="full" :src="`${src}images/full.png`" alt="" srcset="" @click="full()">
         <!-- <input class="file" v-if="showFile" @change="fileChagne" type="file" accept="image/*" capture="camera"> -->
     </div>
     
-    <script src="vue.js"></script>
-    <script src="upload.js"></script>
-    <script src="axios.min.js"></script>
+    <script src="../static/vue.js"></script>
+    <script src="../static/upload.js"></script>
+    <script src="../static/axios.min.js"></script>
     <script src="index.js"></script>
 </body>
 </html>

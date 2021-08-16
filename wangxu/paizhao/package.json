@@ -1,6 +1,6 @@
 {
-    "name": "paizhao",
-    "version": "1.0.6",
+    "name": "paizhao2",
+    "version": "1.0.8",
     "description": "",
     "main": "main.js",
     "scripts": {
@@ -9,23 +9,32 @@
         "build": "electron-builder"
     },
     "build": {
+        "asar": true,
+        "files": [
+            "!src/images/**",
+            "!src/config/**"
+        ],
         "extraResources": [
-          {
-            "from": "src/images/", 
-            "to": "src/images/"
-          }
+            {
+                "from": "src/images/",
+                "to": "src/images/"
+            },
+            {
+                "from": "src/config/",
+                "to": "src/config/"
+            }
         ]
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "electron": "^10.1.5",
+        "electron": "^10.4.7",
         "electron-builder": "^22.9.1",
+        "electron-devtools-installer": "^3.2.0",
         "electron-reloader": "^1.0.1"
     },
     "dependencies": {
-        "electron-reloader": "^1.0.1",
         "qiniu": "^7.3.2",
         "qrcode": "^1.4.4"
     }

@@ -1,12 +1,11 @@
-
+var fs = require('fs');
+const path = require('path')
+    // 引入七牛模块  
+var qiniu = require("qiniu");
+// const { remote } = require('electron');
 // 图片上传
 function upload(imgData) {
-    var fs = require('fs');
-    const path = require('path')
-
-    const { remote } = require('electron');
-    // 引入七牛模块  
-    var qiniu = require("qiniu");
+    console.log(qiniu)
     //要上传的空间名
     var bucket = 'cszh-project';
     var imageUrl = 'jsmx.viveducd.com'; // 域名名称
@@ -35,23 +34,28 @@ function upload(imgData) {
         // win.loadFile(path.join(__dirname, 'pz1112/index.html'))
         //过滤data:URL
         var base64Data = imgData.replace(/^data:image\/\w+;base64,/, "");
+        console.log(1)
         var dataBuffer = new Buffer(base64Data, 'base64');
+        console.log(dataBuffer)
         fs.writeFile(filePath, dataBuffer, function (err) {
+            console.log(1111111111111111111111111)
             if (err) {
                 console.log({ status: '102', msg: '文件写入失败' })
                 reject({ status: '102', msg: '文件写入失败' }) 
             } else {
-                // console.log('上传前111')
+                console.log('上传前111')
                 var localFile = filePath;
                 var formUploader = new qiniu.form_up.FormUploader(config);
                 var putExtra = new qiniu.form_up.PutExtra();
                 var key = fileName;
                 // 文件上传
-                // console.log('上传前')
+                console.log('上传前')
 
                 formUploader.putFile(uploadToken, key, localFile, putExtra, function (respErr, respBody, respInfo) {
+                    console.log('上传后')
                     // 上传之后删除本地文件
                     fs.unlinkSync(filePath);
+                    
 
                     if (respErr) {
                         console.log({ status: '-1', msg: '上传失败', error: respErr })
