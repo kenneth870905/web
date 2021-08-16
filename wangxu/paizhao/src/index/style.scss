@@ -28,6 +28,13 @@ li {
     list-style: none;
 }
 
+.btns{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+}
+
 #vue {
     height: 100%;
     // overflow: hidden;
@@ -347,6 +354,7 @@ li {
         display: flex;
         justify-content: center;
         align-items: center;
+        background: rgba(0,0,0,0.2);
     }
     img{
         width: 100%;
