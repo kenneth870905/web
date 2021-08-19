@@ -1,12 +1,18 @@
 <template>
     <div id="app" @click="点击app()">
-
         <!-- 路由出口 -->
 
         <Head :滚动条位置="app滚动条位置"></Head>
         <router-view />
         <Footer></Footer>
         <!-- 右侧固定导航栏 -->
+
+        <div :class="{
+            btn:true,
+            active:activeName === a.haha
+        }"></div>
+
+        
         <div class="service">
             <ul>
                 <li v-popover:popover1 v-if="技术支持">
@@ -29,25 +35,34 @@
                         <div>欢迎加入我们</div>
                     </a>
                 </el-popover>
-                <li @click="onLineService()"><i class="iconfont icon-liaotian"></i>
+                <li @click="onLineService()">
+                    <i class="iconfont icon-liaotian"></i>
                     <p>在线客服</p>
                 </li>
-                <li v-if="!隐藏wx" v-popover:popover4 @click="设置微信二维码()"><i class="iconfont icon-weixin"></i>
+                <li v-if="!隐藏wx" v-popover:popover4 @click="设置微信二维码()">
+                    <i class="iconfont icon-weixin"></i>
                     <p>微信客服</p>
                 </li>
                 <el-popover popper-class="二维码弹框" v-model="显示二维码" ref="popover4" :disabled="disabled" placement="right" width="150">
-                    <img :src="vuexconfig.api_url+'/App_Upload/wechatkf.jpg'" alt="">
+                    <img :src="vuexconfig.api_url+'/App_Upload/wechatkf.jpg'" alt />
                 </el-popover>
-                <li v-if="!隐藏qq" @click="QQService()"><i class="iconfont icon-qq"></i>
+                <li v-if="!隐藏qq" @click="QQService()">
+                    <i class="iconfont icon-qq"></i>
                     <p>QQ客服</p>
                 </li>
-                <li v-if="!userInfo.UserId" @click="playTest()"><i class="iconfont icon-huaban"></i>
+                <li v-if="!userInfo.UserId" @click="playTest()">
+                    <i class="iconfont icon-huaban"></i>
                     <p>试玩体验</p>
                 </li>
                 <li v-if="站点配置.appUrl">
-                    <router-link to="/phone" class="font_c"><i class="iconfont icon-44"></i><br><span>手机投注</span></router-link>
+                    <router-link to="/phone" class="font_c">
+                        <i class="iconfont icon-44"></i>
+                        <br />
+                        <span>手机投注</span>
+                    </router-link>
                 </li>
-                <li @click="goTop()" :class="{'active':app滚动条位置>80}" v-show="app滚动条位置>80"><i class="iconfont icon-fanhuidingbu-"></i>
+                <li @click="goTop()" :class="{'active':app滚动条位置>80}" v-show="app滚动条位置>80">
+                    <i class="iconfont icon-fanhuidingbu-"></i>
                     <p>返回顶部</p>
                 </li>
             </ul>
@@ -69,7 +84,6 @@
                 <el-button style="width:100%" type="primary" size="small" @click="closeMessage()">确 定</el-button>
             </span>
         </el-dialog>
-
     </div>
 </template>
 
@@ -104,7 +118,7 @@ export default {
             timeinfo: '',
             time_2: '',
             info: {},
-            init2:false
+            init2: false
         }
     },
     components: {
@@ -145,11 +159,11 @@ export default {
                 }
             }
         },
-        隐藏qq(){
+        隐藏qq() {
             return this.站点配置.qq === false
         },
         //隐藏微信客服
-        隐藏wx(){
+        隐藏wx() {
             return this.站点配置.hideWx
         }
     },
@@ -260,10 +274,10 @@ export default {
             if (this.userInfo.UserId) {
                 try {
                     clearTimeout(this.timeinfo)
-                } catch (error) {}
+                } catch (error) { }
                 this.timeinfo = setTimeout(() => {
                     this.getUserInfo()
-                }, 1000*30);
+                }, 1000 * 30);
 
                 if (!this.time_2 && config.time > 0) {
                     var itemS = config.time
@@ -289,7 +303,7 @@ export default {
     },
     // 判断是电脑版还还是手机版访问
     beforeCreate: function () {
-        if(window.innerWidth<=750 || window.outerWidth<=750){
+        if (window.innerWidth <= 750 || window.outerWidth <= 750) {
             // location.href = config.mobile_url
             location.href = location.origin
         }
@@ -381,7 +395,7 @@ export default {
     mounted: function () {
         var this_1 = this
         setTimeout(() => {
-            this.init2=true
+            this.init2 = true
         }, 500);
         this.定时获取用户信息()
         // $('body,html').scroll(function(e){
@@ -400,13 +414,13 @@ export default {
     destroyed: function () {
     },
     watch: {
-        'userInfo.UserId'(){
+        'userInfo.UserId'() {
             setTimeout(() => {
-                this.定时获取用户信息()            
-            }, 1000*30);
+                this.定时获取用户信息()
+            }, 1000 * 30);
         },
-        '$route'(){
-            if(this.init2){
+        '$route'() {
+            if (this.init2) {
                 this.修改state(['Online_init', true]);
                 this.定时获取用户信息()
                 console.log('路由发生变化')
@@ -459,10 +473,10 @@ export default {
     background: url("~@/assets/image/chaoshi.gif") no-repeat !important;
     border-radius: 18px !important;
     position: relative;
-    /deep/ .el-message-box__header{
+    /deep/ .el-message-box__header {
         padding: 0px;
     }
-    /deep/ .el-message-box__content{
+    /deep/ .el-message-box__content {
         padding: 0px;
     }
     /deep/.el-message-box__headerbtn .el-message-box__close {

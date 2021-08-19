@@ -1,0 +1,32 @@
+{
+    "name": "paizhao",
+    "version": "1.0.6",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "electron .",
+        "build": "electron-builder"
+    },
+    "build": {
+        "extraResources": [
+          {
+            "from": "src/images/", 
+            "to": "src/images/"
+          }
+        ]
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "electron": "^10.1.5",
+        "electron-builder": "^22.9.1",
+        "electron-reloader": "^1.0.1"
+    },
+    "dependencies": {
+        "electron-reloader": "^1.0.1",
+        "qiniu": "^7.3.2",
+        "qrcode": "^1.4.4"
+    }
+}
