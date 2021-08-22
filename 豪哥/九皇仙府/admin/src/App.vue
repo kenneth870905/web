@@ -22,4 +22,8 @@ li{
 .el-pagination .btn-prev .el-icon{
     display: inline-block !important;
 }
+.fenye{
+    margin: 15px 0px 0px;
+    text-align: right;
+}
 </style>

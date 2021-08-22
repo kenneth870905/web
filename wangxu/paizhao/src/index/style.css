@@ -13,6 +13,75 @@ body {
   box-sizing: border-box;
 }
 
+#vue {
+  display: flex;
+}
+
+section {
+  width: calc(100% / 3);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.huakuang .hk-bg-1 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 3;
+}
+
+.huakuang .hk-content {
+  width: 25.92593vw;
+  margin: 0px auto;
+  padding: 12.34568vw 0px 0px;
+  position: absolute;
+  z-index: 4;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+}
+
+.huakuang .hk-box-2 {
+  height: 33.33333vw;
+}
+
+.huakuang .hk-box-2 img {
+  width: 100%;
+}
+
+.huakuang .hk-saoma-box {
+  margin: 0.61728vw 0px 0px;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.92593vw;
+}
+
+.huakuang .hk-saoma-box .hk-erweima {
+  margin: 0px 0px 0px 0.92593vw;
+  width: 3.7037vw;
+  height: 3.7037vw;
+  border: 1px solid red;
+}
+
+.huakuang .hk-saoma-box .hk-erweima img {
+  width: 100%;
+}
+
+.huakuang .swiper1 {
+  height: 100vh;
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+}
+
+.huakuang .swiper1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 ul {
   margin: 0px;
   padding: 0px;
@@ -55,11 +124,11 @@ li {
 .bg4 {
   position: absolute;
   left: 0px;
-  right: 2.31481vw;
-  top: 28.7037vw;
+  right: 0.7716vw;
+  top: 9.5679vw;
   margin: auto;
-  width: 59.25926vw;
-  height: 75.92593vw;
+  width: 19.75309vw;
+  height: 25.30864vw;
   overflow: hidden;
 }
 
@@ -74,22 +143,22 @@ li {
   position: absolute;
   left: 0px;
   right: 0px;
-  bottom: 2.68519vw;
+  bottom: 0.89506vw;
   margin: auto;
   cursor: pointer;
-  width: 9.25926vw;
-  height: 9.25926vw;
+  width: 3.08642vw;
+  height: 3.08642vw;
   border-radius: 100%;
   background: #BA7F39;
-  line-height: 9.25926vw;
+  line-height: 3.08642vw;
   color: #FFFFFF;
-  font-size: 2.22222vw;
+  font-size: 0.74074vw;
   text-align: center;
 }
 
 .btn-2 {
   z-index: 2;
-  right: 2.68519vw;
+  right: 0.89506vw;
   left: auto;
 }
 
@@ -104,18 +173,18 @@ li {
   align-items: center;
   justify-content: center;
   color: #FFFFFF;
-  font-size: 1.94444vw;
+  font-size: 1.2963vw;
 }
 
 .step-3 img {
-  width: 3.14815vw;
-  height: 3.14815vw;
-  margin: 0px 1.15741vw 0px 0px;
+  width: 2.09877vw;
+  height: 2.09877vw;
+  margin: 0px 0.7716vw 0px 0px;
 }
 
 .step-err,
 .step-4 {
-  height: 7.73148vw;
+  height: 2.57716vw;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -126,24 +195,24 @@ li {
   align-items: center;
   justify-content: center;
   color: #FFFFFF;
-  font-size: 1.94444vw;
+  font-size: 0.64815vw;
   background: rgba(0, 0, 0, 0.6);
-  border-radius: 7.73148vw;
+  border-radius: 2.57716vw;
 }
 
 .step-err img,
 .step-4 img {
-  width: 4.35185vw;
-  height: 4.35185vw;
-  margin: 0px 1.15741vw 0px 0px;
+  width: 1.45062vw;
+  height: 1.45062vw;
+  margin: 0px 0.7716vw 0px 0px;
 }
 
 .step-4 {
-  width: 25.46296vw;
+  width: 16.97531vw;
 }
 
 .step-err {
-  width: 34.72222vw;
+  width: 23.14815vw;
 }
 
 .step-5 {
@@ -151,20 +220,20 @@ li {
   position: absolute;
   left: 0px;
   right: 0px;
-  bottom: 6.01852vw;
+  bottom: 4.01235vw;
   margin: auto;
-  width: 11.57407vw;
-  height: 11.57407vw;
+  width: 7.71605vw;
+  height: 7.71605vw;
   border-radius: 100%;
   background: #D33715;
   color: #FFFFFF;
-  font-size: 2.22222vw;
+  font-size: 1.48148vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  box-shadow: 0px 0px 1.85185vw -0.87963vw #D33715;
+  box-shadow: 0px 0px 1.23457vw -0.58642vw #D33715;
 }
 
 .step-2,
@@ -172,44 +241,44 @@ li {
   position: absolute;
   left: 0px;
   right: 0px;
-  bottom: 1.38889vw;
+  bottom: 0.92593vw;
   z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0.92593vw 0px;
+  padding: 0.61728vw 0px;
   background: rgba(0, 0, 0, 0.6);
-  margin: 0px 1.15741vw;
+  margin: 0px 0.7716vw;
 }
 
 .step-2 .title,
 .step-7 .title {
   color: #8a87f3;
   text-align: center;
-  margin: 0px 0px 0.92593vw;
-  padding: 0.69444vw 0.92593vw;
+  margin: 0px 0px 0.61728vw;
+  padding: 0.46296vw 0.61728vw;
   border-radius: 5px;
   margin: 0px auto;
-  font-size: 1.75926vw;
+  font-size: 0.67901vw;
 }
 
 .step-2 .erweima1,
 .step-7 .erweima1 {
   position: absolute;
-  right: 0.46296vw;
-  top: 0.46296vw;
-  width: 2.77778vw;
+  right: 0.30864vw;
+  top: 0.30864vw;
+  width: 1.85185vw;
 }
 
 .step-2 ul,
 .step-7 ul {
-  height: 13.37963vw;
-  border-radius: 1.11111vw;
+  height: 4.62963vw;
+  border-radius: 0.74074vw;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-size: 1.75926vw;
+  font-size: 0.67901vw;
   text-align: center;
   white-space: nowrap;
 }
@@ -221,18 +290,18 @@ li {
 
 .step-2 ul .active img,
 .step-7 ul .active img {
-  border: 0.46296vw solid #3fd6c0;
+  border: 0.30864vw solid #3fd6c0;
 }
 
 .step-2 ul li,
 .step-7 ul li {
-  width: 14.35185vw;
+  width: 9.5679vw;
 }
 
 .step-2 ul img,
 .step-7 ul img {
-  width: 7.68519vw;
-  height: 7.68519vw;
+  width: 3.08642vw;
+  height: 3.08642vw;
   border-radius: 100%;
 }
 
@@ -277,31 +346,31 @@ li {
 }
 
 .step-paiSheQian img {
-  width: 10.92593vw;
-  height: 10.92593vw;
+  width: 7.28395vw;
+  height: 7.28395vw;
   position: absolute;
   left: 0px;
   right: 0px;
-  bottom: 4.07407vw;
+  bottom: 2.71605vw;
   margin: auto;
   z-index: 2;
 }
 
 .step-paiSheQian .daojishi {
-  width: 10.92593vw;
-  height: 10.92593vw;
+  width: 3.64198vw;
+  height: 3.64198vw;
   position: absolute;
   z-index: 2;
   left: 0px;
   right: 0px;
-  bottom: 4.07407vw;
+  bottom: 1.35802vw;
   margin: auto;
   border-radius: 100%;
   text-align: center;
-  font-size: 4.62963vw;
+  font-size: 1.54321vw;
   color: #fff;
-  border: 0.46296vw solid #BA7F39;
-  padding: 0.46296vw;
+  border: 0.30864vw solid #BA7F39;
+  padding: 0.30864vw;
 }
 
 .step-paiSheQian .daojishi div {
@@ -315,16 +384,16 @@ li {
 
 .full {
   position: absolute;
-  top: 1.85185vw;
-  right: 1.85185vw;
-  width: 4.62963vw;
+  top: 0.61728vw;
+  right: 0.61728vw;
+  width: 1.54321vw;
   z-index: 3;
   opacity: 0.5;
 }
 
 .erweima2 {
   position: absolute;
-  top: 108.7963vw;
+  top: 36.26543vw;
   left: 0px;
   width: 100%;
   z-index: 2;
@@ -333,15 +402,15 @@ li {
   align-items: center;
   flex-direction: column;
   color: #ffffff8c;
-  font-size: 1.38889vw;
+  font-size: 0.46296vw;
 }
 
 .erweima2 .img {
-  width: 13.88889vw;
-  height: 13.88889vw;
-  border: 0.46296vw solid #ffffff47;
-  margin: 0px 0px 1.38889vw;
-  padding: 0.46296vw;
+  width: 4.62963vw;
+  height: 4.62963vw;
+  border: 0.15432vw solid #ffffff47;
+  margin: 0px 0px 0.46296vw;
+  padding: 0.15432vw;
   display: flex;
   justify-content: center;
   align-items: center;
