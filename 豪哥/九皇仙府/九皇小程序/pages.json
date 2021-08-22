@@ -1,36 +1,31 @@
 {
 	"pages": [
 		{
-			"path": "pages/login",
+			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "登录",
-				"enablePullDownRefresh": false
+				"navigationBarTitleText": "首页"
 			}
 		},{
-		"path": "pages/index/index",
+		"path": "pages/login",
 		"style": {
-			"navigationBarTitleText": "首页"
+			"navigationBarTitleText": "登录",
+			"enablePullDownRefresh": false
 		}
-	}
-	    ,{
-            "path" : "pages/xuanZe2/xuanZe2",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "九皇仙府",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/xuanZe3/xuanZe3",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "九皇仙府",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	},  {
+		"path": "pages/xuanZe2/xuanZe2",
+		"style": {
+			"navigationBarTitleText": "九皇仙府",
+			"enablePullDownRefresh": false
+		}
+
+	}, {
+		"path": "pages/xuanZe3/xuanZe3",
+		"style": {
+			"navigationBarTitleText": "九皇仙府",
+			"enablePullDownRefresh": false
+		}
+
+	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

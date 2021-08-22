@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="form">
-			<input type="text" value="" v-model="user.username" placeholder="请输入账号"/>
+			<input type="text" value="" v-model="user.name" placeholder="请输入账号"/>
 			<input type="password" value="" v-model="user.password" placeholder="请输入密码"/>
 			<button type="default" @click="登录()">登录</button>
 		</view>
@@ -13,14 +13,27 @@
 		data() {
 			return {
 				user:{
-					username:"",
+					name:"",
 					password:""
 				}
 			};
 		},
 		methods:{
 			登录(){
+				this.$http('/auth/login',this.user).then(x=>{
+					console.log(x)
+					if(x.code==0){
+						uni.setStorageSync('jiuhuangToken', x.data.token);
+						uni.redirectTo({
+							url: '/pages/index/index'
+						});
+					}else{
+						uni.showToast({title:'账号密码错误，请重新登录',icon:'none'})
+					}
+				})
+				
 				console.log(this.user)
+				return
 				uni.showToast({
 					title:'登录成功',
 					icon:'none'
@@ -29,6 +42,9 @@
 					url:"/pages/index/index"
 				})
 			}
+		},
+		onLoad() {
+			wx.hideHomeButton()
 		}
 	}
 </script>

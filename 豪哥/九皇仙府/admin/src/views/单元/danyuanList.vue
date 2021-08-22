@@ -1,96 +1,122 @@
 <template>
     <div class="header-1">
-        <el-select v-model="value" placeholder="请选择" class="r10">
-            <el-option v-for="item in yuanquList" :key="item.value" :label="item.label" :value="item.value"></el-option>
+        <el-select size="small" v-model="query.park_id" placeholder="请选择" class="r10" @change="changYuanQU()">
+            <el-option label="全部" value=""></el-option>
+            <el-option v-for="item in yuanquList" :key="item.value" :label="item.name" :value="item.id"></el-option>
         </el-select>
-        <el-button size="small">查询</el-button>
         <div class="flex1"></div>
         <el-button size="small" @click="$router.push('/danyuan')">添加园区</el-button>
     </div>
 
     <el-table :data="list" border size="mini">
-        <el-table-column label="单元名"></el-table-column>
-        <el-table-column label="价格"></el-table-column>
+        <el-table-column label="单元名" prop="name"></el-table-column>
+        <el-table-column label="价格" prop="price"></el-table-column>
         <el-table-column label="行"></el-table-column>
         <el-table-column label="列"></el-table-column>
-        <el-table-column label="状态"></el-table-column>
+        <el-table-column label="状态">
+            <template #default="scope">
+                可用
+            </template>
+        </el-table-column>
         <el-table-column label="剩余数量"></el-table-column>
-        <el-table-column label="创建时间"></el-table-column>
-        <el-table-column label="更新时间"></el-table-column>
-        <el-table-column label="备注"></el-table-column>
+        <el-table-column label="备注" prop="description"></el-table-column>
+        <el-table-column label="创建时间" prop="createdAt"></el-table-column>
+        <el-table-column label="更新时间" prop="updatedAt"></el-table-column>
         <el-table-column label="操作" align="center" width="150px">
             <template #default="scope">
-                <el-button type size="mini">修改</el-button>
-                <el-button type="warning" size="mini">删除</el-button>
+                <el-button type size="mini" @click="$router.push('/danyuan?id='+scope.row.id)">修改</el-button>
+                <el-button type="warning" size="mini" @click="deleteDanYuan(scope.row)">删除</el-button>
             </template>
         </el-table-column>
     </el-table>
-    <el-pagination class="page" :page-count="100"  v-model="pageIndex" :page-size="pageSize" @current-change="changePage" layout="prev, pager, next" background></el-pagination>
+    <el-pagination class="page" :total="total"  v-model="query.page" :page-size="query.size" @current-change="changePage" layout="prev, pager, next" background></el-pagination>
 
-    <el-dialog title="园区详情" v-model="userDialog" width="450px" custom-class="usertankuang">
-        <el-form>
-            <el-form-item label="园区名称">
-                <el-input v-model="user.userName" placeholder="园区名称"></el-input>
-            </el-form-item>
-            <el-form-item label="备注">
-                <el-input v-model="user.remarks" placeholder="备注：如张三"></el-input>
-            </el-form-item>
-        </el-form>
-        <template #footer>
-            <span class="dialog-footer">
-                <el-button @click="userDialog = false">取 消</el-button>
-                <el-button type="primary" @click="userDialog = false">确 定</el-button>
-            </span>
-        </template>
-    </el-dialog>
+    
 </template>
 
 <script>
-import { reactive, ref } from '@vue/reactivity'
+import { reactive, ref , getCurrentInstance} from 'vue'
 export default {
     name: "",
     setup(props) {
+        let {proxy} = getCurrentInstance()
 
-        let yuanquList = [{
-          value: '选项1',
-          label: '黄金糕'
-        }, {
-          value: '选项2',
-          label: '双皮奶'
-        }, {
-          value: '选项3',
-          label: '蚵仔煎'
-        }, {
-          value: '选项4',
-          label: '龙须面'
-        }, {
-          value: '选项5',
-          label: '北京烤鸭'
-        }]
-
-
-        let list = reactive([1, 2, 3, 4, 5])
-        let user = reactive({
-            userName: "",
-            password: "",
-            remark: ""
+        let yuanquList = reactive([]) 
+        let query=reactive({
+            park_id:"", page:1, size:10
         })
-        let userDialog = ref(false)
-        let pageIndex=ref(1)
-        let pageSize=ref(10)
+        let total=ref(0)
+        let list = reactive([])
+        
+
+        let getYuanQu=()=>{
+            axios.get('/park',{params:{page:1,size:100}})
+            .then(res => {
+                console.log(res)
+                yuanquList.push(...res.data)
+            }).catch(err => {
+                console.error(err); 
+            })
+        }
+        let getDanyuan=()=>{
+            axios.get('/unit',{params:query})
+            .then(res => {
+                console.log('查询单元',res)
+                list.length=0
+                list.push(...res.data)
+            })
+            .catch(err => {
+                console.error(err); 
+            })
+        }
+        let changYuanQU=()=>{
+            getDanyuan()
+        }
         let changePage=(i)=>{
-            console.log(i)
+            query.page=i
+            getDanyuan()
+        }
+        let deleteDanYuan=async (item)=>{
+            let r = await proxy.$confirm('确定删除?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => true).catch(() => false);
+            if(!r) return
+            axios.delete(`/unit/${item.id}`)
+            .then(res => {
+                if(res.code==0){
+                    proxy.$message({message:"删除成功",type:"success"})
+                    getDanyuan()
+                }else{
+                    proxy.$message({message:"删除失败",type:"error"})
+                }
+            })
+            .catch(err => {
+                console.error(err); 
+                proxy.$message({message:'连接异常，请稍后再试'})
+            })
         }
 
+
+
+
+        getYuanQu()
+        getDanyuan()
+
+        console.log(proxy)
+
         return {
-            list,
-            user,
-            userDialog,
             yuanquList,
-            value: ref(''),
-            pageIndex,
-            pageSize,
-            changePage
+            query,
+            total,
+            list,
+
+            changYuanQU,
+            deleteDanYuan,
+            changePage,
+            
+
         }
     }
 }
@@ -100,6 +126,7 @@ export default {
 .header-1 {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     margin: 0px 0px 10px;
     .flex1{
         flex: 1;

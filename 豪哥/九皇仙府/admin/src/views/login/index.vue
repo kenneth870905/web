@@ -3,33 +3,65 @@
         <el-form :model="user" class="form">
             <img class="img-1" src="./avatar.png" alt="" srcset="">
             <el-form-item label="">
-                <el-input v-model="user.username" placeholder="账号"></el-input>
+                <el-input v-model="user.name" placeholder="账号"></el-input>
             </el-form-item>
             <el-form-item label="">
-                <el-input v-model="user.passwoord" placeholder="密码"></el-input>
+                <el-input v-model="user.password" placeholder="密码" @keydown.native.enter="登录()" show-password></el-input>
             </el-form-item>
             <el-form-item label="">
-                <el-button @click="$router.push('/')" type="success" style="width:100%">登录</el-button>
+                <el-button type="success" style="width:100%" @click="登录()">登录</el-button>
             </el-form-item>
         </el-form>
     </div>
 </template>
 
 <script>
+import { getCurrentInstance } from "vue";
 import { reactive, ref } from '@vue/reactivity'
+import { useStore  } from "vuex";
+import { useRouter,useRoute } from 'vue-router'
 export default {
     setup(props) {
-        
+
+        const { proxy } = getCurrentInstance()
+        const store = useStore();
+        let Router = useRouter()
+
         let user=reactive({
-            username:"",
-            passwoord:""
+            name:"",
+            password:""
         })
 
         
 
 
+        let 登录=()=>{
+            if(!user.name || !user.password){
+                proxy.$message({message: '请输入账号密码',type: 'error'});
+                return
+            }
+            proxy.$axios.post('/auth/login',user).then(res => {
+                if(res.code==0){
+                    if(res.data.roles=="ADMIN"){
+                        store.commit('setItem',['loginInfo',res.data])
+                        Router.push('/dingdanList')
+                    }else{
+                        proxy.$message({message: '权限不足',type: 'error'});
+                    }
+                }else{
+                    proxy.$message({message: '账号密码错误，请重新输入',type: 'error'});
+                }
+            }).catch(err => {
+                console.error(err); 
+                proxy.$message({message: '网络异常，请稍后再试',type: 'error'});
+            })
+        }
+
+
+
         return{
-            user
+            user,
+            登录,
         }
     }
 }
