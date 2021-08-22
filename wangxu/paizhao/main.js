@@ -1,4 +1,5 @@
 const { app, BrowserWindow  , BrowserView , ipcMain , session } = require('electron')
+const electron = require('electron') //获取electron对象
 var fs=require('fs')
 var path = require('path')
 const os = require('os')
@@ -20,10 +21,10 @@ async function createWindow() {
             enableRemoteModule: true
         },
         //全屏
-        // fullscreen :true,
+        fullscreen :true,
         // 隐藏标题栏
         // frame: false,
-        autoHideMenuBar:true //自动隐藏菜单 按alt还是会显示
+        // autoHideMenuBar:true //自动隐藏菜单 按alt还是会显示
     })
     //菜单
     // win.setMenuBarVisibility(false)
@@ -35,6 +36,13 @@ async function createWindow() {
     //     win.simpleFullScreen = true;
     // })
 
+    // 获取屏幕信息
+    let displays = electron.screen.getAllDisplays()
+    // 过滤主屏幕
+　　let externalDisplay = displays.filter((display) => {
+    　　return display.bounds.x !== 0 || display.bounds.y !== 0
+　　})
+    console.log(externalDisplay)
     // return
     let src = app.isPackaged ? path.dirname(app.getPath('exe'))+'/resources/src/' : 'src/'
     fs.readFile(src+'config/config.json','utf8',function (err, data) {
@@ -46,26 +54,27 @@ async function createWindow() {
             y:50,
             title:"",
             // frame: false,   //隐藏状态栏
+            fullscreen:true,
             webPreferences: {
                 nodeIntegration: true,
                 enableRemoteModule: true,
                 // additionalArguments:[]
             },
-            autoHideMenuBar:true //自动隐藏菜单 按alt还是会显示
+            // autoHideMenuBar:true //自动隐藏菜单 按alt还是会显示
         }
         dataList.map((x,index)=>{
+            if(!externalDisplay[index]) return
+
             x.sendName = 'sendC'+index
             let peizhi1=Object.assign({},peizhi)
                 peizhi1.title=x.name
-                // peizhi1.webPreferences.additionalArguments=[index]  //添加属性
                 peizhi1.webPreferences.additionalArguments=[JSON.stringify(x.list)]  //添加属性
-                peizhi1.x=(index)*(540/2)+50
+                peizhi1.x = externalDisplay[index].bounds.x
+                console.log(peizhi1)
             var child1 =  new BrowserWindow(peizhi1)
                 child1.loadFile('src/child1/child1.html')
                 child1.removeMenu()    //删除菜单栏好像苹果没用
-                // child1.on('maximize', function () {
-                //     child1.simpleFullScreen = true;
-                // })
+                
             ipcMain.on('sendC'+index,(e,message)=>{
                 child1.webContents.send('imgUploadMsgFromMain', message);
             })
