@@ -4,6 +4,9 @@ const { app, remote, ipcRenderer } = require('electron')
 // console.log(path.dirname (remote.app.getPath ('exe')))
 // console.log(process.env.PORTABLE_EXECUTABLE_DIR)
 let c1 = ''
+let src = remote.app.isPackaged ? path.dirname(remote.app.getPath('exe'))+'/resources/src/' : 'src/'
+
+
 Vue.config.devtools = true;
 var newVue = new Vue({
     el: '#vue',
@@ -35,7 +38,31 @@ var newVue = new Vue({
             t: new Date().getTime(),
             src: remote.app.isPackaged ? path.dirname(remote.app.getPath('exe')) + '/resources/src/' : '../',
             videoSrc: remote.app.isPackaged ? path.dirname(remote.app.getPath('exe')) + "/resources/src/images/home_video.mp4" : "../images/home_video.mp4",
-            childrenList:remote.getGlobal('childrenList')
+            // childrenList:remote.getGlobal('childrenList'),
+            childrenList:[{
+                newBg: '' ,
+                erweima:'',
+                show:false,
+                time:function(){
+                    console.log(this)
+                    setTimeout(() => {
+                        this.show=false
+                    }, 1000 * 20);
+                }
+            },
+            {
+                newBg: '' ,
+                erweima:'',
+                show:false,
+                time:function(){
+                    setTimeout(() => {
+                        this.show=false
+                    }, 1000 * 20);
+                }
+            }],
+
+            imgList1:[],
+            imgList2:[],
         }
     },
     methods: {
@@ -149,7 +176,7 @@ var newVue = new Vue({
                             }
                             this.video2Init()
                         }, 1000 * 10);
-                    }, 1500);
+                    }, 3000);
                 } else {
                     this.err('上传错误，请重试。')
                 }
@@ -175,7 +202,7 @@ var newVue = new Vue({
                 //         }
                 //         this.video2Init()
                 //     }, 1000 * 15);
-                // }, 1500);
+                // }, 3000);
 
             })
         },
@@ -245,31 +272,19 @@ var newVue = new Vue({
         },
         sedchildren(){
             console.log(this.childrenList)
-            // {
-            //     name:"",
-            //     list:[],
-            //     show:true,
-            //     time:()=>{
-            //         setTimeout(() => {
-            //             this.show=false
-            //         }, 1000 * 20);
-            //     }
-            // }
+          
             let L1 = this.childrenList.filter(x=>!x.show)
-            console.log(L1)
             if(L1.length<1) return
             var index = Math.floor((Math.random()*L1.length))
+            console.log(index)
+            
             let o = L1[index]
+                o.newBg = this.newBg
+                o.erweima = this.erweima
                 o.show=true
-                o.time=function(){
-                    setTimeout(() => {
-                        this.show=false
-                    }, 1000 * 20);
-                }
-                o.time()
-                ipcRenderer.send(o.sendName, { newBg: this.newBg ,erweima:this.erweima });
                 
-            console.log(L1[index])
+                o.time()
+            
         },
         点击屏幕(e) {
             var video2 = document.querySelector('#video2')
@@ -280,6 +295,7 @@ var newVue = new Vue({
         }
     },
     mounted() {
+        var this_1 = this
 
         setInterval(() => {
             this.time_2--
@@ -291,6 +307,37 @@ var newVue = new Vue({
                 })
             }
         }, 1000);
+        
+
+        
+
+        fs.readFile(src+'config/config.json','utf8',function (err, data) {
+            let dataList=JSON.parse(data)
+            this_1.imgList1 = dataList[0].list
+            this_1.imgList2 = dataList[1].list
+            
+
+            setTimeout(() => {
+                var swiper = new Swiper('.swiper1-1',{
+                    loop : true,
+                    autoplay: { //自动切换
+                        disableOnInteraction: false,    //触碰后不会停止自动切换
+                    },
+                    observer:true,  //隐藏显示后正常播放
+                    observeParents:true,
+                });
+                var swiper2 = new Swiper('.swiper1-2',{
+                    loop : true,
+                    observer:true,
+                    autoplay: { //自动切换
+                        disableOnInteraction: false,    //触碰后不会停止自动切换
+                    },
+                    observer:true,  //隐藏显示后正常播放
+                    observeParents:true,
+                });
+            }, 500);
+        })
+
 
     }
 })
