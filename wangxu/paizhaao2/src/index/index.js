@@ -5,6 +5,12 @@ const { app, remote, ipcRenderer } = require('electron')
 // console.log(path.dirname (remote.app.getPath ('exe')))
 // console.log(process.env.PORTABLE_EXECUTABLE_DIR)
 console.log(remote.getGlobal('childrenList'))
+let childrenList = [] 
+remote.getGlobal('childrenList').map(value=>{
+    childrenList.push({
+        sendName:value.sendName
+    })
+})
 Vue.config.devtools = true;
 var newVue = new Vue({
     el: '#vue',
@@ -36,7 +42,7 @@ var newVue = new Vue({
             t: new Date().getTime(),
             src: remote.app.isPackaged ? path.dirname(remote.app.getPath('exe')) + '/resources/src/' : '../',
             videoSrc: remote.app.isPackaged ? path.dirname(remote.app.getPath('exe')) + "/resources/src/images/home_video.mp4" : "../images/home_video.mp4",
-            childrenList:remote.getGlobal('childrenList')
+            childrenList:childrenList,
         }
     },
     methods: {
@@ -253,14 +259,16 @@ var newVue = new Vue({
             let o = L1[index]
                 o.show=true
                 o.time=function(){
+                    console.log(this)
+                    let this_1 = this
                     setTimeout(() => {
-                        this.show=false
+                        console.log(this_1)
+                        this_1.show=false
                     }, 1000 * 20);
                 }
                 o.time()
                 ipcRenderer.send(o.sendName, { newBg: this.newBg ,erweima:this.erweima });
                 
-            console.log(L1[index])
         },
         点击屏幕(e) {
             var video2 = document.querySelector('#video2')
@@ -271,6 +279,8 @@ var newVue = new Vue({
         }
     },
     mounted() {
+        
+       
 
         setInterval(() => {
             this.time_2--
