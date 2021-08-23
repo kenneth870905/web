@@ -1,4 +1,5 @@
 const { app, BrowserWindow  , BrowserView , ipcMain , session } = require('electron')
+const electron = require('electron') //获取electron对象
 var fs=require('fs')
 var path = require('path')
 const os = require('os')

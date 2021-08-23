@@ -1,0 +1,17 @@
+[
+    {
+        "name":"相框1",
+        "time":10,
+        "list":["下载.jpg","rain.png","step-2-3.png"]
+    },
+    {
+        "name":"相框2",
+        "time":15,
+        "list":["step-2-2.png","step-2-3.png"]
+    },
+    {
+        "name":"相框3",
+        "time":10,
+        "list":["step-2-1.png","step-2-2.png"]
+    }
+]
