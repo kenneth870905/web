@@ -4,7 +4,7 @@ var fs=require('fs')
 var path = require('path')
 const os = require('os')
 
-const notifier = require("node-notifier");
+// const notifier = require("node-notifier");
 // const axios = require("axios");
 // 热加载
 // require('electron-reloader')(module,{});
@@ -50,6 +50,7 @@ async function createWindow() {
     let displays = electron.screen.getAllDisplays()
     let fenPingList  = displays.filter(value=>value.bounds.x !== 0 || value.bounds.y !== 0)
 
+        // fenPingList = [ {bounds: { x: 0, y: 0, width: 1920, height: 1080 }} , {bounds: { x: 0, y: 0, width: 1920, height: 1080 }}]
     // return
     let src = app.isPackaged ? path.dirname(app.getPath('exe'))+'/resources/src/' : 'src/'
     fs.readFile(src+'config/config.json','utf8',function (err, data) {
@@ -64,7 +65,6 @@ async function createWindow() {
             webPreferences: {
                 nodeIntegration: true,
                 enableRemoteModule: true,
-                // additionalArguments:[]
             },
             fullscreen:true,    //全屏
             autoHideMenuBar:true //自动隐藏菜单 按alt还是会显示
@@ -75,8 +75,7 @@ async function createWindow() {
             x.sendName = 'sendC'+index
             let peizhi1=Object.assign({},peizhi)
                 peizhi1.title=x.name
-                // peizhi1.webPreferences.additionalArguments=[index]  //添加属性
-                peizhi1.webPreferences.additionalArguments=[JSON.stringify(x.list)]  //添加属性
+                peizhi1.webPreferences.additionalArguments=[JSON.stringify(x.time),JSON.stringify(x.list)]  //添加属性
                 peizhi1.x= fenPingList[index].bounds.x
             var child1 =  new BrowserWindow(peizhi1)
                 child1.loadFile('src/child1/child1.html')

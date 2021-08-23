@@ -6,6 +6,10 @@ const path = require('path')
 // w.webContents.openDevTools()
         //父传子
 let argv = window.process.argv
+console.log(argv)
+let swiperTime = argv[argv.length-2]
+console.log('轮播时间',swiperTime*1000)
+
 let imgList = JSON.parse(argv.pop())
     console.log(imgList)
 var newvue = new Vue({
@@ -32,7 +36,7 @@ var newvue = new Vue({
         var swiper = new Swiper('.swiper1',{
             loop : true,
             autoplay: { //自动切换
-                delay:1000*10,
+                delay:1000*swiperTime,
                 disableOnInteraction: false,    //触碰后不会停止自动切换
             },
             observer:true,  //隐藏显示后正常播放
