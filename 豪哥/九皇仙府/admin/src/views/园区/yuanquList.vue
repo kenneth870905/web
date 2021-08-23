@@ -1,6 +1,7 @@
 <template>
     <div class="header-1">
-        <el-button size="small" @click="openDialog()">添加园区</el-button>
+        <el-button size="small" @click="openDialog()" type="warning">添加园区</el-button>
+        <el-button size="small" @click="getList()">刷新</el-button>
     </div>
 
     <el-table :data="list" border size="mini">
@@ -161,7 +162,8 @@ export default {
             openDialog,
             queding,
             changePage,
-            deleteYuanqu
+            deleteYuanqu,
+            getList
         }
     }
 }

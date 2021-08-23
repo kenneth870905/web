@@ -1,13 +1,14 @@
 <template>
     <div class="header-1">
-        <el-select v-model="query.status" placeholder="请选择" class="r10">
+        <el-select v-model="query.status" size="small" placeholder="请选择" class="r10" @change="changeType">
             <el-option label="全部订单" value=""></el-option>
             <el-option label="预定" :value="1"></el-option>
             <el-option label="已付定金" :value="2"></el-option>
             <el-option label="已售出" :value="3"></el-option>
         </el-select>
         <div class="flex1"></div>
-        <el-button size="small" @click="openDialog()">添加订单</el-button>
+        <el-button size="small" @click="openDialog()" type="warning">添加订单</el-button>
+        <el-button size="small" @click="getOrderList()">刷新</el-button>
     </div>
 
     <el-table :data="orderList" border size="mini">
@@ -84,7 +85,7 @@
         </el-form>
         <template #footer>
             <span class="dialog-footer">
-                <el-button @click="showDialog = false">取 消</el-button>
+                <el-button @click="statusDialog = false">取 消</el-button>
                 <el-button type="primary" @click="修改状态()">确 定</el-button>
             </span>
         </template>
@@ -104,7 +105,9 @@ export default {
         let orderList = reactive([])
         let total = ref(0)
         let query = reactive({
-            status:""
+            status:"",
+            page:1,
+            size:10
         })
         //园区
         let ParkList=reactive([])
@@ -309,6 +312,11 @@ export default {
             })
         }
 
+        let changeType=()=>{
+            query.page=1
+            getOrderList()
+        }
+
 
         getParkList()
 
@@ -328,7 +336,9 @@ export default {
             statusDialog,
             newStatus,
             oldOrder,
+            changeType,
 
+            getOrderList,
             openDialog,
             setClass,
             选择园区,

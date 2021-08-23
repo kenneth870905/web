@@ -1,6 +1,7 @@
 <template>
     <div class="header-1">
-        <el-button size="small" @click="openUserDialog()">添加用户</el-button>
+        <el-button size="small" @click="openUserDialog()" type="warning">添加用户</el-button>
+        <el-button size="small" @click="getList()">刷新</el-button>
     </div>
 
     <el-table :data="list" border>
@@ -129,7 +130,7 @@ export default {
             axios.delete(`/user/${item.id}`).then(res => {
                 console.log(res)
                 if(res.code==0){
-                    proxy.$message({message:'连接异常，请稍后再试',type:'success'})
+                    proxy.$message({message:'删除成功',type:'success'})
                     getList()
                 }else{
                     proxy.$message({message:res.message,type:'error'})
@@ -180,7 +181,8 @@ export default {
             addUser,
             changePage,
             openUserDialog,
-            deleteUser
+            deleteUser,
+            getList
         }
     }
 }

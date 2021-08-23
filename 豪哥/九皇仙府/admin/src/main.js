@@ -31,11 +31,16 @@ let axiosTotal=0
 let closeLoading = ()=>{
     axiosTotal--
     if(axiosTotal==0){
-        loadingInstance.close()
+        setTimeout(() => {
+            loadingInstance.close()            
+        }, 500);
     }
 }
 axios.interceptors.request.use(function (config) {
-    loadingInstance = ElLoading.service();
+    loadingInstance = ElLoading.service({
+        background:'rgba(0,0,0,.3)',
+        text:"正在加载"
+    });
     axiosTotal++
     // let urlList = ['/api/auth/loginadmin'];
     let url = config.url

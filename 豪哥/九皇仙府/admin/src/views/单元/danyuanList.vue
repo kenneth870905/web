@@ -5,7 +5,8 @@
             <el-option v-for="item in yuanquList" :key="item.value" :label="item.name" :value="item.id"></el-option>
         </el-select>
         <div class="flex1"></div>
-        <el-button size="small" @click="$router.push('/danyuan')">添加园区</el-button>
+        <el-button size="small" @click="$router.push('/danyuan')" type="warning">添加园区</el-button>
+        <el-button size="small" @click="getDanyuan()" >刷新</el-button>
     </div>
 
     <el-table :data="list" border size="mini">
@@ -112,6 +113,7 @@ export default {
             total,
             list,
 
+            getDanyuan,
             changYuanQU,
             deleteDanYuan,
             changePage,

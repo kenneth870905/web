@@ -6,7 +6,8 @@ import App from './App'
 Vue.config.productionTip = false
 
 App.mpType = 'app'
-let api = 'http://47.243.70.161/api'
+// let api = 'http://47.243.70.161/api'
+let api ="https://soft.jiuhuangxianfu.com/api"
 Vue.prototype.$api_url = api
 
 let loadingTotal = 0

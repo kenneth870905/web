@@ -1,9 +1,10 @@
 <template>
 	<view class="container">
 		<view class="header">
-			<image src="@/static/indexBg.jpg" mode="widthFix"></image>
+			<!-- <image src="@/static/indexBg.jpg" mode="widthFix"></image> -->
+			<image src="@/static/indexBg.jpg" mode="aspectFill"></image>
 		</view>
-		<view class="list" v-for="item2 in 20">
+		<view class="list" >
 			<view class="item1" @click="xuanze(item)" v-for="item in parkList">
 				<view class="item2">
 					{{item.name}}
@@ -71,8 +72,10 @@
 
 <style lang="scss">
 .header {
+	height: 480rpx;
 	image{
 		width: 100%;
+		height: 100%;
 	}
 }
 
