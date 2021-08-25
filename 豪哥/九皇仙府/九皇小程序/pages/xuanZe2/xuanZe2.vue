@@ -52,10 +52,10 @@
 <style lang="scss">
 .header {
 	position: relative;
-	// height: 240px;
+	height: 480rpx;
 	image{
 		width: 100%;
-		// height: 100%;
+		height: 100%;
 		display: block;
 	}
 	view{

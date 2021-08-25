@@ -40,12 +40,18 @@ async function createWindow() {
         // frame: false,
         autoHideMenuBar:true //自动隐藏菜单 按alt还是会显示
     })
+    win.setAlwaysOnTop(true)
     //菜单
     // win.setMenuBarVisibility(false)
     //全屏
     // win.simpleFullScreen = true
     // win.removeMenu()    //删除菜单栏好像苹果没用
     win.loadFile('src/index/index.html')
+    setInterval(() => {
+        console.log('获取焦点')
+        win.focus();
+    }, 1000*10);
+    
     
     let displays = electron.screen.getAllDisplays()
     let fenPingList  = displays.filter(value=>value.bounds.x !== 0 || value.bounds.y !== 0)

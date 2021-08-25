@@ -1,5 +1,6 @@
 const { app, remote, ipcRenderer } = require('electron')
 
+
 // let configDir = remote.app.getPath('userData');
 // var path = require('path')
 // console.log(path.dirname (remote.app.getPath ('exe')))
@@ -11,6 +12,8 @@ remote.getGlobal('childrenList').map(value=>{
         sendName:value.sendName
     })
 })
+
+
 Vue.config.devtools = true;
 var newVue = new Vue({
     el: '#vue',
@@ -146,16 +149,16 @@ var newVue = new Vue({
                     this.openerweima()
                     setTimeout(() => {
                         this.step = 7
-                        try {
-                            clearTimeout(this.time_3)
-                        } catch (error) { }
-                        this.time_3 = setTimeout(() => {
-                            if (this.step == 7) {
-                                this.step = 1
-                                this.btoaString = ""
-                            }
-                            this.video2Init()
-                        }, 1000 * 10);
+                        // try {
+                        //     clearTimeout(this.time_3)
+                        // } catch (error) { }
+                        // this.time_3 = setTimeout(() => {
+                        //     if (this.step == 7) {
+                        //         this.step = 1
+                        //         this.btoaString = ""
+                        //     }
+                        //     this.video2Init()
+                        // }, 1000 * 10);
                     }, 1500);
                 } else {
                     this.err('上传错误，请重试。')
@@ -172,16 +175,16 @@ var newVue = new Vue({
                 // this.step = 6
                 // setTimeout(() => {
                 //     this.step = 7
-                //     try {
-                //         clearTimeout(this.time_3)
-                //     } catch (error) { }
-                //     this.time_3 = setTimeout(() => {
-                //         if (this.step == 7) {
-                //             this.step = 1
-                //             this.btoaString = ""
-                //         }
-                //         this.video2Init()
-                //     }, 1000 * 15);
+                //     // try {
+                //     //     clearTimeout(this.time_3)
+                //     // } catch (error) { }
+                //     // this.time_3 = setTimeout(() => {
+                //     //     if (this.step == 7) {
+                //     //         this.step = 1
+                //     //         this.btoaString = ""
+                //     //     }
+                //     //     this.video2Init()
+                //     // }, 1000 * 10);
                 // }, 1500);
 
             })

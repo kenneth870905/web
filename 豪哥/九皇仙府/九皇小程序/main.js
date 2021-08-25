@@ -13,16 +13,16 @@ Vue.prototype.$api_url = api
 let loadingTotal = 0
 let closeLoading=()=>{
 	loadingTotal--
-	if(loadingTotal<=0){
-		setTimeout(()=>{
-			uni.hideLoading()
-		},300)
-	}
+	// if(loadingTotal<=0){
+		// setTimeout(()=>{
+		uni.hideLoading()
+		// },300)
+	// }
 }
 
 Vue.prototype.$http = (url,data,m)=>{
 	uni.showLoading({
-		mask:true,
+		// mask:true,
 		title:"加载中"
 	})
 	loadingTotal++

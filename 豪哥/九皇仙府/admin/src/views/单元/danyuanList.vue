@@ -12,26 +12,57 @@
     <el-table :data="list" border size="mini">
         <el-table-column label="单元名" prop="name"></el-table-column>
         <el-table-column label="价格" prop="price"></el-table-column>
-        <el-table-column label="行"></el-table-column>
-        <el-table-column label="列"></el-table-column>
+        <!-- <el-table-column label="行"></el-table-column>
+        <el-table-column label="列"></el-table-column> -->
         <el-table-column label="状态">
             <template #default="scope">
                 可用
             </template>
         </el-table-column>
-        <el-table-column label="剩余数量"></el-table-column>
+        <el-table-column label="销售状态">
+            <template #default="scope">
+                <el-button type="text" size="mini" @click="查看销售(scope.row)">查看销售状态</el-button>
+            </template>
+        </el-table-column>
         <el-table-column label="备注" prop="description"></el-table-column>
         <el-table-column label="创建时间" prop="createdAt"></el-table-column>
         <el-table-column label="更新时间" prop="updatedAt"></el-table-column>
         <el-table-column label="操作" align="center" width="150px">
             <template #default="scope">
-                <el-button type size="mini" @click="$router.push('/danyuan?id='+scope.row.id)">修改</el-button>
+                <el-button size="mini" @click="$router.push('/danyuan?id='+scope.row.id)">修改</el-button>
                 <el-button type="warning" size="mini" @click="deleteDanYuan(scope.row)">删除</el-button>
             </template>
         </el-table-column>
     </el-table>
     <el-pagination class="page" :total="total"  v-model="query.page" :page-size="query.size" @current-change="changePage" layout="prev, pager, next" background></el-pagination>
 
+
+    <el-dialog :title="`${selectObj.name}  销售详情`" v-model="orderDialog" width="500px" custom-class="orderDialog">
+        <div class="订单详情">
+            <div class="title-1">
+                <div>
+                    <div class="status1"></div>已预定
+                </div>
+                <div>
+                    <div class="status2"></div>已付定金
+                </div>
+                <div>
+                    <div class="status3"></div>已卖出
+                </div>
+            </div>
+            <ul class="orderList">
+                <li v-for="(item,index) in rows">
+                    <div class="name-1">{{item.name}}</div>
+                    <div class="item" :class="'status'+item2.status" v-for="(item2,index2) in item.children">{{item2.column}}</div>
+                </li>
+            </ul>
+        </div>
+        <template #footer>
+            <span class="dialog-footer">
+                <el-button type="primary" @click="orderDialog=false">知道了</el-button>
+            </span>
+        </template>
+    </el-dialog>
     
 </template>
 
@@ -48,7 +79,7 @@ export default {
         })
         let total=ref(0)
         let list = reactive([])
-        
+        let orderDialog = ref(false)
 
         let getYuanQu=()=>{
             axios.get('/park',{params:{page:1,size:100}})
@@ -99,6 +130,34 @@ export default {
             })
         }
 
+        let rows= reactive([])
+        let selectObj=reactive({})
+        let 查看销售 =(danyuan)=>{
+            Object.assign(selectObj,danyuan)
+            rows.length=0
+            Promise.all([
+                axios.get(`/unit/${danyuan.id}`),
+                axios.get('/order',{params:{page:1,size:1000,unit_id:danyuan.id}})
+            ]).then(([r1,r2])=>{
+                console.log(r1,r2)
+                let rowList = r1.data.Rows
+                let orderList = r2.data
+                let list = []
+                rowList.map(item=>{
+                    let o = {name:item.name,children:[]}
+                    for (let i = 1; i <= item.count; i++) {
+                        o.children.push({
+                            column:i,
+                            status:orderList.find(x=>x.column==i && x.row==item.row) ? orderList.find(x=>x.column==i && x.row==item.row).status : 0 
+                        })
+                    }
+                    rows.push(o)
+                })  
+                console.log(rowList,orderList)
+                orderDialog.value=true
+            })
+        }
+
 
 
 
@@ -112,12 +171,15 @@ export default {
             query,
             total,
             list,
+            orderDialog,
+            rows,
+            selectObj,
 
             getDanyuan,
             changYuanQU,
             deleteDanYuan,
             changePage,
-            
+            查看销售
 
         }
     }
@@ -146,6 +208,70 @@ export default {
     text-align: right;
     margin: 10px 0px;
 }
-
+.orderDialog{
+    .订单详情{
+        margin: -15px 0px;
+    }
+    .title-1{
+        display: flex;
+        align-items: center;
+        margin: 0px 0px 20px;
+        >div{
+            display: flex;
+            align-items: center;
+            margin: 0px 10px 0px 0px;
+        }
+        .status1{
+            width: 18px;
+            height: 18px;
+            background: #87e3a4;
+        }
+        .status2{
+            width: 18px;
+            height: 18px;
+            background: #7fc0e0;
+        }
+        .status3{
+            width: 18px;
+            height: 18px;
+            background: #f47073;
+        }
+    }
+}
+.orderList{
+    font-size: 12px;
+    li{
+        margin: 3px 0px;
+        display: flex;
+        align-items: center;
+    }
+    .name-1{
+        width: 80px;
+        text-align: center;
+        padding: 3px;
+        background: rgba($color: #000000, $alpha: 0.6);
+        color: #fff;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .item{
+        width: 18px;
+        height: 18px;
+        line-height: 18px;
+        margin: 0px 2px;
+        text-align: center;
+        background: #e4e4e4;
+        &.status1{
+            background: #87e3a4;
+        }
+        &.status2{
+            background: #7fc0e0;
+        }
+        &.status3{
+            background: #f47073;
+        }
+    }
+}
 
 </style>

@@ -72,8 +72,7 @@ li {
 .btn-2,
 .btn-1 {
   position: absolute;
-  left: 0px;
-  right: 0px;
+  right: 2.68519vw;
   bottom: 2.68519vw;
   margin: auto;
   cursor: pointer;
@@ -315,9 +314,9 @@ li {
 
 .full {
   position: absolute;
-  top: 1.85185vw;
-  right: 1.85185vw;
-  width: 4.62963vw;
+  bottom: 1.85185vw;
+  left: 1.85185vw;
+  width: 40px;
   z-index: 3;
   opacity: 0.5;
 }

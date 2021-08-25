@@ -155,7 +155,7 @@
 				return ''
 			},
 			SelectedItem(item){
-				if(item.status){
+				if(item.status && item.status!=4){
 					return
 				}
 				this.order.row = item.row

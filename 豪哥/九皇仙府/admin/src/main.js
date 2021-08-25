@@ -13,9 +13,9 @@ app.use(store).use(router)
 .use(ElementPlus)
 .mount('#app')
 
-axios.defaults.baseURL = 'http://47.243.70.161/api'
+axios.defaults.baseURL = 'https://soft.jiuhuangxianfu.com/api'
 app.config.globalProperties.$axios = axios
-app.config.globalProperties.$api_url = 'http://47.243.70.161/api'
+app.config.globalProperties.$api_url = 'https://soft.jiuhuangxianfu.com/api'
 app.config.globalProperties.$message=(msg)=>{
     ElMessage({ ...msg ,offset: 100 ,showClose: true })
 }
@@ -31,9 +31,9 @@ let axiosTotal=0
 let closeLoading = ()=>{
     axiosTotal--
     if(axiosTotal==0){
-        setTimeout(() => {
-            loadingInstance.close()            
-        }, 500);
+        // setTimeout(() => {
+        loadingInstance.close()            
+        // }, 500);
     }
 }
 axios.interceptors.request.use(function (config) {
