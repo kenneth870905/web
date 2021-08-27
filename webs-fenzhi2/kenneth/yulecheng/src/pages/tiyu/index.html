@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon">
+    <link rel="stylesheet" href="static/fonts/iconfont.css">
+    <link rel="stylesheet" href="/Scripts/libs/jBox/jBox.css">
+    <link rel="stylesheet" href="https://www.hg-4.com/Scripts/libs/jBox/jBox.css">
+    <!-- <link rel="stylesheet" href="https://3.swiper.com.cn/dist/css/swiper.min.css"> -->
+    
+    <title></title>
+    <script src="/index/config.js"></script>
+    <script src="config.js"></script>
+    <script src="webConfig/config.js"></script>
+    <!-- <script src="webConfig/tiaozhuan.js"></script> -->
+</head>
+
+<body>
+    <noscript>
+        <strong>We're sorry but demo doesn't work properly without JavaScript enabled. Please enable it to
+            continue</strong>
+    </noscript>
+    <div id="app"></div>
+    <script>
+        config.title="HG-4";
+        var OnlineType="tiyu";
+        homeConfig.game_list=[
+        {
+            title: "体育游戏",
+            url: img_base_url + "home/tiyu.png",
+            roter: "/sports",
+            rule:"",
+            url_type:0,
+        },
+        {
+            title: "真人视讯",
+            url: img_base_url + "home/game_list_1.jpg",
+            //这个 roter 不能随意修改
+            roter: "/immortal",
+            rule:"",    //游戏规则
+            url_type:0, //内部地址
+        },
+        {
+            title: "电子游艺",
+            url: img_base_url + "home/game_list_2.jpg",
+            roter: "/electron",
+            rule:"",
+            url_type:0,
+        },
+        {
+            title: "捕鱼游戏",
+            url: img_base_url + "home/game_list_4.jpg",
+            roter: "/fish",
+            rule:"",
+            url_type:0,
+        },
+        {
+            title: "棋牌游戏",
+            url: img_base_url + "home/game_list_5.jpg",
+            roter: "/chess",
+            rule:"",
+            url_type:0,
+        }
+    ]
+        
+    </script>
+    <script src="/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="/Scripts/libs/jBox/jquery.jBox.js"></script>
+    
+    <script src="static/js/swiper/swiper.min.js"></script>
+    
+</body>
+
+</html>

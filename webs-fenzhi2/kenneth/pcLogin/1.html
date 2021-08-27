@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        iframe{
+            width: 400px;
+            height: 360px;
+        }
+    </style>
+</head>
+<body>
+    <button class="open">打开</button>
+    <!-- <iframe src="http://127.0.0.1:5501/kenneth/pcLogin/index.html" frameborder="0"></iframe> -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        $('.open').click(function(){
+            // var url = 'http://10.10.27.150:5501/kenneth/pcLogin/index.html?nh=1&nf=1'
+            var url = 'http://10.10.27.150:5501/kenneth/pcLogin/index.html'
+            var 屏幕宽度 = window.screen.availWidth
+            var 屏幕高度 = window.screen.availHeight
+            var w = 屏幕宽度/2 - 400
+            var t = 屏幕高度/2 - 400
+            window.open(url,"pcLogin","toolbar=yes, location=yes, directories=no, status=yes, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=600,top="+t+",left="+w)
+        })
+        
+        window.addEventListener('storage', (e) => {
+            console.log(e)
+        })
+        // document.addEventListener("visibilitychange", function() {
+        //     console.log( document.visibilityState );
+        // });
+    </script>
+</body>
+</html>

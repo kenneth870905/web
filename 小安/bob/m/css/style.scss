@@ -1,0 +1,262 @@
+/*论研发与设计 ，不是非要高大上，只是醉心于研究，我想再上一个好案例 —— 那个做开发的靓仔 kenneth*/
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+body {
+    font-family: arial, "Microsoft Yahei";
+    font-size: 12px;
+    background-image:url(../images/bg.png); 
+    background-size: cover;
+    position: relative;
+    padding: 1px 0px 0px;
+}
+
+img {
+    border: none;
+}
+
+a {
+    color: #888;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+ul li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ol,
+ul {
+    margin-top: 0;
+    margin-bottom: 0px;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+
+@function ww($number) {
+    @return ($number / 750)*100vw;
+}
+
+.w1200{
+    // width: 100;
+    // max-width: 100%;
+    // margin: 0px auto;
+}
+
+.big-1{
+    position: absolute;
+    top: 0px;
+    right: ww(26);
+    width: ww(56);
+}
+.big-2{
+    width: ww(39);
+    position: absolute;
+    top: ww(587);
+    left:ww(-10);
+    transform: rotate(-90deg);
+}
+
+.logo{
+    width: ww(535);
+    margin: ww(80) auto 0px;
+    img{
+        width: 100%;
+    }
+}
+
+.header {
+    margin-top: ww(40);
+    padding: 0px ww(20);
+    display: flex;
+    justify-content: space-between;
+    img{
+        width: ww(114);
+    }
+    a:nth-child(2),
+    a:nth-child(5){
+        margin-top: ww(16);
+    }
+    a:nth-child(3),
+    a:nth-child(4){
+        margin-top: ww(33);
+    }
+}
+
+/*轮播图*/
+#certify {
+    margin-top: ww(114);
+    .swiper-slide {
+        width: ww(224);
+        height: ww(388);
+        // border: 1px solid red;
+        a{
+            display: block;
+            height: 100%;
+            position: relative;
+        }
+        img{
+            position: absolute;
+            width: calc(100% + #{ww(44)}  );
+            // height: calc(100% + 44px);
+            left: ww(-22);
+            top: ww(-20);
+        }
+    }
+}
+
+// 下载按钮
+.ads_down{
+    // width: ww(670);
+    padding: 0px ww(70);
+    margin: ww(103) auto 0px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    a{
+        font-size: ww(28);
+        color: #fff;
+        margin: ww(40) 0px 0px;
+        width: ww(285);
+        height: ww(80);
+        line-height: ww(80);
+        text-align: center;
+        background-image: url(../images/button.png);
+        background-size: cover;
+    }
+}
+
+.swiper2{
+    // width: ww(1000);
+    margin: ww(116) auto 0px;
+    text-align: center;
+    img{
+        width: 100%;
+    }
+    .swiper-button-next-1,
+    .swiper-button-prev-1{
+        position: absolute;
+        top: 0px;
+        bottom:0px;
+        margin: auto;
+        width: ww(46);
+        height: ww(65);
+        z-index: 1;
+    }
+    .swiper-button-prev-1{
+        left: 0px;
+    }
+    .swiper-button-next-1{
+        right: 0px;
+    }
+    .swiper-slide{
+        div{
+            width: ww(650);
+            // height: ww(410);
+            margin: 0px auto;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+    
+}
+
+.swiper3{
+    // width: ww(1000);
+    margin: ww(116) auto 0px;
+    text-align: center;
+    img{
+        width: 100%;
+    }
+    .swiper-button-next-1,
+    .swiper-button-prev-1{
+        position: absolute;
+        top: 0px;
+        bottom:0px;
+        margin: auto;
+        width: ww(46);
+        height: ww(65);
+        z-index: 1;
+    }
+    .swiper-button-prev-1{
+        left: 0px;
+    }
+    .swiper-button-next-1{
+        right: 0px;
+    }
+    .swiper-slide{
+        div{
+            width: ww(650);
+            // height: ww(410);
+            margin: 0px auto;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+    
+}
+
+.footer{
+    // width: ww(930);
+    margin: ww(120) auto 0px;
+    img{
+        width: 100%;
+    }
+}
+
+
+.kefu{
+    position: fixed;
+    bottom: 50px;
+    right: 10px;
+    z-index: 10;
+    color: #000;
+    background: rgba($color: #fff, $alpha: 0.9);
+    padding: 5px;
+    border-radius: 100%;
+    border: 1px solid #1296db;
+    img{
+        width: 30px;
+    }
+    &::after{
+        width: 100%;
+        height: 100%;
+        border: 1px solid #1296db;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        content: '';
+        border-radius: 100%;
+        // transform: scale(1.0);
+        animation: fangda 2s infinite;
+    }
+}
+
+@keyframes fangda{
+    from{
+        transform: scale(1.0);
+        opacity: 1;
+    }to{
+        opacity: 0;
+        transform: scale(1.5);
+    }
+}
+

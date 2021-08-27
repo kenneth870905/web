@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="901px" height="418px" viewBox="0 0 901 418" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>椭圆形</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="50%" cy="0%" fx="50%" fy="0%" r="44.0572989%" gradientTransform="translate(0.500000,0.000000),rotate(90.000000),scale(1.000000,1.722031),translate(-0.500000,-0.000000)" id="radialGradient-1">
+            <stop stop-color="#5EA9FF" offset="0%"></stop>
+            <stop stop-color="#6ACBFF" stop-opacity="0" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.700365">
+        <g id="画板" transform="translate(-270.000000, -60.000000)" fill="url(#radialGradient-1)" fill-rule="nonzero">
+            <circle id="椭圆形" cx="720.5" cy="534.5" r="474.5"></circle>
+        </g>
+    </g>
+</svg>

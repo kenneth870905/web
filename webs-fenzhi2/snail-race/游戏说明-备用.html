@@ -1,0 +1,407 @@
+<style>
+  .WinContent {
+    background: url(/images/bg.jpg) !important;
+  }
+
+  #LotteryExplanation {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: #710702;
+    background: rgba(255, 255, 255, .75) !important;
+  }
+
+  .bar-bg {
+    border-top: 1px solid #cfbeac;
+    border-bottom: 1px solid #cfbeac;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f4ebe2 0,ede4dd 31,e2d9d0 50,ece3dc 66,eee5dc 75,f5ece5 100 */
+    background: rgb(244, 235, 226);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(244, 235, 226, 1) 0%, rgba(237, 228, 221, 1) 31%, rgba(226, 217, 208, 1) 50%, rgba(236, 227, 220, 1) 66%, rgba(238, 229, 220, 1) 75%, rgba(245, 236, 229, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(244, 235, 226, 1) 0%, rgba(237, 228, 221, 1) 31%, rgba(226, 217, 208, 1) 50%, rgba(236, 227, 220, 1) 66%, rgba(238, 229, 220, 1) 75%, rgba(245, 236, 229, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(244, 235, 226, 1) 0%, rgba(237, 228, 221, 1) 31%, rgba(226, 217, 208, 1) 50%, rgba(236, 227, 220, 1) 66%, rgba(238, 229, 220, 1) 75%, rgba(245, 236, 229, 1) 100%);
+    /* W3C, IE10 , FF16 , Chrome26 , Opera12 , Safari7  */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4ebe2', endColorstr='#f5ece5', GradientType=0);
+    /* IE6-9 */
+  }
+
+  .exp-bar {
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .exp-content {
+    overflow: auto;
+    text-align: center;
+    padding: 5px 0;
+  }
+
+  .exp-content table {
+    text-align: left;
+    font-size: 14px;
+    padding: 0 5px;
+  }
+
+  .exp-content table tr td {
+    padding: 5px 0;
+  }
+
+  .exp-content table tr td:first-child {
+    text-align: right;
+    width: 20px;
+    padding-right: 3px;
+    font-weight: bold;
+    vertical-align: top
+  }
+
+  .min-title {
+    margin: 8px 0;
+    line-height: 20px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 14px;
+    padding-left: 8px;
+  }
+
+  .min-title i {
+    padding-right: 3px;
+  }
+
+  .glyphicon {
+    top: -1px;
+  }
+
+  .exp-content table.form {
+    border-top: 1px solid #8F583F;
+    border-left: 1px solid #8F583F;
+    padding: 0;
+  }
+
+  .exp-content table.form th {
+    text-align: center;
+    border-bottom: 1px solid #8F583F;
+    border-right: 1px solid #8F583F;
+    background: #3D2207;
+    color: #fff;
+  }
+
+  .exp-content table.form tr td {
+    text-align: center;
+    border-bottom: 1px solid #8F583F;
+    border-right: 1px solid #8F583F;
+  }
+
+  .combination-group {
+    width: 590px;
+    display: inline-block;
+    border-top: 1px solid #cfbeac;
+    border-left: 1px solid #cfbeac;
+    margin: 0 6px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .combination-group-title-m {
+    width: 92px;
+    height: 33px;
+    line-height: 33px;
+    border-right: 1px solid #cfbeac;
+    border-bottom: 1px solid #cfbeac;
+    float: left;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f4ebe2 0,ede4dd 31,e2d9d0 50,ece3dc 66,eee5dc 75,f5ece5 100 */
+    background: rgb(244, 235, 226);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(244, 235, 226, 1) 0%, rgba(237, 228, 221, 1) 31%, rgba(226, 217, 208, 1) 50%, rgba(236, 227, 220, 1) 66%, rgba(238, 229, 220, 1) 75%, rgba(245, 236, 229, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(244, 235, 226, 1) 0%, rgba(237, 228, 221, 1) 31%, rgba(226, 217, 208, 1) 50%, rgba(236, 227, 220, 1) 66%, rgba(238, 229, 220, 1) 75%, rgba(245, 236, 229, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(244, 235, 226, 1) 0%, rgba(237, 228, 221, 1) 31%, rgba(226, 217, 208, 1) 50%, rgba(236, 227, 220, 1) 66%, rgba(238, 229, 220, 1) 75%, rgba(245, 236, 229, 1) 100%);
+    /* W3C, IE10 , FF16 , Chrome26 , Opera12 , Safari7  */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4ebe2', endColorstr='#f5ece5', GradientType=0);
+    /* IE6-9 */
+    color: #000;
+  }
+
+  .combination-group-title-l {
+    width: 166px;
+    height: 33px;
+    line-height: 33px;
+    border-right: 1px solid #cfbeac;
+    border-bottom: 1px solid #cfbeac;
+    float: left;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f4ebe2 0,ede4dd 31,e2d9d0 50,ece3dc 66,eee5dc 75,f5ece5 100 */
+    background: rgb(244, 235, 226);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(244, 235, 226, 1) 0%, rgba(237, 228, 221, 1) 31%, rgba(226, 217, 208, 1) 50%, rgba(236, 227, 220, 1) 66%, rgba(238, 229, 220, 1) 75%, rgba(245, 236, 229, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(244, 235, 226, 1) 0%, rgba(237, 228, 221, 1) 31%, rgba(226, 217, 208, 1) 50%, rgba(236, 227, 220, 1) 66%, rgba(238, 229, 220, 1) 75%, rgba(245, 236, 229, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(244, 235, 226, 1) 0%, rgba(237, 228, 221, 1) 31%, rgba(226, 217, 208, 1) 50%, rgba(236, 227, 220, 1) 66%, rgba(238, 229, 220, 1) 75%, rgba(245, 236, 229, 1) 100%);
+    /* W3C, IE10 , FF16 , Chrome26 , Opera12 , Safari7  */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4ebe2', endColorstr='#f5ece5', GradientType=0);
+    /* IE6-9 */
+    color: #000;
+  }
+
+  .combination-group-content-m {
+    width: 92px;
+    height: 285px;
+    line-height: 33px;
+    border-right: 1px solid #cfbeac;
+    border-bottom: 1px solid #cfbeac;
+    float: left;
+  }
+
+  .combination-group-content-l {
+    width: 166px;
+    height: 285px;
+    line-height: 33px;
+    border-right: 1px solid #cfbeac;
+    border-bottom: 1px solid #cfbeac;
+    float: left;
+  }
+
+  .combination-group-content-m img {
+    padding-top: 72px;
+  }
+
+  .combination-group-content-m span {
+    width: 100%;
+    display: inline-block;
+  }
+
+  .combination-group-content-l span {
+    width: 100%;
+    display: inline-block;
+  }
+
+  table.possibility {
+    margin-left: 10px;
+    border-top: 1px solid #cfbeac;
+    border-left: 1px solid #cfbeac;
+  }
+
+  .possibility tr th {
+    width: 25%;
+    line-height: 26px;
+    text-align: center;
+    border-bottom: 1px solid #cfbeac;
+    border-right: 1px solid #cfbeac;
+    background: rgb(244, 235, 226);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(244, 235, 226, 1) 0%, rgba(237, 228, 221, 1) 31%, rgba(226, 217, 208, 1) 50%, rgba(236, 227, 220, 1) 66%, rgba(238, 229, 220, 1) 75%, rgba(245, 236, 229, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(244, 235, 226, 1) 0%, rgba(237, 228, 221, 1) 31%, rgba(226, 217, 208, 1) 50%, rgba(236, 227, 220, 1) 66%, rgba(238, 229, 220, 1) 75%, rgba(245, 236, 229, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(244, 235, 226, 1) 0%, rgba(237, 228, 221, 1) 31%, rgba(226, 217, 208, 1) 50%, rgba(236, 227, 220, 1) 66%, rgba(238, 229, 220, 1) 75%, rgba(245, 236, 229, 1) 100%);
+    /* W3C, IE10 , FF16 , Chrome26 , Opera12 , Safari7  */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4ebe2', endColorstr='#f5ece5', GradientType=0);
+    /* IE6-9 */
+  }
+
+  .possibility tr td {
+    line-height: 26px;
+    text-align: center !important;
+    border-bottom: 1px solid #cfbeac;
+    border-right: 1px solid #cfbeac;
+  }
+</style>
+<div id="LotteryExplanation" style="height: 100%;">
+  <div class="bar-bg exp-bar">蜗牛赛跑规则</div>
+  <div class="exp-content">
+    <table width="100%">
+      <tr>
+        <td>1.</td>
+        <td>蜗牛赛跑是一款以韩国蜗牛赛跑为为基础制作的快开型游戏，透过自然比赛名次产生器所选名次决定最终结果。</td>
+      </tr>
+      <tr>
+        <td>2.</td>
+        <td>开奖时，游戏统一起跑，三只蜗牛随机竞速至终点，开出冠亚季军名次。</td>
+      </tr>
+      <tr>
+        <td>3.</td>
+        <td>每期进行约<span style="color: #be1a20;">1分半</span>钟，每日24小时开奖，如开奖时间异动以系统公告为准。</td>
+      </tr>
+      <tr>
+        <td>※</td>
+        <td>截图赔率仅供参考，实际赔率请依投注画面为主。</td>
+      </tr>
+    </table>
+    <div class="bar-bg min-title">
+      <i class="glyphicon glyphicon-info-sign"></i>介面说明</div>
+    <img src="images/ex4.jpg" alt="">
+    <table width="100%">
+      <tr>
+        <td>(1)</td>
+        <td>会员帐户信息</td>
+      </tr>
+      <tr>
+        <td>(2)</td>
+        <td>现金余额信息</td>
+      </tr>
+      <tr>
+        <td>(3)</td>
+        <td> 信息盘<br> 订单管理 : 查询过去投注订单记录<br> 投注报表 : 查询过去每笔投注额度<br> 开奖结果 : 显示开奖记录与下注比例<br> 走势图表 : 开奖走势图 </td>
+      </tr>
+      <tr>
+        <td>(4)</td>
+        <td>显示开奖路单记录</td>
+      </tr>
+      <tr>
+        <td>(5)</td>
+        <td> 显示连开与未开统计纪录 </td>
+      </tr>
+      <tr>
+        <td>(6)</td>
+        <td>显示游戏规则与玩法说明</td>
+      </tr>
+      <tr>
+        <td>(7)</td>
+        <td>音乐(右)音效(左)开关按钮</td>
+      </tr>
+      <tr>
+        <td>(8)</td>
+        <td>游戏画面，蜗牛 – 红</td>
+      </tr>
+      <tr>
+        <td>(9)</td>
+        <td>游戏画面，蜗牛 – 绿</td>
+      </tr>
+      <tr>
+        <td>(10)</td>
+        <td>游戏画面，蜗牛 – 蓝</td>
+      </tr>
+      <tr>
+        <td>(11)</td>
+        <td>投注单 : 显示目前投注状态，并且可查询过去期数投注状态</td>
+      </tr>
+      <tr>
+        <td>(12)</td>
+        <td>下期开盘倒数时间</td>
+      </tr>
+      <tr>
+        <td>(13)</td>
+        <td>即将开盘的期数</td>
+      </tr>
+      <tr>
+        <td>(14)</td>
+        <td> 显示投注趋势提示<br> 胜率 - 胜场局数/今日局数<br> 投注 - 近期开奖记录与购**布比例<br> 赔率 - 该投注的赔率倍数 </td>
+      </tr>
+      <tr>
+        <td>(15)</td>
+        <td> 确认投注单送出 </td>
+      </tr>
+      <tr>
+        <td>(16)</td>
+        <td>取消投注单内容</td>
+      </tr>
+      <tr>
+        <td>(17)</td>
+        <td>切换进阶投注，此为切换更多投注选项接口，如下图</td>
+      </tr>
+      <tr>
+        <td colspan="2" style="text-align: center;">
+          <img src="images/ex5.jpg" alt=""> </td>
+      </tr>
+      <tr>
+        <td>(18)</td>
+        <td>投注单(进阶版本)，显示所有投注项目与金额</td>
+      </tr>
+      <tr>
+        <td>(19)</td>
+        <td>今日胜率，今日蜗牛赢得冠军的百分比</td>
+      </tr>
+      <tr>
+        <td>(20)</td>
+        <td>投注分布，下一局开奖前各个蜗牛投注的注数百分比</td>
+      </tr>
+      <tr>
+        <td>(21)</td>
+        <td>冠军投注区，选择可赢得冠军的蜗牛</td>
+      </tr>
+      <tr>
+        <td>(22)</td>
+        <td>冠亚军投注区，选择可赢得冠亚军的蜗牛(亚军以上即可中奖)</td>
+      </tr>
+      <tr>
+        <td>(23)</td>
+        <td>冠亚季军投注区，选择冠亚季军正确排名</td>
+      </tr>
+      <tr>
+        <td>(24)</td>
+        <td>押注总额，显示当局的投注总金额</td>
+      </tr>
+      <tr>
+        <td>(25)</td>
+        <td>切换简易投注，将投注面板转换为简易版本</td>
+      </tr>
+    </table>
+    <div class="bar-bg min-title">
+      <i class="glyphicon glyphicon-info-sign"></i>投注说明</div>
+    <table width="100%">
+      <tr>
+        <td>1.</td>
+        <td> 冠军 </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td> 任选游戏开始赛跑至终点的冠军，当开奖结果与投注的注项相同时，视为中奖，其余情形视为不中奖。 </td>
+      </tr>
+      <tr>
+        <td>2.</td>
+        <td> 冠亚军 </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td> 任选游戏开始赛跑至终点的冠军或亚军(中其中一种即可)，当开奖结果与投注的注项相同时，视为中奖，其余情形视为不中奖。 </td>
+      </tr>
+      <tr>
+        <td>3.</td>
+        <td> 冠亚季军 </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td> 任选游戏开始赛跑至终点的冠亚季军的正确排序，当开奖结果与投注的注项相同时，视为中奖，其余情形视为不中奖。 </td>
+      </tr>
+    </table>
+    <div class="bar-bg min-title">
+      <i class="glyphicon glyphicon-info-sign"></i>开奖结果范例</div>
+    <div class="txt-left" style="padding-bottom:20px;">※举例说明：当开出组合一时</div>
+    <div class="txt-center">
+      <div class="clearfix combination-group">
+        <div class="combination-group-title-l">【得分组合】</div>
+        <div class="combination-group-title-l" style="width:331px;">开奖结果</div>
+        <div class="combination-group-title-m">对应标记</div>
+        <div class="combination-group-content-l">
+          <span style="padding-top: 50px;">冠军 : 蓝蜗牛</span><span style="padding-top: 32px;">亚军 : 红蜗牛</span>
+          <span style="padding-top: 36px;">季军 : 绿蜗牛</span></div>
+        <div class="combination-group-content-l" style="width:331px;">
+          <img src="images/ex3.jpg" alt=""> </div>
+        <div class="combination-group-content-m" style="line-height:270px;">蓝红绿
+        </div>
+      </div>
+    </div>
+    <table width="100%">
+      <tr>
+        <td>(1)</td>
+        <td> 冠军投注区，投注「蓝」即为中奖。 </td>
+      </tr>
+      <tr>
+        <td>(2)</td>
+        <td>冠亚军投注区，投注「蓝 或 红」即为中奖。</td>
+      </tr>
+      <tr>
+        <td>(3)</td>
+        <td>冠亚季军投注区，投注「蓝红绿」即为中奖。</td>
+      </tr>
+    </table>
+  </div>
+</div>
+<script>
+  var LotteryExplanation = function () {
+    var $this = this; var that = $("#LotteryExplanation"); var that_win = that.closest(".Windows"); var window_div = that.closest(".Windows"); this.loading = function (Open) { if (Open) { that.children(".bg_mask").show(); } else { that.children(".bg_mask").hide(); } }; var resize = function () { that.find(".exp-content").height(window_div.find(".Cn").height() - that.find(".exp-bar").outerHeight() - 15); }; var init = function () { that.css("position", "relative"); that.append($('<div/>').addClass("bg_mask")); that_win.resize(function () { resize(); }); }; init();
+  }; var Lottery_Explanation = new LotteryExplanation()	</script>

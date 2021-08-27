@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pk10开奖</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div id="vue">
+        <!-- Countdown 倒计时 ready 准备 go -->
+        <div class="container" :class="step" :style="{zoom:zoom}">
+            <div class="t1">
+                <div class="numbers">
+                    <span v-for="(item, index) in numbers" :key="index" :class="'number-'+item"></span>
+                </div>
+                <div class="periods">
+                    期数：202104220843
+                </div>
+            </div>
+            <div class="content-1">
+                <div class="time" v-show="time>0">{{time}}s</div>
+                <div class="t2"></div>
+                <div class="start"></div>
+                <div class="paodao"></div>
+                <div class="end"></div>
+                <div class="cars">
+                    <div v-for="(item,key, index) in left" :key="index" :style="{left:item+'px'}"><span></span></div>
+                </div>
+                <div class="open">
+                    <div class="medal">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="top_three_car_box">
+                        <span :class="'car-'+item" v-for="(item, index) in numbers" :key="index" v-if="index<3"></span>
+                    </div>
+                    <div class="show_girl"></div>
+                </div>
+            </div>
+        </div>
+        <button @click="daojishi(7)">倒计时30秒</button>
+        <button @click="结束()">结束</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var left = { 1:817, 2:807,3:800,4:791,5:784,6:775,7:767, 8:759 ,9:751,10:743}
+        var vue = new Vue({
+            el:"#vue",
+            data() {
+                return {
+                    time:0,
+                    numbers:[1,2,3,4,5,6,7,8,9,10],
+                    left: Object.assign({},left) ,
+                    time0:"",
+                    time1:"",
+                    time2:"",
+                    step:'Countdown',   // Countdown 倒计时  ready 准备 go 比赛中 EndGame 结束  Receive 开奖
+                    zoom:1
+                }
+            },
+            computed: {
+            },
+            methods: {
+                daojishi:function(time){
+                    this.left = Object.assign({},left)
+                    this.step = 'Countdown'
+                    this.time = time
+                    try {
+                        clearInterval(this.time0)
+                    } catch (error) {}
+                    try {
+                        clearInterval(this.time1)
+                    } catch (error) {}
+                    try {
+                        clearInterval(this.time2)
+                    } catch (error) {}
+                    
+                    this.time0 = setInterval(() => {
+                        this.time--
+                        if(this.time<=5 && this.time>0){
+                            this.step = 'ready'
+                        }
+                        if(this.time<=0){
+                            this.step = 'go'
+                            this.go()
+                            clearInterval(t)
+                        }
+                    }, 1000);
+                },
+                go(){
+                    this.numbers.sort(function() {
+                        return .5 - Math.random();
+                    });
+                    for (let i = 0; i < this.numbers.length; i++) {
+                        this.left[this.numbers[i]]= i*30+50
+                    }
+                   
+                    this.time1 = setInterval(() => {
+                        this.numbers.sort(function() {
+                            return .5 - Math.random();
+                        });
+                    }, 200);
+                    this.time2 = setInterval(() => {
+                        for (let i = 0; i < this.numbers.length; i++) {
+                            this.left[this.numbers[i]]= i*80+50
+                        }
+                    }, 1000);
+                },
+                结束(){
+                    try {
+                        clearInterval(this.time0)
+                    } catch (error) {}
+                    try {
+                        clearInterval(this.time1)
+                    } catch (error) {}
+                    try {
+                        clearInterval(this.time2)
+                    } catch (error) {}
+
+                    this.step = 'EndGame'
+                    this.numbers = [1,3,5,7,9,2,4,6,8,10]
+                    for (let i = 0; i < this.numbers.length; i++) {
+                        this.left[this.numbers[i]]= i*80+50
+                    }
+                    setTimeout(() => {
+                        this.step = 'Receive'
+                    }, 1000);
+                }
+            },
+            mounted() {
+                // this.go()
+                console.log(window.innerWidth)
+                if(window.innerWidth<960){
+                    this.zoom = window.innerWidth/960
+                }
+                window.onresize=()=>{
+                    
+                }
+            },
+        })
+    </script>
+</body>
+</html>

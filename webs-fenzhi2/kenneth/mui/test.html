@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="stylesheet" href="css/mui.min.css">
+        <style>
+            html,body{
+                height: 100%;
+                overflow: auto;
+            }
+            footer {
+                position: fixed;
+                width: 100%;
+                height: 50px;
+                min-height: 50px;
+                border-top: solid 1px #bbb;
+                left: 0px;
+                bottom: 0px;
+                overflow: hidden;
+                background-color: #fafafa;
+                display: flex;
+                align-items: center;
+                white-space: nowrap;
+            }
+            .mui-content{
+                overflow: auto;
+            }
+        </style>
+	</head>
+
+	<body>
+        <div id="vue">
+            <header class="mui-bar mui-bar-nav" :style="{'top':hTop+'px'}">
+                <h1 class="mui-title">sH:{{sH}};hT:{{hTop}};bT:{{bTop}};hT:{{hH}};bH:{{bH}};H1{{hH1}}</h1>
+            </header>
+            <div class="mui-content mui-fullscreen" >
+                <div v-for="(item, index) in list" :key="index">{{item}}</div>
+            </div>
+            <footer>
+                <div class="footer-center">
+                    <input @bulr="bulr1()" type="text" @focus="focus1()"> 
+                </div>
+                <div>发送4</div>
+                <div @click="获取高度()">获取高度1</div>
+            </footer>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="js/mui.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script>
+            // 不需要编译器
+            new Vue({
+                el:"#vue",
+                data() {
+                    return {
+                        list:50,
+                        sH:0,
+                        hTop:0,
+                        bTop:0,
+                        hH1:0,
+                        hH:0,
+                        bH:0,
+                        time:""
+                    }
+                },
+                methods: {
+                    focus1(){
+                        $('body').css({'max-height':'100%'})
+                        $('html').css({'max-height':'100%'})
+                        
+                        // this.time=setInterval(() => {
+                        //     this.获取高度()
+                        // }, 1);
+                    },
+                    bulr1(){
+                        setTimeout(() => {
+                            clearInterval(this.time)
+                            
+                        }, 3000);
+                    },
+                    获取高度(){
+                        this.sH=$('html')[0].scrollHeight
+                        this.hTop=$('html').scrollTop()
+                        this.bTop=$('body').scrollTop();
+                        this.hH=$('html').height();
+                        this.bH=$('body').height();
+                    }
+                },
+                mounted() {
+                    var this_1=this;
+                    this.hH1=$('html').height();
+                    $('html').scroll(function(){
+                        alert('123')
+                        this_1.hTop=$('html').scrollTop()
+                    })
+                },
+            })
+        </script>
+	</body>
+</html>

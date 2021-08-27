@@ -1,0 +1,268 @@
+﻿(function (w,$) {
+    //自动装载器
+    var random = "1072",
+        currentPath = location.pathname === "/" || !location.pathname ? "index" : location.pathname.toLocaleLowerCase(),
+        autoloader_root = w.__STATIC__ ? w.__STATIC__ : "/";
+
+    var urlpathMapping = {
+        "comm": [autoloader_root+"js/loaderjs/comm.js?v=20200103",autoloader_root+ "css/loadercss/comm.css?v=1"],
+        "index": ["js/loaderjs/index.js?v=20200107"],
+        "/index.html": ["js/loaderjs/index.js"],
+        "/egame.aspx": ["js/loaderjs/egame.js?v=20200103"],
+        "/egame.html": ["js/loaderjs/egame.js"],
+        "/tbapp.aspx": ["js/loaderjs/tbapp.js?v=20191024"],
+        "/tbapp.html": ["js/loaderjs/tbapp.js"],
+        // "/catchfish.aspx": ["js/loaderjs/catchFish.js"],
+        "/catchfish.html": ["js/loaderjs/catchFish.js"],
+        "/livecasino.aspx": ["js/loaderjs/liveCasino.js"],
+        "/livecasino.html": ["js/loaderjs/liveCasino.js"]
+    }
+
+    function loaderJs() {
+        var _temp = urlpathMapping[currentPath];
+        if (_temp && _temp.length > 0) {
+            var _arr = [];
+            if (typeof _temp === "string") _arr.push(_temp);
+            else _arr = _temp;
+
+            for (var i = _arr.length - 1; i >= 0; i--) {
+                var _jsUrl = _arr[i];
+                if (random) {
+                    if (_jsUrl.indexOf("?") === -1) _jsUrl += "?v=" + random;
+                    else _jsUrl += "&v=" + random;
+                }
+                scriptCreate(autoloader_root+_jsUrl);
+            }
+        }
+    }
+
+    function scriptCreate(url) {
+        if(url.indexOf(".js")>=0){
+            LazyLoad.js(url, function () { });
+        }
+        else if (url.indexOf(".css") >= 0) {
+            LazyLoad.css(url, function () { });
+        } else {
+            LazyLoad.js(url, function () { });
+        }
+    }
+
+
+
+
+
+   var LazyLoad = (function (doc) {
+        // -- Private Variables ------------------------------------------------------
+
+        // User agent and feature test information.
+        var env,
+
+        // Reference to the <head> element (populated lazily).
+        head,
+
+        // Requests currently in progress, if any.
+        pending = {},
+
+        pollCount = 0,
+
+        // Queued requests.
+        queue = { css: [], js: [] },
+
+        styleSheets = doc.styleSheets;
+
+        function createNode(name, attrs) {
+            var node = doc.createElement(name), attr;
+
+            for (attr in attrs) {
+                if (attrs.hasOwnProperty(attr)) {
+                    node.setAttribute(attr, attrs[attr]);
+                }
+            }
+
+            return node;
+        }
+
+        function finish(type) {
+            var p = pending[type],
+                callback,
+                urls;
+
+            if (p) {
+                callback = p.callback;
+                urls = p.urls;
+
+                urls.shift();
+                pollCount = 0;
+
+                // If this is the last of the pending URLs, execute the callback and
+                // start the next request in the queue (if any).
+                if (!urls.length) {
+                    callback && callback.call(p.context, p.obj);
+                    pending[type] = null;
+                    queue[type].length && load(type);
+                }
+            }
+        }
+
+        function getEnv() {
+            var ua = navigator.userAgent;
+
+            env = {
+                // True if this browser supports disabling async mode on dynamically
+                // created script nodes. See
+                // http://wiki.whatwg.org/wiki/Dynamic_Script_Execution_Order
+                async: doc.createElement('script').async === true
+            };
+
+            (env.webkit = /AppleWebKit\//.test(ua))
+              || (env.ie = /MSIE|Trident/.test(ua))
+              || (env.opera = /Opera/.test(ua))
+              || (env.gecko = /Gecko\//.test(ua))
+              || (env.unknown = true);
+        }
+
+        function load(type, urls, callback, obj, context) {
+            var _finish = function () { finish(type); },
+                isCSS = type === 'css',
+                nodes = [],
+                i, len, node, p, pendingUrls, url;
+
+            env || getEnv();
+
+            if (urls) {
+                urls = typeof urls === 'string' ? [urls] : urls.concat();
+
+                if (isCSS || env.async || env.gecko || env.opera) {
+                    // Load in parallel.
+                    queue[type].push({
+                        urls: urls,
+                        callback: callback,
+                        obj: obj,
+                        context: context
+                    });
+                } else {
+                    // Load sequentially.
+                    for (i = 0, len = urls.length; i < len; ++i) {
+                        queue[type].push({
+                            urls: [urls[i]],
+                            callback: i === len - 1 ? callback : null, // callback is only added to the last URL
+                            obj: obj,
+                            context: context
+                        });
+                    }
+                }
+            }
+
+            if (pending[type] || !(p = pending[type] = queue[type].shift())) {
+                return;
+            }
+
+            head || (head = doc.head || doc.getElementsByTagName('head')[0]);
+            pendingUrls = p.urls.concat();
+
+            for (i = 0, len = pendingUrls.length; i < len; ++i) {
+                url = pendingUrls[i];
+
+                if (isCSS) {
+                    node = env.gecko ? createNode('style') : createNode('link', {
+                        href: url,
+                        rel: 'stylesheet'
+                    });
+                } else {
+                    node = createNode('script', { src: url });
+                    node.async = false;
+                }
+
+                node.className = 'lazyload';
+                node.setAttribute('charset', 'utf-8');
+
+                if (env.ie && !isCSS && 'onreadystatechange' in node && !('draggable' in node)) {
+                    node.onreadystatechange = function () {
+                        if (/loaded|complete/.test(node.readyState)) {
+                            node.onreadystatechange = null;
+                            _finish();
+                        }
+                    };
+                } else if (isCSS && (env.gecko || env.webkit)) {
+                    if (env.webkit) {
+                        pollWebKit();
+                    } else {
+                        node.innerHTML = '@import "' + url + '";';
+                        pollGecko(node);
+                    }
+                } else {
+                    node.onload = node.onerror = _finish;
+                }
+
+                nodes.push(node);
+            }
+
+            for (i = 0, len = nodes.length; i < len; ++i) {
+                head.appendChild(nodes[i]);
+            }
+        }
+
+        function pollGecko(node) {
+            var hasRules;
+
+            try {
+                hasRules = !!node.sheet.cssRules;
+            } catch (ex) {
+                pollCount += 1;
+
+                if (pollCount < 200) {
+                    setTimeout(function () { pollGecko(node); }, 50);
+                } else {
+                    hasRules && finish('css');
+                }
+
+                return;
+            }
+
+            finish('css');
+        }
+
+        function pollWebKit() {
+            var css = pending.css, i;
+
+            if (css) {
+                i = styleSheets.length;
+
+                while (--i >= 0) {
+                    if (styleSheets[i].href === css.urls[0]) {
+                        finish('css');
+                        break;
+                    }
+                }
+
+                pollCount += 1;
+
+                if (css) {
+                    if (pollCount < 200) {
+                        setTimeout(pollWebKit, 50);
+                    } else {
+                        finish('css');
+                    }
+                }
+            }
+        }
+
+        return {
+
+            css: function (urls, callback, obj, context) {
+                load('css', urls, callback, obj, context);
+            },
+
+            js: function (urls, callback, obj, context) {
+                load('js', urls, callback, obj, context);
+            }
+
+        };
+   })(w.document);
+    //debugger
+   for (var i = 0; i < urlpathMapping.comm.length; i++) {
+       scriptCreate(urlpathMapping.comm[i])
+   }
+
+   loaderJs();
+})(window, jQuery);

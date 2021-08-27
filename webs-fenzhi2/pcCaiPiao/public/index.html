@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon">
+    <link rel="stylesheet" href="fonts/iconfont.css">
+    <title></title>
+    <%= process.env.NODE_ENV =='development' ? 
+        `
+        <script src="config.js"></script>
+        `:`
+        <script src="/index/config.js"></script>
+        `
+    %>
+    
+     
+    <script src="webConfig/config.js"></script>
+    
+    <%= process.env.NODE_ENV =='development' ? 
+        `
+        <script src="/apis/Scripts/jquery-1.12.4.min.js"></script>
+        <script src="/apis/Scripts/libs/lottery/markSixNums.js"></script>
+        `:`
+        <script src="/Scripts/jquery-1.12.4.min.js"></script>
+        <script src="/Scripts/libs/lottery/markSixNums.js"></script>
+        `
+    %>
+
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but lottery doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

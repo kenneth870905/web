@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我们</title>
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/contactus.css">
+    <link rel="stylesheet" href="css/swiper.css">
+
+</head>
+<body>
+    <section class="header">
+        <div class="header-1">
+            <div class="title">西杨级纸箱厂</div>
+            <img class="open" src="icon/导航.png" alt="" srcset="">
+        </div>
+        <div class="nav">
+            <ul>
+                <a href="index.html"><li>首页</li></a>
+                <a href="aboutus.html"><li>关于我们</li></a>
+                <a href="cp.html"><li>产品展示</li></a>
+                <a href="news.html"><li>新闻咨询</li></a>
+                <a href="rencai.html"><li>人才招募</li></a>
+                <a href="contactus.html"><li>联系我们</li></a>
+            </ul>
+        </div>
+    </section>
+
+    <div class="swiper-container banner" >
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="image/banner1.jpg" alt="" srcset="">
+            </div>
+            <div class="swiper-slide">
+                <img src="image/banner2.jpg" alt="" srcset="">
+            </div>
+            <div class="swiper-slide">
+                <img src="image/banner3.jpg" alt="" srcset="">
+            </div>
+        </div>
+    </div>
+    <div class="rexian">
+        <a href="javascript:;" class="tel-2">
+            <img src="icon/手机.png" alt="" srcset="">
+            咨询热线：<span class="tel-1"></span>
+        </a>
+    </div>
+
+    <div class="content">
+        <div class="title-1">联系我们</div>
+        <div class="xiangqing">
+            西杨级包装制品有限公司
+            <br>
+            联系人：吴先生
+            <br>
+            电话：13642747855
+            <br>
+            邮箱：2985367863@qq.com
+            <br>
+            网址：www.junweizp.com
+            <br>
+            地址：广州市白云区人和镇横沥村横沥北街168号
+        </div>
+    </div>
+
+
+
+    <div class="news">
+        <div class="title-1">推荐资讯</div>
+        <div class="list">
+            <a href="news/1.html">如何瓦楞纸箱安全系数法？</a>
+            <a href="news/2.html">纸箱的材质如何进行鉴别？</a>
+            <a href="news/3.html">纸箱专业知识</a>
+            <a href="news/4.html">最常用的纸箱知识</a>
+            <a href="news/5.html">药品包装印刷的新标准</a>
+            <a href="news/6.html">瓦楞纸箱，纸盒设计流程及注意要点</a>
+        </div>
+    </div>
+
+
+
+    <footer>
+        <a href="index.html">
+            <img src="icon/定位.png" alt="" srcset="">
+            <div>首页</div>
+        </a>
+        <a class="tel" href="javascript:;">
+            <img src="icon/电话.png" alt="" srcset="">
+            <div>电话</div>
+        </a>
+        <a class="sms" href="cp.html">
+            <img src="icon/短信.png" alt="">
+            <div>产品</div>
+        </a>
+        <a href="aboutus.html">
+            <img src="icon/分享.png" alt="">
+            <div>简介</div>
+        </a>
+    </footer>
+
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="swiper.js"></script>
+    <script src="config.js"></script>
+    <script>
+        $('.tel').attr('href','tel:'+tel)
+
+        $('.open').click(function(){
+            $('.nav').toggle();
+        })
+        $('.nav').click(function(e){
+            // console.log($(e.target).is('li'))
+            $('.nav').hide()
+        })
+        
+        
+        $('.tel-1').html(tel)
+        $('.tel-2').attr('href','tel:'+tel)
+
+        var swiper = new Swiper('.swiper-container',{
+            loop : true,
+            autoplay : {
+                delay:3000,
+                disableOnInteraction:false
+            }
+        });
+    </script>
+</body>
+</html>

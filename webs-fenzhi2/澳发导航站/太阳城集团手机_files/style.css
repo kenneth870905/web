@@ -1,0 +1,87 @@
+body {
+	background: url("bg01.jpg") no-repeat center 1.2rem / 100% auto rgb(255, 246, 240); font-family: Arial,Helvetica,sans-serif;
+}
+.header img {
+	width: 100%;
+}
+.header {
+	background: url("h_bg.jpg") no-repeat top / 100% auto; padding: 0.25rem 0.25rem 0.6rem; width: 100%; text-align: center; overflow: hidden; position: relative; z-index: 120; -ms-zoom: 1; box-sizing: border-box;
+}
+.header .logo {
+	width: 5rem; margin-top: 0.1rem; float: left;
+}
+.header .service {
+	margin-top: 0.2rem; float: right;
+}
+.header .service a {
+	width: 1.8rem; margin-left: 0.1rem; float: left;
+}
+.testing {
+	margin: 7.1rem 0.4rem 0.3rem; border-radius: 10px; line-height: 1; background-color: rgb(255, 255, 255);
+}
+.testing .bd {
+	padding: 0.4rem 0px 0.15rem;
+}
+.testing .bd ul {
+	padding-top: 0px; padding-right: 0.4rem; padding-left: 0.4rem;
+}
+.testing .bd li {
+	margin-bottom: 0.3rem;
+}
+.testing .bd li p {
+	border-radius: 5px; border: 1px solid rgb(221, 221, 221); border-image: none; width: 6rem; overflow: hidden; float: left; -ms-zoom: 1; background-color: rgb(250, 250, 250);
+}
+.testing .bd .ms {
+	border-radius: 0.11rem; width: 1.2rem; height: 0.8rem; text-align: center; color: rgb(0, 204, 72); line-height: 0.8rem; overflow: hidden; font-size: 0.37rem; float: left; white-space: nowrap; -ms-text-overflow: ellipsis;
+}
+.testing .bd .url {
+	border-radius: 0.11rem; width: 3.4rem; height: 0.8rem; text-align: left; color: rgb(102, 102, 102); line-height: 0.8rem; overflow: hidden; font-size: 0.38rem; margin-right: 0.2rem; float: left; display: block; white-space: nowrap; -ms-text-overflow: ellipsis;
+}
+.testing .bd .btn-open {
+	border: 0px currentColor; border-image: none; width: 2.2rem; height: 0.8rem; text-align: center; line-height: 0.8rem; font-size: 0.32rem; float: right; display: block;
+}
+.testing .bd .btn-open a {
+	padding: 0px 0.4rem 0px 0.3rem; border-radius: 0.11rem; border: 1px solid rgb(33, 176, 167); border-image: none; height: 0.8rem; color: rgb(33, 176, 167); line-height: 0.8rem; display: block;
+}
+.testing .bd .btn-open a:hover {
+	background: url("btn_bg.png") no-repeat top / 100% auto; border: currentColor; border-image: none; color: rgb(255, 255, 255);
+}
+.testing li {
+	overflow: hidden; -ms-zoom: 1;
+}
+.testing .img01 {
+	margin: 0.2rem 0.2rem 0px 0px; width: 0.4rem; float: left;
+}
+.testing .img02 {
+	margin: 0.3rem 0.2rem 0px 0px; width: 0.6rem; float: left;
+}
+.refresh img {
+	width: 5.5rem;
+}
+.refresh {
+	margin: 0px auto 2rem; width: 5.5rem;
+}
+.refresh a {
+	display: block;
+}
+#footer {
+	padding: 0.4rem 0px; left: 0px; width: 100%; bottom: 0px; border-top-color: rgb(33, 176, 167); border-top-width: 1px; border-top-style: solid; position: fixed; background-color: rgb(255, 255, 255);
+}
+.fNavi {
+	overflow: hidden; -ms-zoom: 1;
+}
+.fNavi li {
+	width: 3.33rem; text-align: center; float: left;
+}
+.fNavi li a {
+	border-right-color: rgb(204, 232, 255); border-right-width: 1px; border-right-style: solid; display: block;
+}
+.fNavi li:last-child a {
+	border-right-color: currentColor; border-right-width: medium; border-right-style: none;
+}
+.fNavi li img {
+	width: 0.5rem; margin-right: 0.1rem; vertical-align: middle; display: inline-block;
+}
+.fNavi li span {
+	color: rgb(33, 176, 167); font-size: 0.42rem; vertical-align: middle; display: inline-block;
+}

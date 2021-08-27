@@ -1,0 +1,245 @@
+<template>
+	<view class="uni-container">
+		<view v-if="!hasLeftWin" class="uni-header-logo">
+			<image class="uni-header-image" src="/static/extuiIndex.png"></image>
+		</view>
+		<view v-if="!hasLeftWin" class="uni-hello-text">
+			<text class="hello-text">以下是uni-app扩展组件示例，更多组件见插件市场：</text>
+			<u-link class="hello-link" :href="'https://ext.dcloud.net.cn/'" :text="'https://ext.dcloud.net.cn'" :inWhiteList="true"></u-link>
+		</view>
+		<view :class="{'pc-hide': hideList.indexOf(item.url) !== -1  && hasLeftWin}" class="uni-panel" v-for="item in lists" :key="item.url">
+			<view :class="{'left-win-active': leftWinActive ===  item.url && hasLeftWin}" class="uni-panel-h" @click="goDetailPage(item.url)">
+				<text class="uni-panel-text">{{item.name}}</text>
+				<text class="uni-panel-icon uni-icon">&#xe470;</text>
+			</view>
+		</view>
+	</view>
+</template>
+<script>
+	import {
+		mapState,
+		mapMutations
+	} from 'vuex';
+	export default {
+		data() {
+			return {
+				hideList: [
+					'notice-bar',
+					'nav-bar',
+					'popup',
+					'swiper-dot',
+					'transition',
+					'rate',
+					'indexed-list',
+					'swipe-action',
+					'combox',
+					'fab'
+				],
+				lists: [{
+						name: "Badge 数字角标",
+						url: "badge"
+					},
+					{
+						name: "Card 卡片",
+						url: "card"
+					},
+					{
+						name: "Collapse 折叠面板",
+						url: "collapse"
+					},
+					{
+						name: "Combox 组合框",
+						url: "combox"
+					},
+					{
+						name: "Countdown 倒计时",
+						url: "countdown"
+					},
+					{
+						name: "DataCheckbox 数据选择器",
+						url: "data-checkbox"
+					},
+					{
+						name: "Dateformat 日期格式化",
+						url: "dateformat"
+					},
+					{
+						name: "Drawer 抽屉",
+						url: "drawer"
+					},
+					{
+						name: "Easyinput 增强输入框",
+						url: "easyinput"
+					},
+					{
+						name: "Fab 悬浮按钮",
+						url: "fab"
+					},
+					{
+						name: "Fav 收藏按钮",
+						url: "fav"
+					},
+					{
+						name: "Forms 表单",
+						url: "forms"
+					},
+					{
+						name: "GoodsNav 商品导航",
+						url: "goods-nav"
+					},
+					{
+						name: "Grid 宫格",
+						url: "grid"
+					},
+					{
+						name: "Group 分组",
+						url: "group"
+					},
+					{
+						name: "Icons 图标",
+						url: "icons"
+					},
+					{
+						name: "IndexedList 索引列表",
+						url: "indexed-list"
+					},
+					{
+						name: "Link 超链接",
+						url: "link"
+					},
+					{
+						name: "List 列表",
+						url: "list"
+					},
+					{
+						name: "LoadMore 加载更多",
+						url: "load-more"
+					},
+					{
+						name: "NavBar 自定义导航栏",
+						url: "nav-bar"
+					},
+					// #ifndef QUICKAPP-WEBVIEW 
+					{
+						name: "NoticeBar 通告栏",
+						url: "notice-bar"
+					},
+					// #endif 
+					{
+						name: "NumberBox 数字输入框",
+						url: "number-box"
+					},
+					{
+						name: "Pagination 分页器",
+						url: "pagination"
+					},
+					// #ifndef QUICKAPP-WEBVIEW-HUAWEI 
+					{
+						name: "PopUp 弹出层",
+						url: "popup"
+					},
+					// #endif 
+					{
+						name: "Rate 评分",
+						url: "rate"
+					},
+					{
+						name: "SearchBar 搜索栏",
+						url: "search-bar"
+					},
+					{
+						name: "SegmentedControl 分段器",
+						url: "segmented-control"
+					},
+					{
+						name: "Steps 步骤条",
+						url: "steps"
+					},
+					{
+						name: "SwipeAction 滑动操作",
+						url: "swipe-action"
+					},
+					{
+						name: "SwiperDot 轮播图指示点",
+						url: "swiper-dot"
+					},
+					// #ifdef H5 
+					{
+						name: "Table 表格",
+						url: "table"
+					},
+					// #endif 
+					{
+						name: "Tag 标签",
+						url: "tag"
+					},
+					{
+						name: "Transition 过渡动画",
+						url: "transition"
+					},
+				]
+			};
+		},
+		onLoad() {},
+		onReady() {
+			// #ifdef APP-NVUE
+			uni.preloadPage({
+				url: "/pages/extUI/calendar/calendar",
+				success() {
+					console.log("preloadPage /pages/extUI/calendar/calendar")
+				},
+				fail() {}
+			})
+			// #endif
+		},
+		onShareAppMessage() {
+			return {
+				title: '欢迎体验uni-app',
+				path: '/pages/tabBar/extUI/extUI'
+			}
+		},
+		onNavigationBarButtonTap(e) {
+			uni.navigateTo({
+				url: '/pages/about/about'
+			});
+		},
+		computed: {
+			...mapState({
+				hasLeftWin: state => !state.noMatchLeftWindow,
+				leftWinActive: state => state.leftWinActive.split('/')[3],
+				activeOpen: state => state.activeOpen
+			})
+		},
+		// #ifdef H5
+		watch: {
+			$route: {
+				immediate: true,
+				handler(newRoute) {
+					if (newRoute.matched.length) {
+						this.setLeftWinActive(newRoute.path)
+					}
+				}
+			}
+		},
+		// #endif
+		methods: {
+			...mapMutations(['setMenu', 'setMatchLeftWindow', 'setLeftWinActive', 'setActiveOpen']),
+			goDetailPage(path) {
+				const url = '/pages/extUI/' + path + '/' + path
+				if (this.hasLeftWin) {
+					uni.reLaunch({
+						url: url
+					})
+				} else {
+					uni.navigateTo({
+						url: url
+					})
+				}
+			}
+		}
+	}
+</script>
+
+<style>
+	@import '../../../common/uni-nvue.css';
+</style>

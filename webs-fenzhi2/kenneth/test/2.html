@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    
+    <div id="listfl">
+        
+    </div>
+    <!-- <div id="vue">
+        {{name}}
+        <script type="text/template" >
+            <div>{{abc}}</div>
+        </script>
+    </div> -->
+    <script>
+        window.onload = function(){
+            // $.ajax({
+            //     type: "post",
+            //     url: "https://0698aa.com/Bet/static/json/delist.json",
+            //     success: function (x) {
+            //         console.log(x)
+            //         console.log('正确')
+            //     },
+            //     error:function(err){
+            //         console.log(err)
+            //         console.log('错误')
+            //         josnchuli(err,$('#listfl'))
+            //     }
+            // });
+            console.log('开始')
+            $.ajax({type:"psot",url:"https://0698aa.com/Bet/static/json/delist.json",async:true,data:"",success(data){
+                console.log(data)
+            }}).catch(function(err){
+                console.log(err)
+                josnchuli(err,$('#listfl'))
+            })
+            console.log('借宿')
+        }
+
+        function josnchuli(obj,fl){
+            fl.prepend('<ul></ul>');
+        }
+        //  new Vue({
+        //     el:"#vue",
+        //     data() {
+        //         return {
+        //             name:"123",
+        //             abc:"123456"
+        //         }
+        //     }
+        // })
+
+
+        // axios.post('http://localhost:81/shoujiBizi/public/index/queryT1').then(x=>{
+        //     console.log(x)
+        // }).catch(err=>{
+        //     console.log(err)
+        // })
+        // axios.post('http://localhost:81/shoujiBizi/public/index/queryImgList',{pageIndex:1,pageSize:30,t1:2}).then(x=>{
+        //     console.log(x)
+        // }).catch(err=>{
+        //     console.log(err)
+        // })
+
+
+        // 类型 
+        // axios.post('http://10.10.27.150:81/yinshiPinglun/public/index/queryType').then(x=>{
+        //     console.log(x)
+        // }).catch(err=>{
+        //     console.log(err)
+        // })
+        // //获取 列表
+        // axios.post('http://10.10.27.150:81/yinshiPinglun/public/index/getList',{pageIndex:1,pageSize:30,t1:'类型Id 可不穿',title:'名称 可不传'}).then(x=>{
+        //     console.log(x)
+        // }).catch(err=>{
+        //     console.log(err)
+        // })
+        // //获取详情
+        // axios.post('http://10.10.27.150:81/yinshiPinglun/public/index/getDetails',{id:'列表Id'}).then(x=>{
+        //     console.log(x)
+        // }).catch(err=>{
+        //     console.log(err)
+        // })
+
+    
+    </script>
+</body>
+</html>

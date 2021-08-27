@@ -1,0 +1,542 @@
+.tb-foot {
+  margin-top: 0; }
+
+#wrap {
+  background-color: #ffd555;
+  background-image: -webkit-linear-gradient(to right, #ffd555 0, #ffe677 50%, #ffd555 100%);
+  background-image: -moz-linear-gradient(to right, #ffd555 0, #ffe677 50%, #ffd555 100%);
+  background-image: linear-gradient(to right, #ffd555 0, #ffe677 50%, #ffd555 100%); }
+
+.bg1 {
+  background: url("../image/activity/xinchun2020/jiangchi/bg1.jpg") no-repeat center 0;
+  height: 672px;
+  position: relative; }
+  .bg1 .container {
+    height: 100%;
+    position: relative; }
+    .bg1 .container .date {
+      position: absolute;
+      top: 512px;
+      left: 517px;
+      color: #fffddd;
+      font-size: 22px; }
+
+.bg2 {
+  background: url("../image/activity/xinchun2020/jiangchi/bg2.jpg") no-repeat center 0;
+  background-repeat: no-repeat;
+  height: 920px; }
+
+.bg3 {
+  background: url("../image/activity/xinchun2020/jiangchi/bg3.jpg") no-repeat center 0;
+  background-repeat: no-repeat;
+  height: 1100px;
+  background-color: #f8c549; }
+
+.cont_1300 {
+  width: 1300px;
+  margin: auto; }
+
+.title {
+  padding-top: 64px;
+  text-align: center; }
+  .title img {
+    display: block;
+    margin: auto; }
+
+.icon_cup {
+  display: inline-block;
+  width: 18px;
+  height: 20px;
+  background: url("../image/activity/xinchun-jiangchi/icon_cup.png") no-repeat center 0; }
+
+.icon_clock {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url("../image/activity/xinchun-jiangchi/icon_clock.png") no-repeat center 0; }
+
+.icon_zoom {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: url("../image/activity/xinchun-jiangchi/icon_zoom.png") no-repeat center 0; }
+
+.guoqing-jiangchi .mainbar {
+  background: url("../image/activity/xinchun-jiangchi/mainbar.png") no-repeat center 0;
+  width: 1208px;
+  height: 242px;
+  overflow: hidden;
+  position: relative; }
+  .guoqing-jiangchi .mainbar .inner {
+    height: 160px;
+    margin-left: 220px;
+    margin-top: 46px;
+    border-radius: 80px;
+    padding-top: 30px;
+    box-sizing: border-box; }
+
+.guoqing-jiangchi .info {
+  box-sizing: border-box;
+  position: relative;
+  margin-bottom: 60px; }
+  .guoqing-jiangchi .info .announce {
+    background: url("../image/activity/xinchun-jiangchi/zhongjiang.png") no-repeat center 0;
+    height: 70px;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 26px; }
+    .guoqing-jiangchi .info .announce .icon, .guoqing-jiangchi .info .announce .list {
+      display: inline-block;
+      vertical-align: top; }
+    .guoqing-jiangchi .info .announce .list {
+      color: #8d4d26;
+      font-size: 14px;
+      height: 20px;
+      overflow: hidden; }
+      .guoqing-jiangchi .info .announce .list li {
+        font-size: 16px;
+        text-align: left; }
+      .guoqing-jiangchi .info .announce .list b {
+        color: #e23e13; }
+  .guoqing-jiangchi .info .buttons {
+    padding-top: 50px;
+    padding-bottom: 40px;
+    text-align: center;
+    font-size: 0; }
+  .guoqing-jiangchi .info .btn_draw {
+    background-image: linear-gradient(to bottom, #de221e, #c10b07);
+    background-color: transparent;
+    border: none;
+    width: 260px;
+    height: 80px;
+    color: #fffabd;
+    font-size: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(255, 34, 0, 0.5);
+    line-height: 1;
+    cursor: pointer;
+    margin: 0 12px; }
+    .guoqing-jiangchi .info .btn_draw:disabled {
+      background-image: linear-gradient(to bottom, #bababa, #9a9999);
+      cursor: not-allowed;
+      box-shadow: 0 2px 4px #aaa;
+      color: #fff; }
+    .guoqing-jiangchi .info .btn_draw.grown {
+      background: #170e0a;
+      color: #bfaa9a; }
+  .guoqing-jiangchi .info .djs {
+    text-align: center;
+    width: 831px;
+    height: 189px;
+    padding-top: 90px;
+    margin: 0 auto 56px;
+    background: url("../image/activity/xinchun-jiangchi/counting.png") center bottom no-repeat;
+    position: relative; }
+    .guoqing-jiangchi .info .djs .text {
+      color: #505050;
+      position: relative;
+      top: -16px;
+      font-size: 22px; }
+    .guoqing-jiangchi .info .djs .time {
+      color: #fff;
+      display: inline-block;
+      line-height: 1;
+      font-size: 64px;
+      vertical-align: middle;
+      padding-top: 34px;
+      font-family: Arial;
+      font-weight: bold; }
+      .guoqing-jiangchi .info .djs .time > * {
+        vertical-align: middle; }
+    .guoqing-jiangchi .info .djs .ss {
+      padding: 8px 17px;
+      font-style: normal;
+      font-family: "Arial Bold"; }
+
+.guoqing-jiangchi .info_table {
+  color: #a16d44;
+  font-size: 16px;
+  margin-left: 170px;
+  overflow: hidden;
+  width: 760px; }
+  .guoqing-jiangchi .info_table td {
+    padding: 15px 0 15px 57px;
+    line-height: 1; }
+  .guoqing-jiangchi .info_table b {
+    color: #be1e09;
+    font-size: 24px; }
+
+.guoqing-jiangchi .quanquan {
+  width: 402px;
+  height: 240px;
+  position: absolute;
+  text-align: left;
+  color: #ffff88;
+  padding-left: 44px;
+  box-sizing: border-box; }
+  .guoqing-jiangchi .quanquan h3 {
+    margin-top: 66px;
+    font-size: 20px;
+    font-weight: 100;
+    margin-bottom: 10px; }
+  .guoqing-jiangchi .quanquan h2 {
+    font-size: 28px; }
+    .guoqing-jiangchi .quanquan h2 b {
+      font-size: 40px;
+      color: #ffffaa;
+      font-family: 'Arial Bold';
+      text-shadow: 0 2px 3px #a22708; }
+
+.va-m {
+  vertical-align: middle; }
+  .va-m:before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    font-size: 0;
+    height: 100%;
+    vertical-align: middle; }
+  .va-m > * {
+    vertical-align: middle; }
+
+.medals {
+  text-align: center;
+  position: relative; }
+  .medals .triangle {
+    position: absolute;
+    left: 50%;
+    margin-left: -21px; }
+    .medals .triangle.top {
+      top: 0; }
+    .medals .triangle.bottom {
+      bottom: -20px; }
+  .medals .desc {
+    color: #fff;
+    font-size: 16px;
+    line-height: 26px;
+    padding-top: 112px; }
+    .medals .desc b {
+      color: #cc0000; }
+  .medals .items {
+    width: 100%; }
+    .medals .items .item {
+      text-align: center;
+      overflow: hidden; }
+      .medals .items .item .amount {
+        background-color: #a00000;
+        /*background-image: linear-gradient(to bottom, #7b1209, #90150a);*/
+        border: 1px solid #800000;
+        height: 28x;
+        line-height: 28px;
+        width: 128px;
+        display: inline-block;
+        border-radius: 14px;
+        color: #ffaf73;
+        font-size: 14px;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5); }
+
+.triangle {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 20px solid #ffe677;
+  border-left: 21px solid transparent;
+  border-right: 21px solid transparent;
+  border-bottom: none; }
+  .triangle.bottom {
+    border-top-color: #f8c549; }
+
+.medal {
+  width: 156px;
+  height: 156px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 16px auto; }
+  .medal .text {
+    font-size: 22px;
+    color: #fff;
+    vertical-align: middle;
+    display: inline-block; }
+  .medal.gray {
+    background-image: url("../image/activity/xinchun-jiangchi/item-0.png"); }
+    .medal.gray .text {
+      font-size: 15px;
+      display: none; }
+  .medal.yellow {
+    background-image: url("../image/activity/xinchun-jiangchi/item-1.png"); }
+    .medal.yellow .text {
+      color: #ff6600; }
+  .medal.red {
+    background-image: url("../image/activity/xinchun-jiangchi/item-2.png"); }
+    .medal.red .text {
+      color: #ff1100; }
+  .medal.green {
+    background-image: url("../image/activity/xinchun-jiangchi/item-3.png"); }
+    .medal.green .text {
+      color: #249900; }
+  .medal.blue {
+    background-image: url("../image/activity/xinchun-jiangchi/item-4.png"); }
+    .medal.blue .text {
+      color: #0c38db; }
+  .medal.purplered {
+    background-image: url("../image/activity/xinchun-jiangchi/item-5.png?v=2"); }
+    .medal.purplered .text {
+      display: none; }
+  .medal.purple {
+    background-image: url("../image/activity/xinchun-jiangchi/item-6.png?v=2"); }
+    .medal.purple .text {
+      display: none; }
+  .medal.defult {
+    background-image: url("../image/activity/xinchun-jiangchi/default-ball.png"); }
+    .medal.defult .text {
+      display: none; }
+  .medal.unknown .text {
+    display: none; }
+  .medal.unknown.gray {
+    background-image: url("../image/activity/xinchun-jiangchi/gray-back.png"); }
+    .medal.unknown.gray .text {
+      font-size: 15px; }
+  .medal.unknown.yellow {
+    background-image: url("../image/activity/xinchun-jiangchi/yellow-back.png"); }
+  .medal.unknown.red {
+    background-image: url("../image/activity/xinchun-jiangchi/red-back.png"); }
+  .medal.unknown.green {
+    background-image: url("../image/activity/xinchun-jiangchi/green-back.png"); }
+  .medal.unknown.blue {
+    background-image: url("../image/activity/xinchun-jiangchi/blue-back.png"); }
+  .medal.unknown.purplered {
+    background-image: url("../image/activity/xinchun-jiangchi/purplered-back.png"); }
+  .medal.unknown.purple {
+    background-image: url("../image/activity/xinchun-jiangchi/purple-back.png"); }
+
+.rules {
+  padding: 176px 83px 0;
+  font-size: 14px; }
+  .rules ol {
+    /*width: 74%;*/ }
+    .rules ol li {
+      list-style-type: decimal;
+      color: #fff;
+      margin-bottom: 12px;
+      line-height: 28px; }
+
+.popup-choujiang .popup-content {
+  background-color: transparent;
+  box-shadow: none;
+  margin-left: -372px;
+  margin-top: -372px; }
+
+.popup-choujiang .close {
+  width: 64px;
+  height: 64px;
+  background: url("../image/activity/xinchun-jiangchi/close.png") no-repeat;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  z-index: 2;
+  cursor: pointer; }
+
+.popup-overlay.dark {
+  background: #000;
+  opacity: .6; }
+
+.choujiang {
+  width: 753px;
+  height: 753px;
+  background: url("../image/activity/xinchun-jiangchi/dialog-bg1.png") no-repeat center 0;
+  text-align: center;
+  position: relative; }
+  .choujiang .led {
+    width: 700px;
+    height: 700px;
+    position: absolute;
+    background: url("../image/activity/xinchun-jiangchi/LED1.png") no-repeat;
+    left: 26px;
+    top: 26px;
+    animation: led 2s linear infinite; }
+  .choujiang .title {
+    padding-top: 95px;
+    margin-bottom: 68px;
+    z-index: 1; }
+  .choujiang .drawing {
+    text-align: center;
+    position: relative;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    z-index: 2;
+    transition: all 0.3s; }
+    .choujiang .drawing .disc {
+      position: relative;
+      width: 318px;
+      height: 318px;
+      background: url("../image/activity/xinchun-jiangchi/drawing.png") no-repeat;
+      margin: auto; }
+    .choujiang .drawing .balls {
+      background: url("../image/activity/xinchun-jiangchi/drawing-ball.png") no-repeat;
+      width: 200px;
+      height: 200px;
+      margin: auto;
+      position: absolute;
+      left: 24px;
+      top: 21px; }
+    .choujiang .drawing .token {
+      position: absolute;
+      margin: 0;
+      left: 76px;
+      top: 73px; }
+    .choujiang .drawing.done .disc {
+      visibility: hidden; }
+    .choujiang .drawing.run .disc .token {
+      animation: rota-center-run 1s linear infinite; }
+    .choujiang .drawing.run .disc .balls {
+      animation: rota-ball-run 1s linear infinite; }
+  .choujiang .foot {
+    position: relative; }
+  .choujiang .btn_once, .choujiang .btn_multi {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    width: 210px;
+    height: 74px;
+    font-size: 24px;
+    z-index: 2; }
+    .choujiang .btn_once span, .choujiang .btn_multi span {
+      margin-top: -14px;
+      position: relative;
+      display: block;
+      font-weight: 700; }
+    .choujiang .btn_once:disabled, .choujiang .btn_multi:disabled {
+      background-image: url("../image/activity/xinchun-jiangchi/button-disabled.png");
+      cursor: not-allowed;
+      color: #aaa; }
+  .choujiang .btn_once {
+    color: #7b2c16;
+    background-image: url("../image/activity/xinchun-jiangchi/button-1.png"); }
+  .choujiang .btn_multi {
+    color: #fff;
+    background-image: url("../image/activity/xinchun-jiangchi/button-2.png"); }
+  .choujiang .rest {
+    height: 50px;
+    width: 280px;
+    display: block;
+    text-align: center;
+    margin: auto;
+    line-height: 50px;
+    color: #fff;
+    font-size: 22px;
+    margin-top: 12px;
+    z-index: 2;
+    background-image: radial-gradient(circle at center, #da1a07 0, rgba(218, 26, 7, 0) 70px); }
+    .choujiang .rest b {
+      color: #ffff55; }
+  .choujiang .draw_result {
+    font-size: 0;
+    width: 720px;
+    margin: auto;
+    padding-top: 66px;
+    padding-bottom: 20px;
+    z-index: 2;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    margin-left: -355px; }
+    .choujiang .draw_result.single .medal {
+      width: 128px;
+      height: 128px; }
+    .choujiang .draw_result .item {
+      margin: 8px;
+      position: relative;
+      display: inline-block; }
+      .choujiang .draw_result .item:after {
+        content: '';
+        position: absolute;
+        width: 80%;
+        height: 20px;
+        background-color: #661100;
+        border-radius: 50%;
+        left: 10%;
+        bottom: -8px;
+        opacity: 0.3; }
+    .choujiang .draw_result .medal {
+      position: relative;
+      z-index: 5;
+      margin: 0 auto;
+      width: 114px;
+      height: 114px; }
+  .choujiang .result_money {
+    color: #fff;
+    z-index: 2;
+    font-size: 22px;
+    margin-bottom: 12px; }
+    .choujiang .result_money b {
+      font-size: 26px;
+      color: #ffff66; }
+
+.pos-r {
+  position: relative; }
+
+.list_wrap {
+  width: 446px;
+  height: 378px;
+  background: url("../image/activity/xinchun-jiangchi/history.png") no-repeat;
+  margin: auto;
+  position: relative;
+  padding-top: 12px; }
+  .list_wrap .thead {
+    display: table;
+    width: 380px;
+    margin: auto; }
+    .list_wrap .thead .th {
+      display: table-cell;
+      width: 50%;
+      font-size: 16px;
+      color: #ffbe58;
+      height: 50px;
+      vertical-align: middle; }
+  .list_wrap .table_box {
+    overflow: auto;
+    color: #fff;
+    font-size: 16px;
+    height: 300px;
+    width: 380px;
+    margin: auto; }
+    .list_wrap .table_box::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+      background-color: transparent; }
+    .list_wrap .table_box::-webkit-scrollbar-thumb {
+      background: #cc820c;
+      border-radius: 6px; }
+    .list_wrap .table_box tr:nth-child(2n) {
+      background-color: #fcb122; }
+    .list_wrap .table_box td {
+      height: 50px; }
+
+@keyframes rota-center-run {
+  from,
+  0%, 14% {
+    background-image: url("../image/activity/xinchun-jiangchi/gray-back.png"); }
+  14.285%, 28% {
+    background-image: url("../image/activity/xinchun-jiangchi/yellow-back.png"); }
+  28.571%, 42% {
+    background-image: url("../image/activity/xinchun-jiangchi/red-back.png"); }
+  42.85714%, 57% {
+    background-image: url("../image/activity/xinchun-jiangchi/green-back.png"); }
+  57.1428%, 71% {
+    background-image: url("../image/activity/xinchun-jiangchi/blue-back.png"); }
+  71.428%, 85% {
+    background-image: url("../image/activity/xinchun-jiangchi/purplered-back.png"); }
+  85.714%, 99% {
+    background-image: url("../image/activity/xinchun-jiangchi/purple-back.png"); }
+  100% {
+    background-image: url("../image/activity/xinchun-jiangchi/gray-back.png"); } }
+
+@keyframes rota-ball-run {
+  to {
+    transform: rotate(359deg); } }
+
+@keyframes led {
+  0%, 49% {
+    background-image: url("../image/activity/xinchun-jiangchi/LED1.png"); }
+  50%, 99% {
+    background-image: url("../image/activity/xinchun-jiangchi/LED2.png"); } }

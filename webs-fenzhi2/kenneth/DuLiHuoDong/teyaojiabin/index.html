@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en" manifest="example.appcache">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui,viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>特邀嘉宾</title>
+    <style>
+        html,
+        body {
+            margin: 0px;
+            height: 100%;
+            /* background-color: #262521 !important; */
+        }
+
+        .loading {
+            display: none;
+            /* display: flex; */
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            color: #ffffff;
+            align-items: center;
+            justify-content: center;
+            top: 0px;
+            left: 0px;
+            z-index:2;
+        }
+
+        .loading div {
+            width: 60px;
+            height: 60px;
+            border-radius: 3px;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 26px;
+        }
+
+        .loading i {
+            animation: xuanzhuan 1.5s infinite linear;
+            display: inline-block;
+        }
+
+        @keyframes xuanzhuan {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .返回 {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        .content_1 {
+            max-width: 1200px;
+            background-color: #262521;
+            margin: 0px auto;
+            /* background-image: url(image/bg2.png);
+            background-size: 100% auto; */
+            /* overflow: auto; */
+            position: relative;
+            padding: 1px 0px;
+        }
+
+        .cont_2 {
+            max-width: 1200px;
+            position: relative;
+            margin: auto;
+        }
+
+        .content_1 .bg1 {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+        }
+
+        .content_1 .bg2 {
+            position: absolute;
+            top: 0px;
+            z-index: 1;
+            left: 0px;
+            right: 0px;
+            margin: auto;
+            width: 50%;
+            top: 4%;
+        }
+        ul{
+            padding: 0px;
+            margin: 0px;
+        }
+        li{
+            list-style: none;
+        }
+        .list{
+            /* position: absolute; */
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            left: 0px;
+            /* top: 42.5%; */
+            /* top: 36.5%; */
+            margin: 61% 0px 0px;
+            display: flex;
+            flex-wrap: wrap;
+            /* padding: 0px 12%; */
+        }
+        .list li{
+            width: 50%;
+            position: relative;
+            padding:5px 3%;
+        }
+        .list li.shixiao .img_1{
+            filter: grayscale(100%);
+            opacity: 0.7;
+        }
+        .list li .img_1,
+        .list li .img_2,
+        .list li .img_5{
+            width: 100%;
+        }
+        .list li .img_2,
+        .list li .img_5{
+            /* position: absolute;
+            max-width: 100%;
+            left: 0px;
+            right: 0px;
+            top: 0px;
+            bottom: 0px;
+            margin: auto;
+            width: 70%; */
+            display: none;
+        }
+        /* 已领取 */
+        .list li.lingqu .img_2{
+            display: inline-block;
+        }
+        .list li.lingqu .img_1,
+        .list li.lingqu .img_5{
+            display: none;
+        }
+        .list li.shixiao .img_5{
+            display: inline-block;
+        }
+        .list li.shixiao .img_1,
+        .list li.shixiao .img_2{
+            display: none;
+        }
+
+
+
+        .btn_1{
+            width: 100%;
+            /* position: absolute; */
+            position: relative;
+            z-index: 1;
+            left: 0px;
+            top: 94%;
+            z-index: 2;
+            text-align: center;
+            margin: 2% 0px 0px;
+        }
+        .btn_1 img{
+            width: 40%;
+            animation:  donghua 0.5s linear infinite;
+        }
+        @keyframes donghua{
+            0%{
+                transform: scale(1);
+            }50%{
+                transform: scale(0.9);
+            }100%{
+                transform: scale(1);
+            }
+        }
+        
+        .img_3{
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            margin: 4% 0px 0px;
+        }
+        .img_3 img{
+            width: 80%;
+        }
+        .img_4{
+            position: relative;
+            z-index: 2;
+            width: 92%;
+            margin: 10px auto 5px;
+        }
+        .img_4 img{
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="返回 hidden">
+        返回
+    </div>
+    <div class="content_1">
+        <img class="bg1" src="image_1/588-bg.png" />
+        <!-- <img class="bg2" src="image/fangan.png" /> -->
+        <ul class="list">
+            <li>
+                <img src="image_1/红包1.png" class="img_1">
+                <img src="image_1/红包1-已领取.png" class="img_2">
+                <img src="image_1/红包1-已失效.png" class="img_5">
+            </li>
+            <li>
+                <img src="image_1/红包2.png" class="img_1">
+                <img src="image_1/红包2-已领取.png" class="img_2">
+                <img src="image_1/红包2-已失效.png" class="img_5">
+            </li>
+            <li>
+                <img src="image_1/红包3.png" class="img_1">
+                <img src="image_1/红包3-已领取.png" class="img_2">
+                <img src="image_1/红包3-已失效.png" class="img_5">
+            </li>
+            <li>
+                <img src="image_1/红包4.png" class="img_1">
+                <img src="image_1/红包4-已领取.png" class="img_2">
+                <img src="image_1/红包4-已失效.png" class="img_5">
+            </li>
+            <li>
+                <img src="image_1/红包5.png" class="img_1">
+                <img src="image_1/红包5-已领取.png" class="img_2">
+                <img src="image_1/红包5-已失效.png" class="img_5">
+            </li>
+            <li>
+                <img src="image_1/红包6.png" class="img_1">
+                <img src="image_1/红包6-已领取.png" class="img_2">
+                <img src="image_1/红包6-已失效.png" class="img_5">
+            </li>
+        </ul>
+        <div class="btn_1">
+            <img src="image_1/btn_3.png" alt="" srcset="">
+        </div>
+        <div class="img_3">
+            <img src="image_1/微码.png" alt="" srcset="">
+        </div>
+        <div class="img_4">
+            <img src="image_1/活动规则.png" alt="" srcset="">
+        </div>
+    </div>
+
+    <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-sm" role="document" style="margin-top: 20%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">提示</h4>
+                </div>
+                <div class="modal-body tishi">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading">
+        <div>
+            <i class="glyphicon glyphicon-refresh"></i>
+        </div>
+    </div>
+    <!-- #/activity/1 -->
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        var url = ''
+        function chaxun(){
+            $.ajax({
+                type: "post",
+                // url: url+ "/Activities/BetPhone/GetRewardTimes",
+                url: url+ "/MApi/Activity/Post",
+                data: {url:'/Activities/BetPhone/GetRewardTimes'},
+                success: function (x) {
+                    console.log(x)
+                    if(x.times){
+                        var times = x.times;
+                        $('.list li').each(function(index){
+                            $(this).removeClass('lingqu shixiao')
+                            var noDays = x.noDays || '';
+                            var shixiao = noDays.includes(index+1)
+                            if(shixiao){
+                                $(this).addClass('shixiao')
+                            }else if(index<times){
+                                $(this).addClass('lingqu')
+                            }
+                        })
+                    }else if(x.noDays){
+                        var noDays = x.noDays
+                        $('.list li').each(function(index){
+                            $(this).removeClass('lingqu shixiao')
+                            var shixiao = noDays.includes(index+1)
+                            if(shixiao){
+                                $(this).addClass('shixiao')
+                            }
+                        })
+                    }
+                },
+                error:function(err){
+                    // var x = {"IsTrue":true,"times":6,"noDays":"4,5,6"}
+                    console.log(err)
+                }
+            });
+        }
+
+        chaxun()
+        $('.btn_1 img').click(function(){
+            $('.loading').css('display','flex');
+            $.ajax({
+                type: "post",
+                url: url+"/MApi/Activity/Post",
+                data: {url:'/Activities/BetPhone/SignInReward'},
+                success: function (x) {
+                    console.log(x)
+                    if(x.code==0){
+                        $('.tishi').html('领取成功');
+                    }else{
+                        $('.tishi').html(x.msg);
+                    }
+                    $('#myModal').modal('show')
+                    $('.loading').hide()
+                },
+                error:function(err){
+                    console.log(err)
+                    $('.tishi').html('系统错误稍后再试');
+                    $('#myModal').modal('show')
+                    $('.loading').hide()
+                }
+            });
+        })
+        
+        // 弹框关闭时再次查询  防止请求过快
+        $('#myModal').on('hidden.bs.modal', function (e) {
+            chaxun()
+        })
+
+        function GetRequest() {		 
+            var url = location.search; 
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for(var i = 0; i < strs.length; i++) {
+                    theRequest[strs[i].split("=")[0]]=decodeURI(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        }
+        var Request = new Object();
+            Request = GetRequest();
+            if(Request.back){
+                $('.返回').removeClass('hidden');
+            }
+            $('.返回').click(function(){
+                history.back();
+            })
+
+    </script>
+</body>
+
+</html>

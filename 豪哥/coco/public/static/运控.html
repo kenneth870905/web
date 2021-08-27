@@ -1,0 +1,413 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>河马 · 云手机群控平台</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/png" />
+    <link rel="stylesheet" type="text/css" media="all" href="./userweb/css/style.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script src="./layer-3.1/layer.js"></script>
+    <script src="/userweb/js/longene-client-1.3.0.js"></script>
+
+    <style type="text/css">
+        html {
+            overflow: hidden;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #FFFFFF;
+            font: normal small Arial, '微软雅黑', Helvetica, sans-serif;
+            color: #000000;
+            overflow: hidden;
+        }
+
+        #main {
+            float: left;
+            position: relative;
+        }
+
+        .button,
+        .link-button {
+            padding: 0 7px;
+            height: 26px;
+            border: #C7C7C7 1px solid;
+            cursor: pointer;
+            background: url('./images/white-grad.png') #F8F8F8 repeat-x scroll left top;
+        }
+
+        .button:hover,
+        .link-button:hover {
+            border: #696969 1px solid;
+            text-decoration: none;
+        }
+
+        .button:active,
+        .link-button:active {
+            background: #eee url('./images/white-grad-active.png') repeat-x scroll left top;
+        }
+
+        .link-button {
+            padding: 2px 7px 3px 7px;
+            line-height: 26px;
+            color: #000000;
+            font-size: 13px;
+            text-decoration: none;
+        }
+    </style>
+    <script type="text/javascript">
+        var inzoom = 0;
+    </script>
+</head>
+
+<body>
+
+    <div id="main">
+        <div id="loadingimg" style=" background-color:#000;height:560px;"><img src="/images/loading1.gif" style="width:100%;height:auto;"></div>
+        <div id="mountPoint" style="width:288px;height:512px;"></div>
+
+        <div id="lbl" style="position: fixed;width:100%;">
+            <div class="btn btn-icon btn-default btn-b" style="width:12.5%;" onclick="javascript:btnclick(4);" title="多任务"><img src="./images/i_drw.png"></div>
+            <div class="btn btn-icon btn-default btn-b" style="width:12.5%;" onclick="javascript:btnclick(1);" title="HOME键"><img src="./images/i_home.png"></div>
+            <div class="btn btn-icon btn-default btn-b" style="width:12.5%;" onclick="javascript:btnclick(2);" title="返回键"><img src="./images/i_back.png"></div>
+            <div class="btn btn-icon btn-default btn-b" style="width:12.5%;" onclick="javascript:btnclick(3);" title="横竖屏"><img src="./images/i_hsp.png"></div>
+            <div class="btn btn-icon btn-default btn-b" style="width:12.5%;" onclick="javascript:snapshot('10.0.92.248');" title="屏幕截图"><img src="./images/i_jt.png"></div>
+            <div class="btn btn-icon btn-default btn-b" style="width:12.5%;" onclick="javascript:clickvolbtn(8400,1);" title="音量+键：可用于控制脚本启动与停止"><img src="./images/i_ya.png"></div>
+            <div class="btn btn-icon btn-default btn-b" style="width:12.5%;" onclick="javascript:clickvolbtn(8400,0);" title="音量-键：可用于控制脚本启动与停止"><img src="./images/i_ys.png"></div>
+            <div class="btn btn-icon btn-default btn-b" style="width:12.5%;" onclick="javascript:zoomin();" title="缩放">
+                <div style="margin-top:-5px;"><span id="lblzoom">1.5x</span></div>
+            </div>
+        </div>
+        <!-- 	<div id="btnplay" style="position:absolute;top:50%;left:50%;margin-top:-42px;margin-left:-88px;" onclick="restore();" title="恢复推流"> -->
+        <!-- 	<img id="tlid" src="/userweb/images/play.png" width="177px" height="83px"></div> -->
+    </div>
+
+    <script type="text/javascript">
+        var player;
+        var port = 31358;
+        var ips = 'lcloud.longene.com.cn';
+        var domainname = 'lcloud.longene.com.cn';
+        var bsdn = 0;
+        if (port == -1000) {
+            layer.msg("你无权对其他用户的云机进行远程操作!");
+        } else if (port == -1) {
+            layer.msg("关闭远程桌面后请等待至少5秒时间再进行操作!");
+        } else if (port == -99) {
+            layer.msg("启动远程桌面超时，请关闭弹窗后重新连接!");
+        } else {
+            if (ips == "")
+                ips = '';
+            if (port == 20000)
+                domainname = "";
+            if (domainname == "" && port != 20000)
+                domainname = 'lcloud.longene.com.cn';
+            //创建video类型的AppPlayer，不成功返回null 
+            LongeneClient.LoggingControl.setLogLevel('verbose');
+
+            player = LongeneClient.createAppPlayer('mountPoint', {
+                mediaType: 'video',
+                orientation: 'portrait',
+                keyboard: true
+            });
+
+
+            if (player == null) {
+                layer.alert("你的浏览器不支持webrtc，建议使用chrome浏览器！");
+            } else {
+                player.on('statechange', function () {
+                    if (player.state = 'playing') {
+                        setTimeout(function () {
+                            document.getElementById("loadingimg").style.display = 'none';
+                        }, 2000);
+
+                    }
+                    //console.log('state change: ' + player.state);
+                });
+                player.on('error', function (error) {
+
+                    if (error.code == '1002') {
+                        player.destroy();
+                        player = null;
+                        player = LongeneClient.createAppPlayer('mountPoint', {
+                            mediaType: 'image',
+                            orientation: 'portrait',
+                            imageWidth: 1280,
+                            imageHeight: 720,
+                            keyboard: true
+                        });
+
+                        if (domainname == '') {
+                            player.open({
+                                token: 'GO2J130B3L6Zq78f',
+                                ip: '' + ips + '',
+                                port: '31358'
+                            });
+                        } else {
+                            player.open({
+                                token: 'GO2J130B3L6Zq78f',
+                                domain: '' + domainname + '',
+                                ip: '' + ips + '',
+                                port: '31358'
+                            });
+                        }
+
+                    } else if (error.code == '1001' || error.code == '1027') {
+                        layer.msg('不好意思，云机占用中(' + error.code + ")", {
+                            time: 2000
+                        });
+                    } else if (error.code == '1000' || error.code == '1002' || error.code == '1008' || error.code == '1010') {
+                        layer.msg('网络中断，请重试(' + error.code + ')', {
+                            time: 2000
+                        });
+
+                    } else if (error.code == '1014' || error.code == '1022' || error.code == '1015') {
+                        layer.msg('发生未知错误，请联系管理员(' + error.code + ')', {
+                            time: 2000
+                        });
+
+                    }
+                    // 			else if(error.code == '1020'){
+                    // 				layer.msg('因长时间未操作，推流自动停止，如需继续，请点击恢复按钮！', {
+                    // 				    time: 2000
+                    // 				});
+
+                    //document.getElementById("btnplay").style.display = "";
+
+                    //}
+                    else if (error.code == '1026' || error.code == '1029') {
+                        layer.msg('发生未知错误，请重新打开推流窗口试试(' + error.code + ')', {
+                            time: 2000
+                        });
+
+                    } else if (error.code == '1030' || error.code == '1029') {
+                        layer.msg('当前浏览器不支持，请使用谷歌40+、火狐35+、edge13+、safari11+浏览器(' + error.code + ')', {
+                            time: 2000
+                        });
+
+                    } else {
+                        layer.msg('发生错误: ' + error.code + ' ' + error.message, {
+                            time: 2000
+                        });
+                    }
+
+                });
+
+                // 	player.on('networkinfo', function(network) {
+                //         //console.log(network);
+                //         layer.msg('网速: ' + network.speed + ' KB/S 强度:' + network.jitter, {
+                // 		    time: 1000
+                // 		  });
+                // 	});
+
+
+
+                if (domainname == '') {
+                    player.open({
+                        token: 'GO2J130B3L6Zq78f',
+                        ip: '' + ips + '',
+                        port: '' + port + ''
+                    });
+
+                } else {
+                    player.open({
+                        token: 'GO2J130B3L6Zq78f',
+                        domain: '' + domainname + '',
+                        ip: '' + ips + '',
+                        port: '' + port + ''
+                    });
+                }
+
+            }
+        }
+
+        function zoomin() {
+
+
+            var index = parent.layer.getFrameIndex(window.name);
+            var orientation = player.orientation;
+
+            if (orientation == "portrait") {
+                if (inzoom == 0) {
+
+                    parent.layer.style(index, {
+                        width: '360px',
+                        height: '710px'
+                    });
+                    document.getElementById("mountPoint").style = "width:360px;height:640px;";
+                } else {
+
+                    parent.layer.style(index, {
+                        width: '288px',
+                        height: '580px'
+                    });
+                    document.getElementById("mountPoint").style = "width:288px;height:512px;";
+                }
+
+
+            } else if (orientation == "landscape") {
+                if (inzoom == 0) {
+
+                    parent.layer.style(index, {
+                        width: '768px',
+                        height: '500px'
+                    });
+                    document.getElementById("mountPoint").style = "width:768px;height:432px;";
+                } else {
+
+                    parent.layer.style(index, {
+                        width: '512px',
+                        height: '355px'
+                    });
+                    document.getElementById("mountPoint").style = "width:512px;height:288px;";
+                }
+
+            }
+
+            // 更新player的宽高  
+            player.updateInterface();
+            document.getElementById("lbl").style = "position: fixed;width:100%;";
+
+            if (inzoom == 0) {
+                inzoom = 1;
+                document.getElementById("lblzoom").innerHTML = "1.0x";
+            } else {
+                inzoom = 0;
+                document.getElementById("lblzoom").innerHTML = "1.5x";
+            }
+        }
+
+        /**
+         * 页面按钮操作
+         */
+        function btnclick(i) {
+
+            if (i == 1)
+                player.emitHome();
+            if (i == 2)
+                player.emitBack();
+            if (i == 3) {//竖屏
+
+                var orientation = player.orientation;
+                var index = parent.layer.getFrameIndex(window.name);
+                if (orientation == "portrait") {
+                    if (inzoom == 1) {
+                        // 改变挂载点的宽高   
+                        document.getElementById("mountPoint").style = "width:768px;height:432px;";
+                        parent.layer.style(index, {
+                            width: '768px',
+                            height: '500px'
+                        });
+                    } else {
+                        // 改变挂载点的宽高   
+                        document.getElementById("mountPoint").style = "width:512px;height:288px;";
+                        parent.layer.style(index, {
+                            width: '512px',
+                            height: '355px'
+                        });
+                    }
+
+                    // 更新player的宽高  
+                    player.updateInterface();
+                    // 改变定位方向为竖屏   
+                    player.orientation = "landscape";
+                    document.getElementById("lbl").style = "position: fixed;width:100%";
+                }
+                else if (orientation == "landscape") {
+                    if (inzoom == 1) {
+                        parent.layer.style(index, {
+                            width: '360px',
+                            height: '710px'
+                        });
+                        // 改变挂载点的宽高 
+                        document.getElementById("mountPoint").style = "width:360px;height:640px;";
+                    } else {
+                        parent.layer.style(index, {
+                            width: '288px',
+                            height: '580px'
+                        });
+                        // 改变挂载点的宽高 
+                        document.getElementById("mountPoint").style = "width:288px;height:512px;";
+                    }
+
+                    // 更新player的宽高  
+                    player.updateInterface();
+                    // 改变定位方向为竖屏   
+                    player.orientation = "portrait";
+                    document.getElementById("lbl").style = "position: fixed;width:100%";
+                }
+
+            }
+            if (i == 4) {
+                player.openRecent();
+            }
+        }
+
+        function clickvolbtn(id, mode) {
+            var lurl = "userWeb!clickvolumnbtn?id=" + id + "&volume=" + mode;
+
+            $.ajax({
+                type: "POST",
+                url: lurl,
+                success: function (data) {
+
+                    if (data == 0) {
+                        parent.layer.msg("音量 " + (mode == 1 ? '+' : '-') + " 键操作指令发送成功!", { icon: 0, time: 2000 });
+                    }
+                    else {
+                        parent.layer.msg("音量 " + (mode == 1 ? '+' : '-') + " 键操作指令发送失败", { icon: 0, time: 2000 });
+                    }
+                }
+            });
+        }
+
+        function snapshot(hostip) {
+
+            var lurl = "server!getsnapshot?hostip=" + hostip;
+            $.ajax({
+                type: "POST",
+                url: lurl,
+                success: function (data) {
+                    // 			var random = Math.ceil(Math.random()*1000);
+                    // 			var img = "<img src='/snapshot/"+hostip+".png?"+random+"' width='288px' height='512px' />"; 
+                    // 			parent.layer.open({
+                    // 				  type: 1,
+                    // 				  title: false,
+                    // 				  closeBtn: 0,
+                    // 				  shade: [0.9, '#393D49'],
+                    // 				  area: ['288px','512px'],
+                    // 				  skin: 'layui-layer-nobg', //没有背景色
+                    // 				  shadeClose: true,
+                    // 				  content: img
+                    // 			});
+                    parent.layer.open({
+                        type: 2,
+                        title: ['云机截屏', 'font-size:18px;'],
+                        area: ['350px', '620px'],
+                        content: 'userWeb!downsnapshot?ip=' + hostip,
+                        success: function () {
+                            bpopup = 1;
+                        },
+                        cancel: function (index, layero) {
+                            layer.close(index);
+                        },
+                        end: function () {
+                            bpopup = 0;
+                        }
+                    });
+
+                }
+
+            });
+
+        }
+
+    </script>
+</body>
+
+</html>

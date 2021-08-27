@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+    <!-- <script src="./js/RoadmapGenerator.js"></script> -->
+    <style>
+        #container {
+            width: 1200px;
+            height: 180px;
+            margin: 0 auto;
+            background: url("./img/bg.png") no-repeat;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <canvas id="cavsElem" width="1200" height="180"></canvas>
+        <br />
+        <button @click="undateCanvas(1)">添加庄</button>
+        <button @click="undateCanvas(2)">添加闲</button>
+        <button @click="undateCanvas(3)">添加和</button>
+    </div>
+
+    <script>
+        const GameResult = {
+            Banker: "banker", //庄
+            Player: "player", // 闲
+            Tie: "tie", //和
+        };
+
+        class RoadmapGenerator {
+            bigRoad(gameResults = [], { columns = 40, rows = 6, scroll = true } = {} ) {
+                let tieStack = []; //和堆栈
+                let placementMap = {}; //放置图
+                let logicalColumnNumber = 0; // 逻辑列号
+                let lastItem; // 最后一项
+                let returnList = []; // 返回结果
+                let maximumColumnReached = 0; // 达到最大列
+                // 开始
+                gameResults.forEach((gameResult) => {
+                    // 如果开奖结果为和
+                    if (gameResult.outcome === GameResult.Tie) {
+                        tieStack.push(gameResult); // 开奖结果推到和堆栈
+                    } else {
+                        // 判断最后一项
+                        if (lastItem) {
+                            let lastItemInResults = returnList[returnList.length - 1];
+                            // 判断最后一项等于和
+                            if (lastItem.outcome === GameResult.Tie) {
+                                if (lastItemInResults) {
+                                    lastItemInResults.ties = _.cloneDeep(tieStack);
+                                    tieStack = [];
+                                }
+                            }
+                            if (lastItemInResults) {
+                                if (lastItemInResults.result.outcome !== gameResult.outcome) {
+                                    //如果此项目的结果不同
+                                    //最后一个游戏，那么我们必须将其放置在另一个游戏中栏
+                                    logicalColumnNumber++;
+                                }
+                            } else {
+                                logicalColumnNumber = 1; // 右移动一步
+                                returnList.push({
+                                    ties: _.cloneDeep(tieStack),
+                                    column: 0,
+                                    row: 0,
+                                    logicalColumn: 0,
+                                    result: {
+                                        outcome: "tie",
+                                    },
+                                });
+                                tieStack = [];
+                            }
+                        }
+                        let probeColumn = logicalColumnNumber;
+                        let probeRow = 0;
+                        let done = false;
+                        console.log(1)
+                        while (!done) {
+                            let keySearch = `${probeColumn}.${probeRow}`;
+                            let keySearchBelow = `${probeColumn}.${probeRow + 1}`;
+                            //在当前探针位置可用的位置
+                            if (!_.get(placementMap, keySearch)) {
+                                let newEntry = _.merge(
+                                    {},
+                                    {
+                                        row: probeRow,
+                                        column: probeColumn,
+                                        logicalColumn: logicalColumnNumber,
+                                        ties: _.cloneDeep(tieStack),
+                                    },
+                                    { result: gameResult }
+                                );
+                                _.set(placementMap, keySearch, newEntry); // 没找到就设置placementMap
+                                returnList.push(placementMap[probeColumn][probeRow]); // placementMap把推到returnList
+                                // console.log(probeColumn);
+                                tieStack = [];
+                                done = true;
+                            } else if (probeRow + 1 >= rows) {
+                                //下面的位置将超出表格范围，出现长龙。
+                                probeColumn++; // 往右走
+                            } else if (!_.get(placementMap, keySearchBelow)) {
+                                // 下面的位置为空。
+                                console.log(returnList)
+                                if(probeRow==0){
+                                    probeRow++; //往下走
+                                }else if(returnList.find(x=>x.column==probeColumn && x.row==probeRow-1)){
+                                    probeRow++; //往下走
+                                }else{
+                                    probeColumn++; // 往右走
+                                }
+                                
+                            } else if ( _.get(placementMap, keySearchBelow).result.outcome === gameResult.outcome ) {
+                                // 以下结果是相同的结果。
+                                // probeRow++; //往下走
+                                console.log(returnList)
+                                if(probeRow==0){
+                                    probeRow++; //往下走
+                                }else if(returnList.find(x=>x.column==probeColumn && x.row==probeRow-1)){
+                                    probeRow++; //往下走
+                                }else{
+                                    probeColumn++; // 往右走
+                                }
+                            } else {
+                                probeColumn++;
+                            }
+                        }
+                        maximumColumnReached = Math.max(
+                            maximumColumnReached,
+                            probeColumn
+                        );
+                    }
+                    lastItem = gameResult;
+                });
+
+                //处理和
+                if (_.isEmpty(returnList) && tieStack.length > 0) {
+                    returnList.push({
+                        ties: _.cloneDeep(tieStack),
+                        column: 0,
+                        row: 0,
+                        logicalColumn: 0,
+                        result: {
+                            // outcome: "tie",
+                        },
+                    });
+                } else if (!_.isEmpty(returnList)) {
+                    _.last(returnList).ties = _.cloneDeep(tieStack);
+                }
+                // 是否往左移动
+                if (scroll) {
+                    returnList = this.scrollBigRoad(
+                        returnList,
+                        maximumColumnReached,
+                        columns
+                    );
+                }
+
+                // console.log(returnList)
+                return returnList;
+            }
+
+            // 判断是否滚动
+            scrollBigRoad(results = [], highestDrawingColumn, drawingColumns) {
+                const highestDrawableIndex = drawingColumns - 1;
+                const offset = Math.max(
+                    0,
+                    highestDrawingColumn - highestDrawableIndex
+                );
+
+                let validItems = results.filter(
+                    (value) => value.column - offset >= 0
+                );
+
+                validItems.forEach((value) => (value.column -= offset));
+
+                return validItems;
+            }
+        }
+    </script>
+
+    <script>
+        new Vue({
+            el: "#container",
+            data() {
+                return {
+                    cellSize: 30,
+                    borderSize: 0,
+                    width: 1200,
+                    height: 180,
+                    histories: [],
+                };
+            },
+            computed: {
+                boxSize() {
+                    return this.cellSize + this.borderSize * 2;
+                },
+            },
+            mounted() {
+                this.undateCanvas();
+            },
+            methods: {
+                // undateCanvas
+                undateCanvas(x) {
+                    var ctx = document.getElementById("cavsElem").getContext("2d");
+                    ctx.clearRect(0, 0, this.width, this.height);
+                    // this.drawGrid(ctx);
+                    if (x) {
+                        if (x == 1) {
+                            this.histories.push({
+                                outcome: "banker",
+                            });
+                        } else if (x == 2) {
+                            this.histories.push({
+                                outcome: "player",
+                            });
+                        } else if (x == 3) {
+                            this.histories.push({
+                                outcome: "tie",
+                            });
+                        }
+                        this.result(ctx);
+                    }
+                },
+                // 处理结果
+                result(ctx) {
+                    const roadmapGenerator = new RoadmapGenerator();
+                    const roadmap = roadmapGenerator.bigRoad(this.histories);
+                    roadmap.map((x, i) => this.drawResult(ctx, x));
+                },
+                // 画结果
+                drawResult(ctx, result) {
+                    const outcome = result.result.outcome;
+                    const cellSize = this.cellSize;
+                    const half = cellSize / 2 - 3;
+                    const borderSize = this.borderSize;
+                    const x = Math.floor(result.column) * (cellSize + borderSize * 2);
+                    const y = Math.floor(result.row) * (cellSize + borderSize * 2);
+                    const cx = x + half + borderSize + 3;
+                    const cy = y + half + borderSize + 3;
+                    ctx.lineWidth = 5; //5边框，half-3,cx+3,cy+3
+                    // console.log(outcome);
+
+                    if (outcome) {
+                        if (outcome === "player") {
+                            ctx.strokeStyle = "#0100ff";
+                        } else if (outcome === "banker") {
+                            ctx.strokeStyle = "#d9011c";
+                        } else {
+                            ctx.strokeStyle = "#37d901";
+                        }
+                    } else {
+                        ctx.strokeStyle = "#37d901";
+                    }
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, half, 0, Math.PI * 2, true);
+                    ctx.stroke();
+                    const tie = result.ties.length;
+                    if (tie) {
+                        ctx.beginPath();
+                        ctx.moveTo(cx + 10, cy - 10);
+                        ctx.lineTo(cx - 10, cy + 10);
+                        ctx.strokeStyle = "#37d901";
+                        ctx.closePath();
+                        ctx.stroke();
+                        if (tie > 1) {
+                            ctx.font = "bold 14px sans-serif";
+                            ctx.fillStyle = "green";
+                            ctx.textAlign = "center";
+                            ctx.textBaseline = "middle";
+                            ctx.fillText(tie, cx, cy);
+                        }
+                    }
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>

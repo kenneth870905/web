@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>货币</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="1.css">
+</head>
+
+<body>
+    <div class="container-fluid" id="vue">
+
+        <div class="header1">
+            <div>类型切换</div>
+            
+            <a type="button" href="../1/" role="button" class="btn btn-outline-primary">BTC ETH USDT</a>
+            <a type="button" href="../2/" role="button" class="btn btn-outline-primary">ETH EOS USDT</a>
+            <button type="button" href="../3/" role="button" class="btn btn-primary">BTC LTC USDT</button>
+            <a type="button" href="../4/" role="button" class="btn btn-outline-primary">EOS LTC USDT</a>
+            <div class="out">
+                <!-- <button type="button" class="tuichu btn btn-danger">退出</button> -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-4">
+                <div class="flex">
+                    <div>
+                        <table class="table table-bordered table-sm table-striped btcMR">
+                            <thead>
+                                <tr>
+                                    <th colspan="5" class="t1">BTC买入广告</th>
+                                </tr>
+                                <tr class="title2">
+                                    <th>#</th>
+                                    <th>价格</th>
+                                    <th>利润</th>
+                                    <th>数量</th>
+                                    <th>昵称</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item, index) in mairu1" :key="index" :class="getClass1(item).trclass">
+                                    <td>{{index+1}}</td>
+                                    <td>{{parseInt(item.price)}}</td>
+                                    <td :class="getClass1(item).tdclass">{{jisuan_lirun(item)}}</td>
+                                    <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
+                                    <td>
+                                        <div class="userName">
+                                            <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr v-for="(item, index) in mairu11" :key="index" :class="getClass1(item).trclass">
+                                    <td>{{index+11}}</td>
+                                    <td>{{parseInt(item.price)}}</td>
+                                    <td :class="getClass1(item).tdclass">{{jisuan_lirun(item)}}</td>
+                                    <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
+                                    <td>
+                                        <div class="userName">
+                                            <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    <table class="table table-bordered table-sm table-striped btcMC">
+                        <thead>
+                            <tr>
+                                <th colspan='5' class="t2">BTC卖出广告</th>
+                            </tr>
+                            <tr class="title2">
+                                <th>#</th>
+                                <th>价格</th>
+                                <th>利润</th>
+                                <th>数量</th>
+                                <th>昵称</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(item, index) in maichu1" :key="index" :class="getClass1(item).trclass">
+                                <td>{{index+1}}</td>
+                                <td>{{parseInt(item.price)}}</td>
+                                <td :class="getClass1(item).tdclass">{{jisuan_lirun11(item)}}</td>
+                                <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
+                                <td>
+                                    <div class="userName">
+                                        <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr v-for="(item, index) in maichu11" :key="index" :class="getClass1(item).trclass">
+                                <td>{{index+11}}</td>
+                                <td>{{parseInt(item.price)}}</td>
+                                <td :class="getClass1(item).tdclass">{{jisuan_lirun11(item)}}</td>
+                                <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
+                                <td>
+                                    <div class="userName">
+                                        <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="flex">
+                    <div>
+                        <table class="table table-bordered table-sm table-striped ethMR">
+                            <thead>
+                                <tr>
+                                    <th colspan="5" class="t1">LTC买入广告</th>
+                                </tr>
+                                <tr class="title2">
+                                    <th>#</th>
+                                    <th>价格</th>
+                                    <th>利润</th>
+                                    <th>数量</th>
+                                    <th>昵称</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item, index) in mairu2" :key="index" :class="getClass2(item).trclass">
+                                    <td>{{index+1}}</td>
+                                    <td>{{item.price ? item.price.toFixed(2) : ''}}</td>
+                                    <td :class="getClass2(item).tdclass">{{jisuan_lirun2(item)}}</td>
+                                    <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
+                                    <td>
+                                        <div class="userName">
+                                            <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr v-for="(item, index) in mairu21" :key="index" :class="getClass2(item).trclass">
+                                    <td>{{index+11}}</td>
+                                    <td>{{item.price ? item.price.toFixed(2) : ''}}</td>
+                                    <td :class="getClass2(item).tdclass">{{jisuan_lirun2(item)}}</td>
+                                    <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
+                                    <td>
+                                        <div class="userName">
+                                            <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <table class="table table-bordered table-sm table-striped ethMC">
+                            <thead>
+                                <tr>
+                                    <th colspan='5' class="t2">LTC卖出广告</th>
+                                </tr>
+                                <tr class="title2">
+                                    <th>#</th>
+                                    <th>价格</th>
+                                    <th>利润</th>
+                                    <th>数量</th>
+                                    <th>昵称</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item, index) in maichu2" :key="index" :class="getClass2(item).trclass">
+                                    <td>{{index+1}}</td>
+                                    <td>{{item.price ? item.price.toFixed(2) : ''}}</td>
+                                    <td :class="getClass2(item).tdclass">{{jisuan_lirun21(item)}}</td>
+                                    <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
+                                    <td>
+                                        <div class="userName">
+                                            <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr v-for="(item, index) in maichu21" :key="index" :class="getClass2(item).trclass">
+                                    <td>{{index+11}}</td>
+                                    <td>{{item.price ? item.price.toFixed(2) : ''}}</td>
+                                    <td :class="getClass2(item).tdclass">{{jisuan_lirun21(item)}}</td>
+                                    <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
+                                    <td>
+                                        <div class="userName">
+                                            <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="flex">
+                    <div>
+                        <table class="table table-bordered table-sm table-striped usdtMR">
+                            <thead>
+                                <tr>
+                                    <th colspan="4" class="t1">USDT买入广告</th>
+                                </tr>
+                                <tr class="title2">
+                                    <th>#</th>
+                                    <th>价格</th>
+                                    <th>数量</th>
+                                    <th>昵称</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item, index) in mairu3" :key="index" :class="getClass3(item).trclass">
+                                    <td>{{index+1}}</td>
+                                    <td>{{item.price}}</td>
+                                    <!-- <td :class="getClass2(item).tdclass">{{jisuan_lirun21(item)}}</td> -->
+                                    <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
+                                    <td>
+                                        <div class="userName">
+                                            <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr v-for="(item, index) in mairu31" :key="index" :class="getClass3(item).trclass">
+                                    <td>{{index+11}}</td>
+                                    <td>{{item.price}}</td>
+                                    <!-- <td :class="getClass2(item).tdclass">{{jisuan_lirun21(item)}}</td> -->
+                                    <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
+                                    <td>
+                                        <div class="userName">
+                                            <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <table class="table table-bordered table-sm table-striped usdtMC">
+                            <thead>
+                                <tr>
+                                    <th colspan='4' class="t2">USDT卖出广告</th>
+                                </tr>
+                                <tr class="title2">
+                                    <th>#</th>
+                                    <th>价格</th>
+                                    <th>数量</th>
+                                    <th>昵称</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item, index) in maichu3" :key="index" :class="getClass3(item).trclass">
+                                    <td>{{index+1}}</td>
+                                    <td>{{item.price}}</td>
+                                    <!-- <td :class="getClass2(item).tdclass">{{jisuan_lirun21(item)}}</td> -->
+                                    <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
+                                    <td>
+                                        <div class="userName">
+                                            <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr v-for="(item, index) in maichu31" :key="index" :class="getClass3(item).trclass">
+                                    <td>{{index+11}}</td>
+                                    <td>{{item.price}}</td>
+                                    <!-- <td :class="getClass2(item).tdclass">{{jisuan_lirun21(item)}}</td> -->
+                                    <td>{{item.tradeCount ? item.tradeCount.toFixed(2) : ''}}</td>
+                                    <td>
+                                        <div class="userName">
+                                            <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="beijinghui">
+            <div class="kuan4">
+                <div class="text-success zihao18 text-center">
+                    <b>人民币买入价格:</b>
+                    <b id="hulv1">00000</b>&nbsp;
+                    <b id="hulv2" class="shenlv">00000</b>&nbsp;
+                </div>
+                <div class="text-primary zihao25 text-center">
+                    <b>BTC实时:</b>
+                    <b id="hulv0">00000</b>
+                </div>
+                <div class="text-danger zihao18 text-center">
+                    <b>人民币卖出价格:</b>
+                    <b id="hulv3">00000</b>&nbsp;
+                    <b id="hulv4" class="qianhong">00000</b>
+                </div>
+            </div>
+            <div class="kuan4">
+                <div class="text-success zihao18 text-center">
+                    <b>人民币买入价格:</b>
+                    <b id="hulv1a">00000</b>&nbsp;
+                    <b id="hulv2a" class="shenlv">00000</b>&nbsp;
+                </div>
+                <div class="text-primary zihao25 text-center">
+                    <b>ETH实时:</b>
+                    <b id="hulv0a">00000</b>
+                </div>
+                <div class="text-danger zihao18 text-center">
+                    <b>人民币卖出价格:</b>
+                    <b id="hulv3a">00000</b>&nbsp;
+                    <b id="hulv4a" class="qianhong">00000</b>
+                </div>
+            </div>
+            <div class="kuan5">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">USTD买入汇率</span>
+                    </div>
+                    <input type="text" v-model="mairuhui" class="form-control" id="mairu">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">手续费</span>
+                    </div>
+                    <input type="text" v-model="shouxufei" class="form-control" id="shouxu">
+                </div>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">USTD卖出汇率</span>
+                    </div>
+                    <input type="text" v-model="maichuhui" class="form-control" id="maichu">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">主号ID</span>
+                    </div>
+                    <input type="text" v-model="zhuid" class="form-control" id="zhuid">
+                </div>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">副号ID</span>
+                    </div>
+                    <input type="text" v-model="fuid" class="form-control" id="fuid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="https://cdn.bootcss.com/pako/1.0.10/pako.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="3.js?v=0305"></script>
+</html>

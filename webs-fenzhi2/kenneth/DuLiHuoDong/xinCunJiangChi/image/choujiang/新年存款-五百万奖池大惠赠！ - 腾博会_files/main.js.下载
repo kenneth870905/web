@@ -1,0 +1,256 @@
+loginConponent.SetOption({
+    apiUrl: resolveClientUrl + "api.ashx",
+    loginUrl: resolveUrl + "login.aspx",
+    forgetUrl: resolveUrl + "ResetPassword.aspx",
+    registerUrl: resolveClientUrl + "Register.aspx",
+    verifyImageSrc: resolveUrl,
+    verifyImageFunction: function (obj) {        
+        /*if (loginConponent.infinite == -5) return;
+
+        var myDate = new Date();
+
+        if (loginConponent.infinite < 0) {
+            loginConponent.infinite = -5;
+            setTimeout(function () {
+                loginConponent.ResetInfinite();
+            }, 1000 * 60 * 1);
+            return;
+        }
+
+        loginConponent.SubtractInfinite();*/
+
+        var target = $("#login_CheckCode");
+        verifyCode(function (data) {
+            target.attr('src', 'data:image/png;base64,' + data.row.imgdata);
+        });
+        
+    },
+    callBack: function (obj) {
+        var type = $(this).attr('data-type');
+        if (!!type && type == "userNameLogin") return;
+        btnLogin_click();
+    },
+    closeBack: function () {
+        loginConponent.Hide();
+        $.removeCookie("loginTimeoutData", { path: '/' });
+        if (location.pathname != "/" && location.pathname != "/liveCasino.aspx"
+            && location.pathname != "/egame.aspx" && location.pathname != "/lottery.aspx"
+            && location.pathname != "/sports.aspx" && location.pathname != "/tbapp.aspx"
+             && location.pathname != "/Promotion/") {
+            location.href = "/";
+        }
+    }
+});
+
+
+(function ($) {
+    /*API异常防止频繁点击*/
+    function apiErrorSet() {
+        var opt = {
+            memberId: "",
+            command: "",
+            flagCount: 10,
+            min: 1
+        }
+
+        return {
+            apiRequest: function (option) {
+                opt = $.extend(opt, option);
+                var command;
+                $.each(opt.command, function (i, o) { command = i; });
+                var cookieName = opt.memberId + '_' + command;
+                var t;
+                t = opt.min / (60 * 24);
+
+                if ($.cookie(cookieName) == undefined) {
+                    $.cookie(cookieName, 1, { expires: t });
+                    return true;
+                } else {
+                    var c = $.cookie(cookieName);
+                    if (c < opt.flagCount) {
+                        c++;
+                        $.cookie(cookieName, c, { expires: t });
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+            },
+            isAllowApi: function (cookieName) {
+                var c = $.cookie(cookieName);
+                if (c < opt.flagCount || !c) {
+                    return true;
+                }
+                return false;
+            }
+        };
+
+    }
+
+    jQuery.extend({
+        invoke_api: function (command, options, obj) {
+            var oldText = $(obj).val();
+            var invokeApi = false;
+            if (!!obj) {
+                $(obj).addClass("btn-disabled");
+                $(obj).get(0).disabled = true;
+                $(obj).val("处理中...");
+            }
+            // 公用参数登录之后即可获取                    
+            if (command == null) {
+                $('body').parent().Dialog({ type: "Ask", title: "温馨提示", messageTitle: "请求数据时发生错误，请稍后再试！", autoClose: true, closeHandler: function () { closeDialog(0); } });
+                return false;
+            }            
+            //var commandOfTimeout = command;
+            for (var p in command) {
+                if (command.hasOwnProperty(p)) {
+                    if (p != "GetPinYin") {
+                        command[p].Token = $.cookie("memberToken") || "";
+
+                        if (p != "PasswordTelCommand" &&
+                            p != "TelSecCodeCommand" &&
+                            p != "PasswordMailCommand" &&
+                            p != "VerifySecPwdCommand" &&
+                            p != "TelResetLoginPwdCommand" &&
+                            p != "SafePwdResetLoginPwdCommand" &&
+                            p != "MailResetLoginPwdCommand") {
+                            command[p].ACNT = $.cookie("memberACNT") || "";
+                        }
+
+                        //if (command[p].ACNT.toLowerCase().indexOf("tb") == 0) {
+                        //    command[p].ACNT = command[p].ACNT.toLowerCase().replace("tb", "");
+                        //    $.cookie("memberACNT", command[p].ACNT, { path: '/' });
+                        //}
+
+                        command[p].IP = "[*IP*]";
+                        command[p].BSCore = client_user.BSCore;
+                        command[p].OSVer = client_user.OSVer;
+                        command[p].Terminal = client_user.Terminal;
+                        command[p].Host = client_user.Host;
+                        command[p].SID = $.cookie("SID") || "";
+                        command[p].Divice = ~navigator.userAgent.indexOf('Electron') ? 'Electron' : "PC";
+                    } else {
+                        invokeApi = true;
+                    }
+                }
+            }
+            if (options && options['invokeApi'] === true) {
+                invokeApi = true;
+            }
+
+            var datajson;
+            //console.log("请求json：",datajson);
+            //if (!!invokeApi) datajson = JSON.stringify(command); else datajson = JSON.s { operate: command } });
+            //debugger
+            if (!!invokeApi) {                
+                if (options['url'].indexOf('.ashx') > -1) {
+                    datajson = JSON.stringify({ Api: { operate: command } });
+                }else
+                    datajson = JSON.stringify(command);
+            }
+            else datajson = JSON.stringify(command);
+
+            var opt = $.extend(true,
+              {
+                  type: 'post',
+                  url: resolveClientUrl + ".api",
+                  dataType: 'json',
+                  cache: false,
+                  //async: true,
+                  //data: { str: JSON.stringify(command) },
+                  data: { str: datajson },
+                  complete: function () {
+                      if (!!obj) {
+                          $(obj).removeClass("btn-disabled");
+                          $(obj).get(0).disabled = false;
+                          $(obj).val(oldText);
+                      }
+                  },
+                  error: function () {
+                      var errorSetObj = apiErrorSet();
+
+                  }
+              }, options);
+
+            // try {
+                // var commandKey;
+                // $.each(command, function (i, o) { commandKey = i; });
+                var cookieName = $.cookie("memberToken");
+                var errorSetObj = apiErrorSet();
+                var isAllow = errorSetObj.isAllowApi(cookieName) || !cookieName;
+                if (isAllow) {                    
+                    if (!$.cookie("memberToken")) {
+                        var apiKey = "";
+                        for (var key in command) {
+                            if (key == "Login" || key == "EgamebsgLogin") {
+                                console.log(key);
+                            } else {
+                                var mIndex = $("ul#twoNav li").size() > 0 ? $("ul#twoNav").find("li.on").attr("index") : 0;
+                                new loginTimeout().setLoginTimeoutData({
+                                    "apiData": command,
+                                    "url": location.href,
+                                    "mIndex": mIndex
+                                });
+                            }
+                        } 
+                    }
+                    return $.ajax(opt).then(function (data) {
+                        var defer = $.Deferred();
+                        switch (data.Status) {
+                            case 1:
+                                return data;
+                            case 16:
+                            case -6:
+                                if (!$("#login_conponent").length) {
+                                    $(".pro-box").remove();
+                                    $(".popup-overlay").remove();
+
+                                    loginConponent.Show();                                      
+                                }
+                                //保存登录前的动作及参数
+                                var mIndex = $("ul#twoNav li").size() > 0 ? $("ul#twoNav").find("li.on").attr("index") : 0;
+                                new loginTimeout().setLoginTimeoutData({
+                                    "apiData": command,
+                                    "url": location.href,
+                                    "mIndex": mIndex
+                                });
+                                break;
+                            case -9:
+                            case 4003:
+                                var err = new Error(getMsg(data.Status));
+                                // console.log(data);
+                                return defer.reject(err);
+                                // break;
+                            default:
+                                return data;
+                        }
+                    }, function (xhr) {
+                        // console.log('origin', xhr);
+                        if (xhr.readyState === 4) {
+                            // 服务器错误，比如500
+                            if (xhr.status != 200) {
+                                console.error(new Error('服务器状态出错：' + xhr.status), command);
+                            } else {
+                                console.error(new Error('请求内容出错： ' + (xhr.responseText || '空')), command);
+                            }
+                        }
+                    }).fail(function (err) {
+                        console.error('请求出错：', err||'');
+                    });
+
+                }
+                else {
+                    if (!!obj) {
+                        $(obj).removeClass("btn-disabled");
+                        $(obj).get(0).disabled = false;
+                        $(obj).val(oldText);
+                    }
+                    $('body').parent().Dialog({ type: "Ok", title: "温馨提示", messageTitle: "当前操作存在异常，请1分钟之后再试！", autoClose: true, closeHandler: function () { closeDialog(0); } });
+                }
+            // } catch (e) {
+            //     var errorSetObj = apiErrorSet();
+            // }
+        }
+    });
+})(jQuery);

@@ -1,0 +1,5748 @@
+/* CSS Document */
+/*用户中心头部样式-开始
+.tb-head{
+    overflow:visible;
+}
+.tb-menu-bg{
+    display:none;
+}
+.tb-menu{
+    background:#fff;
+    position:relative;
+    border-bottom:1px solid #e6e6e6;
+    box-shadow:0 0 5px rgba(0,0,0,.08);
+}
+.tb-link a{
+    color:#444;
+}
+.tb-l-yhxx{
+    background:#f5f5f5;
+}
+.tb-l-yhxx a{
+    color:#999;
+}
+.tb-l-yhxx dd p em{
+    color:#222;
+}
+用户中心头部样式-结束*/
+
+/*用户中心*/
+.n-u{
+	background:#f6f6f6;
+	border:1px solid #e8e8e8;
+	box-shadow:0 0 5px rgba(0,0,0,.06);
+	margin-top:20px;
+	}
+.n-u-menu{
+	width:16.7%;
+	}
+.n-u-body{
+	border-left:1px solid #e8e8e8;
+	box-shadow:-2px 0 3px 0px rgba(0,0,0,.02);
+	background:#fff;
+	min-height:760px;
+	padding:0 2.5% 2% 2.5%;
+	}
+.n-u-m-ul li{
+	width:100%;
+	height:68px;
+	line-height:68px;
+	border-bottom:1px solid #e8e8e8;
+	box-shadow:0 1px 0 #f3f3f3;
+	color:#444;
+	cursor:pointer;
+    position:relative;
+	}
+.n-u-m-ul li:hover{
+	color:#d00;
+	}
+.n-u-m-ul li.on{
+	border-left:2px solid #dd0000;
+	background:#fff;
+	position:relative;
+	z-index:2;
+	left:-1px;
+	color:#d00;
+	cursor: default;
+	}
+.n-u-m-ul li span{
+	float:left;
+	font-size:14px;
+	font-weight:500;
+	margin-left:15%;
+	}
+.n-u-m-ul li span a{
+	color:inherit;
+	}
+.u-bg-ico{
+	float:left;
+	margin:24px 8px 0 0;
+	width:20px;
+	height:20px;
+	background:url(../image/pic/user/n-u-7.png) no-repeat;
+	}
+.n-u-m-ul li em.n-u-m-bg1{ background-position:0 0;}
+.n-u-m-ul li.on em.n-u-m-bg1,.n-u-m-ul li:hover em.n-u-m-bg1{ background-position:0 -20px;}
+.n-u-m-ul li em.n-u-m-bg2{ background-position:-20px 0;}
+.n-u-m-ul li.on em.n-u-m-bg2,.n-u-m-ul li:hover em.n-u-m-bg2{ background-position:-20px -20px;}
+.n-u-m-ul li em.n-u-m-bg3{ background-position:-40px 0;}
+.n-u-m-ul li.on em.n-u-m-bg3,.n-u-m-ul li:hover em.n-u-m-bg3{ background-position:-40px -20px;}
+.n-u-m-ul li em.n-u-m-bg4{ background-position:-60px 0;}
+.n-u-m-ul li.on em.n-u-m-bg4,.n-u-m-ul li:hover em.n-u-m-bg4{ background-position:-60px -20px;}
+.n-u-m-ul li em.n-u-m-bg5{ background-position:-80px 0;}
+.n-u-m-ul li.on em.n-u-m-bg5,.n-u-m-ul li:hover em.n-u-m-bg5{ background-position:-80px -20px;}
+.n-u-m-ul li em.n-u-m-bg6{ background-position:-100px 0;}
+.n-u-m-ul li.on em.n-u-m-bg6,.n-u-m-ul li:hover em.n-u-m-bg6{ background-position:-100px -20px;}
+.n-u-m-ul li em.n-u-m-bg7{ background-position:-120px 0;}
+.n-u-m-ul li.on em.n-u-m-bg7,.n-u-m-ul li:hover em.n-u-m-bg7{ background-position:-120px -20px;}
+.n-u-m-ul li em.n-u-m-bg8{ background-position:-140px 0;}
+.n-u-m-ul li.on em.n-u-m-bg8,.n-u-m-ul li:hover em.n-u-m-bg8{ background-position:-140px -20px;}
+.n-u-link{
+	width:100%;
+	height:68px;
+	line-height:68px;
+	border-bottom:1px solid #e8e8e8;
+	}
+.n-u-link li{
+	padding:0 6.2%;
+	font-size:14px;
+    color:#333;
+    cursor:pointer;
+	}
+.n-u-link li a{
+	color:inherit;
+	}
+.n-u-link li.on{
+	position:relative;
+	height:67px;
+	border-bottom:2px solid #d00;
+	color:#d00;
+	}
+
+/*2017-03-14*/
+.n-u-n{
+	padding:15px 0;
+	width:360px;
+	}
+.n-u-top{
+	overflow:hidden;
+	clear:both;
+	width:100%;
+	height:137px;
+	border-bottom:1px solid #e1e1e1;
+	}
+.n-u-yzdj li{
+	line-height:24px;
+	margin-right:13px;
+	margin-top:14px;
+	color:#bbb;
+	}
+	.n-u-yzdj li > * {
+		vertical-align: middle;
+	}
+.n-u-yzdj li span{
+	display: inline-block;
+	height:18px;
+	width:18px;
+	margin-right:6px;
+	background:url(../image/pic/bg/n-u-33.png) no-repeat;
+	background-position:-18px 0;
+	-webkit-background-size: cover;
+	background-size: cover;
+	}
+.n-u-yzdj li.ok{
+	color:#666;
+	}
+.n-u-yzdj li.ok span{
+	background-position:0 0;
+	}
+.n-u-vip{
+	width: 392px;
+	padding-left:28px;
+	height:100px;
+	margin-top:20px;
+	border-left:1px solid #e6e6e6;
+	overflow:visible!important;
+	}
+.n-u-vip1{
+	line-height:28px;
+	color:#333;
+	font-size:12px;
+	}
+.n-u-vip2{
+	margin-top:10px;
+	}
+.n-u-vip2 div.n-u-sfy{
+	width:220px;
+	margin-left:12px;
+	margin-right:12px;
+	}
+.n-u-vip2 p{
+	width:60px;
+	height:18px;
+	line-height:18px;
+	color:#fff;
+	text-align:center;
+	border-radius:20px;
+	font-weight:200;
+	}
+.n-u-vip2-lastvip{background:#ff3a2b;}
+.n-u-vip2-nextvip{
+	background:#bdb6ba;
+	}
+.n-u-vip3{
+	clear:both;
+	overflow: visible;
+	padding-top:14px;
+	line-height:28px;
+	color:#999;
+	}
+.n-u-vip3 span{
+	color:#f33;
+	font-size:13px;
+	padding:0 3px;
+	font-weight:bold;
+	}
+.n-u-checkin {
+	border-left:1px solid #e6e6e6;
+	height: 100px;
+	margin-top: 20px;
+	padding-left: 28px;
+}
+.btn_checkin {
+	border: none;
+	color: #fff;
+	font-size: 14px;
+	background: #FF3A2B;
+	box-shadow: 0 0 4px 0 rgba(0,0,0,0.20);
+	border-radius: 100px;
+	width: 80px;
+	height: 30px;
+	cursor: pointer;
+}
+.login_member_top_state .btn_checkin {
+	min-width: 42px;
+	width: auto;
+    height: 20px;
+    line-height: 19px;
+	font-size: 12px;
+	margin-right: 12px;
+}
+.btn_checkin.signed {
+		background-color: #aaa;
+	}
+.n-u-checkin p {
+	font-size: 14px;
+}
+.n-u-checkin p b {
+	color: #FF4A3A;
+}
+.n-u-checkin .btn_checkin {
+	margin: 10px 0 11px 0;
+}
+/*2017-03-14*/
+
+.n-u-n1{
+	line-height:38px;
+	font-size:15px;
+	font-weight:200;
+	}
+.n-u-n1 span{
+	color:#06f;
+	}
+.n-u-n2{
+	line-height:20px;
+	padding-top:5px;
+	color:#333;
+	}
+.n-u-live{
+	display:inline-block;
+	position:relative;
+	top:2px;
+	*top:-2px;
+	margin-left:12px;
+	width:73px;
+	height:15px;
+	background:url(../image/pic/user/live-ico.png) no-repeat;
+	}
+.n-u-live.live-1{
+	background-position:0 0;
+	}
+.n-u-live.live-2{
+	background-position:0 -15px;
+	}
+.n-u-live.live-3{
+	background-position:0 -45px;
+	}
+.n-u-live.live-4{
+	background-position:0 -60px;
+	}
+.n-u-live.live-5{
+	background-position:0 -75px;
+	}
+.n-u-live.live-6{
+	background-position:0 -90px;
+	}
+.n-u-live.live-7{
+	background-position:0 -30px;
+	}
+.n-u-sfy{
+	background:#eee;
+	width:200px;
+	height:6px;
+	border-radius:6px;
+	overflow:hidden;
+	margin:6px 12px 0 10px;
+	}
+.n-u-sfy span{
+	float:left;
+	height:6px;
+	border-radius:6px;
+	background:#ff3a2b;
+	}
+.n-u-n2-link{
+	margin-left:30px;
+	color:#333;
+	font-size: 12px;
+	width: 72px;
+	height: 24px;
+	background: #FFFFFF;
+	border: 1px solid #DCDCDC;
+	box-shadow: 0 0 4px 0 rgba(0,0,0,0.10);
+	border-radius: 4px;
+	}
+.n-u-tav li{
+	width:20%;
+	line-height:28px;
+	padding:0 0 10px 0;
+	*position:relative;
+	*margin-right:-1px;
+	}
+.n-u-tav li.pointer:hover{
+    color:#ff3a2b;
+}
+.n-u-tav li span{
+	float:left;
+	width:28px;
+	height:28px;
+	margin-right:12px;
+	}
+.n-u-tav li span img{
+	float:left;
+	width:100%;
+	}
+.n-u-tav li em{
+	padding-left:4px;
+	color:#bbb;
+	}
+.n-u-tav li em i{
+    font-style:normal;
+}
+.n-u-tav li em.on{
+    color:#3bb819;
+}
+.n-u-quota{
+	margin-top:20px;
+	}
+.n-u-quota li{
+	width:23.7%;
+    height:44px;
+	padding:18px 0;
+	border:1px solid #dcdcdc;
+	box-shadow:0 0 5px rgba(0,0,0,.12);
+	margin-right:1%;
+	margin-top:0.9%;
+	border-radius:8px;
+    position:relative;
+	}
+.n-u-quota li div.adapt h2{
+	float:left;
+	font-size:14px;
+	margin:0 15px;
+	font-weight:normal;
+	line-height:22px;
+	}
+.n-u-quota li div.adapt h3{
+	float:left;
+	font-size:16px;
+	font-weight:500;
+    line-height:22px;
+    position:relative;
+    top:1px;
+	color:#d00;
+	}
+.n-u-quota li div.adapt h3 em{
+	font-size:12px;
+	color:inherit;
+	}
+.n-u-quota li p{
+	margin-left:15px;
+	color:#666;
+	}
+.n-u-quota li p span{
+	color:#06f;
+	font-size:13px;
+	}
+.n-u-data li{
+	width:50%;
+	line-height:54px;
+	*position:relative;
+	*margin-right:-1px;
+	}
+.n-u-data li h2{
+	float:left;
+	min-width:20%;
+	padding-right:10px;
+	font-size:13px;
+	font-weight:500;
+	color:#444;
+	}
+.n-u-data li p{
+	color:#888;
+	}
+	.n-u-data li .Recommend{
+		word-break: break-word;
+		white-space: normal;
+		word-wrap: normal;
+		}
+.n-u-data li.whole{
+	width:100%;
+	line-height:54px;
+	*position:relative;
+	*margin-right:-1px;
+	}
+.n-u-data li.whole h2{
+	min-width:93px;
+	}
+.n-u-quota li div.adapt span.bg-ico {
+    display:inline-block;
+    width:18px;
+    height:18px;
+    position:relative;
+    top:2px;
+    margin-left:15px;
+    background-position:-80px -101px;
+    cursor:pointer;
+}
+.n-u-bt{
+	height:36px;
+	line-height:36px;
+	font-size:13px;
+	font-weight:500;
+	margin-top:15px;
+	color:#333;
+	}
+.n-u-bt-rim{
+	background:#f5f5f5;
+	padding:0 10px;
+	margin-top:30px;
+	}
+.n-u-bt span{
+	float:left;
+	height:12px;
+	width:2px;
+	background:#d00;
+	margin:11px 8px 0 0;
+	}
+
+
+
+/************银行资料信息-开始*************/
+.u-tishi{
+	background:#fff4d7;
+	height:30px;
+	line-height:30px;
+	padding:0 12px;
+	color:#f85a3f;
+	font-size:12px;
+	margin:18px 0 5px 0;
+	}
+.u-tishi a{
+	display:inline-block;
+	padding:0 8px;
+	line-height:28px;
+	background:#f85a3f;
+	color:#fff;
+	font-size:12px;
+	border-radius:3px;
+	margin-left:15px;
+	}
+.user-data{
+	padding:0px 0 0 0px;
+	}
+dl.u-d-list{
+	float:left;
+	width:100%;
+	*overflow:hidden;
+	*clear:both;
+	font-size:12px;
+	margin:10px 0;
+	*margin:0 0;
+	}
+dl.u-d-list:hover dd p{
+	color:#f30;
+	}
+dl.u-d-list dt{
+	min-width:100px;
+	font-weight:600;
+	line-height:42px;
+	color:#333;
+	}
+dl.u-d-list dd.fl p{
+	color:#666;
+	line-height:42px;
+	}
+
+/*下拉菜单样式*/
+.select{
+	height:40px;
+	background:#fff;
+	color:#333;
+	border:1px solid #d0d0d0;
+	border-radius:2px;
+	box-shadow:2px 2px 1px rgba(0,0,0,.06),inset 1px 1px 3px rgba(0,0,0,.06);
+	margin:0px;
+	position:relative;
+}
+.select div{
+	float:left;
+	width:100%;
+	line-height:40px;
+	text-indent:10px;
+	font-size:12px;
+	font-family: "microsoft yahei";
+	color:#666666;
+}
+.select span{
+	width:20px;
+	height:20px;
+	background-position:-80px -120px;
+	position:absolute;
+	z-index:2;
+	right:5px;
+	top:10px;
+	}
+.select ul{
+    width:100%;
+	display: block;
+	font-size: 12px;
+	background: #FFFFFF;
+	position: absolute;
+	top: 41px;
+	left: -2px;
+	max-height: 0px;
+	overflow: hidden;
+	border-radius:3px;
+    z-index:10;
+}
+.select ul#platList{
+    max-height:330px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #ddd;
+    display:none;
+    overflow: auto;
+}
+.select ul li{
+	height: 36px;
+	line-height: 36px;
+	padding: 0px 10px;
+	list-style: none;
+	color: #444;
+    cursor:pointer;
+}
+.select ul li.Selected{
+	background:#ff6644;
+	color: #FFFFFF;
+}
+.select ul li:hover{
+	background: #eee;
+	color:#000;
+}
+.select ul li.Selected:hover{
+	background: #ff6644;
+	color:#fff;
+}
+.select.open,.select:hover{
+	background:#fff;
+	color:#222;
+	border-color:#85ceff;
+	box-shadow:0 0 5px #85ceff;
+	}
+.select.open ul{
+	max-height:180px;
+    /*max-height:400px;*/
+	overflow-y: auto;
+	border:1px solid #d2d2d2;
+	box-shadow:0 0 4px #eee;
+}
+.select.open span{
+	transform: rotate(180deg);
+	transition: all .1s ease-in;
+	right:5px;
+	top:7px;
+}
+.bankName{width:280px; z-index:9;}
+.provName{width:134px; margin-right:10px;}
+.cityName{width:134px;}
+.MGDate {width:220px;height:30px;*height:40px;}
+.select.MGDate div{line-height:30px;*line-height:40px;}
+.select.MGDate span{top:5px;*top:10px;}
+.select.MGDate ul{top:31px;*top:41px;}
+.time-scr input.MGlog_button{height:32px;line-height:32px;*height:42px;*line-height:42px;}
+
+
+span.point{
+	line-height:40px;
+	float:left;
+	margin-left:15px;
+	font-size:12px;
+	font-weight:400;
+	display:none;
+	color:#999;
+	}
+span.point.on{
+	display:block;
+	}
+span.point em{
+	float:left;
+	width:16px;
+	height:16px;
+	line-height:18px;
+	text-align:center;
+	font-family:"黑体";
+	margin:13px 8px 0 0;
+	background-position:-2px -782px;
+	}
+span.point.ok{ color:#999;}
+span.point.ok em{
+	background-position:-22px -782px;
+	}
+span.point.err{ color:#ff3a2b;}
+span.point.err em{
+	background-position:-42px -782px;
+	}
+span.point.red{
+	color:#ff3a2b;
+	}
+b.point-b{
+    font-weight:inherit;
+}
+
+.u-d-list dd .auto_CheckCode {
+    float:left;
+    margin-left:5px;
+    margin-top:10px;
+}
+
+ul.n-u-info{
+	margin-top:25px;
+	}
+ul.n-u-info li{
+	padding:5px 0;
+	width:100%;
+	border-bottom:1px dotted #dcdcdc;
+}
+ul.n-u-info li h2{
+	min-width:100px;
+	}
+.u-d-span {
+    display: inline-block;
+    margin-top:20px;
+}
+.n-u-sjyzan{
+    height:42px;
+    margin-left:8px;
+    background:#fafafa;
+}
+/***************银行资料信息-结束*********************/
+
+
+/***************账户设置-开始*********************/
+.u-remove{
+	margin-top:17px;
+	border:1px solid #e6e6e6;
+	border-radius:6px;
+	box-shadow:0 0 5px rgba(0,0,0,.1);
+	padding:0;
+	}
+.u-remove li{
+	float:left;
+	display:inline;
+	width:46%;
+	background:#fff;
+	border-left:1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+	overflow:hidden;
+	text-align:center;
+	padding:20px 2% 15px 2%;
+	position:relative;
+	margin:0 0 0 -1px;
+	}
+.n-u-r-dl dt{
+	width:68px;
+	height:68px;
+	}
+.n-u-r-dl dt img{
+	float:left;
+	width:100%;
+	}
+.n-u-r-dl dd{
+	text-align:left;
+	padding-left:18px;
+	}
+.n-u-r-dl dd h2{
+	font-size:18px;
+	font-weight:200;
+	line-height:24px;
+	margin-bottom:4px;
+	color:#333;
+	}
+.n-u-r-dl dd p{
+	font-size:12px;
+	font-weight:200;
+	line-height:20px;
+	color:#888;
+	}
+
+.u-remove li div.an-spt{
+	position:relative;
+	margin:20px 0 0 0;
+    overflow:hidden;
+	}
+
+
+/*账户设置-解锁*/
+.button-wrapper {
+	width: auto;
+	text-align: center;
+	-webkit-transition: .3s all ease .3s;
+	transition: .2s all ease .2s;
+	position: relative;
+	top:0;
+	left:0;
+}
+.tb-js-but{
+	width: auto;
+	background:none;
+	border:none;
+	height:36px;
+	border-radius:4px;
+	text-align:center;
+	line-height:36px;
+	cursor:pointer;
+	background:#fff;
+    border:1px solid #bbb;
+	box-shadow:0px 0px 4px rgba(0,0,0,.15);
+}
+
+.tb-js-but p {
+	color:#555;
+	font-family:"微软雅黑";
+	font-size:12px;
+	font-weight:500;
+	-webkit-transition: .2s all ease;
+	transition: .2s all ease;
+}
+.tb-js-but .fill {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 0%;
+	background:#f85a3f;
+	border-radius:4px;
+}
+.tb-js-but .fa {
+	display:none;
+	color:#fff;
+	font-family:"微软雅黑";
+	font-size:14px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	line-height: 36px;
+	-webkit-transform: scale(0);
+	-ms-transform: scale(0);
+	transform: scale(0);
+}
+.button-wrapper.clicked {
+	padding: 0;
+}
+.button-wrapper.clicked > div{
+	background: #e8e8e8;
+	height:2px;
+	margin-top:16px;
+}
+.button-wrapper.clicked > div p {
+	max-height: 0;
+	overflow: hidden
+}
+.button-wrapper.clicked > div .fill {
+	width: 100%;
+	-webkit-transition: .2s all ease .2s;
+	transition: 1.5s all ease .6s;
+}
+
+
+.button-wrapper.success > div,.button-wrapper.success-shibai > div {
+	margin: 0;
+	height:36px;
+}
+.button-wrapper.success > div .fa {
+	display:block;
+	background:#91ed9f;
+	-webkit-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: 0s all ease 0s;
+	transition: 0s all ease 0s;
+	border-radius:4px;
+	cursor:default;
+}
+
+.button-wrapper.success-shibai > div .fa {
+	display:block;
+	background:#eee;
+	color:#aaa;
+	-webkit-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: 0s all ease 0s;
+	transition: 0s all ease 0s;
+	border-radius:4px;
+	cursor:default;
+}
+.two-an-l{ width:48%; float:left;}
+.two-an-r{ width:48%; float:right;}
+/*
+.two-an-l .tb-js-but{
+	background:#ff3a2b;
+	border:1px solid #ff3a2b;
+	}
+.two-an-l .button-wrapper.clicked > div{
+    border-color:#ccc;
+}
+.two-an-l .tb-js-but p{
+	color:#fff;
+	}
+*/
+.u-smset{
+	border-top:1px solid #e8e8e8;
+	border-bottom:1px solid #e8e8e8;
+	position:relative;
+	margin:0px 0px -1px 0px;
+	}
+.u-smset dt{
+	line-height:48px;
+	font-size:15px;
+	font-weight:200;
+	}
+.u-smset dt span{
+	width:48px;
+	height:48px;
+	margin:0 15px 0 0px;
+	}
+.u-smset dt span img{
+	width:100%;
+	float:left;
+	}
+.u-smset dt,.u-smset dd{
+	padding:20px 0;
+	}
+.u-smset dd p{
+	line-height:48px;
+	color:#999;
+	font-weight:200;
+	margin-left:40px;
+	}
+.u-switch{
+	width:51px;
+	height:31px;
+	margin-top:8px;
+	background-position:-304px -304px;
+	cursor:pointer;
+	}
+.u-switch.on{
+	width:51px;
+	height:31px;
+	background-position:-244px -304px;
+	}
+.n-u-jiange{
+	height:15px;
+	}
+/***************账户设置-结束*********************/
+
+
+
+/***************安全验证-开始*********************/
+.n-u-aqyz{
+	margin-top:20px;
+	margin-bottom:21px;
+	border:1px solid #dcdcdc;
+	box-shadow:0 0 6px rgba(0,0,0,.1);
+	border-radius:4px;
+	padding:20px 30px 25px 30px;
+	}
+.n-u-aqyz div.n-u-sfy{
+	width:40%;
+	}
+
+dl.u-aqyz{
+	position:relative;
+	margin:-1px 0 0 0;
+	border-top:1px solid #e6e6e6;
+	border-bottom:1px solid #e6e6e6;
+	padding:25px 0;
+	}
+dl.u-aqyz dt img{
+	margin-right:20px;
+	float:left;
+	width:68px;
+	}
+dl.u-aqyz dd.fl h2{
+	line-height:30px;
+	font-size:16px;
+	font-weight: 200;
+	margin-top:6px;
+	}
+dl.u-aqyz dd.fl h2 span{
+	display:inline-block;
+	background:#fff8ee;
+	border:1px solid #ffcf91;
+	height:16px;
+	line-height:16px;
+	padding:0 5px;
+	font-size:12px;
+	border-radius:2px;
+	position:relative;
+	margin-left:12px;
+	top:-1px;
+	color:#ff9010;
+	}
+dl.u-aqyz.ok dd.fl h2 span{
+	background:#b2e986;
+	border-color:#b2e986;
+	color:#fff;
+	text-shadow:none;
+	}
+dl.u-aqyz dd.fl p{
+	line-height:24px;
+	font-size:12px;
+	font-weight: 200;
+	color:#666;
+	}
+dl.u-aqyz dd.fr span{
+	float:right;
+	width:106px;
+	height:32px;
+	border-radius:4px;
+	text-align:center;
+	line-height:32px;
+	cursor:pointer;
+	background:/*url(../image/bg/bg-ico.png) no-repeat 0 -142px*/#ff3a2b;
+    border:1px solid #ff3a2b;
+	box-shadow:0px 0px 4px rgba(0,0,0,.15);
+	color:#fff;
+	margin-top:17px;
+	}
+dl.u-aqyz.ok dd.fr span{
+	background:/*url(../image/bg/bg-ico.png) no-repeat 0 -142px*/#fff;
+    border:1px solid #dcdcdc;
+	box-shadow:0px 0px 4px rgba(0,0,0,.1);
+	color:#666;
+	cursor: default;
+	}
+.n-u-sfy-p{
+	font-weight:200;
+	}
+.n-u-sfy-p em{
+	font-size:15px;
+	padding:0 3px;
+	}
+/***************安全验证-结束*********************/
+
+
+/***************会员存款-开始*********************/
+.n-u-rec{
+	margin-top:17px;
+	}
+.n-u-rec li{
+	width:32%;
+	height:137px;
+	border:1px solid #e6e6e6;
+	box-shadow:0 0 5px rgba(0,0,0,.1),inset 0 -50px 100px rgba(0,0,0,.04);
+	border-radius:20px;
+	margin-right:1.5%;
+	transition: all .1s linear;
+	-moz-transition: all .1s linear;
+	-ms-transition: all .1s linear;
+	-o-transition: all .1s linear;
+	-webkit-transition: all .1s linear;
+	cursor:pointer;
+	}
+.n-u-rec li.n-u-rec-3{
+	margin-right:0;
+	}
+.n-u-rec li div.fr{
+	width:82px;
+	height:82px;
+	/*border:1px solid #dcdcdc;
+	background:#fff;
+	border-radius:24px;
+	box-shadow:inset 0 0 5px rgba(0,0,0,.08),0px 2px 0px rgba(0,0,0,.08);*/
+	margin:27px 20px 0 20px;
+	}
+.n-u-rec li div.bfc{
+	margin:24px 0 0 20px;
+	}
+.n-u-rec li div.bfc h2{
+	font-size:15px;
+	font-weight:200;
+	line-height:40px;
+	color:#000;
+	}
+
+
+.n-u-rec li div.bfc p{
+	font-size:12px;
+	font-weight:500;
+	line-height:20px;
+	color:#aaa;
+	}
+.u-d-ts{
+	padding:50px 0 20px 0;
+	}
+.u-d-ts dt{
+	line-height:36px;
+	font-size:14px;
+	font-weight:500;
+	color:#e11;
+	}
+.u-d-ts dd{
+	line-height:20px;
+	padding:5px 0;
+	font-size:12px;
+	font-weight:500;
+	color:#404040;
+	}
+
+.n-u-rec li:active{
+	-moz-opacity: .9;
+	opacity: .9;
+	filter: alpha(opacity=90);
+	transform:translate(1px,1px);
+	-webkit-transform:translate(1px,1px);
+	-moz-transform:translate(1px,1px);
+	-o-transform:translate(1px,1px);
+	-ms-transform:translate(1px,1px);
+	}
+
+.n-u-rec li.n-u-rec-1:hover{
+	border-color:#32df4c;
+	background:#32df4c;
+	box-shadow:0 0 5px rgba(100,194,37,.2),inset 0 50px 100px rgba(255,255,255,.2);
+	}
+.n-u-rec li.n-u-rec-2:hover{
+	border-color:#9e9ea5;
+	background:#9e9ea5;
+	box-shadow:0 0 5px rgba(0,0,0,.15),inset 0 50px 100px rgba(255,255,255,.2);
+	}
+.n-u-rec li.n-u-rec-3:hover{
+	border-color:#519eff;
+	background:#519eff;
+	box-shadow:0 0 5px rgba(51,153,255,.15),inset 0 50px 100px rgba(255,255,255,.2);
+	}
+/*
+.n-u-rec li.n-u-rec-1 div.fr{
+	background:#4ae160;
+	}
+.n-u-rec li.n-u-rec-2 div.fr{
+	background:#ff4f42;
+	}
+.n-u-rec li.n-u-rec-3 div.fr{
+	background:#3399ff;
+	}
+.n-u-rec li:hover div.fr{
+	box-shadow:inset 0 0 20px rgba(0,0,0,.1),0px 0px 6px rgba(0,0,0,.1);
+	}
+.n-u-rec li.n-u-rec-1:hover div.fr{
+	background:#fff;
+	}
+.n-u-rec li.n-u-rec-2:hover div.fr{
+	background:#fff;
+	}
+.n-u-rec li.n-u-rec-3:hover div.fr{
+	background:#fff;
+	}
+*/
+
+.n-u-rec li:hover div.bfc h2{
+	font-weight:500;
+	text-shadow:1px 1px 2px rgba(0,0,0,.15);
+	color:#fff;
+	}
+
+
+.n-u-rec li:hover div.bfc p{
+	font-weight:500;
+	text-shadow:1px 1px 2px rgba(0,0,0,.15);
+	color:#fff;
+	}
+.n-u-rec li.n-u-rec-1:hover div.bfc p {
+    color:#cbffd6;
+}
+.n-u-rec li.n-u-rec-2:hover div.bfc p {
+    color:#e5e5ef;
+}
+.n-u-rec li.n-u-rec-3:hover div.bfc p {
+    color:#e2efff;
+}
+.chage-chose{
+	width:23.7%;
+	border:1px solid #dcdcdc;
+	background:#f8f8f8;
+	box-shadow:0 0 5px rgba(0,0,0,.1);
+	margin-right:1%;
+	margin-top:10px;
+	padding:10px 0;
+	border-radius:4px;
+	position:relative;
+	line-height:32px;
+    text-align:center;
+    font-size:13px;
+	font-weight:500;
+	cursor:pointer;
+	transition: all .1s linear;
+	-moz-transition: all .1s linear;
+	-ms-transition: all .1s linear;
+	-o-transition: all .1s linear;
+	-webkit-transition: all .1s linear;
+	}
+.chage-chose.tabin-rec,.chage-chose.on{
+	border:1px solid #ff3a2b;
+	background:#ff3a2b;
+	box-shadow:inset 0 0 20px rgba(0,0,0,.06),2px 2px 0px rgba(0,0,0,.05);
+	color:#fff;
+	font-weight:500;
+	}
+.chage-chose span.tab-state1,
+.n-u-bank span.tab-state1,
+.bank-li span.tab-state1
+    {
+    position: absolute;
+    right: -1px;
+    bottom: -1px;
+    width: 36px;
+    height: 16px;
+    text-align: center;
+    line-height: 16px;
+    background: #81f198;
+    color: #fff;
+    font-size: 12px;
+	border-top-left-radius:4px;
+	border-bottom-right-radius:4px;
+    }
+.chage-chose.on span.tab-state1,
+.n-u-bank.on span.tab-state1,
+.bank-li.on span.tab-state1
+    {
+	display:none;
+	}
+.chage-chose span.tab-state2,
+.n-u-bank span.tab-state2,
+.bank-li span.tab-state2
+	{
+	position:absolute;
+	right:-1px;
+	bottom:-1px;
+	width:36px;
+	height:16px;
+	text-align:center;
+	line-height:16px;
+	background:#d5d5d5;
+	color:#fff;
+	font-size:12px;
+    border-top-left-radius:4px;
+	border-bottom-right-radius:4px;
+	}
+
+.bank-ul{
+    float:left;
+    width:100%;
+    /*width:100%;
+    float:right;
+	margin:0px 0px 0px 0px;
+    border-top:1px solid #dcdcdc;*/
+    padding:10px 0 15px 0;
+	}
+.bank-bt{
+	line-height:30px;
+	width:100%;
+	text-indent:0px;
+	}
+.bank-bt h2{
+	font-size:13px;
+	font-weight:normal;
+	padding-right:2px;
+	}
+.bank-bt p{
+	color:#e00;
+	font-size:13px;
+	}
+.bank-bt p em{
+	color:#f54;
+	padding-left:8px;
+	}
+.bank-li{
+	float:left;
+	*display:inline;
+	position:relative;
+	width:128px;
+	height:40px;
+    overflow:hidden;
+	border:1px solid #ccc;
+	border-radius:2px;
+	box-shadow:0 0 5px rgba(0,0,0,.12);
+	margin:0 9px 10px 0;
+	background:#fff url(../image/pic/bg/bank-ico1.png) no-repeat;
+	opacity:.8;
+	cursor:pointer;
+	}
+.bank-li em.bg-ico{
+	position:absolute;
+	right:-1px;
+	bottom:0px;
+	width:20px;
+	height:20px;
+	background:url(../image/pic/user/n-u-43b.png) no-repeat;
+    background-position:-20px 0;
+	display:none;
+	}
+.bank-li:hover{
+	opacity:1;
+	border:1px solid #ccc;
+	box-shadow:0 0 4px #e6e6e6;
+	}
+.bank-li.on{
+	opacity:1;
+    width:126px;
+	height:38px;
+	border:2px solid #ff3a2b;
+	box-shadow:0 0 4px #ffc1bb;
+	}
+.bank-li.on em.bg-ico{
+	display:block;
+	}
+
+/*银行标志*/
+.bank-li#ICBC{  background-position:0px 0px;            /*工商*/}
+.bank-li#CCB{   background-position:-128px 0px;       /*建设*/}
+.bank-li#ABC{   background-position:-256px 0px;       /*农业*/}
+.bank-li#BOC{   background-position:-384px 0px;       /*中国*/}
+.bank-li#CMB{   background-position:-512px 0px;       /*招商*/}
+.bank-li#BCM{   background-position:-640px 0px;       /*交通*/}
+.bank-li#CMBC{  background-position:0px -40px;           /*民生*/}
+.bank-li#HXB{   background-position:-128px -40px;      /*华夏*/}
+.bank-li#CIB{   background-position:-256px -40px;      /*兴业*/}
+.bank-li#SPDB{  background-position:-384px -40px;      /*浦发*/}
+.bank-li#CGB{   background-position:-512px -40px;      /*广发*/}
+.bank-li#CNCB{  background-position:-640px -40px;      /*中信*/}
+.bank-li#CEB{   background-position:0 -80px;          /*光大*/}
+.bank-li#PSBC{  background-position:-128px -80px;     /*邮政*/}
+.bank-li#BOB{   background-position:-256px -80px;     /*北京*/}
+.bank-li#BOT{   background-position:-384px -80px;     /*天津*/}
+.bank-li#BOS{   background-position:-512px -80px;     /*上海*/}
+.bank-li#PAB,.bank-li#SPABANK{   background-position:-640px -80px;     /*平安*/}
+.bank-li#NBCB{  background-position:0px -120px;          /*宁波*/}
+.bank-li#NJCB{  background-position:-128px -120px;     /*南京*/}
+.bank-li#BEA{   background-position:-256px -120px;     /*东亚*/}
+.bank-li#CBHB{  background-position:-384px -120px;     /*渤海*/}
+.bank-li#CZB{   background-position:-512px -120px;     /*浙商*/}
+.bank-li#BJRCB{ background-position:-640px -120px;     /*北京农商*/}
+.bank-li#SDB{   background-position:0 -160px;          /*深圳发展*/}
+.bank-li#SRCB{  background-position:-128px -160px;     /*上海农商*/}
+.bank-li#YL{  background-position:-256px -160px;       /*银联在线*/}
+
+.bank-li#HCCB,.bank-li#HZB{  background-position:-384px -160px;     /*杭州银行*/}
+.bank-li#GZCB{  background-position:-512px -160px;     /*广州银行*/}
+.bank-li#GNXS{  background-position:-640px -160px;     /*广州农信*/}
+.bank-li#QTYH{ background:url(../image/pic/user/n-u-MoreBank.png) no-repeat center;     /*其它银行*/}
+
+.bank-li#WHCCB{   background-position:0 -200px;        /*威海商业*/}
+.bank-li#OFFCN{  background-position:-128px -200px;    /*东营*/}
+
+
+.bank-anniu{
+	position:absolute;
+	width:98px;
+	height:24px;
+	background:#f2f2f2;
+	color:#666;
+	cursor:pointer;
+	border-radius:0 0 3px 3px;
+	line-height:24px;
+	border:1px solid #eaeaea;
+	border-top:none;
+	text-align:center;
+    left:50%;
+	margin:0px 0 0 -50px;
+	}
+.bank-anniu:hover{
+    box-shadow: 0 0 4px #eaeaea;
+	border-color:#f64;
+	background:#f64;
+	color:#fff;
+	}
+
+.bank-ewm{
+	width:168px;
+	height:168px;
+	overflow:hidden;
+	border:1px solid #dcdcdc;
+	margin-top:12px;
+	}
+.bank-ewm img{
+	width:100%;
+	float:left;
+	}
+.bank-ewm-p{
+	line-height:48px;
+	color:#666;
+	text-align:center;
+	font-size:13px;
+	}
+.n-u-bank{
+	border:1px solid #e6e6e6;
+	box-shadow:0 0 5px rgba(0,0,0,.1);
+	width:23.6%;
+	padding:12px 0;
+	margin-right:1%;
+	border-radius:4px;
+	margin-top:8px;
+	position:relative;
+	overflow:hidden;
+	cursor:pointer;
+	}
+.n-u-bank span.bg-ico{
+	display:none;
+	position:absolute;
+	top:0px;
+	right:0px;
+	width:24px;
+	height:24px;
+	background: url(../image/pic/user/n-u-19.png) no-repeat;
+	}
+.n-u-bank div.fl{
+	width:48px;
+	height:48px;
+	margin:0 15px;
+    overflow:hidden;
+	}
+.n-u-zfb div.fl{
+    background: url(../image/pic/user/n-u-17a.png) no-repeat;
+}
+.n-u-zfb.on div.fl{
+    background: url(../image/pic/user/n-u-17c.png) no-repeat;
+}
+.n-u-wx div.fl{
+    background: url(../image/pic/user/n-u-18a.png) no-repeat;
+}
+.n-u-wx.on div.fl{
+    background: url(../image/pic/user/n-u-18c.png) no-repeat;
+}
+.n-u-bank div.fl img{
+    width:100%;
+    float:left;
+}
+.n-u-bank div.bfc h2{
+	font-size:13px;
+	font-weight:600;
+	line-height:24px;
+	color:#333;
+	}
+.n-u-bank.on div.bfc h2{
+    text-shadow:1px 1px 2px rgba(0,0,0,.15);
+}
+.n-u-bank div.bfc p{
+	font-size:12px;
+	line-height:24px;
+	color:#aaa;
+	font-weight:200;
+	}
+.n-u-bank.on div.bfc p{
+    color:#e2efff;
+    text-shadow:1px 1px 2px rgba(0,0,0,.15);
+}
+.n-u-zfje{
+	padding-top:10px;
+	border-top:1px solid #dcdcdc;
+	}
+.n-u-bank.on{
+	border-color:#519eff;
+	background:#519eff;
+	box-shadow:0 0 5px rgba(51,153,255,.15),inset 0 50px 100px rgba(255,255,255,.2);
+	}
+.n-u-bank.on div.bfc h2{
+	color:#fff;
+	font-weight:600;
+	}
+.n-u-bank.on div.bfc p{
+	color:#c2e7ff;
+	font-weight:500;
+	}
+.n-u-bank.on span.bg-ico{
+	display:block;
+	}
+
+
+
+.chage-copy2{
+	padding:10px 0 0 0;
+	}
+.chage-copy2 > div.fr{
+	margin-left:30px;
+	}
+
+
+.chage-copy2 dl.u-d-list{
+	border-bottom:1px solid #e6e6e6;
+    padding-bottom:8px;
+	}
+.chage-copy2 dl.u-d-list dd p{
+	font-size:16px;
+	font-weight:bold;
+	}
+.chage-copy2 .u-d-list dd.fr{
+	margin-right:0;
+	}
+.chage-copy2 .u-d-list dd.fr a.btn-4{
+	margin-top:10px;
+	}
+.btn-4.btn-m-10{
+    margin:5px 0 0 30px;
+    *float:left;
+}
+.u-chapay-qx {
+	    background:none;
+	    border:none;
+	    position:relative;
+	    width:60px;
+	    height:24px;
+	    border-radius:2px;
+	    text-align:center;
+	    line-height:24px;
+	    background:#f9836e;
+	    color:#fff;
+	    font-family:"Microsoft YaHei";
+	    font-size:12px;
+	    font-weight:normal;
+	    cursor:pointer;
+        top:1px;
+        margin-left:15px;
+}
+.n-u-payts{
+    line-height:42px;
+    margin-left:30px;
+    color:#f30;
+    font-size:12px;
+    font-weight:400;
+}
+.nu-ck-input-ts{
+    line-height: 30px;
+    font-size: 13px;
+    margin-left: 20px;
+    position:relative;
+    top:7px;
+}
+.nu-ckfl-link{
+    color:#09f;
+}
+.nu-ckfl-link:hover{
+    color:#f30;
+}
+/*
+.nu-cs-flmoney{
+    width:99.5%;
+    margin:5px 0 10px 0;
+    padding:15px 0px;
+    background:#fff;
+    border:1px solid #d5d5d5;
+    box-shadow:1px 1px 4px rgba(0,0,0,.1);
+    border-radius:4px;
+}
+.nu-cs-flmoney li{
+    width:19%;
+    text-align:center;
+}
+.nu-cs-flmoney li h2{
+    line-height:24px;
+    font-size:13px;
+    color:#606060;
+    font-weight:400;
+}
+.nu-cs-flmoney li p{
+    color:#f01924;
+    font-weight:400;
+    font-size:14px;
+}
+*/
+.nu-cs-flmoney-02{
+    padding:6px 0 6px 0;
+    line-height:32px;
+    font-size:13px;
+    color:#808080;
+}
+.nu-cs-flmoney-02 p b{
+    color:#222;
+    font-size:14px;
+}
+.nu-cs-flmoney-02 p.fl{
+    margin-right:30px;
+}
+.nu-lstk-tab-02{
+    overflow:hidden;
+    border-radius:4px;
+    border:1px solid #e1e1e1;
+    box-shadow:1px 1px 3px rgba(0,0,0,.08);
+}
+.nu-lstk-tab-02 th{
+	height:40px;
+	text-align:left;
+	text-indent:20px;
+	font-weight:500;
+	color:#888;
+	font-size:13px;
+    background:#f2f2f2;
+	}
+.nu-lstk-tab-02 td{
+    font-weight:600;
+	height:50px;
+	text-align:left;
+	text-indent:20px;
+	font-size:13px;
+	color:#333;
+	}
+/***************会员存款-结束*********************/
+
+
+/***************户内转账-开始*********************/
+.n-u-balance{
+	padding:8px 0 16px 0;
+	border-bottom:1px solid #e6e6e6;
+	}
+.n-u-balance h2{
+	font-size:13px;
+	color:#333;
+	font-weight:500;
+	line-height:30px;
+	height:30px;
+	}
+.n-u-balance p,span.banlance-span{
+	display:inline-block;
+	font-family:Arial, Helvetica, sans-serif;
+	line-height:30px;
+	font-size:20px;
+	color:#d00;
+	}
+.n-u-balance em{
+	font-size:14px;
+	}
+.n-u-balance em.pt-media-unit{
+	color:#444;
+	}
+.n-u-balance span.bg-ico{
+	display:inline-block;
+	width:18px;
+	height:18px;
+	position:relative;
+	top:3px;
+    *top:0px;
+	margin-left:40px;
+	background-position:-80px -101px;
+	cursor:pointer;
+	}
+.n-u-quota.n-u-game-banlance{
+	margin-top:0;
+	padding-bottom:25px;
+	border-bottom:1px solid #e6e6e6;
+	}
+dl.u-d-list.n-u-hnzz{
+	margin:10px 0 0 0;
+	}
+dl.u-d-list.n-u-hnzz dt{
+	line-height:30px;
+	}
+.gameName{width:224px; z-index:9;}
+input.n-u-hnzz-input{
+	width:214px;
+	}
+dd.n-u-hn-an{
+	margin-top:5px;
+	padding-bottom:25px;
+	}
+.n-u-quota.n-u-game-banlance li{
+    cursor:pointer;
+}
+.n-u-quota.n-u-game-banlance li.on{
+    /*background:#fffaf8;*/
+    background:#fff;
+    border-color:#ff7469;
+    box-shadow:0 0 5px #ff7469;
+}
+
+.n-u-quota.n-u-game-banlance li em.n-u-zzxz {
+    position: absolute;
+    right: -1px;
+    bottom: -1px;
+    width: 24px;
+    height: 24px;
+    border-radius:4px;
+    background-position:-100px -140px;
+    display:none;
+}
+.n-u-quota.n-u-game-banlance li.on em.n-u-zzxz{
+    display:block;
+}
+.btn-3.n-u-hnzz-an{
+    width:107px;
+    height:46px;
+    line-height:44px;
+    font-size:12px;
+}
+.btn-3.n-u-hnzz-an:disabled {
+	background-color: #f5f5f5;
+	color: #999;
+}
+.btn-2.n-u-hnzz-an{
+    width:107px;
+    height:46px;
+    line-height:44px;
+    font-size:12px;
+    color:#fff;
+    background:#303030;
+    border-color:#303030;
+}
+.btn-2.n-u-hnzz-an:hover{
+    background:#191919;
+    box-shadow:0 0 5px #aaa;
+}
+.btn-2.n-u-hnzz-an:disabled{
+    background:#555;
+    color: #999;
+    box-shadow:0 0 5px #aaa;
+    cursor: not-allowed;
+}
+.n-u-zzmg-ts{
+	margin-top:10px;
+    margin-bottom:10px;
+    margin-right:13px;
+	padding:8px 5px;
+    letter-spacing:-.5px;
+	font-size:12px;
+	font-weight:600;
+	line-height:20px;
+	border:1px solid #ffc3b5;
+	color:#ff3a2b;
+    /*background:#fff9f7;*/
+	border-radius:4px;
+	box-shadow:0 0 5px rgba(255,170,150,.5);
+}
+
+.n-u-zzhzj-bg{
+    border:1px solid #e8e8e8;
+    box-shadow:1px 2px 4px rgba(0,0,0,.05);
+    background:#f5f5f5;
+    height:30px;
+    padding:7px 8px;
+    border-radius:8px;
+    margin-top:2px;
+    overflow:hidden;
+}
+.n-u-zzhzj-an{
+    border:1px solid #dcdcdc;
+    background:#fafafa;
+    box-shadow:1px 2px 4px rgba(0,0,0,.06);
+    height:44px;
+    line-height:44px;
+    padding:0 15px;
+    border-radius:8px;
+    margin:2px 0 0 8px;
+    color:#444;
+    font-size:13px;
+    font-weight:400;
+    cursor:pointer;
+}
+.n-u-zzhzj-an:hover{
+    border-color:#ff3a2b;
+    background:#ff3a2b;
+    color:#fff;
+    box-shadow:1px 2px 4px rgba(220,0,0,.2);
+    opacity:.8;
+}
+/***************户内转账-结束*********************/
+
+/***************自助入账-开始*********************/
+.n-u-zzrz-1,.n-u-zzrz-2{ margin:20px 0 10px 0; padding:8px 0; width:200px;}
+.n-u-zzrz-1{
+	border-top-right-radius:0;
+	border-bottom-right-radius:0;
+	border-right:none;
+	}
+.n-u-zzrz-2{
+	border-top-left-radius:0;
+	border-bottom-left-radius:0;
+	border-left:none;
+	}
+.n-u-zzrz-bt{
+	width:100px;
+	font-size:12px;
+	margin-top:24px;
+	line-height:42px;
+	font-weight:500;
+	}
+
+/***************自助入账-结束*********************/
+
+/***************用户报表-开始*********************/
+.ReportName{
+	width:128px;
+	}
+.ReportTime{
+	width:235px;
+	}
+input.btn-1{
+	width:72px;
+	margin-left:10px;
+	}
+.n-u-repBt{
+	height:54px;
+	padding-top:14px;
+	}
+.rec-tab{
+	width:100%;
+	margin:0;
+	}
+.rec-tab thead th{
+	height:36px;
+	text-align:left;
+	vertical-align:middle;
+	background:#f2f2f2;
+	padding-left:15px;
+	font-size:12px;
+	font-weight:normal;
+	color:#888;
+	}
+.rec-tab tbody td{
+	height:50px;
+	text-align:left;
+	vertical-align:middle;
+	border-bottom:1px solid #e6e6e6;
+	padding-left:15px;
+	font-size:13px;
+	color:#333;
+	}
+.rec-tab tbody tr:nth-child(2n) {
+	background-color: #f9f9f9;
+}
+.rec-tab tbody tr:hover {
+	background-color: #fffff9;
+}
+.rec-tab tbody td span{
+	color:#ff3a2b;
+	font-size:14px;
+	}
+.rec-pag{
+	position:relative;
+	}
+.rec-tab tfoot td {
+	height: 40px;
+	background-color: #f5f5f5;
+	padding-left: 15px;
+}
+.time-nav-ul {
+    margin:0px 0px 0 0;
+}
+.time-nav-ul li div.log_date{
+	height:30px;
+    line-height:30px;
+    padding:0 30px;
+    background:#fff;
+	border:1px solid #ccc;
+	box-shadow:0 0 3px rgba(0,0,0,.12);
+    cursor:pointer;
+    margin-right:6px;
+    position:relative;
+	border-radius:40px;
+    }
+.time-nav-ul li div.log_date.cur {
+    background:#ff3a2b;
+    color:#fff;
+    border-color:#ff3a2b;
+    margin-top: 0;
+	box-shadow:0 0 3px rgba(255,0,0,.5);
+    }
+.n-u-repBt h4.fl,.n-u-repBt h4.fr{
+    line-height:42px;
+    font-size:12px;
+    font-weight:normal;
+    margin-right:8px;
+    color:#666;
+}
+.no-result{
+    width:100%;
+    text-align:center;
+    line-height:80px;
+    color:#666;
+    font-size:14px;
+    font-weight:200;
+}
+.data-loading{
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+}
+.MGback{
+    line-height:42px;
+    padding:0 25px;
+    background:#ff3a2b;
+    color:#fff;
+    margin:0px 0 0 10px;
+    border-radius:3px;
+    cursor:pointer;
+}
+.n-u-tbts{
+    color:#ff5c2c;
+    line-height:40px;
+}
+.n-u-tbts span{
+    float:left;
+    height:18px;
+    width:18px;
+    margin:11px 8px 0 0;
+    background:url(../image/pic/bg/n-u-ts.png) no-repeat;
+}
+.time-scr{
+    padding:15px 0;
+}
+/***************用户报表-结束*********************/
+
+
+/***************服务中心-开始*********************/
+.feedbackType{
+	width:280px;
+	}
+.ComplaintsText{
+	width:500px;
+	height:100px;
+	}
+
+div.optiscroll .u-news-dl{ padding:10px 20px; margin:10px 20px 25px 20px;  background:#f5f5f5; border-radius:4px;}
+div.optiscroll .u-news-dl dt{ line-height:32px; font-size:15px; font-weight:500; color:#333;}
+div.optiscroll .u-news-dl dt em{ display:inline-block; padding-left:15px;font-weight: normal; font-size:13px;}
+div.optiscroll .u-news-dl dd{ line-height:24px; color:#707070; font-size:12px; padding:6px 0px; text-indent:2em;}
+
+div.user_center .u-news-dl{
+	float:left;
+	width:100%;
+    padding:0;
+    background:none;
+	margin:20px 0 0 0;
+	}
+div.user_center .u-news-dl dt{
+	float:left;
+	line-height:28px;
+	padding:0 20px;
+	background:#f0f0f0;
+	border-radius:28px;
+	color:#aaa;
+	margin-bottom:15px;
+	}
+div.user_center .u-news-dl.on dt{
+	background:#ff3a2b;
+	color:#fff;
+	}
+div.user_center .u-news-dl dd{
+	clear:both;
+	width:auto;
+	border:1px solid #e6e6e6;
+	box-shadow:0 0 5px rgba(0,0,0,.12);
+	border-radius:12px;
+	padding:8px 20px 15px 20px;
+	position:relative;
+	}
+div.user_center .u-news-dl.on dd{
+	border-color:#ffb0ac;
+	box-shadow:0 0 5px #ffcac7;
+	}
+div.user_center .u-news-dl dd h2{
+	font-size:15px;
+	font-weight:500;
+	color:#333;
+	line-height:32px;
+	}
+div.user_center .u-news-dl.on dd h2{
+	color:#e00;
+	}
+div.user_center .u-news-dl dd p{
+	font-size:12px;
+	line-height:20px;
+	color:#888;
+	font-weight:400;
+	}
+div.user_center .u-news-dl.on dd p{
+	color:#444;
+	}
+div.user_center .u-news-arrow{ position:absolute; width:16px; height:16px; left:56px; top:-8px; overflow:hidden;}
+div.user_center .u-news-arrow *{ display:block; position:absolute; font-size:16px; line-height:16px; width:16px;font-family:SimSun; font-style:normal; font-weight:normal;text-align:center; vertical-align:middle;}
+div.user_center .u-news-arrow em{ color:#e6e6e6; top:0px; text-shadow:0px -1px 3px rgba(0,0,0,.08);}
+div.user_center .u-news-dl.on .u-news-arrow em{ color:#ffb0ac;}
+div.user_center .u-news-arrow span{ color:#FFF; top:2px;}
+/***************服务中心-结束*********************/
+/***************手机重置安全问题与密码-开始*********************/
+.n-u-yzan-jge{
+	margin-top:30px;
+	overflow:hidden;
+	clear:both;
+	}
+.n-u-yzan{
+    position:absolute;
+    right:0;
+	height:42px;
+	font-family:"微软雅黑";
+	width:140px;
+	font-size:12px;
+	border:1px solid #47e577;
+	background:#47e577;
+	border-radius:3px;
+	color:#fff;
+	margin:0px 0 0 0px;
+	cursor:pointer;
+	}
+.n-u-yzan-2{
+    position:absolute;
+    right:0;
+	height:42px;
+	font-family:"微软雅黑";
+	width:140px;
+	font-size:12px;
+	border:1px solid #e6e6e6;
+	background:#f8f8f8;
+	border-radius:3px;
+	box-shadow:0 0 3px #e8e8e8;
+	color:#999;
+	margin:0px 0 0 0px;
+	cursor:default;
+	}
+.phoneVal05{
+    font-size:14px;
+    color:#222;
+}
+/***************手机重置安全问题与密码-结束*********************/
+/***************洗码限额管理-开始*********************/
+.n-u-xeul li{
+	width:46.6%;
+	padding-left:2%;
+	border:1px solid #dcdcdc;
+	box-shadow:0 0 5px #e6e6e6;
+	border-radius:8px;
+	margin-top:20px;
+	}
+.n-u-xeul li div.n-u-balance{
+	border-bottom:none;
+	}
+input.n-u-zzyh-an.n-u-xean{
+	margin-top:0;
+	height:26px;
+	width:88px;
+	line-height:24px;
+	margin-left:20px;
+	}
+span.n-u-zzyh-bban.n-u-xespan{
+	margin-left:20px;
+	font-size:13px;
+	color:#2ba8ff;
+	}
+/***************洗码限额管理-结束*********************/
+/***************服务中心-结束*********************/
+/***************自助优惠-开始*********************/
+.n-u-zzyh-ts{
+	overflow:hidden;
+	clear:both;
+	line-height:26px;
+	margin-top:20px;
+	font-size:14px;
+	color:#666;
+	}
+.n-u-zzyh-ts span.xiane-money{
+	padding:0 5px;
+	font-size:18px;
+	font-family:Arial, Helvetica, sans-serif;
+	}
+.n-u-zzyh-ts span.n-u-zzyh-bban{
+	display:inline-block;
+	margin-left:15px;
+	color:#2ba8ff;
+	font-size:12px;
+	}
+.n-u-zzyh-rw{
+	width:auto;
+	overflow:hidden;
+	clear:both;
+	padding:0 1.5%;
+	border:1px solid #dcdcdc;
+	border-radius:4px;
+	box-shadow:0 0 5px rgba(0,0,0,.1);
+	margin-top:20px;
+	}
+.n-u-zzyh-rw1{
+	overflow:hidden;
+	clear:both;
+	width:100%;
+	line-height:40px;
+	}
+.n-u-zzyh-rw1 h2{
+	font-size:14px;
+	font-weight:500;
+	color:#666;
+	}
+.n-u-zzyh-rw1 span{
+	margin-left:15px;
+	color:#2ba8ff;
+	}
+.zzyh-link{
+	display:inline-block;
+	margin-left:15px;
+	color:#2ba8ff;
+	}
+.n-u-zzyh-rw2 div.fl{
+	width:20%;
+	}
+.n-u-zzyh-rw2 div.fl span{
+	font-size:20px;
+	line-height:32px;
+	color:#333;
+	font-family:Arial, Helvetica, sans-serif;
+	}
+.n-u-zzyh-rw2 div.fl p{
+	line-height:18px;
+	color:#b2b2b2;
+	}
+.n-u-zzyh-rw3{
+	width:120px;
+	}
+.n-u-zzyh-rw4{
+	overflow:hidden;
+	clear:both;
+	width:100%;
+	margin-top:15px;
+	line-height:48px;
+	border-top:1px solid #e6e6e6;
+	}
+.n-u-zzyh-rw4 p{
+	margin-right:8%;
+	color:#aaa;
+	}
+div.n-u-zzyh-rw span.red,div.n-u-zzyh-ts span.red{
+	color:#ff3a2b;
+	}
+.n-u-zzyh-bban{
+	cursor:pointer;
+	}
+.n-u-zzyh-an{
+	width:118px;
+	height:36px;
+	line-height:34px;
+	border:1px solid #ff3a2b;
+	background:#ff3a2b;
+	color:#fff;
+	text-align:center;
+	margin:8px 0 0 0;
+	border-radius:3px;
+	font-family:"微软雅黑";
+	font-size:12px;
+	cursor:pointer;
+	}
+.n-u-zzyh-an:hover{
+	background:#f21;
+	}
+.n-u-zzyh-an.zzyh-wdd,input.zzyh-wdd{
+	border:1px solid #e6e6e6;
+	background:#f5f5f5;
+	color:#909090;
+	cursor:default;
+	}
+
+
+.n-u-zzyh-tc{
+	display:none;
+	}
+.n-u-zzyh-tc .popup-overlay{
+	background:#fff;
+	-moz-opacity: .75;
+	opacity: .75;
+	filter: alpha(opacity=75);
+	}
+.n-u-zzyh-tc .popup-content{
+	width:798px;
+	margin:-240px 0 0 -400px;
+    border-radius:12px;
+	background:#fff;
+	border:1px solid #ccc;
+	box-shadow:0 0 8px rgba(0,0,0,.2);
+	}
+.n-u-zzyh-tc-bt{
+	width:100%;
+	overflow:hidden;
+	clear:both;
+	height:60px;
+	}
+.n-u-zzyh-tc-bt h2{
+	line-height:60px;
+	font-size:16px;
+	font-weight:400;
+	color:#444;
+	margin-left:20px;
+	}
+.n-u-zzyh-tc-bt span,.n-u-xesm-tc-bt span{
+	margin:20px 20px 0 0;
+    width: 20px;
+    height: 20px;
+    background-position: -140px -140px;
+    cursor: pointer;
+    -moz-opacity: .25;
+    opacity: .25;
+    filter: alpha(opacity=25);
+    -webkit-transition: all .2s;
+    -ms-transition: all .2s;
+    -moz-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+	}
+.n-u-zzyh-tc-bt span:hover,.n-u-xesm-tc-bt span:hover{
+	-moz-opacity: .6;
+	opacity: .6;
+	filter: alpha(opacity=60);
+	transform:rotate(90deg);
+	-ms-transform:rotate(90deg); /* Internet Explorer */
+	-moz-transform:rotate(90deg); /* Firefox */
+	-webkit-transform:rotate(90deg); /* Safari ?’? Chrome */
+	-o-transform:rotate(90deg); /* Opera */
+	}
+
+.zzyh-form{
+	width:100%;
+	overflow-x:hidden;
+	overflow-y:auto;
+	clear:both;
+	height:360px;
+	}
+.zzyh-form-tab td{
+	padding-left:20px;
+	line-height:16px;
+	vertical-align:middle;
+	color:#666;
+	}
+.zzyh-form-tab thead td{
+	height:28px;
+	background:#f5f5f5;
+	border:1px solid #eaeaea;
+	border-left:none;
+	border-right:none;
+	color:#666;
+	font-weight:600;
+	}
+.zzyh-form-tab tbody tr:nth-child(2n) td{
+	background-color: #f4f4f4;
+	}
+.zzyh-form-tab tbody td{
+	height:54px;
+	border-bottom:1px solid #e6e6e6;
+	}
+.zzyh-form-tab tbody td em,.zzyh-formhj table td em{
+	color:#ff3a2b;
+	font-size:13px;
+	font-weight:bold;
+	}
+.zzyh-formhj{
+	width:100%;
+	height:58px;
+	background:#f6f6f6;
+	}
+.zzyh-formhj table td{
+	height:58px;
+	vertical-align:middle;
+	padding-left:20px;
+	color:#999;
+	}
+.zzyh-bgico{
+	width:24px;
+	height:24px;
+	display:inline-block;
+	margin-left:12px;
+	background:url(../image/pic/bg/n-u-33.png) no-repeat right top;
+	}
+
+.zzyh-rw2-01.ok div.zzyh-bgico,
+.zzyh-rw2-02.ok div.zzyh-bgico,
+.zzyh-rw2-03.ok div.zzyh-bgico,
+.zzyh-rw2-04.ok div.zzyh-bgico,
+.zzyh-rw2-05.ok div.zzyh-bgico
+	{background:url(../image/pic/bg/n-u-33.png) no-repeat left top;}
+.n-u-zzyh-rw2 div.zzyh-rw2-01 p,
+.n-u-zzyh-rw2 div.zzyh-rw2-02 p,
+.n-u-zzyh-rw2 div.zzyh-rw2-03 p,
+.n-u-zzyh-rw2 div.zzyh-rw2-04 p,
+.n-u-zzyh-rw2 div.zzyh-rw2-05 p
+	{ color:#ff3a2b;}
+.n-u-zzyh-rw2 div.zzyh-rw2-01.ok p,
+.n-u-zzyh-rw2 div.zzyh-rw2-02.ok p,
+.n-u-zzyh-rw2 div.zzyh-rw2-03.ok p,
+.n-u-zzyh-rw2 div.zzyh-rw2-04.ok p,
+.n-u-zzyh-rw2 div.zzyh-rw2-05.ok p
+	{ color:#aaa;}
+
+.zzyh-rw2-03 div.zzyh-bgico{
+	margin-left:18px;
+	}
+.zzyh-rw2-04 div.zzyh-bgico{
+	margin-left:24px;
+	}
+.zzyh-rw2-05 div.zzyh-bgico{
+	margin-left:36px;
+	}
+.zzyh-hlje{
+	width:120px;
+	text-align:center;
+	border-left:1px solid #e6e6e6;
+	padding-left:4%;
+	}
+.zzyh-hlje span{
+	line-height:30px;
+	font-size:20px;
+	font-weight:bold;
+	}
+.zzyh-hlje p{
+	line-height:16px;
+	color:#aaa;
+	}
+.ntb-red01 td{
+    color:#f00;
+}
+.u-zz-perr{
+    background:#f30;
+    margin-top:12px;
+    line-height:30px;
+    text-indent:10px;
+    background:#fee;
+    color:#f30;
+    font-size:14px;
+}
+/*.n-u-xesm-tc{
+	display:none;
+	}*/
+.n-u-xesm-tc .popup-overlay{
+	background:#fff;
+	-moz-opacity: .75;
+	opacity: .75;
+	filter: alpha(opacity=75);
+	}
+.n-u-xesm-tc .popup-content{
+	width:758px;
+	margin: -240px 0 0 -400px;
+    border-radius:12px;
+	background:#fff;
+	border:1px solid #ccc;
+	box-shadow:0 0 8px rgba(0,0,0,.2);
+	}
+.n-u-xesm-tc-bt{
+	width:100%;
+	clear:both;
+	text-align:center;
+	position:relative;
+	}
+span.xesm-tc-off{
+	position:absolute;
+	top:10px;
+	right:10px;
+	}
+.n-u-xesm-tc-bt h2{
+	line-height:80px;
+	font-size:22px;
+	font-weight:200;
+	color:#111;
+	}
+
+.n-u-xesm-tc-nr{
+	width:auto;
+	margin:0px 30px 30px 30px;
+	background:#f6f6f6;
+	padding:2px 20px 20px 20px;
+	border:1px solid #e8e8e8;
+	border-radius:4px;
+	box-shadow:0 0 6px rgba(0,0,0,.08);
+	}
+.n-u-xesm-tc-nr h2{
+	line-height:30px;
+	font-size:15px;
+	font-weight:400;
+	color:#e00;
+	margin-top:16px;
+	}
+.n-u-xesm-tc-nr p{
+	font-weight:400;
+	line-height:22px;
+	font-size:14px;
+	padding:5px 0;
+	color:#555;
+	}
+.n-u-xesm-tc-nr p em{
+	color:#09f;
+	}
+.n-u-zz-wh{
+	display:inline-block;
+	height:14px;
+	width:14px;
+	background:#fff;
+	color:#f60;
+	text-align:center;
+	line-height:14px;
+	border-radius:100%;
+	border:1px solid #f60;
+	margin-right:5px;
+	}
+.n-u-zz-gyxe {
+    color:#f60;
+    cursor:pointer;
+}
+.n-u-zzts{
+ display:inline-block;
+ padding:1px 10px 1px 8px;
+ color:#fff;
+ background:#ff3a2b;
+ border-radius:2px;
+ position:relative;
+ margin-left:15px;
+ height:20px;
+ line-height:20px;
+ }
+.u-fh-jlyl{
+    display:inline-block;
+    padding:0px 5px;
+    background:#fb0;
+    color:#fff;
+    height:22px;
+    line-height:22px;
+    border-radius:24px;
+    margin-left:5px;
+}
+/***************自助优惠-结束*********************/
+
+/*2017/3/5-个人资料会员等级新增  thomas*/
+.n-u-yzdj .bankCheck{margin-right: 0;}
+.n-u-yzdj .pointer_blue:hover{cursor: pointer;color: #09f;}
+.u-pay-time{
+    background:url(../image/pic/user/zz-time.png) no-repeat left center;
+    padding-left:20px;
+    margin-right:20px;
+}
+.u-pay-time b{
+    color:#e00;
+    font-size:13px;
+    }
+
+dl.u-d-list dd.fl p.u-kj-rzts{
+    font-size:13px;
+    font-weight:400;
+    color:#f33;
+}
+.btn-4.btn-m-10.u-kj-rzts-an{
+    background:#ff3a2b;
+}
+/*tim-4-11 会员存款新增银联支付跟游戏点卡支付 - 开始*/
+dl.u-cklb{
+	position:relative;
+	margin:-1px 0 0 0;
+	border-top:1px solid #e6e6e6;
+	border-bottom:1px solid #e6e6e6;
+	padding:20px 0;
+	cursor:pointer;
+	}
+dl.u-cklb dt{
+	width:88px;
+	}
+dl.u-cklb dt img{
+	margin-right:20px;
+	float:left;
+	height:60px;
+	opacity:.9;
+	}
+dl.u-cklb h2{
+	line-height:28px;
+	font-size:16px;
+	font-weight:500;
+	margin-top:5px;
+	color:#333;
+	}
+dl.u-cklb p{
+	line-height:24px;
+	font-size:13px;
+	font-weight:400;
+	color:#999;
+	}
+dl.u-cklb span{
+	float:right;
+	width:108px;
+	height:38px;
+	border-radius:38px;
+	text-align:center;
+	line-height:38px;
+	cursor:pointer;
+	background:#fff;
+    border:1px solid #aaa;
+	box-shadow:0px 0px 4px rgba(0,0,0,.12);
+	color:#808080;
+	font-size:14px;
+	margin-top:11px;
+	}
+
+dl.u-cklb:hover dt img{
+	opacity:1;
+	}
+dl.u-cklb:hover h2{
+	color:#000;
+	}
+dl.u-cklb:hover p{
+	color:#666;
+	}
+dl.u-cklb:hover span{
+	border-color:#ff3a2b;
+	background:#ff3a2b;
+	box-shadow:0px 0px 4px rgba(255,0,0,.1);
+	color:#fff;
+	}
+/*tim-4-11 会员存款新增银联支付跟游戏点卡支付 - 结束*/
+
+
+/*04-15 自助入账新增内容*/
+.n-u-czdd{
+	width:49%;
+	height:120px;
+	border:1px solid #dcdcdc;
+	border-radius:4px;
+	box-shadow:0 0 5px rgba(0,0,0,.10);
+	margin-top:0px;
+	}
+.n-u-czdd.fr{
+	border-color:#0bf;
+	box-shadow:0 0 5px rgba(0,180,255,.25);
+	}
+.n-u-czdd li.adapt{
+	height:44px;
+	line-height:44px;
+	padding:0 3%;
+	border-bottom:1px solid #e6e6e6;
+	}
+.n-u-czdd li.adapt h2{
+	font-size:14px;
+	color:#444;
+	font-weight:600;
+	}
+
+.n-u-czdd li.adapt p{
+	color:#aaa;
+	}
+.n-u-czdd li.adapt p span{
+	color:#09f;
+	}
+.n-u-czdd li.fl{
+	width:22%;
+	padding-left:3%;
+	margin-top:10px;
+	}
+.n-u-czdd li.fl h2{
+	font-size:14px;
+	font-weight:500;
+	line-height:30px;
+	color:#333;
+	}
+.n-u-czdd li.fl p{
+	color:#aaa;
+	line-height:24px;
+	}
+.n-u-czdd li.fl h2 b{
+	color:#333;
+	}
+.n-u-zz-ts{
+	padding:5px 0 15px 0;
+	line-height:24px;
+	font-size:13px;
+	color:#f50;
+	}
+.n-u-zz-ts b{
+	display:inline-block;
+	height:16px;
+	width:16px;
+	background:#ff3a2b;
+	color:#fff;
+	text-align:center;
+	line-height:16px;
+	margin-right:8px;
+	border-radius:8px;
+	padding-left:1px;
+	}
+.n-u-zz-xxk{
+	padding:8px 0 10px 0;
+	}
+.n-u-zz-xxk h2.n-u-zzrz-bt{
+	line-height:38px;
+	padding:0;
+	margin-top:10px;
+	color:#666;
+	}
+.n-u-zz-xxk div.chage-chose{
+	height:36px;
+	line-height:36px;
+	padding:0;
+	width:180px;
+	}
+.n-u-zz-inpt dl.u-d-list dd span.point{
+	line-height:38px;
+	}
+.n-u-zz-inpt dl.u-d-list dd span.point em{
+	margin:11px 6px 0 0;
+	}
+.n-u-zz-inpt dl.u-d-list dt{
+	line-height:38px;
+	font-weight:500;
+    color:#666;
+	}
+.n-u-zz-inpt dl.u-d-list dd input.tb-inpt{
+	height:36px;
+	}
+.n-u-dzzst.u-d-ts{
+	padding-top:30px;
+	}
+
+.n-u-zz-inpt dl.u-d-list dd .auto_CheckCode{
+    margin-top:3px;
+}
+/*04-15 自助入账新增内容*/
+
+
+/*2017-04-15 存款页面整合样式-开始*/
+.n-u-dllb{
+	width:100%;
+	clear:both;
+	padding:5px 0;
+	}
+.n-u-dllb dt{
+	width:100px;
+	font-size:13px;
+	color:#444;
+    font-weight:600;
+	line-height:44px;
+	}
+.n-u-dllb > dd.bfc,.ddlb-xbk{
+	border-bottom:1px solid #dcdcdc;
+	padding-bottom:12px;
+	}
+.n-u-dllb dd input.tb-inpt{
+	width:168px;
+	height:38px;
+	margin-top:2px;
+	}
+.u-dllb-span{
+	line-height:40px;
+	margin:4px 0 0 15px;
+	}
+.u-dllb-div{
+	line-height:30px;
+	color:#aaa;
+	}
+.n-u-zfdt{
+	/*float:left;*/
+	width:102%;
+	}
+.n-u-zfdt li{
+	position:relative;
+	width:200px;
+	height:56px;
+	/*line-height:60px;*/
+	/*text-align:center;*/
+	background:#fff;
+	border:1px solid #dcdcdc;
+	box-shadow:1px 2px 4px rgba(0,0,0,.05);
+    margin:4px 10px 4px 0px;
+	border-radius:0px;
+	cursor:pointer;
+	color:#333;
+	}
+.n-u-zfdt li em.bg-ico{
+	position:absolute;
+	right:-1px;
+	bottom:0px;
+	width:20px;
+	height:20px;
+	background:url(../image/pic/user/n-u-43b.png) no-repeat;
+	display:none;
+	}
+.n-u-zfdt li.on,.n-u-zfdt li:hover{
+	width:200px;
+	height:56px;
+	background:#fff;
+	box-shadow:0 0 4px #ffc1bb;
+	}
+.n-u-zfdt li.on em.bg-ico{
+	display: block;
+	}
+
+
+
+.bank-bt.n-pay-nbt{
+    width:100px;
+    margin-top:18px;
+}
+.bank-bt.n-pay-nbt h2{
+    font-weight:600;
+    font-size:13px;
+    color:#444;
+}
+.payContentHtml{
+    width:auto;
+    clear:both;
+    overflow:hidden;
+    margin-left:100px;
+}
+
+
+/*2017-04-15 存款页面整合样式-结束*/
+
+
+
+/*2017-04-20*/
+.n-u-pay-table{
+	border:1px solid #dcdcdc;
+	background:#fff;
+	border-left:none;
+	border-bottom:none;
+	box-shadow:0 0 3px rgba(0,0,0,.12);
+	}
+.n-u-pay-table td,.n-u-pay-table th{
+	border-left:1px solid #dcdcdc;
+	border-bottom:1px solid #dcdcdc;
+	height:38px;
+	vertical-align:middle;
+	}
+.n-u-pay-table th{
+	text-align:center;
+	color:#333;
+	background:#f6f6f6;
+	}
+.n-u-pay-table td{
+	text-align:left;
+	text-indent:1%;
+	color:#444;
+	}
+.u-pay-djs-8 {
+    float:left;
+    width:100%;
+    height:30px;
+    overflow:hidden;
+    position:relative;
+    margin:5px 0 5px 0;
+}
+.u-pay-djs-0{
+	height:40px;
+	line-height:40px;
+	padding-top:15px;
+	}
+.u-pay-djs-1{
+    line-height:30px;
+	padding-left:18px;
+    color:#333;
+    font-size:12px;
+    font-weight:600;
+	}
+.u-pay-djs-an{
+	display:inline-block;
+	background:#f22;
+	color:#fff;
+	height:24px;
+	line-height:24px;
+	font-size:12px;
+	border-radius:3px;
+	width:72px;
+	text-align:center;
+	text-indent:0;
+	margin-left:15px;
+	cursor:pointer;
+	}
+.u-pay-djs-2{
+	font-size: 15px;
+    color: #f00;
+	font-weight:bold;
+	}
+.u-pay-djs-3{
+	color:#f00;
+    font-size:13px;
+    font-weight:600;
+    line-height:30px;
+	}
+dl.u-d-list dd.fl li.Selected p.fl,li.Selected em{
+        color:#fff;
+        line-height:36px;
+    }
+    .bk-lbm-0{
+        padding:1px 0;
+    }
+    .bk-lbm-0 dt{
+        line-height:42px;
+        font-size:13px;
+        color:#888;
+    }
+    .bk-lbm-0 dd.bfc{
+        min-height:42px;
+    }
+    .bk-lbm-0 dd.bfc,.bk-lbm-1{
+        padding-bottom:0;
+        border-bottom:1px dotted #ccc;
+    }
+    .bk-lbm-0 dd p{
+        line-height:42px;
+        font-size:15px;
+        color:#333;
+        font-weight:500;
+    }
+    .bk-lbm-2{
+        font-size:14px;
+        color:#222;
+        line-height:36px;
+        font-weight:600;
+        border-bottom:1px dotted #ccc;
+        margin:5px 0 6px 0;
+    }
+    span.bk-lbm-3{
+        position:relative;
+        color:#f33;
+        font-size:12px;
+    }
+    .bk-lbm-4{
+        margin:0 0 10px 0;
+    }
+    .n-u-bold {
+        font-size: 13px;
+        font-weight: 500;
+        color:#444;
+        position:relative;
+        top:2px;
+    }
+    dt.bk-lbm-5{
+        line-height:50px;
+    }
+    .bk-lbm-0 dd p.n-u-payts-02{
+        line-height:20px;
+        font-size:12px;
+        color:#ff3a2b;
+        margin-top:11px;
+    }
+    .bank-anniu-02{
+        border-top:1px solid #dcdcdc;
+        width:100%;
+        float:left;
+        height:26px;
+        position:relative;
+        margin-top:-10px;
+    }
+    .nu-tishi-1{
+        width:auto;
+        clear:both;
+        margin-left:98px;
+    }
+    .nu-tishi-1 h2{
+        clear:both;
+        overflow:hidden;
+        width:100%;
+        height: 30px;
+        line-height: 30px;
+        color: #f33;
+        font-size: 15px;
+        padding:30px 0 10px 0;
+    }
+    .nu-tishi-1 li{
+        list-style: decimal;
+        margin-left:12px;
+        line-height:20px;
+        padding:4px 0 4px 3px;
+        color:#444;
+    }
+/*2017-04-20*/
+
+
+
+/**/
+.OrderPayer_B_BankName,
+.OrderPayer_BankName,
+.alipayToBank_BankName,
+.OrderPayer_B_BankName:hover,
+.OrderPayer_BankName:hover,
+.alipayToBank_BankName:hover{
+    margin:0;border:none;box-shadow:none;
+}
+.n-u-pay-table input.btn-4{
+    min-width:58px;
+    height:24px;
+    line-height:22px;
+    margin:0;
+    padding:0;
+    margin-right:8px;
+}
+.n-tab-pn{
+    padding-left:12px;
+    padding-top:3px;
+}
+ul.history-ul {
+	margin: 12px 0;
+}
+ul.history-ul li{
+	min-width:188px;
+	border-radius: 4px;
+	border: 1px solid #f0f0f0;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+	background-color: #f0f0f0;
+	height: 46px;
+	line-height: 46px;
+	color: #999;
+	padding: 0 12px;
+	cursor: pointer;
+	margin-right: 10px;
+	position: relative;
+}
+ul.history-ul li p.fl{
+}
+ul.history-ul li p.fl span{
+	color: #bbb;
+}
+ul.history-ul li b.close_his{
+	background: url(../image/bg/text-off.png) no-repeat 0 0;
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	right: -14px;
+	top: -10px;
+}
+ul.history-ul li.on,ul.history-ul li:hover{
+	background-color: #fff;
+	border-color: #e1e1e1;
+	color: #333;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+}
+
+ul.history-ul li.on .bg-ico{
+	background-image: url(../image/pic/user/u-lishi-xz.png);
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+ul.history-ul li.on p.fl span{
+	color: #09f;
+}
+
+ul.history-ul {
+	margin: 12px 0;
+}
+ul.history-ul.only-name li{
+	min-width:auto;
+	text-align: center;
+	padding: 0 25px;
+}
+ul.history-ul.only-name li p.fl{
+	display: none;
+}
+ul.history-ul.only-name li p.fl span{
+	color: #bbb;
+}
+ul.history-ul.only-name li.on,ul.history-ul li:hover{
+	background-color: #fff;
+	border-color: #e1e1e1;
+	color: #333;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+}
+
+ul.history-ul.only-name li.on .bg-ico{
+	background-image: url(../image/pic/user/u-lishi-xz.png);
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+
+ul.history-ul.only-name li.on p.fl span{
+	color: #09f;
+}
+
+ul.bank-ul.pay-ul-lvt {
+    border-bottom:1px solid #dcdcdc;
+    margin-bottom:12px;
+    padding-bottom:10px;
+}
+
+ul.bank-ul-invalid {
+    position:relative;
+}
+ul.bank-ul-invalid li.invalid-layer {
+    width:99%;
+    height:92%;
+    position:absolute;
+    background: #fcfcfc;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    opacity: 0.85;
+    filter: alpha(opacity=85);
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    box-shadow: 1px 1px 4px rgba(0,0,0,.08);
+}
+ul.bank-ul-invalid li.invalid-txt {
+    width:99%;
+    position:absolute;
+    z-index:10;
+    text-align: center;
+    font-size: 24px;
+    color: #f01924;
+    top: 60px;
+    left:0;
+    padding-left: 15px;
+}
+ul.bank-ul-invalid li.invalid-txt p {
+    line-height:2;
+}
+.n-u-zfdt li p.yh-bt{
+	font-size:14px;
+    font-weight:500;
+    color:#000;
+    line-height:20px;
+    margin-top:8px;
+	}
+.n-u-zfdt li p.yh-ts{
+    clear:both;
+    float:none;
+    color:#aaa;
+    font-size:12px;
+    white-space: nowrap;
+	}
+.pay-span-ico{
+	width:36px;
+	height:36px;
+	margin:10px 10px 0 10px;
+	background: url(../image/pic/user/n-u-64-1.png?v=1002) no-repeat;
+    opacity: .75;
+	}
+.n-u-zfdt li.on span.pay-span-ico{
+    opacity:1;
+	}
+
+.pay-li-lvse span.pay-span-ico{
+	background-position:0 0;
+	}
+.pay-li-wy span.pay-span-ico{
+	background-position:-36px 0;
+	}
+.pay-li-zfb span.pay-span-ico{
+	background-position:-72px 0;
+	}
+.pay-li-wx span.pay-span-ico{
+	background-position:-108px 0;
+	}
+.pay-li-dk span.pay-span-ico{
+	background-position:-96px 0;
+	}
+.pay-li-kj span.pay-span-ico{
+	background-position:-144px 0;
+	}
+.pay-li-yl span.pay-span-ico{
+	background-position:-180px 0;
+	}
+.pay-li-qqmoney span.pay-span-ico{
+	background-position:-216px 0;
+	}
+.pay-li-astro span.pay-span-ico{
+	background-position:-252px 0;
+	}
+.pay-li-jdmoney span.pay-span-ico{
+	background-position:-288px 0;
+	}
+.pay-li-unite span.pay-span-ico{
+	background-position:-324px 0;
+	}
+.pay-li-ysf span.pay-span-ico{
+	background-position:-360px 0;
+	}
+.pay-li-dianka span.pay-span-ico{
+	background-position:-396px 0;
+	}
+
+.n-u-zfdt li.pay-li-lvse:hover,
+.n-u-zfdt li.pay-li-wx:hover{
+	border:1px solid #2acc65;
+	color:#2acc65;
+    box-shadow:0 0 4px #69ec98;
+	}
+.n-u-zfdt li.pay-li-lvse.on,
+.n-u-zfdt li.pay-li-wx.on{
+	border:1px solid #2acc65;
+	box-shadow:0 0 4px #69ec98;
+	}
+.n-u-zfdt li.pay-li-wy:hover{
+	border:1px solid #ff3a2b;
+	box-shadow:0 0 4px #ff8676;
+    color:#ff3a2b;
+	}
+.n-u-zfdt li.pay-li-wy.on,
+.n-u-zfdt li.pay-li-ysf.on,
+.n-u-zfdt li.pay-li-astro.on{
+
+	border:1px solid #ff3a2b;
+	box-shadow:0 0 4px #ff8676;
+	}
+.n-u-zfdt li.pay-li-zfb:hover,
+.n-u-zfdt li.pay-li-zfb2:hover{
+    color:#09f;
+	border:1px solid #09f;
+	box-shadow:0 0 4px #7dcbff;
+	}
+.n-u-zfdt li.pay-li-zfb.on,
+.n-u-zfdt li.pay-li-zfb2.on{
+
+	border:1px solid #09f;
+	box-shadow:0 0 4px #7dcbff;
+	}
+.n-u-zfdt li.pay-li-dk:hover,
+.n-u-zfdt li.pay-li-unite:hover,
+.n-u-zfdt li.pay-li-qqmoney:hover{
+    color:#f80;
+	border:1px solid #fb0;
+	box-shadow:0 0 4px #ffd781;
+	}
+.n-u-zfdt li.pay-li-dk.on,
+.n-u-zfdt li.pay-li-unite.on,
+.n-u-zfdt li.pay-li-qqmoney.on{
+	border:1px solid #fb0;
+	box-shadow:0 0 4px #ffd781;
+	}
+.n-u-zfdt li.pay-li-yl:hover{
+    color:#007e78;
+	border:1px solid #007e78;
+	box-shadow:0 0 4px #75eee8;
+	}
+.n-u-zfdt li.pay-li-yl.on{
+	border:1px solid #007e78;
+	box-shadow:0 0 4px #75eee8;
+	}
+.n-u-zfdt li.pay-li-kj:hover,
+.n-u-zfdt li.pay-li-kj.on,
+.n-u-zfdt li.pay-li-jdmoney:hover,
+.n-u-zfdt li.pay-li-jdmoney.on{
+	border:1px solid #f01924;
+	box-shadow:0 0 4px #f00;
+	}
+.n-u-zfdt li.pay-li-jdmoney:hover {
+    border:1px solid #f01924;
+    box-shadow:0 0 4px #f00;
+    color:#f01924;
+}
+.n-u-zfdt li.pay-li-jdmoney.on:hover {
+    border:1px solid #f01924;
+}
+.n-u-zfdt li.pay-li-lvse em.bg-ico{
+	background:url(../image/pic/user/n-u-43d.png) no-repeat;
+	display:block;
+	top:-1px;
+	right:-1px;
+	width:44px;
+	height:44px;
+	}
+.n-u-zfdt li.pay-li-lvse.on em.bg-ico{
+	top:-2px;
+	right:-2px;
+	}
+
+.n-u-zfdt li.pay-li-wx em.bg-ico{
+	background-position:0 0;
+	}
+.n-u-zfdt li.pay-li-wy em.bg-ico,
+.n-u-zfdt li.pay-li-kj em.bg-ico,
+.n-u-zfdt li.pay-li-jdmoney em.bg-ico,
+.n-u-zfdt li.pay-li-ysf em.bg-ico,
+.n-u-zfdt li.pay-li-astro em.bg-ico{
+	background-position:-20px 0;
+	}
+.n-u-zfdt li.pay-li-zfb em.bg-ico,
+.n-u-zfdt li.pay-li-zfb2 em.bg-ico{
+	background-position:-40px 0;
+	}
+.n-u-zfdt li.pay-li-dk em.bg-ico,
+.n-u-zfdt li.pay-li-unite em.bg-ico,
+.n-u-zfdt li.pay-li-qqmoney em.bg-ico{
+	background-position:-60px 0;
+	}
+.n-u-zfdt li.pay-li-yl em.bg-ico{
+	background-position:-80px 0;
+	}
+
+
+.lvt-img-ico{
+    position:absolute;
+    left:160px;
+    margin-top:5px;
+    *top:0;
+    *margin-left:5px;
+    -webkit-animation:gogogo1 0.5s infinite linear;
+}
+@keyframes gogogo1{
+    0%{left:160px;top:0;}
+    60%{left:164px;top:0px;}
+    100%{left:160px;top:0px;}
+}
+@-webkit-keyframes gogogo1{
+    0%{left:160px;top:0;}
+    60%{left:164px;top:0px;}
+    100%{left:160px;top:0px;}
+}
+@-moz-keyframes gogogo1{
+    0%{left:160px;top:0;}
+    60%{left:164px;top:0px;}
+    100%{left:160px;top:0px;}
+}
+@-o-keyframes gogogo1{
+    0%{left:160px;top:0;}
+    60%{left:164px;top:0px;}
+    100%{left:160px;top:0px;}
+}
+/**/
+
+
+
+
+/**/
+
+.loadDIv-01{
+    position:relative;
+}
+.tb-n-uloading{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    padding-bottom:80px;
+    z-index:998;
+    background:#fff;
+}
+.tb-n-uloading div{
+    position:absolute;
+    width:68px;
+    height:68px;
+    background:#fff;
+    border-radius:24px;
+    /*box-shadow:5px 5px 20px rgba(0,0,0,.15);*/
+    left:50%;
+    top:50px;
+    margin:0px 0 0 -40px;
+    overflow:hidden;
+    opacity:1;
+
+}
+.tb-n-uloading img{
+    position:relative;
+    top:-30px;
+    left:-30px;
+}
+
+
+/**/
+/*存款订单-2017-05-05-开始*/
+.pop-PayTab-tab{
+	border-left:1px solid #dcdcdc;
+	border-top:1px solid #dcdcdc;
+	position:relative;
+	margin-bottom:-1px;
+	width:50%;
+	float:left;
+	}
+.PayTab-nobk{
+	border-left:none;
+	}
+.pop-PayTab-tab td{
+	height:50px;
+	border-right:1px solid #dcdcdc;
+	border-bottom:1px solid #dcdcdc;
+	box-shadow:0px 1px 1px rgba(0,0,0,.06);
+	color:#222;
+	font-size:13px;
+	position:relative;
+	}
+.pop-PayTab-tab th{
+	border-bottom:1px solid #dcdcdc;
+	text-align:left;
+	padding-left:15px;
+	font-size:12px;
+	width:88px;
+	font-weight:500;
+	color:#909090;
+	}
+.pop-PayTab-tab th.ntb-th-xbk{
+	border-bottom:1px solid #dcdcdc;
+	box-shadow:0px 1px 1px rgba(0,0,0,.06);
+	}
+.pop-PayTab-tab td.pop-PayTab-bt1{
+	height:30px;
+	background:#f0f0f0;
+	text-align:left;
+	text-indent:15px;
+	font-size:14px;
+	font-weight:600;
+	color:#333;
+	}
+.pop-PayTab-an1{
+	display:inline-block;
+	width:128px;
+	height:40px;
+	font-size:14px;
+	background:#f33;
+	color:#fff;
+	line-height:40px;
+	text-align:center;
+	border-radius:4px;
+	margin:15px 10px 0 10px;
+	}
+.pop-PayTab-an1:hover{
+	background:#ff1818;
+	font-weight:600;
+	box-shadow:0 0 4px rgba(255,0,0,.5);
+	}
+.pop-PayTab-an2{
+	display:inline-block;
+	width:128px;
+	height:40px;
+	font-size:14px;
+	background:#e6e6e6;
+	color:#808080;
+	line-height:40px;
+	text-align:center;
+	border-radius:4px;
+	margin:15px 10px 0 10px;
+	}
+.pop-PayTab-an2:hover{
+	background:#dcdcdc;
+	color:#606060;
+	font-weight:600;
+	}
+.pop-PayTab-div{
+	text-align:center;
+	}
+.pop-PayTab-div h2{
+	font-family:"";
+	font-size:22px;
+	line-height:60px;
+	font-weight:200;
+	color:#333;
+	margin-top:5px;
+	padding-bottom:5px;
+	background:#fff;
+	}
+.pop-PayTab-div h2 b{
+	color:#e00;
+	}
+.pop-PayTab-div p{
+	height:30px;
+	line-height:30px;
+	font-size:13px;
+	font-weight:500;
+	padding-left:32px;
+	text-align:left;
+	background:#fff4d7 url(../image/pic/user/zz-time.png) no-repeat 12px 7px;
+	color:#f85a3f;
+	}
+.PayTab-p-time span{
+	display:inline-block;
+	padding:0 8px 0 2px;
+	color:#f00;
+	font-size:15px;
+	font-weight:bold;
+	}
+.pop-PayTab-span1{
+	display:inline-block;
+	position:relative;
+	top:6px;
+	margin-right:8px;
+	width:24px;
+	height:24px;
+	background: url(../image/pic/bg/n-u-33v.png) no-repeat;
+	}
+.pop-PayTab-tab div.bank-li{
+	border:none;
+	margin:0;
+	position:relative;
+	box-shadow:none;
+	left:-15px;
+	/*故意给个默认空白的position*/
+	background-position: 10000px 10000px;
+	}
+.btn-copy{
+	height:22px;
+	min-width:60px;
+	line-height:22px;
+    *line-height:18px;
+	background:#fafafa;
+	border:1px solid #aaa;
+	box-shadow:1px 1px 3px rgba(0,0,0,.15);
+	margin-right:15px;
+	border-radius:3px;
+	font-size:12px;
+	color:#222;
+	cursor:pointer;
+	}
+.btn-copy:hover{
+	background:#ff3a2b;
+	border:1px solid #ff3a2b;
+	color:#fff;
+	}
+.pop-PayTab-off{
+	position:absolute;
+	width:20px;
+	height:20px;
+	top:25px;
+	right:30px;
+	cursor:pointer;
+	background-position:-140px -140px;
+	-moz-opacity:.4;
+	opacity:.4;
+	filter:alpha(opacity=40);
+	-webkit-transition:all .2s;
+	-ms-transition:all .2s;
+	-moz-transition:all .2s;
+	-o-transition:all .2s;
+	transition:all .2s;
+	}
+.pop-PayTab-off:hover{
+	-moz-opacity:.8;
+	opacity:.8;
+	filter:alpha(opacity=80);
+	transform:rotate(90deg);
+	-ms-transform:rotate(90deg); /* Internet Explorer */
+	-moz-transform:rotate(90deg); /* Firefox */
+	-webkit-transform:rotate(90deg); /* Safari 和 Chrome */
+	-o-transform:rotate(90deg); /* Opera */
+	}
+
+.pop-PayTab-tis{
+	font-size:12px;
+	color:#ff3a2b;
+	margin-left:20px;
+	}
+.pop-PayTab-tab b{
+	color:#ff3a2b;
+	}
+.btn-tp-link{
+	height:20px;
+	min-width:60px;
+	line-height:20px;
+	background:#ff3a2b;
+	box-shadow:1px 1px 3px rgba(255,50,0,.25);
+	margin-right:15px;
+	text-align:center;
+	font-size:12px;
+	border-radius:3px;
+	color:#fff;
+	cursor:pointer;
+	}
+.n-u-dllb-dtb{
+	width:100%;
+	float:left;
+	line-height:50px;
+	font-size:14px;
+	color:#333;
+	font-weight:600;
+	}
+.nu-alipay-ewm{
+	width:160px;
+	height:160px;
+	padding:10px;
+    vertical-align:top;
+    margin:0;
+	}
+.nu-alipay-ewm div{
+	width:100%;
+	height:100%;
+	}
+.nu-alipay-ewm p{
+	width:100%;
+	color:#444;
+	font-size:13px;
+	padding-top:10px;
+	line-height:20px;
+	text-align:center;
+	*margin-left: 15px;
+	}
+.nu-alipay-ewm div img{
+	float:left;
+	width:100%;
+	margin-top: 26px;
+	*margin :40px 0 0 15px;
+	}
+.pop-PayTab-tis02{
+	display:none;
+	position:absolute;
+	font-size:12px;
+	color:#fff;
+	background:#f33;
+	width:419px;
+	line-height:14px;
+	left:-104px;
+	top:37px;
+	z-index:3;
+	text-indent:16px;
+	}
+.PayTab-p-time {
+    padding: 0px 0px 10px 20px;
+	font-size:13px;
+	color:#666;
+    background: url(../image/pic/bg/exp-time.png) 0px 3px no-repeat;
+}
+.amountStyle{
+    font-size:18px;
+}
+.nu-dqys1{
+    position:relative;
+    top:4px;
+}
+/*存款订单-2017-05-05-结束*/
+
+
+/*Astropay虚拟支付-开始*/
+.DateYear,.DateMonth{
+	width:86px;
+	z-index:3;
+	margin-top:0px;
+	margin-right:4px;
+	}
+.MoneyName{
+	width:178px;
+    height:38px;
+    line-height:38px;
+    text-indent:8px;
+    background:#f6f6f6;
+    border-radius:2px;
+    box-shadow:0 0 3px rgba(0,0,0,.08);
+	z-index:3;
+	margin-top:0px;
+    border:1px solid #e8e8e8;
+	}
+.n-u-dllb dd input.tb-inpt.zfinpt-w{
+	width:168px;
+	}
+/*Astropay虚拟支付-结束*/
+/*客户报表更新样式-2017-05-16*/
+.n-u-bbzbl{
+	width:100%;
+	height:68px;
+	border-bottom:1px solid #dcdcdc;
+	}
+.n-u-bbzbl li{
+	width:;
+	font-size:12px;
+	line-height:32px;
+	margin:18px 0 0 0;
+	text-align:center;
+	position:relative;
+	padding:0 5px;
+	color:#ccc;
+	}
+.n-u-bbzbl li.u-bb-nav{
+	color:#444;
+	padding:0 15px;
+	cursor:pointer;
+	}
+.n-u-bbzbl li.u-bb-nav.on{
+	color:#d00;
+	height:48px;
+	font-weight:bold;
+	border-bottom:3px solid #d00;
+	}
+.n-u-bbxxk dt{
+	width:80px;
+	color:#666;
+	font-size:12px;
+	line-height:32px;
+	text-indent:15px;
+	}
+.n-u-bbxxk{
+	width:100%;
+	float:left;
+	padding:15px 0;
+	}
+/*客户报表更新样式-2017-05-16*/
+
+
+/*端午抢红包样式-2017-05-22*/
+.duanwu-hb{
+	padding:20px;
+	position:relative;
+	border:1px solid #dcdcdc;
+	margin-top:25px;
+	box-shadow:0 0 5px rgba(0,0,0,.12);
+	border-radius:4px;
+	}
+.duanwu-hb-1{
+	margin-right:25px;
+	}
+.duanwu-hb-1 img{
+	width:90px;
+	}
+.duanwu-hb-2 span{
+	margin-top:10px;
+	font-size:14px;
+	}
+.duanwu-hb-3 h2{
+	line-height:32px;
+	font-size:18px;
+	font-weight:500;
+	}
+.duanwu-hb-3 p{
+	line-height:24px;
+	font-size:14px;
+	color:#999;
+	}
+.duanwu-hb-3 div{
+	line-height:20px;
+	margin-top:8px;
+	font-size:14px;
+	padding-left:23px;
+	color:#666;
+	background: url(../image/pic/user/zz-time-2.png) no-repeat left 1px;
+	}
+.duanwu-hb-3 div span{
+	font-weight:bold;
+	color:#f00;
+	font-size:14px;
+	}
+
+.duanwu-hb-4{
+	position:absolute;
+	left:0;
+	top:0;
+	display:none;
+	}
+.duanwu-hb.ok .duanwu-hb-4 em.bg-ico {
+    float: left;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 9;
+    width: 56px;
+    height: 56px;
+    background: url(../image/pic/user/n-u-29.png) no-repeat;
+}
+.duanwu-hb.ok .duanwu-hb-1,
+.duanwu-hb.ok .duanwu-hb-2,
+.duanwu-hb.ok .duanwu-hb-3{
+	 -moz-opacity:.8;
+     opacity:.8;
+     filter: alpha(opacity=80);
+	}
+.duanwu-hb.ok .duanwu-hb-4{ display:block;}
+.duanwu-hb.ok .duanwu-hb-2 span.btn-3{
+	background:#f8f8f8;
+	border:1px solid #ccc;
+	box-shadow:0 0 5px rgba(0,0,0,.12);
+	color:#666;
+	cursor:default;
+	}
+/*端午抢红包样式-2017-05-22*/
+
+/*按钮不可以用状态*/
+.btn-unable-bg{
+	background-color: #aaa;
+	border-color: #aaa;
+}
+
+
+
+
+/*提款改版-开始*/
+.n-u-tkxe{
+	border:1px solid #dcdcdc;
+	box-shadow:0 0 5px rgba(0,0,0,.15);
+	border-radius:3px;
+	width:auto;
+	clear:both;
+	overflow:hidden;
+	padding:0 20px;
+	height:100px;
+	margin:20px 0 0 0;
+	font-size:13px;
+	color:#666;
+	}
+.n-u-tkxe .n-u-zz-wh{
+	width:13px;
+	height:13px;
+	}
+.n-u-tkxe .n-u-zzyh-ts div.fr{
+	font-size:12px;
+	color:#aaa;
+	}
+.n-u-tkxe .n-u-zzyh-ts div.fl{
+	font-weight:400;
+	color:#333;
+	}
+.nuxe-jdt{
+	margin-top:6px;
+	}
+.nuxe-jdt-1{
+	line-height:24px;
+	font-size:12px;
+	margin-right:20px;
+	color:#999;
+	}
+.nuxe-jdt-2{
+	margin-left:20px;
+	font-size:12px;
+	width:105px;
+	}
+.nuxe-jdt-2 span{
+	font-size:16px;
+	font-weight:500;
+	color:#f00;
+	}
+.nuxe-jdt-2-1{
+	display:;
+	width:80px;
+	height:22px;
+	line-height:22px;
+	text-align:center;
+	border:1px solid #ccc;
+	border-radius:24px;
+	position:relative;
+	cursor:pointer;
+	color:#444;
+	box-shadow:0 0 4px rgba(0,0,0,.12);
+	}
+.nuxe-jdt-2-2{
+	display:none;
+	width:80px;
+	height:24px;
+	line-height:24px;
+	text-indent:24px;
+	font-size:12px;
+	font-weight:200;
+	color:#bbb;
+	background: url(../image/pic/loading/h-u-loading2.gif) no-repeat left center;
+	}
+.nuxe-jdt-2-3{
+	display:none;
+	}
+.nuxe-jdt-3 div{
+	width:100%;
+	height:4px;
+	overflow:hidden;
+	border-radius:4px;
+	background:#eee;
+	margin-top:10px;
+	}
+.nuxe-jdt-3 div span{
+	height:100%;
+	background:#ff6155;
+	border-radius:4px;
+	}
+.nu-lstk-tab th{
+	border-top:1px solid #e6e6e6;
+	height:48px;
+	text-align:left;
+	text-indent:20px;
+	font-weight:500;
+	color:#606060;
+	font-size:13px;
+	}
+.nu-lstk-tab td{
+	background:#f5f5f5;
+	height:54px;
+	text-align:left;
+	text-indent:20px;
+	font-size:13px;
+	color:#333;
+	}
+.n-u-tkcz{
+	width:100%;
+	float:left;
+	}
+.u-skyn-xx{
+	background:#fff;
+	border-top:1px solid #e6e6e6;
+	}
+.u-skyn-xx th{
+	border-bottom:1px solid #e6e6e6;
+	width:80px;
+	padding-left:20px;
+	height:54px;
+	color:#333;
+	text-align:left;
+	}
+.u-skyn-xx td{
+	width:auto;
+	color:#666;
+	border-bottom:1px solid #e6e6e6;
+	}
+.n-gb-tk dt{
+	width:80px;
+	font-size:12px;
+	font-weight:bold;
+	padding-left:20px;
+	color:#333;
+	}
+.n-gb-tk dd span.point{
+	line-height:40px;
+	margin-top:3px;
+	}
+.n-gb-tk dd span.point .n-u-bold{
+	font-size:12px;
+	}
+
+.n-tk-h2{
+	font-size:14px;
+	height:16px;
+	line-height:16px;
+	border-left:5px solid #f00;
+	margin:10px 0;
+	padding-left:15px;
+	}
+.n-tk-h2 span.fr{
+	font-size:13px;
+	color:#06f;
+	font-weight:500;
+	margin-right:10px;
+	cursor:pointer;
+	}
+.n-tk-ok,
+.n-xyzd-shts{
+	background:#f6f6f6;
+	border-radius:6px;
+	width:auto;
+	clear:both;
+	height:100px;
+	line-height:100px;
+	margin:20px auto 0 auto;
+    border:1px solid #f3f3f3;
+    box-shadow:2px 2px 3px rgba(0,0,0,.03);
+	font-size:16px;
+	text-align:center;
+	color:#444;
+	font-weight:400;
+	}
+.n-tk-ok span,
+.n-xyzd-shts span{
+	display:inline-block;
+	width:40px;
+	height:40px;
+	position:relative;
+	top:13px;
+	*float: left;
+	*top: 33px;
+	*margin-left: 25%;
+	}
+.n-tk-ok span img,
+.n-xyzd-shts span img{
+	float:left;
+	width:100%;
+	}
+.n-tk-ok p,
+.n-xyzd-shts p{
+	display:inline-block;
+	padding-left:12px;
+	*float: left;
+	*margin: 0 0 0 10px;
+	}
+
+
+/*06-19*/
+.xe-atm-1{
+	border:1px solid #dcdcdc;
+	border-left:none;
+	border-right:none;
+	margin-top:15px;
+	font-size:12px;
+	font-weight:bold;
+	height:68px;
+	line-height:68px;
+	color:#333;
+	}
+.xe-atm-1 li.fl{
+
+	}
+.xe-atm-2{
+	line-height:44px;
+	font-size:13px;
+	font-weight:bold;
+	}
+.xe-atm-2 li.fl{
+	color:#f10;
+	}
+.xe-atm-2 li.fl span{
+	float:left;
+	line-height:17px;
+	color:#fff;
+	text-indent:6px;
+	margin:13px 5px 0 0;
+	background:#f30;
+	width:16px;
+	height:16px;
+	border-radius:100%;
+	}
+.xe-atm-2 li.fr{
+	color:#fa7c3f;
+	cursor:pointer;
+	}
+.xe-atm-2 li.fr span{
+	float:left;
+	line-height:16px;
+	color:#fa7c3f;
+	text-indent:4px;
+	font-weight:bold;
+	margin:13px 5px 0 0;
+	background:#fff;
+	width:15px;
+	height:15px;
+	border:1px solid #fa7c3f;
+	border-radius:100%;
+	}
+.xe-atm-2 li.fr:hover{
+	color:#f40;
+	text-decoration:underline;
+	}
+.xe-atm-money{
+	font-size:16px;
+	font-weight:600;
+	color:#f00;
+	}
+.xe-atm-bban{
+	display:inline-block;
+	margin-left:25px;
+	color:#06f;
+	cursor:pointer;
+	}
+.xe-atm-bban:hover{
+	color:#f40;
+	text-decoration:underline;
+	}
+/*提款改版-结束*/
+
+
+/**红包已经领完*/
+
+
+
+.duanwu-hb.no-has .duanwu-hb-4 em.bg-ico {
+    float: left;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 9;
+    width: 56px;
+    height: 56px;
+    background: url(../image/pic/user/n-u-29b.png) no-repeat;
+}
+.duanwu-hb.no-has .duanwu-hb-1,
+.duanwu-hb.no-has .duanwu-hb-2,
+.duanwu-hb.no-has .duanwu-hb-3{
+    -moz-opacity: .8;
+     filter: alpha(opacity=80);
+     opacity: .8;
+	}
+.duanwu-hb.no-has .duanwu-hb-4{ display:block;}
+.duanwu-hb.no-has .duanwu-hb-2 span.btn-3{
+	background:#f8f8f8;
+	border:1px solid #ccc;
+	box-shadow:0 0 5px rgba(0,0,0,.12);
+	color:#666;
+	cursor:default;
+	}
+
+/**
+ * 等待红包，button 样式
+ */
+.btn-waite-bg{
+	background-color: #f65;
+	border-color: #f65;
+}
+
+
+
+/***活动已经结束样式*/
+.duanwu-hb.u-hb-hdjieshu .duanwu-hb-4 em.bg-ico {
+    float: left;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 9;
+    width: 56px;
+    height: 56px;
+    background: url(../image/pic/user/n-u-29a.png) no-repeat;
+}
+.duanwu-hb.u-hb-hdjieshu .duanwu-hb-1,
+.duanwu-hb.u-hb-hdjieshu .duanwu-hb-2,
+.duanwu-hb.u-hb-hdjieshu .duanwu-hb-3{
+     -moz-opacity: .4;
+     filter: alpha(opacity=40);
+     opacity: .4;
+ }
+.duanwu-hb.u-hb-hdjieshu .duanwu-hb-4{ display:block;}
+.duanwu-hb.u-hb-hdjieshu .duanwu-hb-2 span.btn-3{
+	 background:#eee;
+	 border:1px solid #bbb;
+	 box-shadow:0 0 5px rgba(0,0,0,.06);
+	 color:#444;
+	 cursor:default;
+ }
+
+ /*弹窗LOADING*/
+.nu-tc-loading{
+	 position:absolute;
+	 width:36px;
+	 height:36px;
+	 margin:-18px 0 0 -18px;
+	 left:50%;
+	 top:50%;
+	 z-index:1002;
+	 -moz-opacity: .85;
+	 opacity: .85;
+	 filter: alpha(opacity=85);
+ }
+.nu-tc-loading img{
+ 	width:100%;
+ }
+
+
+
+/*联系客服-开始*/
+.tb-cn-lxwm{
+	display:none;
+	}
+.n-u-lxkf{
+	width:48%;
+	min-height:360px;
+	margin-top:20px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	box-shadow:0 0 5px rgba(0,0,0,.12);
+	}
+.n-u-lxkf-1{
+	width:90px;
+	height:90px;
+	margin:20px auto 0 auto;
+	}
+.n-u-lxkf-2{
+	margin-top:10px;
+	height:70px;
+	text-align:center;
+	line-height:26px;
+	background:url(../image/pic/user/n-u-49.png) no-repeat center top;
+	}
+.n-u-lxkf-2 h2{
+	padding-top:10px;
+	font-size:18px;
+	font-weight:500;
+	color:#333;
+	}
+.n-u-lxkf-2 p{
+	font-size:13px;
+	color:#aaa;
+	}
+.n-u-lxkf-3{
+	margin-top:20px;
+	text-align:center;
+	}
+.n-u-lxkf-3 p{
+	margin-top:4px;
+	line-height:40px;
+	font-size:16px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:500;
+	color:#05f;
+	}
+.n-u-lxkf-3 a{
+	margin:8px auto 0 auto;
+	display:block;
+	overflow:hidden;
+	clear:both;
+	width:80%;
+	height:36px;
+	color:#09f;
+	border:1px solid #09f;
+	line-height:36px;
+	border-radius:4px;
+	font-size:14px;
+	box-shadow:0 0 3px rgba(0,153,68,.5);
+	}
+.n-u-lxkf-3 a:hover{
+	color:#fff;
+	background:#09f;
+	border-color:#09f;
+	box-shadow:0 0 3px rgba(0,153,68,.75);
+	}
+.n-u-lxkf-3 a.class-1{
+	border-color:#f00;
+	background:#f00;
+	color:#fff;
+	box-shadow:0 0 3px rgba(255,0,0,.5);
+	}
+.n-u-lxkf-3 a.class-1:hover{
+	border-color:#d00;
+	background:#d00;
+	box-shadow:0 0 3px rgba(220,0,0,.5);
+	}
+/*联系客服-结束*/
+
+
+
+/*周勤好礼-开始*/
+.n-u-zq{
+	position:relative;
+	width:770px;
+	margin:0 auto;
+	}
+.n-u-zq-x{
+	position:absolute;
+	width:660px;
+	height:1px;
+	background:#dcdcdc;
+	box-shadow:0 0 2px rgba(0,0,0,.15);
+	left:0;
+	margin:21px 0 0 62px;
+	z-index:1;
+	}
+.n-u-zq-1{
+	width:42px;
+	text-align:center;
+	margin:0 34px;
+	position:relative;
+	z-index:2;
+	}
+.n-u-zq-1.n-u-zq-nomg{
+    margin-right:0;
+}
+.n-u-zq-1 span{
+	display:block;
+	width:42px;
+	height:42px;
+	background:url(../image/pic/user/n-u-51.png) no-repeat;
+	}
+.n-u-zq-1 p{
+	line-height:28px;
+	color:#666;
+	}
+.n-u-zq-1.ok span{
+	background:url(../image/pic/user/n-u-52.png) no-repeat;
+	}
+.thisWeekBat {
+    color:#f30!important;
+}
+.n-u-zq-xs{
+	width:100%;
+	overflow:hidden;
+	clear:both;
+	text-align:center;
+	font-size:20px;
+	font-weight:400;
+	color:#444;
+	line-height:80px;
+	}
+.n-u-zq-xs span{
+	color:#e00;
+	}
+.n-u-sz-bt01{
+	width:100%;
+	height:48px;
+	border:1px solid #dcdcdc;
+	border-top:none;
+	border-left:none;
+	border-right:none;
+	padding-top:0px;
+	}
+.n-u-sz-bt01 h2{
+	font-size:15px;
+	height:16px;
+	margin-top:15px;
+	line-height:16px;
+	padding-left:8px;
+	border-left:5px solid #f00;
+	}
+.n-u-sz-bt02{
+	width:100%;
+	height:48px;
+	border:1px solid #dcdcdc;
+	border-left:none;
+	border-right:none;
+	margin-top:24px;
+	padding-top:10px;
+	}
+.n-u-sz-bt02 h2{
+	font-size:15px;
+	height:16px;
+	margin-top:15px;
+	line-height:16px;
+	padding-left:8px;
+	border-left:5px solid #f00;
+	}
+.n-u-sz-tj{
+	float:left;
+	width:100%;
+	height:120px;
+	border-bottom:1px solid #dcdcdc;
+	}
+.n-u-sz-tj-1{
+	padding-left:20px;
+	margin-right:12%;
+	margin-top:32px;
+	position:relative;
+	}
+.n-u-sz-tj-1 h2{
+	line-height:30px;
+	font-size:16px;
+	font-weight:500;
+	color:#666;
+	position:relative;
+	}
+.n-u-sz-tj-1 h2 span{
+	font-size:24px;
+	font-weight:600;
+	color:#000;
+	}
+.n-u-sz-tj-1 p{
+	line-height:30px;
+	font-size:13px;
+	color:#666;
+	}
+.n-u-sz-tj-1 p span{
+	height:18px;
+	width:56px;
+	border-radius:18px;
+	background:#fa0;
+	display:inline-block;
+	line-height:18px;
+	text-align:center;
+	font-size:12px;
+	font-weight:500;
+	color:#fff;
+	position:relative;
+	left:6px;
+	cursor:pointer;
+	}
+.n-u-sz-an{
+	width:120px;
+	height:40px;
+	background:#ff3a2b;
+	box-shadow:0px 0px 4px rgba(230,0,0,.25);
+	border-radius:4px;
+	line-height:40px;
+	text-align:center;
+	color:#fff;
+	cursor:pointer;
+	font-size:14px;
+	margin-top:40px;
+	display:none;
+	}
+.n-u-sz-tj-p{
+	font-size:12px;
+	line-height:30px;
+	color:#666;
+	background:url(../image/pic/user/zz-time-2.png) no-repeat left 6px;
+	padding-left:23px;
+    margin-top:6px;
+	}
+.n-u-sz-tj-p span{
+	font-weight:500;
+	color:#f00;
+	font-size:13px;
+	}
+.n-u-zqlj{
+	display:none;
+	position:absolute;
+	background:#fff;
+	width:500px;
+	margin-top:0px;
+	left:-160px;
+	border:1px solid #ccc;
+	padding:4px 0px 0 0;
+	border-radius:8px;
+	box-shadow:0 0 5px rgba(0,0,0,.15);
+	z-index:99;
+	}
+.n-u-zqlj h4{
+	font-size:14px;
+	line-height:26px;
+	padding-bottom:5px;
+	text-align:center;
+	font-weight:500;
+	color:#333;
+	}
+.n-u-zqlj table th{
+	background:#f2f2f2;
+	height:30px;
+	text-align:center;
+	vertical-align:middle;
+	font-weight:500;
+	color:#909090;
+	border:1px solid #dcdcdc;
+	border-left:none;
+	border-right:none;
+	}
+.n-u-zqlj table td{
+	height:33px;
+	font-size:12px;
+	color:#666;
+	text-align:center;
+	vertical-align:middle;
+	border-bottom:1px solid #dcdcdc;
+	}
+.n-u-zqlj table td b{
+	color:#ff3a2b;
+	font-size:13px;
+	}
+.n-u-zqlj-1{
+	position:absolute;
+	font-size:28px;
+	top:-15px;
+	left:256px;
+	color:#ccc;
+	text-shadow:0px 0px 5px rgba(0,0,0,.15);
+	z-index:0;
+	height:14px;
+	line-height:34px;
+	width:24px;
+	overflow:hidden;
+	}
+.n-u-sz-wjl{
+	margin-top:46px;
+	line-height:18px;
+	font-size:13px;
+	padding-right:15px;
+	color:#606060;
+	text-align:center;
+	}
+/*周勤好礼-结束*/
+
+/*周勤-上周记录弹窗-开始*/
+.n-u-szzq-tc{
+	display:none;
+	}
+.n-u-szzq-tc .popup-overlay{
+	background:#fff;
+	-moz-opacity: .75;
+	opacity: .75;
+	filter: alpha(opacity=75);
+	}
+.n-u-szzq-tc .popup-content{
+	width:718px;
+	height:320px;
+	margin:-160px 0 0 -350px;
+    border-radius:12px;
+	background:#fff;
+	border:1px solid #ccc;
+	box-shadow:0 0 8px rgba(0,0,0,.2);
+	}
+.n-u-szzq-tc .popup-content div.n-u-zq{
+	width:600px;
+	}
+.n-u-szzq-tc .popup-content div.n-u-zq-x{
+	width:540px;
+	margin:21px 0 0 25px;
+	}
+.n-u-szzq-tc .popup-content div.n-u-zq-1{
+	width:42px;
+	text-align:center;
+	margin:0 50px 0 0px;
+	position:relative;
+	z-index:2;
+	}
+.n-u-szzq-tc .popup-content div.n-u-zq-1.n-u-zq-nomg{
+    margin-right:0;
+}
+.n-u-szzq-tc .popup-content div.n-u-zzyh-tc-bt{
+	border-bottom:1px solid #e1e1e1;
+	box-shadow:0 1px 1px rgba(0,0,0,.09);
+	}
+.n-u-szzq-tc .popup-content div.n-u-zzyh-tc-bt b{
+	width:5px;
+	height:16px;
+	margin:22px 0 0 20px;
+	background:#e00;
+	}
+.n-u-szzq-tc .popup-content div.n-u-zzyh-tc-bt h2{
+	margin-left:8px;
+	font-weight:bold;
+	}
+.n-u-szzq-tc .popup-content h2.n-u-zq-xs{
+	font-size:18px;
+	}
+.szzq-tc-open{
+	color:#07f;
+	font-size:13px;
+	font-weight:500;
+	cursor:pointer;
+	}
+.szzq-tc-open:hover{
+	color:#f30;
+	}
+/*周勤-上周记录弹窗-结束*/
+
+
+
+/**银行卡管理-开始**/
+.u-bank-mg{
+	position:relative;
+	margin-left:-19px;
+	}
+.u-bank-mg-li{
+	width:298px;
+	height:148px;
+	overflow:hidden;
+	position:relative;
+	background:#fff;
+	border:1px solid #e6e6e6;
+	border-radius:8px;
+	box-shadow:0 0 10px rgba(0,0,0,.08);
+	margin:15px 0 10px 19px;
+	-moz-opacity:.8;
+    opacity:.8;
+    filter:alpha(opacity=80);
+	}
+.u-bank-ico{
+	width:48px;
+	margin:15px;
+	}
+.u-bank-ico img{
+	width:100%;
+	}
+.u-bank-inpt{
+	border-top:1px solid #e8e8e8;
+	height:36px;
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	}
+.u-bank-inpt span{
+	cursor:pointer;
+	color:#888;
+	}
+.u-bank-inpt span:hover{
+	color:#00bc8d;
+	}
+.u-bank-inpt p{
+	padding:0 15px;
+	line-height:36px;
+	}
+.u-bank-inpt p.fl span{
+	background:url(../image/pic/user/bank-ico/bank-ok02.png) no-repeat left 9px;
+	padding-left:20px;
+	display:inline-block;
+	color:#aaa;
+	}
+.u-bank-inpt p.fr span{
+	margin-left:30px;
+	}
+.u-bank-text{
+	padding-right:10px;
+	}
+.u-bank-text h2{
+	line-height:30px;
+	font-size:14px;
+	margin-top:12px;
+	color:#333;
+	font-weight:600;
+	}
+.u-bank-text p{
+	line-height:20px;
+	font-size:12px;
+	color:#999;
+	}
+
+.u-bank-text h3{
+	line-height:30px;
+	font-size:16px;
+	margin-top:6px;
+	font-weight:500;
+	color:#444;
+	}
+.add-bank{
+	width:298px;
+	height:148px;
+	overflow:hidden;
+	position:relative;
+	border-radius:8px;
+	box-shadow:0 0 10px rgba(0,0,0,.08);
+	margin:15px 0 0 19px;
+	background:#f8f8f8;
+	border:1px dashed #aaa;
+	cursor:pointer;
+	-moz-transition: all .1s linear;
+	-ms-transition: all .1s linear;
+	-o-transition: all .1s linear;
+	-webkit-transition: all .1s linear;
+	transition: all .1s linear;
+	}
+.add-bank:hover{
+	border-color:#aaa;
+	background:#fafafa;
+	margin:12px 0 0 19px;
+	*margin:15px 0 0 19px;
+	box-shadow:0 1px 15px rgba(0,0,0,.1);
+	}
+.add-bank:active{
+	margin:15px 0 0 19px;
+	background:#f8f8f8;
+	box-shadow:0 0px 10px rgba(0,0,0,.08);
+	-webkit-transition:all .03s;
+	-ms-transition:all .03s;
+	-moz-transition:all .03s;
+	-o-transition:all .03s;
+	transition:all .03s;
+	}
+.add-bank-1{
+	text-align:center;
+	}
+.add-bank-1 span{
+	margin:12px 0 2px 0;
+	position:relative;
+	display:inline-block;
+	width:48px;
+	height:48px;
+	background:url(../image/pic/user/bank-ico/add-bank.png) no-repeat;
+	}
+.add-bank-1 h2{
+	font-size:14px;
+	font-weight:500;
+	line-height:30px;
+	color:#999;
+	-moz-transition: all .1s linear;
+	-ms-transition: all .1s linear;
+	-o-transition: all .1s linear;
+	-webkit-transition: all .1s linear;
+	transition: all .1s linear;
+	}
+.add-bank:hover h2{
+	color:#666;
+	}
+.add-bank-1 p{
+	line-height:24px;
+	font-size:13px;
+	font-weight:200;
+	color:#00bc8d;
+	}
+.u-bank-mg-li.ok{
+	border-color:#4ddbb8;
+	box-shadow:0 0 10px rgba(0,188,141,.25);
+	-moz-opacity:1;
+    opacity:1;
+    filter:alpha(opacity=100);
+	}
+.u-bank-mg-li.ok .u-bank-inpt p span{
+	color:#00bc8d;
+	}
+.u-bank-mg-li.ok p.fl span,
+.u-bank-mg-li p.fl span:hover{
+	background:url(../image/pic/user/bank-ico/bank-ok.png) no-repeat left 9px;
+	color:#00bc8d;
+	}
+/**银行卡管理-结束**/
+
+/*提款-选择收款银行-开始*/
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li{
+    height:140px;
+	cursor:pointer;
+	-moz-transition: all .1s linear;
+	-ms-transition: all .1s linear;
+	-o-transition: all .1s linear;
+	-webkit-transition: all .1s linear;
+	transition: all .1s linear;
+	margin-bottom:0;
+	border-radius:6px;
+	}
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li:hover{
+	-moz-opacity:1;
+    opacity:1;
+    filter:alpha(opacity=100);
+	border-color:#dcdcdc;
+	}
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li.ok{
+	background:#fff url(../image/pic/user/bank-ico/bank-ok03.png) no-repeat right bottom;
+	}
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li.ok:hover{
+	border-color:#4ddbb8;
+	}
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li div.u-bank-ico{
+	margin:15px 12px;
+	width:46px;
+	}
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li div.u-bank-text h2{
+	font-size:13px;
+	}
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li div.u-bank-text h3{
+	font-size:14px;
+	margin-top:3px;
+	color:#333;
+	}
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li .u-bank-inpt{
+    height:32px;
+    background:#fff;
+    border-top:1px solid #e8e8e8;
+}
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li .u-bank-inpt p{
+    line-height:32px;
+    width:100%;
+    text-align:center;
+}
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li .u-bank-inpt p.fr span{
+    /*padding-left: 20px;
+    display: inline-block;
+    background: url(../image/pic/user/bank-ico/bank-ok02.png) no-repeat left 7px;*/
+    color:#999;
+}
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li .u-bank-inpt p.fr span:hover{
+    color:#999;
+}
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li.ok .u-bank-inpt{
+    display:none;
+    border-top:none;
+}
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li.ok .bank-select{
+    display:block;
+    width:85%;
+}
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li.ok .bank-select span {
+   color:#00bc8d!important;
+}
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li.ok .bank-select span.deleteBank {
+   *margin-left:20px;
+}
+
+.stop-use-div{
+	position: absolute;
+	z-index:6;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	text-align:center;
+	display:none;
+	}
+.stop-use-div h2{
+	margin-top:20px;
+	line-height:32px;
+	font-size:16px;
+	font-weight:600;
+	color:#c00;
+	}
+.stop-use-div p{
+	font-size:13px;
+	font-weight:600;
+	color:#333;
+	}
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li.stop-use{
+	background:#f8f8f8;
+	border-color:#e6e6e6;
+	-moz-opacity:1;
+    opacity:1;
+    filter:alpha(opacity=100);
+	}
+.u-bank-text h2 span.fr{
+	color:#666;
+	font-size:12px;
+	font-weight:500;
+	margin-right:5px;
+	}
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li.stop-use div.u-bank-ico,
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li.stop-use div.u-bank-text,
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li.stop-use div.u-bank-inpt{
+	-moz-opacity:.2;
+    opacity:.2;
+    filter:alpha(opacity=20);
+	}
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li.stop-use div.bankxx-div{
+    filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+    -webkit-filter: blur(1px); /* Chrome, Opera */
+       -moz-filter: blur(1px);
+        -ms-filter: blur(1px);
+            filter: blur(1px);
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=1, MakeShadow=false); /* IE6~IE9 */
+	}
+.u-bank-mg.u-tikuan-bank li.u-bank-mg-li.stop-use .stop-use-div{
+	display:block;
+	}
+/*提款-选择收款银行-结束*/
+
+/*存款-新增选择存入目标账户-开始*/
+.n-rec-pla{
+    padding-top:10px;
+}
+.n-rec-pla dd{
+    border-bottom:none;
+}
+.n-rec-pla-lb li{
+    position: relative;
+    width: 108px;
+    height: 36px;
+    line-height:36px;
+    color:#333;
+    font-weight:600;
+    text-align:center;
+    /*overflow: hidden;*/
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,.12);
+    margin:2px 9px 8px 0;
+    -moz-opacity:.9;
+    opacity:.9;
+    filter:alpha(opacity=90);
+    cursor: pointer;
+}
+.n-rec-pla-lb li.invalid:hover, .n-rec-pla-lb li.bbslocked:hover{
+	color:#333;
+	border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,.12);
+    margin:2px 9px 8px 0;
+    -moz-opacity:.9;
+    opacity:.9;
+    filter:alpha(opacity=90);
+    cursor: not-allowed;
+}
+.n-rec-pla-lb li .maintain {display: none;}
+.n-rec-pla-lb li.invalid .maintain, .n-rec-pla-lb li.bbslocked .maintain{display: inline-block;}
+.n-rec-pla-lb li .maintain .layer{
+	float: left;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+    left: 0;
+	background: #eee;
+    border-radius:3px;
+	/*box-shadow:1px 1px 4px rgba(0,0,0,.08);
+	border: 1px solid #dcdcdc;*/
+	z-index: 5;
+}
+.n-rec-pla-lb li.bbslocked .maintain .layer {
+    background:#fff;
+    -moz-opacity: 0.6;
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+}
+.n-rec-pla-lb li .maintain .txt{
+	width: 99%;
+    position: absolute;
+    z-index: 10;
+    text-align: center;
+    font-size: 12px;
+    color: #777;
+    top: -5px;
+    left: 0;
+    font-style: normal;
+    font-weight: normal;
+}
+.n-rec-pla-lb li .maintain .name {
+	font-size: 12px;
+	font-weight: normal;
+	display: inline-block;
+	font-style: normal;
+	color: #aaa;
+	position: absolute;
+	width: 99%;
+	bottom: -10px;
+	left: 50%;
+	margin-left: -52px;
+	z-index: 10;
+}
+/**笔笔送选择平台锁样式*/
+.n-rec-pla-lb li.bbslocked .bbslock_icon {
+    position:absolute;
+    top:0;left:0;
+    width:30px;
+    height:100%;
+    background:url(../image/pic/user/n-u-55.png) no-repeat center 9px;
+    z-index:7;
+}
+/**笔笔送选择平台锁提示框样式*/
+.n-rec-pla-lb li.bbslocked .locktxt {
+    position:absolute;
+    z-index:999;
+    background:#fff;
+    border:1px solid #c2c2c2;
+    box-shadow:1px 2px 3px rgba(0,0,0,.12);
+    border-radius:6px;
+    padding:5px 10px;
+    top:-60px;
+    left:-1px;
+    font-size:12px;
+    font-weight:600;
+    width:120px;
+    text-align:left;
+    line-height:18px;
+}
+.n-rec-pla-lb li.bbslocked .locktxt .locktxt-jt{
+    position:absolute;
+    left:36%;
+    bottom:-6px;
+    width:10px;
+    height:10px;
+    background:url(../image/pic/user/n-u-54.png) no-repeat center bottom;
+}
+
+.nuck-xzyxdt{
+    border-bottom:none;
+    width:89%;
+}
+
+.n-rec-pla-lb li.on,
+.n-rec-pla-lb li:hover,
+.n-rec-pla-lb li.on:hover{
+    -moz-opacity:1;
+    opacity:1;
+    filter:alpha(opacity=100);
+    background:#fff8f8;
+    color:#ff3a2b;
+    border: 1px solid #ff3a2b;
+    box-shadow: 0 0 4px #ff8676;
+}
+.n-rec-pla-lb li:hover{
+    -moz-opacity:.8;
+    opacity:.8;
+    filter:alpha(opacity=80);
+}
+.bank-card{
+	border-bottom:1px solid #dcdcdc;
+	margin-bottom:10px;
+	padding-bottom:6px;
+	}
+.bank-card span.fr{
+	color:#07f;
+	line-height:24px;
+	margin-top:6px;
+	font-weight:600;
+    cursor:pointer;
+}
+span.card-bold{
+	font-size:14px;
+	font-weight:500;
+	color:#333;
+	}
+.u-bankcard-yz{
+	display:none;
+	}
+.u-bankcard-yz .popup-overlay{
+	background:#fff;
+	-moz-opacity: .75;
+	opacity: .75;
+	filter: alpha(opacity=75);
+	}
+.u-bankcard-yz .popup-content{
+	width:440px;
+	margin:-140px 0 0 -220px;
+    border-radius:12px;
+	background:#fff;
+	box-shadow:0 0 8px rgba(0,0,0,.2);
+	padding-bottom:30px;
+	}
+.valt-div-ts.u-bankcard-ts{
+	text-align:left;
+	font-size:14px;
+	padding-bottom:5px;
+	}
+.u-bankcard-yz .forgetSFPW {
+    display:inline-block;
+    margin-left:35px;
+    color:red;
+    cursor:pointer;
+    }
+.u-bankcard-yz .popup-off{
+ position:absolute;
+ top:24px;
+ right:30px;
+ width:20px;
+ height:20px;
+ background-position:-140px -140px;
+ cursor:pointer;
+ -moz-opacity: .25;
+ opacity: .25;
+ filter: alpha(opacity=25);
+ -webkit-transition:all .2s;
+ -ms-transition:all .2s;
+ -moz-transition:all .2s;
+ -o-transition:all .2s;
+ transition:all .2s;
+    z-index:2;
+ }
+/*存款-新增选择存入目标账户-结束*/
+
+
+/*个人消息-开始*/
+.msg-new-title {
+    height:35px;
+    background:#f2f2f2;
+    margin-top:16px;
+    overflow:hidden;
+}
+.msg-new-title li {
+    color:#666;
+    line-height:35px;
+    float:left;
+    text-align:center;
+    overflow:hidden;
+}
+.msg-new-title li i {
+    font-style:normal;
+    margin-left:25px;
+}
+.n-user-news{
+    border-bottom:1px dotted #e6e6e6;
+    color: #333;
+    min-height: 80px;
+    border-bottom: 1px solid #e6e6e6;
+    line-height: 80px;
+    overflow: hidden;
+}
+
+.n-user-news dt{
+	float: left;
+	width: 60%;
+	overflow: hidden;
+}
+.n-user-news dt i{
+	width: 8px;
+	height: 8px;
+	background: #f01924;
+	border-radius: 50%;
+	overflow: hidden;
+	margin: 35px 10px 0 15px;
+	float: left;
+}
+.n-user-news dt span{
+	font-weight: bold;
+	font-size: 14px;
+	cursor: pointer;
+}
+.n-user-news dd{
+	float: left;
+	text-align: center;
+}
+.n-user-news dd.msg-datetime{
+	width: 15%;
+}
+.n-user-news dd.msg-isread{
+	width: 13%;
+}
+.n-user-news dd.msg-isread i{
+	display: inline-block;
+	margin: 0 auto;
+	text-align: center;
+	width: 68px;
+	height: 22px;
+	background: url(../image/pic/user/bg-msg-isread.png) no-repeat 0 0;
+	color: #fff;
+    line-height: 22px;
+    font-style: normal;
+	overflow: hidden;
+}
+
+.n-user-news dd.msg-delete{
+	width: 9%;
+	cursor: pointer;
+}
+.n-user-news dd.msg-delete i{
+	display: inline-block;
+	margin: 0 auto;
+	text-align: center;
+	width: 18px;
+	height: 18px;
+	background: url(../image/pic/user/msg-bg-delete.png) no-repeat 0 0;
+	color: #fff;
+    font-style: normal;
+	overflow: hidden;
+}
+.n-user-news dd.msg-delete i.icon1{
+	background-position: 0 0;
+}
+.n-user-news dd.msg-delete i.icon2{
+	background-position: -18px 0;
+}
+.n-user-news dd.msg-delete i.icon3{
+	background-position: -36px 0;
+}
+.n-user-news dd.msg-con{
+	width: 100%;
+	position: relative;
+	display: none;
+}
+.n-user-news dd.msg-con p{
+	line-height: 2;
+	text-align: left;
+	color: #808080;
+	background-color: #f5f5f5;
+	padding: 10px 15px;
+	margin-bottom: 10px;
+}
+.n-user-news dd.msg-con i{
+	display: inline-block;
+	position: absolute;
+	top: -11px;left: 58px;
+	width: 22px;
+	height: 11px;
+	overflow:hidden;
+	background:url(../image/pic/user/msg-up-icon.png) no-repeat 0 0;
+}
+
+.hasRead{
+	color: #aaa;
+}
+.hasRead dd.msg-isread i{
+	background-position: 0 -22px;
+}
+.hasRead dt i{
+	background: #dcdcdc;
+}
+.msg-refreshBtn {
+	float: left;
+	color: #808899;
+	margin: 35px 0 0 10px;
+	cursor: pointer;
+	overflow: hidden;
+}
+.msg-refreshBtn i{
+	display: inline-block;
+	width: 18px;
+	height: 16px;
+	background: url(../image/pic/user/refresh_msg.png) no-repeat 0 0;
+	overflow: hidden;
+	float: left;
+	margin-right: 5px;
+}
+/*个人消息-结束*/
+
+
+
+/**/
+.nu-bbcs-sd{
+    width:44px;
+    background:#f8f8f8;
+    border-right:1px solid #eee;
+    height:80px;
+    *height:62px;
+    position:relative;
+    top:-18px;
+    *top:-10px;
+    border-top-left-radius:8px;
+    border-bottom-left-radius:8px;
+
+}
+.nu-bbcs-sd span{
+    display:block;
+    width:20px;
+    height:20px;
+    margin:0 auto;
+    position:relative;
+    top:30px;
+    *top:20px;
+    background:url(../image/pic/user/n-u-53b.png) no-repeat;
+}
+.n-u-quota.n-u-game-banlance li.on div.nu-bbcs-sd{
+    background:#fffaf8;
+    border-right:1px solid #ffdedd;
+}
+.n-u-quota.n-u-game-banlance li.on div.nu-bbcs-sd span{
+    background:url(../image/pic/user/n-u-53b.png) no-repeat;
+}
+
+.pop-PayTab-tisdh{
+    position:relative;
+    margin:2px 0 0 6px;
+    -moz-animation:tishi-hd 5s ease infinite;
+    -webkit-animation:tishi-hd 5s ease infinite;
+    animation:tishi-hd 5s ease infinite;
+}
+
+@keyframes tishi-hd{
+  0% {
+    -webkit-transform: scale(1) rotate(2deg);
+    -moz-transform: scale(1) rotate(2deg);
+    -o-transform: scale(1) rotate(2deg);
+  }
+  1% {
+    -webkit-transform: scale(1) rotate(0deg);
+    -moz-transform: scale(1) rotate(0deg);
+    -o-transform: scale(1) rotate(0deg);
+  }
+  2% {
+    -webkit-transform: scale(1) rotate(-2deg);
+    -moz-transform: scale(1) rotate(-2deg);
+    -o-transform: scale(1) rotate(-2deg);
+  }
+  3% {
+    -webkit-transform: scale(1) rotate(0deg);
+    -moz-transform: scale(1) rotate(0deg);
+    -o-transform: scale(1) rotate(0deg);
+  }
+  4% {
+    -webkit-transform: scale(1) rotate(2deg);
+    -moz-transform: scale(1) rotate(2deg);
+    -o-transform: scale(1) rotate(2deg);
+  }
+  5% {
+    -webkit-transform: scale(1) rotate(0deg);
+    -moz-transform: scale(1) rotate(0deg);
+    -o-transform: scale(1) rotate(0deg);
+  }
+  6% {
+    -webkit-transform: scale(1) rotate(-2deg);
+    -moz-transform: scale(1) rotate(-2deg);
+    -o-transform: scale(1) rotate(-2deg);
+  }
+  7% {
+    -webkit-transform: scale(1) rotate(0deg);
+    -moz-transform: scale(1) rotate(0deg);
+    -o-transform: scale(1) rotate(0deg);
+  }
+  8% {
+    -webkit-transform: scale(1) rotate(2deg);
+    -moz-transform: scale(1) rotate(2deg);
+    -o-transform: scale(1) rotate(2deg);
+  }
+  9% {
+    -webkit-transform: scale(1) rotate(0deg);
+    -moz-transform: scale(1) rotate(0deg);
+    -o-transform: scale(1) rotate(0deg);
+  }
+  10% {
+    -webkit-transform: scale(1) rotate(-2deg);
+    -moz-transform: scale(1) rotate(-2deg);
+    -o-transform: scale(1) rotate(-2deg);
+  }
+  11% {
+    -webkit-transform: scale(1) rotate(0deg);
+    -moz-transform: scale(1) rotate(0deg);
+    -o-transform: scale(1) rotate(0deg);
+  }
+  12% {
+    -webkit-transform: scale(1) rotate(2deg);
+    -moz-transform: scale(1) rotate(2deg);
+    -o-transform: scale(1) rotate(2deg);
+  }
+  13% {
+    -webkit-transform: scale(1) rotate(0deg);
+    -moz-transform: scale(1) rotate(0deg);
+    -o-transform: scale(1) rotate(0deg);
+  }
+  14% {
+    -webkit-transform: scale(1) rotate(-2deg);
+    -moz-transform: scale(1) rotate(-2deg);
+    -o-transform: scale(1) rotate(-2deg);
+  }
+  15% {
+    -webkit-transform: scale(1) rotate(0deg);
+    -moz-transform: scale(1) rotate(0deg);
+    -o-transform: scale(1) rotate(0deg);
+  }
+  40% {
+    left:0px;
+  }
+  45% {
+    left:3px;
+  }
+  50% {
+    left:0px;
+  }
+  55% {
+    left:3px;
+  }
+  60% {
+    left:0px;
+  }
+  65% {
+    left:3px;
+  }
+  70% {
+    left:0px;
+  }
+  75% {
+    left:3px;
+  }
+  80% {
+    left:0px;
+  }
+  85% {
+    left:3px;
+  }
+  90% {
+    left:0px;
+  }
+}
+
+/**/
+/*微信转银行卡订单提示*/
+.wxpay_notice{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	margin: 0 auto;
+	display: none;
+}
+.wxpay_notice .wxpay_layer{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	margin: 0 auto;
+	position: fixed;
+	top: 0;left: 0;
+	background: #999;
+	opacity: 0.75;
+	filter:alpha(opacity=75);
+	z-index: 10;
+}
+.wxpay_notice_con{
+	width: 475px;
+	height: 250px;
+	position: absolute;
+	top: 13%;
+	left: 11%;
+	z-index: 110;
+	background: url(../image/pic/user/wxpay_notice_bg.png?v=1001) no-repeat 0 0;
+	cursor: pointer;
+}
+.wxpay_notice_con .wxpay_notice_con_num {
+    float:right;
+    position:absolute;
+    top:35%;right:20%;
+    font-size:24px;
+    color:#f01924;
+}
+
+
+/**/
+
+.n-u-vip-ts{
+    float:left;
+    width:20px;
+    height:20px;
+    background: url(../image/pic/user/n-u-57.png) no-repeat;
+    position:relative;
+    top:3px;
+    left:15px;
+    cursor:pointer;
+}
+.n-u-vip-ts01{
+    position:absolute;
+    width:168px;
+    padding:5px 10px;
+    white-space: nowrap;
+    line-height:18px;
+    background:#fff;
+    border-radius:4px;
+    border:1px solid #e8e8e8;
+    box-shadow:2px 2px 6px rgba(0,0,0,.1);
+    top:-60px;
+    left:-88px;
+    color:#666;
+    display:none;
+}
+.n-u-vip-ts01 em{
+    font-size:30px;
+    position:absolute;
+    bottom:-9px;
+    left:88px;
+    color:#fff;
+    text-shadow:0px 1px 0px rgba(0,0,0,.15);
+}
+.n-u-vip-ts01 b{
+    color:#f01924;
+}
+.n-u-vip-ts:hover .n-u-vip-ts01{
+    display:block;
+}
+
+
+/*幸运注单-开始*/
+
+.n-u-xyzd-data{
+    margin:25px 0 0 0;
+}
+.Game-Pt-Name{
+    width:268px;
+    z-index:8;
+}
+
+/*游戏下拉*/
+div.gameList_xyzd{
+    position:relative;
+}
+div.gameList_xyzd ul{
+    width: 268px;
+    /*display: block;*/
+    font-size: 12px;
+    background: #FFFFFF;
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    border-radius: 3px;
+    z-index: 2;
+    max-height:160px;
+    overflow-x:hidden;
+    overflow-y:auto;
+    border: 1px solid #dcdcdc;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.08);
+}
+div.gameList_xyzd ul li{
+    width:auto;
+    padding:0 5px;
+    height:40px;
+    line-height:40px;
+    cursor:pointer;
+}
+div.gameList_xyzd ul li:hover{
+    background:#f5f5f5;
+}
+
+
+
+#tabfirst-xyzd{
+ margin:0 auto;
+ overflow: visible;
+ clear:both;
+ width:731px;
+ position:relative;
+ margin-top:20px;
+ z-index:3;
+ }
+#tabfirst-xyzd li{
+ float:left;
+ width:145px;
+ /*width:120px;*/
+ border:1px solid #dcdcdc;
+ box-shadow:1px 1px 3px rgba(0,0,0,.1);
+ text-align:center;
+ line-height:48px;
+ cursor:pointer;
+ position:relative;
+ margin-right:-1px;
+ }
+#tabfirst-xyzd li.tabin-xyzd{
+ background:#f01924;
+ border-color:#f01924;
+ color:#fff;
+ }
+#tabfirst-xyzd li:first-child{
+    border-top-left-radius:6px;
+    border-bottom-left-radius:6px;
+}
+#tabfirst-xyzd li:last-child{
+    border-top-right-radius:6px;
+    border-bottom-right-radius:6px;
+}
+#tab-box-xyzd{
+ width:100%;
+ height: 450px;
+ margin:0;
+ overflow: hidden;
+ clear:both;
+ }
+.contentfirst-xyzd{
+ width:100%;
+ float:left;
+ text-align:center;
+ display:none;
+ position:relative;
+ }
+.contentin-xyzd{display:block;}
+
+
+.xyzd-helpfanye{
+    position:absolute;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    z-index:2;
+}
+.xyzd-helpfanye li{
+    position:absolute;
+	-moz-opacity: .5;
+	opacity: .5;
+	filter: alpha(opacity=50);
+    width: 64px;
+    height: 80px;
+    top: 50%;
+    cursor:pointer;
+}
+.xyzd-helpfanye li:hover{
+	-moz-opacity: 1;
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+.xyzd-helpfanye li.last-page{
+    background: url(../image/payHelp/prev.png) no-repeat;
+    left: 20px;
+}
+.xyzd-helpfanye li.next-page{
+    background: url(../image/payHelp/next.png) no-repeat;
+    right: 20px;
+}
+
+.payHelp-step-xyzd{
+    width:auto;
+    overflow:hidden;
+    clear:both;
+    height:76px;
+}
+
+.n-u-sz-tj-1 h2 span.zzyh-anniversary{
+    font-size:16px;
+    font-weight:600;
+}
+.n-u-sz-tj-1 h2 span.zzyh-anniversary.red{
+    color:#f01924;
+}
+p.zz-zn-fftsxx{
+    font-size:13px;
+    color:#666;
+    margin-right:2%;
+}
+p.zz-zn-fftsxx.no{
+    color:#f01924;
+}
+
+
+/*幸运注单-结束*/
+
+/*支付宝支付 红包*/
+.redpacket{
+    position:relative;
+    top:2px;
+    left:6px;
+}
+.redpacket .tip{
+    background: url(/image/pic/user/n-u-59.png) no-repeat;
+    position:absolute;
+    width:243px;
+    height:71px;
+    top: -71px;
+    left: -95px;
+}
+
+.redpacket .tip p{
+    line-height: 20px;
+    padding: 8px 10px;
+    color: #444;
+}
+
+.yd-egg-hd {
+  -moz-animation: egg-hd1 3s ease infinite;
+  -webkit-animation: egg-hd1 3s ease infinite;
+  animation: egg-hd1 3s ease infinite;
+}
+@keyframes egg-hd1 {
+  0% {
+    -webkit-transform: scale(1) rotate(10deg);
+    -moz-transform: scale(1) rotate(10deg);
+    -o-transform: scale(1) rotate(10deg);
+  }
+  1% {
+    -webkit-transform: scale(1) rotate(0deg);
+    -moz-transform: scale(1) rotate(0deg);
+    -o-transform: scale(1) rotate(0deg);
+  }
+  2% {
+    -webkit-transform: scale(1) rotate(-10deg);
+    -moz-transform: scale(1) rotate(-10deg);
+    -o-transform: scale(1) rotate(-10deg);
+  }
+  3% {
+    -webkit-transform: scale(1) rotate(0deg);
+    -moz-transform: scale(1) rotate(0deg);
+    -o-transform: scale(1) rotate(0deg);
+  }
+  4% {
+    -webkit-transform: scale(1) rotate(10deg);
+    -moz-transform: scale(1) rotate(10deg);
+    -o-transform: scale(1) rotate(10deg);
+  }
+  5% {
+    -webkit-transform: scale(1) rotate(0deg);
+    -moz-transform: scale(1) rotate(0deg);
+    -o-transform: scale(1) rotate(0deg);
+  }
+  6% {
+    -webkit-transform: scale(1) rotate(-10deg);
+    -moz-transform: scale(1) rotate(-10deg);
+    -o-transform: scale(1) rotate(-10deg);
+  }
+  7% {
+    -webkit-transform: scale(1) rotate(0deg);
+    -moz-transform: scale(1) rotate(0deg);
+    -o-transform: scale(1) rotate(0deg);
+  }
+  8% {
+    -webkit-transform: scale(1) rotate(10deg);
+    -moz-transform: scale(1) rotate(10deg);
+    -o-transform: scale(1) rotate(10deg);
+  }
+  9% {
+    -webkit-transform: scale(1) rotate(0deg);
+    -moz-transform: scale(1) rotate(0deg);
+    -o-transform: scale(1) rotate(0deg);
+  }
+  10% {
+    -webkit-transform: scale(1) rotate(-10deg);
+    -moz-transform: scale(1) rotate(-10deg);
+    -o-transform: scale(1) rotate(-10deg);
+  }
+  11% {
+    -webkit-transform: scale(1) rotate(0deg);
+    -moz-transform: scale(1) rotate(0deg);
+    -o-transform: scale(1) rotate(0deg);
+  }
+  12% {
+    -webkit-transform: scale(1) rotate(10deg);
+    -moz-transform: scale(1) rotate(10deg);
+    -o-transform: scale(1) rotate(10deg);
+  }
+  13% {
+    -webkit-transform: scale(1) rotate(0deg);
+    -moz-transform: scale(1) rotate(0deg);
+    -o-transform: scale(1) rotate(0deg);
+  }
+  14% {
+    -webkit-transform: scale(1) rotate(-10deg);
+    -moz-transform: scale(1) rotate(-10deg);
+    -o-transform: scale(1) rotate(-10deg);
+  }
+  15% {
+    -webkit-transform: scale(1) rotate(0deg);
+    -moz-transform: scale(1) rotate(0deg);
+    -o-transform: scale(1) rotate(0deg);
+  }
+}
+
+.yearcash_waite {
+    background: #faa;
+    box-shadow: 2px 2px 4px rgba(220,0,0,.12);
+    cursor: default;
+}
+.yearcash_disable {
+    background: #f5f5f5;
+    box-shadow: 2px 2px 4px #ccc;
+    cursor: default;
+    color:#909090;
+}
+
+/*新自助优惠主页**/
+.newzzyh-wrap{
+	width:100%;
+	padding:20px 0;
+	color: #999;
+}
+.newzzyh-wrap i,.newzzyh-wrap em{
+	font-style: normal;
+}
+.newzzyh-wrap .zzyh-header{
+	width:100%;
+    margin-top:8px;
+    position: relative;
+    border-bottom: 1px solid #e3e8eb;
+    padding-bottom: 30px;
+	/*overflow: hidden;*/
+}
+.newzzyh-wrap .zzyh-header .userInfo{
+	overflow: hidden;
+}
+.newzzyh-wrap .zzyh-header .userInfo .user{
+	font-size: 16px;
+	color: #222;
+	padding-top: 8px;
+	padding-bottom: 6px;
+}
+.newzzyh-wrap .zzyh-header .userInfo .username{
+	color: #06f;
+}
+.newzzyh-wrap .vip_level{
+	display: inline-block;
+	width:128px;
+	height: 48px;
+    overflow:hidden;
+    text-indent:40px;
+	background:url("../image/self_promo/vip_level.png") no-repeat 0 0;
+	color: #fff;
+	text-align: left;
+	line-height: 48px;
+    font-size:14px;
+    font-weight:600;
+    position: absolute;
+    right: -50px;
+    top: 0;
+}
+.newzzyh-wrap .vip_level i{
+    text-shadow: 0 1px 2px rgba(255,60,0,0.4);
+    /*background-image: linear-gradient(to bottom,#fff 20%, #fff282 100%);*/
+}
+.newzzyh-wrap .zzyh-header .userInfo .level p{
+	margin-top:0px;
+    font-size:13px;
+}
+.newzzyh-wrap .zzyh-header .userInfo b{
+	font-size: 16px;
+	color: #333;
+	font-family: Arial;
+	margin: 0 2px;
+	font-weight: 600;
+}
+.newzzyh-wrap .zzyh-header .userInfo  b img{
+    vertical-align: middle;
+}
+.newzzyh-wrap .zzyh-header .userInfo .level .icon{
+	width:60px;
+	min-height:60px;
+	float: left;
+	margin-right: 28px;
+	overflow: hidden;
+}
+.newzzyh-wrap .zzyh-header .userInfo .icon-level-3{
+	background: url("../image/pic/user/n-u-62.png") no-repeat 0 0;
+	background-size:contain;
+}
+
+.newzzyh-wrap .zzyh-header .userInfo .nextLevelNeed{
+	width:60%;
+	height:60px;
+	float: right;
+	line-height:93px;
+    overflow:hidden;
+    font-size:13px;
+}
+.newzzyh-wrap .zzyh-header .userInfo .nextLevelNeed i{
+	color: #b38f4d;
+	font-size:13px;
+}
+
+.newzzyh-wrap .zzyh-header .nextLevelCash{
+	/*width:auto;
+	height:80px;
+	overflow: hidden;
+	border-bottom:1px solid #e8e8e8;
+	margin-top:20px;
+	padding:0 0 0 20px;
+	overflow: hidden;
+	color: #aaa;*/
+	font-size: 13px;
+}
+.newzzyh-wrap .zzyh-header .nextLevelCash li{
+	float: left;
+	width:22%;
+}
+.newzzyh-wrap .zzyh-header .nextLevelCash li.ncTitle{
+    width:auto;
+    line-height:80px;
+    margin-right:25px;
+    font-size:13px;
+}
+.newzzyh-wrap .zzyh-header .nextLevelCash li.ncTitle-list2{
+    margin-top:19px;
+}
+.newzzyh-wrap .zzyh-header .nextLevelCash li .icon{
+	width:45px;
+	height:45px;
+	overflow: hidden;
+	float: left;
+	margin-right: 7px;
+}
+.newzzyh-wrap .zzyh-header .nextLevelCash li .icon1{
+	background: url("../image/pic/user/vip-cash-1.png") no-repeat 0 0;
+	background-size: cover;
+}
+.newzzyh-wrap .zzyh-header .nextLevelCash li .icon2{
+	background: url("../image/pic/user/vip-cash-2.png") no-repeat 0 0;
+	background-size: cover;
+}
+.newzzyh-wrap .zzyh-header .nextLevelCash li .icon3{
+	background: url("../image/pic/user/vip-cash-3.png") no-repeat 0 0;
+	background-size: cover;
+}
+.newzzyh-wrap .zzyh-header .nextLevelCash li i{
+    /*color:#666;*/
+    font-weight: 600;
+}
+.newzzyh-wrap .zzyh-header .nextLevelCash li i b{
+	font-size: 18px;
+	color: #333;
+	font-family: Arial;
+	margin: 0 2px 0 0;
+	font-weight: 600;
+}
+.newzzyh-wrap .zzyh-header .nextLevelCash li em{
+	/*color: #bbb;*/
+    /*font-size:13px;*/
+	/*display: block;*/
+}
+.zzyh-title {
+	border-left: 4px solid #f01924;
+	padding-left: 8px;
+	font-size: 14px;
+	color: #222;
+	margin-top: 27px;
+	font-weight: 700;
+}
+.newzzyh-wrap .zzyh-content{
+	width:100%;
+	margin-top:30px;
+
+}
+.newzzyh-wrap .zzyh-content .title img{
+	width:100%;
+}
+.newzzyh-wrap .zzyh-content .list{
+	margin-top:20px;
+    width:103.2%;
+}
+.newzzyh-wrap .zzyh-content .list .item{
+	width:460px;
+    border-radius:4px;
+	float: left;
+	border:1px solid #e3e8eb;
+    box-shadow: 0px 3px 15px 0 rgba(125,160,184,.2);
+	margin:0 19px 12px 0;
+	text-align: center;
+	position: relative;
+	transition: all 0.15s;
+	cursor: pointer;
+}
+.newzzyh-wrap .zzyh-content .list .item:hover{
+	border-color: #c7d2d7;
+    box-shadow: 0px 3px 20px 0 rgba(125,160,184,.25);
+    transform: translateY(-2px);
+}
+.newzzyh-wrap .zzyh-content .list .item .info{
+	min-height:66px;
+	padding:10px 0;
+	text-align: left;
+}
+.newzzyh-wrap .zzyh-content .list .item .pic{
+	margin: 17px 17px 0;
+}
+.newzzyh-wrap .zzyh-content .list .item .info h3{
+	color: #000;
+	font-size:16px;
+    font-weight:600;
+	margin: 8px 0 5px 0;
+}
+.newzzyh-wrap .zzyh-content .list .item .info span{
+    font-size:13px;
+    color:#999 !important;
+}
+.newzzyh-wrap .zzyh-content .list .item .info .arrow{
+	width: 13px;
+	height: 22px;
+	display: inline-block;
+	font-size: 0;
+	background-image: url(../image/self_promo/promo_arrow.png);
+	background-repeat: no-repeat;
+	background-position: 0 -22px;
+	position: absolute;
+	top: 33px;
+	right: 20px;
+	transition: all 0.1s;
+}
+.newzzyh-wrap .zzyh-content .list .item:hover .arrow{
+	background-position: 0 0;
+}
+.newzzyh-wrap .zzyh-content .list .item .btn{
+	overflow: hidden;
+    margin:68px 0 20px 0;
+}
+.newzzyh-wrap .zzyh-content .list .item .btn p{
+	color: #505050;
+    line-height:26px;
+	font-size:13px;
+}
+.newzzyh-wrap .zzyh-content .list .item .btn span{
+	display: inline-block;
+	width:134px;
+	height:45px;
+	overflow: hidden;
+	color: #fff;
+	line-height: 40px;
+	font-size: 14px;
+	margin-top:10px;
+	cursor: pointer;
+	background:url("../image/pic/user/newzzyh-btn-bg.png") no-repeat 0 0;
+}
+
+/*自助优惠按钮修改*/
+#twoNav li.closeBtn {
+    float:right;
+    width:150px;
+}
+#twoNav li.closeBtn span {
+    display:inline-block;
+    width:168px;
+    height:30px;
+    background:url(../image/pic/user/newzzyh-close-bg.png) no-repeat 0 0;
+    line-height:30px;
+    color:#999;
+    font-size:12px;
+    padding-left: 10px;
+    overflow:hidden;
+    margin: 18px -30px 0 0;
+    float:left;
+}
+
+#twoNav li.closeBtn i {
+    width:30px;
+    height:30px;
+    display:inline-block;
+    background:url(../image/pic/user/newzzyh-close-btn.png) no-repeat 0 0;
+    float:right;
+    overflow:hidden;
+    text-indent:-999em;
+    margin: 18px -60px 0 0;
+}
+
+
+
+.a_badge {
+    background-color:#FF3B2A;width:18px;height:18px;border-radius:50%;
+    padding: 0;
+    text-align: center;
+    line-height: 18px;
+    animation: bounce linear 10s infinite;
+}
+
+@keyframes bounce {
+	0% {
+		transform: translateY(0);
+	}
+	3% {
+		transform: translateY(-12px);
+	}
+	5% {
+		transform: translateY(0);
+	}
+	8% {
+		transform: translateY(-8px);
+	}
+	10% {
+		transform: translateY(0);
+	}
+}

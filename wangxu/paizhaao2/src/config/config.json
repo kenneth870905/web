@@ -1,0 +1,17 @@
+[
+    {
+        "name":"相框1",
+        "time":20,
+        "list":["米罗AI1.png","米罗原作1.png","米罗原作.png","米罗AI2.png","米罗AI.png"]
+    },
+    {
+        "name":"相框2",
+        "time":20,
+        "list":["step-2-1.JPG","康定斯基.png","starry.JPG"]
+    },
+    {
+        "name":"相框3",
+        "time":20,
+        "list":["step-2-3.JPG","step-2-2.JPG","rain.JPG"]
+    }
+]

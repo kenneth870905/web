@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <link rel="stylesheet" href="../static/swiper/package/swiper-bundle.min.css">
+    <link rel="stylesheet" href="child1.css">
+</head>
+
+<body>
+    <div id="vue" class="huakuang">
+        <img class="hk-bg-1" v-if="!showSwiper" :src="`${src}images/bg3.png`" alt="" srcset="">
+        <div class="hk-content" v-if="!showSwiper">
+            <div class="hk-box-2">
+                <!-- <img :src="`${src}images/bg5.png`" alt="" srcset=""> -->
+                <img :src="newBg" alt="" srcset="">
+            </div>
+            <div class="hk-saoma-box">
+                <div>扫码下载</div>
+                <div class="hk-erweima">
+                    <!-- <img :src="`${src}images/bg5.png`" alt="" srcset=""> -->
+                    <img :src="erweima" alt="" srcset="">
+                </div>
+            </div>
+        </div>
+        <div class="swiper-container swiper1 swiper1-1">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for="item in imgList">
+                    <img :src="`${src}config/${item}`" alt="" srcset="">
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="swiper-container swiper1">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for="item in imgList">
+                    <img :src="`${src}config/${item}`" alt="" srcset="">
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg1">
+            <img class="bg2" :src="`${src}images/bg2.png`" alt="" srcset="">
+            <div class="bg4" >
+                <img v-if="newBg" :src="newBg" alt="" srcset="">
+            </div>
+        </div>
+
+            <div class="img">
+                <img v-if="erweima" :src="erweima" alt="" srcset="">
+            </div>
+            <div class="text">扫码二维码下载图片</div>
+        </div> -->
+        
+        <!-- <img class="full" :src="`${src}images/full.png`" alt="" srcset="" @click="full()"> -->
+    </div>
+    <script src="../static/vue.js"></script>
+    <script src="../static/swiper/package/swiper-bundle.min.js"></script>
+    <script src="child1.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,207 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/plus.css">
+    <title>火币助手</title>
+</head>
+<body>
+<div class="zong">
+    <div id="cssshang">
+    <table class="fen1 fudong">
+        <tr>
+            <td colspan="5" class="biaoti">BTC购买广告</td>
+        </tr>
+        <tr class="fbiaoti">
+            <td class="Xshu">#</td>
+            <td class="Xjia">价格</td>
+            <td class="Xjia">利润</td>
+            <td class="Xjia">数量</td>
+            <td class="Xni">昵称</td>
+        </tr>
+    </table>
+    <table class="fen1 fudong">
+        <tr>
+            <td colspan="5" class="biaoti1">BTC卖出广告</td>
+        </tr>
+        <tr class="fbiaoti">
+            <td class="Xjia">价格</td>
+            <td class="Xjia">利润</td>
+            <td class="Xjia">数量</td>
+            <td class="Xni">昵称</td>
+        </tr>
+    </table>
+    <table class="fen1 fudong zuojv1">
+        <tr>
+            <td colspan="5" class="biaoti">ETH购买广告</td>
+        </tr>
+        <tr class="fbiaoti">
+            <td class="Xshu">#</td>
+            <td class="Xjia">价格</td>
+            <td class="Xjia">利润</td>
+            <td class="Xjia">数量</td>
+            <td class="Xni">昵称</td>
+        </tr>
+    </table>
+    <table class="fen1 fudong">
+        <tr>
+            <td colspan="5" class="biaoti1">ETH卖出广告</td>
+        </tr>
+        <tr class="fbiaoti">
+            <td class="Xjia">价格</td>
+            <td class="Xjia">利润</td>
+            <td class="Xjia">数量</td>
+            <td class="Xni">昵称</td>
+        </tr>
+    </table>
+    <table class="fen1 fudong zuojv1">
+        <tr>
+            <td colspan="5" class="biaoti">USDT购买广告</td>
+        </tr>
+        <tr class="fbiaoti">
+            <td class="Xshu">#</td>
+            <td class="Xjia">利润</td>
+            <td class="Xliang">数量</td>
+            <td class="Xni">昵称</td>
+        </tr>
+    </table>
+    <table class="fen1 fudong">
+        <tr>
+            <td colspan="5" class="biaoti1">USDT卖出广告</td>
+        </tr>
+        <tr class="fbiaoti">
+            <td class="Xjia">利润</td>
+            <td class="Xliang">数量</td>
+            <td class="Xni">昵称</td>
+        </tr>
+    </table>
+</div>
+    <div style="clear:both;"></div>
+    <div id="cssxia">
+        <table class="fen1 fudong">
+            <tr>
+                <td class="Xshu"></td>
+                <td class="Xjia"></td>
+                <td class="Xjia"></td>
+                <td class="Xjia"></td>
+                <td class="Xni"></td>
+            </tr>
+        </table>
+        <table class="fen1 fudong">
+            <tr>
+                <td class="Xjia"></td>
+                <td class="Xjia"></td>
+                <td class="Xjia"></td>
+                <td class="Xni"></td>
+            </tr>
+        </table>
+        <table class="fen1 fudong zuojv1">
+            <tr>
+                <td class="Xshu"></td>
+                <td class="Xjia"></td>
+                <td class="Xjia"></td>
+                <td class="Xjia"></td>
+                <td class="Xni"></td>
+            </tr>
+        </table>
+        <table class="fen1 fudong">
+            <tr>
+                <td class="Xjia"></td>
+                <td class="Xjia"></td>
+                <td class="Xjia"></td>
+                <td class="Xni"></td>
+            </tr>
+        </table>
+        <table class="fen1 fudong zuojv1">
+            <tr>
+                <td class="Xshu"></td>
+                <td class="Xjia"></td>
+                <td class="Xliang"></td>
+                <td class="Xni"></td>
+            </tr>
+        </table>
+        <table class="fen1 fudong">
+            <tr>
+                <td class="Xjia"></td>
+                <td class="Xliang"></td>
+                <td class="Xni"></td>
+            </tr>
+        </table>
+    </div>
+    <div style="clear:both;"></div>
+    <div class="beijinghui">
+        <div class="kuan5 fudong">
+            <div class="text-success zihao18 text-center">
+                <b>人民币买入价格:</b>
+                <b id="hulv1">00000</b>&nbsp;
+                <b id="hulv2" class="shenlv">00000</b>&nbsp;
+            </div>
+            <div class="text-primary zihao25 text-center">
+                <b>BTC实时:</b>
+                <b id="hulv0">00000</b>
+            </div>
+            <div class="text-danger zihao18 text-center">
+                <b>人民币卖出价格:</b>
+                <b id="hulv3">00000</b>&nbsp;
+                <b id="hulv4" class="qianhong">00000</b>
+            </div>
+        </div>
+        <div class="kuan5 fudong">
+
+            <div class="text-success zihao18 text-center">
+                <b>人民币买入价格:</b>
+                <b id="hulv1a">00000</b>&nbsp;
+                <b id="hulv2a" class="shenlv">00000</b>&nbsp;
+            </div>
+            <div class="text-primary zihao25 text-center">
+                <b>ETH实时:</b>
+                <b id="hulv0a">00000</b>
+            </div>
+            <div class="text-danger zihao18 text-center">
+                <b>人民币卖出价格:</b>
+                <b id="hulv3a">00000</b>&nbsp;
+                <b id="hulv4a" class="qianhong">00000</b>
+            </div>
+        </div>
+        <div class="kuan5 fudong">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">USTD买入汇率</span>
+                </div>
+                <input type="text" aria-label="First name" class="form-control" id="mairu">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">手续费</span>
+                </div>
+                <input type="text" aria-label="First name" class="form-control" id="shouxu">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">USTD卖出汇率</span>
+                </div>
+                <input type="text" aria-label="First name" class="form-control" id="maichu">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">主号ID</span>
+                </div>
+                <input type="text" aria-label="First name" class="form-control" id="zhuid">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">副号ID</span>
+                </div>
+                <input type="text" aria-label="First name" class="form-control" id="fuid">
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<script src="https://cdn.bootcss.com/pako/1.0.10/pako.js"></script>
+<script language="JavaScript" src="js/plus.js"></script>
+</body>
+</html>

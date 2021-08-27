@@ -1,0 +1,164 @@
+
+
+(function ($, window) {
+
+    var staticDome = null;
+    var actID = '';
+    var loadingObj = null;
+    function getShareRedpack(callback) {
+        $.invoke_api({ AcceptXiQiRed: { actID: actID } }, {
+            success: function (data) {
+                 //data.Status = 1;
+                 //data.row = 150;
+                loadingObj.Hide();
+                if (data.Status == 1) {                    
+                    staticDome.find("p.money span").text(data.row);                    
+                    // $("body > div.componets-share-redpack.popup > div.content-success.autocenter [data-money]").html(data.row)
+                    showPopup("success")
+                } else if (data.Status != -6 && data.Status != -16) {
+                    var msg = ""
+                    switch (data.Status) {
+                        case 1602:
+                            msg = '未达到活动条件'
+                            $('body').Dialog({ type: "Err", title: "领取失败", messageTitle: msg, autoClose: false, closeHandler: function () { closeDialog(0); } });
+                            closePopup()
+                            return;
+                            break;
+                        case 1603:
+                            msg = '活动尚未开始'
+                            $('body').Dialog({ type: "Err", title: "温馨提示", messageTitle: msg, autoClose: false, closeHandler: function () { closeDialog(0); } });
+                            closePopup()
+                            return;
+                            break;
+                        case 1604:
+                            msg = '活动已经结束';
+                            $('body').Dialog({ type: "Err", title: "温馨提示", messageTitle: msg, autoClose: false, closeHandler: function () { closeDialog(0); } });
+                            closePopup()
+                            return;
+                            break;
+                        case 1601:
+                            msg = '未找到该活动，或活动过期'
+                            $('body').Dialog({ type: "Err", title: "领取失败", messageTitle: msg, autoClose: false, closeHandler: function () { closeDialog(0); } });
+                            closePopup()
+                            return;
+                            break;
+                        case 1605:
+                            msg = '您已经领取过'
+                            break;
+                        case 1607:
+                            msg = '未领到红包，红包已领完'
+                            break;
+                        case 1609:
+                            msg = '信息重复，不能重复领取'
+                            break;
+                        case 314:
+                            msg = '银行卡信息未绑定'
+                            $('body').Dialog({
+                                type: "Ask",
+                                title: "温馨提示",
+                                messageTitle: "未绑定银行卡",
+                                message: '请您先去绑定银行卡',
+                                buttons: [{
+                                    name: "确定",
+                                    callback: function () { closeDialog(0); location.href = "/MemberCenter/BindBank.aspx" }
+                                }],
+                                closeHandler: function () { closeDialog(0); }
+                            });
+                            closePopup()
+                            return
+                            break;
+                        default:
+                            $('body').Dialog({ type: "Err", title: "领取失败", messageTitle: "由于网络波动，请稍后再试。", autoClose: false, closeHandler: function () { closeDialog(0); } });
+                            closePopup()
+                            return
+                            break;
+                    }
+                    $("body > div.componets-share-redpack.popup > div.content-fail.autocenter > p").html(msg)
+                    showPopup('fail')
+                }
+            }
+        });
+    }
+
+    function showPopup(args) {
+        if (!args) args = "main"
+        switch (args) {
+            case "main":
+                staticDome.find(".content-success,.content-fail").hide().end().find(".content-notice").show().end().fadeIn(500);
+                staticDome.find(".dazzle .envelope").addClass('tada');
+                setTimeout(function () {
+                    staticDome.find(".dazzle .envelope").removeClass('tada');
+                    if (typeof animateConfetti_ex === 'function') {
+                        animateConfetti_ex();
+                    }
+                }, 1000)                
+                break;
+            case "success":
+                // staticDome.find(".content-notice,.content-fail").hide().end().find(".content-success").show().end().fadeIn(500)
+                staticDome.find(".dazzle .envelope").addClass('opened');
+                staticDome.find(".dazzle .btn_claim").hide();
+                staticDome.find(".dazzle .btn_close").addClass('show');
+                //if (typeof animateConfetti === 'function') {
+                //    animateConfetti();
+                //}                               
+                break;
+            case "fail":
+                staticDome.find(".content-success,.content-notice").hide().end().find(".content-fail").show().end().fadeIn(500)
+                break;
+            default:
+                console.error("error no args")
+                break;
+        }
+    }
+
+    function closePopup() {
+        staticDome.find(".content-notice,.content-success,.content-fail").hide().end().hide();
+    }
+    function checkShareRedpack(callback) {
+        if (!$.cookie('memberToken')) return;
+        $.invoke_api({ GetXiQiRed: {} }, {
+            success: function (data) {
+                 //data.Status = 1
+                 //data.row = {
+                 //    ID: "abc-abc-abc",
+                 //    Content: "测试测试测试"
+                 //}
+                 if (data.Status == 1) {                         
+                     showPopup('main')
+                     actID = data.row.ID                     
+                    $("div.componets-share-redpack.popup > div.content-notice.autocenter .title span").html(data.row.Content)
+                } else {
+                    data.Status = 1
+                }
+            }
+        });
+    }
+    $(function () {
+        staticDome = $($("#tpl-shareredpack").html().trim())
+        $(document.body).append(staticDome);
+        loadingObj = loadingPage({
+            type: "load1",
+            imgRootPath: imgRootPath,
+            divClass: $("body")
+        });
+        // loadingObj.Show()
+        staticDome.on('click', '.content-notice .getShareRedpack', function () {
+            // showPopup('fail')
+            if (staticDome.find(".dazzle .envelope").hasClass('opened')) {
+                return;
+            }
+            loadingObj.Show()
+            getShareRedpack(function () {
+
+            })
+        }).on('click', '.close', function () {
+            closePopup();
+        }).on('click', 'a[data-skip]', function () {
+            location.href = "/MemberCenter/GameTran.aspx"
+        })
+
+        checkShareRedpack()
+
+    });
+
+})(jQuery, window);

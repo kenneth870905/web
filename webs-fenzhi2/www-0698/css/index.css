@@ -1,0 +1,127 @@
+@charset "UTF-8";
+html,
+body {
+  height: 100%;
+  background: url("../image/bg.png"); }
+
+ul {
+  margin: 0px;
+  padding: 0px; }
+
+li {
+  list-style: none; }
+
+.w1200 {
+  width: 1200px;
+  margin: 0px auto; }
+  @media (max-width: 750px) {
+    .w1200 {
+      width: auto; } }
+
+.head .container {
+  position: relative; }
+.head.header_1 {
+  background: #1a0f09; }
+.head.header_2 {
+  background: #3c2517; }
+.head .img_box {
+  overflow: hidden; }
+.head img {
+  width: 100%;
+  min-width: 530px; }
+.head .title_2 {
+  color: #ffff00;
+  display: flex;
+  padding: 8px 10px;
+  font-size: 16px; }
+  .head .title_2 .beiyong {
+    margin: 0px 0px 0px 10px; }
+    .head .title_2 .beiyong .color_1 {
+      color: #fb0000; }
+  @media (max-width: 992px) {
+    .head .title_2 {
+      display: block;
+      font-size: 14px; }
+      .head .title_2 .beiyong {
+        margin: 0px; } }
+.head .link {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  line-height: 40px; }
+  .head .link a {
+    color: #ffffff;
+    padding: 0px 10px; }
+    .head .link a:not(.noborder) {
+      border-left: 1px solid #ffffff; }
+
+.box_1 {
+  background: #ffffff;
+  padding-bottom: 30px; }
+
+.title_1 {
+  padding: 20px 0px; }
+  @media (max-width: 750px) {
+    .title_1 {
+      padding: 10px 0px; } }
+  @media (max-width: 750px) {
+    .title_1 img {
+      height: 35px; } }
+
+.list {
+  background: #f8f8f8;
+  border: 2px solid #eeeeee;
+  padding: 10px 10px 5px; }
+  .list a {
+    display: block;
+    border: 2px solid #b3aeaa;
+    text-align: center;
+    line-height: 45px;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    color: #302315;
+    background: #fff;
+    text-decoration: none;
+    margin: 0px 0px 5px 0px;
+    transition: all 0.3s; }
+    .list a:hover {
+      border: 2px solid #ffba00;
+      color: #cd2407; }
+  .list.img_1 img {
+    max-width: 26px;
+    max-height: 26px; }
+
+.box_2 {
+  padding: 15px 0px;
+  color: #000000;
+  line-height: 30px;
+  display: flex; }
+  .box_2 > div {
+    width: 50%; }
+    .box_2 > div:nth-child(1) {
+      text-align: right; }
+  @media (min-width: 750px) {
+    .box_2 > div:nth-child(1) {
+      text-align: right; } }
+  @media (max-width: 750px) {
+    .box_2 {
+      display: block; }
+      .box_2 > div {
+        width: 100%;
+        text-align: center; }
+        .box_2 > div:nth-child(1) {
+          text-align: center; } }
+  .box_2 a {
+    color: #000000;
+    padding: 0px 6px;
+    text-decoration: none; }
+    .box_2 a:not(:nth-child(1)):not(.no-bodder) {
+      border-left: 1px solid #000000; }
+
+.foot {
+  text-align: center;
+  padding: 15px 0px;
+  width: 100%;
+  background: #793e1b;
+  color: #fff;
+  line-height: 30px; }

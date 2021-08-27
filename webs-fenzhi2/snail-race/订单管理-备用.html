@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="css/reset.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/jquery-ui.min.css" rel="stylesheet">
+  <link href="css/jquery.datetimepicker.min.css" rel="stylesheet">
+  <link href="css/jquery.Scrollbar.css" rel="stylesheet">
+  <link href="css/font.css" rel="stylesheet">
+  <link href="css/loading.css" rel="stylesheet">
+  <link href="css/ZgCreate.min.css" rel="stylesheet">
+  <link href="css/Page_mem.min.css" rel="stylesheet">
+  <link href="css/ZgWindow.min.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+  <link href="css/poker.css" rel="stylesheet">
+  <link href="css/stylesheet.css" rel="stylesheet">
+  <link href="css/reset.min.css" rel="stylesheet">
+  <link href="css/custom2.css" rel="stylesheet">
+  <link href="css/style-desktop.css" rel="stylesheet">
+  <link href="css/VDNLottery.css" rel="stylesheet">
+  <link href="css/others.css" rel="stylesheet">
+  <script src="js/jquery-3.1.0.min.js"></script>
+  <script src="js/config.js"></script>
+</head>
+
+<body>
+  <div id="OrderListNot" style="height: 100%;">
+    <div class="common_form">
+      <div class="order_top">
+        <div class="order_chi">
+          <ul class="clearfix" id="Not_OrderTabs">
+            <li class="active"><a href="javascript:void(0)" rel="payout">订单管理</a></li>
+          </ul>
+        </div>
+        <div class="order_left">
+          <span>彩 类 :</span>
+          <select name="select_type">
+            <option value="蜗牛赛跑">蜗牛赛跑</option>
+            <option value="梯子游戏">梯子游戏</option>
+
+          </select>
+        </div>
+        <div class="record_right">
+          <div class="order_search btn-red" id="GoSelect" style="min-width: 125px">订单查询</div>
+        </div>
+      </div>
+      <div class="record_dep_closet" style="position:relative;">
+        <table class="record_dep">
+          <tr>
+            <td class="record_dep_txt">*订单查询</td>
+            <td class="record_dep_txt">彩 类：<span id="OrderGameName"> 蜗牛赛跑 </span></td>
+            <td class="record_dep_txt"><span id="OrderSDate"> 2020-01-03 </span> - </td>
+          </tr>
+        </table>
+
+      </div>
+      <div>
+        <div id="Not_order_list">
+          <table width="100%">
+            <tbody>
+              <tr class="record_dep_nav">
+                <th class="record_dep_nav_menu" width="90">注单号</th>
+                <th class="record_dep_nav_menu" width="110">下注时间</th>
+                <th class="record_dep_nav_menu" width="95">彩种</th>
+                <th class="record_dep_nav_menu" width="92">期号</th>
+                <th class="record_dep_nav_menu" width="124">玩法</th>
+                <th class="record_dep_nav_menu" width="120">内容</th>
+                <th class="record_dep_nav_menu" width="90">单注额</th>
+                <th class="record_dep_nav_menu" width="90">总额</th>
+              </tr>
+            </tbody>
+          </table>
+          <div class="Not_order_list_scorllbar" style="overflow: auto;">
+            <table class="record_dep_main order_inquiry_list" width="100%">
+              <tbody id="dataList">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="report_footer" style="margin-top:0px;">
+        <ul class="report_sum">
+          <li class="total">统计</li>
+          <li>下注金额 :</li>
+          <li class="amount" id="order_bet_money"> 0 </li>
+        </ul>
+      </div>
+    </div>
+    <div class="bg_mask" style="display: block;"></div>
+  </div>
+  <script>
+    var date = new Date();
+    var years = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    if (month < 10) {
+      month = '0' + month
+    };
+    if (day < 10) {
+      day = '0' + day
+    };
+    // month = ('0' + (date.getMonth() + 1)).slice(-2)
+    // day = ('0' + date.getDate()).slice(-2)
+    // month = ('0' + month).slice(-2)
+    // day = ('0' + day).slice(-2)
+    var timer = years + '-' + month + '-' + day;
+    $('#OrderSDate').html(timer);
+    var snailmap = { '1': '红', '2': '绿', '3': '蓝', '123': '红绿蓝', '132': '红蓝绿', '213': '绿红蓝', '231': '绿蓝红', '312': '蓝红绿', '321': '蓝绿红' };
+
+    function getListAPi() {
+      $.ajax({
+        url: `${config.baseUrl}/Lottery/SnailBet/GetSnailBetOrderList`,
+        method: 'POST',
+        data: {
+          gameType: $('select[name="select_type"]').val() == '蜗牛赛跑' ? 'wnsp' : 'tz'
+        },
+        success: function (x) {
+          $('.bg_mask').css({ display: 'none' })
+          $('#OrderGameName').html($('select[name="select_type"]').val())
+          console.log(x)
+          if (!x.rows) {
+            $('#dataList').append(
+              `<tr class="record_dep_list">
+                      <td colspan="10" class="record_dep_list_txt">尚无资料。</td>
+                    </tr>`
+            )
+            return;
+          }
+          if (x.rows.length) {
+            var numberArr = [];
+            x.rows.map(item => {
+              $('#dataList').append(
+                `
+                    <tr class="record_dep_list">
+                    <td width="90" class="record_dep_list_txt">${item.Id}</td>
+                    <td width="110" class="record_dep_list_txt">${item.Createtime.slice(10, 19)}</td>
+                    <td width="95" class="record_dep_list_txt">${$('#OrderGameName').html()}</td>
+                    <td width="92" class="record_dep_list_txt">${item.IssueCode}</td>
+                    <td width="124" class="record_dep_list_txt">${item.MethodName}</td>
+                    <td width="120" class="record_dep_list_txt">
+                      ${snailmap[item.Content.replace(/\|/g, '')]}
+                      </td>
+                    <td width="90" class="record_dep_list_txt">${item.Price}</td>
+                    <td width="90" class="record_dep_list_txt">${item.ResultMoney}</td>
+                  </tr>
+                  `
+              );
+              numberArr.push(item.Price);
+            });
+            $('#order_bet_money').html(
+              numberArr.reduce(function (a, b) {
+                return a + b
+              }, 0)
+            )
+          } else {
+            $('#dataList').append(
+              `<tr class="record_dep_list">
+                      <td colspan="10" class="record_dep_list_txt">尚无资料。</td>
+                    </tr>`
+            )
+            return;
+          }
+        },
+        error: function (x) {
+          console.log(x)
+        }
+      })
+    };
+
+
+    $('#GoSelect').click(function () {
+      $('.bg_mask').css({ display: 'block' });
+      $('#dataList').html('');
+      getListAPi();
+    });
+    getListAPi()
+
+
+
+  </script>
+</body>
+
+</html>

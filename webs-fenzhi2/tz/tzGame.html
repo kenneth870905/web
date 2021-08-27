@@ -1,0 +1,1921 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>梯子游戏</title>
+	<link rel="stylesheet" type="text/css" href="./css/ladder.css">
+	<link rel="stylesheet" type="text/css" href="./css/font.css">
+	<link rel="stylesheet" type="text/css" href="./css/jquery.scrollbar.css">
+	<link rel="stylesheet" type="text/css" href="./css/VDNLottery.css">
+	<style type="text/css" media="all" id="my"></style>
+	<script src="./webConfig/config.js"></script>
+</head>
+
+<body class="ladder" focus="visible" cz-shortcut-listen="true">
+	<div class="main allmain" id="app">
+		<div class="game_content">
+			<div class="top_background_infun">
+				<div class="game_top clearfix">
+					<div class="top-left"><img src="./images/logo.png"></div>
+					<div class="top-center">
+						<div id="PeriodsCloseTime"
+							class="PeriodsCloseTime ladder-piece ladder-piece-header-timer time_count">00:00:00</div>
+						<div class="ladder-piece ladder-piece-header-period period_now">
+							<span id="NowPeriodsNumber" class="time_mintxt"></span>
+						</div>
+						<div class="top-info-box">
+							<span class="ladder-piece ladder-piece-header_mem_ico"></span>
+							<span class="ladder-piece ladder-piece-header-show-bg" id="MemberAct"></span>
+							<span class="MemberMoney-title">余额</span>
+							<span class="ladder-piece ladder-piece-header-show-bg" id="MemberMoney"> 0 </span>
+						</div>
+					</div>
+					<div class="top-right">
+						<ul>
+							<li id="GoOrder" class="top-right-list-1 allbtn" data-toggle="tooltip"
+								data-placement="bottom" title="" data-original-title="订单管理"></li>
+							<li id="GoReport" class="top-right-list-2 allbtn" data-toggle="tooltip"
+								data-placement="bottom" title="" data-original-title="投注报表"></li>
+							<li id="GoLottery" class="top-right-list-3 allbtn" data-toggle="tooltip"
+								data-placement="bottom" title="" data-original-title="开奖结果"></li>
+							<li id="GoTrend" class="top-right-list-4 allbtn" data-toggle="tooltip"
+								data-placement="bottom" title="" data-original-title="走势图"></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="game-ladder main" style="height:auto;" id="ReadyBet">
+				<div class="content clearfix">
+					<div class="content-left">
+						<span class="ladder-CurrentlyTitle"><span class="ladder-CurrentlyTitle-history"
+								style="display: none;"></span></span>
+						<span class="ladder-Currentlyselect">
+							<!-- 左侧投注单期号 -->
+							<select name="ToDayPeriods" id="ToDayPeriods"></select>
+						</span>
+						<div class="ladder-CurrentlyList" id="ladder-CurrentlyList">
+							<ul>
+								<li><span>单</span><span>0</span></li>
+								<li><span>双</span><span>0</span></li>
+								<li><span>左</span><span>0</span></li>
+								<li><span>右</span><span>0</span></li>
+								<li><span>三条</span><span>0</span></li>
+								<li><span>四条</span><span>0</span></li>
+								<li><span>三条单</span><span>0</span></li>
+								<li><span>四条单</span><span>0</span></li>
+								<li><span>三条双</span><span>0</span></li>
+								<li><span>四条双</span><span>0</span></li>
+								<li class="bet_t_s total"><span>总投注</span><span>0</span></li>
+								<li class="bet_t_s"><span>盈余</span><span>0</span></li>
+							</ul>
+						</div>
+					</div>
+					<div class="content-right">
+						<div class="ladder-content">
+							<div class="ladder-top clearfix">
+								<span id="GoWayvalue" class="ladder-piece ladder-piece-content-btn1 allbtn"></span>
+								<span id="GoStatistics" class="ladder-piece ladder-piece-content-btn3 allbtn"></span>
+								<span id="GoExplanation" class="ladder-piece ladder-piece-content-btn2 allbtn"></span>
+								<div class="sound-switch">
+									<span class="ladder-piece ladder-piece-sound-on ladder-piece-sound "></span>
+									<span class="ladder-piece ladder-piece-sound-off ladder-piece-sound active"></span>
+								</div>
+							</div>
+							<div class="ladder-box">
+								<div class="ladder-mask">
+									<span class="openlost">剩余 <span class="PeriodsCloseTime">00:00:00</span>
+										开奖</span>
+									<span class="clottery-now" style="display: inline-block; padding-top: 0px;"><span
+											class="clottery-now-period" style="color: rgb(61, 34, 7);">201912181050 期
+											开盘中…</span></span>
+								</div>
+								<canvas id="LadderCanvas" width="214" height="258"></canvas>
+							</div>
+							<div class="ladder-distribution-content">
+								<div class="ladder-distribution-oddPer">
+									<span style="width: 50%;"></span>
+								</div>
+								<div class="ladder-distribution-evenPer">
+									<span style="width: 50%;"></span>
+								</div>
+								<div class="ladder-distribution-vs">
+									<span class="ladder-distribution-vs-odd">50%</span>
+									<span class="ladder-distribution-vs-even">50%</span>
+								</div>
+								<div class="ladder-distribution-vs-remark">
+									购买分布会依照购买人数的多寡而变更，不影响开奖结果。
+								</div>
+							</div>
+						</div>
+						<div class="ladder-history">
+							<span class="ladder-historyTitle"></span>
+							<span class="ladder-historyNum"></span><span class="ladder-historyResult"></span>
+							<div class="historyTable-wrap mCustomScrollbar _mCS_1" style="overflow: visible;">
+								<div id="mCSB_1" class="mCustomScrollBox mCS-dark-3 mCSB_vertical mCSB_outside"
+									style="max-height: none;" tabindex="0">
+									<div id="mCSB_1_container" class="mCSB_container"
+										style="position:relative; top:0; left:0;" dir="ltr">
+										<div id="historyTable-wrap">
+											<table style="width: 100%;">
+												<tr>
+													<!-- <td class="historyTable-wrap-period"><span>201912181049</span>
+														<div class="historyTable-wrap-scale"><span
+																class="historyTable-wrap-scale-o"
+																style="width: 50%;"></span></div>
+													</td> -->
+													<!-- <td><i class="ladder-piece ladder-piece-img_bet_11"></i></td> -->
+												</tr>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+								<div id="mCSB_1_scrollbar_vertical"
+									class="mCSB_scrollTools mCSB_1_scrollbar mCS-dark-3 mCSB_scrollTools_vertical"
+									style="display: block;">
+									<div class="mCSB_draggerContainer">
+										<!--  id="mCSB_1_dragger_vertical" -->
+										<div class="mCSB_dragger"
+											style="position: absolute; min-height: 30px; top: 0px; display: block;">
+											<div class="mCSB_dragger_bar"></div>
+										</div>
+										<div class="mCSB_draggerRail"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="foot">
+					<div></div>
+					<div class="betting-box">
+						<div class="betting-box-mask" style="display: none;">盘口关闭</div>
+						<div id="MoneyDialog" class="MoneyDialog">
+							<ul class="Money_ul">
+								<li>
+									<i class="fa fa-minus-square minus" data-money="1"></i>
+									<div>1</div>
+									<i class="fa fa-plus-square plus" data-money="1"></i>
+								</li>
+								<li>
+									<i class="fa fa-minus-square minus" data-money="5"></i>
+									<div>5</div>
+									<i class="fa fa-plus-square plus" data-money="5"></i>
+								</li>
+								<li>
+									<i class="fa fa-minus-square minus" data-money="10"></i>
+									<div>10</div>
+									<i class="fa fa-plus-square plus" data-money="10"></i>
+								</li>
+								<li>
+									<i class="fa fa-minus-square minus" data-money="50"></i>
+									<div>50</div>
+									<i class="fa fa-plus-square plus" data-money="50"></i>
+								</li>
+								<li>
+									<i class="fa fa-minus-square minus" data-money="100"></i>
+									<div>100</div>
+									<i class="fa fa-plus-square plus" data-money="100"></i>
+								</li>
+								<li>
+									<i class="fa fa-minus-square minus" data-money="500"></i>
+									<div>500</div>
+									<i class="fa fa-plus-square plus" data-money="500"></i>
+								</li>
+								<li>
+									<i class="fa fa-minus-square minus" data-money="1000"></i>
+									<div>1000</div>
+									<i class="fa fa-plus-square plus" data-money="1000"></i>
+								</li>
+							</ul>
+						</div>
+						<ul class="betting-area">
+							<li class="end-area">
+								<span class="title"></span>
+								<div class="leftfix" style="width: 50%;margin:0">
+									<span class="ladder-piece ladder-piece-img_bet_odd"></span>
+									<span class="ladder-odds play_odds_str_205">1.95</span>
+									<span><input type="text" name="TZ_E0" class="cbet-money numf" value="0"></span>
+								</div>
+								<div class="leftfix" style="width: 50%;margin:0">
+									<span class="ladder-piece ladder-piece-img_bet_even"></span>
+									<span class="ladder-odds play_odds_str_205">1.95</span>
+									<span><input type="text" name="TZ_E1" class="cbet-money numf" value="0"></span>
+								</div>
+							</li>
+							<li class="start-area">
+								<span class="title"></span>
+								<div class="leftfix" style="width: 50%;margin:0">
+									<span class="ladder-piece ladder-piece-img_bet_left"></span>
+									<span class="ladder-odds play_odds_str_206">1.95</span>
+									<span><input type="text" name="TZ_S0" class="cbet-money numf" value="0"></span>
+								</div>
+								<div class="leftfix" style="width: 50%;margin:0">
+									<span class="ladder-piece ladder-piece-img_bet_right"></span>
+									<span class="ladder-odds play_odds_str_206">1.95</span>
+									<span><input type="text" name="TZ_S1" class="cbet-money numf" value="0"></span>
+								</div>
+							</li>
+							<li class="ladder-area">
+								<span class="title"></span>
+								<div class="leftfix" style="width: 50%;margin:0">
+									<span class="ladder-piece ladder-piece-img_bet_3line"></span>
+									<span class="ladder-odds play_odds_str_207">1.95</span>
+									<span><input type="text" name="TZ_L3" class="cbet-money numf" value="0"></span>
+								</div>
+								<div class="leftfix" style="width: 50%;margin:0">
+									<span class="ladder-piece ladder-piece-img_bet_4line"></span>
+									<span class="ladder-odds play_odds_str_207">1.95</span>
+									<span><input type="text" name="TZ_L4" class="cbet-money numf" value="0"></span>
+								</div>
+							</li>
+							<li class="endxladder-area">
+								<span class="title"></span>
+								<div class="leftfix" style="width: 25%;margin:0">
+									<span class="ladder-piece ladder-piece-img_bet_10"></span>
+									<span class="ladder-odds play_odds_str_208">3.9</span>
+									<span><input type="text" name="TZ_T03" class="cbet-money numf" value="0"></span>
+								</div>
+								<div class="leftfix" style="width: 25%;margin:0">
+									<span class="ladder-piece ladder-piece-img_bet_00"></span>
+									<span class="ladder-odds play_odds_str_208">3.9</span>
+									<span><input type="text" name="TZ_T13" class="cbet-money numf" value="0"></span>
+								</div>
+								<div class="leftfix" style="width: 25%;margin:0">
+									<span class="ladder-piece ladder-piece-img_bet_01"></span>
+									<span class="ladder-odds play_odds_str_208">3.9</span>
+									<span><input type="text" name="TZ_T04" class="cbet-money numf" value="0"></span>
+								</div>
+								<div class="leftfix" style="width: 25%;margin:0">
+									<span class="ladder-piece ladder-piece-img_bet_11"></span>
+									<span class="ladder-odds play_odds_str_208">3.9</span>
+									<span><input type="text" name="TZ_T14" class="cbet-money numf" value="0"></span>
+								</div>
+							</li>
+							<li class="total-area">
+								<span class="title"></span>
+								<div style="font-weight: bold;"><span id="Now_Betting">201912181050</span> 期</div>
+								<input type="text" class="ladder-piece total-Betting" readonly="" value="0">
+								<span class="ladder-piece btn confirm_btn allbtn" id="ReadyBetSend"></span><span
+									class="ladder-piece btn cancel_btn allbtn" id="ResetBet"></span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="sound-group" style="display:none">
+		<audio id="sound_hover" >
+			<source src="./mp3/hover.mp3" type="audio/mp3"></audio>
+		<audio id="sound_click">
+			<source src="./mp3/click.mp3" type="audio/mp3"></audio>
+		<audio id="sound_count5">
+			<source src="./mp3/count5.mp3" type="audio/mp3"></audio>
+		<audio id="sound_countover">
+			<source src="./mp3/countd.mp3" type="audio/mp3"></audio>
+		<audio id="sound_start">
+			<source src="./mp3/start.mp3" type="audio/mp3"></audio>
+	</div>
+
+	<!-- 排列好的js -->
+	<script src="./js/moment.js"></script>
+	<script type="text/javascript" src="./js/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="./js/tk.js"></script>
+	<script type="text/javascript" src="./js/jquery-migrate-3.0.0.min.js"></script>
+	<script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.datetimepicker.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.Scrollbar.js"></script>
+	<script type="text/javascript" src="./js/jquery.scrollbar.min.js"></script>
+	<script>
+		$.fn.datetimepicker.defaults.lang = "zh_cn";
+	</script>
+	<script type="text/javascript" src="./js/global.js"></script>
+	<script type="text/javascript" src="./js/loading.js"></script>
+	<script type="text/javascript" src="./js/ZgCreate.js"></script>
+	<script type="text/javascript" src="./js/Page_mem.js"></script>
+	<script type="text/javascript" src="./js/js_computing.min.js"></script>
+	<script type="text/javascript" src="./js/ZgCountDown.js"></script>
+	<script type="text/javascript" src="./js/ZgWindow.min.js"></script>
+	<script type="text/javascript" src="./js/peasantcalendar.js"></script>
+	<script type="text/javascript" src="./js/poker.js"></script>
+	<script src="./js/zh_cn.js"></script>
+	<!--线上人数-->
+	<script>
+		var IntoTime = 0;
+		var IntoTimer;
+		IntoTimer = setInterval(function () {
+			IntoTime++;
+		}, 1 * 1000);
+		var Online;
+		var OnlineFun = function () {
+			var $this = this;
+			var MemberInfo = false;
+			var NowTime = '20191219191225';
+			/*更新在线咨询*/
+			var UpdateOnline = function () {
+				var url = `${config.url}/Members/Info/Online`;
+				var send = {
+					IntoTime: IntoTime,
+					NowTime: NowTime
+				}
+				ajax_get(url, send).always(function () {
+					setTimeout(function () {
+						UpdateOnline();
+					}, 10 * 1000)
+				}).done(function (rt) {
+					var fun = {}
+					fun["100"] = function (obj) { }
+					my_decode(rt, fun);
+				})
+			}
+			var init = function () {
+				if (typeof (NeedCheckOnline) != 'undefined') {
+					if (NeedCheckOnline === false) {
+						return false
+					}
+				}
+				UpdateOnline();
+			}
+			init();
+		}
+		$(document).ready(function () {
+			Online = new OnlineFun()
+		});	
+	</script>
+	<script>
+		var hmt = hmt || [];
+		(function () {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?47f8666ebc7af85895ef948bf3285c2a";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+		function BetToPushBaidu(act, game_id, second) {
+			_hmt.push(['_trackEvent', 'lot_game_rec', 'sec_lbet_rt_' + act, "Game_" + game_id, second]);
+		}
+		var HowLong = function () {
+			var $this = this;
+			var ONE_SEC = 1000;   			/*1秒的毫秒数*/
+			var _initTime = new Date();
+			this.now = function () {
+				var nowtime = new Date();
+				var diff = nowtime - _initTime;
+				return formatFloat((diff / ONE_SEC), 1);
+			}
+		}
+	</script>
+	<script type="text/javascript" src="https://gfile.bhe66.com/assets/js/main/ZgCreate/ZgCreate.js"
+		charset="utf-8"></script>
+	<!-- <div id="GameListFloat" class="float-nav">
+		<div id="GameListDiv"></div>
+	</div> -->
+	<script>
+		var GameListFloat;
+		$(document).ready(function () {
+			GameListFloat = new list_float()
+		})
+		var list_float = function () {
+			var $this = this;
+			var that = $("#GameListFloat");
+			var game_name_list = {
+				"1": LG.gstr("lang_game_pc_list_type_1"),
+				"3": LG.gstr("lang_game_pc_list_type_3"),
+				"4": LG.gstr("lang_game_pc_list_type_4"),
+				"5": LG.gstr("lang_game_pc_list_type_5"),
+				"6": LG.gstr("lang_game_pc_list_type_6"),
+				"7": LG.gstr("lang_game_pc_list_type_7"),
+				"8": LG.gstr("lang_game_pc_list_type_8"),
+				"9": LG.gstr("lang_game_pc_list_type_9"),
+				"13": LG.gstr("lang_game_pc_list_type_13"),
+				"14": LG.gstr("lang_game_pc_list_type_14"),
+				"15": LG.gstr("lang_game_pc_list_type_15"),
+			}
+			var reset = function () {
+				that.css({
+					"top": "50%",
+					"margin-top": "-" + (that.outerHeight() / 2) + "px"
+				})
+			}
+			var init = function () {
+				$(window).resize(function () {
+					reset();
+				})
+				// GetGameMenu();
+			}
+			init();
+		}
+	</script>
+	<script src="/js/focus.js"></script>
+	<script src="/js/ladder.js"></script>
+	<script src="/js/ladder_new.js"></script>
+	<script src="/js/VDNLottery.js"></script>
+	<script>
+		var Moneymap = {
+			TZ_E0: '单',
+			TZ_E1: '双',
+			TZ_S0: '左',
+			TZ_S1: '右',
+			TZ_L3: '三条',
+			TZ_L4: '四条',
+			TZ_T03: '三条单',
+			TZ_T04: '四条单',
+			TZ_T13: '三条双',
+			TZ_T14: '四条双'
+		};
+		var Totalmap = {
+			TotalBetMoney: '总投注',
+			real_pl: '盈余'
+		};
+		var game_zw = new ZgWindow();
+		var GetNumber = function (number) {
+			return Math.round(number * 1000) / 1000;
+		}
+		var MemberLog = function (GameID) {
+			var $this = this;
+			var MemberInfo = false;
+			var LoginInfo = 'c6265b12ae8ac3819df6cfa1fd1cce54';
+			var that = $("body");
+			var NowGameID = GameID;
+			var MemberMoney = 0;
+			var MemberMoneyTimer;
+			/*会员金额timer*/
+			var TimerByMemberMoney = function () {
+				clearTimeout(MemberMoneyTimer);
+				MemberMoneyTimer = setTimeout(function () {
+					CatchMemberMoney();
+					TimerByMemberMoney();
+				}, 10000);
+			}
+			/*获得会员资料*/
+			var CatchMemberInfo = function () {
+				var url = `${config.url}/Members/Info/Online`
+				var data = false;
+				$.ajax({
+					type: "post",
+					url: url,
+					crossDomain: true, //设置跨域为true
+					xhrFields: {
+						withCredentials: true //默认情况下，标准的跨域请求是不会发送cookie的
+					},
+					// data: "data",
+					// dataType: "dataType",
+					success: function (response) {
+						ajax_get(url, data).done(function (rt) {
+							var fun = {}
+							response.code = "100"
+							fun["100"] = function (obj) {
+								that.find("#MemberAct").html(obj.UserId);
+								that.find("#MemberMoney").html(obj.Money)
+								// ShowMoney(obj.Money)
+							}
+							response = JSON.stringify(response);
+							my_decode(response, fun);
+						})
+					},
+					error: function (err) {
+						console.log(err)
+					}
+				});
+			}
+			/*获得得会员金额*/
+			var CatchMemberMoney = function () {
+				var url = `${config.url}/Members/Info/Online`;
+				var data = false;
+				$.ajax({
+					type: "post",
+					url: url,
+					crossDomain: true, //设置跨域为true
+					xhrFields: {
+						withCredentials: true //默认情况下，标准的跨域请求是不会发送cookie的
+					},
+					success: function (response) {
+						ajax_get(url, data).done(function (rt) {
+							var fun = {}
+							response.code = "100"
+							fun["100"] = function (obj) {
+								ShowMoney(obj.Money);
+							}
+							response = JSON.stringify(response);
+							my_decode(response, fun);
+						})
+					},
+					error: function (err) {
+						console.log(err)
+					}
+				});
+			}
+
+			var ShowMoney = function (Money) {
+				if (MemberMoney * 1 != Money * 1) {
+					var dif = GetNumber(Money - MemberMoney);
+					var s_m = that.find("#MemberMoney");
+					var s_top = s_m.offset().top;
+					var s_left = s_m.offset().left;
+					if (dif > 0) {
+						var d = $("<div/>").addClass("AddMoneyDiv").css({
+							top: s_top + 50,
+							left: s_left,
+							opacity: 0
+						}).html("+" + dif);
+						that.append(d);
+						d.stop().animate({
+							opacity: 1,
+							top: "-=50",
+						}, 1000, function () {
+							MemberMoney = Money;
+							s_m.html(MemberMoney);
+							d.remove();
+						});
+					} else {
+						MemberMoney = Money;
+						s_m.html(MemberMoney);
+						var d = $("<div/>").addClass("DelMoneyDiv").css({
+							position: "absolute",
+							top: s_top,
+							left: s_left,
+							opacity: 0
+						}).html(dif);
+						that.append(d);
+						d.stop().animate({
+							opacity: 1,
+							top: "+=50",
+						}, 1000, function () {
+							d.remove();
+						});
+					}
+				}
+			}
+			this.GetMemberMoney = function () {
+				return MemberMoney;
+			}
+			this.GetMemberInfo = function () {
+				return MemberInfo;
+			}
+			this.GetLoginInfo = function () {
+				return LoginInfo;
+			}
+			this.reset = function () {
+				CatchMemberInfo();
+				CatchMemberMoney();
+				TimerByMemberMoney();
+			}
+			var init = function () {
+				$this.reset();
+			}
+			init();
+		}
+
+		var RoomFunction = function () {
+			var $this = this;
+			var that = $("body");
+			var PreSet = "{PreSet}";
+			var PreGameID = "{PreGameID}";
+			var GoGame = function (game_id, game_name) {
+				if ($("body").has("#win_game_" + game_id).length) {
+					var win = $("#win_game_" + game_id);
+					if (win.hasClass("small")) {
+						win.trigger("ToEnlarge");
+						return;
+					}
+					if (win.hasClass("big")) {
+						win.trigger("ToTopNarrow");
+						return;
+					}
+				} else {
+					var obj = AddFooter(game_id, game_name)
+					game_zw.OpenWin({
+						type: "iframe",
+						url: "https://gw.bhe66.com/main/GoGame/" + game_id + "/" + MemLog.GetLoginInfo(),
+						title: game_name,
+						lock: false,
+						width: 1010,
+						height: 872,
+						Classify: "game_" + game_id,
+						id: "win_game_" + game_id,
+						TiedObj: obj,
+						CloseEvent: function () {
+							DelFooter(game_id);
+						}
+					});
+				}
+			}
+			/*开奖结果*/
+			// this.GoLottery = function (game_id) {
+			// 	if ($("body").has("#win_GoLottery").length) {
+			// 		var win = $("#win_GoLottery");
+			// 		if (win.hasClass("small")) {
+			// 			win.trigger("ToEnlarge");
+			// 			if (game_id) {
+			// 				open_lottery.CatchGameInfo(game_id);
+			// 				setTimeout(function () {
+			// 					win.trigger("ToTop");
+			// 				}, 100)
+			// 			}
+			// 			return;
+			// 		}
+			// 		if (win.hasClass("big")) {
+			// 			win.trigger("ToTopNarrow");
+			// 			if (game_id) {
+			// 				open_lottery.CatchGameInfo(game_id);
+			// 				setTimeout(function () {
+			// 					win.trigger("ToTop");
+			// 				}, 100)
+			// 			}
+			// 			return;
+			// 		}
+			// 	} else {
+			// 		game_zw.OpenWin({
+			// 			type: "iframe",
+			// 			url: "https://easy-mock.bookset.io/mock/5dfdac214946c20a50842159/tzgame/getGameTypeInfo",
+			// 			title: '<img src="https://gfile.bhe66.com/assets/main/room/images/nav03_icon.png" width="16"> 开奖结果',
+			// 			lock: false,
+			// 			width: 978,
+			// 			height: 592,
+			// 			Classify: "GoLottery",
+			// 			id: "win_GoLottery",
+			// 			TiedObj: $("#GoLottery"),
+			// 			TiedPosition: "center"
+			// 		});
+			// 	}
+			// }
+			/*订单管理*/
+			var GoOrder = function () {
+				if ($("body").has("#win_GoOrder").length) {
+					var win = $("#win_GoOrder");
+					if (win.hasClass("small")) {
+						win.trigger("ToEnlarge");
+						return;
+					}
+					if (win.hasClass("big")) {
+						win.trigger("ToTopNarrow");
+						return;
+					}
+				} else {
+
+					game_zw.OpenWin({
+						type: "html",
+						html: urldecode(parameter.ddgl),
+						title: '<img src="https://gfile.bhe66.com/assets/main/room/images/nav01_icon.png" width="16"> 订单管理',
+						lock: false,
+						width: 1200,
+						height: 650,
+						Classify: "GoOrder",
+						id: "win_GoOrder",
+						TiedObj: $("#GoOrder"),
+						TiedPosition: "center"
+					});
+
+				}
+			}
+			/*投注报表*/
+			var GoReport = function () {
+				if ($("body").has("#win_GoReport").length) {
+					var win = $("#win_GoReport");
+					if (win.hasClass("small")) {
+						win.trigger("ToEnlarge");
+						return;
+					}
+					if (win.hasClass("big")) {
+						win.trigger("ToTopNarrow");
+						return;
+					}
+				} else {
+					game_zw.OpenWin({
+						type: "html",
+						html: urldecode(parameter.tzbb),
+						title: '<img src="../images/nav02_icon.png" width="16"> 投注报表',
+						lock: false,
+						width: 1200,
+						height: 650,
+						Classify: "GoReport",
+						id: "win_GoReport",
+						TiedObj: $("#GoReport"),
+						TiedPosition: "center",
+						OpenEvent: function () {
+							$("#win_GoReport").find('.dpk').datetimepicker({
+								format: "Y-m-d",
+								timepicker: false,
+								defaultTime: '00:00'
+							});
+						}
+					});
+				}
+			}
+			// 走势图
+			var GoTrend = function (game_id) {
+				window.open("http://10.10.27.129:5501/kjzs.html", "newwindow", "height=900, width=1200, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no");
+			}
+			/*单双开奖统计*/
+			var GoWayvalue = function () {
+				if ($("body").has("#win_GoWayvalue").length) {
+					var win = $("#win_GoWayvalue");
+					if (win.hasClass("small")) {
+						win.trigger("ToEnlarge");
+						return;
+					}
+					if (win.hasClass("big")) {
+						win.trigger("ToTopNarrow");
+						return;
+					}
+				} else {
+					game_zw.OpenWin({
+						type: "html",
+						html: urldecode(parameter.ludan),
+						title: '<img src="../images/nav02_icon.png" width="16"> 单双开奖统计',
+						lock: false,
+						width: 1000,
+						height: 521,
+						Classify: "GoWayvalue",
+						id: "win_GoWayvalue",
+						TiedObj: $("#GoWayvalue"),
+						TiedPosition: "center"
+					});
+				}
+			}
+			/*游戏说明*/
+			var GoExplanation = function () {
+				if ($("body").has("#win_GoExplanation").length) {
+					var win = $("#win_GoExplanation");
+					if (win.hasClass("small")) {
+						win.trigger("ToEnlarge");
+						return;
+					}
+					if (win.hasClass("big")) {
+						win.trigger("ToTopNarrow");
+						return;
+					}
+				} else {
+
+					game_zw.OpenWin({
+						type: "html",
+						html: urldecode(parameter.yxsm),
+						title: '<img src="../images/nav02_icon.png" width="16"> 游戏说明',
+						lock: false,
+						width: 747,
+						height: 521,
+						Classify: "GoExplanation",
+						id: "win_GoExplanation",
+						TiedObj: $("#GoExplanation"),
+						TiedPosition: "center"
+					});
+				}
+			}
+			/*开奖统计*/
+			var GoStatistics = function () {
+				if ($("body").has("#win_GoStatistics").length) {
+					var win = $("#win_GoStatistics");
+					if (win.hasClass("small")) {
+						win.trigger("ToEnlarge");
+						return;
+					}
+					if (win.hasClass("big")) {
+						win.trigger("ToTopNarrow");
+						return;
+					}
+				} else {
+					game_zw.OpenWin({
+						type: "html",
+						html: urldecode(parameter.kjtj),
+						title: '<img src="../images/nav02_icon.png" width="16"> 开奖统计',
+						lock: false,
+						width: 747,
+						height: 566,
+						Classify: "GoExplanation",
+						id: "win_GoStatistics",
+						TiedObj: $("#GoStatistics"),
+						TiedPosition: "center"
+					});
+				}
+			}
+			this.resize = function () {
+				/*footerReSize();*/
+			}
+			var init = function () {
+				$(window).resize(function (event) {
+					$this.resize();
+				});
+				that.find("#GoLottery").click(function () {
+					window.open('http://10.10.27.129:5501/kjjg.html', "newwindow", "height=800, width=1200, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no")
+				});
+				that.find("#GoOrder").click(function () {
+					// window.open('http://10.10.27.129:5501/ddgl.html', "newwindow", "height=800, width=1000, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no")
+					GoOrder();
+				});
+				that.find("#GoReport").click(function () {
+					GoReport();
+				});
+				that.find("#GoTrend").click(function () {
+					GoTrend();
+				});
+				that.find(".history_analysis").click(function () {
+					GoTrend();
+				})
+				that.find("#GoWayvalue").click(function () {
+					GoWayvalue();
+				});
+				that.find('#GoExplanation').click(function () {
+					GoExplanation();
+				}); GoStatistics
+				that.find("#GoStatistics").click(function () {
+					GoStatistics();
+				});
+			}
+			init();
+		}
+
+		var OrderFunction = function () {
+			var $this = this;
+			var that;
+			/*订单详细资料*/
+			this.GoOrderDetails = function (OrderID) {
+				var url = 'https://gw.bhe66.com/Order/ToView/Details/' + OrderID;
+				var data = false;
+				ajax_get(url, data, function () {
+					loading(true);
+				}).always(function () {
+					loading(false);
+				}).done(function (rt) {
+					var fun = {}
+					fun["100"] = function (obj) {
+						game_zw.OpenWin({
+							type: "html",
+							html: urldecode(obj.view),
+							title: "投注明细",
+							width: 800,
+							height: 650,
+							Classify: "Details_Content",
+							id: "Details_" + obj.order_id,
+							CanSetsize: false,
+							SetWinsize: false,
+							CanSetMax: false
+						});
+					}
+					my_decode(rt, fun);
+				})
+			}
+			/*订单内容细节资料*/
+			this.GoBetContentDetails = function (OrderID) {
+				var url = 'https://gw.bhe66.com/Order/ToView/BetContentDetails/' + OrderID;
+				var data = false;
+				ajax_get(url, data, function () {
+					loading(true);
+				}).always(function () {
+					loading(false);
+				}).done(function (rt) {
+					var fun = {}
+					fun["100"] = function (obj) {
+						game_zw.OpenWin({
+							type: "html",
+							html: urldecode(obj.view),
+							title: "投注明细(" + obj.order_id + ")",
+							lock: false,
+							width: 978,
+							height: 582,
+							Classify: "Details_Content",
+							id: "BetcontentDetails_" + obj.order_id,
+							CanSetsize: false,
+							SetWinsize: false,
+							CanSetMax: false,
+							OpenEvent: function () {
+								setTimeout(function () {
+									try {
+										bet_content.resize();
+									} catch (e) { }
+								}, 500)
+							}
+						});
+					}
+					my_decode(rt, fun);
+				})
+			}
+			/*追号详细资料*/
+			this.GoChaseDetails = function (ChaseID) {
+				var url = 'https://gw.bhe66.com/Order/ToView/ChaseDetails/' + OrderID;
+				var data = false;
+				ajax_get(url, data, function () {
+					loading(true);
+				}).always(function () {
+					loading(false);
+				}).done(function (rt) {
+					var fun = {}
+					fun["100"] = function (obj) {
+						game_zw.OpenWin({
+							type: "html",
+							html: urldecode(obj.view),
+							title: "追号明细(" + obj.ChaseID + ")",
+							width: 660,
+							height: 757,
+							Classify: "ChaseDetails_Content",
+							id: "ChaseDetails_" + obj.ChaseID,
+							CanSetsize: false,
+							CanSetMax: false
+						});
+					}
+					my_decode(rt, fun);
+				})
+			}
+			var init = function () {
+				that = $("body");
+			}
+			init();
+		}
+
+		var GameControl = function (GameID) {
+			var $this = this;
+			var that = $("body");
+			var NowGameID = GameID;
+			var GameInfo = false;
+			var GamePlayInfo = false;
+			var GameBackWater = false;
+			var NowPeriods = false;
+			/*即时下单资料*/
+			var NowConversionValue = 0;
+			var NowImBetNum = 0;
+			var NowImBetMoney = 0;
+			var NowPlayID = false;
+			var NowBetInfo = false;
+			var GameClose = false;
+			var OpenPeriods = false;
+			var GamePlayFun;
+			var GameNowPeriodsStr;
+			var zw, room = false, room_fun = false;
+			this.CatchGameInfo = function () {
+				var url = 'https://easy-mock.bookset.io/mock/5dfdac214946c20a50842159/tzgame/GetWebGameInfo';
+				var data = {
+					game_id: NowGameID
+				};
+				ajax_get(url, data, function () {
+
+					loading(true);
+				}).always(function () {
+					loading(false);
+				}).done(function (rt) {
+					var fun = {}
+					fun["100"] = function (obj) {
+						GameInfo = obj.GameInfo;
+						$this.CreateGameInfo();
+						loading(false);
+					}
+					my_decode(rt, fun);
+				})
+			}
+			this.CreateGameInfo = function () {
+				if (GameInfo == false) { return; }
+				var info = GameInfo;
+				if (info.is_close_all == "Y") {
+					CloseGame()
+				} else {
+					if (info.is_maintain != "Y") {
+						$this.GetGamePeriods();
+						that.find(".maintain_content").remove();
+						CatchGameLottery();
+						GameBackWater = info.backwater * 1;
+						that.find("#MemberRakeback").html(GameBackWater);
+						that.find("#GameName").html(info.Name);
+						that.find("#PeriodsGameName").html(info.Name);
+						that.find(".GamePlayBtn[data-play_id='" + info.preset_play_id + "']").trigger("click");
+						/*玩法赔率*/
+						for (var k in info.play) {
+							if (info.play.hasOwnProperty(k)) {
+								var v = info.play[k];
+								that.find(".play_odds_str_" + v.play_id).html(GetNumber(v.odds))
+							}
+						}
+						if (info.is_chase != "Y") {
+							that.find("#OpenChase").remove();
+						} else {
+							that.find("#OpenChase").show();
+						}
+					} else {
+						that.find(".content").children().hide();
+						var div = $('<div/>').addClass('maintain-box');
+						var closetitle = $('<div/>').addClass('maintain-title').append('<span>此游戏维护中</span>');
+						div.append(closetitle);
+						var closecontent = $('<div/>').addClass('maintain-content').append('尊贵的会员您好:<br>为了提供您更便捷快速的娱乐环境，<br><span style="color:#e40303;">目前正在进行网站维护作业</span>，若有不便之处，敬请见谅。');
+						var closeimg = $('<div/>').addClass('maintain-img');
+						div.append(closecontent);
+						that.find(".content").addClass("Close").append(div).append(closeimg);
+						that.find('.cbet-money,.total-Betting').attr("readonly", "readonly").val('');
+						that.find('#Now_Betting').closest('div').html('&nbsp;')
+						that.find('#ReadyBetSend,#ResetBet').remove();
+						that.find('.betting-box-mask').show().html('此游戏维护中');
+						that.find(".maintain_content").show();
+						that.find(".game_content").remove();
+					}
+				}
+			}
+			/*抓取当下期数*/
+			var dxqs; 
+			var c_down;
+			this.GetGamePeriods = function () {
+				var url = `${config.url}/Lottery/Bet/GetBetResults?lotteryCode=50000&state=0`;
+				var data = false;
+				$.ajax({
+					type: "post",
+					url: url,
+					crossDomain: true, //设置跨域为true
+					xhrFields: {
+						withCredentials: true //默认情况下，标准的跨域请求是不会发送cookie的
+					},
+					// data: "data",
+					// dataType: "dataType",
+					success: function (response) {
+						ajax_get(url, data, function () {
+						}).always(function () {
+						}).done(function (rt) {
+							var fun = {}
+							response.code = '100'
+							fun["100"] = function (obj) {
+								try {
+									chase_fun.GetPeriods();
+								} catch (e) { }
+								NowPeriods = {};
+								// NowPeriods.Periods = obj.Periods;
+								// NowPeriods.IssueCode = obj.IssueCode;
+								// NowPeriods.CloseTime = obj.CloseTime;
+								// NowPeriods.PeriodsInfo = obj.PeriodsInfo;
+								NowPeriods.lottery_id = obj.IssueCode;
+								dxqs = NowPeriods.lottery_id
+								NowPeriods.IssueCode = obj.IssueCode
+								NowPeriods.Timer = obj.Timer += 3
+								//ppp
+								NewNowPeriods = NowPeriods
+								if (!OpenPeriods) {
+									OpenPeriods = NowPeriods;
+									$this.canvasmask({
+										status: "open"
+									})
+								}
+								$this.GetLadderOrderDistribution();
+								CreateGamePeriods();
+								that.find('#Now_Betting').html(NowPeriods.IssueCode)
+								$this.GetGameChangePeriods(NowPeriods.lottery_id)
+								c_down = new CountDown({
+									id: ".PeriodsCloseTime",
+									maturity: obj.CloseDateTime,
+									second: obj.Timer,
+									callback: function (d_time) {
+										if (d_time.h == 0 && d_time.i == 0 && d_time.s <= 5 && d_time.s != 0) {
+											$this.GameSound('countdown5')
+											// $this.GetGameToDayPeriods()
+											clearTimeout(CatchGameLotteryTimer);
+										}
+									},
+									callmaturity: function () {
+										$this.GameSound('countdowno')
+										// .function(){
+										// 	$this.GameSound('ladderstart')
+										// }
+										that.find("#PeriodsStatus").removeClass("time_icon").addClass("time_icon_out");
+										CatchGameNowLottery(NowPeriods.IssueCode);
+										clearTimeout(GetLadderOrderDistributionTimer);
+										$this.CloseGetLadderOrderDistribution();
+
+										that.find('.betting-box-mask').show();
+										that.find('#MoneyDialog').trigger("Close");
+										setTimeout(function () {
+											$this.GetGamePeriods();
+											that.find('.betting-box-mask').hide();
+										}, 10 * 1000);
+									}
+								});
+							}
+							fun["102"] = function (obj) {
+								CloseGame()
+							}
+							response = JSON.stringify(response);
+							my_decode(response, fun);
+						}).fail(function () {
+							setTimeout(function () {
+								$this.GetGamePeriods();
+							}, 1000);
+						})
+					},
+					error: function (err) {
+						console.log(err)
+					}
+				});
+			}
+			var ChangeOpenPeriods = function () {
+				OpenPeriods = NowPeriods;
+			}
+			/*楼梯遮罩*/
+			this.canvasmask = function (op) {
+				if (!OpenPeriods) {
+					ChangeOpenPeriods();
+				}
+				switch (op.status) {
+					case 'open': {
+						that.find('.openlost').show()
+						that.find('.clottery-now-period').html(OpenPeriods.IssueCode + ' 期 开盘中…').css('color', '#3d2207;').show()
+						that.find(".clottery-now").css('padding-top', '0');
+						break;
+					}
+					case 'ready': {
+						that.find('.openlost').hide()
+						that.find('.clottery-now-period').html(OpenPeriods.IssueCode + ' 期 等待开奖').css('color', '#f00;').show()
+						that.find(".clottery-now").css('padding-top', '26px');
+						break;
+					}
+					case 'opening': {
+						that.find('.ladder-mask').hide();
+						break;
+					}
+					case 'complete': {
+						that.find('.openlost').hide()
+						that.find('.clottery-now-period').html(OpenPeriods.IssueCode + ' 期 ').append(
+							LG.gstr("lang_game_ladder_with_open", {
+								lot: '<i class="ladder-piece ladder-piece-img_bet_' + op.LotteryCode + '"></i>'
+							})
+						).css('color', '#3d2207;').show()
+						that.find(".clottery-now").css('padding-top', '26px');
+						break;
+					}
+					case 'skip': {
+						that.find('.openlost').hide()
+						that.find('.clottery-now-period').html(OpenPeriods.IssueCode + ' 期 ').append(
+							LG.gstr("lang_game_ladder_with_open", {
+								lot: '<i class="ladder-piece ladder-piece-img_bet_' + op.LotteryCode + '"></i>'
+							})
+						).append('<br>(略过开奖动画)').css('color', '#3d2207;').show()
+						that.find(".clottery-now").css('padding-top', '8px');
+						break;
+					}
+					default: {
+						that.find('.openlost').hide()
+						that.find('.clottery-now-period').html(OpenPeriods.IssueCode + '期 准备中').css('color', '#f00;').show()
+						that.find(".clottery-now").css('padding-top', '26px');
+						console.log('准备中')
+					}
+				}
+			}
+			/*抓取开奖记录*/
+			var CatchGameNowLotteryTimer;
+			var CatchGameNowLottery = function (lottery_id) {
+				clearTimeout(CatchGameNowLotteryTimer)
+				$this.canvasmask({
+					status: "ready"
+				})
+				var url = `${config.url}/Lottery/LadderBet/GetBetResultByIssueCode`;
+				var data = {
+					issueCode: lottery_id
+				};
+				$.ajax({
+					type: "post",
+					url: url,
+					crossDomain: true, //设置跨域为true
+					xhrFields: {
+						withCredentials: true //默认情况下，标准的跨域请求是不会发送cookie的
+					},
+					data: data,
+					success: function (response) {
+						var fun = {}
+						response.code = '100'
+						fun["100"] = function (obj) {
+							if (lottery_id) {
+								if (obj.Content) {
+									LotteryCode = obj.Content.split('|');
+									var clottery = obj.Content.replace("|", "")
+									new_ladder.complete = function () {
+										$this.canvasmask({
+											status: "complete",
+											LotteryCode: clottery
+										})
+										setTimeout(function () {
+											if (OpenPeriods.IssueCode == NowPeriods.IssueCode) {
+												OpenPeriods = false;
+											} else {
+												ChangeOpenPeriods();
+												$this.canvasmask({
+													status: "open"
+												});
+											}
+										}, 5 * 1000);
+										CatchGameLottery();
+									}
+									$this.canvasmask({
+										status: "opening"
+									});
+									new_ladder.Start(LotteryCode);
+									$this.GameSound('ladderstart');
+									$this.GetGameToDayPeriods()
+								} else if (obj.Content == null) {
+									CatchGameNowLotteryTimer = setTimeout(function () {
+										CatchGameNowLottery(lottery_id);
+										$this.GetGameToDayPeriods()
+									}, 1000);
+								}
+							}
+
+						}
+						fun["103"] = function (obj) {
+							CatchGameNowLotteryTimer = setTimeout(function () {
+								CatchGameNowLottery(lottery_id);
+							}, 1000);
+						}
+						response = JSON.stringify(response);
+						my_decode(response, fun);
+					},
+					error: function (err) {
+						console.log(err)
+					}
+				});
+			}
+			CatchGameNowLottery()
+
+			//历史结果
+			var CatchGameLotteryTimer;
+			var CatchGameLottery = function () {
+				var url = `${config.url}/Lottery/LadderBet/GetLadderBetResultList`
+				// var data = false;
+				var date = new Date()
+				let n = date.getFullYear()
+				let y = date.getMonth()
+				let r = date.getDate()
+				if (y == 0) {
+					y += 1
+				}
+				var time = n + '-' + y + '-' + r
+				data = {
+					date: time,
+					page: 1,
+					rows: 20,
+					gameType: 'tz',
+				}
+				$.ajax({
+					type: "post",
+					url: url,
+					crossDomain: true, //设置跨域为true
+					xhrFields: {
+						withCredentials: true 
+					},
+					data: data,
+					success: function (response) {
+						response.code = '100'
+						var fun = {}
+						fun["100"] = function (obj) {
+							var table = $("<table/>").width("100%");
+							var list = obj.rows;
+							for (var i in list) {
+								var info = list[i];
+								Object.keys(info)
+								if (i <= 20) {
+									var tr = $("<tr/>").append(
+										$("<td/>").addClass("historyTable-wrap-period").append(
+											$("<span/>").html(info.IssueCode)
+										).append(function () {
+											if (info.IssueCode.length > 0) {
+												var div = $('<div/>').addClass("historyTable-wrap-scale");
+												if (info.TZ_E0 == info.TZ_E1) {
+													var span = $('<span/>').addClass('historyTable-wrap-scale-o').css('width', '50%');
+												} else {
+													var span = $('<span/>').addClass('historyTable-wrap-scale-o').css('width', info.TZ_E0 + '%');
+												}
+												div.append(span);
+												return div;
+											} else {
+												return
+											}
+										})
+									).append(function () {
+										var td = $('<td/>')
+										if (info.IssueCode.length > 0) {
+											// ladder-piece ladder-piece-img_bet_10     开奖结果  [0,1]
+											var i = $('<i/>').addClass('ladder-piece ladder-piece-img_bet_' + info.Content[0] + info.Content[2])
+											td.append(i)
+										} else {
+											td.addClass('historyTable-icon').css({ 'color': '#fff', 'line-height': '48px' }).html('等待开奖');
+										}
+										return td;
+									});
+									table.append(tr);
+								} else {
+									break;
+								}
+							}
+							that.find("#historyTable-wrap").html(table)
+						}
+						response = JSON.stringify(response);
+						my_decode(response, fun);
+					},
+					error: function (err) {
+						console.log(err)
+					}
+				});
+			}
+			
+			/*抓取购买分布*/
+			var GetLadderOrderDistributionTimer
+			this.GetLadderOrderDistribution = function (option) {
+				clearTimeout(GetLadderOrderDistributionTimer)
+				var url = `${config.url}/Lottery/LadderBet/GetLadderBetPubRate`
+				var data = {
+					issueCode: dxqs
+				};
+				$.ajax({
+					type: "post",
+					url: url,
+					crossDomain: true, //设置跨域为true
+					xhrFields: {
+						withCredentials: true
+					},
+					data: data,
+					success: function (response) {
+						var fun = {}
+						my_decode.code = '100'
+						if (response.TZ_E0 == response.TZ_E1) {
+							$('.ladder-distribution-vs-odd,.ladder-distribution-vs-even').html('50%')
+							$this.distribution()
+						}
+						else {
+							$('.ladder-distribution-vs-odd').html(response.TZ_E0)
+							$('.ladder-distribution-vs-even').html(response.TZ_E1)
+							$this.distribution()
+						}
+						response = JSON.stringify(response);
+						my_decode(response, fun);
+						GetLadderOrderDistributionTimer = setTimeout(function () {
+							$this.GetLadderOrderDistribution()
+						}, 10 * 1000)
+					},
+					error: function (err) {
+						console.log(err)
+					}
+				});
+			}
+
+			/*抓取今天期数*/
+			this.GetGameToDayPeriods = function () {
+				var url = `${config.url}/Lottery/Bet/GetBetResults?lotteryCode=50000&state=1`;
+				var data = {
+					// lotteryCode:50000,
+					// state:1
+				};
+				$.ajax({
+					type: "post",
+					url: url,
+					crossDomain: true, //设置跨域为true
+					xhrFields: {
+						withCredentials: true //默认情况下，标准的跨域请求是不会发送cookie的
+					},
+					// data:data,
+					success: function (response) {
+						ajax_get(url, data, function () {
+						}).always(function () {
+						}).done(function (rt) {
+							response.code = '100'
+							rt = JSON.parse(rt)
+							var fun = {}
+							fun["100"] = function (obj) {
+								var list = obj.Top5.reverse();
+								var list_1 = obj.Top1.IssueCode
+								var zong = parseInt(list_1) + 1
+								var s_p = that.find("select[name='ToDayPeriods']");
+								s_p.find("option").remove();
+								for (var i in list) {
+									var info = list[i];
+									s_p.append(
+										$("<option/>").text(LG.gstr("lang_period_few", {
+											"period": info.IssueCode,
+										}))
+									)
+								}
+								s_p.append(
+									$("<option/>").text(LG.gstr("lang_period_few", {
+										"period": zong,
+									}))
+								)
+								s_p.val(obj.NowLotteryID)
+								s_p.selectmenu("refresh");
+							}
+							response = JSON.stringify(response);
+							my_decode(response, fun);
+						})
+					},
+					error: function (err) {
+						console.log(err)
+					}
+				});
+			}
+
+			/*抓取投注资料*/
+			this.GetGameChangePeriods = function (IssueCode) {
+				that.find("select[name='ToDayPeriods']").val(IssueCode);
+				// $(".ui-selectmenu-text").html(that.find("select[name='ToDayPeriods'] :selected").text())
+				var cudh = $(".ui-selectmenu-text").text().slice(0, 12)
+				var url = `${config.url}/LadderBet/GetLadderBetOrder`
+				var data = {
+					issueCode: cudh
+				};
+				$.ajax({
+					type: "post",
+					url: url,
+					crossDomain: true, //设置跨域为true
+					xhrFields: {
+						withCredentials: true //默认情况下，标准的跨域请求是不会发送cookie的
+					},
+					data: data,
+					success: function (response) {
+						var fun = {}
+						response.code = '100'
+						var lottery_content = {}
+						fun["100"] = function (obj) {
+							// console.log(obj)
+							var infoMoney = obj.AllBet
+							var infoTotal = obj.BetTotal
+							$("#ladder-CurrentlyList").html('')
+							$('#ladder-CurrentlyList').html(
+								`
+							 <ul>
+								<li><span>单</span><span>${obj.TZ_E0}</span></li>
+								<li><span>双</span><span>${obj.TZ_E1}</span></li>
+								<li><span>左</span><span>${obj.TZ_S0}</span></li>
+								<li><span>右</span><span>${obj.TZ_S1}</span></li>
+								<li><span>三条</span><span>${obj.TZ_L3}</span></li>
+								<li><span>四条</span><span>${obj.TZ_L4}</span></li>
+								<li><span>三条单</span><span>${obj.TZ_T03}</span></li>
+								<li><span>四条单</span><span>${obj.TZ_T04}</span></li>
+								<li><span>三条双</span><span>${obj.TZ_T13}</span></li>
+								<li><span>四条双</span><span>${obj.TZ_T14}</span></li>
+								<li class="bet_t_s total"><span>总投注</span><span>${obj.AllBet}</span></li>
+								<li class="bet_t_s"><span>盈余</span><span>${obj.WinOrLose}</span></li>
+							</ul>
+							 `
+							)
+							$("#ladder-CurrentlyList").fadeIn(500)
+						}
+						response = JSON.stringify(response);
+						my_decode(response, fun);
+					},
+					error: function (err) {
+						console.log(err)
+					}
+				});
+			}
+			this.CloseGetLadderOrderDistribution = function () {
+				$('.ladder-distribution-vs-odd,.ladder-distribution-vs-even').html('0%')
+				$this.distribution()
+			}
+			this.distribution = function () {
+				$('.ladder-distribution-oddPer > span').animate({
+					width: $('.ladder-distribution-vs-odd').html()
+				}, 500);
+				$('.ladder-distribution-evenPer > span').animate({
+					width: $('.ladder-distribution-vs-even').html()
+				}, 500);
+			}
+			this.GetNowPeriods = function () {
+				return NowPeriods;
+			}
+			this.GetGameInfo = function () {
+				return GameInfo;
+			}
+			this.GameSound = function (sound) {
+				var hover = document.getElementById("sound_hover");
+				var click = document.getElementById("sound_click");
+				var soundcount5 = document.getElementById("sound_count5");
+				var soundcountd = document.getElementById("sound_countover");
+				var start = document.getElementById("sound_start");
+				switch (sound) {
+					case 'soundoff': {
+						hover.volume = 0;
+						click.volume = 0;
+						soundcount5.volume = 0;
+						soundcountd.volume = 0;
+						start.volume = 0;
+						break
+					}
+					case 'soundon': {
+						hover.volume = 1;
+						click.volume = 1;
+						soundcount5.volume = 1;
+						soundcountd.volume = 1;
+						start.volume = 1;
+						break
+					}
+					case 'mouseover': {
+						hover.play();
+						hover.currentTime = 0;
+						break
+					}
+					case 'mouseclick': {
+						click.play();
+						click.currentTime = 0;
+						break
+					}
+					case 'countdown5': {
+						soundcount5.play();
+						soundcount5.currentTime = 0;
+						break
+					}
+					case 'countdowno': {
+						soundcountd.play();
+						soundcountd.currentTime = 0;
+						break
+					}
+					case 'ladderstart': {
+						start.play();
+						start.currentTime = 0;
+						break
+					}
+				}
+			}
+			var CreateGamePeriods = function () {
+				that.find("#NowPeriodsNumber").html(NowPeriods.IssueCode);
+				that.find("#NowPeriodsCloseTime").html(NowPeriods.CloseTime);
+				that.find("#PeriodsStatus").removeClass("time_icon_out").addClass("time_icon");
+				that.find(".ladder-distribution-vs-title>span").html(parseInt(NowPeriods.IssueCode.substr(8)));
+			}
+			this.reset_game = function (GameID) {
+				c_down.clear_timer();
+				NowGameID = GameID;
+				$this.CatchGameInfo();
+				game_ready_bet.reset_game(GameID);
+				mem_bet_order.reset_game(GameID);
+				that.find("#MainTabs li").first().children("a").trigger("click");
+			}
+			var CloseGame = function () {
+				GameClose = true;
+				that.find("#GamePlayContent").html(
+					$("<ul/>").addClass("basic").append($("<li/>").addClass("no_game"))
+				)
+				that.find(".content").children().hide();
+				var div = $('<div/>').addClass('close-box');
+				var closetitle = $('<div/>').addClass('close-title').append('<span>目前尚未开盘</span>');
+				div.append(closetitle);
+				var closeimg = $('<div/>').addClass('maintain-img');
+				that.find(".content").addClass("Close").append(div).append(closeimg);
+				that.find('.cbet-money,.total-Betting').attr("readonly", "readonly").val('');
+				that.find('#Now_Betting').closest('div').html('&nbsp;')
+				that.find('#ReadyBetSend,#ResetBet').remove();
+				that.find('.betting-box-mask').show().html('目前尚未开盘');
+			}
+			var init = function () {
+				// inIframe()
+				if (false) {
+					zw = parent.zw;
+					room = parent;
+					room_fun = parent.room;
+				} else {
+					zw = game_zw;
+					room = false;
+					room_fun = false;
+				}
+				that.find(".openlost").html(
+					LG.gstr("lang_game_ladder_close_time", {
+						"time": '<span class="PeriodsCloseTime"> - </span>'
+					})
+				)
+				that.find("#ToDayPeriods").selectmenu({
+					change: function (event, ui) {
+						$this.GetGameChangePeriods(ui.item.value)
+					}
+				});
+				var first = false;
+				that.find('.ui-selectmenu-button').click(function () {
+					if (!first) {
+						$('.ui-selectmenu-menu .ui-menu').mCustomScrollbar({
+							theme: "dark-3"
+						});
+					}
+					var index = that.find("select[name='ToDayPeriods'] :selected").index();
+					$('.ui-selectmenu-menu .ui-menu').mCustomScrollbar("scrollTo", "#ui-id-" + index, {
+						scrollInertia: 0
+					});
+				});
+
+				/*历史box*/
+				that.find(".historyTable-wrap").mCustomScrollbar({
+					theme: "dark-3",
+					autoDraggerLength: false,
+					scrollbarPosition: "outside"
+				});
+				$this.CatchGameInfo();
+				$this.distribution()
+				$this.GetGameToDayPeriods()
+				$this.GameSound()
+				if ($('.ladder-piece-sound-off').hasClass('active')) {
+					$this.GameSound('soundoff')
+				} else {
+					$this.GameSound('soundon')
+				}
+				$('.ladder-piece-sound').click(function (event) {
+					$(this).addClass('active').siblings('.ladder-piece-sound').removeClass('active')
+					if ($('.ladder-piece-sound-off').hasClass('active')) {
+						$this.GameSound('soundoff')
+					} else {
+						$this.GameSound('soundon')
+					}
+				});
+				$(".allbtn").mouseover(function (event) {
+					$this.GameSound('mouseover')
+				});
+				$(".allbtn").click(function (event) {
+					$this.GameSound('mouseclick')
+				});
+				$('[data-toggle="tooltip"]').tooltip()
+			};
+			init();
+		};
+		var GameReadyBet = function (GameID) {
+			var $this = this;
+			var that = $("#ReadyBet");
+			// var NowGameID = GameID;
+			var NowBetInfo = [];
+			/*提交准备下注资料*/
+			var SendBetInfo = function () {
+				var map = { e: 205, s: 206, l: 207, t: 208 };
+				var send = {
+					'issueCode': NewNowPeriods.IssueCode,
+					'gameType': 'tz',
+					'BetInfo': []
+				}
+				that.find('.cbet-money').each(function (index, el) {
+					if ($(this).val() == '' || $(this).val() * 1 <= 0) {
+						return
+					}
+					var temp = {};
+					// temp.IssueCode = NewNowPeriods.IssueCode
+					// temp.lottery_id = NewNowPeriods.lottery_id;
+					temp.game_type = 'tz'
+					// temp.game_id = send.GameID;
+					temp.money = $(this).val();
+					temp.cbet = $(this).attr('name');
+					temp.play_id = map[temp.cbet.substr(0, 1).toLowerCase()];
+					temp.bet_location = '';
+					temp.bet_num = 1;
+					temp.total_money = $(this).val();
+					temp.ConversionValue = 0;
+					// send.BetInfo.push(temp)
+					send.BetInfo.push(
+						{ "money": $(this).val(), "cbet": $(this).attr('name') },
+					)
+				});
+				var sentbet_sum = 0;
+				for (var i = 0; i < send.BetInfo.length; i++) {
+					sentbet_sum += parseInt(send.BetInfo[i]['money'])
+				}
+				if (send.BetInfo.length > 0) {
+					var MemberMoney = MemLog.GetMemberMoney();
+					if (MemberMoney < sentbet_sum) {
+						ZgCreate.alert(LG.gstr("lang_system_msg"), "金额不足");
+						return;
+					}
+					var Periods = game_gontrol.GetNowPeriods();
+					ZgCreate.confirm("确认投注!?", SendConfirmContent(send), {
+						complete: function () {
+							$('.cbet-money,.total-Betting').val('0');
+							var url = `${config.url}/Lottery/SnailBet/CreditBetting`;
+							var data = send;
+							$.ajax({
+								type: "post",
+								url: url,
+								crossDomain: true, //设置跨域为true
+								xhrFields: {
+									withCredentials: true //默认情况下，标准的跨域请求是不会发送cookie的
+								},
+								data: data,
+								success: function (response) {
+									var fun = {}
+									response.code = "100"
+									fun["100"] = function (obj) {
+										var err = [];
+										for (var i in obj.re_ary) {
+											var v = obj.re_ary[i];
+											if (v.hasOwnProperty("msg")) {
+												err.push(v.msg)
+											}
+										}
+										var msg = LG.gstr("lang_game_bet_success", {
+											number: obj.bet_number,
+											success_number: obj.bet_success_number,
+											err_number: obj.bet_number - obj.bet_success_number
+										});
+										for (var i in err) {
+											if (err.hasOwnProperty(i)) {
+												msg += '<div>' + err[i] + '</div>';
+											}
+										}
+										var cg =  send.BetInfo.length
+										ZgCreate.alert(LG.gstr("lang_system_msg"), `投注${cg}笔，成功${cg}笔，失败0笔，总投注${sentbet_sum}元。`);
+										game_gontrol.GetGameChangePeriods(NewNowPeriods.lottery_id)
+										game_gontrol.GetLadderOrderDistribution()
+										$this.reset();
+										MemLog.reset();
+										try {
+											parent.MemLog.reset();
+										} catch (e) { }
+									}
+									fun["102"] = function (obj) {
+										ZgCreate.alert(LG.gstr("lang_system_msg"), "此期数已过期。");
+									}
+									fun["666"] = function (obj) {
+										ZgCreate.alert("系统讯息", "错误代码。(666)");
+									}
+									response = JSON.stringify(response);
+									my_decode(response, fun);
+								},
+								error: function (err) {
+									console.log(err)
+								}
+							});
+						}
+					});
+				} else {
+					ZgCreate.alert(LG.gstr("lang_system_msg"), "请先输入下注金额。");
+					return false;
+				}
+			}
+			/*送出前的确认资料*/
+			var SendConfirmContent = function (betdata) {
+				var Periods = game_gontrol.GetNowPeriods();
+				var PeriodsStr = Periods.PeriodsStr;
+				var GameInfo = game_gontrol.GetGameInfo();
+				var bet_total = $this.GetTotalBetInfo();
+				var bet_num = bet_total.bet_num;
+				var bet_money = bet_total.bet_money;
+				var data = '';
+				var content = $("<div/>").css({
+					"line-height": "28px",
+					"border": "1px solid #e4e4e4",
+					"border-radius": "4px",
+					"display": "inline-block"
+				})
+				content.append(
+					$("<div/>").addClass('confirm-tr').append($("<div/>").addClass('confirm-td').html('下注期数')).append($("<div/>").addClass('confirm-td').html(NewNowPeriods.IssueCode + '&nbsp;期'))
+				)
+				for (var i in betdata.BetInfo) {
+					var nub = betdata.BetInfo[i]
+					content.append(
+						$("<div/>").addClass('confirm-tr').append(
+							$("<div/>").addClass("confirm-td").html(Moneymap[betdata.BetInfo[i].cbet])
+						).append(
+							$("<div/>").addClass("confirm-td").html(betdata.BetInfo[i].money + '&nbsp;元')
+						)
+					)
+				}
+				content.append(data)
+				return content;
+			}
+			/*获得准备资料总金额  总注数 */
+			this.GetTotalBetInfo = function () {
+				var info = {};
+				info.bet_num = 0;
+				info.bet_money = 0;
+				for (var k in NowBetInfo) {
+					if (NowBetInfo.hasOwnProperty(k)) {
+						var v = NowBetInfo[k];
+						info.bet_num = info.bet_num.add(v.bet_num);
+						info.bet_money = info.bet_money.add(v.total_money);
+					}
+				}
+				return info;
+			}
+			this.ResetBetInput = function () {
+				$('.cbet-money,.total-Betting').val("0");
+			}
+			this.GetBetInfo = function () {
+				return NowBetInfo;
+			}
+			this.reset = function () {
+				NowBetInfo = [];
+				that.find('.cbet-money,.total-Betting').val("0");
+			}
+			var init = function () {
+
+				$this.reset();
+				that.find("#ClearAll").click(function () {
+					$this.reset()
+				});
+				that.find("#ReadyBetSend").click(function () {
+					SendBetInfo()
+				});
+				that.find("#ResetBet").click(function () {
+					$this.ResetBetInput()
+				});
+				that.find(".numf").keyup(function (event) {
+					var map = "0123456789"
+					var val = this.value
+					var chkv = val.toLowerCase()
+					for (var i = 0; i < chkv.length; i++) {
+						var chr = chkv.charAt(i)
+						if (map.indexOf(chr) == -1) {
+							val = val.replace(chr, "")
+						}
+					}
+					if (chkv.charAt(0) == "0") {
+						if (chkv.charAt(1) != ".") {
+							val = val.replace(chkv.charAt(0), "")
+						}
+					}
+					if (val == "") { val = 0 }
+					this.value = val
+				})
+				that.find('.cbet-money').keyup(function (event) {
+					var bet_sum = 0;
+					that.find('.cbet-money').each(function (index, el) {
+						if (!isNaN(parseInt($(this).val()))) {
+							bet_sum += parseInt($(this).val())
+						}
+					})
+					that.find('.total-Betting').val(bet_sum);
+				});
+
+				/*快速选取金额*/
+				var now_focus;
+				var min_money = 0;
+				var max_money = 10000;
+				that.find("#MoneyDialog").bind("Close", function () {
+					$(this).stop(true, true).delay(200).fadeOut(200)
+				})
+				that.find('.cbet-money').focus(function () {
+					var d = that.find("#MoneyDialog");
+					var d_height = 191 + 15;
+					var d_width = 100 / 2;
+					var m_width = $(this).outerWidth() / 2;
+					var d_top = $(this).position().top;
+					var d_left = $(this).position().left;
+					d.css({
+						top: d_top - d_height,
+						left: d_left + m_width - d_width
+					}).stop(true, true).delay(200).fadeIn(200)
+					now_focus = $(this);
+				});
+
+				that.find("#MoneyDialog .minus").click(function () {
+					var n_money = now_focus.val() * 1;
+					var t_money = $(this).attr("data-money") * 1;
+					var next_money = n_money - t_money;
+					if (next_money < min_money) {
+						next_money = min_money;
+					}
+					now_focus.val(next_money).trigger("keyup");
+				})
+				that.find("#MoneyDialog .plus").click(function () {
+					var n_money = now_focus.val() * 1;
+					var t_money = $(this).attr("data-money") * 1;
+					var next_money = n_money + t_money;
+					if (next_money > max_money) {
+						next_money = max_money;
+					}
+					now_focus.val(next_money).trigger("keyup");
+				})
+				$(document).click(function (event) {
+					var d = that.find("#MoneyDialog");
+					var eobj = $(event.target);
+					if (
+						eobj.attr('id') == d.attr("id") || eobj.closest("#" + d.attr("id")).length > 0 || eobj.hasClass("cbet-money")
+					) {
+						return
+					}
+					d.trigger("Close");
+				});
+			}
+			init();
+		}
+
+		var game_zw, MemLog, room, OrderFun, game_gontrol, game_ready_bet, mem_bet_order, new_ladder;
+
+
+		$(document).ready(function () {
+			game_zw = new ZgWindow();
+			var lang = "zh_cn"
+			var langFont = '20px Microsoft JhengHei'   //文字大小 字型
+			var sPosX = 11			// 单x轴
+			var sPosY = 244			// 单Y轴
+			var dPosX = 182			// 双x轴
+			var dPosY = 244			// 双Y轴
+
+			if (lang == 'mo_vn') {
+				langFont = '16px time new roman'
+				sPosX = 13
+				sPosY = 242
+				dPosX = 175
+				dPosY = 242
+			}
+
+			new_ladder = new ladder({
+				arrow: 'images/arrow.png',
+				ximg: 'images/x_img.png',
+				s: '单',
+				d: '双',
+				font: langFont,
+				sPosX: sPosX,
+				sPosY: sPosY,
+				dPosX: dPosX,
+				dPosY: dPosY,
+			});
+			MemLog = new MemberLog("21");
+			room = new RoomFunction();
+			OrderFun = new OrderFunction()
+			game_gontrol = new GameControl("21");
+			game_ready_bet = new GameReadyBet("21");
+		})
+		/**
+		* @author  WinSion
+		* @version 2019-12-21
+		*/
+	</script>

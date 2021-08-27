@@ -1,0 +1,277 @@
+html,
+body {
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+ul {
+  padding: 0px;
+  margin: 0px;
+}
+li {
+  list-style: none;
+}
+#vue {
+  display: flex;
+  flex-direction: column;
+}
+#vue > .box_1 {
+  flex-shrink: 0;
+}
+#vue > .container {
+  flex-grow: 1;
+  border-left: 1px solid #1a51b5;
+  border-right: 1px solid #1a51b5;
+}
+.box_1 {
+  background: #1a51b5;
+  max-width: 100%;
+}
+.box_1 .row {
+  align-items: center;
+  color: #ffffff;
+}
+.box_1 .row > div {
+  height: 90px;
+  display: flex;
+  align-items: center;
+}
+.box_1 .row .kefu {
+  justify-content: flex-end;
+}
+.header_1 {
+  height: 32px;
+  line-height: 32px;
+  position: relative;
+  background: #1a51b5;
+  color: #ffffff;
+  font-size: 16px;
+  width: 160px;
+  padding: 0px 0px 0px 10px;
+  margin: 10px 0px 10px -10px;
+  font-size: 22px;
+}
+.header_1::after {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: 0px;
+  width: 2px;
+  height: 100%;
+  background: #1a51b5;
+}
+.header_1::before {
+  position: absolute;
+  top: 0px;
+  right: -32px;
+  content: "";
+  width: 0;
+  height: 0;
+  border-right: 32px solid transparent;
+  border-left: 32px solid transparent;
+  border-bottom: 32px solid #1a51b5;
+}
+.box_2 a {
+  color: #1807ff;
+  text-decoration: none;
+}
+.box_2 .img_box {
+  position: relative;
+}
+.box_2 .img_box div {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  background: #cccccc;
+  border-radius: 100%;
+  left: 0px;
+  right: 0px;
+  bottom: 5px;
+  margin: auto;
+  font-size: 28px;
+  font-weight: bold;
+}
+.box_2 .xingxing {
+  color: red;
+}
+.box_3 {
+  padding: 0px 90px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #1a51b5;
+  position: relative;
+  margin-bottom: 30px;
+}
+.box_3 a {
+  color: #000000;
+}
+.box_3 > li {
+  width: 60px;
+  position: relative;
+  text-align: center;
+  padding: 0px 0px 10px;
+}
+.box_3 > li img {
+  width: 100%;
+}
+.box_3 > li div {
+  position: absolute;
+  left: 0px;
+  bottom: -30px;
+  width: 100%;
+}
+.box_3 > li::after {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #1807ff;
+  content: "";
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  bottom: -7px;
+  transform: rotate(45deg);
+}
+.box_3::before,
+.box_3::after {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  bottom: -5px;
+  border: 1px solid #1a51b5;
+}
+.box_3::before {
+  right: -10px;
+}
+.box_3::after {
+  left: -10px;
+}
+.box_4 {
+  margin: 10px 0px;
+}
+.box_4 a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #ececec;
+  text-align: center;
+  color: #000000;
+  text-decoration: none;
+  height: 80px;
+  margin: 0px -10px 10px -10px;
+}
+.box_4 img {
+  height: 30px;
+  margin: 0px 0px 3px;
+}
+.footer {
+  border: 1px solid #1a51b5;
+  margin: 0px 0px 20px 0px;
+  padding: 0px 0px 20px 0px;
+}
+@media (min-width: 768px) {
+  .footer {
+    background-image: url(../image/footer.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: right center;
+  }
+}
+.footer .left {
+  font-size: 14px;
+  flex-grow: 1;
+  padding: 0px 0px 0px 25px;
+}
+.footer .left .img_1 {
+  height: 60px;
+  background-image: url(../image/font.png);
+  background-size: auto 140%;
+  background-repeat: no-repeat;
+  background-position: -15px center;
+}
+.footer .left .img_2 img {
+  height: 40px;
+}
+.footer .left a {
+  color: #1a51b5;
+}
+.footer .left .download {
+  margin: 20px 0px 0px 0px;
+  display: flex;
+}
+@media (min-width: 992px) {
+  .footer .left .download {
+    padding: 0px 0px 0px 47px;
+  }
+}
+@media (max-width: 768px) {
+  .footer .left .download {
+    justify-content: center;
+  }
+}
+.footer .left .download > div {
+  border: 1px solid #1a51b5;
+  display: flex;
+  align-items: center;
+  padding: 3px 5px;
+}
+.footer .left .download img {
+  height: 25px;
+}
+.footer .left .download .margin_left {
+  margin: 0px 0px 0px 20px;
+}
+.yuMingRenZheng {
+  background: #ffffff;
+  margin-bottom: 10px;
+  padding: 10px 0px;
+}
+.yuMingRenZheng .title_2 > div:nth-child(1) {
+  font-size: 50px;
+}
+@media (max-width: 768px) {
+  .yuMingRenZheng .title_2 > div:nth-child(1) {
+    font-size: 20px;
+  }
+}
+.yuMingRenZheng .title_2 > div:nth-child(2) {
+  font-size: 30px;
+}
+@media (max-width: 768px) {
+  .yuMingRenZheng .title_2 > div:nth-child(2) {
+    font-size: 16px;
+  }
+}
+.yuMingRenZheng .tishi_1 > span:nth-child(1) {
+  font-size: 18px;
+}
+.yuMingRenZheng .tishi_1 > span:nth-child(2) {
+  font-size: 14px;
+  color: #ff9200;
+}
+.yuMingRenZheng .input_1 {
+  margin: 10px 0px;
+}
+.yuMingRenZheng .tishi_2 {
+  font-size: 18px;
+}
+.yuMingRenZheng .tishi_2 .err {
+  color: #ff9200;
+}
+.yuMingRenZheng .tishi_2 .chenggong {
+  color: green;
+}
+/* 超小屏幕（手机，小于 768px） */
+/* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */
+/* 小屏幕（平板，大于等于 768px） */
+@media (max-width: 768px) {
+  body > .container {
+    border-left: none;
+    border-right: none;
+  }
+}
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+/* 大屏幕（大桌面显示器，大于等于 1200px） */

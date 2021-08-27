@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<meta name="HandheldFriendly" content="true"/>
+		<meta name="MobileOptimized" content="320"/>
+		<title>Hello H5+</title>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../mui.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+    	<script type="text/javascript">
+var url="http://www.dcloud.io/";
+var xhr=null;
+
+function xhrCreate() {
+	if ( xhr ) {
+		outLine( "xhr请求已创建" );
+		return;
+	}
+	outSet( "创建请求：" );
+	xhr = new plus.net.XMLHttpRequest();
+	xhr.onreadystatechange = function () {
+        switch ( xhr.readyState ) {
+            case 0:
+            	outLine( "xhr请求已初始化" );
+            break;
+            case 1:
+            	outLine( "xhr请求已打开" );
+            break;
+            case 2:
+            	outLine( "xhr请求已发送" );
+            break;
+            case 3:
+                outLine( "xhr请求已响应");
+                break;
+            case 4:
+                outLine( "xhr请求已完成");
+                if ( xhr.status == 200 ) {
+                	outLine( "xhr请求成功："+xhr.responseText );
+                } else {
+                	outLine( "xhr请求失败："+xhr.status );
+                }
+                break;
+            default :
+                break;
+        }
+	}
+	// xhr.open( "GET", url );
+	xhr.open( "POST", 'https://0698aa.com/mapi/home/WinList' );
+	xhr.send();
+}
+function xhrResponseHeader() {
+	if ( xhr ) {
+		if ( xhr.readyState != 4 ) {
+			outLine( "xhr请求未完成" );
+		} else if ( xhr.status != 200 ) {
+			outSet( "xhr请求失败："+xhr.readyState );
+		} else {
+			outSet( "xhr请求响应头数据：" );
+			outLine( xhr.getAllResponseHeaders() );
+		}
+	} else {
+		outSet( "未发送请求" );
+	}
+}
+function xhrAbort() {
+	if ( xhr ) {
+		outSet( "取消请求" );
+		if ( xhr.readyState != 4 ) {
+			xhr.abort();
+		}
+		xhr = null;
+	} else {
+		outSet( "未发送请求" );
+	}
+}
+
+function qita(){
+	console.log('其他测试')
+	axios.post('https://0698aa.com/mapi/home/WinList').then(x=>{
+		console.log(JSON.stringify(x))
+	}).catch(err=>{
+		console.log(JSON.stringify(err))
+	})
+}
+
+function qita1(){
+	mui.ajax('https://0698aa.com/mapi/home/WinList',{
+		type:'post',//HTTP请求类型
+		timeout:10000,//超时时间设置为10秒；
+		success:function(data){
+			console.log('正确',JSON.stringify(data))
+		},
+		error:function(xhr,type,errorThrown){
+			console.log(xhr,type,errorThrown)
+		}
+	});
+}
+function jqAjax(){
+	$.ajax({
+	    type: "POST",
+	    url: "https://0698aa.com/mapi/home/WinList",
+	    success: function (response) {
+	        console.log('正确',JSON.stringify(response))
+	    },
+		error:function(err) {
+			console.log('错误',JSON.stringify(err))
+		}
+	});
+}
+
+    	</script>
+		<link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8"/>
+	</head>
+	<body>
+		<br/>
+		<ul class="dlist">
+			<li class="ditem" onclick="xhrCreate();">发送请求</li>
+			<li class="ditem" onclick="xhrResponseHeader();">获取所有响应头</li>
+			<li class="ditem" onclick="xhrAbort();">取消请求</li>
+			<li class="ditem" onclick="qita()">axios跨域测试</li>
+			<li class="ditem" onclick="qita1()">muiajax</li>
+			<li class="ditem" onclick="jqAjax()">jqAjax</li>
+		</ul>
+		<input type="text" name="" id="" value="" />
+		<div id="outpos"/>
+	    <div id="output">XMLHttpRequest管理网络请求操作，可进行跨域网络数据请求。</div>
+	</body>
+</html>

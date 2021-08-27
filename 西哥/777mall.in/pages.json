@@ -1,0 +1,273 @@
+{
+	"pages": [{
+			"path": "pages/home",
+			"style": {
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path": "pages/products/product",
+			"style": {
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path": "pages/game/game",
+			"style": {
+				"navigationBarTitleText": "Game"
+			}
+		},
+		{
+			"path": "pages/my/personal",
+			// "aliasPath": "/my",
+			"style": {
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "uni-ui基础项目"
+			}
+		}, {
+			"path": "pages/products/productDetails",
+			"style": {
+				"navigationBarTitleText": "Product"
+			}
+		},
+		{
+			"path": "pages/login",
+			"style": {
+				"navigationBarTitleText": "Login"
+			}
+		},
+		{
+			"path": "pages/registered",
+			"style": {
+				"navigationBarTitleText": "Register"
+			}
+		}, {
+			"path": "pages/my/promotion",
+			"style": {
+				"navigationBarTitleText": "Promotion"
+				// "app-plus": {
+				// 	"titleNView": {
+				// 		"buttons": [{
+				// 			"type": "menu"
+				// 		}]
+				// 	}
+				// },
+				// "h5": {
+				// 	"titleNView": {
+				// 		"buttons": [{
+				// 			"type": "menu"
+				// 		}]
+				// 	}
+				// }
+			}
+
+		}, {
+			"path": "pages/my/PromotionRecord", //好像是促销记录
+			"style": {
+				"navigationBarTitleText": "Promotion Record"
+			}
+
+		}, {
+			"path": "pages/my/BonusRecord", //奖金记录
+			"style": {
+				"navigationBarTitleText": "Bonus Record"
+			}
+
+		}, {
+			"path": "pages/my/ApplyRecord",
+			"style": {
+				"navigationBarTitleText": "Apply Record"
+			}
+
+		}, {
+			"path": "pages/my/Recharge", //充值
+			"style": {
+				"navigationBarTitleText": "Recharge",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"type": "menu"
+						}]
+					}
+				}
+			}
+		}, {
+			"path": "pages/my/RechargeRecord", //充值记录
+			"style": {
+				"navigationBarTitleText": "Recharge Record",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/my/withdrawal", //提现
+			"style": {
+				"navigationBarTitleText": "Withdrawal",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"type": "menu"
+						}]
+					}
+				}
+			}
+		}, {
+			"path": "pages/my/WithdrawalRecord", //提现记录
+			"style": {
+				"navigationBarTitleText": "WithdrawalRecord"
+			}
+
+		},
+		{
+			"path": "pages/my/Transactions", //交易
+			"style": {
+				"navigationBarTitleText": "Transactions"
+			}
+		}
+	    ,{
+            "path" : "pages/card/cardList",   //银行卡列表
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "Bank Card List",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/card/card",   //银行卡
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "Edit Bank Card",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/my/ResetPassword",		//修改密码
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "ResetPassword"
+            }
+            
+        }
+        ,{
+            "path" : "pages/Feedback/Feedback",  //意见反馈
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "Feedback",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"text":"+"
+						}]
+					}
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/Feedback/FeedBackAdd",  //添加反馈
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "Feedback Add"
+            }
+            
+        }
+        ,{
+            "path" : "pages/about/PrivacyPolicy", 	//隐私策略
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "Privacy Policy", 
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/about/RiskAgreement",	//风险协议
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "Risk Disclosure Agreement",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/ForgetPassword",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "Forget Password"
+            }
+            
+        }
+        ,{
+            "path" : "pages/my/personalInfo",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "Personal Info"
+            }
+            
+        }
+        ,{
+            "path" : "pages/my/orders",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "My Orders"
+            }
+            
+        }
+        ,{
+            "path" : "pages/game/record",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "Game Record"
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarBackgroundColor": "#e62534"
+	},
+	"tabBar": {
+		"custom": true,
+		"color": "#FFFFFF",
+		"selectedColor": "#fff",
+		"borderStyle": "black",
+		"backgroundColor": "#e62534",
+		"list": [{
+				"pagePath": "pages/home",
+				"iconPath": "static/tabber/home.png",
+				"selectedIconPath": "static/tabber/home.png",
+				"text": "Home"
+			},
+			{
+				"pagePath": "pages/products/product",
+				"iconPath": "static/tabber/sousuo.png",
+				"selectedIconPath": "./static/tabber/sousuo.png",
+				"text": "Search"
+			},
+			// {
+			// 	"pagePath": "pages/game/game",
+			// 	"iconPath": "static/tabber/qian.png",
+			// 	"selectedIconPath": "static/tabber/qian.png",
+			// 	"text": "game"
+			// },
+			{
+				"pagePath": "pages/my/personal",
+				"iconPath": "static/tabber/my.png",
+				"selectedIconPath": "static/tabber/my.png",
+				"text": "My"
+			}
+		]
+	}
+}

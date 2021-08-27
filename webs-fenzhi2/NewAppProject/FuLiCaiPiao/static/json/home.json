@@ -1,0 +1,3335 @@
+[
+    {
+        "title": "彩票",
+        "children": [
+            {
+                "title": "所有彩种",
+                "img": "caipiao",
+                "ext": ".png",
+                "menuCode": "",
+                "type": "cp",
+                "children": [
+                    {
+                        "id":"40003",
+                        "imgid":"40003",
+                        "title":"江苏快3",
+                        "desc":"20分钟"
+                    },{
+                        "id": "40005",
+                        "imgid": "40005",
+                        "title": "五分快3",
+                        "desc": "5分钟"
+                    },
+                    {
+                        "id": "40004",
+                        "imgid": "40004",
+                        "title": "分分快3",
+                        "desc": "1分钟"
+                    },
+                    {
+                        "id": "h-agent",
+                        "imgid": "h-agent",
+                        "title": "代理加盟",
+                        "url": "/cpindex/agent/agent.html"
+                    },
+                    {
+                        "id": "10002",
+                        "imgid": "10002",
+                        "title": "重庆时时彩",
+                        "desc": "20分钟"
+                    },
+                    {
+                        "id": "20001",
+                        "imgid": "20001",
+                        "title": "北京PK拾",
+                        "desc": "20分钟"
+                    },
+                    {
+                        "id": "10001",
+                        "imgid": "10001",
+                        "title": "分分时时彩",
+                        "desc": "1分钟"
+                    },
+                    {
+                        "id": "10003",
+                        "imgid": "10003",
+                        "title": "五分时时彩",
+                        "desc": "5分钟"
+                    },
+                    {
+                        "id": "70001",
+                        "imgid": "70001",
+                        "title": "香港六合彩",
+                        "desc": "2天或3天"
+                    },
+                    {
+                        "id": "20002",
+                        "imgid": "20002",
+                        "title": "幸运飞艇",
+                        "desc": "5分钟"
+                    },
+                    {
+                        "id": "20004",
+                        "imgid": "20004",
+                        "title": "五分PK拾",
+                        "desc": "5分钟"
+                    },
+                    {
+                        "id": "20000",
+                        "imgid": "20000",
+                        "title": "极速PK拾",
+                        "desc": "1分钟"
+                    },
+                    {
+                        "id": "20003",
+                        "imgid": "20003",
+                        "title": "威尼斯飞艇",
+                        "desc": "3分钟"
+                    },
+                    {
+                        "id": "70000",
+                        "imgid": "70000",
+                        "title": "极速六合彩",
+                        "desc": "5分钟"
+                    },
+                    {
+                        "id": "10000",
+                        "imgid": "10000",
+                        "title": "三分时时彩",
+                        "desc": "3分钟"
+                    },
+                    {
+                        "id": "50000",
+                        "imgid": "50000",
+                        "title": "幸运28",
+                        "desc": "2分钟"
+                    },
+                    {
+                        "id": "60005",
+                        "imgid": "60005",
+                        "title": "分分11选5",
+                        "desc": "1分钟"
+                    },
+                    {
+                        "id": "60000",
+                        "imgid": "60000",
+                        "title": "山东11选5",
+                        "desc": "20分钟"
+                    },
+                    {
+                        "id": "60001",
+                        "imgid": "60001",
+                        "title": "广东11选5",
+                        "desc": "20分钟"
+                    },
+                    {
+                        "id": "30002",
+                        "imgid": "30002",
+                        "title": "极速3D",
+                        "desc": "1分钟"
+                    },
+                    {
+                        "id": "30000",
+                        "imgid": "30000",
+                        "title": "排列三",
+                        "desc": "20:25:00"
+                    },
+                    {
+                        "id": "30001",
+                        "imgid": "30001",
+                        "title": "福彩3D",
+                        "desc": "21:10:00"
+                    }
+                ]
+            },
+            {
+                "title": "快三",
+                "img": "caipiao",
+                "ext": ".png",
+                "menuCode": "kuaisan",
+                "type": "cp",
+                "children": [
+    
+                    {
+                        "id": "40004",
+                        "imgid": "40004",
+                        "title": "分分快3",
+                        "desc": "1分钟"
+                    },{
+                        "id": "40005",
+                        "imgid": "40005",
+                        "title": "五分快3",
+                        "desc": "5分钟"
+                    },{
+                        "id":"40003",
+                        "imgid":"40003",
+                        "title":"江苏快3",
+                        "desc":"20分钟"
+                    }
+                ]
+            },
+            {
+                "title": "PK10",
+                "img": "caipiao",
+                "ext": ".png",
+                "menuCode": "pkshi",
+                "type": "cp",
+                "children": [
+                    {
+                        "id": "20001",
+                        "imgid": "20001",
+                        "title": "北京PK拾",
+                        "desc": "20分钟"
+                    },
+                    {
+                        "id": "20004",
+                        "imgid": "20004",
+                        "title": "五分PK拾",
+                        "desc": "5分钟"
+                    },
+                    {
+                        "id": "20000",
+                        "imgid": "20000",
+                        "title": "极速PK拾",
+                        "desc": "1分钟"
+                    }
+                ]
+            },
+            {
+                "title": "飞艇",
+                "img": "caipiao",
+                "ext": ".png",
+                "menuCode": "feiting",
+                "type": "cp",
+                "children": [
+                    {
+                        "id": "20002",
+                        "imgid": "20002",
+                        "title": "幸运飞艇",
+                        "desc": "5分钟"
+                    },
+                    {
+                        "id": "20003",
+                        "imgid": "20003",
+                        "title": "威尼斯飞艇",
+                        "desc": "3分钟"
+                    }
+                ]
+            },
+            {
+                "title": "时时彩",
+                "img": "caipiao",
+                "ext": ".png",
+                "menuCode": "shishicai",
+                "type": "cp",
+                "children": [
+                    {
+                        "id": "10002",
+                        "imgid": "10002",
+                        "title": "重庆时时彩",
+                        "desc": "20分钟"
+                    },
+                    {
+                        "id": "10001",
+                        "imgid": "10001",
+                        "title": "分分时时彩",
+                        "desc": "1分钟"
+                    },
+                    {
+                        "id": "10000",
+                        "imgid": "10000",
+                        "title": "三分时时彩",
+                        "desc": "3分钟"
+                    },
+                    {
+                        "id": "10003",
+                        "imgid": "10003",
+                        "title": "五分时时彩",
+                        "desc": "5分钟"
+                    }
+                ]
+            },
+            {
+                "title": "六合彩",
+                "img": "caipiao",
+                "ext": ".png",
+                "menuCode": "liuhecai",
+                "type": "cp",
+                "children": [
+                    {
+                        "id": "70001",
+                        "imgid": "70001",
+                        "title": "香港六合彩",
+                        "desc": "2天或3天"
+                    },
+                    {
+                        "id": "70000",
+                        "imgid": "70000",
+                        "title": "极速六合彩",
+                        "desc": "5分钟"
+                    }
+                ]
+            },
+            {
+                "title": "PC蛋蛋",
+                "img": "caipiao",
+                "ext": ".png",
+                "menuCode": "pcdandan",
+                "type": "cp",
+                "children": [
+                    {
+                        "id": "50000",
+                        "imgid": "50000",
+                        "title": "幸运28",
+                        "desc": "2分钟"
+                    }
+                ]
+            },
+            {
+                "title": "11选5",
+                "img": "caipiao",
+                "ext": ".png",
+                "menuCode": "shiyixuanwu",
+                "type": "cp",
+                "children": [
+                    {
+                        "id": "60005",
+                        "imgid": "60005",
+                        "title": "分分11选5",
+                        "desc": "1分钟"
+                    },
+                    {
+                        "id": "60000",
+                        "imgid": "60000",
+                        "title": "山东11选5",
+                        "desc": "20分钟"
+                    },
+                    {
+                        "id": "60001",
+                        "imgid": "60001",
+                        "title": "广东11选5",
+                        "desc": "20分钟"
+                    }
+                ]
+            },
+           
+            {
+                "title": "低频彩",
+                "img": "caipiao",
+                "ext": ".png",
+                "menuCode": "dipincai",
+                "type": "cp",
+                "children": [
+                    {
+                        "id": "30002",
+                        "imgid": "30002",
+                        "title": "极速3D",
+                        "desc": "1分钟"
+                    },
+                    {
+                        "id": "30001",
+                        "imgid": "30001",
+                        "title": "福彩3D",
+                        "desc": "21:10:00"
+                    },
+                    {
+                        "id": "30000",
+                        "imgid": "30000",
+                        "title": "排列3",
+                        "desc": "20:25:00"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "真人",
+        "noSub": "true",
+        "children": [
+            {
+                "id": "11",
+                "imgid": "sx_game",
+                "title": "AG视讯",
+                "type": "AG",
+                "img": "shixun",
+                "ext": ".jpg"
+            },
+            {
+                "id": "live",
+                "imgid": "BBINlobby",
+                "title": "BBIN视讯大厅",
+                "type":"BY",
+                "img":"shixun",
+                "ext":".jpg"
+            },
+            {
+                "id": "1",
+                "imgid": "1",
+                "title": "BG视讯大厅",
+                "type":"BG",
+                "img":"shixun",
+                "ext":".jpg"
+            },
+            {
+                "id": "lobby",
+                "imgid": "lobby",
+                "title": "OG视讯大厅",
+                "type":"OG",
+                "img":"shixun",
+                "ext": ".jpg"
+            },
+            {
+                "id": "qp",
+                "imgid": "0",
+                "title": "申博视讯大厅",
+                "type":"TG",
+                "img":"shixun",
+                "ext": ".jpg"
+            },
+            {
+                "id": "100",
+                "imgid": "100",
+                "title": "欧博视讯-游戏大厅",
+                "img": "shixun",
+                "type": "AB",
+                "ext": ".jpg"
+            },
+            {
+                "id": "0",
+                "imgid": "EB",
+                "title": "易博视讯大厅",
+                "img": "shixun",
+                "type": "EB",
+                "ext": ".jpg"
+            },
+            {
+                "id": "16",
+                "imgid": "vr",
+                "title": "VR彩票",
+                "type":"VR",
+                "img":"shixun",
+                "ext":".jpg"
+            }
+        ]
+    },
+    
+    {
+        "title": "棋牌",
+        "children": [
+            {
+                "title": "欢乐棋牌",
+                "type": "hl",
+                "img": "hl",
+                "ext": ".png",
+                "children": [
+                    {
+                        "id": "0",
+                        "imgid": "lobby",
+                        "title": "欢乐棋牌大厅"
+                    },
+                    {
+                        "id": "dice",
+                        "imgid": "dice",
+                        "title": "大话骰"
+                    },
+                    {
+                        "id": "qznn",
+                        "imgid": "qznn",
+                        "title": "抢庄牛牛"
+                    },
+                    {
+                        "id": "jdnn",
+                        "imgid": "jdnn",
+                        "title": "经典牛牛"
+                    },
+                    {
+                        "id": "kpqznn",
+                        "imgid": "kpqznn",
+                        "title": "看牌抢庄"
+                    },
+                    {
+                        "id": "kszqznn",
+                        "imgid": "kszqznn",
+                        "title": "看四张抢庄牛牛"
+                    },
+                    {
+                        "id": "sg",
+                        "imgid": "sg",
+                        "title": "三公"
+                    },
+                    {
+                        "id": "ebg",
+                        "imgid": "ebg",
+                        "title": "二八杠"
+                    },
+                    {
+                        "id": "dresyd",
+                        "imgid": "dresyd",
+                        "title": "多人21点"
+                    },
+                    {
+                        "id": "sss",
+                        "imgid": "sss",
+                        "title": "十三水"
+                    },
+                    {
+                        "id": "qzpj",
+                        "imgid": "qzpj",
+                        "title": "抢庄牌九"
+                    },
+                    {
+                        "id": "qzesyd",
+                        "imgid": "qzesyd",
+                        "title": "抢庄21点"
+                    },
+                    {
+                        "id": "srtbnn",
+                        "imgid": "srtbnn",
+                        "title": "四人通比牛牛"
+                    },
+                    {
+                        "id": "hllh",
+                        "imgid": "hllh",
+                        "title": "欢乐龙虎"
+                    },
+                    {
+                        "id": "hhdz",
+                        "imgid": "hhdz",
+                        "title": "红黑大战"
+                    },
+                    {
+                        "id": "zjh",
+                        "imgid": "zjh",
+                        "title": "炸金花"
+                    },
+                    {
+                        "id": "brnn",
+                        "imgid": "brnn",
+                        "title": "百人牛牛"
+                    },
+                    {
+                        "id": "qzsz",
+                        "imgid": "qzsz",
+                        "title": "抢庄三张"
+                    },
+                    {
+                        "id": "psz",
+                        "imgid": "psz",
+                        "title": "拼三张"
+                    },
+                    {
+                        "id": "xyejs",
+                        "imgid": "xyejs",
+                        "title": "德州2+3"
+                    },
+                    {
+                        "id": "hldn",
+                        "imgid": "hldn",
+                        "title": "欢乐斗牛"
+                    },
+                    {
+                        "id": "xywz",
+                        "imgid": "xywz",
+                        "title": "幸运五张"
+                    },
+                    {
+                        "id": "xyesyd",
+                        "imgid": "xyesyd",
+                        "title": "幸运21点"
+                    },
+                    {
+                        "id": "xybb",
+                        "imgid": "xybb",
+                        "title": "幸运博饼"
+                    }
+                ]
+            },
+            {
+                "title": "开元棋牌",
+                "type": "KY",
+                "img": "ky",
+                "ext": ".png",
+                "children": [
+                    {
+                        "id": "0",
+                        "imgid": "0",
+                        "title": "开元棋牌"
+                    },
+                    {
+                        "id": "830",
+                        "imgid": "830",
+                        "title": "抢庄牛牛"
+                    },
+                    {
+                        "id": "620",
+                        "imgid": "620",
+                        "title": "德州扑克"
+                    },
+                    {
+                        "id": "220",
+                        "imgid": "220",
+                        "title": "炸金花"
+                    },
+                    {
+                        "id": "860",
+                        "imgid": "860",
+                        "title": "三公"
+                    },
+                    {
+                        "id": "720",
+                        "imgid": "720",
+                        "title": "二八杠"
+                    },
+                    {
+                        "id": "610",
+                        "imgid": "610",
+                        "title": "斗地主"
+                    },
+                    {
+                        "id": "930",
+                        "imgid": "930",
+                        "title": "百人牛牛"
+                    },
+                    {
+                        "id": "870",
+                        "imgid": "870",
+                        "title": "通比牛牛"
+                    },
+                    {
+                        "id": "910",
+                        "imgid": "910",
+                        "title": "百家乐"
+                    },
+                    {
+                        "id": "600",
+                        "imgid": "600",
+                        "title": "21点"
+                    },
+                    {
+                        "id": "230",
+                        "imgid": "230",
+                        "title": "极速炸金花"
+                    },
+                    {
+                        "id": "920",
+                        "imgid": "920",
+                        "title": "森林舞会"
+                    },
+                    {
+                        "id": "650",
+                        "imgid": "650",
+                        "title": "血流成河"
+                    },
+                    {
+                        "id": "900",
+                        "imgid": "900",
+                        "title": "押庄龙虎"
+                    },
+                    {
+                        "id": "730",
+                        "imgid": "730",
+                        "title": "抢庄牌九"
+                    }
+                ]
+            },
+            {
+                "title": "GM棋牌",
+                "type": "GM",
+                "img": "gm",
+                "ext": ".png",
+                "children": [
+                    {
+                        "id": "0",
+                        "imgid": "0",
+                        "title": "GM大厅"
+                    },
+                    {
+                        "id": "1001",
+                        "imgid": "1001",
+                        "title": "炸金花"
+                    },
+                    {
+                        "id": "1002",
+                        "imgid": "1002",
+                        "title": "极速炸金花"
+                    },
+                    {
+                        "id": "2001",
+                        "imgid": "2001",
+                        "title": "德州扑克"
+                    },
+                    {
+                        "id": "2006",
+                        "imgid": "2006",
+                        "title": "百人德州"
+                    },
+                    {
+                        "id": "3001",
+                        "imgid": "3001",
+                        "title": "随机庄家牛牛"
+                    },
+                    {
+                        "id": "3002",
+                        "imgid": "3002",
+                        "title": "看牌抢庄牛牛"
+                    },
+                    {
+                        "id": "3003",
+                        "imgid": "3003",
+                        "title": "百人牛牛"
+                    },
+                    {
+                        "id": "3008",
+                        "imgid": "3008",
+                        "title": "通比牛牛"
+                    },
+                    {
+                        "id": "4001",
+                        "imgid": "4001",
+                        "title": "港式五张"
+                    },
+                    {
+                        "id": "9004",
+                        "imgid": "9004",
+                        "title": "二人斗地主"
+                    },
+                    {
+                        "id": "10103",
+                        "imgid": "10103",
+                        "title": "二人麻将"
+                    },
+                    {
+                        "id": "15003",
+                        "imgid": "15003",
+                        "title": "三公"
+                    },
+                    {
+                        "id": "22001",
+                        "imgid": "22001",
+                        "title": "百人龙虎"
+                    },
+                    {
+                        "id": "23001",
+                        "imgid": "23001",
+                        "title": "百人炸金花"
+                    },
+                    {
+                        "id": "24001",
+                        "imgid": "24001",
+                        "title": "百家乐"
+                    },
+                    {
+                        "id": "25001",
+                        "imgid": "25001",
+                        "title": "十三水"
+                    },
+                    {
+                        "id": "26001",
+                        "imgid": "26001",
+                        "title": "二八杠"
+                    },
+                    {
+                        "id": "27001",
+                        "imgid": "27001",
+                        "title": "二十一点"
+                    },
+                    {
+                        "id": "28001",
+                        "imgid": "28001",
+                        "title": "抢庄牌九"
+                    }
+                ]
+            },
+            {
+                "title": "爱棋牌",
+                "type": "QL",
+                "img": "ql",
+                "ext": ".png",
+                "children": [
+                    {
+                        "id": "0",
+                        "imgid": "0",
+                        "title": "761大厅"
+                    },
+
+                   
+                    {
+                        "id": "texas",
+                        "imgid": "11",
+                        "title": "德州扑克"
+                    },
+                    {
+                        "id": "bull/jdnn",
+                        "imgid": "31",
+                        "title": "经典牛牛"
+                    },
+                    {
+                        "id": "bull/kpqz",
+                        "imgid": "32",
+                        "title": "看牌抢庄"
+                    },
+                    {
+                        "id": "bull/tbnn",
+                        "imgid": "33",
+                        "title": "通比牛牛"
+                    },
+                    {
+                        "id": "bull/qznn",
+                        "imgid": "34",
+                        "title": "抢庄牛牛"
+                    },
+                    {
+                        "id": "dsnh",
+                        "imgid": "53",
+                        "title": "大圣闹海"
+                    },
+                    {
+                        "id": "baccarat",
+                        "imgid": "61",
+                        "title": "欢乐30秒"
+                    },
+                    {
+                        "id": "hundredbull",
+                        "imgid": "62",
+                        "title": "百人牛牛"
+                    },
+                    {
+                        "id": "doratora",
+                        "imgid": "63",
+                        "title": "龙虎"
+                    },
+                    {
+                        "id": "carbrand",
+                        "imgid": "64",
+                        "title": "奔驰宝马"
+                    },
+                    {
+                        "id": "animal",
+                        "imgid": "65",
+                        "title": "飞禽走兽"
+                    },
+                    {
+                        "id": "zjh",
+                        "imgid": "81",
+                        "title": "炸金花"
+                    },
+                    {
+                        "id": "g28",
+                        "imgid": "91",
+                        "title": "二八杠"
+                    },
+                    {
+                        "id": "fivecards",
+                        "imgid": "101",
+                        "title": "港式五张"
+                    },
+                    {
+                        "id": "sss",
+                        "imgid": "111",
+                        "title": "十三水"
+                    },
+                    {
+                        "id": "xxl",
+                        "imgid": "121",
+                        "title": "宝石消消乐"
+                    }
+                ]
+            },
+            {
+                "title": "乐游棋牌",
+                "type": "LY",
+                "img": "ly",
+                "ext": ".png",
+                "children": [
+                    {
+                        "id": "0",
+                        "imgid": "0",
+                        "title": "乐游棋牌大厅"
+                    },
+                    {
+                        "id": "830",
+                        "imgid": "830",
+                        "title": "抢庄牛牛"
+                    },
+                    {
+                        "id": "890",
+                        "imgid": "890",
+                        "title": "看三张抢庄牛牛"
+                    },
+                    {
+                        "id": "600",
+                        "imgid": "600",
+                        "title": "21点"
+                    },
+                    {
+                        "id": "610",
+                        "imgid": "610",
+                        "title": "斗地主"
+                    },
+                    {
+                        "id": "740",
+                        "imgid": "740",
+                        "title": "二人麻将"
+                    },
+                    {
+                        "id": "8150",
+                        "imgid": "8150",
+                        "title": "看四张抢庄牛牛"
+                    },
+                    {
+                        "id": "860",
+                        "imgid": "860",
+                        "title": "三公"
+                    },
+                    {
+                        "id": "950",
+                        "imgid": "950",
+                        "title": "红黑大战"
+                    },
+                    {
+                        "id": "900",
+                        "imgid": "900",
+                        "title": "龙虎斗"
+                    },
+                    {
+                        "id": "910",
+                        "imgid": "910",
+                        "title": "百家乐"
+                    },
+                    {
+                        "id": "870",
+                        "imgid": "870",
+                        "title": "通比牛牛"
+                    },
+                    {
+                        "id": "8130",
+                        "imgid": "8130",
+                        "title": "跑得快"
+                    },
+                    {
+                        "id": "620",
+                        "imgid": "620",
+                        "title": "德州扑克"
+                    },
+                    {
+                        "id": "220",
+                        "imgid": "220",
+                        "title": "炸金花"
+                    },
+                    {
+                        "id": "8160",
+                        "imgid": "8160",
+                        "title": "癞子牛牛"
+                    },
+                    {
+                        "id": "720",
+                        "imgid": "720",
+                        "title": "二八杠"
+                    },
+                    {
+                        "id": "730",
+                        "imgid": "730",
+                        "title": "抢庄牌九"
+                    },
+                    {
+                        "id": "8120",
+                        "imgid": "8120",
+                        "title": "血战到底"
+                    },
+                    {
+                        "id": "630",
+                        "imgid": "630",
+                        "title": "十三水"
+                    },
+                    {
+                        "id": "8200",
+                        "imgid": "8200",
+                        "title": "抢庄选三张"
+                    },
+                    {
+                        "id": "230",
+                        "imgid": "230",
+                        "title": "极速炸金花"
+                    },
+                    {
+                        "id": "930",
+                        "imgid": "930",
+                        "title": "百人牛牛"
+                    },
+                    {
+                        "id": "8190",
+                        "imgid": "8190",
+                        "title": "万人推筒子"
+                    }
+                ]
+            },
+            {
+                "title": "CQ9棋牌",
+                "type": "CQ",
+                "img": "cq9",
+                "ext": ".png",
+                "children": [
+                    {
+                        "id": "AD03",
+                        "imgid": "AD03",
+                        "title": "斗地主"
+                    },
+                    {
+                        "id": "AD02",
+                        "imgid": "AD02",
+                        "title": "四川麻将"
+                    }
+                ]
+            },
+            {
+                "title": "DT棋牌",
+                "type": "DT",
+                "img": "dt",
+                "ext": ".png",
+                "children": [
+                    {
+                        "id": "0",
+                        "imgid": "0",
+                        "title": "DT大厅"
+                    },
+                    {
+                        "id": "dezhou520",
+                        "imgid": "dezhou520",
+                        "title": "德州扑克"
+                    },
+                    {
+                        "id": "tbnn520",
+                        "imgid": "tbnn520",
+                        "title": "通比牛牛"
+                    },
+                    {
+                        "id": "qznn520",
+                        "imgid": "qznn520",
+                        "title": "抢庄牛牛"
+                    },
+                    {
+                        "id": "sangong520",
+                        "imgid": "sangong520",
+                        "title": "三公"
+                    },
+                    {
+                        "id": "jinhua520",
+                        "imgid": "jinhua520",
+                        "title": "炸金花"
+                    },
+                    {
+                        "id": "bar520",
+                        "imgid": "bar520",
+                        "title": "二八杠"
+                    },
+                    {
+                        "id": "szqznn520",
+                        "imgid": "szqznn520",
+                        "title": "看三张抢庄牛牛"
+                    },
+                    {
+                        "id": "ershiyidian520",
+                        "imgid": "ershiyidian520",
+                        "title": "二十一点"
+                    },
+                    {
+                        "id": "pjiu520",
+                        "imgid": "pjiu520",
+                        "title": "抢庄牌九"
+                    },
+                    {
+                        "id": "jsjinhua520",
+                        "imgid": "jsjinhua520",
+                        "title": "​​极速炸金花"
+                    },
+                    {
+                        "id": "baccarat520",
+                        "imgid": "baccarat520",
+                        "title": "百家乐"
+                    },
+                    {
+                        "id": "lhdou520",
+                        "imgid": "lhdou520",
+                        "title": "龙虎斗"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "电子",
+        "children": [
+            {
+                "title": "AG电子",
+                "type": "AG",
+                "img": "ag",
+                "ext": ".jpg",
+                "children": [
+                    {
+                        "id": "11",
+                        "imgid": "AGdz",
+                        "title": "AG游戏大厅"
+                    },
+                    {
+                        "id": "156",
+                        "imgid": "156",
+                        "title": "猛龙传奇"
+                    },
+                    {
+                        "id": "160",
+                        "imgid": "160",
+                        "title": "金龙珠"
+                    },
+                    {
+                        "id": "503",
+                        "imgid": "503",
+                        "title": "美女沙排"
+                    },
+                    {
+                        "id": "509",
+                        "imgid": "509",
+                        "title": "复古花园"
+                    },
+                    {
+                        "id": "508",
+                        "imgid": "508",
+                        "title": "太空漫游"
+                    },
+                    {
+                        "id": "513",
+                        "imgid": "513",
+                        "title": "日本武士"
+                    },
+                    {
+                        "id": "515",
+                        "imgid": "515",
+                        "title": "麻将老虎机"
+                    },
+                    {
+                        "id": "518",
+                        "imgid": "518",
+                        "title": "夏日营地"
+                    },
+                    {
+                        "id": "802",
+                        "imgid": "802",
+                        "title": "金拉霸"
+                    },
+                    {
+                        "id": "158",
+                        "imgid": "158",
+                        "title": "神奇宝石"
+                    },
+                    {
+                        "id": "161",
+                        "imgid": "161",
+                        "title": "XIN哥來了"
+                    },
+                    {
+                        "id": "514",
+                        "imgid": "514",
+                        "title": "象棋老虎机"
+                    },
+                    {
+                        "id": "DTGDTAQ",
+                        "imgid": "DTGDTAQ",
+                        "title": "龙凤呈祥"
+                    },
+                    {
+                        "id": "545",
+                        "imgid": "545",
+                        "title": "冰河世界"
+                    },
+                    {
+                        "id": "TA17",
+                        "imgid": "TA17",
+                        "title": "1手百搭小丑"
+                    },
+                    {
+                        "id": "DTGDTAZ",
+                        "imgid": "DTGDTAZ",
+                        "title": "摇滚之夜"
+                    },
+                    {
+                        "id": "505",
+                        "imgid": "505",
+                        "title": "武圣传"
+                    },
+                    {
+                        "id": "546",
+                        "imgid": "546",
+                        "title": "水果拉霸2"
+                    },
+                    {
+                        "id": "DTGDTAT",
+                        "imgid": "DTGDTAT",
+                        "title": "福禄寿"
+                    },
+                    {
+                        "id": "DTGDTAF",
+                        "imgid": "DTGDTAF",
+                        "title": "财神到"
+                    },
+                    {
+                        "id": "DTGDTAG",
+                        "imgid": "DTGDTAG",
+                        "title": "新年到"
+                    },
+                    {
+                        "id": "DTGDTAB",
+                        "imgid": "DTGDTAB",
+                        "title": "梦幻森林"
+                    }
+                ]
+            },
+            {
+                "title": "AG街机",
+                "type": "AG",
+                "img": "ag",
+                "ext": ".jpg",
+                "children": [
+                    {
+                        "id": "YP800",
+                        "imgid": "YP800",
+                        "title": "AG街机大厅"
+                    },
+                    {
+                        "id": "YP810",
+                        "imgid": "YP810",
+                        "title": "森林舞会多人版"
+                    },
+                    {
+                        "id": "YP822",
+                        "imgid": "YP822",
+                        "title": "翻倍炸金花"
+                    },
+                    {
+                        "id": "YP814",
+                        "imgid": "YP814",
+                        "title": "飞禽走兽多人版"
+                    },
+                    {
+                        "id": "YP824",
+                        "imgid": "YP824",
+                        "title": "西游争霸"
+                    },
+                    {
+                        "id": "YP823",
+                        "imgid": "YP823",
+                        "title": "动物狂欢"
+                    },
+                    {
+                        "id": "YP802",
+                        "imgid": "YP802",
+                        "title": "奔驰宝马"
+                    },
+                    {
+                        "id": "YP804",
+                        "imgid": "YP804",
+                        "title": "猜猜乐"
+                    },
+                    {
+                        "id": "YP818",
+                        "imgid": "YP818",
+                        "title": "多宝水果拉霸"
+                    },
+                    {
+                        "id": "YP803",
+                        "imgid": "YP803",
+                        "title": "极速赛马"
+                    },
+                    {
+                        "id": "YP805",
+                        "imgid": "YP805",
+                        "title": "水果拉霸"
+                    },
+                    {
+                        "id": "YP808",
+                        "imgid": "YP808",
+                        "title": "水果派对"
+                    }
+                ]
+            },
+            {
+                "title": "MG电子",
+                "type": "MG",
+                "img": "mg",
+                "ext": ".png",
+                "children": [
+                    {
+                        "id": "1229",
+                        "imgid": "1229",
+                        "title": "冰球突破"
+                    },
+                    {
+                        "id": "1159",
+                        "imgid": "1159",
+                        "title": "篮球巨星"
+                    },
+                    {
+                        "id": "1103",
+                        "imgid": "1103",
+                        "title": "不朽情缘"
+                    },
+                    {
+                        "id": "1283",
+                        "imgid": "1283",
+                        "title": "幸运双星"
+                    },
+                    {
+                        "id": "2074",
+                        "imgid": "2074",
+                        "title": "冰球突破豪华版"
+                    },
+                    {
+                        "id": "1188",
+                        "imgid": "1188",
+                        "title": "花花公子"
+                    },
+                    {
+                        "id": "1117",
+                        "imgid": "1117",
+                        "title": "狂欢节"
+                    },
+                    {
+                        "id": "1207",
+                        "imgid": "1207",
+                        "title": "宝石迷阵"
+                    },
+                    {
+                        "id": "1042",
+                        "imgid": "1042",
+                        "title": "百家乐"
+                    },
+                    {
+                        "id": "1389",
+                        "imgid": "1389",
+                        "title": "女仕之夜"
+                    },
+                    {
+                        "id": "1133",
+                        "imgid": "1133",
+                        "title": "马戏篷"
+                    },
+                    {
+                        "id": "1097",
+                        "imgid": "1097",
+                        "title": "银行爆破"
+                    },
+                    {
+                        "id": "1882",
+                        "imgid": "1882",
+                        "title": "青龙出海"
+                    },
+                    {
+                        "id": "1318",
+                        "imgid": "1318",
+                        "title": "燃烧的欲望"
+                    },
+                    {
+                        "id": "1035",
+                        "imgid": "1035",
+                        "title": "5卷的驱动器"
+                    },
+                    {
+                        "id": "1002",
+                        "imgid": "1002",
+                        "title": "春假"
+                    },
+                    {
+                        "id": "1037",
+                        "imgid": "1037",
+                        "title": "舞龙"
+                    },
+                    {
+                        "id": "1236",
+                        "imgid": "1236",
+                        "title": "老鹰的翅膀"
+                    },
+                    {
+                        "id": "1164",
+                        "imgid": "1164",
+                        "title": "东方珍兽"
+                    },
+                    {
+                        "id": "1293",
+                        "imgid": "1293",
+                        "title": "雷电击"
+                    },
+                    {
+                        "id": "1171",
+                        "imgid": "1171",
+                        "title": "猫头鹰乐园"
+                    },
+                    {
+                        "id": "1386",
+                        "imgid": "1386",
+                        "title": "反转马戏团"
+                    },
+                    {
+                        "id": "1013",
+                        "imgid": "1013",
+                        "title": "阿瓦隆"
+                    },
+                    {
+                        "id": "1186",
+                        "imgid": "1186",
+                        "title": "足球明星"
+                    }
+                ]
+            },
+            {
+                "title": "BBIN电子",
+                "type": "BY",
+                "img": "by",
+                "ext": ".jpg",
+                "children": [
+                    {
+                        "id": "game",
+                        "imgid": "bbindz",
+                        "title": "BBIN游戏大厅"
+                    },
+                    
+                    {
+                        "id": "5801",
+                        "imgid": "5801",
+                        "title": "海豚世界"
+                    },
+                    {
+                        "id": "5045",
+                        "imgid": "5045",
+                        "title": "森林舞会"
+                    },
+                    {
+                        "id": "5099",
+                        "imgid": "5099",
+                        "title": "金狗旺岁"
+                    },
+                    {
+                        "id": "5912",
+                        "imgid": "5912",
+                        "title": "连环夺宝2"
+                    },
+                    {
+                        "id": "5910",
+                        "imgid": "5910",
+                        "title": "魔法元素"
+                    },
+                    {
+                        "id": "5839",
+                        "imgid": "5839",
+                        "title": "经典高球"
+                    },
+                    {
+                        "id": "5909",
+                        "imgid": "5909",
+                        "title": "开心消消乐"
+                    },
+                    {
+                        "id": "5903",
+                        "imgid": "5903",
+                        "title": "秦皇秘宝"
+                    },
+                    {
+                        "id": "5096",
+                        "imgid": "5096",
+                        "title": "五行"
+                    },
+                    {
+                        "id": "5908",
+                        "imgid": "5908",
+                        "title": "糖果派对2"
+                    },
+                    {
+                        "id": "5907",
+                        "imgid": "5907",
+                        "title": "趣味台球"
+                    },
+                    {
+                        "id": "5054",
+                        "imgid": "5054",
+                        "title": "爆骰"
+                    },
+                    {
+                        "id": "5090",
+                        "imgid": "5090",
+                        "title": "金鸡报喜"
+                    },
+                    {
+                        "id": "5069",
+                        "imgid": "5069",
+                        "title": "水果擂台"
+                    },
+                    {
+                        "id": "5068",
+                        "imgid": "5068",
+                        "title": "酷搜马戏团"
+                    },
+                    {
+                        "id": "5067",
+                        "imgid": "5067",
+                        "title": "大话西游"
+                    },
+                    {
+                        "id": "5904",
+                        "imgid": "5904",
+                        "title": "蒸气炸弹"
+                    },
+                    {
+                        "id": "5108",
+                        "imgid": "5108",
+                        "title": "彩金轮盘"
+                    },
+                    {
+                        "id": "5107",
+                        "imgid": "5107",
+                        "title": "美式轮盘"
+                    },
+                    {
+                        "id": "5902",
+                        "imgid": "5902",
+                        "title": "糖果派对"
+                    },
+                    {
+                        "id": "5901",
+                        "imgid": "5901",
+                        "title": "连环夺宝"
+                    }
+                ]
+            },
+            {
+                "title": "BG电子",
+                "type": "BG",
+                "img": "bg",
+                "ext": ".png",
+                "children": [
+
+                    
+                    
+                    {
+                        "id": "39",
+                        "imgid": "39",
+                        "title": "国王的财富"
+                    },
+                    {
+                        "id": "25",
+                        "imgid": "25",
+                        "title": "财源滚滚"
+                    },
+                    {
+                        "id": "46",
+                        "imgid": "46",
+                        "title": "雷声鸟"
+                    },
+                    {
+                        "id": "18",
+                        "imgid": "18",
+                        "title": "特斯拉"
+                    },
+                    {
+                        "id": "50",
+                        "imgid": "50",
+                        "title": "老虎的心"
+                    },
+                    {
+                        "id": "17",
+                        "imgid": "17",
+                        "title": "基蒂的双胞胎"
+                    },
+                    {
+                        "id": "27",
+                        "imgid": "27",
+                        "title": "燃烧的火焰 "
+                    },
+                    {
+                        "id": "37",
+                        "imgid": "37",
+                        "title": "宝玉 "
+                    },
+                    {
+                        "id": "43",
+                        "imgid": "43",
+                        "title": "寻金之旅"
+                    },
+                    {
+                        "id": "51",
+                        "imgid": "51",
+                        "title": "城堡血"
+                    },
+                    {
+                        "id": "19",
+                        "imgid": "19",
+                        "title": "达芬奇法典"
+                    },
+                    {
+                        "id": "20",
+                        "imgid": "20",
+                        "title": "克利奥帕特拉珠宝"
+                    },
+                    {
+                        "id": "21",
+                        "imgid": "21",
+                        "title": "亚特兰提斯的世界"
+                    },
+                    {
+                        "id": "22",
+                        "imgid": "22",
+                        "title": "水晶神秘"
+                    },
+                    {
+                        "id": "23",
+                        "imgid": "23",
+                        "title": "五星级豪华场"
+                    },
+                    {
+                        "id": "25",
+                        "imgid": "25",
+                        "title": "种钱得钱"
+                    },
+                    {
+                        "id": "26",
+                        "imgid": "26",
+                        "title": "龙女"
+                    },
+                    {
+                        "id": "27",
+                        "imgid": "27",
+                        "title": "燃烧的火焰"
+                    },
+                    {
+                        "id": "28",
+                        "imgid": "28",
+                        "title": "皇家宝石"
+                    },
+                    {
+                        "id": "29",
+                        "imgid": "29",
+                        "title": "火焰风暴"
+                    },
+                    {
+                        "id": "30",
+                        "imgid": "30",
+                        "title": "明星奖金"
+                    },
+                    {
+                        "id": "37",
+                        "imgid": "37",
+                        "title": "宝玉"
+                    },
+                    {
+                        "id": "48",
+                        "imgid": "48",
+                        "title": "德州骑警的奖励"
+                    },
+                    {
+                        "id": "91",
+                        "imgid": "91",
+                        "title": "海之女皇"
+                    },
+                    {
+                        "id": "93",
+                        "imgid": "93",
+                        "title": "皇帝的财富"
+                    },
+                    {
+                        "id": "94",
+                        "imgid": "94",
+                        "title": "斗牛士"
+                    }
+                ]
+            },
+            {
+                "title": "泛亚电竞",
+                "type": "FY",
+                "img": "fy",
+                "ext": ".png",
+                "children": [
+                    {
+                        "id": "-",
+                        "imgid": "lobby",
+                        "title": "泛亚游戏大厅"
+                    },
+                    {
+                        "id": "2",
+                        "imgid": "2",
+                        "title": "英雄联盟"
+                    },
+                    {
+                        "id": "3",
+                        "imgid": "3",
+                        "title": "体育赛事"
+                    },
+                    {
+                        "id": "2025",
+                        "imgid": "2025",
+                        "title": "反恐精英"
+                    },
+                    {
+                        "id": "10",
+                        "imgid": "10",
+                        "title": "刀塔II"
+                    },
+                    {
+                        "id": "2040",
+                        "imgid": "2040",
+                        "title": "王者荣耀"
+                    },
+                    {
+                        "id": "1",
+                        "imgid": "1",
+                        "title": "绝地求生"
+                    },
+                    {
+                        "id": "2027",
+                        "imgid": "2027",
+                        "title": "守望先锋"
+                    },
+                    {
+                        "id": "2084",
+                        "imgid": "2084",
+                        "title": "炉石传说"
+                    },
+                    {
+                        "id": "2095",
+                        "imgid": "2095",
+                        "title": "风暴英雄"
+                    },
+                    {
+                        "id": "2085",
+                        "imgid": "2085",
+                        "title": "星际争霸"
+                    },
+                    {
+                        "id": "2083",
+                        "imgid": "2083",
+                        "title": "魔兽争霸"
+                    },
+                    {
+                        "id": "2106",
+                        "imgid": "2106",
+                        "title": "使命召唤"
+                    },
+                    {
+                        "id": "2321",
+                        "imgid": "2321",
+                        "title": "NBA2K"
+                    },
+                    {
+                        "id": "2322",
+                        "imgid": "2322",
+                        "title": "彩虹6号"
+                    },
+                    {
+                        "id": "2323",
+                        "imgid": "2323",
+                        "title": "街头霸王5"
+                    },
+                    {
+                        "id": "2324",
+                        "imgid": "2324",
+                        "title": "坦克世界"
+                    },
+                    {
+                        "id": "2325",
+                        "imgid": "2325",
+                        "title": "拳击之夜"
+                    },
+                    {
+                        "id": "2333",
+                        "imgid": "2333",
+                        "title": "FIFA"
+                    }
+                ]
+            },
+            {
+                "title": "FG电子",
+                "type": "FG",
+                "img": "fg",
+                "ext": ".png",
+                "children": [
+                    {
+                        "id": "NETENT_CAS reelrush_not_mobile_sw",
+                        "imgid": "reelrush_mobile_sw",
+                        "title": "翻转卷轴"
+                    },
+                    {
+                        "id": "NETENT_CAS finn_not_mobile_sw",
+                        "imgid": "finn_mobile_sw",
+                        "title": "芬恩的漩涡"
+                    },
+                    {
+                        "id": "NETENT_CAS starburst_not_mobile_sw",
+                        "imgid": "starburst_mobile_sw",
+                        "title": "星爆"
+                    },
+                    {
+                        "id": "NETENT_CAS eldorado_not_mobile_sw",
+                        "imgid": "eldorado_mobile_sw",
+                        "title": "贡多的冒险"
+                    },
+                    {
+                        "id": "NETENT_CAS twinhappiness_not_mobile_sw",
+                        "imgid": "twinhappiness_mobile_sw",
+                        "title": "双喜临门"
+                    },
+                    {
+                        "id": "NETENT_CAS pyramid_not_mobile_sw",
+                        "imgid": "pyramid_mobile_sw",
+                        "title": "金字塔"
+                    },
+                    {
+                        "id": "NETENT_CAS elements_not_mobile_sw",
+                        "imgid": "elements_mobile_sw",
+                        "title": "元素觉醒"
+                    },
+                    {
+                        "id": "NETENT_CAS hiddencoinsofegypt_not_mobile_sw",
+                        "imgid": "hiddencoinsofegypt_mobile_sw",
+                        "title": "埃及之币"
+                    },
+                    {
+                        "id": "NETENT_CAS twinspin_not_mobile_sw",
+                        "imgid": "twinspin_mobile_sw",
+                        "title": "双重旋转"
+                    },
+                    {
+                        "id": "NETENT_CAS jinglespin_not_mobile_sw",
+                        "imgid": "jinglespin_mobile_sw",
+                        "title": "圣诞精灵"
+                    },
+                    {
+                        "id": "NETENT_CAS secretsofchristmas_not_mobile_sw",
+                        "imgid": "secretsofchristmas_mobile_sw",
+                        "title": "圣诞惊喜"
+                    },
+                    {
+                        "id": "NETENT_CAS asgardianstones_not_mobile_sw",
+                        "imgid": "asgardianstones_mobile_sw",
+                        "title": "阿斯加德之石"
+                    },
+                    {
+                        "id": "NETENT_CAS aloha_not_mobile_sw",
+                        "imgid": "aloha_mobile_sw",
+                        "title": "热带岛屿"
+                    },
+                    {
+                        "id": "NETENT_CAS jackhammer_not_mobile_sw",
+                        "imgid": "jackhammer_mobile_sw",
+                        "title": "杰克哈姆斯"
+                    },
+                    {
+                        "id": "NETENT_CAS dazzle_not_mobile_sw",
+                        "imgid": "dazzle_mobile_sw",
+                        "title": "宝石炫光"
+                    },
+                    {
+                        "id": "NETENT_CAS berryburst_not_mobile_sw",
+                        "imgid": "berryburst_mobile_sw",
+                        "title": "爆爆果"
+                    },
+                    {
+                        "id": "NETENT_CAS doublestacks_not_mobile_sw",
+                        "imgid": "doublestacks_mobile_sw",
+                        "title": "水果双叠"
+                    },
+                    {
+                        "id": "NETENT_CAS hotline_not_mobile_sw",
+                        "imgid": "hotline_mobile_sw",
+                        "title": "热线"
+                    },
+                    {
+                        "id": "NETENT_CAS shangrila_not_mobile_sw",
+                        "imgid": "shangrila_mobile_sw",
+                        "title": "香格里拉传奇"
+                    },
+                    {
+                        "id": "NETENT_CAS multipliermayhem_not_mobile_sw",
+                        "imgid": "multipliermayhem_mobile_sw",
+                        "title": "极速驱动"
+                    }
+                ]
+            },
+            {
+                "title": "哈巴电游",
+                "type": "HB",
+                "img": "hb",
+                "ext": ".png",
+                "children": [
+                    {
+                        "id": "SGFaCaiShen",
+                        "imgid": "SGFaCaiShen",
+                        "title": "发财神"
+                    },
+                    {
+                        "id": "SGTheKoiGate",
+                        "imgid": "SGTheKoiGate",
+                        "title": "鲤鱼门"
+                    },
+                    {
+                        "id": "SGHotHotFruit",
+                        "imgid": "SGHotHotFruit",
+                        "title": "疯狂水果"
+                    },
+                    {
+                        "id": "SGSantasVillage",
+                        "imgid": "SGSantasVillage",
+                        "title": "圣诞乐村"
+                    },
+                    {
+                        "id": "SGFourDivineBeasts",
+                        "imgid": "SGFourDivineBeasts",
+                        "title": "四大神兽"
+                    },
+                    {
+                        "id": "SG5LuckyLions",
+                        "imgid": "SG5LuckyLions",
+                        "title": "欢乐喜狮"
+                    },
+                    {
+                        "id": "SGHappiestChristmasTree",
+                        "imgid": "SGHappiestChristmasTree",
+                        "title": "快乐圣诞"
+                    },
+                    {
+                        "id": "SGLuckyLucky",
+                        "imgid": "SGLuckyLucky",
+                        "title": "富贵福"
+                    },
+                    {
+                        "id": "SGNuwa",
+                        "imgid": "SGNuwa",
+                        "title": "女娲传奇"
+                    },
+                    {
+                        "id": "SGWildTrucks",
+                        "imgid": "SGWildTrucks",
+                        "title": "狂野卡车"
+                    },
+                    {
+                        "id": "SGJump",
+                        "imgid": "SGJump",
+                        "title": "疯狂百搭"
+                    },
+                    {
+                        "id": "SGPumpkinPatch",
+                        "imgid": "SGPumpkinPatch",
+                        "title": "快乐南瓜"
+                    },
+                    {
+                        "id": "SG12Zodiacs",
+                        "imgid": "SG12Zodiacs",
+                        "title": "十二生肖"
+                    },
+                    {
+                        "id": "SGFortuneDogs",
+                        "imgid": "SGFortuneDogs",
+                        "title": "富贵旺旺"
+                    },
+                    {
+                        "id": "SGBirdOfThunder",
+                        "imgid": "SGBirdOfThunder",
+                        "title": "雷鸟"
+                    },
+                    {
+                        "id": "SGFenghuang",
+                        "imgid": "SGFenghuang",
+                        "title": "凤凰"
+                    },
+                    {
+                        "id": "SGEgyptianDreamsDeluxe",
+                        "imgid": "SGEgyptianDreamsDeluxe",
+                        "title": "神秘埃及"
+                    },
+                    {
+                        "id": "SGMagicOak",
+                        "imgid": "SGMagicOak",
+                        "title": "神奇橡樹"
+                    },
+                    {
+                        "id": "SGPandaPanda",
+                        "imgid": "SGPandaPanda",
+                        "title": "双喜熊猫"
+                    },
+                    {
+                        "id": "SGMountMazuma",
+                        "imgid": "SGMountMazuma",
+                        "title": "财宝山"
+                    }
+                ]
+            },
+            {
+                "title": "乐游电子",
+                "type": "LY",
+                "img": "ly",
+                "ext": ".png",
+                "children": [
+                    {
+                        "id": "8180",
+                        "imgid": "8180",
+                        "title": "宝石消消乐"
+                    },
+                    {
+                        "id": "920",
+                        "imgid": "920",
+                        "title": "森林舞会"
+                    }
+                ]
+            },
+            {
+                "title": "CQ9电子",
+                "type": "CQ",
+                "img": "cq9",
+                "ext": ".png",
+                "children": [
+                
+                    {
+                        "id": "138",
+                        "imgid": "138",
+                        "title": "跳过来"
+                    },
+                    {
+                        "id": "161",
+                        "imgid": "161",
+                        "title": "大力神"
+                    },
+                    {
+                        "id": "163",
+                        "imgid": "163",
+                        "title": "哪吒再临"
+                    },
+                    {
+                        "id": "AR12",
+                        "imgid": "AR12",
+                        "title": "8级台风"
+                    },
+                    {
+                        "id": "AR16",
+                        "imgid": "AR16",
+                        "title": "守株待兔"
+                    },
+                    {
+                        "id": "160",
+                        "imgid": "160",
+                        "title": "发财神2"
+                    },
+                    {
+                        "id": "AR17",
+                        "imgid": "AR17",
+                        "title": "马戏团连连发"
+                    },
+                    {
+                        "id": "AS02",
+                        "imgid": "AS02",
+                        "title": "疯狂马戏团"
+                    },
+                    {
+                        "id": "151",
+                        "imgid": "151",
+                        "title": "龙虎水果机"
+                    },
+                    {
+                        "id": "154",
+                        "imgid": "154",
+                        "title": "宙斯他爹"
+                    },
+                    {
+                        "id": "AR18",
+                        "imgid": "AR18",
+                        "title": "财运亨通"
+                    },
+                    {
+                        "id": "AR20",
+                        "imgid": "AR20",
+                        "title": "宝莲灯"
+                    },
+                    {
+                        "id": "AR21",
+                        "imgid": "AR21",
+                        "title": "鹊桥"
+                    },
+                    {
+                        "id": "AR29",
+                        "imgid": "AR29",
+                        "title": "富贵金鸡"
+                    },
+                    {
+                        "id": "152",
+                        "imgid": "152",
+                        "title": "双飞"
+                    },
+                    {
+                        "id": "150",
+                        "imgid": "150",
+                        "title": "寿星大发"
+                    },
+                    {
+                        "id": "AR24",
+                        "imgid": "AR24",
+                        "title": "麻将小福星"
+                    },
+                    {
+                        "id": "AS01",
+                        "imgid": "AS01",
+                        "title": "运气靴"
+                    },
+                    {
+                        "id": "149",
+                        "imgid": "149",
+                        "title": "龙舟"
+                    },
+                    {
+                        "id": "AP01",
+                        "imgid": "AP01",
+                        "title": "海霸龙"
+                    },
+                    {
+                        "id": "BJ01",
+                        "imgid": "BJ01",
+                        "title": "博乐麻将"
+                    },
+                    {
+                        "id": "AD04",
+                        "imgid": "AD04",
+                        "title": "万人牛牛"
+                    },
+                    {
+                        "id": "52",
+                        "imgid": "52",
+                        "title": "跳高高"
+                    },
+                    {
+                        "id": "7",
+                        "imgid": "7",
+                        "title": "跳起来"
+                    },
+                    {
+                        "id": "99",
+                        "imgid": "99",
+                        "title": "跳更高"
+                    },
+                    {
+                        "id": "10",
+                        "imgid": "10",
+                        "title": "五福临门"
+                    },
+                    {
+                        "id": "64",
+                        "imgid": "64",
+                        "title": "宙斯"
+                    },
+                    {
+                        "id": "50",
+                        "imgid": "50",
+                        "title": "鸿福齐天"
+                    },
+                    {
+                        "id": "205",
+                        "imgid": "205",
+                        "title": "蹦迪"
+                    },
+                    {
+                        "id": "31",
+                        "imgid": "31",
+                        "title": "武圣"
+                    },
+                    {
+                        "id": "24",
+                        "imgid": "24",
+                        "title": "跳起来2"
+                    },
+                    {
+                        "id": "111",
+                        "imgid": "111",
+                        "title": "飞起来"
+                    },
+                    {
+                        "id": "69",
+                        "imgid": "69",
+                        "title": "发财神"
+                    },
+                    {
+                        "id": "AB3",
+                        "imgid": "AB3",
+                        "title": "皇金渔场"
+                    },
+                    {
+                        "id": "83",
+                        "imgid": "83",
+                        "title": "火之女王"
+                    },
+                    {
+                        "id": "89",
+                        "imgid": "89",
+                        "title": "雷神"
+                    },
+                    {
+                        "id": "9",
+                        "imgid": "9",
+                        "title": "钟馗运财"
+                    },
+                    {
+                        "id": "137",
+                        "imgid": "137",
+                        "title": "直式蹦迪"
+                    },
+                    {
+                        "id": "203",
+                        "imgid": "203",
+                        "title": "嗨起来"
+                    },
+                    {
+                        "id": "117",
+                        "imgid": "117",
+                        "title": "东方神起"
+                    },
+                    {
+                        "id": "153",
+                        "imgid": "153",
+                        "title": "六颗糖"
+                    },
+                    {
+                        "id": "15",
+                        "imgid": "15",
+                        "title": "金鸡报喜"
+                    },
+                    {
+                        "id": "8",
+                        "imgid": "8",
+                        "title": "甜蜜蜜"
+                    },
+                    {
+                        "id": "105",
+                        "imgid": "105",
+                        "title": "单手跳高高"
+                    },
+                    {
+                        "id": "115",
+                        "imgid": "115",
+                        "title": "冰雪女王"
+                    },
+                    {
+                        "id": "128",
+                        "imgid": "128",
+                        "title": "转大钱"
+                    },
+                    {
+                        "id": "140",
+                        "imgid": "140",
+                        "title": "火烧连环船2"
+                    },
+                    {
+                        "id": "29",
+                        "imgid": "29",
+                        "title": "水世界"
+                    },
+                    {
+                        "id": "79",
+                        "imgid": "79",
+                        "title": "变色龙"
+                    },
+                    {
+                        "id": "109",
+                        "imgid": "109",
+                        "title": "单手跳起來"
+                    },
+                    {
+                        "id": "58",
+                        "imgid": "58",
+                        "title": "金鸡报喜2"
+                    },
+                    {
+                        "id": "147",
+                        "imgid": "147",
+                        "title": "花开富贵"
+                    },
+                    {
+                        "id": "113",
+                        "imgid": "113",
+                        "title": "飞天财神"
+                    },
+                    {
+                        "id": "133",
+                        "imgid": "133",
+                        "title": "直式洪福齐天"
+                    },
+                    {
+                        "id": "60",
+                        "imgid": "60",
+                        "title": "丛林舞会"
+                    },
+                    {
+                        "id": "143",
+                        "imgid": "143",
+                        "title": "发财福娃"
+                    },
+                    {
+                        "id": "74",
+                        "imgid": "74",
+                        "title": "聚宝盆"
+                    },
+                    {
+                        "id": "148",
+                        "imgid": "148",
+                        "title": "有如神柱"
+                    },
+                    {
+                        "id": "127",
+                        "imgid": "127",
+                        "title": "直式武圣"
+                    },
+                    {
+                        "id": "142",
+                        "imgid": "142",
+                        "title": "火神"
+                    },
+                    {
+                        "id": "46",
+                        "imgid": "46",
+                        "title": "狼月"
+                    },
+                    {
+                        "id": "1",
+                        "imgid": "1",
+                        "title": "钻石水果王"
+                    },
+                    {
+                        "id": "108",
+                        "imgid": "108",
+                        "title": "直式跳更高"
+                    },
+                    {
+                        "id": "125",
+                        "imgid": "125",
+                        "title": "直式宙斯"
+                    },
+                    {
+                        "id": "72",
+                        "imgid": "72",
+                        "title": "好运年年"
+                    },
+                    {
+                        "id": "134",
+                        "imgid": "134",
+                        "title": "家里有矿"
+                    },
+                    {
+                        "id": "16",
+                        "imgid": "16",
+                        "title": "五行"
+                    },
+                    {
+                        "id": "157",
+                        "imgid": "157",
+                        "title": "五形拳"
+                    },
+                    {
+                        "id": "144",
+                        "imgid": "144",
+                        "title": "钻更多"
+                    },
+                    {
+                        "id": "131",
+                        "imgid": "131",
+                        "title": "直式发财神"
+                    },
+                    {
+                        "id": "33",
+                        "imgid": "33",
+                        "title": "火烧连环船"
+                    },
+                    {
+                        "id": "201",
+                        "imgid": "201",
+                        "title": "拳霸"
+                    },
+                    {
+                        "id": "116",
+                        "imgid": "116",
+                        "title": "梦游仙境"
+                    },
+                    {
+                        "id": "145",
+                        "imgid": "145",
+                        "title": "印金工厂"
+                    },
+                    {
+                        "id": "67",
+                        "imgid": "67",
+                        "title": "赚金蛋"
+                    },
+                    {
+                        "id": "56",
+                        "imgid": "56",
+                        "title": "黯夜公爵"
+                    },
+                    {
+                        "id": "139",
+                        "imgid": "139",
+                        "title": "直式火烧连环船"
+                    },
+                    {
+                        "id": "104",
+                        "imgid": "104",
+                        "title": "海滨消消乐"
+                    },
+                    {
+                        "id": "146",
+                        "imgid": "146",
+                        "title": "九连宝灯"
+                    },
+                    {
+                        "id": "93",
+                        "imgid": "93",
+                        "title": "世界杯明星"
+                    },
+                    {
+                        "id": "136",
+                        "imgid": "136",
+                        "title": "奔跑吧猛兽"
+                    },
+                    {
+                        "id": "55",
+                        "imgid": "55",
+                        "title": "魔龙传奇"
+                    },
+                    {
+                        "id": "123",
+                        "imgid": "123",
+                        "title": "直式五福临门"
+                    },
+                    {
+                        "id": "114",
+                        "imgid": "114",
+                        "title": "钻饱宝"
+                    },
+                    {
+                        "id": "12",
+                        "imgid": "12",
+                        "title": "金玉满堂"
+                    },
+                    {
+                        "id": "54",
+                        "imgid": "54",
+                        "title": "火草泥马"
+                    },
+                    {
+                        "id": "57",
+                        "imgid": "57",
+                        "title": "神兽争霸"
+                    },
+                    {
+                        "id": "202",
+                        "imgid": "202",
+                        "title": "舞媚娘"
+                    },
+                    {
+                        "id": "118",
+                        "imgid": "118",
+                        "title": "老司机"
+                    },
+                    {
+                        "id": "78",
+                        "imgid": "78",
+                        "title": "阿波罗"
+                    },
+                    {
+                        "id": "121",
+                        "imgid": "121",
+                        "title": "直式跳起来2"
+                    },
+                    {
+                        "id": "5",
+                        "imgid": "5",
+                        "title": "金大款"
+                    },
+                    {
+                        "id": "44",
+                        "imgid": "44",
+                        "title": "豪华水果王"
+                    },
+                    {
+                        "id": "4",
+                        "imgid": "4",
+                        "title": "森林泰后"
+                    },
+                    {
+                        "id": "124",
+                        "imgid": "124",
+                        "title": "锁象无敌"
+                    },
+                    {
+                        "id": "26",
+                        "imgid": "26",
+                        "title": "777"
+                    },
+                    {
+                        "id": "68",
+                        "imgid": "68",
+                        "title": "悟空偷桃"
+                    },
+                    {
+                        "id": "1010",
+                        "imgid": "1010",
+                        "title": "五福临门JP"
+                    },
+                    {
+                        "id": "3",
+                        "imgid": "3",
+                        "title": "血之吻"
+                    },
+                    {
+                        "id": "112",
+                        "imgid": "112",
+                        "title": "盗法老墓"
+                    },
+                    {
+                        "id": "6",
+                        "imgid": "6",
+                        "title": "1945"
+                    },
+                    {
+                        "id": "221",
+                        "imgid": "221",
+                        "title": "狄仁杰四大天王"
+                    },
+                    {
+                        "id": "132",
+                        "imgid": "132",
+                        "title": "再喵一个"
+                    },
+                    {
+                        "id": "63",
+                        "imgid": "63",
+                        "title": "寻龙诀"
+                    },
+                    {
+                        "id": "23",
+                        "imgid": "23",
+                        "title": "金元宝"
+                    },
+                    {
+                        "id": "39",
+                        "imgid": "39",
+                        "title": "飞天"
+                    },
+                    {
+                        "id": "AR39",
+                        "imgid": "AR39",
+                        "title": "僵尸的宝藏"
+                    },
+                    {
+                        "id": "130",
+                        "imgid": "130",
+                        "title": "偷金妹子"
+                    },
+                    {
+                        "id": "40",
+                        "imgid": "40",
+                        "title": "镖王争霸"
+                    },
+                    {
+                        "id": "77",
+                        "imgid": "77",
+                        "title": "火凤凰"
+                    },
+                    {
+                        "id": "100",
+                        "imgid": "100",
+                        "title": "宾果消消消"
+                    },
+                    {
+                        "id": "17",
+                        "imgid": "17",
+                        "title": "祥狮献瑞"
+                    },
+                    {
+                        "id": "122",
+                        "imgid": "122",
+                        "title": "印加祖玛"
+                    },
+                    {
+                        "id": "61",
+                        "imgid": "61",
+                        "title": "天天吃豆"
+                    },
+                    {
+                        "id": "102",
+                        "imgid": "102",
+                        "title": "水果派对"
+                    },
+                    {
+                        "id": "126",
+                        "imgid": "126",
+                        "title": "转珠猪"
+                    },
+                    {
+                        "id": "62",
+                        "imgid": "62",
+                        "title": "非常钻"
+                    },
+                    {
+                        "id": "81",
+                        "imgid": "81",
+                        "title": "金银岛"
+                    },
+                    {
+                        "id": "43",
+                        "imgid": "43",
+                        "title": "恭贺新禧"
+                    },
+                    {
+                        "id": "19",
+                        "imgid": "19",
+                        "title": "风火轮"
+                    },
+                    {
+                        "id": "20",
+                        "imgid": "20",
+                        "title": "发发发"
+                    },
+                    {
+                        "id": "129",
+                        "imgid": "129",
+                        "title": "直式金鸡报喜2"
+                    },
+                    {
+                        "id": "30",
+                        "imgid": "30",
+                        "title": "三国序"
+                    },
+                    {
+                        "id": "86",
+                        "imgid": "86",
+                        "title": "牛逼快跑"
+                    },
+                    {
+                        "id": "1074",
+                        "imgid": "1074",
+                        "title": "聚宝盆JP"
+                    },
+                    {
+                        "id": "48",
+                        "imgid": "48",
+                        "title": "莲"
+                    },
+                    {
+                        "id": "204",
+                        "imgid": "204",
+                        "title": "百宝箱"
+                    },
+                    {
+                        "id": "49",
+                        "imgid": "49",
+                        "title": "寂寞星球"
+                    },
+                    {
+                        "id": "2",
+                        "imgid": "2",
+                        "title": "棋圣"
+                    },
+                    {
+                        "id": "135",
+                        "imgid": "135",
+                        "title": "直式金鸡报喜"
+                    },
+                    {
+                        "id": "87",
+                        "imgid": "87",
+                        "title": "集电宝"
+                    },
+                    {
+                        "id": "41",
+                        "imgid": "41",
+                        "title": "水球大战"
+                    },
+                    {
+                        "id": "38",
+                        "imgid": "38",
+                        "title": "舞力全开"
+                    },
+                    {
+                        "id": "98",
+                        "imgid": "98",
+                        "title": "世界杯全明星"
+                    },
+                    {
+                        "id": "88",
+                        "imgid": "88",
+                        "title": "金喜鹊桥"
+                    },
+                    {
+                        "id": "1067",
+                        "imgid": "1067",
+                        "title": "赚金蛋JP"
+                    },
+                    {
+                        "id": "103",
+                        "imgid": "103",
+                        "title": "宝石配对"
+                    },
+                    {
+                        "id": "45",
+                        "imgid": "45",
+                        "title": "超级发"
+                    },
+                    {
+                        "id": "42",
+                        "imgid": "42",
+                        "title": "福尔摩斯"
+                    },
+                    {
+                        "id": "66",
+                        "imgid": "66",
+                        "title": "火爆777"
+                    },
+                    {
+                        "id": "70",
+                        "imgid": "70",
+                        "title": "万饱龙"
+                    },
+                    {
+                        "id": "18",
+                        "imgid": "18",
+                        "title": "雀王"
+                    },
+                    {
+                        "id": "11",
+                        "imgid": "11",
+                        "title": "梦游仙境2"
+                    },
+                    {
+                        "id": "141",
+                        "imgid": "141",
+                        "title": "圣诞来啦"
+                    },
+                    {
+                        "id": "35",
+                        "imgid": "35",
+                        "title": "疯狂哪咤"
+                    },
+                    {
+                        "id": "32",
+                        "imgid": "32",
+                        "title": "通天神探狄仁杰"
+                    },
+                    {
+                        "id": "59",
+                        "imgid": "59",
+                        "title": "夏日猩情"
+                    },
+                    {
+                        "id": "AR15",
+                        "imgid": "AR15",
+                        "title": "爱琴海"
+                    },
+                    {
+                        "id": "53",
+                        "imgid": "53",
+                        "title": "来电99"
+                    },
+                    {
+                        "id": "AR03",
+                        "imgid": "AR03",
+                        "title": "此地无银300两"
+                    },
+                    {
+                        "id": "101",
+                        "imgid": "101",
+                        "title": "星星消消乐"
+                    },
+                    {
+                        "id": "AB1",
+                        "imgid": "AB1",
+                        "title": "皇金渔场2"
+                    },
+                    {
+                        "id": "AR01",
+                        "imgid": "AR01",
+                        "title": "妙笔生财"
+                    },
+                    {
+                        "id": "80",
+                        "imgid": "80",
+                        "title": "传奇海神"
+                    },
+                    {
+                        "id": "13",
+                        "imgid": "13",
+                        "title": "樱花妹子"
+                    },
+                    {
+                        "id": "AR41",
+                        "imgid": "AR41",
+                        "title": "斗地主升级版"
+                    },
+                    {
+                        "id": "94",
+                        "imgid": "94",
+                        "title": "世界杯球衣"
+                    },
+                    {
+                        "id": "AR02",
+                        "imgid": "AR02",
+                        "title": "喵财进宝"
+                    },
+                    {
+                        "id": "47",
+                        "imgid": "47",
+                        "title": "法老宝藏"
+                    },
+                    {
+                        "id": "96",
+                        "imgid": "96",
+                        "title": "足球宝贝"
+                    },
+                    {
+                        "id": "51",
+                        "imgid": "51",
+                        "title": "嗨爆大马戏"
+                    },
+                    {
+                        "id": "AR04",
+                        "imgid": "AR04",
+                        "title": "斗地主经典版"
+                    },
+                    {
+                        "id": "76",
+                        "imgid": "76",
+                        "title": "旺旺旺"
+                    },
+                    {
+                        "id": "95",
+                        "imgid": "95",
+                        "title": "世界杯球鞋"
+                    },
+                    {
+                        "id": "27",
+                        "imgid": "27",
+                        "title": "魔法世界"
+                    },
+                    {
+                        "id": "84",
+                        "imgid": "84",
+                        "title": "奇幻魔术"
+                    },
+                    {
+                        "id": "AU06",
+                        "imgid": "AU06",
+                        "title": "厕所囧境"
+                    },
+                    {
+                        "id": "34",
+                        "imgid": "34",
+                        "title": "地鼠战役"
+                    },
+                    {
+                        "id": "AR08",
+                        "imgid": "AR08",
+                        "title": "点石成金"
+                    },
+                    {
+                        "id": "AR05",
+                        "imgid": "AR05",
+                        "title": "鱼跃龙门"
+                    },
+                    {
+                        "id": "14",
+                        "imgid": "14",
+                        "title": "绝赢巫师"
+                    },
+                    {
+                        "id": "21",
+                        "imgid": "21",
+                        "title": "野狼传说"
+                    },
+                    {
+                        "id": "AS03",
+                        "imgid": "AS03",
+                        "title": "驯龙高手"
+                    },
+                    {
+                        "id": "28",
+                        "imgid": "28",
+                        "title": "食神"
+                    },
+                    {
+                        "id": "25",
+                        "imgid": "25",
+                        "title": "扑克拉霸"
+                    },
+                    {
+                        "id": "92",
+                        "imgid": "92",
+                        "title": "2018世界杯"
+                    },
+                    {
+                        "id": "AR06",
+                        "imgid": "AR06",
+                        "title": "丛林宝藏"
+                    },
+                    {
+                        "id": "AS33",
+                        "imgid": "AS33",
+                        "title": "猪的运气"
+                    },
+                    {
+                        "id": "97",
+                        "imgid": "97",
+                        "title": "世界杯球场"
+                    },
+                    {
+                        "id": "AN03",
+                        "imgid": "AN03",
+                        "title": "财神"
+                    },
+                    {
+                        "id": "AU01",
+                        "imgid": "AU01",
+                        "title": "喵喵"
+                    },
+                    {
+                        "id": "AS20",
+                        "imgid": "AS20",
+                        "title": "死亡女王"
+                    },
+                    {
+                        "id": "AS17",
+                        "imgid": "AS17",
+                        "title": "塞特的宝藏"
+                    },
+                    {
+                        "id": "36",
+                        "imgid": "36",
+                        "title": "夜店大亨"
+                    },
+                    {
+                        "id": "65",
+                        "imgid": "65",
+                        "title": "足球世界杯"
+                    },
+                    {
+                        "id": "AR07",
+                        "imgid": "AR07",
+                        "title": "功夫小神通"
+                    },
+                    {
+                        "id": "AU03",
+                        "imgid": "AU03",
+                        "title": "火烧办公处"
+                    },
+                    {
+                        "id": "AN02",
+                        "imgid": "AN02",
+                        "title": "雷神托尔"
+                    },
+                    {
+                        "id": "AS10",
+                        "imgid": "AS10",
+                        "title": "幸运3"
+                    },
+                    {
+                        "id": "AR37",
+                        "imgid": "AR37",
+                        "title": "幸运传奇"
+                    },
+                    {
+                        "id": "22",
+                        "imgid": "22",
+                        "title": "庶务西游二课"
+                    },
+                    {
+                        "id": "AU02",
+                        "imgid": "AU02",
+                        "title": "丧尸大餐"
+                    },
+                    {
+                        "id": "AN06",
+                        "imgid": "AN06",
+                        "title": "开心农场"
+                    },
+                    {
+                        "id": "AU05",
+                        "imgid": "AU05",
+                        "title": "异外来客"
+                    },
+                    {
+                        "id": "AMfish",
+                        "imgid": "AMfish",
+                        "title": "釣魚高手"
+                    },
+                    {
+                        "id": "AN05",
+                        "imgid": "AN05",
+                        "title": "金银岛2"
+                    },
+                    {
+                        "id": "AS19",
+                        "imgid": "AS19",
+                        "title": "圣诞故事"
+                    },
+                    {
+                        "id": "AN04",
+                        "imgid": "AN04",
+                        "title": "罗马竞技场"
+                    },
+                    {
+                        "id": "AN01",
+                        "imgid": "AN01",
+                        "title": "恶魔侦探"
+                    },
+                    {
+                        "id": "AS18",
+                        "imgid": "AS18",
+                        "title": "疯狂软糖"
+                    },
+                    {
+                        "id": "AS09",
+                        "imgid": "AS09",
+                        "title": "好莱坞宠物"
+                    }
+                ]
+            },
+            {
+                "title": "SW电子",
+                "type": "SW",
+                "img": "sw",
+                "ext": ".png",
+                "children": [
+
+                    {
+                        "id": "sw_kxcs",
+                        "imgid": "sw_kxcs",
+                        "title": "酷炫财神"
+                    },
+                    {
+                        "id": "sw_slbs",
+                        "imgid": "sw_slbs",
+                        "title": "神龙宝石"
+                    },
+                    {
+                        "id": "sw_xwk",
+                        "imgid": "sw_xwk",
+                        "title": "小悟空"
+                    },
+                    {
+                        "id": "sw_lcc",
+                        "imgid": "sw_lcc",
+                        "title": "招财蟾蜍"
+                    },
+                    {
+                        "id": "sw_t2d",
+                        "imgid": "sw_t2d",
+                        "title": "双龙传"
+                    },
+                    {
+                        "id": "sw_fb",
+                        "imgid": "sw_fb",
+                        "title": "四美"
+                    },
+                    {
+                        "id": "sw_dld",
+                        "imgid": "sw_dld",
+                        "title": "豪华大蓝"
+                    },
+                    {
+                        "id": "sw_lll",
+                        "imgid": "sw_lll",
+                        "title": "龙龙龙"
+                    },
+                    {
+                        "id": "sw_bjc",
+                        "imgid": "sw_bjc",
+                        "title": "黑杰克"
+                    },
+                    {
+                        "id": "sw_sl",
+                        "imgid": "sw_sl",
+                        "title": "四灵"
+                    },
+                    {
+                        "id": "sw_gg",
+                        "imgid": "sw_gg",
+                        "title": "名利双收"
+                    },
+                    {
+                        "id": "sw_tm",
+                        "imgid": "sw_tm",
+                        "title": "三倍猴子"
+                    },
+                    {
+                        "id": "sw_fsqt",
+                        "imgid": "sw_fsqt",
+                        "title": "福寿齐天"
+                    },
+                    {
+                        "id": "sw_hp",
+                        "imgid": "sw_hp",
+                        "title": "天上凤凰"
+                    },
+                    {
+                        "id": "sw_rm",
+                        "imgid": "sw_rm",
+                        "title": "狂热重转"
+                    },
+                    {
+                        "id": "sw_fd",
+                        "imgid": "sw_fd",
+                        "title": "神奇九龙"
+                    },
+                    {
+                        "id": "sw_jqw",
+                        "imgid": "sw_jqw",
+                        "title": "金钱蛙"
+                    },
+                    {
+                        "id": "sw_or",
+                        "imgid": "sw_or",
+                        "title": "深海大战"
+                    },
+                    {
+                        "id": "sw_ggdn",
+                        "imgid": "sw_ggdn",
+                        "title": "黄金花园"
+                    },
+                    {
+                        "id": "sw_slbs_jp",
+                        "imgid": "sw_slbs_jp",
+                        "title": "神龙宝石头奖"
+                      },{
+                        "id": "sw_shctz",
+                        "imgid": "sw_shctz",
+                        "title": "招財童子"
+                      },{
+                        "id": "sw_omqjp",
+                        "imgid": "sw_omqjp",
+                        "title": "老夫子"
+                      },{
+                        "id": "sw_fg",
+                        "imgid": "sw_fg",
+                        "title": "水果女孩"
+                      },{
+                        "id": "sw_sgcf",
+                        "imgid": "sw_sgcf",
+                        "title": "水果财富"
+                      },{
+                        "id": "sw_csy",
+                        "imgid": "sw_csy",
+                        "title": "财神爷"
+                      },{
+                        "id": "sw_cts",
+                        "imgid": "sw_cts",
+                        "title": "游园会"
+                      },{
+                        "id": "sw_sctz",
+                        "imgid": "sw_sctz",
+                        "title": "送财童子"
+                      },{
+                        "id": "sw_fr",
+                        "imgid": "sw_fr",
+                        "title": "五行火送福"
+                      },{
+                        "id": "sw_suli",
+                        "imgid": "sw_suli",
+                        "title": "超级狮子"
+                      },{
+                        "id": "sw_dj",
+                        "imgid": "sw_dj",
+                        "title": "丛林翻倍赢"
+                      },{
+                        "id": "sw_xyjc",
+                        "imgid": "sw_xyjc",
+                        "title": "幸运金蟾"
+                      },{
+                        "id": "sw_bul",
+                        "imgid": "sw_bul",
+                        "title": "野牛闪电"
+                      },{
+                        "id": "sw_mdls",
+                        "imgid": "sw_mdls",
+                        "title": "加油,金龙!"
+                      },{
+                        "id": "sw_xw",
+                        "imgid": "sw_xw",
+                        "title": "玄武"
+                      },{
+                        "id": "sw_9s1k",
+                        "imgid": "sw_9s1k",
+                        "title": "九子一王"
+                      },{
+                        "id": "sw_mm",
+                        "imgid": "sw_mm",
+                        "title": "玛雅宝藏"
+                      },{
+                        "id": "sw_fzyq",
+                        "imgid": "sw_fzyq",
+                        "title": "蝠在眼钱"
+                      },{
+                        "id": "sw_pe",
+                        "imgid": "sw_pe",
+                        "title": "海盗女皇"
+                      },{
+                        "id": "sw_hlcs",
+                        "imgid": "sw_hlcs",
+                        "title": "欢乐财神"
+                      },{
+                        "id": "sw_rm",
+                        "imgid": "sw_rm",
+                        "title": "狂热重转"
+                      },{
+                        "id": "sw_h2h",
+                        "imgid": "sw_h2h",
+                        "title": "两心知"
+                      },{
+                        "id": "sw_ec",
+                        "imgid": "sw_ec",
+                        "title": "埃及现金"
+                      },{
+                        "id": "sw_wrl",
+                        "imgid": "sw_wrl",
+                        "title": "五行水送福!"
+                      },{
+                        "id": "sw_fbb",
+                        "imgid": "sw_fbb",
+                        "title": "福宝宝"
+                      },{
+                        "id": "sw_gs",
+                        "imgid": "sw_gs",
+                        "title": "加油, 金块!"
+                      },{
+                        "id": "sw_scyd",
+                        "imgid": "sw_scyd",
+                        "title": "生财有道"
+                      },{
+                        "id": "sw_88sf",
+                        "imgid": "sw_88sf",
+                        "title": "88 师父"
+                      },{
+                        "id": "sw_mpp",
+                        "imgid": "sw_mpp",
+                        "title": "猴子的泳池派对"
+                      }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "捕鱼",
+        "noSub": "true",
+        "children": [
+            {
+                "id": "6",
+                "imgid": "ag_6",
+                "title": "AG捕鱼王",
+                "type": "AG",
+                "img": "buyu",
+                "ext": ".jpg"
+            },
+            {
+                "id": "AT01",
+                "imgid": "cq9_AT01",
+                "title": "CQ9一炮捕鱼",
+                "type": "CQ",
+                "img": "buyu",
+                "ext": ".jpg"
+            },
+            {
+                "id": "30599",
+                "imgid": "by_30599",
+                "title": "BBIN捕鱼达人",
+                "type": "BY",
+                "img": "buyu",
+                "ext": ".jpg"
+            },
+            {
+                "id": "38001",
+                "imgid": "by_38001",
+                "title": "BBIN捕鱼大师",
+                "type": "BY",
+                "img": "buyu",
+                "ext": ".jpg"
+            },
+            {
+                "id": "105",
+                "imgid": "bg_105",
+                "title": "BG捕鱼大师",
+                "type": "BG",
+                "img": "buyu",
+                "ext": ".jpg"
+            },
+            {
+                "id": "411",
+                "imgid": "bg_411",
+                "title": "BG西游捕鱼",
+                "type": "BG",
+                "img": "buyu",
+                "ext": ".jpg"
+            },
+            {
+                "id": "510",
+                "imgid": "ly_510",
+                "title": "LY捕鱼大作战",
+                "type": "LY",
+                "img": "buyu",
+                "ext": ".jpg"
+            },
+            {
+                "id": "sw_fufish_intw",
+                "imgid": "sw_fufish_intw",
+                "title": "SW捕鱼多福",
+                "type": "SW",
+                "img": "buyu",
+                "ext": ".jpg"
+            }
+        ]
+    },
+    
+    {
+        "title": "体育",
+        "noSub": "true",
+        "children": [
+            {
+                "id": "lobby",
+                "imgid": "lobby",
+                "title": "皇冠体育",
+                "type": "WG",
+                "img": "tiyu",
+                "ext": ".jpg"
+            },
+            {
+                "id": "0",
+                "imgid": "logo",
+                "title": "三昇体育",
+                "type": "SS",
+                "img": "tiyu",
+                "ext": ".jpg"
+            },
+            {
+                "id": "3",
+                "imgid": "fytiyu",
+                "title": "泛亚电竞",
+                "type": "FY",
+                "img": "tiyu",
+                "ext": ".jpg"
+            },
+            {
+                "id": "TASSPTA",
+                "imgid": "AGtiyu",
+                "title": "AG体育",
+                "type": "AG",
+                "img": "tiyu",
+                "ext": ".jpg"
+            },
+            {
+                "id": "ball",
+                "imgid": "BBINtiyu",
+                "title": "BBIN体育",
+                "type": "BY",
+                "img": "tiyu",
+                "ext": ".jpg"
+            }
+        ]
+    }
+	
+]
+
+

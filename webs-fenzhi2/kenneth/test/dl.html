@@ -1,0 +1,446 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=GB2312" />
+	<meta http-equiv="Content-Language" content="utf-8" />
+	<meta content="all" name="robots" />
+	<title>���Ϲ��������񱨸�--����Ƶ��--������_���ϵ������ձ�</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta name="filetype" content="1" />
+	<meta name="publishedtype" content="1" />
+	<meta name="pagetype" content="2" />
+	<meta name="catalogs" content="L_395691" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+	<link rel="stylesheet" href="http://tools.people.com.cn/libs/swiper/2.0/idangerous.swiper.css">
+	<link rel="stylesheet" href="http://yn.people.com.cn/img/MAIN/2018/05/118426/page.css" type="text/css" media="all" charset="utf-8" />
+
+	<script src="http://tools.people.com.cn/libs/jquery/1.11.1/jquery-1.11.1.min.js"></script>
+	<!-- <script src="http://tools.people.com.cn/libs/swiper/2.0/idangerous.swiper.min.js"></script> -->
+	<script src="http://yn.people.com.cn/img/MAIN/2018/03/118194/layui/layui.js" charset="utf-8"></script>
+	<!-- <script src="layui.js" charset="utf-8"></script> -->
+	<!-- <script src="http://cstaticdun.126.net/load.min.js"></script> -->
+	<script src="1.js?v=123"></script>
+
+
+	<script>
+		$(document).ready(function () {
+			// var mySwiper = new Swiper('.swiper-container', {
+			// 	pagination: '.pagination',
+			// 	loop: true,
+			// 	grabCursor: true,
+			// 	paginationClickable: true
+			// })
+			$('.arrow-left').on('click', function (e) {
+				e.preventDefault()
+				mySwiper.swipePrev()
+			})
+			$('.arrow-right').on('click', function (e) {
+				e.preventDefault()
+				mySwiper.swipeNext()
+			})
+		})
+	</script>
+	<script type="text/javascript">
+		function setCookie1(objName) {
+			var bn = '95953';
+			document.cookie = objName + "=" + bn;
+		}
+		function setCookie(objName) {
+			var exdate = new Date();
+			var t = exdate.getTime();
+			exdate.setTime(exdate.getTime() + 6000);//ͶƱ���ʱ�䣬�ɸ�
+			var bn = exdate.getTime() + 6000;
+			document.cookie = objName + "=" + bn + ";expires=" + exdate.toGMTString();
+		}
+		function getCookie(objName) {
+			var arrStr = document.cookie.split("; ");
+
+			for (var i = 0; i < arrStr.length; i++) {
+				var temp = arrStr[i].split("=");
+				if (temp[0] == objName)
+					return unescape(temp[1]);
+			}
+		}
+		$(document).ready(function () {
+			try {
+				$.getJSON("http://littlepoll1.people.com.cn/json.php?type=641&callback=?", function (data) {//ÿһ��ͶƱ��Ӧһ��type��
+					for (var i = 0; i < data.length; i++) {
+						$("#" + data[i].vid).html(data[i].bnum);
+					}
+				});
+				$(".button1").click(function () {
+					console.log('点击按钮')
+					var key = "yunnanjwn01";
+					var b = localStorage.getItem(key);
+					var voteId = $(this).attr("voteId");
+					var datanum = 100;//ÿ��ͶƱ���޴���
+					var anim = Math.floor(Math.random() * 7);
+					layui.use('layer', function () {
+						var layer = layui.layer;
+						var cururl = document.URL;
+						var curlocation = cururl.indexOf('?') + 1
+						var curparam = cururl.substring(curlocation, curlocation + 6);
+						if (curparam != "from_m") {
+							var sUserAgent = navigator.userAgent.toLowerCase();
+							var IsTC = sUserAgent.match(/transcoder/i) == "transcoder";
+							var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+							var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+							var bIsAndroid = sUserAgent.match(/android/i) == "android";
+							var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+							var bIsWP = sUserAgent.match(/windows phone/i) == "windows phone";
+							var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+							var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+							var bIsSYB = sUserAgent.match(/symbian/i) == "symbian";
+							var bIsSER = sUserAgent.match(/series/i) == "series";
+							if (IsTC || bIsIphoneOs || bIsAndroid || bIsWP || bIsCE || bIsWM || bIsSYB || bIsSER) {
+								console.log(123)
+								var sjw = parseInt($(window).width() * 0.92) + 'px';
+								//console.log(sjw)
+								layer.msg('<div style="margin: 200px 0px 10px -15px;" id="captcha_div"></div>', {
+									time: 200000,
+									area: sjw,
+									closeBtn: 1,
+									btnAlign: 'c',
+									anim: anim,
+									shade: [0.8, '#393D49'],
+									offset: [
+										100, 0
+									],
+									btn: ['����'],
+									yes: function (index, layero) {
+										//layer.close(index);
+										//layer.msg('��л������ͶƱ��');
+										//
+										var key_val = $(".yidun_input").val();
+
+										if (key_val.length == 0) {
+											var_msg = '����������֤��'
+										}
+										else {
+											if (b == null) {
+												var value = 1;
+												var nian = new Date().getFullYear();
+												var yue = new Date().getMonth();
+												var ri = new Date().getDate();
+												localStorage.setItem(key, JSON.stringify({ data: value, nian: nian, yue: yue, ri: ri }));
+												var_msg = submit_b(key_val, voteId);//toupiao(voteId);
+											}
+											else {
+												var data = localStorage.getItem(key);
+												//console.log(data)
+												var dataObj = JSON.parse(data)
+												var value = dataObj.data + 1;//ͶƱ����+1
+												var nnian = dataObj.nian;
+												var nyue = dataObj.yue;
+												var nri = dataObj.ri;
+												localStorage.setItem(key, JSON.stringify({ data: value, nian: nnian, yue: nyue, ri: nri }));
+												if (value > datanum) {//��ǰͶƱ��������ͶƱÿ������
+													var timenian = (new Date().getFullYear() - nnian);
+													var timeyue = (new Date().getMonth() - nyue);
+													var timeri = (new Date().getDate() - nri);
+													if (timenian > 0) {
+														localStorage.clear();
+														var_msg = submit_b(key_val, voteId);
+													}
+													else if (timeyue > 0) {
+														localStorage.clear();
+														var_msg = submit_b(key_val, voteId);
+													}
+													else if (timeri > 0) {
+														localStorage.clear();
+														var_msg = submit_b(key_val, voteId);
+													}
+													else {
+														var_msg = "������޴������������������֧�֣�";
+														alert('������޴������������������֧�֣�');
+													}
+
+												}
+												else {
+													var_msg = submit_b(key_val, voteId);
+
+												}
+											}
+										}
+
+										layer.msg(var_msg);
+									}
+
+								});
+							}
+							else {
+								console.log(234)
+								layer.msg('<div style="margin: 200px 10px 10px 10px;" id="captcha_div"></div>', {
+									time: 200000,
+									area: '400px;',
+									closeBtn: 1,
+									btnAlign: 'c',
+									anim: anim,
+									shade: [0.8, '#393D49'],
+									offset: [
+										$(window).height() / 3 - (200 * Math.random()),
+										$(window).width() / 2.5 - (200 * Math.random())
+									],
+									btn: ['点赞'],
+									
+								});
+							}
+						}
+
+						initNECaptcha({
+							captchaId: '7f267064c2b14a55b0ec2465305da5a6', // <-- �����������׶ܹ����������֤��id
+							element: '#captcha_div',
+							mode: 'float',
+							width: '320px',
+							onVerify: function (err, ret) {
+								console.log(err,ret)
+								if (!err) {
+									// ret['validate'] ��ȡ����У������
+								}
+							}
+						}, function (instance) {
+							console.log(instance)
+							// ��ʼ���ɹ���õ���֤ʵ��instance�����Ե���ʵ���ķ���
+						}, function (err) {
+							console.log(err)
+							alert('错误');
+						});
+					});
+				})
+			} catch (e) { }
+		})
+		var key_val = $(".yidun_input").val();
+		function submit_b(key_val, voteId) {
+			var var_msg;
+			var type = 641;  //ͶƱ��Ŀid
+			var a = parseInt($("#" + voteId).text()), b = 1;
+			var num = a + b;
+			$.ajax({
+				type: "post",
+				crossDomain: true,
+				async: false,
+				voteId: voteId,
+				key_val: key_val,
+				url: "http://littlepoll1.people.com.cn/button/index.php/cap/button/" + type,//ÿһ��ͶƱ��Ӧһ��type��ֵ
+				dataType: "json",
+				data: { NECaptchaValidate: key_val, voteid: voteId },
+				cache: false,
+				success: function (data) {
+					if (data.status == 1) {
+						var_msg = ("���޳ɹ�����л����֧�֣�");
+						$("#" + voteId).text(num); alert("���޳ɹ�����л����֧�֣�")
+					}
+					else if (data.status == 2) { var_msg = "����IP�Ѿ�����ÿ�յ�������"; alert("����IP�Ѿ�����ÿ�յ������ƣ�") }
+					else if (data.status == 3) { var_msg = "���Ѿ�Ͷ����ѡ��"; alert("���Ѿ�Ͷ����ѡ�") }
+					else if (data.status == 4) { var_msg = "��֤ʧ��"; alert("��֤ʧ�ܣ���л����֧�֣�") }
+					else if (data.status == 8) { var_msg = "����δ��ʼ��"; alert("����δ��ʼ����л����֧�֣�") }
+					else if (data.status == 9) { var_msg = "�����ѽ�����"; alert("�����ѽ�������л����֧�֣�") }
+					else if (data.status == 0) { var_msg = "û�д˵��ޣ�"; alert("û�д˵��ޣ���л����֧�֣�") }
+				}
+			});
+		}
+	</script>
+	<style type="text/css">
+		.p2_con dl dd p {
+			height: 130px;
+			padding: 15px 0 0 0;
+		}
+
+		.p1_con p {
+			font-size: 16px;
+			text-indent: 2em;
+		}
+
+		.p2_con dl dd b {
+			line-height: 140%;
+		}
+
+		.p2_con dl dd i {
+			padding-top: 15px;
+		}
+
+		.p2_con dl dd b {
+			font-size: 22px;
+		}
+
+		@media (min-device-width:320px) and (max-width:689px),
+		(max-device-width:480px) {
+			.p2_con dl {
+				padding: 2% 2% 6% 2%;
+			}
+
+			.p2_con dl dd {
+				width: 60%;
+			}
+
+			.p2_con dl dd b {
+				font-size: 20px;
+			}
+
+			.p2_con dl dd p {
+				height: 106px;
+			}
+
+		}
+	</style>
+</head>
+<!-- http://c.dun.163yun.com/api/v2/get?id=7f267064c2b14a55b0ec2465305da5a6&fp=55LljXtnvBchirYshWkvLXaWysM54X%5C%2Bvldtj2laDHYG35MfxuuZCOfLHyB7qefIxy7Wq%2Bzvh9MylnAHmqO04ET60nhfnPHD6X2DMMdRU2NQ8%2FzvP%5CpeXQ2E4c%2BEe9Jvvtnf0sHRmCICLBRzsvOrCtMsjHhqUM7eAha0JY1oXN%5CvGa%5Cc%3A1579240817226&https=false&type=undefined&version=2.13.3&dpr=1&dev=1&cb=%2BetQZvoU9g7FGSBEREoFS1KuQi57Tbyv1vATaYmSkS%5CoUkMqhFMzdxK%5CK7Fq40aO&ipv6=false&runEnv=10&group=&scene=&width=320&token=&referer=http%3A%2F%2F127.0.0.1%3A5501%2Fkenneth%2Ftest%2Fdl.html&callback=__JSONP_d32nfec_2 -->
+<!-- &https=true&type=undefined&version=2.13.3&dpr=1&dev=1&cb=zyd9uFaBFnlR5Y87whMNHMApikGijoFUli8sdsM1khvvYoFtWktV70mOq2dCqqdw&token=ca16322971de40f695b84c94395cf198&referer=浏览器地址&callback=__JSONP_4fzx1wd_3 -->
+<!-- &https=true&type=undefined&version=2.13.3&dpr=1&dev=1&cb=%2FDFeF9KPoIPerosxMPDVeW8wOjcG%2BTUU6seHJTLZITaJ%2FZNk0N6%5CrS4mlCYzgfnv&token=b689f2e83d994b1e8d695eab82b98f31&referer=浏览器地址&callback=__JSONP_4x4tp58_2 -->
+<body>
+	<!--header-->
+	<div class="header">
+		<div class=" w1000"><span><a href="http://www.people.com.cn" target="_blank"><img
+						src="http://www.people.com.cn/img/MAIN/2014/06/114539/images/nav/logo_rmw.png"
+						alt="��������ҳ" /></a></span><em></em></div>
+	</div>
+	<style type="text/css">
+		.top01 {
+			background: url(http://yn.people.com.cn/NMediaFile/2020/0113/LOCAL202001132000390612730482836.jpg) top center no-repeat;
+			height: 614px;
+		}
+
+		em,
+		i {
+			font-size: 30px;
+			padding-right: 15px
+		}
+
+		.p2_con .nav {
+			height: 100px;
+			font-size: 16px;
+			text-align: center;
+			word-spacing: 20px;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			word-break: keep-all;
+		}
+
+		.p2_con dl {
+			height: 790px;
+			width: 1000px;
+		}
+
+		.p2_con dl dt {
+			width: 1000px;
+			margin: 0
+		}
+
+		.p2_con dl dd {
+			width: 1000px;
+			margin: 10px 0 0 10px;
+			float: left
+		}
+
+		.p2_con dl dd p {
+			height: 60px;
+			font-size: 16px;
+		}
+
+		.p2_con dl dd i {
+			padding-top: 5px
+		}
+
+		@media (min-device-width:320px) and (max-width:689px),
+		(max-device-width:480px) {
+			.p2_con .nav {
+				height: 260px;
+			}
+
+			.p2_con dl {
+				width: 100%;
+				height: 500px;
+			}
+
+			.p2_con dl dt {
+				width: 93%;
+			}
+
+			.p2_con dl dd {
+				width: 93%;
+			}
+
+			.p2_con dl dd b {
+				font-size: 20px;
+			}
+
+
+		}
+	</style>
+	<div class="clearfix top01">
+		<p>
+			<style type="text/css">
+				@media (min-device-width:320px) and (max-width:689px),
+				(max-device-width:480px) {
+					.top01 {
+						background: none;
+						height: auto;
+					}
+				}
+			</style><img src="http://yn.people.com.cn/NMediaFile/2020/0113/LOCAL202001132012590105575944234.jpg"
+				width="640" />
+		</p>
+	</div>
+
+	<!--header end-->
+	<!--p1-->
+	<div class="title01 clearfix w1000">�����</div>
+	<div class="clearfix w1000 p1_con">
+		<p>
+			<center>������������ͬһ�㡣</center>
+		</p>
+	</div>
+	<!--p2-->
+	<div class="title01 clearfix w1000">���ڵ���</div>
+	<div class="clearfix p2_con w1000">
+		<p class="nav">
+		</p>
+
+		<dl class="clearfix">
+			<dt>
+				<script src="http://tv.people.com.cn/img/player/v.js"></script>
+				<script>showPlayer({ id: "/pvservice/xml/2020/1/14/68569cbd-d70e-4d81-9b58-d6c32efa483f.xml", width: 1000, height: 562, skin: 2, autoplay: 0 });</script>
+			<DD><A href="http://yn.people.com.cn/zt/n2/2020/0114/c395691-33716693.html"
+					target="_blank"><B>�����������ۺ�����ʵ������ȫ��</B> </A>
+				<P>���������������֯46����ץ����������1310�ˣ��ƻ����°���988��</A></P><I><EM id=62336></EM><IMG
+						class=button1
+						src="http://yn.people.com.cn/NMediaFile/2019/0712/LOCAL201907121013412704426030311.png"
+						voteId="62336"></I>
+			</DD>
+			</dd>
+		</dl><a name="dl"></a>
+
+		</dl>
+	</div>
+	</div>
+	<!--p2-->
+
+	<!--p2-->
+
+	<!--p2-->
+
+	<!--p2-->
+
+	<!--p3-->
+
+	<!--copyright-->
+	<div id="copyright" class="copyright clearfix">�� �� �� �� Ȩ �� �� ��δ �� �� �� �� Ȩ �� ֹ ʹ ��<br />
+		Copyright &copy; 1997-2020 by www.people.com.cn. all rights reserved</div>
+	<script src="http://www.people.com.cn/img/2016wb/jweixin-1.0.0.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var wxData = {
+			"imgUrl": "http://www.people.com.cn/img/2016wb/images/logo_share.jpg",
+			"link": window.location.href,
+			"desc": "����16�����й������غ�22��ҵ���������չʾ2019�깤������",
+			"title": "���Ϲ��������񱨸�"
+		};
+	</script>
+	<!--<script src="http://www.people.com.cn/img/2016wb/WeiXinData.js" type="text/javascript"></script>
+<script src="http://tools.people.com.cn/css/2010tianrun/webdig_test.js" language="javascript" type="text/javascript" async></script>
+-->
+</body>
+
+</html>

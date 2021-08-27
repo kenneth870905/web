@@ -1,0 +1,27 @@
+{
+    "title":"标题 如：威尼斯",
+    "qq":"号码",
+    "WeChat_url":" 微信二维码 地址",
+    "ck":"0 充值多少次显示微信客服",
+    "service_email":"客服邮箱",
+    "toushu_email":"投诉邮箱",
+    "online_chat":"在线客服地址 https://e-143504.chatnow.meiqia.com/dist/standalone.html",
+    
+    "app_download":{
+        "url":"app下载地址",
+        "img":"下载二维码"
+    },
+    "appBet_download":{
+        "url":"娱乐城下载地址",
+        "img":"下载二维码"
+    },
+    
+    "telegram":{
+        "number": "纸飞机账号 1111",
+        "a": "https://t.me/boleee"
+    },
+    "img_url":"图片前缀",
+    "internation_phone":"国际电话",
+    "supervision_phone":"监督电话",
+    "tk":"5 每次免费提款次数"
+}

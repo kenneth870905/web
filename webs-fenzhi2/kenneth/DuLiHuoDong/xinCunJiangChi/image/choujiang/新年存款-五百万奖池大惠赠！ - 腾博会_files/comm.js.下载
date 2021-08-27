@@ -1,0 +1,362 @@
+﻿var platformNames = { "15": "PT", "17": "MG", "19": "BSG", "18": "TTG", "12": "AG","20":"GG" ,"21": "DT", "22": "SW", "23": "PP", "24": "PS", "26":"PT国际","27":"AE","30":"CQ9" };
+var lbMove = null;
+$(function () {
+    if ($.cookie('memberToken') && (!$.cookie('ptlogin') || !$.cookie('ptinlogin') || !$.cookie('ptalogin'))) {
+        egameLogin();
+    }
+    showH5Url();
+    $("#login_member_status").remove();
+    $('.navChange').navChange();
+    $('#tb-topcontrol #tb-returntop').topControl();
+    getAnno();
+    $(".quest-but").questConponent();
+
+    //顶部登录状态
+    $(window).scroll(function () {
+        $("#Live800_chatTip_iframe").hide();
+    });
+
+    if ($.cookie('memberToken')) {
+        $(".tb-vipzxhb").hide();
+        var groupId = $.cookie('memberGroupID');
+        if (groupId && groupId > 3 && groupId<7) {
+            $(".tb-vipzxhb").show();
+        }
+    }
+
+    if (!!loginConponent) loginConponent.ShowState(".login_member_top_state", "#login_member_state_operate");
+    showSubMenu();
+    //悬浮点击半隐藏
+    if (isMobile()) {
+        $('.newyear-leftxuanfu .fixedClose,#tb-topcontrol .fixedClose').show();
+        $('.newyear-leftxuanfu .fixedClose').click(function () {
+            $(this).parent('.newyear-leftxuanfu').animate({ left: -120 }, 200).end().hide();
+            $('.newyear-leftxuanfu .fixedExpland').show();
+        })
+        $('.newyear-leftxuanfu .fixedExpland').click(function () {
+            $(this).parent('.newyear-leftxuanfu').animate({ left: 0 }, 200).end().hide();
+            $('.newyear-leftxuanfu .fixedClose').show();
+        })
+        $('#tb-topcontrol .fixedClose').click(function () {
+            $(this).parent('#tb-topcontrol').animate({ right: -120 }, 200).end().hide();
+            $('#tb-topcontrol .fixedExpland').show();
+        })
+        $('#tb-topcontrol .fixedExpland').click(function () {
+            $(this).parent('#tb-topcontrol').animate({ right: 0 }, 200).end().hide();
+            $('#tb-topcontrol .fixedClose').show();
+        })
+    }
+
+    setTimeout(function () {
+        var navInfo = navigator.userAgent;
+        if (navInfo.indexOf("MSIE 7") > -1 || navInfo.indexOf("MSIE 8") > -1 || navInfo.indexOf("MSIE 9") > -1 || navInfo.indexOf("MSIE 10") > -1) {
+            //connNow();
+
+            //$('body').Dialog({
+            //    type: "Ask",
+            //    title: "温馨提示",
+            //    messageTitle: "你的IE浏览器不是最新版本,暂不支持消息推送，请升级到IE最新版本。",
+            //    buttons: [{
+            //        name: "确定",
+            //        callback: function () {closeDialog(0);}
+            //    }],
+            //    closeHandler: function () { closeDialog(0); }
+            //});
+            //return;
+
+        } else {
+            watchStorageEvent();
+            leavePage();
+        }
+        getUnreadMsgLen();
+    }, 100);
+    //最近玩游戏
+    lastGamesInit();
+    wathchRightSize();
+});
+
+//顶部导航下拉显示
+function showSubMenu() {
+    var pbSoprtUrl = resolveUrl + 'Game/PBSport.aspx';
+    var subMenu1 = '<ul class="xl-menu-live">'
+                + '<li class="fl" onclick="openPlatformGame(11)"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/n-tb/xl-live-ag.png?v=1002" />  <span class="xl-ml-jt"></span></a></li>'
+                + '<li class="fl" onclick="openPlatformGame(12)"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/n-tb/xl-live-aggj.png?v=1002"/><span class="xl-ml-jt"></span></a></li>'
+                + '<li class="fl"><a href="javascript:;" onclick="openPlatformGame(9,3)"><img src="' + window.__STATIC__ + 'image/pic/n-tb/xl-live-bbin.png?v=1002"/><span class="xl-ml-jt"></span></a></li>'
+                + '<li class="fl"><a href="javascript:;" onclick="openPlatformGame(37,1930)"><img src="' + window.__STATIC__ + 'image/pic/n-tb/xl-live-mga.png?v=1002"/><span class="xl-ml-jt"></span></a></li>'
+                + '<li class="fl"><a href="javascript:;" onclick="openPlatformGame(40,\'\')"><img src="' + window.__STATIC__ + 'image/pic/n-tb/xl-live-oubo.png?v=1002"/><span class="xl-ml-jt"></span></a><img class="xl-hot-ico" src="' + window.__STATIC__ + 'image/pic/n-tb/xl-new-ico.png" style="position: absolute;top:57px;right:0px;"></li>'
+                + '</ul>',
+        subMenu2 = '<ul class="xl-menu-egame">'
+            + '<li class="fl"><a href="' + resolveUrl + 'egame.aspx#30" target="_blank"><img src="' + window.__STATIC__ + 'image/pic/menu/CQ9.png?v=1000"/></a><img class="xl-hot-ico" style="top:40px;right:2px;" src="' + window.__STATIC__ + 'image/pic/n-tb/xl-hot-ico.png"></li>'
+            + '<li class="fl"><a href="' + resolveUrl + 'egame.aspx#37" target="_blank"><img src="' + window.__STATIC__ + 'image/pic/menu/MGAS.png?v=1000"/></a></li>'
+            + '<li class="fl"><a href="' + resolveUrl + 'egame.aspx#35" target="_blank"><img src="' + window.__STATIC__ + 'image/pic/menu/PTAS.png?v=1000"/></a></li>'
+            + '<li class="fl"><a href="' + resolveUrl + 'egame.aspx#26" target="_blank"><img src="' + window.__STATIC__ + 'image/pic/menu/PTIN.png?v=1000"/></a></li>'
+            + '<li class="fl"><a href="' + resolveUrl + 'egame.aspx#23" target="_blank"><img src="' + window.__STATIC__ + 'image/pic/menu/PP.png?v=1000"/><i class="frees" style="background:#ff3600">锦标赛</i></a></li>'             
+            + '<li class="fl"><a href="' + resolveUrl + 'egame.aspx#34" target="_blank"><img src="' + window.__STATIC__ + 'image/pic/menu/NT.png?v=1000"/></a></li>'
+            + '<li class="fl" onclick="openPlatformGame(9,4)"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/BBIN.png?v=1000"/></a></li>'
+            + '<li class="fl"><a href="' + resolveUrl + 'egame.aspx#31" target="_blank"><img src="' + window.__STATIC__ + 'image/pic/menu/PNG.png?v=1000"/></a></li>'
+            + '<li class="fl"><a href="' + resolveUrl + 'egame.aspx#27" target="_blank"><img src="' + window.__STATIC__ + 'image/pic/menu/AE.png?v=1000"/></a></li>'
+            + '<li class="fl"><a href="' + resolveUrl + 'egame.aspx#22" target="_blank"><img src="' + window.__STATIC__ + 'image/pic/menu/SW.png?v=1000"/><i class="frees" style="background:#ff3600">豪赏会</i></a></li>'
+            + '<li class="fl"><a href="' + resolveUrl + 'egame.aspx#24" target="_blank"><img src="' + window.__STATIC__ + 'image/pic/menu/PS.png?v=1000"/></a></li>'
+            + '<li class="fl"><a href="' + resolveUrl + 'egame.aspx#12" target="_blank"><img src="' + window.__STATIC__ + 'image/pic/menu/AG.png?v=1000"/></a></li>'
+            + '<li class="fl"><a href="' + resolveUrl + 'egame.aspx#21" target="_blank"><img src="' + window.__STATIC__ + 'image/pic/menu/DT.png?v=1000"/></a></li>'
+            + '<li class="fl"><a href="' + resolveUrl + 'egame.aspx#18" target="_blank"><img src="' + window.__STATIC__ + 'image/pic/menu/TTG.png?v=1000"/></a></li>'
+            + '<li class="fl"><a href="#!" onclick=playGame("","","YP800","12","false") target="_blank"><img src="' + window.__STATIC__ + 'image/pic/menu/YP.png?v=1000"/></a></li>'
+            + '<li class="fl" id="submen_egame_761" onclick=\'playGame("","","xxl","32","false")\'><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/761.png?v=1000"/></a></li>'
+            + '</ul>',
+        //subMenu3 = $.trim($('#tpl_buyu_new').html()),
+    subMenu3 = '<ul class="xl-menu-buyu">'
+        + '<li gamecode="6" rel="12" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/AG-BYW-2.png?v=1001" /></a></li>'
+        + '<li gamecode="cashfi" rel="35" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/PTAS-SHDYJ.png?v=1001" /></a></li>'
+        + '<li gamecode="cashfi" rel="26" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/PTIN-SHDYJ.png?v=1001" /></a></li>'
+        + '<li gamecode="110" rel="20" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/GG-BYTX-2.png?v=1001" /></a></li>'
+        + '<li gamecode="sw_fufish-jp" rel="22" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/SW-BYDF-JC.png?v=1001" /><i class="icon">奖池</i></a></li>'
+        + '<li gamecode="sw_fufish_intw" rel="22" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/SW-BYDF.png?v=1001" /></a></li>'
+        + '<li gamecode="sw_or" rel="22" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/SW-SHDZ.png?v=1001" /></a></li>'
+        + '<li gamecode="30" rel="9" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/BBIN-BYDR.png?v=1001" /></a></li>'
+        + '<li gamecode="30598" rel="9" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/BBIN-BYDR-2.png?v=1001" /></a></li>'
+        + '<li gamecode="38" rel="9" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/BBIN-BYDS.png?v=1001" /></a></li>'
+        + '<li gamecode="38002" rel="9" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/BBIN-FGYC.png?v=1001" /></a><img class="xl-hot-ico" style="top:40px;right:2px;" src="' + window.__STATIC__ + 'image/pic/n-tb/xl-new-ico.png"></li>'
+        + '<li gamecode="AB3" rel="30" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/CQ9-HJYC.png?v=1001" /></a></li>'
+        + '<li gamecode="AB1" rel="30" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/CQ9-HJYC-2.png?v=1001" /></a>2</li>'
+        + '<li gamecode="AT01" rel="30" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/CQ9-YPBY.png?v=1001" /></a></li>'
+        + '<li gamecode="fish" rel="32" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/761-LKPY.png?v=1001" /></a></li>'
+        + '<li gamecode="jcby" rel="32" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/761-JCBY.png?v=1001" /></a></li>'
+        + '<li gamecode="dsnh" rel="32" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/761-DSBY.png?v=1001" /></a></li>'
+        + '<li gamecode="hwby" rel="32" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/761-HWBY.png?v=1001" /></a></li>'
+        + '<li gamecode="1006" rel="36" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/SG-ZFBY.png?v=1001" /></a></li>'
+        + '<li gamecode="PSF-ON-00001" rel="24" data-html5="true" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/PS-HDL.png?v=1001" /></a></li>'
+        + '<li gamecode="510" rel="28" data-html5="true" onclick="playGame($(this));"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/menu/KY-HBBY.png?v=1001" /></a></li>'
+            +'</ul>',
+    subMenu4 = '<ul class="xl-menu-sports">'
+                + '<li class="fl" onclick="openPlatformGame(9,0)"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/n-tb/xl-sports-bbin.png?v=1001" />  <span class="xl-ml-jt"></span></a></li>'
+                + '<li class="fl"><a href="' + pbSoprtUrl + '" target="_blank"><img src="' + window.__STATIC__ + 'image/pic/n-tb/xl-sports-pinbet.png?v=1001"/><span class="xl-ml-jt"></span></a></li>'
+                + '<li class="fl" onclick="openPlatformGame(33,\'IMSB\')"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/n-tb/xl-sports-im2.png?v=1000"/><span class="xl-ml-jt"></span></a></li>'
+                + '<li class="fl" onclick="openPlatformGame(33,\'EsportsBull\')"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/n-tb/xl-sports-im.png?v=1000"/><span class="xl-ml-jt"></span></a></li>'
+                + '</ul>',
+    subMenu5 = '<ul class="xl-menu-lottery">'
+                + '<li class="fl" onclick=\'playGame("","","0","28","false")\'><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/n-tb/xl-qipai-kaiyuan.png?v=1001" />  <span class="xl-ml-jt"></span></a></li>'
+                + '<li class="fl" onclick=\'playGame("","","0","32","false")\'><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/n-tb/xl-qipai-761.png?v=1001"/><span class="xl-ml-jt"></span></a></li>'
+                + '<li class="fl" onclick=\'playGame("","","0","36","false")\'><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/n-tb/xl-qipai-sanguo.png?v=1001"/><span class="xl-ml-jt"></span></a></li>'
+                + '<li class="fl" onclick=\'playGame("","","0","39","false")\'><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/n-tb/xl-qipai-dfw.png?v=1001"/><span class="xl-ml-jt"></span><img class="xl-hot-ico" src="' + window.__STATIC__ + 'image/pic/n-tb/xl-new-ico.png" style="position: absolute;top:57px;right:0px;"></a></li>'
+                + '</ul>',
+    subMenu6 = '<ul class="xl-menu-lottery">'
+                + '<li class="fl" onclick="openPlatformGame(9,0)"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/n-tb/xl-lottery-bbin.png?v=1000" />  <span class="xl-ml-jt"></span></a></li>'
+                + '<li class="fl" onclick="openPlatformGame(29)"><a href="javascript:;"><img src="' + window.__STATIC__ + 'image/pic/n-tb/xl-lottery-vr.png?v=1000"/><span class="xl-ml-jt"></span></a></li>'
+                + '</ul>',
+    subMenu7 = '<ul class="xl-menu-buyu" style="width:auto;margin-left:-240px;">'
+                + '<li class="fl"><a href="/Promotion#14"><img src="' + window.__STATIC__ + 'image/pic/n-tb/xl-youhui-5.png?v=1000" />  <span class="xl-ml-jt"></span></a></li>'
+                + '<li class="fl"><a href="/Promotion#1"><img src="' + window.__STATIC__ + 'image/pic/n-tb/xl-youhui-1.png?v=1000" />  <span class="xl-ml-jt"></span></a></li>'
+                + '<li class="fl"><a href="/Promotion#5"><img src="' + window.__STATIC__ + 'image/pic/n-tb/xl-youhui-2.png?v=1000" />  <span class="xl-ml-jt"></span></a></li>'
+                + '<li class="fl"><a href="/Promotion#10"><img src="' + window.__STATIC__ + 'image/pic/n-tb/xl-youhui-3.png?v=1000" />  <span class="xl-ml-jt"></span></a></li>'
+                + '<li class="fl"><a href="/Promotion#6"><img src="' + window.__STATIC__ + 'image/pic/n-tb/xl-youhui-4.png?v=1000" />  <span class="xl-ml-jt"></span></a></li>'
+                + '</ul>';
+    var arr = [subMenu1, subMenu2, subMenu3, subMenu4, subMenu5, subMenu6, subMenu7];
+    var timer = null;
+
+    $(".tb-link li").hover(function () {
+            var that = $(this);
+            var index = that.attr('index');
+            if (!index) {
+                return $(".tb-menu-xiala").hide();
+            }
+            timer = setTimeout(function () {
+                $(".tb-menu-xiala #subMenuDiv").html("");
+                $(".tb-menu-xiala").show();
+                $(".tb-menu-xiala #subMenuDiv").html(arr[index]);
+
+                $('.tb-menu-xiala-bk').removeClass('tb-menu-xiala-bk-egame tb-menu-xiala-bk-fish');
+                //$('.tb-menu-xiala-bk').removeClass('tb-menu-xiala-bk-fish');
+                $('.tb-menu-xiala').removeClass('tb-menu-xiala-egame');                
+                if (index == 1) {
+                    $('.tb-menu-xiala-bk').addClass('tb-menu-xiala-bk-egame');
+                    $('.tb-menu-xiala').addClass('tb-menu-xiala-egame');
+                } else if (index == 2) {
+                    $('.tb-menu-xiala-bk').addClass('tb-menu-xiala-bk-fish');
+                }
+                if (index == 1) {
+                    if ($("#submen_egame_761").size() > 0) {
+                        $("#submen_egame_761").hover(function () {
+                            $(this).find('img').eq(0).attr('src', window.__STATIC__ + 'image/pic/n-tb/xl-egame-761-2-2.png?v=1');
+                        },
+                        function () {
+                            $(this).find('img').eq(0).attr('src', window.__STATIC__ + 'image/pic/n-tb/xl-egame-761-2.png?v=1');
+                        });
+                    }
+                }
+
+            }, 250);
+    }, function () {
+            clearTimeout(timer);
+            $(".tb-menu-xiala").hide();
+    });
+
+
+    $(".tb-menu-xiala").hover(function () {
+        $(this).show();
+    }, function () {
+        $(this).hide();
+    })
+}
+
+//获取H5站点链接
+function showH5Url() {
+    var hostUrl = window.location.host;
+    var h5url = '';
+    if (hostUrl.indexOf('www') > -1)
+        h5url = 'https://'+hostUrl.replace('www', 'm');
+    else {
+        h5url = 'https://m.' + hostUrl;
+    }
+    $("#gotoH5").show().attr('href', h5url);
+    //var h5url = $.cookie('tengbo.com.h5url') || false,
+    //    hosturl = window.location.host;
+    //if (h5url) {
+    //    if ((h5url.indexOf('vip') > -1 && hosturl.indexOf('vip') > -1) || (h5url.indexOf('vip') == -1 && hosturl.indexOf('vip') == -1)) {
+    //        $("#gotoH5").show().attr('href', h5url);
+    //        return;
+    //    }
+    //}
+
+    //getH5Url(function (data) {
+    //    if (data.row) {
+    //        var h5url = data.row.H5_Url;
+    //        if (hosturl.indexOf('vip') > -1) {
+    //            h5url = data.row.VIPH5_Url;
+    //        }
+    //        $("#gotoH5").show().attr('href', h5url);
+    //        $.cookie('tengbo.com.h5url', h5url, { path: '/' })
+    //    }
+    //})
+}
+
+//最近玩启动加载函数
+function lastGamesInit() {
+    if ($.cookie('memberACNT') && $.cookie('memberToken')) {
+        getPlayGameHistory(function (data) {
+            chanageTitle(data);
+            if ($.cookie('showLastGames')) {
+                $("#lastestGame-hide").parent().show();
+                $("#showLastGames").hide();
+
+            } else {
+                $("#lastestGame-hide").parent().hide();
+                $("#showLastGames").show();
+            }
+        });
+    } else {
+        $("#lastestGame-hide").parent().hide();
+        $("#showLastGames").hide();
+    }
+
+    $("#lastestGame-hide").bind('click', hideLastGames);
+    $("#showLastGames").click(function () {
+        $.cookie('showLastGames', 'true', { path: '/' });
+        var that = $(this);
+        if (!$.cookie('memberACNT')) {
+            getPlayGameHistory(function () {
+                that.hide();
+                $("#lastestGame-hide").parent().show();
+            });
+        } else {
+            getPlayGameHistory(function () {
+                that.hide();
+                $("#lastestGame-hide").parent().show();
+            });
+        }
+    })
+}
+
+//获取最近玩的电游
+function getPlayGameHistory(fn) {
+    $.invoke_api({ GetPlayGameHistory: {} }, {
+        success: function (data) {
+            //data = { Status: 1, row: [{ GameType: 17, GameCode: "4beauties", CreateTime: "" }, { GameType: 23, GameCode: "vs25pandagold", CreateTime: "" }], Summary: "" };
+            if (data.Status == 1) {
+                fn && fn(data.row);
+                if (data.row && data.row.length) {
+                    $("#lastestGame").html("");
+                    $.each(data.row, function (i, o) {
+                        if (o.GameType == 15) {
+                            o.GameType = 35;
+                        }
+                        if (!o.IsMobile) {
+                            var $li = $('<li class="fl"><div class="fl Pld-Eg-Ico"><img src=""></div><div class="bfc Pld-Eg-Text"><h2></h2><p></p></div></li>');
+                            $li.find('img').attr('src', o.PCImgUrl);
+                            //$li.find('h2').text(getGameName(o.GameType, o.GameCode));//GameName
+                            $li.find('h2').html(o.GameName);
+                            if (o.GameType == 20) {
+                                $li.find('p').text(getFileName(o.GameType, 2) + '捕鱼');
+                            } else {
+                                $li.find('p').text(getFileName(o.GameType, 2) + '电游');
+                            }
+
+                            $li.click('click', function () {
+                                var isH5 = o.IsHtml5 == 1 ? true : false;
+                                playGame(null, false, o.GameCode, o.GameType, isH5, o.GameName);
+                            })
+                            $("#lastestGame").append($li);
+                        }
+                    })
+                    $("#lastestGame").css({"padding":"0 50px"})
+                    if (data.row.length < 11) {
+                        $("#BoxUl_03 .tbbg-zz-l").hide();
+                        $("#BoxUl_03 .tbbg-zz-r").hide();
+                    } else {
+                        $("#BoxUl_03 .tbbg-zz-l").show();
+                        $("#BoxUl_03 .tbbg-zz-r").show();
+                    }
+                    if (lbMove && lbMove.timerId) return;
+                    lbMove = LbMove('BoxUl_03', 'btnl_03', 'btnr_03', 'BoxSwitch', true, 'left', true, 180, 700, 5000, 10);
+                }
+            }
+        }
+    })
+
+}
+
+//根据ID获取平台名或平台图片文件夹 type 1，获取文件夹名     2，获取平台名
+function getFileName(id, type) {
+    type = type || 1;
+    var plats = Util.GamePlat;
+    if (plats[id]) {
+        return type == 1 ? plats[id].imgPath : (plats[id].abbrCN || plats[id].abbr)
+    }
+    var fileName = { 9: "bbing", 12: "agg", 15: "ptg", 17: "mgg", 18: "ttgg", 21: "dtgg", 22: "swg", 23: "ppg", 24: "psg", 26: 'ptg', 20: 'gg', 27: 'aeg','30':'cq9g', 35:'ptg' };
+    if (type == 2) {
+        fileName = platformNames;
+    }
+    for (var obj in fileName) {
+        if (obj == id) {
+            return fileName[obj];
+        }
+    }
+}
+
+function hideLastGames() {
+    $(this).parent().hide();
+    $(".Tb-Played-Open").show();
+    $.removeCookie("showLastGames", { path: '/' });
+    //lbMove.clearTimer();
+    //lbMove = null;
+}
+
+//切换显示 最近玩 和 热门电游 标题
+function chanageTitle(data) {
+    if (!data) return;
+    var items = data[0];
+    if (items.IsTouch != undefined) {
+        if (!!items.IsTouch) {   //热门游戏
+            $("#showLastGames div").attr('class', 'Tb-HotEgame-ico');
+            $("#showLastGames span").text("热门电游");
+            $("#lastestGame-hide").parent().find('.Tb-Pld-Eg-Bt i').text('热门电游');
+        } else {
+            $("#showLastGames div").attr('class', 'Tb-Played-ico');
+            $("#showLastGames span").text('最近玩过');
+            $("#lastestGame-hide").parent().find('.Tb-Pld-Eg-Bt i').text('我最近玩过');
+        }
+    } else {
+        $("#showLastGames div").attr('class', 'Tb-Played-ico');
+        $("#showLastGames span").text('最近玩过');
+        $("#lastestGame-hide").parent().find('.Tb-Pld-Eg-Bt i').text('我最近玩过');
+    }
+}
