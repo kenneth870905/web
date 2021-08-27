@@ -1,3 +1,0 @@
-const config = {
-  baseUrl: '/api'
-}
