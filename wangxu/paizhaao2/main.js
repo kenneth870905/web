@@ -35,12 +35,14 @@ async function createWindow() {
             enableRemoteModule: true
         },
         //全屏
-        fullscreen :true,
+        // fullscreen :true,
+        // kiosk: true,  //服务亭模式
         // 隐藏标题栏
         // frame: false,
         autoHideMenuBar:true //自动隐藏菜单 按alt还是会显示
     })
     win.setAlwaysOnTop(true)
+    // win.setFullScreen(true);    //全屏
     //菜单
     // win.setMenuBarVisibility(false)
     //全屏
@@ -50,6 +52,8 @@ async function createWindow() {
     setInterval(() => {
         console.log('获取焦点')
         win.focus();
+        win.setFullScreen(true);    //全屏
+        win.setKiosk(true)
     }, 1000*10);
     
     

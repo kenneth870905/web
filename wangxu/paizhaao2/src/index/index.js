@@ -1,7 +1,7 @@
 const { app, remote, ipcRenderer } = require('electron')
+var path = require('path')
 
 // let configDir = remote.app.getPath('userData');
-// var path = require('path')
 // console.log(path.dirname (remote.app.getPath ('exe')))
 // console.log(process.env.PORTABLE_EXECUTABLE_DIR)
 console.log(remote.getGlobal('childrenList'))
