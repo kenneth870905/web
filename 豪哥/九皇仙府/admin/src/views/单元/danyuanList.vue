@@ -49,11 +49,17 @@
                 <div>
                     <div class="status3"></div>已卖出
                 </div>
+                <div>
+                    <div class="status5"></div>批量出售
+                </div>
+                
             </div>
             <ul class="orderList">
                 <li v-for="(item,index) in rows">
                     <div class="name-1">{{item.name}}</div>
-                    <div class="item" :class="'status'+item2.status" v-for="(item2,index2) in item.children">{{item2.column}}</div>
+                    <template v-for="(item2,index2) in item.children">
+                        <div class="item" v-if="item2.column%10!=4" :class="'status'+item2.status" >{{item2.column}}</div>
+                    </template>
                 </li>
             </ul>
         </div>
@@ -236,6 +242,12 @@ export default {
             height: 18px;
             background: #f47073;
         }
+        .status5{
+            width: 18px;
+            height: 18px;
+            background: #f3de8d;
+        }
+        
     }
 }
 .orderList{
@@ -270,6 +282,9 @@ export default {
         }
         &.status3{
             background: #f47073;
+        }
+        &.status5{
+            background:  #f3de8d;
         }
     }
 }

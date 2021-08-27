@@ -1,10 +1,11 @@
-var fs = require('fs');
-const path = require('path')
-    // 引入七牛模块  
-var qiniu = require("qiniu");
+
 // const { remote } = require('electron');
 // 图片上传
 function upload(imgData) {
+    var fs = require('fs');
+    const path = require('path')
+        // 引入七牛模块  
+    var qiniu = require("qiniu");
     console.log(qiniu)
     //要上传的空间名
     var bucket = 'cszh-project';

@@ -33,9 +33,9 @@
             <ul class="list-1">
                 <li>
                     <div class="btn-box">操作</div>
-                    <div class="btn-box">数量</div>
+                    <div class="btn-box">尾数</div>
                     <div class="inpt-box">名称</div>
-                    <div class="inpt-box">行数</div>
+                    <!-- <div class="inpt-box">行数</div> -->
                 </li>
                 <li v-for="(item,index) in danyuan.rows" :key="index">
                     <div class="btn-box">
@@ -47,10 +47,11 @@
                     <div class="inpt-box">
                         <el-input v-model="item.name" placeholder size="mini"></el-input>
                     </div>
-                    <div class="inpt-box">{{index+1}}</div>
+                    <!-- <div class="inpt-box">{{index+1}}</div> -->
                     <div class="list-2">
-                        <!-- <div class="fangxing" v-for="(item2,index2) in item.children" :key="index2"></div> -->
-                        <div class="fangxing" v-for="(item2,index2) in item.count" :key="index2">{{item2}}</div>
+                        <template v-for="(item2,index2) in item.count">
+                            <div class="fangxing"  v-if="item2%10!=4" :key="index2">{{item2}}</div>
+                        </template>
                     </div>
                 </li>
             </ul>
@@ -81,7 +82,21 @@ export default {
             status: 0,
             description: "",
             rows: [
-                { row: 0, name: "行名", count: 10 }
+                { 
+                    row: 0, name: "行名", count: 10 ,
+                    children:[
+                        {column:1},
+                        {column:2},
+                        {column:3},
+                        {column:5},
+                        {column:6},
+                        {column:7},
+                        {column:8},
+                        {column:9},
+                        {column:10},
+                        {column:11}
+                    ]
+                }
             ]
         })
 
@@ -160,7 +175,10 @@ export default {
                     danyuan[key] = res.data[key]
                 }
                 danyuan.rows = res.data.Rows
-                
+                // danyuan.rows.map(row=>{
+                //     row.children=[]
+                //     let a = 1
+                // })
             }).catch(err => {
                 console.error(err);
             })

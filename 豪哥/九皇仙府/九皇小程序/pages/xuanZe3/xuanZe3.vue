@@ -14,7 +14,7 @@
 				</view>
 				<view class="list">
 					<view class="item" v-for="item in rows">
-						<view :class="['status_'+item2.status,getClassName(item2)]" v-for="item2 in item.children" @click="SelectedItem(item2)">
+						<view :class="['status_'+item2.status,getClassName(item2)]" v-if="item2.column%10!=4" v-for="item2 in item.children" @click="SelectedItem(item2)">
 							{{item2.column}}
 						</view>
 					</view>
@@ -314,6 +314,9 @@
 		}
 		.status_3{
 			background: #d99493;
+		}
+		.status_5{
+			background: #f3de8d;
 		}
 	}
 }

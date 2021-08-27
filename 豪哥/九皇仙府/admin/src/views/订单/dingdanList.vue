@@ -5,7 +5,10 @@
             <el-option label="预定" :value="1"></el-option>
             <el-option label="已付定金" :value="2"></el-option>
             <el-option label="已售出" :value="3"></el-option>
+            <el-option label="批量出售" :value="5"></el-option>
+            <el-option label="预定已取消" :value="4"></el-option>
         </el-select>
+        <div class="tishi">（全部订单不包含已取消,如需查询已取消，请选择“预定已取消”）</div>
         <div class="flex1"></div>
         <el-button size="small" @click="openDialog()" type="warning">添加订单</el-button>
         <el-button size="small" @click="getOrderList()">刷新</el-button>
@@ -23,13 +26,15 @@
                 <span v-if="scope.row.status==1">预定</span>
                 <span v-if="scope.row.status==2">已付定金</span>
                 <span v-if="scope.row.status==3">已出售</span>
+                <span v-if="scope.row.status==4">已取消</span>
+                <span v-if="scope.row.status==5">批量出售</span>
             </template>
         </el-table-column>
         <el-table-column label="更新时间" prop="updatedAt"></el-table-column>
         <!-- <el-table-column label="备注"></el-table-column> -->
         <el-table-column label="操作" align="center" width="200px">
             <template #default="scope">
-                <el-button type size="mini" @click="openStatusDialog(scope.row)">修改状态</el-button>
+                <el-button type size="mini" v-if="scope.row.status!=4" @click="openStatusDialog(scope.row)">修改状态</el-button>
                 <el-button type="warning" size="mini" @click="deleteOrder(scope.row)">删除</el-button>
             </template>
         </el-table-column>
@@ -80,6 +85,7 @@
                     <el-option label="已预定" :value="1"></el-option>
                     <el-option label="已付定金" :value="2"></el-option>
                     <el-option label="已出售" :value="3"></el-option>
+                    <el-option label="已批量售出" :value="5"></el-option>
                 </el-select>
             </el-form-item>
         </el-form>
@@ -358,9 +364,14 @@ export default {
 .header-1 {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     margin: 0px 0px 10px;
     .flex1{
         flex: 1;
+    }
+    .tishi{
+        font-size: 12px;
+        color: red;
     }
     .r10{
         margin: 0px 10px 0px 0px;
@@ -382,6 +393,7 @@ export default {
 }
 
 .list-1{
+    overflow: auto;
     li{
         display: flex;
         align-items: center;
