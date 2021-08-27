@@ -3,6 +3,7 @@
 node_modules
 dist
 /dist
+home_video.mp4
 
 # local env files
 .env.local
