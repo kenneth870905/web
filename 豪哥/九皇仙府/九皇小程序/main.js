@@ -45,7 +45,8 @@ Vue.prototype.$http = (url,data,m)=>{
 			method:method,
 			success(res) {
 				closeLoading()
-				if(res.code ==1001){
+				console.log(res)
+				if(res.data.code ==1001){
 					uni.removeStorage({
 						key:"jiuhuangToken"
 					})

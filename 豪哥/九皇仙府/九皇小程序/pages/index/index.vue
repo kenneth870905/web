@@ -95,18 +95,19 @@
 		border-radius: 10rpx;
 	}
 	.item2{
-		font-size: 28rpx;
+		font-size: 36rpx;
 		// background: #2b838a;
 		// background: url("/static/bg1.png"),linear-gradient(to left, #328944, #247cdc) ;
 		background: url("/static/bg1.png") ;
 		background-color: #2b838a;
 		background-color:#4e5199 ;
-		line-height: 80rpx;
+		line-height: 90rpx;
 		color: #fff;
 		font-weight: bold;
 		text-align: center;
 		border-radius: 10rpx;
 		position: relative;
+		letter-spacing: 4rpx;
 	}
 }
 

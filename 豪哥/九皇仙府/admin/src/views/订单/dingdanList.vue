@@ -18,7 +18,7 @@
         <el-table-column label="id" prop="id"></el-table-column>
         <el-table-column label="园区名称" prop="park_name"></el-table-column>
         <el-table-column label="单元名称" prop="unit_name"></el-table-column>
-        <el-table-column label="行号" prop="row"></el-table-column>
+        <el-table-column label="行号" prop="newRow"></el-table-column>
         <el-table-column label="列号" prop="column"></el-table-column>
         <el-table-column label="销售员" prop="user_name"></el-table-column>
         <el-table-column label="状态">
@@ -58,7 +58,7 @@
                 <ul class="list-1">
                     <li v-for="item in rows">
                         <div class="name-1">{{item.name}}</div>
-                        <div class="number" :class="['status_'+item2.status,(order.row==item2.row && order.column==item2.column) ? 'active': '']" v-for="item2 in item.children" @click="选择位置(item2)">{{item2.column}}</div>
+                        <div class="number" :class="['status_'+item2.status,(order.row==item2.row && order.column==item2.column) ? 'active': '']"  v-show="item2.column%10!=4" v-for="item2 in item.children" @click="选择位置(item2)">{{item2.column}}</div>
                     </li>
                 </ul>
             </el-form-item>
@@ -144,6 +144,21 @@ export default {
         let getOrderList = ()=>{
             axios.get('/order',{params:query}).then(res => {
                 console.log('订单列表',res)
+                let list = res.data
+                let a = [0]
+                for (let index = 1; index <= 100; index++) {
+                    if(index%10!=4)
+                    a.push(index)            
+                }
+                list.map(y=>{
+                    let addindex=0
+                    // if(y.row>=4){
+                    //     addindex = 1 * Math.ceil(y.row/12)
+                    // }
+                    y.newRow = a[y.row]
+                    //  y.row + addindex
+                    // console.log(y.row)
+                })
                 orderList.length=0
                 orderList.push(...res.data)
                 total.value=res.total
@@ -327,7 +342,6 @@ export default {
         getParkList()
 
         getOrderList()
-
 
 
         return {

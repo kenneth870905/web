@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* .container {
+        display: flex;
+        flex-flow: column wrap;
+        height: 1500px;
+    }
+    .item:nth-child(3n+1) {
+        order: 1;
+    }
+    .item:nth-child(3n+2) {
+        order: 2;
+    }
+    .item:nth-child(3n) {
+        order: 3;
+    }
+    .container::before,
+    .container::after {
+        content: "";
+        flex-basis: 100%;
+        width: 0;
+        order: 2;
+    } */
+
+    .masonry {
+        column-count: 3;
+        column-gap: 0;
+    }
+    .item {
+        padding: 2px;
+        position: relative;
+        counter-increment: count;
+    }
+
+    .item img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .item::after {
+        position: absolute;
+        display: block;
+        top: 2px;
+        left: 2px;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        line-height: 24px;
+        background-color: #000;
+        color: #fff;
+        content: counter(count);
+    }
+</style>
+
+<body>
+    <div class="masonry container">
+        <div class="item">
+            <div>1</div>
+            <img src="https://picsum.photos/360/460?radom=1" alt="">
+        </div>
+        <div class="item">
+            <div>2</div>
+            <img src="https://picsum.photos/360/520?radom=2" alt="">
+        </div>
+        <div class="item">
+            <div>3</div>
+            <img src="https://picsum.photos/360/420?radom=3" alt="">
+        </div>
+        <div class="item">
+            <div>4</div>
+            <img src="https://picsum.photos/360/500?radom=4" alt="">
+        </div>
+        <div class="item">
+            <div>5</div>
+            <img src="https://picsum.photos/360/420?radom=5" alt="">
+        </div>
+        <div class="item">
+            <div>6</div>
+            <img src="https://picsum.photos/360/460?radom=6" alt="">
+        </div>
+        <div class="item">
+            <div>7</div>
+            <img src="https://picsum.photos/360/480?radom=7" alt="">
+        </div>
+        <div class="item">
+            <div>8</div>
+            <img src="https://picsum.photos/360/460?radom=8" alt="">
+        </div>
+        <div class="item">
+            <div>9</div>
+            <img src="https://picsum.photos/360/420?radom=9" alt="">
+        </div>
+        <div class="item">
+            <div>10</div>
+            <img src="https://picsum.photos/360/500?radom=10" alt="">
+        </div>
+        <div class="item">
+            <div>11</div>
+            <img src="https://picsum.photos/360/460?radom=11" alt="">
+        </div>
+        <div class="item">
+            <div>12</div>
+            <img src="https://picsum.photos/360/360?radom=12" alt="">
+        </div>
+    </div>
+</body>
+
+</html>

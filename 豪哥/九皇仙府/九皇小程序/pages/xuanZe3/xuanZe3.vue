@@ -5,8 +5,25 @@
 			<view class="">（本区价格，以实际为准）</view>
 		</view>
 		
-		<movable-area class="movable-box" v-if="rows.length>0">
-			<movable-view class="list-movable" @change="tuodong" @scale="scale" direction="all" :inertia="true"  :out-of-bounds="true" :scale="true">
+		<view class="movable-box">
+			<view class="list-movable">
+				<view class="title-1" :style="{left:x+'px' }">
+					<view class="" v-for="item in rows">
+						{{item.name}}
+					</view>
+				</view>
+				<view class="list">
+					<view class="item" v-for="item in rows">
+						<view :class="['status_'+item2.status,getClassName(item2)]" v-if="item2.column%10!=4" v-for="item2 in item.children" @click="SelectedItem(item2)">
+							{{item2.column}}
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		
+		<!-- <movable-area class="movable-box" v-if="rows.length>0">
+			<movable-view class="list-movable" @change="tuodong" @scale="scale" direction="all" :inertia="true"  :out-of-bounds="true">
 				<view class="title-1" :style="{left:x+'px' }">
 					<view class="" v-for="item in rows">
 						{{item.name}}
@@ -20,7 +37,7 @@
 					</view>
 				</view>
 			</movable-view>
-		</movable-area>
+		</movable-area> -->
 			
 		
 		<view class="footer">
@@ -182,6 +199,9 @@
 							}
 							row.children.push({row:value.row,column:i,status:status})
 						}
+						if(value.is_reverse){
+							row.children.reverse()
+						}
 						list.push(row)
 					})
 					this.rows = list
@@ -235,7 +255,8 @@
 	flex: 1;
 	margin: 0rpx 0rpx 20rpx;
 	width: 100%;
-	overflow: hidden;
+	// overflow: hidden;
+	overflow: auto;
 }
 .list-movable{
 	// border: 2rpx solid red;
@@ -255,31 +276,31 @@
 	transition: all 0.1s; 
 	background: rgba($color: #000000, $alpha: 0.4);
 	text-align: center;
-	font-size: 24rpx;
+	font-size: 26rpx;
 	color: #fff;
 	min-width: 60rpx;
 	view{
 		// width: 60rpx;
 		line-height: 60rpx;
 		white-space: nowrap;
-		margin: 10rpx 0rpx;
+		margin: 20rpx 0rpx;
 	}
 }
 .list{
 	padding: 30rpx;
 	.item{
 		display: flex;
-		margin: 10rpx 0rpx;
+		margin: 20rpx 0rpx;
 		view{
 			width: 60rpx;
 			height: 60rpx;
 			line-height: 60rpx;
-			margin: 0rpx 2rpx;
+			margin: 0rpx 6rpx;
 			border-radius: 8rpx 8rpx 0rpx 0rpx;
 			background: #e5e5e5;
-			font-size: 24rpx;
+			font-size: 28rpx;
 			text-align: center;
-			
+			font-weight: bold;
 			// display: flex;
 			// align-items: center;
 			// justify-content: center;

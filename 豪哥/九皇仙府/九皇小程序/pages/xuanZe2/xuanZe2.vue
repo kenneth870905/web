@@ -79,7 +79,7 @@
 		width: 600rpx;
 		margin: 0rpx auto 60rpx;
 		text-align: center;
-		line-height: 80rpx;
+		line-height: 90rpx;
 		color: #247cdc;
 		border: 2rpx solid #247cdc;
 		background: url("/static/bg1.png");

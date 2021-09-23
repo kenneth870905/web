@@ -150,12 +150,16 @@ export default {
                 let orderList = r2.data
                 let list = []
                 rowList.map(item=>{
+                    // console.log(item)
                     let o = {name:item.name,children:[]}
                     for (let i = 1; i <= item.count; i++) {
                         o.children.push({
                             column:i,
                             status:orderList.find(x=>x.column==i && x.row==item.row) ? orderList.find(x=>x.column==i && x.row==item.row).status : 0 
                         })
+                    }
+                    if(item.is_reverse){
+                        o.children.reverse()
                     }
                     rows.push(o)
                 })  
@@ -252,6 +256,7 @@ export default {
 }
 .orderList{
     font-size: 12px;
+    overflow: auto;
     li{
         margin: 3px 0px;
         display: flex;
@@ -266,8 +271,10 @@ export default {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        flex-shrink: 0;
     }
     .item{
+        flex-shrink: 0;
         width: 18px;
         height: 18px;
         line-height: 18px;

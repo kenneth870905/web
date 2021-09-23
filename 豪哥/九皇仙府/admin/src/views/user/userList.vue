@@ -4,10 +4,15 @@
         <el-button size="small" @click="getList()">刷新</el-button>
     </div>
 
-    <el-table :data="list" border>
+    <el-table :data="list" border size="mini">
         <el-table-column label="id" prop="id" width="50px" align="center"></el-table-column>
         <el-table-column label="登录账号" prop="name"></el-table-column>
         <el-table-column label="备注" prop="description"></el-table-column>
+        <el-table-column label="权限" width="100px" align="center">
+            <template #default="scope">
+                {{scope.row.roles=='ADMIN' ? '管理员' : "普通人员"}}
+            </template>
+        </el-table-column>
         <el-table-column label="操作" align="center" width="150px">
             <template #default="scope">
                 <el-button v-if="scope.row.name!='admin'" type size="mini" @click="openUserDialog(scope.row)">修改</el-button>

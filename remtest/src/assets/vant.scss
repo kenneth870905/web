@@ -1,0 +1,31 @@
+.van-dialog{
+    width: 270px;
+    border-radius: 12px;
+    // transform: translate(0px ,0px);
+    // left: 0px;
+    // right: 0px;
+    // bottom: 45%;
+    // margin: auto;
+    // height: max-content;
+    // background: transparent;
+    background-image: linear-gradient(#fff ,transparent 44px);
+    .van-dialog__cancel{
+        background-image: linear-gradient(180deg,rgba(90,95,111,0.98) 0% , #4e5261 99%);
+        font-size: 16px;
+        color: #ffff;
+        background-color: #4e5261;
+    }
+    .van-dialog__confirm{
+        background-image: linear-gradient(180deg,#ff3300 0% , #e20a26 97%);
+        font-size: 16px;
+        color: #fff;
+        background-color: #e20a26;
+    }
+    .van-button{
+        border-radius: 0px;
+        &::after,
+        &::before{
+            display: none;
+        }
+    }
+}
