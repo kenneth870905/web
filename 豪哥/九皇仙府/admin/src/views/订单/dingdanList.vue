@@ -1,6 +1,6 @@
 <template>
     <div class="header-1">
-        <el-select v-model="query.status" size="small" placeholder="请选择" class="r10" @change="changeType">
+        <el-select v-model="query.status" size="small" placeholder="请选择" class="r10" @change="changeType" style="width: 150px;">
             <el-option label="全部订单" value=""></el-option>
             <el-option label="预定" :value="1"></el-option>
             <el-option label="已付定金" :value="2"></el-option>
@@ -8,7 +8,17 @@
             <el-option label="批量出售" :value="5"></el-option>
             <el-option label="预定已取消" :value="4"></el-option>
         </el-select>
-        <div class="tishi">（全部订单不包含已取消,如需查询已取消，请选择“预定已取消”）</div>
+        <el-select v-model="query.park_id" size="small" placeholder="请选择" class="r10" @change="changePark" style="width: 150px;">
+            <el-option label="全部园区" value=""></el-option>
+            <el-option :label="item.name" :value="item.id" v-for="(item,index) in ParkList" :key="index"></el-option>
+        </el-select>
+        <el-select v-show="query.park_id" v-model="query.unit_id" size="small" placeholder="请选择" class="r10" @change="changeUnit" style="width: 150px;">
+            <el-option label="全部单元" value=""></el-option>
+            <el-option :label="item.name" :value="item.id" v-for="(item,index) in unitList" :key="index"></el-option>
+        </el-select>
+        <el-input v-model="query.user_name" size="small" style="width: 150px;" placeholder="请输入销售员名称"></el-input>
+        <el-button type="" size="small" style="margin-left: 10px;" @click="查询()">查询</el-button>
+        <div class="tishi">（全部订单不包含已取消,如需查询已取消）</div>
         <div class="flex1"></div>
         <el-button size="small" @click="openDialog()" type="warning">添加订单</el-button>
         <el-button size="small" @click="getOrderList()">刷新</el-button>
@@ -18,7 +28,7 @@
         <el-table-column label="id" prop="id"></el-table-column>
         <el-table-column label="园区名称" prop="park_name"></el-table-column>
         <el-table-column label="单元名称" prop="unit_name"></el-table-column>
-        <el-table-column label="行号" prop="newRow"></el-table-column>
+        <el-table-column label="显示行名" prop="row_name"></el-table-column>
         <el-table-column label="列号" prop="column"></el-table-column>
         <el-table-column label="销售员" prop="user_name"></el-table-column>
         <el-table-column label="状态">
@@ -112,11 +122,15 @@ export default {
         let total = ref(0)
         let query = reactive({
             status:"",
+            park_id:"", //园区
+            unit_id:"", //单元
+            user_name:"",
             page:1,
             size:10
         })
         //园区
         let ParkList=reactive([])
+        let unitList=reactive([])
         //添加用
         let order=reactive({
             "grave_id": 1,
@@ -337,6 +351,30 @@ export default {
             query.page=1
             getOrderList()
         }
+        //搜索选择园区
+        let changePark=()=>{
+            query.page=1
+            query.unit_id = ''
+            getOrderList()
+            axios.get('/unit',{params:{park_id:query.park_id,page:1,size:10000}})
+            .then(res => {
+                console.log('单元',res)
+                unitList.length=0
+                unitList.push(...res.data)
+            })
+            .catch(err => {
+                console.error(err); 
+            })
+        }
+        let changeUnit=()=>{
+            query.page=1
+            getOrderList()
+        }
+        let 查询 =()=>{
+            query.page=1
+            getOrderList()
+        }
+
 
 
         getParkList()
@@ -351,12 +389,16 @@ export default {
             showDialog,
             order,
             ParkList,
+            unitList,
             danyuanList,
             rows,
             statusDialog,
             newStatus,
             oldOrder,
             changeType,
+            changePark,
+            changeUnit,
+            查询,
 
             getOrderList,
             openDialog,
