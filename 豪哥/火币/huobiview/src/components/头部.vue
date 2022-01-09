@@ -4,39 +4,11 @@
             <li class="占位" v-if="list.length==0 || list[0].name=='USDT' "></li>
             <li class="item" v-if="item.name!='USDT'" v-for="item in list">
                 <div>买入价格: <span>{{买入1(item)}}</span><span>{{买入2(item)}}</span></div>
-                <div>{{item.name}}实时: <span>{{item.tick.close ? item.tick.close.toFixed(2) : '0000'}}</span></div>
+                <div>{{item.name}}实时: <span>{{item.tick.close ? parseFloat(item.tick.close).toFixed(2) : '0000'}}</span></div>
+                <!-- <div>{{item.name}}实时: <span>{{item.tick.close ? item.tick.close : '0000'}}</span></div> -->
                 <div>卖出价格: <span>{{卖出1(item)}}</span><span>{{卖出2(item)}}</span></div>
             </li>
-            <!-- <li class="item">
-                <div>买入价格:0000 0000</div>
-                <div>ETH实时:0000 0000</div>
-                <div>卖出价格:0000 0000</div>
-            </li>
-            <li class="item">
-                <div>买入价格:0000 0000</div>
-                <div>HT实时:0000 0000</div>
-                <div>卖出价格:0000 0000</div>
-            </li>
-            <li class="item">
-                <div>买入价格:0000 0000</div>
-                <div>XRP实时:0000 0000</div>
-                <div>卖出价格:0000 0000</div>
-            </li>
-            <li class="item">
-                <div>买入价格:0000 0000</div>
-                <div>LTC实时:0000 0000</div>
-                <div>卖出价格:0000 0000</div>
-            </li>
-            <li class="item">
-                <div>买入价格:0000 0000</div>
-                <div>EOS实时:0000 0000</div>
-                <div>卖出价格:0000 0000</div>
-            </li>
-            <li class="item">
-                <div>买入价格:0000 0000</div>
-                <div>USDT实时:0000 0000</div>
-                <div>卖出价格:0000 0000</div>
-            </li> -->
+           
             <li class="input-box">
                 <div>
                     <label for="">USTD买入汇率</label>
@@ -77,6 +49,10 @@ export default {
         }
     },
     methods: {
+        newClose(close){
+            // let str = close.toString()
+            return close.toFixed(2)
+        },
         买入1(item){
             if(this.买入汇率){
                 var n = item.tick.close * this.买入汇率

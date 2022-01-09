@@ -15,14 +15,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(item2,index) in list2" :class="getClass1(item2).trclass" :key="index" v-if="index<item.pageSize">
+                    <tr v-for="(item,index) in list2" :class="getClass1(item).trclass">
                         <td>{{index+1}}</td>
-                        <td>{{item2.price ? parseFloat(item2.price).toFixed(2) : ''}}</td>
-                        <td :class="getClass1(item2).tdclass">{{jisuan_lirun(item2)}}</td>
-                        <td>{{item2.availableAmount ? parseFloat(item2.availableAmount).toFixed(2) : ''}}</td>
+                        <td>{{item.price ? parseFloat(item.price).toFixed(2) : ''}}</td>
+                        <td :class="getClass1(item).tdclass">{{jisuan_lirun(item)}}</td>
+                        <td>{{item.tradeCount ? parseFloat(item.tradeCount).toFixed(2) : ''}}</td>
                         <td>
                             <div class="userName">
-                                <div>{{item2.nickName ? item2.nickName.substring(0,7) : ''}}</div>
+                                <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
                             </div>
                         </td>
                     </tr>
@@ -44,14 +44,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(item2,index) in list3" :class="getClass1(item2).trclass" v-if="index<item.pageSize">
+                    <tr v-for="(item,index) in list3" :class="getClass1(item).trclass">
                         <td>{{index+1}}</td>
-                        <td>{{item2.price ? parseFloat(item2.price).toFixed(2) : ''}}</td>
-                        <td :class="getClass1(item2).tdclass">{{jisuan_lirun11(item2)}}</td>
-                        <td>{{item2.availableAmount ? parseFloat(item2.availableAmount).toFixed(2) : ''}}</td>
+                        <td>{{item.price ? parseFloat(item.price).toFixed(2) : ''}}</td>
+                        <td :class="getClass1(item).tdclass">{{jisuan_lirun11(item)}}</td>
+                        <td>{{item.tradeCount ? parseFloat(item.tradeCount).toFixed(2) : ''}}</td>
                         <td>
                             <div class="userName">
-                                <div>{{item2.nickName ? item2.nickName.substring(0,7) : ''}}</div>
+                                <div>{{item.userName ? item.userName.substring(0,7) : ''}}</div>
                             </div>
                         </td>
                     </tr>
@@ -99,6 +99,15 @@ export default {
     },
     data() {
         return {
+            list: [
+                { name: 'BTC', coinId: 1, ws: '' },
+                { name: 'ETH', coinId: 3, ws: '' },
+                { name: 'HT', coinId: 4, ws: '' },
+                { name: 'XRP', coinId: 7, ws: '' },
+                { name: 'LTC', coinId: 8, ws: '' },
+                { name: 'EOS', coinId: 5, ws: '' },
+                { name: 'USDT', coinId: 2, ws: '' },
+            ],
             //买入
             list2: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
             // list21: [],
@@ -141,7 +150,7 @@ export default {
             return chajia
         },
         getClass1: function (item) {
-            var txtname = item.nickName ? item.nickName.substring(0, 7) : null;
+            var txtname = item.userName ? item.userName.substring(0, 7) : null;
             var trclass = ''
             var tdclass = ''
             let fuidarr = this.fuid.split('|')
@@ -204,37 +213,12 @@ export default {
                     this.获取卖出()
                 }, 1000 * this.Refresh);
             })
-        },
-        获取买卖(){
-            // console.log(this.item.name)
-            let baseCurrency = this.item.name
-            axios.get(`https://www.ouyicn.tel/v3/c2c/tradingOrders/books?quoteCurrency=CNY&baseCurrency=${baseCurrency}&side=all&paymentMethod=all&userType=all&showTrade=false&receivingAds=false&noShowSafetyLimit=false&showFollow=false&showAlreadyTraded=false&isAbleFilter=false`)
-            .then(x=>{
-                // console.log(x)
-                this.list2 = x.data.sell.reverse()
-                this.list3 = x.data.buy
-                this.time = setTimeout(() => {
-                    this.获取买卖()
-                }, 1000 * this.Refresh);
-            }).catch(err=>{
-                console.log(err)
-                this.time = setTimeout(() => {
-                    this.获取买卖()
-                }, 1000 * this.Refresh);
-            })
-            
-            // axios.get(`https://www.ouyicn.tel/v3/c2c/otc-ticker?baseCurrency=${baseCurrency}&quoteCurrency=USD`).then(x=>{
-            //     // console.log(x.data.otcTicker)
-            //     // this.item.tick.close=x.data.otcTicker
-            // }).catch(err=>{
-            // })
         }
     },
     mounted() {
-        console.log(this.item.name)
-        // this.获取买入()
-        // this.获取卖出()
-        this.获取买卖()
+        console.log(this.item.name,this.item.coinId)
+        this.获取买入()
+        this.获取卖出()
     },
     beforeDestroy() {
         // clearInterval(this.time)
@@ -246,7 +230,28 @@ export default {
         } catch (error) {}
     },
     watch: {
-        
+        'item.coinId'(nw, ow) {
+            // console.log(nw, ow, this.name)
+            try {
+                clearTimeout(this.time)
+            } catch (error) {}
+            try {
+                clearTimeout(this.time2)
+            } catch (error) {}
+            this.获取买入()
+            this.获取卖出()
+        },
+        'item.pageSize'(nw, ow) {
+            // console.log(nw, ow, this.name)
+            try {
+                clearTimeout(this.time)
+            } catch (error) {}
+            try {
+                clearTimeout(this.time2)
+            } catch (error) {}
+            this.获取买入()
+            this.获取卖出()
+        }
     }
 }
 </script>
