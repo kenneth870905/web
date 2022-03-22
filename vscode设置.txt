@@ -1,32 +1,73 @@
 {
-    "vetur.ignoreProjectWarning":true,
     "vetur.format.options.tabSize": 4,
+    //避免js 随意换行
     "vetur.format.defaultFormatter.js": "vscode-typescript",
-    "vetur.format.defaultFormatterOptions": {
-        // "js-beautify-html": {
-        //     "wrap_attributes": "force-expand-multiline"
-        // },
-        "prettyhtml": {
-            "printWidth": 1000,
-            // "singleQuote": false,
-            // "wrapAttributes": false,
-            // "sortAttributes": false
-        }
-    },
-    "html.format.wrapAttributes": "aligned-multiple",
-    "vetur.format.defaultFormatter.html": "prettyhtml",
-    "editor.quickSuggestions": {
-        "strings": true
-    },
+    "editor.fontSize": 16,
     "[html]": {
         "editor.defaultFormatter": "vscode.html-language-features"
     },
-    "html.format.wrapLineLength": 300,
-    "files.associations": {
-        "*.vue": "vue"
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
     },
-    "editor.fontSize": 16,
     "[javascript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
-    }
+    },
+    "vetur.format.defaultFormatter.html": "prettyhtml",
+    "vetur.format.defaultFormatterOptions": {
+    //     "js-beautify-html": {
+    //         "wrap_attributes": "auto",
+    //         "wrap_line_length":2000
+    //     },
+        "prettyhtml": {
+            "printWidth": 200,
+            "singleQuote": false,
+            "wrapAttributes": false,
+            "sortAttributes": false
+        }
+    },
+    "editor.quickSuggestions": {
+        "strings": true
+    },
+    // "terminal.integrated.profiles.windows": {
+    //     "PowerShell": {
+    //         "source": "PowerShell",
+    //         "icon": "terminal-powershell"
+    //     },
+    //     "Command Prompt": {
+    //         "path": [
+    //             "${env:windir}\\Sysnative\\cmd.exe",
+    //             "${env:windir}\\System32\\cmd.exe"
+    //         ],
+    //         "args": ["-NoExit","/c","chcp 65001"],
+    //         "icon": "terminal-cmd"
+    //     },
+    //     "Git Bash": {
+    //         "source": "Git Bash"
+    //     }
+    // },
+    // "terminal.integrated.defaultProfile.windows":
+    "terminal.integrated.shellArgs.windows": [
+        "-NoExit",
+        "/c",
+        "chcp 65001"
+    ],
+    "background.useDefault": true,
+    "background.customImages": [
+        // "file:///C:/Users/Kenneth/Desktop/图片/qijian.png"
+    ],
+    "background.useFront": true,
+    "background.style": {
+        "content": "''",
+        "pointer-events": "none",
+        "position": "absolute",
+        "z-index": "99999",
+        "width": "100%",
+        "height": "100%",
+        "right":"50px",
+        "background-position": "100% 100%",
+        "background-repeat": "no-repeat",
+        "opacity": 0.8
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
 }
