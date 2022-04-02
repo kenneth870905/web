@@ -18,14 +18,6 @@ const list = [
                 meta: { 
                     
                 }
-            },
-            {
-                path: '/user',
-                component: () => import('../views/user/user.vue'),
-                name: '用户详情',
-                meta: { 
-                    leftNav:false
-                }
             }
         ]
 

@@ -101,7 +101,7 @@ export default {
             roles: "USER", 
             status: 0,
             description:"",
-            id:""
+            id:0
         })
 
 
@@ -136,6 +136,7 @@ export default {
                 user.roles = 'USER'
                 user.status = 0
                 user.description = ''
+                user.id = 0
             }
             showModal.value=true
         }
