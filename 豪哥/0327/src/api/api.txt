@@ -1,0 +1,49 @@
+权限
+	登陆
+	/api/auth/login
+	方法	POST
+	数据	{"name": "", "password": ""}
+	管理员的role是ADMIN,普通用户是USER
+
+	更改密码
+	/api/auth/password
+	方法	POST
+	数据	{"password": ""}
+
+用户
+	列表
+	/api/user
+	方法	GET
+	参数	page, size
+
+	添加
+	/api/user
+	方法	POST
+	数据	{"name": "", "password": "", "roles": "ADMIN", "status": 0}
+
+	删除
+	/api/user/{id}
+	方法	DELETE
+
+	更新
+	/api/user/{id}
+	方法	PUT
+
+内容
+	列表
+	/api/content
+	方法	GET
+	参数	key			查找关键字
+			startDate	起始时间
+			endDate		截止时间
+			page, size
+
+	添加
+	/api/content
+	方法	POST
+	数据	一行一个数据
+
+	删除
+	/api/content/{id}
+	方法	DELETE
+
