@@ -14,7 +14,8 @@
 				</view>
 				<view class="list">
 					<view class="item" v-for="item in rows">
-						<view :class="['status_'+item2.status,getClassName(item2)]" v-if="item2.column%10!=4" v-for="item2 in item.children" @click="SelectedItem(item2)">
+						<view :class="['status_'+item2.status,getClassName(item2)]" 
+							v-if="(item2.column%10==4 && park.show_four) || item2.column%10!=4" v-for="item2 in item.children" @click="SelectedItem(item2)">
 							{{item2.column}}
 						</view>
 					</view>
@@ -76,6 +77,14 @@
 					<view class="yimaichu"></view>
 					已卖出
 				</view>
+				<view class="item">
+					<view class="status6"></view>
+					本村
+				</view>
+				<view class="item">
+					<view class="status7"></view>
+					已安装
+				</view>
 			</view>
 			
 			<button type="default" @click="tijiao()">提交预定</button>
@@ -93,7 +102,7 @@
 				scaleValue:{
 					scale:1
 				},
-				
+				park:{},
 				// yqName:"",	//园区名
 				// yqId:"",	//园区Id
 				// title:"",	//单元名称
@@ -182,9 +191,11 @@
 				let id = this.order.unit_id
 				Promise.all([
 					this.$http(`/unit/${id}`,'','get'),
-					this.$http('/order',{unit_id:id,page:1,size:5000},'get')
-				]).then(([r1,r2])=>{
-					console.log(r1,r2)
+					this.$http('/order',{unit_id:id,page:1,size:5000},'get'),
+					this.$http(`/park/${this.order.park_id}`,'','get')
+				]).then(([r1,r2,r3])=>{
+					console.log(r1,r2,r3)
+					this.park = r3.data
 					this.order.price = r1.data.price
 					let list = []
 					r1.data.Rows.map(value=>{
@@ -235,7 +246,6 @@
 	display: flex;
 	flex-direction: column;
 }
-
 
 
 .header{
@@ -339,6 +349,12 @@
 		.status_5{
 			background: #f3de8d;
 		}
+		.status_6{
+			background: #683535;
+		}
+		.status_7{
+			background: #d115f3;
+		}
 	}
 }
 
@@ -367,6 +383,14 @@
 .yimaichu{
 	@include fangxing;
 	background: #f47171;
+}
+.status6{
+	@include fangxing;
+	background: #683535;
+}
+.status7{
+	@include fangxing;
+	background: #d115f3;
 }
 .footer{
 	flex-shrink: 0;

@@ -8,6 +8,11 @@
         <el-table-column label="编号" width="50px" align="center" prop="id"></el-table-column>
         <el-table-column label="名称" prop="name"></el-table-column>
         <el-table-column label="code" prop="code"></el-table-column>
+        <el-table-column label="是否显示尾数4号" prop="show_four" align="center">
+            <template #default="scope">
+                <el-switch active-text="是" inactive-text="否" v-model="scope.row.show_four" @change="changeShowFour(scope.row)"></el-switch>
+            </template>
+        </el-table-column>
         <el-table-column label="备注" prop="description"></el-table-column>
         <!-- <el-table-column label="创建时间"></el-table-column> -->
         <el-table-column label="操作" align="center" width="150px">
@@ -22,12 +27,15 @@
 
 
     <el-dialog :title="DialogType==0 ? '添加园区' :'修改园区'" v-model="showDialog" width="450px" custom-class="usertankuang">
-        <el-form>
+        <el-form size="mini">
             <el-form-item label="园区名称">
                 <el-input v-model="yuanqu.name" placeholder="园区名称"></el-input>
             </el-form-item>
             <el-form-item label="code">
                 <el-input v-model="yuanqu.code" placeholder=""></el-input>
+            </el-form-item>
+            <el-form-item label="是否显示尾数4号">
+                <el-switch v-model="yuanqu.show_four" inactive-text="不显示" active-text="显示"></el-switch>
             </el-form-item>
             <el-form-item label="备注">
                 <el-input v-model="yuanqu.description" placeholder="备注：如张三"></el-input>
@@ -55,7 +63,7 @@ export default {
             page:1, size:100
         })
         let total = ref(0)
-        let yuanqu = reactive({id:"",name: "", code: "", description: ""})
+        let yuanqu = reactive({id:"",name: "", code: "",show_four:false, description: ""})
         let showDialog = ref(false)
         let DialogType = ref(0) //0添加1修改
         
@@ -71,16 +79,32 @@ export default {
         let openDialog=(item)=>{
             if(!item){
                 DialogType.value=0
-                Object.assign(yuanqu,{id:"",name: "", code: "", description: ""})
+                Object.assign(yuanqu,{id:"",name: "", code: "",show_four:false, description: ""})
                 delete yuanqu.id
             }else{
                 DialogType.value=1
-                Object.assign(yuanqu,{id:"",name: "", code: "", description: ""})
+                Object.assign(yuanqu,{id:"",name: "", code: "",show_four:false, description: ""})
                 Object.keys(yuanqu).map((key)=>{
                     yuanqu[key] = item[key]
                 })
             }
             showDialog.value=true
+        }
+        let changeShowFour = (yuanqu)=>{
+             axios.put(`/park/${yuanqu.id}`,yuanqu).then(res => {
+                    console.log(res)
+                    if(res.code==0){
+                        proxy.$message({  message: '修改成功', type: 'success'});
+                    }else{
+                        proxy.$message({  message: '修改失败', type: 'error'});
+                    }
+                    showDialog.value=false
+                    getList()
+                }).catch(err => {
+                    console.error(err); 
+                    showDialog.value=false
+                    proxy.$message({  message: '连接异常，请联系管理员', type: 'error'});
+                })
         }
         let queding=()=>{
             if(!yuanqu.name){
@@ -148,7 +172,7 @@ export default {
             
         }
 
-
+        axios.get('/park',{params:{page:1,size:10,park_id:10}})
 
         getList()
 
@@ -161,6 +185,7 @@ export default {
             DialogType,
             openDialog,
             queding,
+            changeShowFour,
             changePage,
             deleteYuanqu,
             getList

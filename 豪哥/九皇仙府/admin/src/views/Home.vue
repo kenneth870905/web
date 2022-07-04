@@ -1,7 +1,7 @@
 <template>
     <el-container>
         <el-aside width="200px">
-            <div class="title-1">九皇仙府</div>
+            <div class="title-1">北邙陵园</div>
             <el-menu :default-active="$route.path" :router="true" class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff">
                 <el-menu-item index="/userList">
                     <i class="el-icon-setting"></i>

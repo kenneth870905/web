@@ -2,7 +2,9 @@
 	<view class="container">
 		<view class="header">
 			<!-- <image src="@/static/indexBg.jpg" mode="widthFix"></image> -->
-			<image src="@/static/indexBg.jpg" mode="aspectFill"></image>
+			<!-- <image src="@/static/indexBg.jpg" mode="aspectFill"></image> -->
+			<image src="@/static/bg20.png" mode="widthFix"></image>
+			<view>北邙陵园</view>
 		</view>
 		<view class="list" >
 			<view class="item1" @click="xuanze(item)" v-for="item in parkList">
@@ -73,9 +75,27 @@
 <style lang="scss">
 .header {
 	height: 480rpx;
+	overflow: hidden;
+	position: relative;
 	image{
 		width: 100%;
 		height: 100%;
+	}
+	view{
+		position: absolute;
+		text-align: center;
+		top: 40%;
+		left: 0px;
+		right: 0px;
+		width: max-content;
+		padding: 20rpx;
+		margin: auto;
+		background: rgba($color: #0c2e53, $alpha: 0.7);
+		border:2rpx solid rgba($color: #fff, $alpha: 0.6);
+		font-size: 52rpx;
+		color: #fff;
+		font-style: cursive;
+		letter-spacing: 10rpx;
 	}
 }
 
@@ -96,11 +116,11 @@
 	}
 	.item2{
 		font-size: 36rpx;
-		// background: #2b838a;
-		// background: url("/static/bg1.png"),linear-gradient(to left, #328944, #247cdc) ;
-		background: url("/static/bg1.png") ;
-		background-color: #2b838a;
-		background-color:#4e5199 ;
+		background: url("/static/bg20.png") ;
+		// background-image: url("/static/1120.jpg") ;
+		background-size: 100% 100%;
+		// background-color: #2b838a;
+		// background-color:#4e5199 ;
 		line-height: 90rpx;
 		color: #fff;
 		font-weight: bold;

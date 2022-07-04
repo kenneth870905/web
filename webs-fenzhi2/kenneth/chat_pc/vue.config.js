@@ -39,4 +39,11 @@ module.exports = {
         }
     },
 
+    configureWebpack: {
+        plugins: [
+         
+        ]
+    }
+    
+
 }

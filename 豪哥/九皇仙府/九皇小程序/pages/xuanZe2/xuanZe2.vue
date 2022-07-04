@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="header">
-			<image src="/static/bg2.jpg" mode="aspectFill"></image>
+			<image src="/static/bg20.png" mode="aspectFill"></image>
 			<view class="">
 				{{title}}
 			</view>
@@ -70,6 +70,11 @@
 		font-weight: bold;
 		color: #fff;
 		font-family: cursive;
+		
+		width: max-content;
+		padding: 10rpx 20rpx;
+		background: rgba($color: #0c2e53, $alpha: 0.7);
+		border:2rpx solid rgba($color: #fff, $alpha: 0.6);
 	}
 }
 

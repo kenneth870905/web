@@ -1,5 +1,5 @@
 {
-    "name" : "九皇小程序",
+    "name" : "北邙陵园",
     "appid" : "__UNI__029511E",
     "description" : "",
     "versionName" : "1.0.0",
@@ -49,7 +49,7 @@
     /* 快应用特有相关 */
     "mp-weixin" : {
         /* 小程序特有相关 */
-        "appid" : "wxf8ab6b9c5b6e3490",
+        "appid" : "wx920f9d7526688dcb",
         "setting" : {
             "urlCheck" : false
         },

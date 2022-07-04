@@ -44,7 +44,8 @@
 			}
 		},
 		onLoad() {
-			wx.hideHomeButton()
+			console.log(123)
+			// wx.hideHomeButton()
 		}
 	}
 </script>
@@ -52,7 +53,8 @@
 <style lang="scss" scoped>
 .container {
 	height: 100vh;
-	background: url("/static/bg1.png"),linear-gradient(to left, #328944, #247cdc) ;
+	background: url("/static/bg11.jpg");
+	background-size: cover;
 	display: flex;
 	align-items: center;
 	justify-content: center;

@@ -52,7 +52,12 @@
                 <div>
                     <div class="status5"></div>批量出售
                 </div>
-                
+                <div>
+                    <div class="status6"></div>本村
+                </div>
+                <div>
+                    <div class="status7"></div>已安装
+                </div>
             </div>
             <ul class="orderList">
                 <li v-for="(item,index) in rows">
@@ -251,7 +256,16 @@ export default {
             height: 18px;
             background: #f3de8d;
         }
-        
+        .status6{
+            width: 18px;
+            height: 18px;
+            background: #683535;
+        }
+        .status7{
+            width: 18px;
+            height: 18px;
+            background: #d115f3;
+        }
     }
 }
 .orderList{
@@ -266,7 +280,7 @@ export default {
         width: 80px;
         text-align: center;
         padding: 3px;
-        background: rgba($color: #000000, $alpha: 0.6);
+        background: rgba($color: #000000, $alpha: 0.4);
         color: #fff;
         overflow: hidden;
         white-space: nowrap;
@@ -292,6 +306,12 @@ export default {
         }
         &.status5{
             background:  #f3de8d;
+        }
+        &.status6{
+            background: #683535;
+        }
+        &.status7{
+            background: #d115f3;
         }
     }
 }

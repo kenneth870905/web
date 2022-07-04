@@ -13,9 +13,13 @@ app.use(store).use(router)
 .use(ElementPlus)
 .mount('#app')
 
-axios.defaults.baseURL = 'https://soft.jiuhuangxianfu.com/api'
+// axios.defaults.baseURL = 'http://43.142.94.8:9009/api'
+// axios.defaults.baseURL = 'https://api.ysbmly.com:9010/api'
+axios.defaults.baseURL = 'https://api.ysbmly.com/api'
+
+
 app.config.globalProperties.$axios = axios
-app.config.globalProperties.$api_url = 'https://soft.jiuhuangxianfu.com/api'
+// app.config.globalProperties.$api_url = 'https://soft.jiuhuangxianfu.com/api'
 app.config.globalProperties.$message=(msg)=>{
     ElMessage({ ...msg ,offset: 100 ,showClose: true })
 }
@@ -44,6 +48,11 @@ axios.interceptors.request.use(function (config) {
     axiosTotal++
     // let urlList = ['/api/auth/loginadmin'];
     let url = config.url
+    if(config.data){
+        delete config.data.createdAt
+        delete config.data.deletedAt
+        delete config.data.updatedAt
+    }
     if(url!='/api/auth/loginadmin'){
         let token = store.state.loginInfo.token
         config.headers['X-Token'] = token ? token : ''; 

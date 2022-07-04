@@ -6,6 +6,8 @@
             <el-option label="已付定金" :value="2"></el-option>
             <el-option label="已售出" :value="3"></el-option>
             <el-option label="批量出售" :value="5"></el-option>
+            <el-option label="本村" :value="6"></el-option>
+            <el-option label="已安装" :value="7"></el-option>
             <el-option label="预定已取消" :value="4"></el-option>
         </el-select>
         <el-select v-model="query.park_id" size="small" placeholder="请选择" class="r10" @change="changePark" style="width: 150px;">
@@ -34,17 +36,20 @@
         <el-table-column label="状态">
             <template #default="scope">
                 <span v-if="scope.row.status==1">预定</span>
-                <span v-if="scope.row.status==2">已付定金</span>
-                <span v-if="scope.row.status==3">已出售</span>
-                <span v-if="scope.row.status==4">已取消</span>
-                <span v-if="scope.row.status==5">批量出售</span>
+                <span v-else-if="scope.row.status==2">已付定金</span>
+                <span v-else-if="scope.row.status==3">已出售</span>
+                <span v-else-if="scope.row.status==4">已取消</span>
+                <span v-else-if="scope.row.status==5">批量出售</span>
+                <span v-else-if="scope.row.status==5">批量出售</span>
+                <span v-else-if="scope.row.status==6">本村</span>
+                <span v-else-if="scope.row.status==7">已安装</span>
             </template>
         </el-table-column>
         <el-table-column label="更新时间" prop="updatedAt"></el-table-column>
         <!-- <el-table-column label="备注"></el-table-column> -->
         <el-table-column label="操作" align="center" width="200px">
             <template #default="scope">
-                <el-button type size="mini" v-if="scope.row.status!=4" @click="openStatusDialog(scope.row)">修改状态</el-button>
+                <el-button type size="mini" v-if="scope.row.status!=4" @click="openStatusDialog(scope.row)">修改</el-button>
                 <el-button type="warning" size="mini" @click="deleteOrder(scope.row)">删除</el-button>
             </template>
         </el-table-column>
@@ -68,7 +73,11 @@
                 <ul class="list-1">
                     <li v-for="item in rows">
                         <div class="name-1">{{item.name}}</div>
-                        <div class="number" :class="['status_'+item2.status,(order.row==item2.row && order.column==item2.column) ? 'active': '']"  v-show="item2.column%10!=4" v-for="item2 in item.children" @click="选择位置(item2)">{{item2.column}}</div>
+                        <div class="number" 
+                            :class="['status_'+item2.status,(order.row==item2.row && order.column==item2.column) ? 'active': '']"  
+                            v-show="item2.column%10!=4 || (item2.column%10==4 && 选中园区.show_four)" v-for="item2 in item.children" @click="选择位置(item2)">
+                            {{item2.column}}
+                        </div>
                     </li>
                 </ul>
             </el-form-item>
@@ -89,13 +98,20 @@
     </el-dialog>
 
     <el-dialog title="修改订单状态" v-model="statusDialog" width="450px" custom-class="状态弹框">
-        <el-form size="mini" class="form-1">
+        <el-form size="mini" class="form-1" label-width="90px"> 
             <el-form-item label="请选择状态">
-                <el-select v-model="newStatus" style="width: 100%;">
+                <el-select v-model="oldOrder.status" style="width: 100%;">
                     <el-option label="已预定" :value="1"></el-option>
                     <el-option label="已付定金" :value="2"></el-option>
                     <el-option label="已出售" :value="3"></el-option>
                     <el-option label="已批量售出" :value="5"></el-option>
+                    <el-option label="本村" :value="6"></el-option>
+                    <el-option label="已安装" :value="7"></el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="销售员">
+                <el-select v-model="oldOrder.user_id" placeholder="" style="width: 100%;">
+                  <el-option v-for="(item,index) in userList" :key="index" :label="item.name" :value="item.id"></el-option>
                 </el-select>
             </el-form-item>
         </el-form>
@@ -146,13 +162,15 @@ export default {
         })
         //修改状态时使用
         let newStatus = ref(1)
-        let oldOrder= {}
+        let oldOrder= reactive({})
         let danyuanList = reactive([])
         
         let rows = reactive([])
+        let 选中园区 = reactive({})
 
         let showDialog = ref(false)
         let statusDialog=ref(false)
+        let userList = reactive([])
         
 
         let getOrderList = ()=>{
@@ -207,6 +225,7 @@ export default {
             rows.length=0
         }
         let 选择园区 = (id)=>{
+            Object.assign(选中园区,ParkList.find(x=>x.id ==id))
             order.park_name=ParkList.find(x=>x.id==id).name
             axios.get('/unit',{params:{park_id:order.park_id,page:1,size:1000}})
             .then(res => {
@@ -287,16 +306,34 @@ export default {
             return className
         }
 
-        let openStatusDialog=(item)=>{
-            oldOrder=item
+        let openStatusDialog=async (item)=>{
+            if(userList.length==0)
+                await getUser()
+            Object.assign(oldOrder,item)
             newStatus.value = item.status
             statusDialog.value=true
         }
+        let getUser =()=>{
+            let q = {
+                page: 1,
+                size: 1000
+            }
+            return new Promise((resolve, reject) => {
+                axios.get('/user', { params: q }).then(res => {
+                    if (res.code == 0) {
+                        userList.length = 0
+                        userList.push(...res.data)
+                        resolve()
+                    }
+                })
+            });
+        }
         let 修改状态 = async ()=>{
-            if(newStatus.value ==oldOrder.status ){
-                console.log('没有修改 ')
+            let order = orderList.find(x=>x.id==oldOrder.id)
+            if(order.status ==oldOrder.status && order.user_id==oldOrder.user_id){
                 return
             }
+            oldOrder.user_name = userList.find(x=>x.id==oldOrder.user_id).name
             let r = await proxy.$confirm('确定修改状态?', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
@@ -304,6 +341,8 @@ export default {
             }).then(() => true).catch(() => false);
             if(!r) return
             oldOrder.status=newStatus.value
+            // oldOrder.user_id=5
+            // oldOrder.user_name="test"
             delete oldOrder.createdAt
             delete oldOrder.deletedAt
             delete oldOrder.updatedAt
@@ -395,6 +434,8 @@ export default {
             statusDialog,
             newStatus,
             oldOrder,
+            选中园区,
+            userList,
             changeType,
             changePark,
             changeUnit,
@@ -484,6 +525,15 @@ export default {
             }
             &.status_3{
                 background: #d99493;
+            }
+            &.status_5{
+                background: #f3de8d;
+            }
+            &.status_6{
+                background: #683535;
+            }
+            &.status_7{
+                background: #d115f3;
             }
         }
     }

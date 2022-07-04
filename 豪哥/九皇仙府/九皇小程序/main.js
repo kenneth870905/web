@@ -7,7 +7,7 @@ Vue.config.productionTip = false
 
 App.mpType = 'app'
 // let api = 'http://47.243.70.161/api'
-let api ="https://soft.jiuhuangxianfu.com/api"
+let api ="https://api.ysbmly.com/api"
 Vue.prototype.$api_url = api
 
 let loadingTotal = 0
