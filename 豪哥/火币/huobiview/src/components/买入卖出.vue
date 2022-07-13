@@ -155,9 +155,11 @@ export default {
             return { trclass: trclass, tdclass: tdclass }
         },
         获取买入() {
+            console.log("获取买入")
             if (!this.item.coinId) return;
             let coinId = this.item.coinId
-            let g1 = axios.get(`https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=${coinId}&currency=1&tradeType=sell&currPage=1&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=`, '')
+            // let g1 = axios.get(`https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=${coinId}&currency=1&tradeType=sell&currPage=1&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=`, '')
+            let g1 = axios.get(mairu1(coinId), '')
             let g2 = new Promise((resolve, reject) => {
                 resolve({'提示':'不需要请求第二页'})
             });
@@ -181,6 +183,7 @@ export default {
             })
         },
         获取卖出(){
+            console.log("获取卖出")
             if (!this.item.coinId) return;
             let coinId = this.item.coinId
             let g1 = axios.get(`https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=${coinId}&currency=1&tradeType=buy&currPage=1&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount=`, '')
@@ -206,6 +209,7 @@ export default {
             })
         },
         获取买卖(){
+            console.log(11)
             // console.log(this.item.name)
             let baseCurrency = this.item.name
             axios.get(`https://www.ouyicn.tel/v3/c2c/tradingOrders/books?quoteCurrency=CNY&baseCurrency=${baseCurrency}&side=all&paymentMethod=all&userType=all&showTrade=false&receivingAds=false&noShowSafetyLimit=false&showFollow=false&showAlreadyTraded=false&isAbleFilter=false`)
@@ -222,16 +226,10 @@ export default {
                     this.获取买卖()
                 }, 1000 * this.Refresh);
             })
-            
-            // axios.get(`https://www.ouyicn.tel/v3/c2c/otc-ticker?baseCurrency=${baseCurrency}&quoteCurrency=USD`).then(x=>{
-            //     // console.log(x.data.otcTicker)
-            //     // this.item.tick.close=x.data.otcTicker
-            // }).catch(err=>{
-            // })
         }
     },
     mounted() {
-        console.log(this.item.name)
+        // console.log(this.item.name)
         // this.获取买入()
         // this.获取卖出()
         this.获取买卖()
@@ -244,9 +242,6 @@ export default {
         try {
             clearTimeout(this.time2)
         } catch (error) {}
-    },
-    watch: {
-        
     }
 }
 </script>

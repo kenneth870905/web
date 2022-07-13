@@ -53,16 +53,17 @@ export default {
     data() {
         return {
             // BTC-ETH-HT-XRP-LTC-EOS-USDT
-            list: [
-                { name: 'BTC', check: false, pageSize: 10, wsinstId:'BTC-USDT' , tick: { close: "" }, },
-                { name: 'ETH', check: false, pageSize: 10, wsinstId:'ETH-USDT' , tick: { close: "" }, },
-                // { name: 'HT',  check: false, pageSize: 10 },
-                // { name: 'XRP', check: false, pageSize: 10 },
-                // { name: 'LTC', check: false, pageSize: 10 },
-                // { name: 'EOS', check: false, pageSize: 10 },
-                { name: 'USDT', check: false, pageSize: 10, tick: { close: "" }, },
-                // { name: 'DOGE', check: false, pageSize: 10 },
-            ],
+            list: list,
+            // [
+            //     { name: 'BTC', check: false, pageSize: 10, wsinstId:'BTC-USDT' , tick: { close: "" }, },
+            //     { name: 'ETH', check: false, pageSize: 10, wsinstId:'ETH-USDT' , tick: { close: "" }, },
+            //     // { name: 'HT',  check: false, pageSize: 10 },
+            //     // { name: 'XRP', check: false, pageSize: 10 },
+            //     // { name: 'LTC', check: false, pageSize: 10 },
+            //     // { name: 'EOS', check: false, pageSize: 10 },
+            //     { name: 'USDT', check: false, pageSize: 10, tick: { close: "" }, },
+            //     // { name: 'DOGE', check: false, pageSize: 10 },
+            // ],
             checkboxGroup2: [],
             ws: '', //连接对象
 
@@ -95,7 +96,7 @@ export default {
                 return
             }
             this.setToken(token)
-            axios.post('http://1.huobi456.com/huobi/public/index.php/user/getuserinfo?token=' + token, '').then(res => {
+            axios.post(api+'/huobi/public/index.php/user/getuserinfo?token=' + token, '').then(res => {
                 console.log(res)
                 if (res.code != 1) {
                     this.$router.push('/404')
@@ -163,7 +164,7 @@ export default {
         }
     },
     mounted() {
-        // this.验证登录()
+        this.验证登录()
         this.链接ws()
     },
 }

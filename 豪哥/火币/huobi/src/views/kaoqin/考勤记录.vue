@@ -8,7 +8,7 @@
             </div>
         </div>
         <el-table class="table" border :data="list" size="mini" style="width: 100%">
-            <el-table-column align="center" prop="userId" label="账号" width="180">
+            <el-table-column align="center" prop="account" label="账号" width="180">
             </el-table-column>
             <el-table-column align="center" prop="nickname" label="昵称" width="180">
             </el-table-column>
