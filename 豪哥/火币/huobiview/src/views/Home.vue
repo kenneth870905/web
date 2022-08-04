@@ -136,7 +136,8 @@ export default {
         链接ws() {
             // wss://wspri.okex.com:8443/ws/v5/public
             // wss://wspri.coinall.ltd:8443/ws/v5/public
-            this.ws = new WebSocket("wss://wspri.okex.com:8443/ws/v5/public");
+            // this.ws = new WebSocket("wss://wspri.okex.com:8443/ws/v5/public");
+            this.ws = new WebSocket("wss://wspri.coinall.ltd:8443/ws/v5/ipublic")
             // this.ws = new WebSocket("wss://api.huobi.pro/ws");
             this.ws.onopen = () => {
                 this.list.forEach(item => {
@@ -164,7 +165,7 @@ export default {
         }
     },
     mounted() {
-        this.验证登录()
+        // this.验证登录()
         this.链接ws()
     },
 }

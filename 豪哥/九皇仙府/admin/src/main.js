@@ -35,12 +35,15 @@ let axiosTotal=0
 let closeLoading = ()=>{
     axiosTotal--
     if(axiosTotal==0){
-        // setTimeout(() => {
         loadingInstance.close()            
-        // }, 500);
     }
 }
+const CancelToken = axios.CancelToken;
+let source = CancelToken.source();
 axios.interceptors.request.use(function (config) {
+    if(config.url == "/auth/login") source = CancelToken.source();
+    config.cancelToken=source.token
+
     loadingInstance = ElLoading.service({
         background:'rgba(0,0,0,.3)',
         text:"正在加载"
@@ -69,6 +72,7 @@ axios.interceptors.response.use(function (response) {
     // 对响应数据做点什么
     var data =response.data
     if(data.code==1001){
+        source.cancel('登录失效取消请求');
         ElMessageBox ({
             title:"提示",
             message:"登录过期，请重新登录",

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>行情</title>
+    <link rel="stylesheet" href="element/element.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <section id="vue">
+        <div class="header">
+            <ul class="价格">
+                <li class="占位" v-if="newList.length==0 || newList[0].name=='USDT' "></li>
+                <li class="item" v-if="item.name!='USDT'" v-for="item in newList">
+                    <div>买入价格: <span>{{买入1(item)}}</span><span>{{买入2(item)}}</span></div>
+                    <div>{{item.name}}实时: <span>{{item.tick.close ? parseFloat(item.tick.close).toFixed(2) : '0000'}}</span></div>
+                    <!-- <div>{{item.name}}实时: <span>{{item.tick.close ? item.tick.close : '0000'}}</span></div> -->
+                    <div>卖出价格: <span>{{卖出1(item)}}</span><span>{{卖出2(item)}}</span></div>
+                </li>
+               
+                <li class="input-box">
+                    <div>
+                        <label for="">USTD买入汇率</label>
+                        <el-input v-model="买入汇率" ></el-input>
+                        <label for="">手续费</label>
+                        <el-input v-model="手续费"></el-input> 
+                    </div>
+                    <div>
+                        <label for="">USTD卖出汇率</label>
+                        <el-input v-model="卖出汇率"></el-input>
+                        <label for="">主号ID</label>
+                        <el-input v-model="主号ID"></el-input> 
+                    </div>
+                    <div>
+                        <label for="">副号ID</label>
+                        <el-input v-model="副号ID"></el-input>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="显示选择">
+            显示选项：
+            <!-- <el-checkbox-group v-model="checkboxGroup2" :max="6" @change="change1"> -->
+            <div class="border" v-for="(item, index) in list" :key="index">
+                <el-checkbox class="checkbox" :disabled="newList.length>=6 && !item.check" @change="change1(item)" v-model="item.check" :label="item.name"></el-checkbox>
+                <el-select v-model="item.pageSize" size="mini" style="width: 80px;">
+                    <el-option label="10条" :value="10"></el-option>
+                    <el-option label="15条" :value="15"></el-option>
+                    <el-option label="20条" :value="20"></el-option>
+                    <el-option label="100条" :value="100"></el-option>
+                </el-select>
+            </div>
+            <div>
+                <el-select v-model="Refresh" size="mini" style="width: 130px;">
+                    <el-option label="3.5秒刷新一次" :value="3.5"></el-option>
+                    <el-option label="5秒刷新一次" :value="5"></el-option>
+                    <el-option label="10秒刷新一次" :value="10"></el-option>
+                    <el-option label="20秒刷新一次" :value="20"></el-option>
+                </el-select>(请求间隔时间)
+            </div>
+            <!-- </el-checkbox-group> -->
+        </div>
+        <ul class="tableList" :class="'length_'+newList.length">
+            <li v-for="item in newList">
+                <div class="flex">
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th colspan="5" class="t1">{{item.name}}买入广告</th>
+                                </tr>
+                                <tr class="title2">
+                                    <th>#</th>
+                                    <th>价格</th>
+                                    <th>利润</th>
+                                    <th>数量</th>
+                                    <th>昵称</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item2,index) in item.list2" :class="getClass1(item2).trclass" :key="index" v-if="index<item.pageSize">
+                                    <td>{{index+1}}</td>
+                                    <td>{{item2.price ? parseFloat(item2.price).toFixed(2) : ''}}</td>
+                                    <td :class="getClass1(item2).tdclass">{{jisuan_lirun(item2,item)}}</td>
+                                    <td>{{item2.availableAmount ? parseFloat(item2.availableAmount).toFixed(2) : ''}}</td>
+                                    <td>
+                                        <div class="userName">
+                                            <div>{{item2.nickName ? item2.nickName.substring(0,7) : ''}}</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th colspan="5" class="t2">{{item.name}}卖出广告</th>
+                                </tr>
+                                <tr class="title2">
+                                    <th>#</th>
+                                    <th>价格</th>
+                                    <th>利润</th>
+                                    <th>数量</th>
+                                    <th>昵称</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item2,index) in item.list3" :class="getClass1(item2).trclass" v-if="index<item.pageSize">
+                                    <td>{{index+1}}</td>
+                                    <td>{{item2.price ? parseFloat(item2.price).toFixed(2) : ''}}</td>
+                                    <td :class="getClass1(item2).tdclass">{{jisuan_lirun11(item2,item)}}</td>
+                                    <td>{{item2.availableAmount ? parseFloat(item2.availableAmount).toFixed(2) : ''}}</td>
+                                    <td>
+                                        <div class="userName">
+                                            <div>{{item2.nickName ? item2.nickName.substring(0,7) : ''}}</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+    </section>
+    <script src="vue.js"></script>
+    <script src="axios.min.js"></script>
+    <script src="element/element.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

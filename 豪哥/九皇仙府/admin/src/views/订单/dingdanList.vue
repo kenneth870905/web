@@ -340,7 +340,6 @@ export default {
                 type: 'warning'
             }).then(() => true).catch(() => false);
             if(!r) return
-            oldOrder.status=newStatus.value
             // oldOrder.user_id=5
             // oldOrder.user_name="test"
             delete oldOrder.createdAt
